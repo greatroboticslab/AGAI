@@ -195,7 +195,8 @@ If `kg_nodes_faostat.csv` and `kg_relationships_faostat.csv` are present in the 
 
 # 📁 Project Structure
 
-> Quick view of inference dataflow, end-to-end sequence, training pipeline, and a short demo.
+> Quick view of inference dataflow, end-to-end sequence, training pipeline, and demo video
+> Note from William: In the demo video I only used resnet p1 for label injection. No unknown clause implemented at the time.
 
 ## Inference Dataflow
 ![Inference Dataflow – Mermaid export](https://github.com/user-attachments/assets/b6f433ad-d25a-4b06-b0c5-e00addd43984)
