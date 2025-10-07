@@ -196,6 +196,7 @@ If `kg_nodes_faostat.csv` and `kg_relationships_faostat.csv` are present in the 
 # 📁 Project Structure
 
 > Quick view of inference dataflow, end-to-end sequence, training pipeline, and demo video
+
 > Note from William: In the demo video I only used resnet p1 for label injection. No unknown clause implemented at the time.
 
 ## Inference Dataflow
