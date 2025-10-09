@@ -1,26 +1,35 @@
 #William Starks - Plant Diagnostic MiniGPT, derived from demo_v4.py and modified into a resnet50-wired strawberry pathologist. WIP
+#Gus Marcum - Collaborator: debugging, and system improvements
+
 #Added CSS to the gradio app for user interface improvements
+#Standard library imports
 import argparse
 import os
 import re
+import logging
+from datetime import datetime
+from functools import lru_cache
+from pathlib import Path
+
+# Third-party imports
 import numpy as np
-from PIL import Image
+import pandas as pd
 import torch
+import torch.backends.cudnn as cudnn
 import gradio as gr
+import networkx as nx
+import plotly.graph_objects as go
+from PIL import Image
+
+# SERPAPI Configuration (optional: only used in Enhanced mode)
+SERP_API_KEY = os.getenv("SERP_API_KEY", "")
+SERPAPI_AVAILABLE = False
 try:
     from serpapi import GoogleSearch
-    SERPAPI_AVAILABLE = True
+    SERPAPI_AVAILABLE = bool(SERP_API_KEY)
 except ImportError:
     SERPAPI_AVAILABLE = False
     print("Warning: serpapi not available, web search features disabled")
-import torch.backends.cudnn as cudnn
-import networkx as nx
-import pandas as pd
-from pathlib import Path
-import plotly.graph_objects as go
-from functools import lru_cache
-import logging
-from datetime import datetime
 
 from minigpt4.common.config import Config
 from minigpt4.common.registry import registry
@@ -39,10 +48,6 @@ logging.basicConfig(filename='app.log', filemode='a',
                     format='%(asctime)s - %(levelname)s - %(message)s',
                     level=logging.ERROR)
 
-# SERPAPI Configuration
-SERP_API_KEY = 'fb6c393ddf8c395e92e9f5e4244f1e3ee75084f85c94aabde8954cd12c5df1ea'
-if not SERP_API_KEY:
-    raise ValueError("SERP_API_KEY environment variable not set.")
 
 # Parse arguments
 def parse_args():
@@ -61,12 +66,33 @@ _RESNET_MODEL = None
 def _get_resnet():
     global _RESNET_MODEL
     if _RESNET_MODEL is None:
-        _RESNET_MODEL = load_resnet("plant_diagnostic/models/resnet_straw_final.pth")
+        # Try multiple possible paths for the ResNet model
+        model_paths = [
+            "plant_diagnostic/models/resnet_straw_final.pth",
+            Path(__file__).parent / "plant_diagnostic" / "models" / "resnet_straw_final.pth",
+            Path(__file__).parent / "models" / "resnet_straw_final.pth"
+        ]
+        
+        model_path = None
+        for path in model_paths:
+            if Path(path).exists():
+                model_path = str(path)
+                break
+        
+        if model_path is None:
+            raise FileNotFoundError(f"ResNet model not found. Tried: {model_paths}")
+        
+        _RESNET_MODEL = load_resnet(model_path)
     return _RESNET_MODEL
 
 args = parse_args()
 if args.resnet_anchor:
-    _ = _get_resnet()
+    try:
+        _ = _get_resnet()
+        print("[ResNet] Model loaded successfully")
+    except Exception as e:
+        print(f"[ResNet] Warning: Could not load ResNet model: {e}")
+        print("[ResNet] Continuing without ResNet anchor functionality")
 
 # --- Fixed-label helpers ---
 _CLASS_THRESH = {
@@ -89,36 +115,65 @@ _CANON_LABEL_MAP = {
     "white_mold": "white mold",  
 }
 
+# Global acceptance defaults (tune if needed)
+_DEFAULT_UNKNOWN_THRESH = 0.55     # minimum p1 to accept top-1
+_MIN_MARGIN_OVER_TOP2   = 0.08     # only used if p2 provided
+
 def _accept_label(pred) -> str:
+    """
+    Decide whether to accept ResNet's top prediction or return 'unknown'.
+    pred fields expected:
+        label: str (top-1 class name)
+        p1: float (top-1 prob)
+        p2: float (optional, top-2 prob)
+    """
     if not pred:
-        print(f"[ResNet] No prediction returned")
+        print("[ResNet] No prediction returned")
         return "unknown"
-    lbl = str(pred.get("label", "")).lower().strip()
-    p1  = float(pred.get("p1", 0.0))
-    print(f"[ResNet] Label: {lbl}, Confidence: {p1:.3f} (always accepting top prediction)")
-    
-    # Always accept the top prediction - ResNet is accurate
-    if lbl in _CANON_LABEL_MAP:
-        return _CANON_LABEL_MAP[lbl]
-    
-    # Fallback for unknown labels
-    print(f"[ResNet] Unknown label: {lbl}")
-    return "unknown"
+
+    lbl_raw = str(pred.get("label", "")).strip()
+    lbl = lbl_raw.lower()
+    p1 = float(pred.get("p1", 0.0))
+    p2 = float(pred.get("p2", 0.0)) if "p2" in pred else 0.0
+
+    # Map to canon label (what UI shows)
+    canon = _CANON_LABEL_MAP.get(lbl, lbl)
+
+    # Per-class threshold override falls back to global default
+    thr = float(_CLASS_THRESH.get(lbl, _DEFAULT_UNKNOWN_THRESH))
+    margin_ok = (p2 == 0.0) or ((p1 - p2) >= _MIN_MARGIN_OVER_TOP2)
+
+    print(f"[ResNet] Label: {lbl} -> {canon}, p1={p1:.3f}, p2={p2:.3f}, thr={thr:.2f}, margin_ok={margin_ok}")
+
+    if p1 < thr:
+        print("[ResNet] BELOW THRESH -> unknown")
+        return "unknown"
+    if not margin_ok:
+        print("[ResNet] SMALL MARGIN OVER TOP2 -> unknown")
+        return "unknown"
+
+    # Accept only known labels; unknown string falls back
+    return _CANON_LABEL_MAP.get(lbl, "unknown")
 
 def _postprocess_caption(text: str) -> str:
+    """Light cleanup for LLM output: normalize quotes and spacing, keep content intact."""
     if not text:
         return ""
     t = text.strip()
-    t = t.replace(""", "").replace(""", "").replace("'", "").replace('"', "")
-    t = re.sub(r'</?[^>\s]{1,32}>?', '', t)
-    t = t.replace('\u200b', '').replace('<', '').replace('>', '').replace('\\n', '\n')
-    
-    # Fix formatting issues
-    t = re.sub(r'\*\s*', '- ', t)  # Convert asterisks to dashes for bullet points
-    t = re.sub(r'\n\s*\n', '\n\n', t)  # Clean up multiple newlines
-    t = re.sub(r'([.!?])\s*([A-Z])', r'\1\n\n\2', t)  # Add line breaks after sentences
-    
-    # Don't truncate - let the full response through
+
+    # Normalize curly quotes -> straight quotes
+    t = (t.replace("\u201c", '"').replace("\u201d", '"')   # " "
+         .replace("\u2018", "'").replace("\u2019", "'"))   # '  '
+
+    # Remove simple HTML-ish tags and zero-width chars
+    t = re.sub(r"</?[^>\s]{1,32}>?", "", t)
+    t = t.replace("\u200b", "").replace("\\n", "\n")
+    t = t.replace("<", "").replace(">", "")  # defensive
+
+    # Formatting touch-ups
+    t = re.sub(r"\*\s*", "• ", t)                 # '* item' -> '• item'
+    t = re.sub(r"\n\s*\n", "\n\n", t)             # collapse extra blank lines
+    t = re.sub(r"([.!?])\s+([A-Z])", r"\1\n\n\2", t)  # paragraph break after sentences
     return t
 
 # Load configuration
@@ -253,11 +308,15 @@ def _empty_fig(msg):
     return fig
 
 @lru_cache(maxsize=1)
-def _load_csvs():
+def _load_csvs(nodes_path=None, relationships_path=None):
     """Load and cache CSV files."""
     try:
-        n = pd.read_csv('kg_nodes_faostat.csv', low_memory=False)
-        r = pd.read_csv('kg_relationships_faostat.csv', low_memory=False)
+        # Use provided paths or fall back to defaults
+        nodes_file = nodes_path if nodes_path else 'kg_nodes_faostat.csv'
+        rels_file = relationships_path if relationships_path else 'kg_relationships_faostat.csv'
+        
+        n = pd.read_csv(nodes_file, low_memory=False)
+        r = pd.read_csv(rels_file, low_memory=False)
         n['id'] = n['id'].astype(str).str.strip()
         r['start_id'] = r['start_id'].astype(str).str.strip()
         r['end_id'] = r['end_id'].astype(str).str.strip()
@@ -279,7 +338,17 @@ def create_knowledge_graph(
         if not nodes_fp.exists(): nodes_fp = base / nodes_path
         if not rels_fp.exists(): rels_fp = base / relationships_path
 
-        nodes_df, relationships_df = _load_csvs()
+        # Read from the resolved paths directly (not the cached helper)
+        try:
+            nodes_df = pd.read_csv(nodes_fp, low_memory=False)
+            relationships_df = pd.read_csv(rels_fp, low_memory=False)
+            
+            # Clean the data
+            nodes_df['id'] = nodes_df['id'].astype(str).str.strip()
+            relationships_df['start_id'] = relationships_df['start_id'].astype(str).str.strip()
+            relationships_df['end_id'] = relationships_df['end_id'].astype(str).str.strip()
+        except FileNotFoundError:
+            return _empty_fig("CSV files not found or empty")
         
         if nodes_df.empty or relationships_df.empty:
             return _empty_fig("CSV files not found or empty")
@@ -526,40 +595,57 @@ def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list,
         chat.encode_img(img_list)
 
         # Lightweight ResNet pass (just to get a label + confidence)
-        img_path = "/tmp/tmp_image.jpg"
+        import tempfile
+        with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmp_file:
+            img_path = tmp_file.name
         gr_img.save(img_path)
         pred = None
+        
+        # Check if ResNet is available
         try:
-            # Debug: check raw probabilities before thresholding
             model = _get_resnet()
-            with Image.open(img_path) as im:
-                img = im.convert("RGB")
-            
-            from resnet_classifier import _tfm, _DEVICE, _CLASSES
-            import torch.nn.functional as F
-            
-            x = _tfm(256)(img).unsqueeze(0).to(_DEVICE)
-            
-            # 2-view TTA
-            logits1 = model(x)
-            logits2 = model(torch.flip(x, dims=[3]))
-            logits = (logits1 + logits2) / 2
-            
-            probs = F.softmax(logits / 0.78, dim=1).squeeze(0)
-            pvals, idxs = torch.sort(probs, descending=True)
-            
-            print(f"[ResNet] Debug - Top 3 raw probabilities:")
-            for j in range(min(3, len(_CLASSES))):
-                class_name = _CLASSES[idxs[j]]
-                prob = float(pvals[j])
-                print(f"  {j+1}. {class_name}: {prob:.3f}")
-            
-            pred = diagnose_or_none(model, img_path, img_size=256)
-            print(f"[ResNet] Raw prediction: {pred}")
         except Exception as e:
-            print(f"[resnet] warn: {e}")
-            import traceback
-            traceback.print_exc()
+            print(f"[ResNet] Model not available: {e}")
+            model = None
+        
+        if model is not None:
+            try:
+                # Debug: check raw probabilities before thresholding
+                with Image.open(img_path) as im:
+                    img = im.convert("RGB")
+                
+                from resnet_classifier import _tfm, _DEVICE, _CLASSES
+                import torch.nn.functional as F
+                
+                x = _tfm(256)(img).unsqueeze(0).to(_DEVICE)
+                
+                # 2-view TTA
+                logits1 = model(x)
+                logits2 = model(torch.flip(x, dims=[3]))
+                logits = (logits1 + logits2) / 2
+                
+                probs = F.softmax(logits / 0.78, dim=1).squeeze(0)
+                pvals, idxs = torch.sort(probs, descending=True)
+                
+                print(f"[ResNet] Debug - Top 3 raw probabilities:")
+                for j in range(min(3, len(_CLASSES))):
+                    class_name = _CLASSES[idxs[j]]
+                    prob = float(pvals[j])
+                    print(f"  {j+1}. {class_name}: {prob:.3f}")
+                
+                pred = diagnose_or_none(model, img_path, img_size=256)
+                print(f"[ResNet] Raw prediction: {pred}")
+            except FileNotFoundError as e:
+                print(f"[ResNet] Model file not found: {e}")
+                pred = None
+            except torch.cuda.OutOfMemoryError as e:
+                print(f"[ResNet] GPU memory error: {e}")
+                pred = None
+            except Exception as e:
+                print(f"[ResNet] Error during prediction: {e}")
+                import traceback
+                traceback.print_exc()
+                pred = None  # Ensure pred is None on error
 
         # Accept/canonize label once; no extra thresholds here
         final_label = "unknown"
@@ -577,35 +663,85 @@ def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list,
             p1 = 0.0
 
         # ---------------------------
-        # Two fixed system prompts
+        # system prompts
         # ---------------------------
-        # NOTE: Model was trained on <image> only; keep prompts simple and deterministic.
-        chat_state.system = (
-            "<<SYS>>You are a plant diagnostician. The diagnosis has already been determined: {final_label.title()}\n"
-            "Your ONLY task is to examine the image and explain WHY this diagnosis is correct.\n"
-            "You MUST use this exact diagnosis: {final_label.title()}\n"
-            "Do not make your own diagnosis. Do not disagree with this diagnosis.\n"
-            "Provide a detailed medical report in this EXACT format:\n"
-            "1) Diagnosis: {final_label.title()}\n"
-            "2) Visible cues: Describe specific visual observations from the image that support this diagnosis.\n"
-            "3) Recommendation: Provide specific, actionable steps to address this issue.\n"
-            "Use proper formatting:\n"
-            "- Use numbered lists (1), 2), 3))\n"
-            "- Use bullet points with dashes (-) not asterisks\n"
-            "- Write complete, well-formed sentences\n"
-            "- Be detailed and thorough\n"
-            "- Do not add greetings, disclaimers, or extra text\n"
-            "CRITICAL: You MUST complete your response fully. Do not cut off mid-sentence. Finish ALL recommendations completely.\n"
-            "Continue writing until you have provided a complete medical report with all necessary details.\n"
-            "Do not stop until you have finished all recommendations.\n"
-            "<</SYS>>"
-        )
+        # Check if this looks like a non-plant image (person, object, etc.)
+        # If confidence is very low or it's clearly not a plant, force unknown
+        if final_label != "unknown" and pred:
+            p1 = float(pred.get("p1", 0.0))
+            # If confidence is below 65%, it's likely not a plant at all
+            if p1 < 0.65:
+                final_label = "unknown"
+                print(f"[ResNet] Low confidence ({p1:.3f}) - treating as unknown")
+            # Also check if it's predicting "healthy" with low confidence (likely non-plant)
+            elif final_label.lower() == "healthy" and p1 < 0.75:
+                final_label = "unknown"
+                print(f"[ResNet] 'Healthy' with low confidence ({p1:.3f}) - likely non-plant, treating as unknown")
+        
+        if final_label == "unknown":
+            # Softer prompt when we don't trust the classifier
+            chat_state.system = """
+<<SYS>>You are a plant diagnostician. Confidence is too low to choose a diagnosis.
+
+RESPONSE STRUCTURE (follow exactly):
+1. State: "Based on the image provided, I cannot confidently diagnose the plant with a specific disease or condition."
+
+2. List exactly 3 possible causes:
+   - Lack of close-up images: To accurately diagnose a plant, it's essential to examine its leaves, stems, and roots closely. Without close-up images of these areas, it's challenging to identify any issues or abnormalities.
+   - Limited view of the plant: The image provided only shows the top portion of the plant, making it difficult to evaluate the overall health of the plant.
+   - The image doesn't reveal any obvious signs of pests or diseases, such as holes in the leaves, discoloration, or unusual growths. Without more information, it's challenging to identify the cause of any issues.
+
+3. List exactly 3 recommended fixes:
+   - Close-up images of the leaves, stems, and roots to examine for any signs of pests, diseases, or abnormalities.
+   - Images of the plant's overall growth, including its size, shape, and any unusual features.
+   - Images of the soil and surrounding environment to assess the plant's root health and potential stressors.
+
+4. End with: "Based on these additional images, we can begin to identify potential causes for the plant's decline or health. If you have any further questions or concerns, please feel free to ask."
+
+FORMATTING REQUIREMENTS:
+- Use compact numbered lists: "1. explanation" (not "1.\nexplanation")
+- No extra line breaks between list items
+- Keep explanations on the same line as numbers
+- Use dashes (-) for bullet points, not asterisks (*)
+- Follow the exact structure above - do not deviate
+
+Do not provide differential possibilities or lengthy explanations.<</SYS>>
+""".strip()
+        else:
+            # Force explanation of the accepted label
+            chat_state.system = f"""
+<<SYS>>You are a plant diagnostician. The diagnosis has already been determined: {final_label.title()}
+Your ONLY task is to examine the image and explain WHY this diagnosis is correct.
+You MUST use this exact diagnosis: {final_label.title()}
+Do not make your own diagnosis. Do not disagree with this diagnosis.
+Provide a detailed medical report in this EXACT format:
+1) Diagnosis: {final_label.title()}
+2) Visible cues: Describe specific visual observations from the image that support this diagnosis.
+3) Recommendation: Provide specific, actionable steps to address this issue.
+Use proper formatting:
+- Use numbered lists (1), 2), 3))
+- Use bullet points with dashes (-) not asterisks
+- Write complete, well-formed sentences
+- Be detailed and thorough
+- Do not add greetings, disclaimers, or extra text
+CRITICAL: You MUST complete your response fully. Do not cut off mid-sentence. Finish ALL recommendations completely.
+Continue writing until you have provided a complete medical report with all necessary details.
+Do not stop until you have finished all recommendations.
+<</SYS>>
+""".strip()
 
         # Direct, focused prompt for better responses
         if user_message and user_message.strip():
             ask_text = user_message.strip()
         else:
             ask_text = f"Examine this image and explain why the diagnosis is {final_label.title()}."
+        
+        # Add small web context when available in Enhanced mode
+        if is_enhanced and SERPAPI_AVAILABLE and final_label != "unknown":
+            ctx = fetch_serp_context(f"strawberry {final_label} treatment field management")
+            if ctx:
+                ask_text += f"\n\nAdditional context: {ctx[:600]}"
+        
         _ = chat.ask(ask_text, chat_state)
 
         ans = chat.answer(
@@ -627,11 +763,28 @@ def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list,
             badge = "🟢" if p1 >= 0.90 else "🟡" if p1 >= 0.70 else "🔴"
             body = f"{badge} **Confidence: {p1:.1%}**\n\n{body}"
 
+        # Clean up temporary file
+        try:
+            import os
+            if os.path.exists(img_path):
+                os.remove(img_path)
+        except Exception:
+            pass  # Ignore cleanup errors
+
         return (chatbot + [[user_message, body]], chat_state, img_list)
 
+    except FileNotFoundError as e:
+        error_msg = "❌ **Model Error**: Required model files not found. Please check that all model files are properly installed."
+        logging.error(f"File not found: {str(e)}")
+        return (chatbot + [[user_message, error_msg]], chat_state, img_list)
+    except torch.cuda.OutOfMemoryError as e:
+        error_msg = "❌ **Memory Error**: GPU memory insufficient. Please try with a smaller image or restart the application."
+        logging.error(f"CUDA OOM: {str(e)}")
+        return (chatbot + [[user_message, error_msg]], chat_state, img_list)
     except Exception as e:
-        logging.error(f"Error in chat processing: {str(e)}")
-        return (chatbot + [[user_message, f"❌ Error: {str(e)}"]], chat_state, img_list)
+        error_msg = "❌ **Unexpected Error**: An error occurred during processing. Please try again or contact support if the issue persists."
+        logging.error(f"Unexpected error in chat processing: {str(e)}")
+        return (chatbot + [[user_message, error_msg]], chat_state, img_list)
 
 
 
@@ -642,27 +795,54 @@ def reset_chat(chat_state, img_list):
 # Load custom CSS from external file
 def load_custom_css():
     """Load the dark theme CSS from external file."""
-    css_file_path = Path(__file__).resolve().parent / "dark_theme.css"
+    # Try multiple possible CSS file locations
+    css_paths = [
+        Path(__file__).resolve().parent / "dark_theme.css",
+        Path("dark_theme.css"),
+        Path(__file__).parent / "dark_theme.css"
+    ]
     
-    # Fallback CSS if file not found
+    # Enhanced fallback CSS
     fallback_css = """
     .gradio-container {
         background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         color: #e0e0e0 !important;
     }
+    .status-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        font-weight: 500;
+        background: rgba(72, 187, 120, 0.8);
+        color: white;
+        border: 1px solid rgba(72, 187, 120, 0.3);
+    }
+    .custom-tab {
+        background: rgba(20, 20, 35, 0.7);
+        border-radius: 8px;
+        margin: 5px;
+    }
+    .image-upload {
+        border: 2px dashed rgba(0, 212, 255, 0.3);
+        border-radius: 8px;
+        padding: 20px;
+    }
     """
     
-    try:
-        if css_file_path.exists():
-            with open(css_file_path, 'r', encoding='utf-8') as f:
-                return f.read()
-        else:
-            print(f"[WARNING] CSS file not found at {css_file_path}. Using fallback CSS.")
-            return fallback_css
-    except Exception as e:
-        print(f"[ERROR] Failed to load CSS: {e}. Using fallback CSS.")
-        return fallback_css
+    for css_path in css_paths:
+        try:
+            if css_path.exists():
+                with open(css_path, 'r', encoding='utf-8') as f:
+                    css_content = f.read()
+                    print(f"[CSS] Loaded from: {css_path}")
+                    return css_content
+        except Exception as e:
+            print(f"[CSS] Failed to load from {css_path}: {e}")
+            continue
+    
+    print("[CSS] Using fallback CSS - no external CSS file found")
+    return fallback_css
 
 # Load the CSS
 custom_css = load_custom_css()
@@ -752,7 +932,7 @@ with gr.Blocks(
                         temperature = gr.Slider(
                             minimum=0.01,
                             maximum=0.5,
-                            value=0.2,  # Higher default for more creative responses
+                            value=0.2,
                             step=0.01,
                             label="🌡️ Temperature",
                             info="Lower = More focused | Higher = More creative"
@@ -973,7 +1153,7 @@ with gr.Blocks(
 
 # Launch
 if __name__ == "__main__":
-    import random
-    port = random.randint(30000, 39999)
     demo.queue(max_size=20)
-    demo.launch(server_name="0.0.0.0", server_port=port, share=True)
+    server_name = os.getenv("GRADIO_SERVER_NAME", "0.0.0.0")
+    server_port = int(os.getenv("GRADIO_SERVER_PORT", "7861"))
+    demo.launch(server_name=server_name, server_port=server_port, share=False)

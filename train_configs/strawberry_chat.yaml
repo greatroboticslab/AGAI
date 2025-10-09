@@ -8,9 +8,9 @@ model:
   use_grad_checkpoint: true
   low_resource: true
   chat_template: true
-  lora_r: 32
-  lora_alpha: 64
-  lora_dropout: 0.1
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
 
 datasets:
   strawberry_diagnostic:
@@ -18,7 +18,7 @@ datasets:
     build_info:
       annotations:
         train:
-          storage: "/data/kiriti/MiniGPT-4/plant_diagnostic/datasets/stage2_train_7class_ultra.json"
+          storage: "/data/kiriti/MiniGPT-4/plant_diagnostic/datasets/stage2_train_7class_balanced.json"
       images:
         train: "/data/kiriti/MiniGPT-4/plant_diagnostic/data/train_aug"
     vis_processor:
@@ -37,37 +37,36 @@ datasets:
 
 run:
   task: image_text_pretrain
-  output_dir: "/data/kiriti/MiniGPT-4/output/minigptv2_strawberry_diagnostic"
+  output_dir: "/data/kiriti/MiniGPT-4/output/strawberry_chat"
   iters_per_epoch: 2000
   lr_sched: "linear_warmup_cosine_lr"
-  init_lr: 1e-4
-  min_lr: 1e-7
-  warmup_lr: 1e-8
-  warmup_steps_ratio: 0.05
+  init_lr: 3e-4
+  min_lr: 1e-6
+  warmup_lr: 1e-7
+  warmup_steps_ratio: 0.1
 
-  weight_decay: 0.01
-  max_epoch: 50
+  weight_decay: 0.05
+  max_epoch: 8  # 5 epochs head-only + 3 epochs unfrozen
   num_workers: 8
   seed: 42
 
-  # Per-GPU batch; 2 GPUs × 4 batch × 4 accum = effective 32
+  # P1 Baseline: Start with head-only training
   batch_size_train: 4
   accumulation_steps: 4
   amp: true
-  max_grad_norm: 0.3
+  max_grad_norm: 1.0
 
-  # Dist settings — keep simple; torchrun sets ranks/world size
+  # Distributed training
   distributed: true
   dist_url: "env://"
   device: "cuda"
 
-  # Logging / ckpt
+  # Logging
   wandb_log: false
-  job_name: "minigptv2_strawberry_diagnostic"
+  job_name: "strawberry_chat_p1"
   resume_ckpt_path: null
   evaluate: true
   train_splits: ["train"]
   val_splits: ["val"]
-  max_val_steps: 50  # Limit validation to avoid long eval times
-  auto_val_split_ratio: 0.1  # auto-create 10% val from train when no val provided
-
+  max_val_steps: 50
+  auto_val_split_ratio: 0.1

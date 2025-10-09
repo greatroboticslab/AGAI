@@ -712,10 +712,17 @@ class RunnerBase:
         # Compute validation loss if task supports it
         val_loss = None
         if hasattr(self.task, 'compute_validation_loss'):
-            val_loss, num_batches = self.task.compute_validation_loss(
+            result = self.task.compute_validation_loss(
                 model, data_loader, self.device,
                 max_steps=getattr(self.config.run_cfg, "max_val_steps", 50)
             )
+            # Handle both 2 and 3 return values for backward compatibility
+            if len(result) == 2:
+                val_loss, num_batches = result
+            elif len(result) == 3:
+                val_loss, num_batches, debug_info = result
+            else:
+                raise ValueError(f"compute_validation_loss must return 2 or 3 values, got {len(result)}")
             logging.info(f"val_loss: {val_loss:.6f} (over {num_batches} batches)")
 
         try:
