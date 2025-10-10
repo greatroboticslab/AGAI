@@ -1,0 +1,296 @@
+/* Custom CSS for Plant Diagnostic System - Development Version */
+/* Edit this file to see changes in real-time! */
+
+/* Global styles */
+.gradio-container {
+    background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%) !important;
+    color: #e0e0e0 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Status badges */
+.status-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+    display: inline-block;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.status-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+.status-healthy {
+    background: rgba(34, 197, 94, 0.8);
+    color: white;
+}
+
+/* Custom tabs */
+.custom-tab {
+    background: rgba(20, 20, 35, 0.7) !important;
+    border: 1px solid rgba(0, 212, 255, 0.15) !important;
+    border-radius: 8px !important;
+    margin: 10px 0 !important;
+    padding: 20px !important;
+}
+
+/* Image upload styling */
+.image-upload {
+    border: 2px dashed rgba(0, 212, 255, 0.3) !important;
+    border-radius: 12px !important;
+    background: rgba(10, 10, 20, 0.5) !important;
+    transition: all 0.3s ease !important;
+}
+
+.image-upload:hover {
+    border-color: rgba(0, 212, 255, 0.5) !important;
+    background: rgba(10, 10, 20, 0.7) !important;
+}
+
+/* Chatbot styling */
+.chatbot-custom {
+    background: rgba(20, 20, 35, 0.8) !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+    border-radius: 12px !important;
+    min-height: 400px !important;
+    max-height: 600px !important;
+    overflow-y: auto !important;
+}
+
+/* Text input styling */
+.text-input-custom {
+    background: rgba(10, 10, 20, 0.8) !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: #e0e0e0 !important;
+    transition: all 0.3s ease !important;
+}
+
+.text-input-custom:focus {
+    border-color: rgba(0, 212, 255, 0.5) !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2) !important;
+    background: rgba(10, 10, 20, 0.9) !important;
+}
+
+/* Graph container */
+.graph-container {
+    background: rgba(20, 20, 35, 0.8) !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    min-height: 500px !important;
+}
+
+/* Button hover effects */
+.gr-button {
+    transition: all 0.3s ease !important;
+    border-radius: 8px !important;
+}
+
+.gr-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3) !important;
+}
+
+/* Primary button styling */
+.gr-button.primary {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* Secondary button styling */
+.gr-button.secondary {
+    background: rgba(0, 212, 255, 0.1) !important;
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
+    color: #00d4ff !important;
+}
+
+/* Stop button styling */
+.gr-button.stop {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%) !important;
+    border: none !important;
+    color: white !important;
+}
+
+/* Slider styling */
+.gr-slider {
+    background: rgba(0, 212, 255, 0.1) !important;
+    border-radius: 10px !important;
+}
+
+.gr-slider .gr-slider-track {
+    background: rgba(0, 212, 255, 0.3) !important;
+    border-radius: 10px !important;
+}
+
+.gr-slider .gr-slider-thumb {
+    background: #00d4ff !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 6px rgba(0, 212, 255, 0.3) !important;
+}
+
+/* Group styling */
+.gr-group {
+    background: rgba(15, 15, 25, 0.6) !important;
+    border: 1px solid rgba(0, 212, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    margin: 10px 0 !important;
+    transition: all 0.3s ease !important;
+}
+
+.gr-group:hover {
+    border-color: rgba(0, 212, 255, 0.2) !important;
+    background: rgba(15, 15, 25, 0.7) !important;
+}
+
+/* Markdown styling */
+.gr-markdown h1 {
+    color: #00d4ff !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+}
+
+.gr-markdown h2 {
+    color: #00d4ff !important;
+    border-bottom: 2px solid rgba(0, 212, 255, 0.3) !important;
+    padding-bottom: 5px !important;
+    margin-bottom: 15px !important;
+}
+
+.gr-markdown h3 {
+    color: #00d4ff !important;
+    margin-bottom: 10px !important;
+}
+
+.gr-markdown p {
+    color: #e0e0e0 !important;
+    line-height: 1.6 !important;
+}
+
+/* Dropdown styling */
+.gr-dropdown {
+    background: rgba(10, 10, 20, 0.8) !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: #e0e0e0 !important;
+}
+
+.gr-dropdown:focus {
+    border-color: rgba(0, 212, 255, 0.5) !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2) !important;
+}
+
+/* Checkbox styling */
+.gr-checkbox {
+    color: #e0e0e0 !important;
+}
+
+.gr-checkbox input[type="checkbox"] {
+    accent-color: #00d4ff !important;
+}
+
+/* Radio button styling */
+.gr-radio {
+    color: #e0e0e0 !important;
+}
+
+.gr-radio input[type="radio"] {
+    accent-color: #00d4ff !important;
+}
+
+/* Loading animation */
+.gr-loading {
+    color: #00d4ff !important;
+}
+
+/* Error styling */
+.gr-error {
+    color: #ff6b6b !important;
+    background: rgba(255, 107, 107, 0.1) !important;
+    border: 1px solid rgba(255, 107, 107, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+}
+
+/* Success styling */
+.gr-success {
+    color: #6bcf7f !important;
+    background: rgba(107, 207, 127, 0.1) !important;
+    border: 1px solid rgba(107, 207, 127, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .status-badge {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+    
+    .gradio-container {
+        padding: 10px !important;
+    }
+    
+    .custom-tab {
+        padding: 15px !important;
+        margin: 5px 0 !important;
+    }
+    
+    .chatbot-custom {
+        min-height: 300px !important;
+        max-height: 400px !important;
+    }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Apply animations */
+.custom-tab {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.gr-button:hover {
+    animation: pulse 1s infinite;
+}
+
+/* Custom scrollbar */
+.chatbot-custom::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatbot-custom::-webkit-scrollbar-track {
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 4px;
+}
+
+.chatbot-custom::-webkit-scrollbar-thumb {
+    background: rgba(0, 212, 255, 0.3);
+    border-radius: 4px;
+}
+
+.chatbot-custom::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 212, 255, 0.5);
+}
