@@ -6,20 +6,30 @@ Separated for easier development and real-time editing
 import gradio as gr
 from typing import Dict, Any, List, Tuple
 import plotly.graph_objects as go
+from datetime import datetime
+
+def draw_crop_from_csv(*args, **kwargs):
+    """Temporary stub so UI builds; replace with real logic later"""
+    return create_knowledge_graph()
 
 def create_header() -> gr.HTML:
     """Create the header section with animated gradient"""
     # 🔥 HOT RELOAD TEST - This print statement should appear when the server restarts
-    print("🔥 HOT RELOAD: create_header() function loaded at", __import__('datetime').datetime.now().strftime("%H:%M:%S"))
+    stamp = datetime.now().strftime("%H:%M:%S")
+    print("🔥🔥🔥 HOT RELOAD: create_header() function loaded at", stamp, "🔥🔥🔥")
     
-    return gr.HTML("""
+    return gr.HTML(f"""
         <div style="text-align: center; padding: 20px 0;">
             <h1 style="font-size: 3em; margin-bottom: 10px;">
-                🌿 Plant Diagnostic System - HOT RELOAD big big WORKING TEST
+    neon pink edition
+            
             </h1>
             <p style="color: #a0a0a0; font-size: 1.2em;">
                 Advanced AI-Powered Strawberry Plant Health Analysis
             </p>
+            <div style="margin-top: 8px; font-size: 0.9em; color: #8aa;">
+                Dev build: <code>{stamp}</code>
+            </div>
             <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
                 <span class="status-badge status-healthy">✓ System Online</span>
                 <span class="status-badge" style="background: rgba(102, 126, 234, 0.8); color: white;">
@@ -189,9 +199,13 @@ def create_knowledge_graph_tab() -> Tuple[gr.Tab, Dict[str, Any]]:
                     gr.Markdown("### ⚡ Quick Access")
                     gr.Button("🍓 Strawberries", size="sm").click(
                         lambda: "144", None, crop_id
+                    ).then(
+                        draw_crop_from_csv, inputs=[crop_id], outputs=[graph_plot]
                     )
                     gr.Button("🍅 Tomatoes", size="sm").click(
                         lambda: "388", None, crop_id
+                    ).then(
+                        draw_crop_from_csv, inputs=[crop_id], outputs=[graph_plot]
                     )
 
     components = {

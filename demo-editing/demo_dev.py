@@ -14,6 +14,9 @@ from pathlib import Path
 # Disable analytics to reduce connection issues
 os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 
+# UI-only mode flag
+UI_ONLY_MODE = os.environ.get("UI_ONLY", "0") == "1"
+
 # Add project root to path (go up one level from demo-editing folder)
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
@@ -68,6 +71,10 @@ def load_model():
     """Load the MiniGPT-4 model (can be mocked for UI development)"""
     global model, vis_processor, chat
     
+    if UI_ONLY_MODE:
+        logger.info("🌐 UI_ONLY=1 - Skipping model loading for faster development")
+        return
+        
     if not MODEL_AVAILABLE:
         logger.info("Running in UI-only mode - model not loaded")
         return
@@ -147,7 +154,7 @@ def create_gradio_interface():
     
     # Create the main interface
     with gr.Blocks(
-        title="🌿 Plant Diagnostic System - Dev Mode",
+        title="🌿 Plant Diagnostic System",
         theme=gr.themes.Base(
             primary_hue=gr.themes.colors.cyan,
             secondary_hue=gr.themes.colors.purple,
@@ -278,15 +285,21 @@ def main():
     print("🩺 healthcheck:", healthcheck())
     
     # Launch with dev-friendly settings
-    demo.launch(
-        server_name="0.0.0.0",   # so you can reach it from anywhere
-        server_port=7861,        # stay on 7861 as requested
-        show_error=True,
-        quiet=False,
-        inbrowser=False,
-        favicon_path=None,
-        ssl_verify=False
-    )
+    try:
+        demo.launch(
+            server_name="0.0.0.0",   # so you can reach it from anywhere
+            server_port=7861,        # stay on 7861 as requested
+            show_error=True,
+            quiet=False,
+            inbrowser=False,
+            favicon_path=None,
+            ssl_verify=False
+        )
+    except OSError as e:
+        print(f"❌ OSError during demo.launch(): {e}")
+        print(f"❌ Full error details: {traceback.format_exc()}")
+        print("💡 Try a different port or check if port 7861 is already in use")
+        raise
 
 if __name__ == "__main__":
     main()

@@ -43,7 +43,7 @@ def demonstrate_hot_reload():
         return False
     
     print("✅ Server started successfully!")
-    print("📱 Open your browser to: http://localhost:7860")
+    print("📱 Open your browser to: http://localhost:7861")
     print("\n🎯 Now let's test hot reloading...")
     
     # Test hot reload by modifying ui_components.py

@@ -186,10 +186,7 @@ class GradioServerManager:
         try:
             for line in iter(self.process.stdout.readline, ''):
                 if line:
-                    # Filter out some noisy output
-                    if any(noise in line.lower() for noise in ['tensorflow', 'timm', 'warning', 'deprecated']):
-                        continue
-                    print(f"[SERVER] {line.strip()}")
+                    print(f"[SERVER] {line.rstrip()}")
         except Exception as e:
             print(f"⚠️  Error monitoring output: {e}")
     

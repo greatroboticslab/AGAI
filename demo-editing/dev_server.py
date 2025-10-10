@@ -70,15 +70,14 @@ def run_gradio_app():
         from demo_v5 import demo
         print("🚀 Starting Gradio development server...")
         print("📝 Edit demo_v5.py or dark_theme.css to see changes in real-time!")
-        print("🌐 Server will be available at: http://localhost:7860")
+        print("🌐 Server will be available at: http://localhost:7861")
         print("🔄 Auto-reload is enabled - no need to restart manually!")
         print("\n" + "="*60)
         
         demo.launch(
             server_name="0.0.0.0",
-            server_port=7860,
+            server_port=7861,
             share=False,
-            enable_queue=True,
             show_error=True,
             quiet=False
         )

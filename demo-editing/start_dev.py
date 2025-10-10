@@ -43,7 +43,7 @@ def main():
     try:
         # Start the development server
         print("🔥 Starting hot-reload development server...")
-        print("📱 The UI will be available at: http://localhost:7860")
+        print("📱 The UI will be available at: http://localhost:7861")
         print("🛑 Press Ctrl+C to stop the server")
         print("\n" + "=" * 60)
         

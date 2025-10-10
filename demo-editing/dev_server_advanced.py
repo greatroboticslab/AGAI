@@ -171,16 +171,15 @@ def run_development_server():
         css_observer, python_observer = start_file_watchers(css_file_path, watch_dirs)
         
         print("\n🌐 Starting Gradio server...")
-        print("📱 Open your browser to: http://localhost:7860")
+        print("📱 Open your browser to: http://localhost:7861")
         print("🛑 Press Ctrl+C to stop the server")
         print("\n" + "=" * 60)
         
         # Launch the demo
         demo.launch(
             server_name="0.0.0.0",
-            server_port=7860,
+            server_port=7861,
             share=False,
-            enable_queue=True,
             show_error=True,
             quiet=False
         )
