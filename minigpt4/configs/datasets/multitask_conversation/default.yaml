@@ -2,6 +2,5 @@ datasets:
   multitask_conversation:
     data_type: images
     build_info:
-    
-      image_path: /path/to/coco/images
-      ann_path: /path/to/multitask_conversation/multi_task_conversation.json
+      image_path: /data/AGAI/MiniGPT-4/plant_diagnostic/data/train
+      ann_path: /data/AGAI/MiniGPT-4/plant_diagnostic/datasets/stage2_train_7class_fixed.json

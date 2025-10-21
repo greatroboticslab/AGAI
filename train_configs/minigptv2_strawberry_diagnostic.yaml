@@ -72,6 +72,5 @@ run:
   auto_val_split_ratio: 0.1  # auto-create 10% val from train when no val provided
 
 
-  # Auto-create a 10% val split when none exists
-  auto_val_split_ratio: 0.1
+# Only use strawberry_diagnostic dataset
 
