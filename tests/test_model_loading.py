@@ -79,7 +79,7 @@ class TestModelLoading(unittest.TestCase):
         
         try:
             # This would test the actual model loading logic
-            checkpoint = torch.load("dummy_path.pth")
+            checkpoint = torch.load("dummy_path.pth", weights_only=False)
             self.assertIn('model', checkpoint)
         except Exception as e:
             # Expected in test environment

@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['flower', 'fruit', 'leaf', 'root_cluster', 'soil', 'stem']
+
+roboflow:
+  workspace: mtsu-2h73y
+  project: gw-agai
+  version: 4
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/mtsu-2h73y/gw-agai/dataset/4

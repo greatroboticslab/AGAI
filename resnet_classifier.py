@@ -89,12 +89,12 @@ def _extract_classes_from_ckpt(ckpt: dict) -> list[str]:
     # Fall back to global default
     return list(_CLASSES)
 
-def load_resnet(ckpt_path: str = "plant_diagnostic/models/resnet_straw5.pth"):
+def load_resnet(ckpt_path: str = "plant_diagnostic/models/resnet_strawberry.pth"):
     ckpt_path = os.path.expanduser(ckpt_path)
     if not os.path.isfile(ckpt_path):
         raise FileNotFoundError(f"ResNet checkpoint not found: {ckpt_path}")
 
-    ckpt = torch.load(ckpt_path, map_location="cpu")
+    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
 
     classes = _extract_classes_from_ckpt(ckpt)
     # overwrite global list with ckpt order to keep indices aligned

@@ -224,7 +224,7 @@ def check_required_files():
     
     # Check for model files
     model_files = [
-        os.path.join(paths['models'], "resnet_straw_final.pth"),
+        os.path.join(paths['models'], "resnet_strawberry.pth"),
         os.path.join(paths['checkpoints'], "checkpoint_stage2.pth")
     ]
     
@@ -267,4 +267,5 @@ if __name__ == '__main__':
         print("All required files present")
     
     print("Utility function tests completed!")
+
 

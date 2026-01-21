@@ -20,7 +20,7 @@ def build_single_loader(ds, batch_size, num_workers=0):
                       collate_fn=collate_fn)
 
 def load_ckpt(model, ckpt_path, device):
-    ckpt = torch.load(ckpt_path, map_location=device)
+    ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
     state = ckpt.get("model", ckpt)
     missing, unexpected = model.load_state_dict(state, strict=False)
     print(f"[eval] load_state_dict strict=False: missing={len(missing)} unexpected={len(unexpected)}")

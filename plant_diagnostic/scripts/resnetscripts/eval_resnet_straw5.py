@@ -5,7 +5,7 @@ import torch, torch.nn as nn
 from torchvision import models, transforms, datasets
 
 def load_model(ckpt_path, num_classes=None):
-    ckpt = torch.load(ckpt_path, map_location="cpu")
+    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
     classes = ckpt["classes"]
     m = models.resnet50(weights=None)
     m.fc = nn.Linear(m.fc.in_features, len(classes) if num_classes is None else num_classes)

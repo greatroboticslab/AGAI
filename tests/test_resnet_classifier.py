@@ -23,7 +23,7 @@ class TestResNetClassifier(unittest.TestCase):
     
     def setUp(self):
         """Set up test fixtures."""
-        self.model_path = "/data/AGAI/MiniGPT-4/plant_diagnostic/models/resnet_straw_final.pth"
+        self.model_path = "/data/AGAI/MiniGPT-4/plant_diagnostic/models/resnet_strawberry.pth"
         self.test_image_path = "/data/AGAI/MiniGPT-4/examples/healthy_1.png"
         
     def test_model_loading(self):

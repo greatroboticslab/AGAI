@@ -169,7 +169,7 @@ class MiniGPTv2(MiniGPTBase):
         ckpt_path = cfg.get("ckpt", "")
         if ckpt_path:
             logging.info(f"Loading MiniGPT-4-LLM Checkpoint: {ckpt_path}")
-            ckpt = torch.load(ckpt_path, map_location="cpu")
+            ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
             msg = model.load_state_dict(ckpt['model'], strict=False)
             logging.info(f"Checkpoint loaded with message: {msg}")
 

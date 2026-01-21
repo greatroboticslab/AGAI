@@ -1,364 +1,602 @@
-/* Plant Diagnostic System - Dark Theme CSS */
-/* Version 2.0 - Modern Tech Theme with Emoji Support */
+/* Plant Diagnostic System - Premium Dark Theme */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 
-/* ===== Global Dark Theme ===== */
+:root {
+  --bg-deep: #0a0a0a;
+  --bg-main: #0d0d0d;
+  --bg-card: #151515;
+  --bg-elevated: #1a1a1a;
+  --bg-input: #1e1e1e;
+  --border: #2a2a2a;
+  --border-hover: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #c0c0c0;
+  --text-muted: #707070;
+  --accent: #10a37f;
+  --accent-bright: #14d49a;
+  --accent-glow: rgba(16, 163, 127, 0.35);
+  --user-bubble: linear-gradient(135deg, #0f3d2d 0%, #145740 100%);
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============ BASE ============ */
+* {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  box-sizing: border-box;
+}
+
+body, .gradio-container {
+  background: var(--bg-main) !important;
+  color: var(--text-primary) !important;
+  min-height: 100vh;
+}
+
 .gradio-container {
-    background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-    /* Include emoji fonts in the font stack */
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
-    color: #e0e0e0;
+  max-width: 100% !important;
+  padding-bottom: 0 !important;
 }
 
-/* Force dark backgrounds only - let text color be inherited naturally */
-.dark, div[class*="gr-"], .gr-box, .gr-panel, .gr-compact, .gr-form, .container {
-    background: rgba(20, 20, 35, 0.7) !important;
+footer { display: none !important; }
+
+/* ============ ANIMATIONS ============ */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* ===== Typography with Emoji Support ===== */
-/* Apply gradient only to headers without emojis */
-h1:not(:has(span)), h2:not(:has(span)), h3:not(:has(span)) {
-    background: linear-gradient(90deg, #00d4ff, #b794f4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Headers with emojis should use normal text color */
-h1:has(span), h2:has(span), h3:has(span), h4:has(span) {
-    color: #ffffff;
-    font-weight: 700;
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }
 
-/* Text colors - removed !important to allow emoji colors through */
-p, div, label {
-    color: #e0e0e0;
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px var(--accent-glow); }
+  50% { box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
 }
 
-/* Don't force color on span elements (they might contain emojis) */
-span {
-    color: inherit;
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; padding: 0; }
+  to { opacity: 1; max-height: 500px; }
 }
 
-.gr-markdown {
-    color: #e0e0e0;
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
-.gr-markdown p, .gr-markdown ul, .gr-markdown ol, .gr-markdown li {
-    color: #d0d0d0;
+@keyframes iconPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
-.gr-markdown h1, .gr-markdown h2, .gr-markdown h3, .gr-markdown h4 {
-    color: #ffffff;
-    margin-top: 20px;
-    margin-bottom: 10px;
+/* ============ HEADER ============ */
+.gr-markdown h1 {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  background: linear-gradient(90deg, #10a37f, #14d49a, #20c997, #10a37f);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientFlow 5s ease infinite, fadeUp 0.6s ease;
+  letter-spacing: -0.02em;
+  margin-bottom: 0 !important;
 }
 
-/* ===== Cards and Containers ===== */
-.gr-box, .gr-group {
-    background: rgba(25, 25, 40, 0.8) !important;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 212, 255, 0.15);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+.gr-markdown p {
+  color: var(--text-muted) !important;
+  animation: fadeUp 0.6s ease 0.1s backwards;
+  margin-top: 2px !important;
 }
 
-/* ===== Emoji Preservation ===== */
-/* Ensure emojis display with natural colors */
-.gr-button span,
-.gr-markdown span,
-.gr-box h3 span,
-.gr-box h4 span,
-.gr-group span {
-    /* Don't override inline styles that may contain emojis */
-    color: inherit;
-}
-
-/* Target specific emoji-containing elements */
-span[style*="font"],
-span[style*="emoji"],
-*[class*="emoji"] {
-    color: initial !important;
-    -webkit-text-fill-color: initial !important;
-}
-
-/* Fix for button text to show emojis properly */
-.gr-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    color: white;
-    /* Don't use webkit-text-fill-color here */
-}
-
-/* Section headers that contain emojis - Don't apply text gradients */
-.gr-box > h3:first-child,
-.gr-box > h4:first-child,
-.gr-group > h3:first-child,
-.gr-group > h4:first-child,
-.gr-box .gr-markdown h3,
-.gr-box .gr-markdown h4 {
-    color: #ffffff;
-    font-weight: 700;
-    /* Remove any gradient text effects */
-    background: none;
-    -webkit-text-fill-color: initial;
-}
-
-.gr-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
-}
-
-.gr-button-primary {
-    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-}
-
-.gr-button-primary:hover {
-    box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
-}
-
-.gr-button-stop {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-}
-
-.gr-button-secondary {
-    background: linear-gradient(135deg, #b794f4 0%, #9467bd 100%);
-    box-shadow: 0 4px 15px rgba(183, 148, 244, 0.3);
-}
-
-/* ===== Input Fields ===== */
-input[type="text"], textarea, .gr-textbox input, .gr-textbox textarea,
-.gr-dropdown, .gr-slider, select {
-    background: rgba(10, 10, 20, 0.8) !important;
-    border: 1px solid rgba(0, 212, 255, 0.2) !important;
-    border-radius: 10px !important;
-    color: #ffffff !important;
-    padding: 10px !important;
-}
-
-input[type="text"]:focus, textarea:focus, .gr-textbox input:focus,
-.gr-textbox textarea:focus {
-    border-color: #00d4ff !important;
-    box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2) !important;
-    outline: none !important;
-}
-
-/* ===== Chatbot Styling ===== */
-.gr-chatbot {
-    background: rgba(15, 15, 25, 0.95) !important;
-    border-radius: 16px;
-    border: 1px solid rgba(0, 212, 255, 0.2);
-}
-
-.message-wrap {
-    background: transparent !important;
-}
-
-.message.user {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
-    border-radius: 18px 18px 4px 18px;
-    color: white !important;
-    padding: 12px 16px;
-    margin: 8px;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-}
-
-.message.bot {
-    background: linear-gradient(135deg, rgba(30, 30, 45, 0.95), rgba(25, 25, 40, 0.95));
-    border: 1px solid rgba(0, 212, 255, 0.25);
-    border-radius: 18px 18px 18px 4px;
-    color: #e0e0e0 !important;
-    padding: 12px 16px;
-    margin: 8px;
-    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
-}
-
-/* ===== Tabs ===== */
-.gr-tabs {
-    background: transparent !important;
+/* ============ TABS ============ */
+.gr-tab-nav {
+  background: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: 0 !important;
 }
 
 .gr-tab-item {
-    background: transparent !important;
-    border-bottom: 2px solid transparent;
-    color: #8a8a8a !important;
-    transition: all 0.3s ease;
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  padding: 16px 28px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s var(--transition-smooth) !important;
+  position: relative;
 }
 
-.gr-tab-item.selected, .gr-tab-item:hover {
-    color: #00d4ff !important;
-    border-bottom: 2px solid #00d4ff;
-    background: rgba(0, 212, 255, 0.05) !important;
+.gr-tab-item:hover {
+  color: var(--text-primary) !important;
+  background: rgba(255,255,255,0.03) !important;
 }
 
-/* ===== Image Upload Area ===== */
-.gr-image-container, .gr-image {
-    border: 2px dashed rgba(0, 212, 255, 0.3) !important;
-    border-radius: 16px;
-    background: rgba(10, 10, 20, 0.5) !important;
-    transition: all 0.3s ease;
+.gr-tab-item.selected {
+  color: var(--accent-bright) !important;
+  border-bottom-color: var(--accent) !important;
+}
+
+/* ============ CHATBOT ============ */
+#main-chatbot {
+  background: transparent !important;
+  border: none !important;
+  min-height: 600px !important;
+}
+
+/* Remove backgrounds from all wrappers */
+#main-chatbot > div,
+#main-chatbot [class*="wrap"],
+#main-chatbot [class*="row"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Message bubbles - wider min-width to prevent early wrapping */
+#main-chatbot .message {
+  padding: 14px 20px !important;
+  margin: 8px 4px !important;
+  border-radius: 16px !important;
+  line-height: 1.6 !important;
+  font-size: 15px !important;
+  min-width: 120px !important;
+  width: auto !important;
+  max-width: 85% !important;
+  white-space: pre-wrap !important;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+  animation: fadeUp 0.3s ease;
+}
+
+/* User messages */
+#main-chatbot .user .message,
+#main-chatbot .message.user {
+  background: linear-gradient(135deg, #0f3d2d 0%, #145740 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(16, 163, 127, 0.3) !important;
+  margin-left: auto !important;
+}
+
+/* Bot messages */
+#main-chatbot .bot .message,
+#main-chatbot .message.bot {
+  background: #1a1a1a !important;
+  color: #fff !important;
+  border: 1px solid #2a2a2a !important;
+}
+
+/* White text in messages */
+#main-chatbot .message,
+#main-chatbot .message * {
+  color: #ffffff !important;
+}
+
+/* Hide/style the loading indicator */
+#main-chatbot .pending,
+#main-chatbot [class*="pending"],
+#main-chatbot [class*="loading"],
+.gr-chatbot .pending,
+.gradio-container [class*="loader"],
+.gradio-container [class*="loading"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Style the typing indicator dots */
+#main-chatbot .dot-flashing,
+#main-chatbot [class*="dot"],
+.generating {
+  background: var(--accent) !important;
+}
+
+/* Dark loading overlay */
+.progress-bar,
+[class*="progress"] {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+
+/* ============ CHAT INPUT ROW ============ */
+#chat-input-row {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  padding: 6px 6px 6px 16px !important;
+  margin-top: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: all 0.3s ease !important;
+}
+
+#chat-input-row:focus-within {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+}
+
+#chat-input {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-primary) !important;
+  font-size: 15px !important;
+  padding: 10px 0 !important;
+}
+
+#chat-input textarea {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
+}
+
+#chat-input textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#chat-input textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Send button - icon style */
+#send-btn {
+  background: var(--accent) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px !important;
+  color: white !important;
+  cursor: pointer !important;
+  transition: all 0.2s var(--transition-smooth) !important;
+}
+
+#send-btn:hover {
+  background: var(--accent-bright) !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+#send-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============ BUTTONS - CONSISTENT STYLE ============ */
+.gr-button,
+#new-analysis-btn,
+#kg-view-btn,
+#kg-reset-btn,
+#kg-straw-btn {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+    border-radius: 10px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 12px 20px !important;
+  cursor: pointer !important;
+  transition: all 0.25s var(--transition-smooth) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.gr-button::before,
+#new-analysis-btn::before,
+#kg-view-btn::before,
+#kg-reset-btn::before,
+#kg-straw-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: none;
+}
+
+.gr-button:hover,
+#new-analysis-btn:hover,
+#kg-view-btn:hover,
+#kg-reset-btn:hover,
+#kg-straw-btn:hover {
+  background: var(--bg-input) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent-bright) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 20px var(--accent-glow);
+}
+
+.gr-button:hover::before,
+#new-analysis-btn:hover::before,
+#kg-view-btn:hover::before,
+#kg-reset-btn:hover::before,
+#kg-straw-btn:hover::before {
+  animation: shimmer 0.6s ease;
+}
+
+.gr-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Primary buttons */
+.gr-button-primary,
+#kg-view-btn {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: white !important;
+}
+
+.gr-button-primary:hover,
+#kg-view-btn:hover {
+  background: var(--accent-bright) !important;
+    color: white !important;
+}
+
+/* ============ KNOWLEDGE GRAPH - FILL ENTIRE AREA ============ */
+#kg-tab-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 16px !important;
+}
+
+#knowledge-graph-plot {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  min-height: 650px !important;
+  height: 650px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+#knowledge-graph-plot:hover {
+  border-color: var(--border-hover) !important;
+}
+
+/* Force plotly and all nested elements to fill the container */
+#knowledge-graph-plot > div,
+#knowledge-graph-plot > div > div,
+#knowledge-graph-plot .wrap,
+#knowledge-graph-plot .svelte-1p9xokt,
+#knowledge-graph-plot [class*="wrap"],
+#knowledge-graph-plot .plotly,
+#knowledge-graph-plot .js-plotly-plot,
+#knowledge-graph-plot .plot-container,
+#knowledge-graph-plot .plotly-graph-div,
+#knowledge-graph-plot .svg-container,
+#knowledge-graph-plot .main-svg,
+#knowledge-graph-plot [data-testid="plot"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 650px !important;
+  min-height: 650px !important;
+}
+
+/* Ensure SVG stretches fully */
+#knowledge-graph-plot svg.main-svg {
+  width: 100% !important;
+}
+
+/* Plotly modebar positioning */
+#knowledge-graph-plot .modebar {
+  right: 10px !important;
+  top: 10px !important;
+}
+
+/* Fix any gradio wrapper constraints */
+#knowledge-graph-plot .gr-plot,
+#knowledge-graph-plot .gr-plot > div {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+#kg-controls {
+  margin-top: 16px !important;
+  gap: 12px !important;
+}
+
+#crop-id-input {
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  color: var(--text-primary) !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+}
+
+#crop-id-input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+}
+
+/* ============ IMAGE UPLOAD ============ */
+.gr-image {
+  background: var(--bg-card) !important;
+  border: 2px dashed var(--border) !important;
+  border-radius: 14px !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
 }
 
 .gr-image:hover {
-    border-color: rgba(0, 212, 255, 0.6) !important;
-    background: rgba(10, 10, 20, 0.7) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 25px var(--accent-glow);
+  animation: glow 2s ease infinite;
 }
 
-/* ===== Sliders ===== */
-input[type="range"] {
+.gr-image img {
+  object-fit: contain !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ============ ACCORDION WITH ANIMATION ============ */
+#settings-accordion {
     background: transparent !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  margin-top: 12px !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
 }
 
-input[type="range"]::-webkit-slider-track {
-    background: linear-gradient(90deg, #00d4ff 0%, #b794f4 100%);
+#settings-accordion:hover {
+  border-color: var(--border-hover) !important;
+}
+
+#settings-accordion > .label-wrap {
+  background: var(--bg-card) !important;
+  padding: 14px 18px !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+#settings-accordion > .label-wrap:hover {
+  background: var(--bg-elevated) !important;
+  color: var(--accent-bright) !important;
+}
+
+#settings-accordion > .label-wrap svg {
+  transition: transform 0.3s ease !important;
+}
+
+#settings-accordion.open > .label-wrap svg {
+  transform: rotate(180deg);
+}
+
+#settings-accordion > div:not(.label-wrap) {
+  animation: slideDown 0.3s var(--transition-smooth);
+  background: var(--bg-card) !important;
+  padding: 16px !important;
+}
+
+/* ============ SLIDER ============ */
+.gr-slider input[type="range"] {
+  accent-color: var(--accent);
     height: 6px;
     border-radius: 3px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    background: #00d4ff;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+.gr-slider label,
+.gr-slider span {
+  color: var(--text-secondary) !important;
+}
+
+/* ============ CHECKBOX ============ */
+.gr-checkbox label {
+  color: var(--text-primary) !important;
+    cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.gr-checkbox label:hover {
+  color: var(--accent-bright) !important;
+}
+
+.gr-checkbox input[type="checkbox"] {
+  accent-color: var(--accent);
     width: 18px;
     height: 18px;
-    border-radius: 50%;
     cursor: pointer;
 }
 
-input[type="range"]::-moz-range-track {
-    background: linear-gradient(90deg, #00d4ff 0%, #b794f4 100%);
-    height: 6px;
-    border-radius: 3px;
+/* ============ PANELS ============ */
+.gr-panel, .gr-box, .gr-form {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  transition: all 0.3s ease !important;
 }
 
-input[type="range"]::-moz-range-thumb {
-    background: #00d4ff;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    cursor: pointer;
+.gr-panel:hover, .gr-box:hover {
+  border-color: var(--border-hover) !important;
 }
 
-/* ===== Plots and Graphs ===== */
-.plotly, .js-plotly-plot {
-    background: transparent !important;
-}
-
-.gr-plot {
-    background: rgba(20, 20, 35, 0.8) !important;
-    border-radius: 16px;
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    padding: 10px;
-}
-
-/* ===== Loading Animation ===== */
-.gr-loading {
-    background: linear-gradient(90deg, #00d4ff, #b794f4, #00d4ff);
-    background-size: 200% auto;
-    animation: gradient 2s linear infinite;
-}
-
-@keyframes gradient {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
-}
-
-/* ===== Scrollbars ===== */
+/* ============ SCROLLBAR ============ */
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(10, 10, 20, 0.8);
-    border-radius: 5px;
+  background: var(--bg-main);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 5px;
+  background: var(--bg-elevated);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #764ba2, #667eea);
+  background: var(--accent);
 }
 
-/* ===== Status Badges ===== */
-.status-badge {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    display: inline-block;
-    margin: 4px;
+/* ============ LOADING STATES - HIDE WHITE SQUARES ============ */
+.gr-box.pending,
+.pending,
+[class*="pending"],
+.eta-bar,
+[class*="eta"],
+.generating,
+.wrap.generating,
+[class*="loader"]:not(.plotly-loader),
+.progress-text,
+.meta-text,
+.meta-text-center {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--text-muted) !important;
 }
 
-.status-healthy {
-    background: linear-gradient(135deg, #48bb78, #38a169);
-    color: white;
+/* The actual loading spinner/indicator */
+.loading,
+[class*="loading"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
 }
 
-.status-warning {
-    background: linear-gradient(135deg, #ffd93d, #ffb800);
-    color: #1a1a2e;
+/* ============ FOCUS STATES ============ */
+*:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px !important;
 }
 
-.status-critical {
-    background: linear-gradient(135deg, #ff6b6b, #ff4757);
-    color: white;
-}
-
-/* ===== Info Boxes ===== */
-div[style*="background: rgba(0, 212, 255"] {
-    background: rgba(0, 212, 255, 0.08) !important;
-    border: 1px solid rgba(0, 212, 255, 0.3) !important;
-    color: #00d4ff !important;
-}
-
-/* ===== Code Blocks ===== */
-pre, code {
-    background: rgba(10, 10, 20, 0.8) !important;
-    color: #00d4ff !important;
-    border: 1px solid rgba(0, 212, 255, 0.2) !important;
-    border-radius: 6px;
-    padding: 4px 8px;
-}
-
-/* ===== Animations ===== */
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== Utility Classes ===== */
-.glow {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-/* ===== Responsive Design ===== */
+/* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
-    .gr-box {
-        padding: 10px;
-    }
-    
-    .status-badge {
-        display: block;
-        width: fit-content;
-        margin: 4px auto;
+  .gr-markdown h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  #main-chatbot .message {
+    max-width: 95% !important;
+  }
+  
+  #send-btn {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
     }
 }

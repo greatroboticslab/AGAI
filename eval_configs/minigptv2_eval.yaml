@@ -6,10 +6,10 @@
     low_resource: true
     # Align prompt style with training for richer responses
     prompt_template: 'Human: {} Assistant: '
-    # Use the latest trained checkpoint
-    ckpt: "/data/AGAI/MiniGPT-4/output/minigptv2_strawberry_diagnostic/20251004134/checkpoint_best.pth"
-    lora_r: 16
-    lora_alpha: 32
+    # Trained checkpoint (will be created by train_v2.py)
+    ckpt: "/data/AGAI/MiniGPT-4/output/minigpt_strawberry/checkpoint_best.pth"
+    lora_r: 64
+    lora_alpha: 128
     lora_dropout: 0.05
     llama_model: "/data/AGAI/MiniGPT-4/llama_weights/Llama-2-7b-chat-hf"
 

@@ -72,7 +72,7 @@ def load_resnet(ckpt_path: str = None):
     - Builds the correct head size from class list
     """
     ckpt_path = ckpt_path or os.getenv("RESNET_CKPT", "plant_diagnostic/models/resnet_straw7.pth")
-    ckpt = torch.load(ckpt_path, map_location="cpu")
+    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
 
     # Prefer explicit class list / label_map from the checkpoint
     classes = ckpt.get("classes")

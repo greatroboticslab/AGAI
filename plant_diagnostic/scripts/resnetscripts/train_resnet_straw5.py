@@ -280,7 +280,7 @@ def main():
 
     # --- optional warm start from old 5-class model (backbone only) ---
     if args.resume:
-        ckpt = torch.load(args.resume, map_location="cpu")
+        ckpt = torch.load(args.resume, map_location="cpu", weights_only=False)
         state = ckpt.get("model", ckpt)
         # keep backbone, drop classification head to avoid 5->7 size mismatch
         state = {k: v for k, v in state.items() if not k.startswith("fc.")}
@@ -457,7 +457,7 @@ def main():
         print(f"[full] {e+1}/{args.epochs_full}  lr={opt.param_groups[0]['lr']:.2e}  val_acc={acc:.3f}")
 
     # ---- Temperature calibration on best ----
-    best_ckpt = torch.load(args.out, map_location="cpu")
+    best_ckpt = torch.load(args.out, map_location="cpu", weights_only=False)
     model.load_state_dict(best_ckpt["model"], strict=False)
     model.to(device)
     temperature = fit_temperature(model, val_loader, device)

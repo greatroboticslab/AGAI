@@ -223,7 +223,7 @@ def main():
     model.to(memory_format=torch.channels_last) 
 
     if args.resume:
-        ckpt = torch.load(args.resume, map_location="cpu")
+        ckpt = torch.load(args.resume, map_location="cpu", weights_only=False)
         model.load_state_dict(ckpt["model"], strict=False)
 
     # common loss (weights + smoothing) for both phases
@@ -369,7 +369,7 @@ def main():
         print(f"[full] {e+1}/{args.epochs_full}  lr={opt.param_groups[0]['lr']:.2e}  val_acc={acc:.3f}")
 
     # ---- after training: reload BEST and calibrate ONCE ----
-    best_ckpt = torch.load(args.out, map_location="cpu")
+    best_ckpt = torch.load(args.out, map_location="cpu", weights_only=False)
     model.load_state_dict(best_ckpt["model"], strict=False)
     model.to(device)
     temperature = fit_temperature(model, val_loader, device)

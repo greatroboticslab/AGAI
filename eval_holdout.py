@@ -49,7 +49,7 @@ def load_model(cfg_path, gpu_id=0):
     ckpt_path = cfg.run_cfg.get("resume_ckpt_path")
     if ckpt_path and os.path.exists(ckpt_path):
         logging.info(f"Loading checkpoint from {ckpt_path}")
-        checkpoint = torch.load(ckpt_path, map_location=f"cuda:{gpu_id}")
+        checkpoint = torch.load(ckpt_path, map_location=f"cuda:{gpu_id}", weights_only=False)
         state = checkpoint.get("model", checkpoint)
         model.load_state_dict(state, strict=False)
 
