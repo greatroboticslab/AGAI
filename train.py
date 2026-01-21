@@ -154,11 +154,12 @@ def ensure_library_root():
 
 
 def main():
-    # set before init_distributed_mode to keep same job_id across ranks
-    job_id = now()
-
     args = parse_args()
     cfg = Config(args)
+    
+    # Use job_name from config if available, otherwise use timestamp
+    # This gives clean checkpoint folder names like "best_v1" instead of "20251217123456"
+    job_id = getattr(cfg.run_cfg, "job_name", None) or now()
     ensure_library_root()
 
     init_distributed_mode(cfg.run_cfg)

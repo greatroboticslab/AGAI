@@ -44,7 +44,7 @@ TTA = [
 EXTS={".jpg",".jpeg",".png",".webp",".bmp",".tif",".tiff"}
 
 def load_model(ckpt_path):
-    ckpt = torch.load(ckpt_path, map_location="cpu")  # keep weights_only=False for your own ckpts
+    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
     classes = ckpt["classes"]
     T = float(ckpt.get("temperature", 1.0))
     m = models.resnet50(weights=None)

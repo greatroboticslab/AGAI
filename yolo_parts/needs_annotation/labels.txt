@@ -1,0 +1,7 @@
+fruit
+stem
+leaf
+soil
+root
+flower
+crown

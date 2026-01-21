@@ -32,7 +32,7 @@ def main():
     out_dir = Path(args.out_dir); out_dir.mkdir(parents=True, exist_ok=True)
 
     # Load checkpoint (class order used during training)
-    ckpt = torch.load(args.ckpt, map_location="cpu")
+    ckpt = torch.load(args.ckpt, map_location="cpu", weights_only=False)
     ckpt_classes = ckpt["classes"]
 
     # Build model

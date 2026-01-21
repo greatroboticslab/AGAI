@@ -3,10 +3,19 @@
 #Gus Marcum - Collaborator: debugging, and system improvements
 
 #Added CSS to the gradio app for user interface improvements
+
+# Suppress known deprecation warnings from third-party libraries (timm, tensorflow)
+import warnings
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TensorFlow INFO/WARNING messages
+warnings.filterwarnings("ignore", message="Importing from timm.models.hub is deprecated")
+warnings.filterwarnings("ignore", message="Importing from timm.models.layers is deprecated")
+warnings.filterwarnings("ignore", message="Importing from timm.models.registry is deprecated")
+
 #Standard library imports
 import argparse
-import os
 import re
+import sys
 import logging
 from datetime import datetime
 from functools import lru_cache
@@ -44,36 +53,71 @@ from minigpt4.runners import *
 from minigpt4.tasks import *
 from resnet_classifier import load_resnet, diagnose_or_none
 
+# Import RAG retriever for disease knowledge
+try:
+    from knowledge_graph.rag_retriever import DiseaseRAG
+    from knowledge_graph.qa_retriever import DiseaseQA
+    disease_rag = DiseaseRAG()
+    disease_qa = DiseaseQA()
+    RAG_AVAILABLE = True
+    print("[RAG] Disease knowledge base loaded successfully")
+except Exception as e:
+    RAG_AVAILABLE = False
+    disease_rag = None
+    disease_qa = None
+    print(f"[RAG] Warning: RAG not available: {e}")
+
+# Import YOLO part detector for constraining MiniGPT output
+try:
+    from yolo_parts.part_detector import StrawberryPartDetector
+    part_detector = StrawberryPartDetector()
+    PART_DETECTOR_AVAILABLE = part_detector.model is not None
+    if PART_DETECTOR_AVAILABLE:
+        print("[YOLO] Part detector loaded successfully")
+    else:
+        print("[YOLO] Part detector not trained yet - run yolo_parts/train_yolo.py")
+except Exception as e:
+    PART_DETECTOR_AVAILABLE = False
+    part_detector = None
+    print(f"[YOLO] Warning: Part detector not available: {e}")
+
 # Configure logging
 logging.basicConfig(filename='app.log', filemode='a',
                     format='%(asctime)s - %(levelname)s - %(message)s',
                     level=logging.ERROR)
 
 
+# Configuration path
+DEFAULT_CFG_PATH = "eval_configs/minigptv2_eval.yaml"
+
 # Parse arguments
 def parse_args():
-    parser = argparse.ArgumentParser(description="MiniGPT-v2 Demo")
-    parser.add_argument("--cfg-path", default="eval_configs/minigptv2_eval.yaml", help="path to configuration file.")
+    parser = argparse.ArgumentParser(description="Plant Diagnostic System")
+    parser.add_argument("--cfg-path", default=DEFAULT_CFG_PATH, help="path to configuration file.")
     parser.add_argument("--gpu-id", type=int, default=0, help="specify the gpu to load the model.")
     parser.add_argument("--options", default=None, help="additional options to override the configuration.")
-    parser.add_argument("--resnet-anchor", action="store_true",
-                    help="Anchor first user turn with ResNet diagnosis when confident")
-    parser.add_argument("--share", action="store_true",
-                    help="Create a public share link (accessible from anywhere)")
     args = parser.parse_args()
     return args
 
-# --- ResNet anchor helpers ---
+args = parse_args()
+
+# --- Validate configuration file ---
+cfg_path = Path(args.cfg_path)
+if not cfg_path.exists():
+    print(f"\n[ERROR] Configuration file not found: {args.cfg_path}")
+    print(f"        Please ensure the config file exists at the specified path.")
+    print(f"        Default: {DEFAULT_CFG_PATH}\n")
+    sys.exit(1)
+
+# --- ResNet anchor (required) ---
 _RESNET_MODEL = None
 
 def _get_resnet():
     global _RESNET_MODEL
     if _RESNET_MODEL is None:
-        # Try multiple possible paths for the ResNet model
         model_paths = [
-            "plant_diagnostic/models/resnet_straw_final.pth",
-            Path(__file__).parent / "plant_diagnostic" / "models" / "resnet_straw_final.pth",
-            Path(__file__).parent / "models" / "resnet_straw_final.pth"
+            Path(__file__).parent / "plant_diagnostic" / "models" / "resnet_strawberry.pth",
+            Path("plant_diagnostic/models/resnet_strawberry.pth"),
         ]
         
         model_path = None
@@ -83,19 +127,19 @@ def _get_resnet():
                 break
         
         if model_path is None:
-            raise FileNotFoundError(f"ResNet model not found. Tried: {model_paths}")
+            raise FileNotFoundError(f"ResNet model not found at: {model_paths}")
         
         _RESNET_MODEL = load_resnet(model_path)
     return _RESNET_MODEL
 
-args = parse_args()
-if args.resnet_anchor:
-    try:
-        _ = _get_resnet()
-        print("[ResNet] Model loaded successfully")
-    except Exception as e:
-        print(f"[ResNet] Warning: Could not load ResNet model: {e}")
-        print("[ResNet] Continuing without ResNet anchor functionality")
+# Load ResNet at startup (required)
+try:
+    _get_resnet()
+    print("[ResNet] Model loaded successfully")
+except Exception as e:
+    print(f"\n[ERROR] Failed to load ResNet classifier: {e}")
+    print(f"        Ensure resnet_strawberry.pth exists in plant_diagnostic/models/\n")
+    sys.exit(1)
 
 # --- Fixed-label helpers ---
 _CLASS_THRESH = {
@@ -175,8 +219,8 @@ def _postprocess_caption(text: str) -> str:
 
     # Formatting touch-ups
     t = re.sub(r"\*\s*", "• ", t)                 # '* item' -> '• item'
-    t = re.sub(r"\n\s*\n", "\n\n", t)             # collapse extra blank lines
-    t = re.sub(r"([.!?])\s+([A-Z])", r"\1\n\n\2", t)  # paragraph break after sentences
+    t = re.sub(r"\n{3,}", "\n\n", t)              # collapse 3+ newlines to 2
+    t = re.sub(r"\n\n+", "\n\n", t)               # ensure max 1 blank line
     return t
 
 # Load configuration
@@ -298,300 +342,435 @@ def _empty_fig(msg):
             x=0.5, 
             y=0.5, 
             showarrow=False,
-            font=dict(color="#ffffff", size=14)
+            font=dict(color="#b0b0b0", size=14)
         )],
-        width=1200, 
-        height=700,
-        margin=dict(b=20, l=5, r=5, t=40),
+        autosize=True,
+        height=620,
+        margin=dict(b=30, l=20, r=20, t=60),
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-        paper_bgcolor='rgba(17, 17, 27, 0.9)',
-        plot_bgcolor='rgba(17, 17, 27, 0.9)',
+        paper_bgcolor='#151515',
+        plot_bgcolor='#151515',
     )
     return fig
 
-@lru_cache(maxsize=1)
-def _load_csvs(nodes_path=None, relationships_path=None):
-    """Load and cache CSV files."""
+def create_knowledge_graph():
+    """Create the disease knowledge graph visualization using RAG knowledge base."""
     try:
-        # Use provided paths or fall back to defaults
-        nodes_file = nodes_path if nodes_path else 'knowledge_graph/kg_nodes_faostat.csv'
-        rels_file = relationships_path if relationships_path else 'knowledge_graph/kg_relationships_faostat.csv'
+        if not RAG_AVAILABLE or disease_rag is None:
+            return _empty_fig("Disease knowledge base not loaded")
         
-        n = pd.read_csv(nodes_file, low_memory=False)
-        r = pd.read_csv(rels_file, low_memory=False)
-        n['id'] = n['id'].astype(str).str.strip()
-        r['start_id'] = r['start_id'].astype(str).str.strip()
-        r['end_id'] = r['end_id'].astype(str).str.strip()
-        return n, r
-    except FileNotFoundError as e:
-        print(f"CSV files not found: {e}")
-        return pd.DataFrame(), pd.DataFrame()
-
-def create_knowledge_graph(
-    nodes_path='knowledge_graph/kg_nodes_faostat.csv',
-    relationships_path='knowledge_graph/kg_relationships_faostat.csv',
-    max_edges=2000
-):
-    """Create the main knowledge graph visualization"""
-    try:
-        base = Path(__file__).resolve().parent
-        nodes_fp = Path(nodes_path)
-        rels_fp = Path(relationships_path)
-        if not nodes_fp.exists(): nodes_fp = base / nodes_path
-        if not rels_fp.exists(): rels_fp = base / relationships_path
-
-        # Read from the resolved paths directly (not the cached helper)
-        try:
-            nodes_df = pd.read_csv(nodes_fp, low_memory=False)
-            relationships_df = pd.read_csv(rels_fp, low_memory=False)
-            
-            # Clean the data
-            nodes_df['id'] = nodes_df['id'].astype(str).str.strip()
-            relationships_df['start_id'] = relationships_df['start_id'].astype(str).str.strip()
-            relationships_df['end_id'] = relationships_df['end_id'].astype(str).str.strip()
-        except FileNotFoundError:
-            return _empty_fig("CSV files not found or empty")
+        nodes, edges = disease_rag.get_graph_data()
         
-        if nodes_df.empty or relationships_df.empty:
-            return _empty_fig("CSV files not found or empty")
-
-        need_nodes = {'id','label','name'}
-        need_rels = {'start_id','end_id','type'}
-        if not need_nodes.issubset(nodes_df.columns):
-            return _empty_fig(f"Missing node columns: {need_nodes - set(nodes_df.columns)}")
-        if not need_rels.issubset(relationships_df.columns):
-            return _empty_fig(f"Missing rel columns: {need_rels - set(relationships_df.columns)}")
-
-        idset = set(nodes_df['id'])
-        relationships_df = relationships_df[
-            relationships_df['start_id'].isin(idset) & relationships_df['end_id'].isin(idset)
-        ]
-
-        if len(relationships_df) > max_edges:
-            relationships_df = relationships_df.sample(n=max_edges, random_state=42)
-
+        if not nodes:
+            return _empty_fig("No disease data available")
+        
+        # Build NetworkX graph
         G = nx.DiGraph()
-        for _, row in nodes_df.iterrows():
-            G.add_node(row['id'], label=row['label'], name=row['name'])
-        for _, row in relationships_df.iterrows():
-            G.add_edge(row['start_id'], row['end_id'], type=row['type'])
-
+        for node in nodes:
+            G.add_node(
+                node['id'], 
+                label=node['label'], 
+                name=node['name'],
+                severity=node.get('severity', ''),
+                full_text=node.get('full_text', node['name'])
+            )
+        for edge in edges:
+            G.add_edge(edge['start_id'], edge['end_id'], type=edge['type'])
+        
         if G.number_of_nodes() == 0:
             return _empty_fig("No nodes to display.")
         
-        k = 1.5 / max(1, G.number_of_nodes() ** 0.5)
-        pos = nx.spring_layout(G, k=k, iterations=200, seed=42)
-
-        # Enhanced color scheme for dark theme
-        def _edge_trace_for(rel_type, color):
+        # Use spring layout with higher k for better spacing
+        k = 2.5 / max(1, G.number_of_nodes() ** 0.5)
+        pos = nx.spring_layout(G, k=k, iterations=300, seed=42)
+        
+        # Color scheme for node types
+        label_colors = {
+            'Disease': '#ff6b6b',      # Red for diseases
+            'Symptom': '#ffd93d',      # Yellow for symptoms
+            'Treatment': '#48bb78',    # Green for treatments
+            'Cause': '#b794f4',        # Purple for causes
+            'Recovery': '#00d4ff',     # Cyan for recovery
+        }
+        
+        # Severity-based sizing for disease nodes
+        severity_sizes = {
+            'severe': 28,
+            'moderate': 24,
+            'none': 20,
+            'unknown': 20
+        }
+        
+        # Edge traces by type
+        def _edge_trace_for(rel_type, color, width=1.0):
             ex, ey, et = [], [], []
             for u, v, d in G.edges(data=True):
                 if d.get('type') != rel_type:
                     continue
-                x0, y0 = pos[u]; x1, y1 = pos[v]
+                x0, y0 = pos[u]
+                x1, y1 = pos[v]
                 ex.extend([x0, x1, None])
                 ey.extend([y0, y1, None])
-                t = d.get('type', '')
-                et.extend([t, t, None])
+                et.extend([rel_type.replace('_', ' '), rel_type.replace('_', ' '), None])
             return go.Scatter(
                 x=ex, y=ey,
-                line=dict(width=0.8, color=color),
+                line=dict(width=width, color=color),
                 hoverinfo='text',
                 text=et,
                 mode='lines',
-                opacity=0.6
+                opacity=0.5
             )
-
-        edge_trace_measured = _edge_trace_for('Measured_By', '#4a5568')
-        edge_trace_thrives = _edge_trace_for('Thrives_In', '#00d4ff')
-        edge_trace_hasimg = _edge_trace_for('Has_Image', '#b794f4')
-        edge_trace_hascond = _edge_trace_for('Has_Condition', '#ff6b6b')
-        edge_trace_hasrsn = _edge_trace_for('Has_Reason', '#4ecdc4')
-
-        label_colors = {
-            'Crop': '#00d4ff',
-            'Region': '#48bb78',
-            'Element': '#ff6b6b',
-            'Condition': '#ffd93d',
-            'Image': '#b794f4',
-            'Reason': '#4ecdc4'
-        }
-
-        node_x, node_y, node_text, node_color = [], [], [], []
-        for node in G.nodes():
-            x, y = pos[node]
+        
+        edge_symptom = _edge_trace_for('Shows_Symptom', '#ffd93d', 0.8)
+        edge_treatment = _edge_trace_for('Treated_By', '#48bb78', 1.0)
+        edge_cause = _edge_trace_for('Causes', '#b794f4', 0.8)
+        edge_recovery = _edge_trace_for('Recovery_Time', '#00d4ff', 0.8)
+        
+        # Node trace
+        node_x, node_y, node_text, node_color, node_size = [], [], [], [], []
+        for node_id in G.nodes():
+            x, y = pos[node_id]
             node_x.append(x)
             node_y.append(y)
-            attrs = G.nodes[node]
-            node_text.append(f"<b>{attrs.get('label','?')}</b><br>{attrs.get('name','?')}")
-            node_color.append(label_colors.get(attrs.get('label'), '#718096'))
-
+            attrs = G.nodes[node_id]
+            label = attrs.get('label', '?')
+            name = attrs.get('name', '?')
+            full_text = attrs.get('full_text', name)
+            severity = attrs.get('severity', '')
+            
+            # Build hover text
+            if label == 'Disease':
+                hover = f"<b>🍓 {name}</b><br>Severity: {severity}"
+            elif label == 'Symptom':
+                hover = f"<b>⚠️ Symptom</b><br>{full_text}"
+            elif label == 'Treatment':
+                hover = f"<b>💊 Treatment</b><br>{full_text}"
+            elif label == 'Cause':
+                hover = f"<b>🔍 Cause</b><br>{full_text}"
+            elif label == 'Recovery':
+                hover = f"<b>⏱️ Recovery</b><br>{full_text}"
+            else:
+                hover = f"<b>{label}</b><br>{name}"
+            
+            node_text.append(hover)
+            node_color.append(label_colors.get(label, '#718096'))
+            
+            # Size based on node type
+            if label == 'Disease':
+                node_size.append(severity_sizes.get(severity, 20))
+            else:
+                node_size.append(10)
+        
         node_trace = go.Scatter(
             x=node_x, y=node_y,
-            mode='markers+text',
+            mode='markers',
             hoverinfo='text',
             text=node_text,
             marker=dict(
-                size=12,
+                size=node_size,
                 color=node_color,
                 line=dict(width=2, color='rgba(255, 255, 255, 0.3)'),
             ),
-            textposition="top center",
-            textfont=dict(size=9, color='rgba(255, 255, 255, 0.7)')
         )
-
+        
         fig = go.Figure(
-            data=[edge_trace_measured, edge_trace_thrives, edge_trace_hasimg, 
-                  edge_trace_hascond, edge_trace_hasrsn, node_trace],
+            data=[edge_symptom, edge_treatment, edge_cause, edge_recovery, node_trace],
             layout=go.Layout(
                 title=dict(
-                    text='<b>FAOSTAT Knowledge Graph</b>',
-                    font=dict(size=20, color='#ffffff'),
+                    text='<b>🍓 Strawberry Disease Knowledge Graph</b>',
+                    font=dict(size=18, color='#f0f0f0'),
                     x=0.5,
                     xanchor='center'
                 ),
                 showlegend=False,
                 hovermode='closest',
-                margin=dict(b=20, l=5, r=5, t=60),
+                margin=dict(b=30, l=20, r=20, t=60),
                 xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                 yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                width=1200,
-                height=700,
-                paper_bgcolor='rgba(17, 17, 27, 0.9)',
-                plot_bgcolor='rgba(17, 17, 27, 0.9)',
+                autosize=True,
+                paper_bgcolor='#151515',
+                plot_bgcolor='#151515',
                 hoverlabel=dict(
-                    bgcolor="rgba(30, 30, 45, 0.95)",
+                    bgcolor="#1e1e1e",
                     font_size=12,
-                    font_family="monospace",
-                    font_color="white"
-                )
+                    font_family="DM Sans, sans-serif",
+                    font_color="#f0f0f0"
+                ),
+                height=620,
+                annotations=[
+                    dict(
+                        text="<b>Legend:</b> 🔴 Disease  🟡 Symptom  🟢 Treatment  🟣 Cause  🔵 Recovery",
+                        x=0.5, y=-0.02,
+                        xref="paper", yref="paper",
+                        showarrow=False,
+                        font=dict(size=11, color="#888888")
+                    )
+                ]
             )
         )
+        fig.update_xaxes(scaleanchor=None, constrain=None)
+        fig.update_yaxes(scaleanchor=None, constrain=None)
         return fig
-
+    
     except Exception as e:
         print(f"[KG ERROR] {e}")
+        import traceback
+        traceback.print_exc()
         return _empty_fig(f"Error: {e}")
 
-def draw_crop_from_csv(c_id):
-    """Draw the neighborhood graph for a specific crop ID"""
+def draw_disease_detail(disease_name):
+    """Draw detailed graph for a specific disease."""
     try:
-        nodes_df, rels_df = _load_csvs()
+        if not RAG_AVAILABLE or disease_rag is None:
+            return _empty_fig("Disease knowledge base not loaded")
         
-        if nodes_df.empty or rels_df.empty:
-            return _empty_fig("CSV files not found or empty")
+        # Normalize disease name input
+        disease_key = disease_name.lower().strip().replace(" ", "_").replace("-", "_")
         
-        nbr = rels_df[(rels_df['start_id'] == c_id) | (rels_df['end_id'] == c_id)]
-        if nbr.empty:
-            return _empty_fig(f"No edges for crop id {c_id}")
-
-        keep_ids = set([c_id]) | set(nbr['start_id']) | set(nbr['end_id'])
-        sub_nodes = nodes_df[nodes_df['id'].isin(keep_ids)]
-
-        G = nx.DiGraph()
-        for _, row in sub_nodes.iterrows():
-            G.add_node(row['id'], label=row['label'], name=row['name'])
-        for _, row in nbr.iterrows():
-            G.add_edge(row['start_id'], row['end_id'], type=row['type'])
-
-        k = 1.5 / max(1, G.number_of_nodes() ** 0.5)
-        pos = nx.spring_layout(G, k=k, iterations=200, seed=42)
-
-        label_colors = {
-            'Crop': '#00d4ff',
-            'Region': '#48bb78',
-            'Element': '#ff6b6b',
-            'Condition': '#ffd93d',
-            'Image': '#b794f4',
-            'Reason': '#4ecdc4'
+        # Map common variations
+        name_map = {
+            "gray": "gray_mold",
+            "grey": "gray_mold",
+            "gray_mold": "gray_mold",
+            "grey_mold": "gray_mold",
+            "botrytis": "gray_mold",
+            "white": "white_mold",
+            "white_mold": "white_mold",
+            "sclerotinia": "white_mold",
+            "root": "root_rot",
+            "root_rot": "root_rot",
+            "phytophthora": "root_rot",
+            "frost": "frost_injury",
+            "cold": "frost_injury",
+            "frost_injury": "frost_injury",
+            "drought": "drought",
+            "dry": "drought",
+            "water": "overwatering",
+            "overwater": "overwatering",
+            "overwatering": "overwatering",
+            "healthy": "healthy",
         }
-
-        def _edge_trace_for(rel_type, color):
+        disease_key = name_map.get(disease_key, disease_key)
+        
+        # Get graph data for this disease
+        nodes, edges = disease_rag.get_disease_graph_data(disease_key)
+        
+        if not nodes:
+            available = ", ".join(disease_rag.get_all_diseases())
+            return _empty_fig(f"Disease '{disease_name}' not found.<br>Available: {available}")
+        
+        # Build NetworkX graph
+        G = nx.DiGraph()
+        disease_node_id = None
+        for node in nodes:
+            G.add_node(
+                node['id'],
+                label=node['label'],
+                name=node['name'],
+                severity=node.get('severity', ''),
+                full_text=node.get('full_text', node['name'])
+            )
+            if node['label'] == 'Disease':
+                disease_node_id = node['id']
+        
+        for edge in edges:
+            G.add_edge(edge['start_id'], edge['end_id'], type=edge['type'])
+        
+        # Use shell layout with disease at center
+        if disease_node_id:
+            # Create radial layout with disease at center
+            pos = nx.shell_layout(G, nlist=[
+                [disease_node_id],  # Center
+                [n for n in G.nodes() if G.nodes[n].get('label') in ['Symptom', 'Cause']],
+                [n for n in G.nodes() if G.nodes[n].get('label') in ['Treatment', 'Recovery']]
+            ])
+        else:
+            pos = nx.spring_layout(G, k=2.0, iterations=200, seed=42)
+        
+        # Color scheme
+        label_colors = {
+            'Disease': '#ff6b6b',
+            'Symptom': '#ffd93d',
+            'Treatment': '#48bb78',
+            'Cause': '#b794f4',
+            'Recovery': '#00d4ff',
+        }
+        
+        # Edge traces by type
+        def _edge_trace_for(rel_type, color, width=1.2):
             ex, ey, et = [], [], []
             for u, v, d in G.edges(data=True):
                 if d.get('type') != rel_type:
                     continue
-                x0, y0 = pos[u]; x1, y1 = pos[v]
+                x0, y0 = pos[u]
+                x1, y1 = pos[v]
                 ex.extend([x0, x1, None])
                 ey.extend([y0, y1, None])
-                t = d.get('type','')
-                et.extend([t, t, None])
+                et.extend([rel_type.replace('_', ' '), rel_type.replace('_', ' '), None])
             return go.Scatter(
-                x=ex, y=ey, 
-                line=dict(width=1.2, color=color),
-                hoverinfo='text', 
-                text=et, 
+                x=ex, y=ey,
+                line=dict(width=width, color=color),
+                hoverinfo='text',
+                text=et,
                 mode='lines',
-                opacity=0.7
+                opacity=0.6
             )
-
-        edge_trace_measured = _edge_trace_for('Measured_By', '#4a5568')
-        edge_trace_thrives = _edge_trace_for('Thrives_In', '#00d4ff')
-        edge_trace_hasimg = _edge_trace_for('Has_Image', '#b794f4')
-        edge_trace_hascond = _edge_trace_for('Has_Condition', '#ff6b6b')
-        edge_trace_hasrsn = _edge_trace_for('Has_Reason', '#4ecdc4')
-
+        
+        edge_symptom = _edge_trace_for('Shows_Symptom', '#ffd93d', 1.0)
+        edge_treatment = _edge_trace_for('Treated_By', '#48bb78', 1.2)
+        edge_cause = _edge_trace_for('Causes', '#b794f4', 1.0)
+        edge_recovery = _edge_trace_for('Recovery_Time', '#00d4ff', 1.0)
+        
+        # Node traces
         node_x, node_y, node_text, node_color, node_size = [], [], [], [], []
-        for n in G.nodes():
-            x, y = pos[n]
+        for node_id in G.nodes():
+            x, y = pos[node_id]
             node_x.append(x)
             node_y.append(y)
-            a = G.nodes[n]
-            node_text.append(f"<b>{a.get('label','?')}</b><br>{a.get('name','?')}")
-            node_color.append(label_colors.get(a.get('label'), '#718096'))
-            node_size.append(20 if n == c_id else 12)
-
+            attrs = G.nodes[node_id]
+            label = attrs.get('label', '?')
+            name = attrs.get('name', '?')
+            full_text = attrs.get('full_text', name)
+            severity = attrs.get('severity', '')
+            
+            # Build hover text
+            if label == 'Disease':
+                hover = f"<b>🍓 {name}</b><br>Severity: {severity}"
+            elif label == 'Symptom':
+                hover = f"<b>⚠️ Symptom</b><br>{full_text}"
+            elif label == 'Treatment':
+                hover = f"<b>💊 Treatment</b><br>{full_text}"
+            elif label == 'Cause':
+                hover = f"<b>🔍 Cause</b><br>{full_text}"
+            elif label == 'Recovery':
+                hover = f"<b>⏱️ Recovery</b><br>{full_text}"
+            else:
+                hover = f"<b>{label}</b><br>{name}"
+            
+            node_text.append(hover)
+            node_color.append(label_colors.get(label, '#718096'))
+            
+            # Central disease node is larger
+            if label == 'Disease':
+                node_size.append(35)
+            elif label in ['Treatment', 'Recovery']:
+                node_size.append(14)
+            else:
+                node_size.append(12)
+        
         node_trace = go.Scatter(
-            x=node_x, y=node_y, 
+            x=node_x, y=node_y,
             mode='markers',
-            hoverinfo='text', 
+            hoverinfo='text',
             text=node_text,
             marker=dict(
-                size=node_size, 
+                size=node_size,
                 color=node_color,
-                line=dict(width=2, color='rgba(255, 255, 255, 0.3)')
+                line=dict(width=2, color='rgba(255, 255, 255, 0.4)')
             )
         )
-
-        return go.Figure(
-            data=[edge_trace_measured, edge_trace_thrives, edge_trace_hasimg,
-                  edge_trace_hascond, edge_trace_hasrsn, node_trace],
+        
+        # Get display name
+        display_name = disease_rag.get_display_name(disease_key)
+        
+        fig = go.Figure(
+            data=[edge_symptom, edge_treatment, edge_cause, edge_recovery, node_trace],
             layout=go.Layout(
                 title=dict(
-                    text=f'<b>Neighborhood: {c_id}</b>',
-                    font=dict(size=20, color='#ffffff'),
+                    text=f'<b>🔍 {display_name}</b>',
+                    font=dict(size=18, color='#f0f0f0'),
                     x=0.5,
                     xanchor='center'
                 ),
-                showlegend=False, 
+                showlegend=False,
                 hovermode='closest',
-                margin=dict(b=20, l=5, r=5, t=60),
+                margin=dict(b=30, l=20, r=20, t=60),
                 xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                 yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                width=1200, 
-                height=700,
-                paper_bgcolor='rgba(17, 17, 27, 0.9)',
-                plot_bgcolor='rgba(17, 17, 27, 0.9)',
+                autosize=True,
+                paper_bgcolor='#151515',
+                plot_bgcolor='#151515',
                 hoverlabel=dict(
-                    bgcolor="rgba(30, 30, 45, 0.95)",
+                    bgcolor="#1e1e1e",
                     font_size=12,
-                    font_family="monospace",
-                    font_color="white"
-                )
+                    font_family="DM Sans, sans-serif",
+                    font_color="#f0f0f0"
+                ),
+                height=620,
+                annotations=[
+                    dict(
+                        text="<b>Legend:</b> 🔴 Disease  🟡 Symptom  🟢 Treatment  🟣 Cause  🔵 Recovery",
+                        x=0.5, y=-0.02,
+                        xref="paper", yref="paper",
+                        showarrow=False,
+                        font=dict(size=11, color="#888888")
+                    )
+                ]
             )
         )
+        fig.update_xaxes(scaleanchor=None, constrain=None)
+        fig.update_yaxes(scaleanchor=None, constrain=None)
+        return fig
+    
     except Exception as e:
-        print(f"[Draw Crop ERROR] {e}")
+        print(f"[Disease Detail ERROR] {e}")
+        import traceback
+        traceback.print_exc()
         return _empty_fig(f"Error: {e}")
 
-def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list, temperature, is_enhanced=False):
+def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list, temperature, is_enhanced=False, use_rag=False):
     """Process chat with image analysis"""
     try:
         if gr_img is None:
             return (chatbot + [[user_message, "⚠️ Please upload an image first."]], chat_state, img_list)
 
-        # Fresh conversation + encode image
+        # Check if this is a follow-up question (user typed something AND we have previous diagnosis)
+        user_question = user_message.strip() if user_message else ""
+        
+        # Detect if this looks like a follow-up question
+        is_followup = False
+        previous_diagnosis = None
+        
+        if user_question and chatbot and len(chatbot) > 0:
+            # Check if previous response contains a diagnosis
+            last_response = chatbot[-1][1] if chatbot[-1] else ""
+            for disease in ["drought", "overwatering", "root_rot", "frost_injury", "gray_mold", "white_mold", "healthy"]:
+                if disease.replace("_", " ") in last_response.lower() or disease in last_response.lower():
+                    previous_diagnosis = disease
+                    break
+            
+            # Check if user is asking a question (not uploading new context)
+            question_indicators = ["?", "how", "why", "what", "when", "can", "will", "is it", "should", "difference", "cause", "prevent", "recover", "treat"]
+            if previous_diagnosis and any(ind in user_question.lower() for ind in question_indicators):
+                is_followup = True
+        
+        # If follow-up question, use QA-RAG directly without re-processing image
+        if is_followup and previous_diagnosis and RAG_AVAILABLE and disease_qa:
+            print(f"[Follow-up] Detected question about {previous_diagnosis}: {user_question[:50]}...")
+            qa_result = disease_qa.answer_question(previous_diagnosis, user_question)
+            
+            if qa_result.get("confidence", 0) >= 0.3:
+                answer = qa_result.get("answer", "")
+                q_type = qa_result.get("question_type", "general")
+                
+                # Format the response
+                response = f"**{q_type.title()} Question**\n\n{answer}"
+                
+                # Add suggestion for more questions
+                suggestions = disease_qa.suggest_questions(previous_diagnosis)
+                remaining = [s for s in suggestions if q_type not in s.lower()][:2]
+                if remaining:
+                    response += "\n\n---\n**💡 Also ask:**\n"
+                    for s in remaining:
+                        response += f"• {s}\n"
+                
+                return (chatbot + [[user_question, response]], chat_state, img_list)
+            else:
+                # Low confidence - fall through to full analysis
+                print(f"[Follow-up] Low confidence ({qa_result.get('confidence', 0)}), falling back to full analysis")
+
+        # Fresh conversation + encode image (for initial diagnosis or unclear follow-up)
         chat_state = CONV_VISION.copy()
         img_list = []
         chat.upload_img(gr_img, chat_state, img_list)
@@ -711,60 +890,166 @@ FORMATTING REQUIREMENTS:
 Do not provide differential possibilities or lengthy explanations.<</SYS>>
 """.strip()
         else:
-            # Force explanation of the accepted label
+            # Force explanation of the accepted label - trust the trained model
             chat_state.system = f"""
 <<SYS>>You are a plant diagnostician. The diagnosis has already been determined: {final_label.title()}
-Your ONLY task is to examine the image and explain WHY this diagnosis is correct.
+Your task is to examine the image and explain why this diagnosis is correct.
 You MUST use this exact diagnosis: {final_label.title()}
-Do not make your own diagnosis. Do not disagree with this diagnosis.
-Provide a detailed medical report in this EXACT format:
+Provide a detailed medical report in this format:
 1) Diagnosis: {final_label.title()}
-2) Visible cues: Describe specific visual observations from the image that support this diagnosis.
-3) Recommendation: Provide specific, actionable steps to address this issue.
-Use proper formatting:
-- Use numbered lists (1), 2), 3))
-- Use bullet points with dashes (-) not asterisks
-- Write complete, well-formed sentences
-- Be detailed and thorough
-- Do not add greetings, disclaimers, or extra text
-CRITICAL: You MUST complete your response fully. Do not cut off mid-sentence. Finish ALL recommendations completely.
-Continue writing until you have provided a complete medical report with all necessary details.
-Do not stop until you have finished all recommendations.
+2) Visible cues: Describe the visual symptoms you observe that support this diagnosis.
+3) Recommendation: Provide specific, actionable treatment steps.
+Be detailed and thorough. Complete all recommendations fully.
 <</SYS>>
 """.strip()
 
         # Direct, focused prompt for better responses
+        # IMPORTANT: Do NOT inject RAG/SERP context into initial diagnosis
+        # The model was trained to give detailed image-grounded descriptions
+        # Injecting external context causes it to give generic responses instead
+        
         if user_message and user_message.strip():
             ask_text = user_message.strip()
+            
+            # Smart follow-up: If user asks a specific question, use QA RAG
+            # This is useful because the question may need knowledge not in training
+            if RAG_AVAILABLE and disease_qa and final_label != "unknown":
+                qa_result = disease_qa.answer_question(final_label, user_message)
+                if qa_result.get("confidence", 0) >= 0.5:
+                    # High confidence match - inject targeted knowledge
+                    qa_answer = qa_result.get("answer", "")
+                    q_type = qa_result.get("question_type", "")
+                    print(f"[QA-RAG] Detected {q_type} question, injecting targeted context")
+                    ask_text += f"\n\nRelevant knowledge: {qa_answer}"
         else:
-            ask_text = f"Examine this image and explain why the diagnosis is {final_label.title()}."
+            # Initial diagnosis - let the trained model do its job without interference
+            ask_text = f"Examine this image. The diagnosis is {final_label.title()}. Describe the visible symptoms and provide treatment recommendations."
+            
+            # Add YOLO part constraint if available
+            if PART_DETECTOR_AVAILABLE and part_detector and gr_img is not None:
+                try:
+                    # Get PIL image for part detection
+                    if isinstance(gr_img, np.ndarray):
+                        pil_img = Image.fromarray(gr_img)
+                    else:
+                        pil_img = gr_img
+                    
+                    part_constraint = part_detector.get_prompt_constraint(pil_img)
+                    if part_constraint:
+                        ask_text = f"{part_constraint}\n\n{ask_text}"
+                        print(f"[YOLO] Added part constraint: {part_constraint[:80]}...")
+                except Exception as e:
+                    print(f"[YOLO] Part detection failed: {e}")
         
-        # Add small web context when available in Enhanced mode
-        if is_enhanced and SERPAPI_AVAILABLE and final_label != "unknown":
-            ctx = fetch_serp_context(f"strawberry {final_label} treatment field management")
-            if ctx:
-                ask_text += f"\n\nAdditional context: {ctx[:600]}"
+        # NOTE: RAG and SERP are NOT injected into initial diagnosis prompt
+        # - RAG is used for follow-up Q&A only (handled above and in is_followup check)
+        # - SERP will be shown as supplementary info AFTER the model's response
         
-        _ = chat.ask(ask_text, chat_state)
+        # Generation with hallucination check and regeneration
+        max_attempts = 2  # Try up to 2 times if hallucination detected
+        body = None
+        hallucination_warning = None
+        
+        for attempt in range(max_attempts):
+            # Reset conversation for each attempt
+            if attempt > 0:
+                chat_state = CONV_VISION.copy()
+                img_list = []
+                chat.upload_img(gr_img, chat_state, img_list)
+                chat.encode_img(img_list)
+                # Rebuild system prompt
+                chat_state.system = f"""
+<<SYS>>You are a plant diagnostician. The diagnosis has already been determined: {final_label.title()}
+Your task is to examine the image and explain why this diagnosis is correct.
+You MUST use this exact diagnosis: {final_label.title()}
+Provide a detailed medical report in this format:
+1) Diagnosis: {final_label.title()}
+2) Visible cues: Describe the visual symptoms you observe that support this diagnosis.
+3) Recommendation: Provide specific, actionable treatment steps.
+Be detailed and thorough. Complete all recommendations fully.
+IMPORTANT: Only describe symptoms of {final_label.title()}. Do not mention symptoms of other diseases.
+<</SYS>>
+""".strip()
+                print(f"[Hallucination] Regenerating response (attempt {attempt + 1})")
+            
+            _ = chat.ask(ask_text, chat_state)
 
-        ans = chat.answer(
-            conv=chat_state,
-            img_list=img_list,
-            temperature=temperature,  # Use the slider value
-            max_new_tokens=2000,  # Much higher for complete medical reports
-            max_length=4000,  # Even longer to accommodate full responses
-            num_beams=1,  # Single beam for better completion
-            repetition_penalty=1.01,  # Very low penalty to avoid cutting off
-        )
-        body = (ans[0] if isinstance(ans, (list, tuple)) and len(ans) else str(ans)).strip()
-
-        # Light cleanup only (no aggressive rewrites)
-        body = _postprocess_caption(body)
+            ans = chat.answer(
+                conv=chat_state,
+                img_list=img_list,
+                temperature=temperature,
+                max_new_tokens=2000,
+                max_length=4000,
+                num_beams=1,
+                repetition_penalty=1.01,
+            )
+            body = (ans[0] if isinstance(ans, (list, tuple)) and len(ans) else str(ans)).strip()
+            body = _postprocess_caption(body)
+            
+            # Check for definite hallucinations (only for initial diagnosis)
+            if RAG_AVAILABLE and disease_rag and final_label != "unknown" and not user_message.strip():
+                hall_check = disease_rag.check_definite_hallucination(final_label, body)
+                
+                if hall_check.get("has_definite_hallucination"):
+                    hallucinations = hall_check.get("hallucinations", [])
+                    confused_with = hall_check.get("disease_confused_with", [])
+                    print(f"[Hallucination] Detected: {hallucinations}")
+                    
+                    if attempt < max_attempts - 1:
+                        # Will retry
+                        continue
+                    else:
+                        # Final attempt still has hallucination - warn user
+                        hallucination_warning = f"⚠️ *Note: Response may contain symptoms of {', '.join(confused_with)}. Please verify.*"
+                        break
+                else:
+                    # No hallucination, accept this response
+                    break
+            else:
+                # Not checking hallucinations for this case
+                break
+        
+        # Post-filter response to remove mentions of non-visible parts
+        if PART_DETECTOR_AVAILABLE and part_detector and gr_img is not None and not user_message.strip():
+            try:
+                if isinstance(gr_img, np.ndarray):
+                    pil_img = Image.fromarray(gr_img)
+                else:
+                    pil_img = gr_img
+                filtered_body = part_detector.filter_response(body, pil_img)
+                if filtered_body != body:
+                    print(f"[YOLO] Filtered response (removed {len(body) - len(filtered_body)} chars)")
+                    body = filtered_body
+            except Exception as e:
+                print(f"[YOLO] Response filtering failed: {e}")
 
         # Optional confidence badge prefix
         if p1 > 0:
             badge = "🟢" if p1 >= 0.90 else "🟡" if p1 >= 0.70 else "🔴"
             body = f"{badge} **Confidence: {p1:.1%}**\n\n{body}"
+        
+        # Add hallucination warning if detected and couldn't fix
+        if hallucination_warning:
+            body += f"\n\n{hallucination_warning}"
+
+        # Add SERP as supplementary info AFTER the model's response (not injected into prompt)
+        # This provides additional context without overriding the trained detailed descriptions
+        if is_enhanced and SERPAPI_AVAILABLE and final_label != "unknown" and not user_message.strip():
+            try:
+                serp_context = fetch_serp_context(f"strawberry {final_label} organic treatment management")
+                if serp_context and len(serp_context) > 50:
+                    body += "\n\n---\n**🌐 Web Resources:**\n"
+                    body += f"_{serp_context[:500]}_"
+            except Exception as e:
+                print(f"[SERP] Error fetching context: {e}")
+
+        # Add suggested follow-up questions (only for initial diagnosis, not follow-ups)
+        if RAG_AVAILABLE and disease_qa and final_label != "unknown" and not user_message.strip():
+            suggestions = disease_qa.suggest_questions(final_label)[:3]
+            if suggestions:
+                body += "\n\n---\n**💡 You can ask:**\n"
+                for s in suggestions:
+                    body += f"• {s}\n"
 
         # Clean up temporary file
         try:
@@ -850,343 +1135,167 @@ def load_custom_css():
 # Load the CSS
 custom_css = load_custom_css()
 
-# Create the Gradio interface
+# Import UI components
+from ui_components import ABOUT_SECTION
+
+# Create the Gradio interface with dark theme
 with gr.Blocks(
-    title="🌿 Plant Diagnostic System",
+    title="Plant Diagnostic System",
     theme=gr.themes.Base(
-        primary_hue=gr.themes.colors.cyan,
-        secondary_hue=gr.themes.colors.purple,
-        neutral_hue=gr.themes.colors.slate,
-        font=gr.themes.GoogleFont("Inter"),
+        primary_hue=gr.themes.colors.emerald,
+        neutral_hue=gr.themes.colors.neutral,
     ).set(
-        # Force dark backgrounds globally
-        body_background_fill="linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%)",
-        body_background_fill_dark="linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%)",
-        background_fill_primary="rgba(20, 20, 35, 0.9)",
-        background_fill_primary_dark="rgba(20, 20, 35, 0.9)",
-        background_fill_secondary="rgba(25, 25, 40, 0.8)",
-        background_fill_secondary_dark="rgba(25, 25, 40, 0.8)",
-        border_color_primary="rgba(0, 212, 255, 0.2)",
-        border_color_primary_dark="rgba(0, 212, 255, 0.2)",
+        # Background colors
+        body_background_fill="#0d0d0d",
+        body_background_fill_dark="#0d0d0d",
+        background_fill_primary="#0d0d0d",
+        background_fill_primary_dark="#0d0d0d",
+        background_fill_secondary="#161616",
+        background_fill_secondary_dark="#161616",
+        # Block colors
+        block_background_fill="#161616",
+        block_background_fill_dark="#161616",
+        block_border_color="#333333",
+        block_border_color_dark="#333333",
+        # Input colors
+        input_background_fill="#1f1f1f",
+        input_background_fill_dark="#1f1f1f",
+        input_border_color="#333333",
+        input_border_color_dark="#333333",
         # Text colors
-        body_text_color="#e0e0e0",
-        body_text_color_dark="#e0e0e0",
-        body_text_color_subdued="#a0a0a0",
-        body_text_color_subdued_dark="#a0a0a0",
-        # Component colors
-        color_accent_soft="rgba(0, 212, 255, 0.1)",
-        color_accent_soft_dark="rgba(0, 212, 255, 0.1)",
-        # Block styling
-        block_background_fill="rgba(20, 20, 35, 0.7)",
-        block_background_fill_dark="rgba(20, 20, 35, 0.7)",
-        block_border_color="rgba(0, 212, 255, 0.15)",
-        block_border_color_dark="rgba(0, 212, 255, 0.15)",
-        block_label_background_fill="transparent",
-        block_label_background_fill_dark="transparent",
-        # Input styling
-        input_background_fill="rgba(10, 10, 20, 0.8)",
-        input_background_fill_dark="rgba(10, 10, 20, 0.8)",
-        input_border_color="rgba(0, 212, 255, 0.2)",
-        input_border_color_dark="rgba(0, 212, 255, 0.2)",
-        input_border_color_focus="rgba(0, 212, 255, 0.5)",
-        input_border_color_focus_dark="rgba(0, 212, 255, 0.5)",
+        body_text_color="#ffffff",
+        body_text_color_dark="#ffffff",
+        body_text_color_subdued="#888888",
+        body_text_color_subdued_dark="#888888",
+        # Button colors
+        button_primary_background_fill="#10a37f",
+        button_primary_background_fill_dark="#10a37f",
+        button_primary_background_fill_hover="#0d8a6a",
+        button_primary_background_fill_hover_dark="#0d8a6a",
+        button_secondary_background_fill="#1f1f1f",
+        button_secondary_background_fill_dark="#1f1f1f",
     ),
     css=custom_css
 ) as demo:
     
-    # Header with animated gradient
-    gr.HTML("""
-        <div style="text-align: center; padding: 20px 0;">
-            <h1 style="font-size: 3em; margin-bottom: 10px;">
-                🌿 Plant Diagnostic System
-            </h1>
-            <p style="color: #a0a0a0; font-size: 1.2em;">
-                Advanced AI-Powered Strawberry Plant Health Analysis
-            </p>
-            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
-                <span class="status-badge status-healthy">✓ System Online</span>
-                <span class="status-badge" style="background: rgba(102, 126, 234, 0.8); color: white;">
-                    🔬 ResNet + MiniGPT-v2
-                </span>
-                <span class="status-badge" style="background: rgba(183, 148, 244, 0.8); color: white;">
-                    📊 Knowledge Graph Ready
-                </span>
-            </div>
-        </div>
-    """)
+    # State
+    chat_state = gr.State(CONV_VISION.copy())
+    img_list = gr.State([])
     
-    # Main tabs
-    with gr.Tabs() as tabs:
-        # Image Analysis Tab
-        with gr.Tab("🔬 Image Analysis", elem_classes="custom-tab"):
-            with gr.Row():
-                # Left column - Image upload and controls
-                with gr.Column(scale=1):
-                    gr.Markdown("### 📸 Capture or Upload Image")
-                    
-                    # Image component with both webcam and upload
+    # Header
+    gr.Markdown("# Plant Diagnostic System")
+    gr.Markdown("*AI-powered plant health analysis*")
+    
+    # Main Tabs
+    with gr.Tabs():
+        # === CHAT TAB ===
+        with gr.TabItem("Chat"):
+            with gr.Row(equal_height=True):
+                # Left panel - controls
+                with gr.Column(scale=1, min_width=280):
                     image = gr.Image(
                         type="pil", 
-                        sources=["webcam", "upload"],
-                        label="Plant Image",
-                        elem_classes="image-upload"
+                        sources=["upload", "webcam"],
+                        label="Upload Plant Image",
+                        height=260
                     )
                     
-                    # Instructions for webcam use
-                    gr.HTML("""
-                        <div style="padding: 8px; background: rgba(0, 212, 255, 0.1); 
-                                    border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); margin-top: 10px;">
-                            <p style="margin: 0; color: #00d4ff; font-size: 0.85em;">
-                                📷 <strong>Webcam:</strong> Click camera icon → Allow access → Click again to capture<br>
-                                🖼️ <strong>Upload:</strong> Click to select image file
-                            </p>
-                        </div>
-                    """)
+                    new_chat_btn = gr.Button("New Analysis", elem_id="new-analysis-btn")
                     
-                    # Analysis settings card
-                    with gr.Group():
-                        gr.Markdown("### ⚙️ Analysis Settings")
+                    with gr.Accordion("Settings", open=False, elem_id="settings-accordion"):
+                        enhanced_mode = gr.Checkbox(label="Show web resources", value=False, info="Adds web search results after diagnosis")
+                        use_rag = gr.Checkbox(label="Legacy RAG mode", value=False, info="Deprecated: RAG now auto-activates for follow-up questions")
                         temperature = gr.Slider(
-                            minimum=0.01,
-                            maximum=0.5,
-                            value=0.2,
-                            step=0.01,
-                            label="🌡️ Temperature",
-                            info="Lower = More focused | Higher = More creative"
+                            minimum=0.01, maximum=0.5, value=0.2, step=0.01,
+                            label="Temperature"
                         )
-                        
-                        # Analysis status
-                        gr.HTML("""
-                            <div style="padding: 10px; background: rgba(0, 212, 255, 0.1); 
-                                        border-radius: 8px; border: 1px solid rgba(0, 212, 255, 0.3);">
-                                <p style="margin: 0; color: #00d4ff; font-size: 0.9em;">
-                                    💡 Tip: Use webcam for real-time diagnosis or upload a clear image
-                                </p>
-                            </div>
-                        """)
-                        
-                    clear = gr.Button(
-                        "🔄 Reset All", 
-                        variant="stop",
-                        size="lg"
+                
+                # Right panel - chat (fills remaining space)
+                with gr.Column(scale=4):
+                    chatbot = gr.Chatbot(
+                        value=[],
+                        height=600,
+                        show_label=False,
+                        elem_id="main-chatbot"
                     )
-
-                # Right column - Chat interfaces
-                with gr.Column(scale=2):
-                    # Standard Analysis
-                    with gr.Group():
-                        gr.Markdown("### 🤖 Standard Analysis")
-                        gr.Markdown("*Quick diagnosis based on visual inspection*")
-                        
-                        basic_chatbot = gr.Chatbot(
-                            height=300,
-                            bubble_full_width=False,
-                            avatar_images=["🧑‍🌾", "🤖"]
+                    
+                    # Input with integrated send button
+                    with gr.Row(elem_id="chat-input-row"):
+                        user_input = gr.Textbox(
+                            placeholder="Describe the plant issue or ask a question...",
+                            show_label=False,
+                            container=False,
+                            elem_id="chat-input",
+                            scale=10
                         )
-                        basic_chat_state = gr.State(CONV_VISION.copy())
-                        basic_img_list = gr.State([])
-                        
-                        with gr.Row():
-                            basic_input = gr.Textbox(
-                                placeholder="Ask about the plant's condition...",
-                                scale=4,
-                                label=None,
-                                container=False
-                            )
-                            basic_send = gr.Button(
-                                "📤 Send", 
-                                scale=1, 
-                                variant="primary"
-                            )
-
-                    # Enhanced Analysis
-                    with gr.Group():
-                        gr.Markdown("### 🔍 Enhanced Analysis")
-                        gr.Markdown("*Comprehensive diagnosis with web research*")
-                        
-                        enhanced_chatbot = gr.Chatbot(
-                            height=300,
-                            bubble_full_width=False,
-                            avatar_images=["🧑‍🌾", "🔬"]
-                        )
-                        enhanced_chat_state = gr.State(CONV_VISION.copy())
-                        enhanced_img_list = gr.State([])
-                        
-                        with gr.Row():
-                            enhanced_input = gr.Textbox(
-                                placeholder="Get detailed analysis with treatment recommendations...",
-                                scale=4,
-                                label=None,
-                                container=False
-                            )
-                            enhanced_send = gr.Button(
-                                "🔎 Analyze", 
-                                scale=1, 
-                                variant="primary"
-                            )
-
-        # Knowledge Graph Tab
-        with gr.Tab("📊 Knowledge Graph", elem_classes="custom-tab"):
-            gr.Markdown("""
-                ### 🌐 FAOSTAT Agricultural Knowledge Network
-                <span style="color: #a0a0a0;">Explore relationships between crops, conditions, and agricultural data</span>
-            """)
-            
-            # Graph display with full width
-            graph_plot = gr.Plot(label=None)
-            
-            # Controls below the graph
-            with gr.Row():
-                with gr.Column(scale=1):
-                    with gr.Group():
-                        gr.Markdown("### 🎛️ Graph Controls")
-                        reload_graph = gr.Button(
-                            "🔄 Reload Full Graph",
-                            variant="primary",
-                            size="lg"
-                        )
+                        send_btn = gr.Button("➤", elem_id="send-btn", scale=1, min_width=50)
+        
+        # === KNOWLEDGE GRAPH TAB ===
+        with gr.TabItem("Knowledge Graph"):
+            with gr.Column(elem_id="kg-tab-container"):
+                graph_plot = gr.Plot(label=None, elem_id="knowledge-graph-plot")
                 
-                with gr.Column(scale=1):
-                    with gr.Group():
-                        gr.Markdown("### 🎯 Crop Explorer")
-                        crop_id = gr.Textbox(
-                            label="Crop ID",
-                            placeholder="e.g., 144 (strawberries)",
-                            info="View specific crop neighborhood"
-                        )
-                        show_btn = gr.Button(
-                            "🔍 Show Neighborhood",
-                            variant="secondary",
-                            size="lg"
-                        )
-                
-                with gr.Column(scale=1):
-                    with gr.Group():
-                        gr.Markdown("### ⚡ Quick Access")
-                        gr.Button("🍓 Strawberries", size="sm").click(
-                            lambda: "144", None, crop_id
-                        ).then(
-                            draw_crop_from_csv, inputs=[crop_id], outputs=[graph_plot]
-                        )
-                        gr.Button("🍅 Tomatoes", size="sm").click(
-                            lambda: "388", None, crop_id
-                        ).then(
-                            draw_crop_from_csv, inputs=[crop_id], outputs=[graph_plot]
-                        )
-
-        # About Tab
-        with gr.Tab("ℹ️ About", elem_classes="custom-tab"):
-            gr.HTML("""
-            <div style="padding: 20px; color: #e0e0e0;">
-                <h2 style="color: #00d4ff; margin-bottom: 20px;">🌿 Plant Diagnostic System v2.0</h2>
-                
-                <div style="background: rgba(25, 25, 40, 0.8); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: #b794f4; margin-bottom: 15px;">🎯 Features</h3>
-                    <ul style="color: #d0d0d0; line-height: 1.8;">
-                        <li><strong style="color: #00d4ff;">Dual AI Analysis:</strong> ResNet classifier + MiniGPT-v2 vision model</li>
-                        <li><strong style="color: #00d4ff;">Webcam Support:</strong> Real-time image capture for instant diagnosis</li>
-                        <li><strong style="color: #00d4ff;">Web Integration:</strong> Real-time information from SERPAPI</li>
-                        <li><strong style="color: #00d4ff;">Knowledge Graph:</strong> Interactive FAOSTAT agricultural data visualization</li>
-                        <li><strong style="color: #00d4ff;">Modern UI:</strong> Dark theme with responsive design</li>
-                    </ul>
-                </div>
-                
-                <div style="background: rgba(25, 25, 40, 0.8); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: #b794f4; margin-bottom: 15px;">🛠️ Technology Stack</h3>
-                    <ul style="color: #d0d0d0; line-height: 1.8;">
-                        <li><strong style="color: #48bb78;">Vision Models:</strong> ResNet (classification) + MiniGPT-v2 (description)</li>
-                        <li><strong style="color: #48bb78;">Data:</strong> FAOSTAT agricultural database</li>
-                        <li><strong style="color: #48bb78;">Visualization:</strong> Plotly + NetworkX</li>
-                        <li><strong style="color: #48bb78;">Framework:</strong> Gradio with custom theming</li>
-                    </ul>
-                </div>
-                
-                <div style="background: rgba(25, 25, 40, 0.8); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: #b794f4; margin-bottom: 15px;">📈 Confidence Indicators</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px; color: #d0d0d0;">
-                        <div><span style="font-size: 1.2em;">🟢</span> <strong style="color: #48bb78;">High Confidence</strong> (>90%): Highly reliable diagnosis</div>
-                        <div><span style="font-size: 1.2em;">🟡</span> <strong style="color: #ffd93d;">Medium Confidence</strong> (70-90%): Good reliability</div>
-                        <div><span style="font-size: 1.2em;">🔴</span> <strong style="color: #ff6b6b;">Low Confidence</strong> (<70%): Further inspection recommended</div>
-                    </div>
-                </div>
-                
-                <div style="background: rgba(25, 25, 40, 0.8); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-                    <h3 style="color: #b794f4; margin-bottom: 15px;">🔍 Best Practices</h3>
-                    <ol style="color: #d0d0d0; line-height: 1.8;">
-                        <li>Use webcam for real-time diagnosis or upload clear, well-lit images</li>
-                        <li>When using webcam: Allow camera access, then click the camera icon to capture</li>
-                        <li>Include both close-ups and full plant views when possible</li>
-                        <li>Use Enhanced Analysis for detailed treatment recommendations</li>
-                        <li>Explore the Knowledge Graph for related agricultural insights</li>
-                    </ol>
-                </div>
-                
-                <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(183, 148, 244, 0.1)); border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.3);">
-                    <p style="color: #00d4ff; margin: 0; font-size: 1.1em;">
-                        ✅ System Status: All models loaded and operational
-                    </p>
-                </div>
-            </div>
-            """)
-
+                with gr.Row(elem_id="kg-controls"):
+                    disease_input = gr.Textbox(
+                        label="",
+                        placeholder="Enter disease (drought, gray_mold, root_rot...)",
+                        container=False,
+                        elem_id="disease-input",
+                        scale=3
+                    )
+                    show_btn = gr.Button("View Disease", elem_id="kg-view-btn")
+                    reload_graph = gr.Button("Show All", elem_id="kg-reset-btn")
+                    gray_mold_btn = gr.Button("🦠 Gray Mold", elem_id="kg-gray-btn")
+        
+        # === ABOUT TAB ===
+        with gr.TabItem("About"):
+            gr.HTML(ABOUT_SECTION)
+    
+    # Chat handler
+    def handle_chat(msg, history, state, img, imgs, temp, enhanced, rag_enabled):
+        if not msg.strip() and img is None:
+            return history or [], state, imgs
+        
+        result = process_chat_with_image(
+            msg, 
+            history if history else [], 
+            state, img, imgs, temp, 
+            is_enhanced=enhanced,
+            use_rag=rag_enabled
+        )
+        return result
+    
+    # Reset handler
+    def do_reset():
+        return [], CONV_VISION.copy(), [], None
 
     # Event handlers
-    basic_send.click(
-        process_chat_with_image,
-        inputs=[basic_input, basic_chatbot, basic_chat_state, image, basic_img_list, temperature],
-        outputs=[basic_chatbot, basic_chat_state, basic_img_list]
-    ).then(lambda: "", None, basic_input)
+    send_btn.click(
+        handle_chat,
+        inputs=[user_input, chatbot, chat_state, image, img_list, temperature, enhanced_mode, use_rag],
+        outputs=[chatbot, chat_state, img_list]
+    ).then(lambda: "", None, user_input)
     
-    basic_input.submit(
-        process_chat_with_image,
-        inputs=[basic_input, basic_chatbot, basic_chat_state, image, basic_img_list, temperature],
-        outputs=[basic_chatbot, basic_chat_state, basic_img_list]
-    ).then(lambda: "", None, basic_input)
+    user_input.submit(
+        handle_chat,
+        inputs=[user_input, chatbot, chat_state, image, img_list, temperature, enhanced_mode, use_rag],
+        outputs=[chatbot, chat_state, img_list]
+    ).then(lambda: "", None, user_input)
     
-    enhanced_send.click(
-        lambda *args: process_chat_with_image(*args, is_enhanced=True),
-        inputs=[enhanced_input, enhanced_chatbot, enhanced_chat_state, image, enhanced_img_list, temperature],
-        outputs=[enhanced_chatbot, enhanced_chat_state, enhanced_img_list]
-    ).then(lambda: "", None, enhanced_input)
-    
-    enhanced_input.submit(
-        lambda *args: process_chat_with_image(*args, is_enhanced=True),
-        inputs=[enhanced_input, enhanced_chatbot, enhanced_chat_state, image, enhanced_img_list, temperature],
-        outputs=[enhanced_chatbot, enhanced_chat_state, enhanced_img_list]
-    ).then(lambda: "", None, enhanced_input)
-    
-    clear.click(
-        reset_chat,
-        inputs=[basic_chat_state, basic_img_list],
-        outputs=[basic_chatbot, basic_chat_state, basic_img_list]
-    ).then(
-        reset_chat,
-        inputs=[enhanced_chat_state, enhanced_img_list],
-        outputs=[enhanced_chatbot, enhanced_chat_state, enhanced_img_list]
-    ).then(lambda: None, None, image)
+    new_chat_btn.click(
+        do_reset,
+        inputs=None,
+        outputs=[chatbot, chat_state, img_list, image]
+    )
     
     # Knowledge Graph events
     demo.load(fn=create_knowledge_graph, inputs=None, outputs=graph_plot)
     reload_graph.click(fn=create_knowledge_graph, inputs=None, outputs=graph_plot)
-    show_btn.click(draw_crop_from_csv, inputs=[crop_id], outputs=[graph_plot])
+    show_btn.click(draw_disease_detail, inputs=[disease_input], outputs=[graph_plot])
+    gray_mold_btn.click(lambda: "gray_mold", None, disease_input).then(draw_disease_detail, inputs=[disease_input], outputs=[graph_plot])
 
 # Launch
 if __name__ == "__main__":
-    demo.queue(max_size=20)
-    server_name = os.getenv("GRADIO_SERVER_NAME", "0.0.0.0")
-    server_port = int(os.getenv("GRADIO_SERVER_PORT", "7861"))
-    
-    # Print launch information
-    print("\n" + "="*60)
-    print("🌿 Plant Diagnostic System v2.0 - Starting...")
-    print("="*60)
-    print(f"📍 Server: {server_name}:{server_port}")
-    print(f"🖥️  GPU: cuda:{args.gpu_id}" if torch.cuda.is_available() else "💻 CPU Mode")
-    print(f"🔬 Models: ResNet + MiniGPT-v2")
-    if args.share:
-        print("🌐 Public Share: ENABLED (generating public URL...)")
-    else:
-        print("🏠 Local Only: Use --share for public link")
-    print("="*60 + "\n")
-    
-    demo.launch(server_name=server_name, server_port=server_port, share=args.share)
+    demo.queue()
+    demo.launch(share=True)
+

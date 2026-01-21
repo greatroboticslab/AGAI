@@ -304,7 +304,7 @@ def train_fold(fold_id: int, splits, ds_train_full, ds_val_full, classes: List[s
 
     # Warm-start (backbone only)
     if args.resume:
-        ckpt = torch.load(args.resume, map_location="cpu")
+        ckpt = torch.load(args.resume, map_location="cpu", weights_only=False)
         state = ckpt.get("model", ckpt)
         state = {k:v for k,v in state.items() if not k.startswith("fc.")}
         missing, unexpected = model.load_state_dict(state, strict=False)
@@ -447,7 +447,7 @@ def train_fold(fold_id: int, splits, ds_train_full, ds_val_full, classes: List[s
     # Temperature calibration on best model (optional)
     temp = None
     if args.calibrate:
-        best_ckpt = torch.load(Path(args.out_dir)/f"fold{fold_id}.pth", map_location="cpu")
+        best_ckpt = torch.load(Path(args.out_dir)/f"fold{fold_id}.pth", map_location="cpu", weights_only=False)
         model.load_state_dict(best_ckpt["model"], strict=False)
         model.to(device)
         temp = fit_temperature(model, val_loader, device)

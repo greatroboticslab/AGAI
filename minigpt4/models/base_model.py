@@ -52,9 +52,9 @@ class BaseModel(nn.Module):
             cached_file = download_cached_file(
                 url_or_filename, check_hash=False, progress=True
             )
-            checkpoint = torch.load(cached_file, map_location="cpu")
+            checkpoint = torch.load(cached_file, map_location="cpu", weights_only=False)
         elif os.path.isfile(url_or_filename):
-            checkpoint = torch.load(url_or_filename, map_location="cpu")
+            checkpoint = torch.load(url_or_filename, map_location="cpu", weights_only=False)
         else:
             raise RuntimeError("checkpoint url or path is invalid")
 
@@ -208,16 +208,23 @@ class BaseModel(nn.Module):
                 )
                 low_resource = False
 
+        # Use SDPA (Scaled Dot Product Attention) for faster inference
+        # This uses PyTorch's native Flash Attention implementation when available
+        # Requires: PyTorch 2.0+, Transformers 4.36+, GPU compute capability 8.0+
+        attn_impl = "sdpa"  # Options: "eager", "sdpa", "flash_attention_2"
+        
         if low_resource:
             llama_model = LlamaForCausalLM.from_pretrained(
                 llama_model_path,
                 torch_dtype=torch.float16,
                 quantization_config=quant_config,
+                attn_implementation=attn_impl,
             )
         else:
             llama_model = LlamaForCausalLM.from_pretrained(
                 llama_model_path,
                 torch_dtype=torch.float16,
+                attn_implementation=attn_impl,
             )
 
         # Attach LoRA if requested
@@ -257,9 +264,9 @@ class BaseModel(nn.Module):
             cached_file = download_cached_file(
                 url_or_filename, check_hash=False, progress=True
             )
-            checkpoint = torch.load(cached_file, map_location="cpu")
+            checkpoint = torch.load(cached_file, map_location="cpu", weights_only=False)
         elif os.path.isfile(url_or_filename):
-            checkpoint = torch.load(url_or_filename, map_location="cpu")
+            checkpoint = torch.load(url_or_filename, map_location="cpu", weights_only=False)
         else:
             raise RuntimeError("checkpoint url or path is invalid")
 

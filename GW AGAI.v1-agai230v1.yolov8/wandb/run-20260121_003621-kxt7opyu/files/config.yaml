@@ -1,0 +1,261 @@
+_wandb:
+    value:
+        cli_version: 0.22.1
+        e:
+            973drcg5zhpfhuq4wn5jf3ags16wgwrc:
+                cpu_count: 12
+                cpu_count_logical: 24
+                cudaVersion: "12.2"
+                disk:
+                    /:
+                        total: "982820896768"
+                        used: "458691833856"
+                email: kiriti.v@icloud.com
+                executable: /usr/bin/python3
+                git:
+                    commit: eafc6dd2aacd33144e4af605c196d8e333b2b550
+                    remote: git@github.com:greatroboticslab/AGAI.git
+                gpu: NVIDIA GeForce RTX 3090
+                gpu_count: 2
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 10496
+                      memoryTotal: "25769803776"
+                      name: NVIDIA GeForce RTX 3090
+                      uuid: GPU-ce02faae-6f97-a7c6-e8f0-07d1bc934045
+                    - architecture: Ampere
+                      cudaCores: 10496
+                      memoryTotal: "25769803776"
+                      name: NVIDIA GeForce RTX 3090
+                      uuid: GPU-d44fc026-fc2f-ce89-2b4a-56141aeaec10
+                host: lambda-dual
+                memory:
+                    total: "67086036992"
+                os: Linux-5.15.0-139-generic-x86_64-with-glibc2.29
+                program: /home/mtsu/.config/Ultralytics/DDP/_temp_z380j8ye139847662638224.py
+                python: CPython 3.8.10
+                root: /data/AGAI/MiniGPT-4/GW AGAI.v1-agai230v1.yolov8
+                startedAt: "2026-01-21T05:36:21.485651Z"
+                writerId: 973drcg5zhpfhuq4wn5jf3ags16wgwrc
+        m: []
+        python_version: 3.8.10
+        t:
+            "1":
+                - 1
+                - 2
+                - 3
+                - 41
+                - 105
+            "2":
+                - 1
+                - 2
+                - 3
+                - 41
+                - 105
+            "3":
+                - 2
+                - 13
+                - 16
+                - 61
+            "4": 3.8.10
+            "5": 0.22.1
+            "12": 0.22.1
+            "13": linux-x86_64
+agnostic_nms:
+    value: false
+amp:
+    value: true
+augment:
+    value: false
+batch:
+    value: 32
+box:
+    value: 7.5
+boxes:
+    value: true
+cache:
+    value: false
+cfg:
+    value: null
+classes:
+    value: null
+close_mosaic:
+    value: 10
+cls:
+    value: 0.5
+conf:
+    value: null
+copy_paste:
+    value: 0
+cos_lr:
+    value: false
+data:
+    value: /data/AGAI/MiniGPT-4/GW AGAI.v1-agai230v1.yolov8/data.yaml
+degrees:
+    value: 0
+deterministic:
+    value: true
+device:
+    value:
+        - 0
+        - 1
+dfl:
+    value: 1.5
+dnn:
+    value: false
+dropout:
+    value: 0
+dynamic:
+    value: false
+epochs:
+    value: 150
+exist_ok:
+    value: false
+fliplr:
+    value: 0.5
+flipud:
+    value: 0
+format:
+    value: torchscript
+fraction:
+    value: 1
+freeze:
+    value: null
+half:
+    value: false
+hsv_h:
+    value: 0.015
+hsv_s:
+    value: 0.7
+hsv_v:
+    value: 0.4
+imgsz:
+    value: 640
+int8:
+    value: false
+iou:
+    value: 0.7
+keras:
+    value: false
+kobj:
+    value: 1
+label_smoothing:
+    value: 0
+line_width:
+    value: null
+lr0:
+    value: 0.01
+lrf:
+    value: 0.01
+mask_ratio:
+    value: 4
+max_det:
+    value: 300
+mixup:
+    value: 0
+mode:
+    value: train
+model:
+    value: yolov8s.pt
+momentum:
+    value: 0.937
+mosaic:
+    value: 1
+name:
+    value: v8s_2gpu
+nbs:
+    value: 64
+nms:
+    value: false
+opset:
+    value: null
+optimize:
+    value: false
+optimizer:
+    value: auto
+overlap_mask:
+    value: true
+patience:
+    value: 50
+perspective:
+    value: 0
+plots:
+    value: true
+pose:
+    value: 12
+pretrained:
+    value: true
+profile:
+    value: false
+project:
+    value: null
+rect:
+    value: false
+resume:
+    value: false
+retina_masks:
+    value: false
+save:
+    value: true
+save_conf:
+    value: false
+save_crop:
+    value: false
+save_dir:
+    value: runs/detect/v8s_2gpu
+save_hybrid:
+    value: false
+save_json:
+    value: false
+save_period:
+    value: -1
+save_txt:
+    value: false
+scale:
+    value: 0.5
+seed:
+    value: 0
+shear:
+    value: 0
+show:
+    value: false
+show_conf:
+    value: true
+show_labels:
+    value: true
+simplify:
+    value: false
+single_cls:
+    value: false
+source:
+    value: null
+split:
+    value: val
+stream_buffer:
+    value: false
+task:
+    value: detect
+tracker:
+    value: botsort.yaml
+translate:
+    value: 0.1
+val:
+    value: true
+verbose:
+    value: true
+vid_stride:
+    value: 1
+visualize:
+    value: false
+warmup_bias_lr:
+    value: 0.1
+warmup_epochs:
+    value: 3
+warmup_momentum:
+    value: 0.8
+weight_decay:
+    value: 0.0005
+workers:
+    value: 8
+workspace:
+    value: 4

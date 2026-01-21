@@ -12,8 +12,16 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
-from timm.models.layers import drop_path, to_2tuple, trunc_normal_
-from timm.models.registry import register_model
+# Use new timm import paths to avoid deprecation warnings (fallback for older versions)
+try:
+    from timm.layers import drop_path, to_2tuple, trunc_normal_
+except ImportError:
+    from timm.models.layers import drop_path, to_2tuple, trunc_normal_
+
+try:
+    from timm.models import register_model
+except ImportError:
+    from timm.models.registry import register_model
 import logging
 
 
@@ -459,7 +467,7 @@ def create_eva_vit_g(img_size=224, drop_path_rate=0.4, use_checkpoint=False, pre
 
         url = "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/eva_vit_g.pth"
         cached_file = download_cached_file(url, check_hash=False, progress=True)
-        state_dict = torch.load(cached_file, map_location="cpu")
+        state_dict = torch.load(cached_file, map_location="cpu", weights_only=False)
 
         interpolate_pos_embed(model, state_dict)
         incompatible_keys = model.load_state_dict(state_dict, strict=False)
