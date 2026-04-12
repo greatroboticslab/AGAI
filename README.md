@@ -237,7 +237,7 @@ The `DiseaseRAG` retriever provides context injection and hallucination checking
 ```bibtex
 @software{plant_diagnostic_system,
   title  = {Plant Diagnostic System: AI-Powered Strawberry Disease Detection},
-  author = {William Starks and Gus Marcum and Kiriti Vundavilli},
+  author = {William Starks and Gus Marcum},
   year   = {2026},
   url    = {https://github.com/greatroboticslab/AGAI}
 }
