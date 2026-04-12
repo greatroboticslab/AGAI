@@ -198,7 +198,7 @@ Large directories excluded from the repository via `.gitignore`:
 The `knowledge_graph/disease_knowledge_base.json` file contains detailed, citation-backed information for all seven disease classes, including:
 
 - Symptoms, causes, visual indicators, and severity ratings
-- Treatment protocols sourced from UC IPM, Penn State Extension, NC State Extension, Cornell Extension, University of Minnesota Extension, and others
+- Treatment protocols web-crawled and curated from UC IPM, Penn State Extension, NC State Extension, Cornell Extension, University of Minnesota Extension, and others
 - **Part-specific treatments** keyed to RF-DETR detections (e.g., fruit-specific advice for gray mold when fruit is detected in the image)
 - Recovery timelines and prevention strategies
 
@@ -254,6 +254,8 @@ This project builds on:
 - [RF-DETR](https://github.com/roboflow/rf-detr) -- real-time detection transformer (Roboflow)
 - [ResNet](https://arxiv.org/abs/1512.03385) -- image classification architecture
 
-Treatment recommendations in the knowledge base are sourced from university cooperative extension publications (UC IPM, Cornell, Penn State, NC State, UMN, Virginia Tech, Utah State, UGA). See individual disease entries in `knowledge_graph/disease_knowledge_base.json` for full citations.
+Treatment recommendations in the knowledge base are web-crawled and sourced from university cooperative extension publications (UC IPM, Cornell, Penn State, NC State, UMN, Virginia Tech, Utah State, UGA). See individual disease entries in `knowledge_graph/disease_knowledge_base.json` for full citations.
+
+The models were trained on a curated corpus of publicly available web-scale data and indexed digital repositories.
 
 Please respect upstream licenses and dataset terms of use.
