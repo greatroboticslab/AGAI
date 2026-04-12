@@ -142,8 +142,8 @@ _CLASS_THRESH = {
     "healthy":      0.40, 
     "overwatered":  0.60,
     "root_rot":     0.65,
-    "drought":      0.70,
-    "frost":        0.75,
+    "drought":      0.65,
+    "frost":        0.70,
     "gray_mold":    0.60,  
     "white_mold":   0.60,  
 }
@@ -861,7 +861,7 @@ def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list,
                 print(f"[ResNet] Debug - Top 3 raw probabilities:")
                 for j in range(min(3, len(_CLASSES))):
                     class_name = _CLASSES[idxs[j]]
-                    prob = float(pvals[j])
+                    prob = float(pvals[j].detach())
                     print(f"  {j+1}. {class_name}: {prob:.3f}")
                 
                 pred = diagnose_or_none(model, img_path, img_size=256)
@@ -900,14 +900,10 @@ def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list,
         # If confidence is very low or it's clearly not a plant, force unknown
         if final_label != "unknown" and pred:
             p1 = float(pred.get("p1", 0.0))
-            # If confidence is below 65%, it's likely not a plant at all
-            if p1 < 0.65:
+            #Notice: to adjust if ResNet label is accepted, make the p1 comparison higher or lower here
+            if p1 < 0.50:
                 final_label = "unknown"
                 print(f"[ResNet] Low confidence ({p1:.3f}) - treating as unknown")
-            # Also check if it's predicting "healthy" with low confidence (likely non-plant)
-            elif final_label.lower() == "healthy" and p1 < 0.75:
-                final_label = "unknown"
-                print(f"[ResNet] 'Healthy' with low confidence ({p1:.3f}) - likely non-plant, treating as unknown")
         
         if final_label == "unknown":
             # Softer prompt when we don't trust the classifier
@@ -918,10 +914,10 @@ RESPONSE STRUCTURE (follow exactly):
 1. State: "Based on the image provided, I cannot confidently diagnose the plant with a specific disease or condition."
 
 2. List exactly 3 possible causes:
-   - Lack of close-up images: To accurately diagnose a plant, it's essential to examine its leaves, stems, and roots closely. Without close-up images of these areas, it's challenging to identify any issues or abnormalities.
-   - Limited view of the plant: The image provided only shows the top portion of the plant, making it difficult to evaluate the overall health of the plant.
-   - The image doesn't reveal any obvious signs of pests or diseases, such as holes in the leaves, discoloration, or unusual growths. Without more information, it's challenging to identify the cause of any issues.
-
+   - Lack of close-up images
+   - Limited view of the plant
+   - The image doesn't reveal any obvious signs of pests or diseases.
+   
 3. List exactly 3 recommended fixes:
    - Close-up images of the leaves, stems, and roots to examine for any signs of pests, diseases, or abnormalities.
    - Images of the plant's overall growth, including its size, shape, and any unusual features.
@@ -1021,6 +1017,8 @@ Be detailed and thorough. Complete all recommendations fully.
 <<SYS>>You are a plant diagnostician. The diagnosis has already been determined: {final_label.title()}
 Your task is to examine the image and explain why this diagnosis is correct.
 You MUST use this exact diagnosis: {final_label.title()}
+VISIBLE (describe these): {visible_csv}.
+NOT VISIBLE (do NOT mention these at all): {hidden_csv}.
 Provide a detailed medical report in this format:
 1) Diagnosis: {final_label.title()}
 2) Visible cues: Describe the visual symptoms you observe that support this diagnosis.
@@ -1248,9 +1246,14 @@ with gr.Blocks(
             with gr.Row(equal_height=True):
                 # Left panel - controls
                 with gr.Column(scale=1, min_width=280):
+                    image_source = gr.Radio(
+                    	choices=["upload", "webcam"],
+                    	value="upload",
+                    	label="Image Source"
+                    )	
                     image = gr.Image(
                         type="pil", 
-                        sources=["upload", "webcam"],
+                        source="upload",
                         label="Upload Plant Image",
                         height=260
                     )
@@ -1325,6 +1328,10 @@ with gr.Blocks(
         new_bbox = bbox_img
         display = bbox_img if (bboxes_on and bbox_img is not None) else img
         return chatbot_out, state_out, imgs_out, display, new_orig, new_bbox
+        
+    #Switch image sources
+    def switch_source(src):
+   	 return gr.Image(source=src, type="pil", height=260, label="Upload Plant Image")
     
     # Toggle handler — swap image in the same box
     def toggle_bboxes(bboxes_on, orig_store, bbox_store):
@@ -1353,6 +1360,12 @@ with gr.Blocks(
     show_bboxes.change(
         toggle_bboxes,
         inputs=[show_bboxes, original_img, bbox_img_state],
+        outputs=[image],
+    )
+    
+    image_source.change(
+        switch_source,
+        inputs=[image_source],
         outputs=[image],
     )
     

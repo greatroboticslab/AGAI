@@ -109,7 +109,7 @@ ABOUT_SECTION = """
         <h3 style="color: #10a37f; font-size: 0.95rem; font-weight: 600; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1px;">Architecture</h3>
         <p style="color: #e0e0e0; line-height: 1.8; margin: 0; font-size: 1rem;">
             This system combines <span style="color: #14d49a; font-weight: 600;">ResNet-50</span> for rapid disease classification with 
-            <span style="color: #14d49a; font-weight: 600;">MiniGPT-v2</span> for detailed visual analysis. The dual-architecture 
+            <span style="color: #14d49a; font-weight: 600;">RF-DETR</span> for plant part detection and <span style="color: #14d49a; font-weight: 600;">MiniGPT-v2</span> for detailed visual analysis. The dual-architecture 
             approach enables both quick identification and comprehensive diagnostic explanations.
         </p>
     </div>
