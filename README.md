@@ -90,8 +90,7 @@ Or place `SERP_API_KEY=your_key_here` in a `.env` file at the project root (giti
 ## Running the Demo
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
-  python demo_v5.py --cfg-path eval_configs/minigptv2_eval.yaml --resnet-anchor
+python demo_v5.py
 ```
 
 This starts a Gradio web interface. Open the printed URL in your browser, upload a strawberry plant image, and the system will return a structured diagnosis. Use the settings panel to toggle bounding box visualization, adjust generation temperature, or explore the knowledge graph tab.
