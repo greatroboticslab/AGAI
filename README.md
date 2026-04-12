@@ -20,7 +20,7 @@ The system runs a three-stage pipeline on every uploaded image:
 Image Upload --> ResNet-50 Classification --> RF-DETR Part Detection --> MiniGPT-v2 Grounded Report
 ```
 
-A knowledge graph RAG system (backed by a disease knowledge base with citations from UC IPM, Cornell Extension, Penn State Extension, NC State Extension, and others) supports follow-up Q&A and provides part-specific treatment advice when RF-DETR detects particular plant structures.
+A knowledge graph RAG system supports follow-up Q&A and provides part-specific treatment advice when RF-DETR detects particular plant structures.
 
 ---
 
