@@ -164,6 +164,29 @@ class DiseaseRAG:
         diseases = self.knowledge_base.get("diseases", {})
         return diseases.get(label, {}).get("severity", "unknown")
     
+    def get_part_specific_treatments(
+        self, disease_label: str, detected_parts: List[str]
+    ) -> Dict[str, List[str]]:
+        """Return part-specific treatment advice for parts visible in the image."""
+        label = self._normalize_label(disease_label)
+        all_parts = (
+            self.knowledge_base
+            .get("diseases", {})
+            .get(label, {})
+            .get("part_specific_treatments", {})
+        )
+        return {p: all_parts[p] for p in detected_parts if p in all_parts}
+
+    def get_sources(self, disease_label: str) -> List[Dict]:
+        """Get citation sources for a disease entry."""
+        label = self._normalize_label(disease_label)
+        return (
+            self.knowledge_base
+            .get("diseases", {})
+            .get(label, {})
+            .get("sources", [])
+        )
+
     def get_best_practices(self) -> Dict:
         """Get general best practices for plant care."""
         return self.knowledge_base.get("general_best_practices", {})
