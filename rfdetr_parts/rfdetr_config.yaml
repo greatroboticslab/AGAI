@@ -1,0 +1,41 @@
+# RF-DETR Small training configuration
+# Strawberry plant part detection: flower, fruit, leaf, root, soil, stem
+
+dataset_dir: /data/AGAI/MiniGPT-4/rfdetr_parts/dataset
+output_dir: /data/AGAI/MiniGPT-4/rfdetr_parts/output
+
+# Training
+epochs: 100
+batch_size: 8
+grad_accum_steps: 2            # effective batch = 8 * 2 = 16
+resolution: 560                # must be divisible by 14
+
+# Optimizer
+lr: 1.0e-4
+lr_encoder: 1.5e-4
+weight_decay: 1.0e-4
+
+# Scheduler
+lr_scheduler: cosine
+warmup_epochs: 5
+lr_min_factor: 0.01
+
+# Regularization
+drop_path: 0.1
+
+# EMA
+use_ema: true
+
+# Early stopping
+early_stopping: false
+
+# Checkpoints
+checkpoint_interval: 10
+
+# Logging
+tensorboard: true
+log_per_class_metrics: true
+progress_bar: true
+
+# Reproducibility
+seed: 42

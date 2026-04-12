@@ -7,5 +7,25 @@ output/
 outputs/
 checkpoints/
 *.pth
+*.pt
+*.log
 docs/assets/*.mp4
 llama_weights/
+
+# IDE / editor
+.idea/
+.vscode/
+.cache/
+
+# Experiment artifacts
+wandb/
+runs/
+yolo_parts/
+yolo-data_results/
+rtdetr_parts/
+GW AGAI*/
+
+# RF-DETR training data and weights (large, local-only)
+rfdetr_parts/dataset/
+rfdetr_parts/output/
+rfdetr_parts/*.pth

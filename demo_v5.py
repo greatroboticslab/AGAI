@@ -67,19 +67,15 @@ except Exception as e:
     disease_qa = None
     print(f"[RAG] Warning: RAG not available: {e}")
 
-# Import YOLO part detector for constraining MiniGPT output
+# Import RF-DETR grounding detector for constraining MiniGPT output
 try:
-    from yolo_parts.part_detector import StrawberryPartDetector
-    part_detector = StrawberryPartDetector()
-    PART_DETECTOR_AVAILABLE = part_detector.model is not None
-    if PART_DETECTOR_AVAILABLE:
-        print("[YOLO] Part detector loaded successfully")
-    else:
-        print("[YOLO] Part detector not trained yet - run yolo_parts/train_yolo.py")
+    from grounding.detector import run_rfdetr
+    from grounding.config import PLANT_PARTS
+    RFDETR_AVAILABLE = True
+    print("[RF-DETR] Grounding detector available")
 except Exception as e:
-    PART_DETECTOR_AVAILABLE = False
-    part_detector = None
-    print(f"[YOLO] Warning: Part detector not available: {e}")
+    RFDETR_AVAILABLE = False
+    print(f"[RF-DETR] Warning: Grounding not available: {e}")
 
 # Configure logging
 logging.basicConfig(filename='app.log', filemode='a',
@@ -222,6 +218,58 @@ def _postprocess_caption(text: str) -> str:
     t = re.sub(r"\n{3,}", "\n\n", t)              # collapse 3+ newlines to 2
     t = re.sub(r"\n\n+", "\n\n", t)               # ensure max 1 blank line
     return t
+
+# ── RF-DETR helpers ───────────────────────────────────────────────────────────
+
+_BBOX_COLORS = {
+    "flower": "#FF6B9D", "fruit": "#FF4444", "leaf": "#48BB78",
+    "root": "#B07D4B", "soil": "#8B6914", "stem": "#38B2AC",
+}
+
+_CANON_TO_SNAKE = {
+    "healthy": "healthy", "overwatering": "overwatered", "root rot": "root_rot",
+    "drought": "drought", "frost injury": "frost", "gray mold": "gray_mold",
+    "white mold": "white_mold",
+}
+
+def _run_rfdetr_on_image(img_path):
+    """Run RF-DETR detection, returns (detected_parts dict, all_detections list)."""
+    if not RFDETR_AVAILABLE:
+        return {}, []
+    try:
+        results = run_rfdetr([img_path])
+        if not results:
+            return {}, []
+        det = results.get(img_path, {})
+        return det.get("detected_parts", {}), det.get("all_detections", [])
+    except Exception as e:
+        print(f"[RF-DETR] Detection failed: {e}")
+        return {}, []
+
+
+def _draw_bboxes(pil_img, detections):
+    """Draw bounding boxes on a copy of the image. Returns annotated PIL Image."""
+    from PIL import ImageDraw, ImageFont
+    img = pil_img.copy()
+    draw = ImageDraw.Draw(img)
+    try:
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 14)
+    except Exception:
+        font = ImageFont.load_default()
+
+    for det in detections:
+        cls = det["class"]
+        conf = det["confidence"]
+        x1, y1, x2, y2 = det["bbox"]
+        color = _BBOX_COLORS.get(cls, "#FFFFFF")
+        draw.rectangle([x1, y1, x2, y2], outline=color, width=2)
+        label = f"{cls} {conf:.0%}"
+        tx, ty = x1, max(y1 - 18, 0)
+        bbox = draw.textbbox((tx, ty), label, font=font)
+        draw.rectangle(bbox, fill=color)
+        draw.text((tx, ty), label, fill="white", font=font)
+    return img
+
 
 # Load configuration
 cfg = Config(args)
@@ -719,11 +767,11 @@ def draw_disease_detail(disease_name):
         traceback.print_exc()
         return _empty_fig(f"Error: {e}")
 
-def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list, temperature, is_enhanced=False, use_rag=False):
+def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list, temperature, is_enhanced=False, use_rag=False, show_bboxes=False):
     """Process chat with image analysis"""
     try:
         if gr_img is None:
-            return (chatbot + [[user_message, "⚠️ Please upload an image first."]], chat_state, img_list)
+            return (chatbot + [[user_message, "⚠️ Please upload an image first."]], chat_state, img_list, None)
 
         # Check if this is a follow-up question (user typed something AND we have previous diagnosis)
         user_question = user_message.strip() if user_message else ""
@@ -761,11 +809,11 @@ def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list,
                 suggestions = disease_qa.suggest_questions(previous_diagnosis)
                 remaining = [s for s in suggestions if q_type not in s.lower()][:2]
                 if remaining:
-                    response += "\n\n---\n**💡 Also ask:**\n"
+                    response += "\n\n---\n**Also ask:**\n"
                     for s in remaining:
-                        response += f"• {s}\n"
+                        response += f"- {s}\n"
                 
-                return (chatbot + [[user_question, response]], chat_state, img_list)
+                return (chatbot + [[user_question, response]], chat_state, img_list, None)
             else:
                 # Low confidence - fall through to full analysis
                 print(f"[Follow-up] Low confidence ({qa_result.get('confidence', 0)}), falling back to full analysis")
@@ -773,6 +821,7 @@ def process_chat_with_image(user_message, chatbot, chat_state, gr_img, img_list,
         # Fresh conversation + encode image (for initial diagnosis or unclear follow-up)
         chat_state = CONV_VISION.copy()
         img_list = []
+        detected_parts, all_detections = {}, []
         chat.upload_img(gr_img, chat_state, img_list)
         chat.encode_img(img_list)
 
@@ -890,8 +939,34 @@ FORMATTING REQUIREMENTS:
 Do not provide differential possibilities or lengthy explanations.<</SYS>>
 """.strip()
         else:
-            # Force explanation of the accepted label - trust the trained model
-            chat_state.system = f"""
+            # ── RF-DETR grounding ─────────────────────────────────────────
+            detected_parts, all_detections = {}, []
+            if RFDETR_AVAILABLE:
+                detected_parts, all_detections = _run_rfdetr_on_image(img_path)
+                if detected_parts:
+                    vis = sorted(detected_parts.keys())
+                    hid = sorted(PLANT_PARTS - set(vis))
+                    print(f"[RF-DETR] Detected: {', '.join(vis)} | Not visible: {', '.join(hid)}")
+
+            if detected_parts:
+                visible_csv = ", ".join(sorted(detected_parts.keys()))
+                hidden_csv = ", ".join(sorted(PLANT_PARTS - set(detected_parts.keys())))
+                chat_state.system = f"""
+<<SYS>>You are a plant diagnostician. The diagnosis has already been determined: {final_label.title()}
+A vision-based detector has confirmed which plant parts are visible in this image.
+VISIBLE (describe these): {visible_csv}.
+NOT VISIBLE (do NOT mention these at all): {hidden_csv}.
+You must ONLY describe symptoms on the VISIBLE parts listed above.
+Do NOT name, reference, or explain anything involving {hidden_csv} — not even as causes, locations, or in advice.
+The green sepals on top of a strawberry are the calyx, part of the fruit, not leaves.
+Provide a detailed medical report:
+1) Diagnosis: {final_label.title()}
+2) Visible cues: Describe the visual symptoms on the detected parts.
+3) Recommendation: Provide specific, actionable treatment steps.
+Be detailed and thorough.<</SYS>>
+""".strip()
+            else:
+                chat_state.system = f"""
 <<SYS>>You are a plant diagnostician. The diagnosis has already been determined: {final_label.title()}
 Your task is to examine the image and explain why this diagnosis is correct.
 You MUST use this exact diagnosis: {final_label.title()}
@@ -903,43 +978,27 @@ Be detailed and thorough. Complete all recommendations fully.
 <</SYS>>
 """.strip()
 
-        # Direct, focused prompt for better responses
-        # IMPORTANT: Do NOT inject RAG/SERP context into initial diagnosis
-        # The model was trained to give detailed image-grounded descriptions
-        # Injecting external context causes it to give generic responses instead
-        
         if user_message and user_message.strip():
             ask_text = user_message.strip()
-            
-            # Smart follow-up: If user asks a specific question, use QA RAG
-            # This is useful because the question may need knowledge not in training
+
             if RAG_AVAILABLE and disease_qa and final_label != "unknown":
                 qa_result = disease_qa.answer_question(final_label, user_message)
                 if qa_result.get("confidence", 0) >= 0.5:
-                    # High confidence match - inject targeted knowledge
                     qa_answer = qa_result.get("answer", "")
                     q_type = qa_result.get("question_type", "")
                     print(f"[QA-RAG] Detected {q_type} question, injecting targeted context")
                     ask_text += f"\n\nRelevant knowledge: {qa_answer}"
         else:
-            # Initial diagnosis - let the trained model do its job without interference
-            ask_text = f"Examine this image. The diagnosis is {final_label.title()}. Describe the visible symptoms and provide treatment recommendations."
-            
-            # Add YOLO part constraint if available
-            if PART_DETECTOR_AVAILABLE and part_detector and gr_img is not None:
-                try:
-                    # Get PIL image for part detection
-                    if isinstance(gr_img, np.ndarray):
-                        pil_img = Image.fromarray(gr_img)
-                    else:
-                        pil_img = gr_img
-                    
-                    part_constraint = part_detector.get_prompt_constraint(pil_img)
-                    if part_constraint:
-                        ask_text = f"{part_constraint}\n\n{ask_text}"
-                        print(f"[YOLO] Added part constraint: {part_constraint[:80]}...")
-                except Exception as e:
-                    print(f"[YOLO] Part detection failed: {e}")
+            if detected_parts:
+                visible_csv = ", ".join(sorted(detected_parts.keys()))
+                hidden_csv = ", ".join(sorted(PLANT_PARTS - set(detected_parts.keys())))
+                ask_text = (
+                    f"Analyze this strawberry plant image. The diagnosis is {final_label}. "
+                    f"VISIBLE parts: {visible_csv}. NOT VISIBLE (do not mention): {hidden_csv}. "
+                    f"Describe symptoms ONLY on the visible parts."
+                )
+            else:
+                ask_text = f"Examine this image. The diagnosis is {final_label.title()}. Describe the visible symptoms and provide treatment recommendations."
         
         # NOTE: RAG and SERP are NOT injected into initial diagnosis prompt
         # - RAG is used for follow-up Q&A only (handled above and in is_followup check)
@@ -1009,20 +1068,6 @@ IMPORTANT: Only describe symptoms of {final_label.title()}. Do not mention sympt
                 # Not checking hallucinations for this case
                 break
         
-        # Post-filter response to remove mentions of non-visible parts
-        if PART_DETECTOR_AVAILABLE and part_detector and gr_img is not None and not user_message.strip():
-            try:
-                if isinstance(gr_img, np.ndarray):
-                    pil_img = Image.fromarray(gr_img)
-                else:
-                    pil_img = gr_img
-                filtered_body = part_detector.filter_response(body, pil_img)
-                if filtered_body != body:
-                    print(f"[YOLO] Filtered response (removed {len(body) - len(filtered_body)} chars)")
-                    body = filtered_body
-            except Exception as e:
-                print(f"[YOLO] Response filtering failed: {e}")
-
         # Optional confidence badge prefix
         if p1 > 0:
             badge = "🟢" if p1 >= 0.90 else "🟡" if p1 >= 0.70 else "🔴"
@@ -1043,36 +1088,44 @@ IMPORTANT: Only describe symptoms of {final_label.title()}. Do not mention sympt
             except Exception as e:
                 print(f"[SERP] Error fetching context: {e}")
 
-        # Add suggested follow-up questions (only for initial diagnosis, not follow-ups)
-        if RAG_AVAILABLE and disease_qa and final_label != "unknown" and not user_message.strip():
+        # Add suggested follow-up questions (only for non-healthy initial diagnosis)
+        if RAG_AVAILABLE and disease_qa and final_label not in ("unknown", "healthy") and not user_message.strip():
             suggestions = disease_qa.suggest_questions(final_label)[:3]
             if suggestions:
-                body += "\n\n---\n**💡 You can ask:**\n"
+                body += "\n\n---\n**You can ask:**\n"
                 for s in suggestions:
-                    body += f"• {s}\n"
+                    body += f"- {s}\n"
+
+        # Build bbox image if toggled on
+        bbox_img = None
+        if show_bboxes and all_detections and gr_img is not None:
+            try:
+                pil_img = gr_img if isinstance(gr_img, Image.Image) else Image.fromarray(gr_img)
+                bbox_img = _draw_bboxes(pil_img, all_detections)
+            except Exception as e:
+                print(f"[RF-DETR] Bbox drawing failed: {e}")
 
         # Clean up temporary file
         try:
-            import os
             if os.path.exists(img_path):
                 os.remove(img_path)
         except Exception:
-            pass  # Ignore cleanup errors
+            pass
 
-        return (chatbot + [[user_message, body]], chat_state, img_list)
+        return (chatbot + [[user_message, body]], chat_state, img_list, bbox_img)
 
     except FileNotFoundError as e:
         error_msg = "❌ **Model Error**: Required model files not found. Please check that all model files are properly installed."
         logging.error(f"File not found: {str(e)}")
-        return (chatbot + [[user_message, error_msg]], chat_state, img_list)
+        return (chatbot + [[user_message, error_msg]], chat_state, img_list, None)
     except torch.cuda.OutOfMemoryError as e:
         error_msg = "❌ **Memory Error**: GPU memory insufficient. Please try with a smaller image or restart the application."
         logging.error(f"CUDA OOM: {str(e)}")
-        return (chatbot + [[user_message, error_msg]], chat_state, img_list)
+        return (chatbot + [[user_message, error_msg]], chat_state, img_list, None)
     except Exception as e:
         error_msg = "❌ **Unexpected Error**: An error occurred during processing. Please try again or contact support if the issue persists."
         logging.error(f"Unexpected error in chat processing: {str(e)}")
-        return (chatbot + [[user_message, error_msg]], chat_state, img_list)
+        return (chatbot + [[user_message, error_msg]], chat_state, img_list, None)
 
 
 
@@ -1181,6 +1234,8 @@ with gr.Blocks(
     # State
     chat_state = gr.State(CONV_VISION.copy())
     img_list = gr.State([])
+    original_img = gr.State(None)
+    bbox_img_state = gr.State(None)
     
     # Header
     gr.Markdown("# Plant Diagnostic System")
@@ -1203,12 +1258,13 @@ with gr.Blocks(
                     new_chat_btn = gr.Button("New Analysis", elem_id="new-analysis-btn")
                     
                     with gr.Accordion("Settings", open=False, elem_id="settings-accordion"):
+                        show_bboxes = gr.Checkbox(label="Show part detections", value=False, info="Display RF-DETR bounding boxes on uploaded image")
                         enhanced_mode = gr.Checkbox(label="Show web resources", value=False, info="Adds web search results after diagnosis")
-                        use_rag = gr.Checkbox(label="Legacy RAG mode", value=False, info="Deprecated: RAG now auto-activates for follow-up questions")
                         temperature = gr.Slider(
                             minimum=0.01, maximum=0.5, value=0.2, step=0.01,
                             label="Temperature"
                         )
+                    use_rag = gr.State(False)
                 
                 # Right panel - chat (fills remaining space)
                 with gr.Column(scale=4):
@@ -1252,40 +1308,58 @@ with gr.Blocks(
             gr.HTML(ABOUT_SECTION)
     
     # Chat handler
-    def handle_chat(msg, history, state, img, imgs, temp, enhanced, rag_enabled):
+    def handle_chat(msg, history, state, img, imgs, temp, enhanced, rag_enabled, bboxes_on, orig_store, bbox_store):
         if not msg.strip() and img is None:
-            return history or [], state, imgs
+            return history or [], state, imgs, img, orig_store, bbox_store
         
         result = process_chat_with_image(
             msg, 
             history if history else [], 
             state, img, imgs, temp, 
             is_enhanced=enhanced,
-            use_rag=rag_enabled
+            use_rag=rag_enabled,
+            show_bboxes=True,
         )
-        return result
+        chatbot_out, state_out, imgs_out, bbox_img = result
+        new_orig = img
+        new_bbox = bbox_img
+        display = bbox_img if (bboxes_on and bbox_img is not None) else img
+        return chatbot_out, state_out, imgs_out, display, new_orig, new_bbox
+    
+    # Toggle handler — swap image in the same box
+    def toggle_bboxes(bboxes_on, orig_store, bbox_store):
+        if bboxes_on and bbox_store is not None:
+            return bbox_store
+        elif orig_store is not None:
+            return orig_store
+        return gr.update()
     
     # Reset handler
     def do_reset():
-        return [], CONV_VISION.copy(), [], None
+        return [], CONV_VISION.copy(), [], None, None, None
 
     # Event handlers
+    chat_inputs = [user_input, chatbot, chat_state, image, img_list, temperature, enhanced_mode, use_rag, show_bboxes, original_img, bbox_img_state]
+    chat_outputs = [chatbot, chat_state, img_list, image, original_img, bbox_img_state]
+    
     send_btn.click(
-        handle_chat,
-        inputs=[user_input, chatbot, chat_state, image, img_list, temperature, enhanced_mode, use_rag],
-        outputs=[chatbot, chat_state, img_list]
+        handle_chat, inputs=chat_inputs, outputs=chat_outputs
     ).then(lambda: "", None, user_input)
     
     user_input.submit(
-        handle_chat,
-        inputs=[user_input, chatbot, chat_state, image, img_list, temperature, enhanced_mode, use_rag],
-        outputs=[chatbot, chat_state, img_list]
+        handle_chat, inputs=chat_inputs, outputs=chat_outputs
     ).then(lambda: "", None, user_input)
+    
+    show_bboxes.change(
+        toggle_bboxes,
+        inputs=[show_bboxes, original_img, bbox_img_state],
+        outputs=[image],
+    )
     
     new_chat_btn.click(
         do_reset,
         inputs=None,
-        outputs=[chatbot, chat_state, img_list, image]
+        outputs=[chatbot, chat_state, img_list, image, original_img, bbox_img_state]
     )
     
     # Knowledge Graph events
