@@ -206,7 +206,7 @@ The `DiseaseRAG` retriever provides context injection and hallucination checking
 
 ---
 
-## Architecture Diagrams
+## Architecture Diagrams (outdated)
 
 ### Inference Dataflow
 ![Inference Dataflow](https://github.com/user-attachments/assets/b6f433ad-d25a-4b06-b0c5-e00addd43984)
@@ -219,7 +219,7 @@ The `DiseaseRAG` retriever provides context injection and hallucination checking
 
 ---
 
-## Demo Videos
+## Demo Videos (outdated)
 
 ### Project Overview
 [![Plant Diagnostic Project Demo](https://img.youtube.com/vi/-QEf8KkALK4/0.jpg)](https://youtu.be/-QEf8KkALK4?si=mVatePAGOcpFYOXw)
