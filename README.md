@@ -1,4 +1,5 @@
-# $\color{green}{\text{Plant Diagnostic System}}$ <img width="300" height="300" alt="AGAI (1)" src="https://github.com/user-attachments/assets/c400e49f-8d3a-40ea-958b-5a48357c4983" />
+# $\color{green}{\text{Plant Diagnostic System}}$ <img width="1254" height="1254" alt="agailogofix" src="https://github.com/user-attachments/assets/160162c3-f736-45db-8b6e-daa10c0e5378" />
+
 
 
 An AI-powered strawberry disease detection and diagnostic system built on three complementary models: a **ResNet-50** image classifier for disease identification, an **RF-DETR Small** object detector for plant-part grounding, and **MiniGPT-v2** for generating detailed, visually grounded diagnostic reports. The system serves a Gradio web interface where users upload or capture images of strawberry plants and receive structured diagnoses with actionable treatment recommendations sourced from university extension publications.
