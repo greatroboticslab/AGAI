@@ -1,4 +1,4 @@
-# $\color{green}{\text{Plant Diagnostic System}}$ <img width="1254" height="1254" alt="agailogofix" src="https://github.com/user-attachments/assets/160162c3-f736-45db-8b6e-daa10c0e5378" />
+# $\color{green}{\text{Plant Diagnostic System}}$ <img width="300" height="300" alt="agailogofix" src="https://github.com/user-attachments/assets/160162c3-f736-45db-8b6e-daa10c0e5378" />
 
 
 
