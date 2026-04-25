@@ -1,0 +1,7 @@
+\section{Conclusion}
+
+AGAI now has a clean and defensible classifier core. The current ResNet v3 checkpoint is trained on the balanced augmented split and reaches 83.57\% top-1 accuracy and 92.14\% top-2 accuracy on the balanced seven-class holdout, with especially strong performance on gray mold, root rot, and healthy examples. The runtime system already supports classifier-anchored reporting, RF-DETR grounding, optional knowledge-graph retrieval, and classifier decision logging.
+
+At the same time, the report-generation side is in the middle of an important transition. The project has moved beyond free-form paragraph targets toward a stricter farmer-facing report format and a tightly constrained ambiguity policy. The focused dual-report pilot indicates that this direction is useful and that ambiguity can be kept rare, believable, and semantically grounded. However, the full stage-2 regeneration on the current balanced split, the corresponding MiniGPT retrain, and the clean holdout explanation evaluation are still pending.
+
+The paper therefore closes on a simple factual statement. AGAI is already a real system with a measured and methodologically clean classifier component. Its grounded reporting redesign is promising and partially implemented, but not yet finished enough to support a clean end-to-end explanation claim. That is not a weakness of the manuscript. It is the reason the manuscript is trustworthy.

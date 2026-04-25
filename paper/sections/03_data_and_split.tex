@@ -1,0 +1,45 @@
+\section{Dataset Curation and Split Integrity}
+
+The current AGAI dataset is organized around seven strawberry health classes:
+\emph{drought, frost, gray mold, healthy, overwatered, root rot,} and \emph{white mold}. The project uses two training roots. The smaller categorical training split stores the compact base-image pool. The larger augmented split is the active classifier-training and stage-2 generation root. The active holdout is a physically separate seven-class tree.
+
+The current counts are shown in Table~\ref{tab:dataset-counts}. Figure~\ref{fig:dataset-composition} visualizes the same class counts, and Figure~\ref{fig:holdout-grid} shows representative holdout examples.
+
+\begin{table}[H]
+\centering
+\caption{Current dataset counts after the balanced holdout rebuild, leakage cleanup, augmentation top-up, and detector-audit imports.}
+\label{tab:dataset-counts}
+\input{generated/dataset_counts_table.tex}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/generated/dataset_composition.pdf}
+\caption{Current per-class image counts in the compact training split, the augmented training split, and the active balanced holdout. The augmented split now enforces a minimum of 300 images for each underrepresented class.}
+\label{fig:dataset-composition}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/generated/holdout_examples_grid.pdf}
+\caption{Representative holdout images. The active holdout contains 20 images for each of the seven classes.}
+\label{fig:holdout-grid}
+\end{figure}
+
+\subsection{Balanced Holdout Construction}
+
+The active holdout was created by physically moving source images out of the training roots rather than relying on a logical exclusion manifest. This design was chosen deliberately. A logical manifest can fail open when a future training script simply points a default image loader at a directory tree. A physical move fails closed. If the file is not in the training root, a default loader cannot silently leak it back into training.
+
+The current holdout contains 20 images per class. For the mold classes, the repository state was especially clean because gray mold and white mold originally matched one-to-one across the compact and augmented training roots. For the non-mold classes, the resplit had to account for augmentation descendants in the augmented root. In those cases, a holdout source stem was removed together with its associated \texttt{\_augNNN} descendants so that the active holdout would not remain partially represented in the training pool.
+
+\subsection{Balanced Augmented Training Split}
+
+The augmented training split was then topped up to a minimum of 300 images for each underrepresented class using lightweight deterministic image augmentation. The balancing transforms are intentionally simple: horizontal flips, small rotations, mild brightness or contrast changes, and a small flip-plus-rotation composite. This balancing step does not alter the high-support classes that already exceeded the target floor. It only raises the classes that would otherwise remain substantially underrepresented after the holdout carve.
+
+\subsection{Detector-Audit Imports}
+
+In addition to the resplit and balancing work, a separate human audit of detector-only images contributed 18 labeled images back into the training pools. Those imports were not symmetric across classes. They added 1 drought image, 5 gray mold images, 3 healthy images, 1 overwatered image, and 8 root rot images. There were no white mold additions in that batch. Those images remain part of the current training state.
+
+\subsection{What This Fixes}
+
+The current dataset state closes two different problems. First, it removes the earlier situation in which the active holdout overrepresented the mold classes while leaving very small supports for the non-mold classes. Second, it removes training leakage for holdout source stems and their augmentation descendants. The result is a balanced 140-image holdout and an augmented training split that no longer leaves frost, white mold, drought, overwatered, or root rot below the minimum class floor.

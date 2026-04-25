@@ -1,0 +1,84 @@
+\section{Current Experimental Results}
+
+The current results divide naturally into two layers. The classifier layer is fully measured on a clean seven-class holdout. The report-generation layer has completed a tightened pilot for stage-2 target construction, but its full regenerated training set, retrained checkpoint, and clean holdout explanation metrics are still in progress. The sections below therefore emphasize completed classifier results first and then treat the dual-report pilot as a dataset-generation result rather than a finished end-to-end benchmark.
+
+\subsection{Clean ResNet Holdout Results}
+
+The current classifier summary is given in Table~\ref{tab:resnet-summary}. The active ResNet v3 checkpoint is evaluated on the balanced 140-image holdout with 20 images per class.
+
+\begin{table}[H]
+\centering
+\caption{ResNet holdout summary for the current balanced-split checkpoint.}
+\label{tab:resnet-summary}
+\input{generated/resnet_summary_table.tex}
+\end{table}
+
+The most important property of this result is not that it is numerically higher than a previous split. It is that it is measured on the current active dataset state: balanced holdout support, balanced augmented training counts for underrepresented classes, and explicit exclusion of holdout source stems from the training roots. On this balanced holdout, the current checkpoint reaches 83.57\% top-1 accuracy, 92.14\% top-2 accuracy, and 6.15\% expected calibration error.
+
+Per-class metrics for the current checkpoint are given in Table~\ref{tab:per-class}. Because the holdout now allocates 20 images per class, the class comparisons are much easier to interpret than they were under the earlier mold-heavy split. Gray mold and root rot each reach 100.0\% top-1 accuracy on 20 images, healthy reaches 95.0\%, frost and white mold each reach 85.0\%, overwatered reaches 70.0\%, and drought reaches 50.0\%.
+
+\begin{table*}[t]
+\centering
+\caption{Per-class holdout performance for the current balanced-split ResNet checkpoint.}
+\label{tab:per-class}
+\input{generated/resnet_per_class_table.tex}
+\end{table*}
+
+Figure~\ref{fig:resnet-confusion} shows the current confusion matrix. Figure~\ref{fig:resnet-accuracy-calibration} shows the per-class top-1 accuracies and the current reliability diagram.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\linewidth]{figures/generated/resnet_v3_confusion_matrix.pdf}
+\caption{Confusion matrix for the current ResNet checkpoint on the balanced 140-image holdout. The balanced split makes the weaker drought and overwatered rows immediately visible.}
+\label{fig:resnet-confusion}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/generated/resnet_accuracy_calibration.pdf}
+\caption{Left: per-class top-1 accuracy on the current balanced holdout. Right: the current reliability diagram. The current checkpoint is better calibrated than the earlier mold-heavy split under expected calibration error, even though the balanced holdout is harder overall.}
+\label{fig:resnet-accuracy-calibration}
+\end{figure*}
+
+\subsection{Runtime Gating Behavior and Top-2 Structure}
+
+The classifier accuracy story is not the whole runtime story. A report can still be blocked if the threshold gate demotes a correct label to \texttt{unknown}. That gate remains threshold-only in the live runtime, with p1/p2 margins recorded for later analysis but not yet activated as a runtime demotion rule. The current paper therefore treats the holdout metrics as classifier metrics first, not as final deployed diagnosis rates.
+
+The top-2 structure remains informative because the ambiguity pilot is built around close alternatives rather than free-form speculation. The report-generation policy still only allows ambiguity for semantically realistic disease pairs under a strict margin rule, and the current pilot should be read as a controlled dataset-generation experiment rather than a user-facing ambiguity feature.
+
+\subsection{Tight Dual-Report Pilot}
+
+The current dual-report pilot is not a full dataset regeneration. It is a focused evaluation of whether the stage-2 policy produces useful training targets rather than boilerplate or semantically absurd alternatives.
+
+The tight pilot summary is given in Table~\ref{tab:dual-report} and Figure~\ref{fig:dual-report}. The pilot selected 20 images and generated 36 total records: 20 standard reports, 14 standard variants, and 2 ambiguity reports. No fallback generations were required.
+
+\begin{table}[H]
+\centering
+\caption{Summary of the current focused tight dual-report pilot.}
+\label{tab:dual-report}
+\input{generated/dual_report_table.tex}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/generated/dual_report_pilot_summary.pdf}
+\caption{Summary of the current tight dual-report pilot. After the ambiguity policy was tightened, ambiguity reports became rare and were restricted to semantically plausible close pairs.}
+\label{fig:dual-report}
+\end{figure}
+
+The important qualitative outcome is that the tightened policy eliminates bizarre alternatives that arise from raw numeric proximity alone. Under the current strict margin rule and pair whitelist, the surviving ambiguity cases in the focused pilot are disease pairs that are visually and operationally plausible, rather than arbitrary second-ranked classes.
+
+This pilot therefore supports three limited claims:
+\begin{enumerate}[leftmargin=1.3em]
+\item The dual-report plumbing works end to end.
+\item The strict ambiguity policy can suppress obviously implausible alternatives.
+\item The current pilot outputs are good enough to motivate full stage-2 regeneration.
+\end{enumerate}
+
+It does \emph{not} support a clean claim about final explanation quality on the post-carve holdout, because the current deployed MiniGPT checkpoint predates the full regeneration and retrain that would be required for that claim.
+
+\subsection{What Is Still Not Measured}
+
+Several experiments remain deliberately unreported because they are not yet clean.
+
+First, the current stage-2 training annotations do not yet encode the tightened dual-report policy at full scale. Second, the current MiniGPT checkpoint predates the balanced split and the current stage-2 redesign. Third, no clean holdout explanation rubric has yet been applied to a retrained post-regeneration checkpoint. Fourth, the RF-DETR on/off ablation is planned but not yet executed on that clean holdout. Those missing steps are not minor bookkeeping. They are the difference between a promising report-generation pilot and a finished end-to-end explanation result.

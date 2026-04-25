@@ -1,0 +1,19 @@
+\section{Introduction}
+
+Automated plant disease diagnosis has two separate failure modes. The first is plain classification error. The second is report failure, where a language model produces a detailed explanation that sounds useful but is not actually supported by the image. In agriculture, the second failure mode matters as much as the first. A confident but wrong management recommendation can be more damaging than an honest uncertain answer.
+
+The AGAI project addresses that problem by separating diagnosis from report writing. A ResNet-50 classifier provides the categorical diagnosis anchor, RF-DETR grounds the visible plant parts that the report is allowed to discuss, and MiniGPT-v2 is treated as a report writer whose job is to explain and contextualize the diagnosis rather than replace it. A disease knowledge graph can still provide supplemental text support, but it is downstream of the core diagnosis-and-grounding path. This architecture was chosen for one reason: in a safety-sensitive domain, the system should have one explicit diagnostic authority and one explicit visual-grounding stage instead of allowing a vision-language model to improvise a label or evidence trail from scratch.
+
+That architectural choice only matters if the train and evaluation splits are honest. Much of the recent engineering effort in AGAI has therefore focused on split integrity and artifact validity. The project now uses a balanced 20-per-class holdout, an augmented training split with a minimum class floor for previously underrepresented classes, explicit provenance for holdout moves and augmentation descendants, and a current classifier checkpoint retrained on that active dataset state.
+
+At the same time, the language-model side is in transition. The old stage-2 dataset encoded inference-heavy reports that were often too specific for what the image actually showed. The current work has therefore shifted to a stricter stage-2 generation policy: full farmer-facing diagnostic reports, tighter visual grounding, explicit separation between interpretation and visible evidence, and a heavily constrained ambiguity mode that only survives for plausible close pairs. That redesign has been piloted, but not yet scaled into a full retrain on the current balanced dataset state.
+
+The purpose of this paper is to document the project at its current scientific state. The classifier results are clean, measured, and directly tied to the live code. The runtime architecture is deployed. The grounded report-generation redesign has completed a pilot stage and is ready for full dataset regeneration and retraining. The resulting paper is therefore strongest when it emphasizes verified results first and treats ongoing report-generation work as exactly that: ongoing work.
+
+This paper makes four concrete contributions:
+\begin{enumerate}[leftmargin=1.3em]
+\item It documents a balanced seven-class classifier evaluation with 20 holdout images per class and an augmented training split brought to a minimum of 300 images for each underrepresented class.
+\item It formalizes the current runtime diagnosis and gating stack, including calibration, thresholding, RF-DETR grounding, optional retrieval, and heuristic retry behavior.
+\item It describes and measures the current offline dual-report generation policy, including the tightened ambiguity logic that only allows semantically realistic alternatives under a strict margin gate.
+\item It separates completed and pending work explicitly, so the manuscript can function as a reliable current-state technical report rather than an outdated project proposal.
+\end{enumerate}
