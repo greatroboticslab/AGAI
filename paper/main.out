@@ -1,0 +1,25 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [1][-]{section.3}{Dataset Curation and Split Integrity}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Balanced Holdout Construction}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Balanced Augmented Training Split}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Detector-Audit Imports}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{What This Fixes}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{System Architecture and Current Methods}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Classifier Backbone, Test-Time Augmentation, and Calibration}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Runtime Acceptance Gate}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Grounded Runtime Report Path}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.4}{Current MiniGPT Configuration}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.5}{Offline Dual-Report Generation Policy}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Current Experimental Results}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{Clean ResNet Holdout Results}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Runtime Gating Behavior and Top-2 Structure}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.3}{Tight Dual-Report Pilot}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.4}{What Is Still Not Measured}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 19
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 20
+\BOOKMARK [1][-]{appendix.A}{Appendix: Configuration and Project Scope Notes}{}% 21
+\BOOKMARK [2][-]{subsection.A.1}{Completed Versus Ongoing Work}{appendix.A}% 22
+\BOOKMARK [2][-]{subsection.A.2}{MiniGPT Training Configuration in the Repository}{appendix.A}% 23
+\BOOKMARK [2][-]{subsection.A.3}{Runtime Thresholds}{appendix.A}% 24
+\BOOKMARK [2][-]{subsection.A.4}{Ambiguity Policy Scope}{appendix.A}% 25

@@ -1,0 +1,92 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{mohanty2016plantdisease}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\citation{he2016resnet}
+\citation{guo2017calibration}
+\citation{zhu2023minigpt4,chen2023minigptv2}
+\citation{touvron2023llama2}
+\citation{hu2021lora}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset Curation and Split Integrity}{3}{section.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Current dataset counts after the balanced holdout rebuild, leakage cleanup, augmentation top-up, and detector-audit imports.\relax }}{4}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:dataset-counts}{{1}{4}{Current dataset counts after the balanced holdout rebuild, leakage cleanup, augmentation top-up, and detector-audit imports.\relax }{table.caption.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Current per-class image counts in the compact training split, the augmented training split, and the active balanced holdout. The augmented split now enforces a minimum of 300 images for each underrepresented class.\relax }}{4}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:dataset-composition}{{1}{4}{Current per-class image counts in the compact training split, the augmented training split, and the active balanced holdout. The augmented split now enforces a minimum of 300 images for each underrepresented class.\relax }{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Representative holdout images. The active holdout contains 20 images for each of the seven classes.\relax }}{5}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:holdout-grid}{{2}{5}{Representative holdout images. The active holdout contains 20 images for each of the seven classes.\relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Balanced Holdout Construction}{5}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Balanced Augmented Training Split}{5}{subsection.3.2}\protected@file@percent }
+\citation{he2016resnet}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Current AGAI pipeline. The classifier and runtime prompt assembly are deployed. The dual-report path is currently an offline pilot for stage-2 regeneration. Clean MiniGPT retraining and clean holdout explanation evaluation are still pending.\relax }}{6}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:pipeline-overview}{{3}{6}{Current AGAI pipeline. The classifier and runtime prompt assembly are deployed. The dual-report path is currently an offline pilot for stage-2 regeneration. Clean MiniGPT retraining and clean holdout explanation evaluation are still pending.\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Detector-Audit Imports}{6}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}What This Fixes}{6}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}System Architecture and Current Methods}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Classifier Backbone, Test-Time Augmentation, and Calibration}{7}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:tta-calibration}{{1}{7}{Classifier Backbone, Test-Time Augmentation, and Calibration}{equation.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Runtime Acceptance Gate}{7}{subsection.4.2}\protected@file@percent }
+\newlabel{eq:threshold-gate}{{3}{7}{Runtime Acceptance Gate}{equation.4.3}{}}
+\newlabel{eq:class-thresholds}{{4}{7}{Runtime Acceptance Gate}{equation.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Grounded Runtime Report Path}{7}{subsection.4.3}\protected@file@percent }
+\citation{chen2023minigptv2}
+\citation{touvron2023llama2}
+\citation{hu2021lora}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Current MiniGPT Configuration}{8}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Offline Dual-Report Generation Policy}{8}{subsection.4.5}\protected@file@percent }
+\newlabel{eq:alt-class}{{5}{8}{Offline Dual-Report Generation Policy}{equation.4.5}{}}
+\newlabel{eq:allowed-pairs}{{6}{8}{Offline Dual-Report Generation Policy}{equation.4.6}{}}
+\newlabel{eq:amb-case-1}{{7}{9}{Offline Dual-Report Generation Policy}{equation.4.7}{}}
+\newlabel{eq:amb-case-2}{{8}{9}{Offline Dual-Report Generation Policy}{equation.4.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Current Experimental Results}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Clean ResNet Holdout Results}{9}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces ResNet holdout summary for the current balanced-split checkpoint.\relax }}{9}{table.caption.5}\protected@file@percent }
+\newlabel{tab:resnet-summary}{{2}{9}{ResNet holdout summary for the current balanced-split checkpoint.\relax }{table.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Per-class holdout performance for the current balanced-split ResNet checkpoint.\relax }}{10}{table.caption.6}\protected@file@percent }
+\newlabel{tab:per-class}{{3}{10}{Per-class holdout performance for the current balanced-split ResNet checkpoint.\relax }{table.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Confusion matrix for the current ResNet checkpoint on the balanced 140-image holdout. The balanced split makes the weaker drought and overwatered rows immediately visible.\relax }}{10}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:resnet-confusion}{{4}{10}{Confusion matrix for the current ResNet checkpoint on the balanced 140-image holdout. The balanced split makes the weaker drought and overwatered rows immediately visible.\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Left: per-class top-1 accuracy on the current balanced holdout. Right: the current reliability diagram. The current checkpoint is better calibrated than the earlier mold-heavy split under expected calibration error, even though the balanced holdout is harder overall.\relax }}{11}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:resnet-accuracy-calibration}{{5}{11}{Left: per-class top-1 accuracy on the current balanced holdout. Right: the current reliability diagram. The current checkpoint is better calibrated than the earlier mold-heavy split under expected calibration error, even though the balanced holdout is harder overall.\relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Runtime Gating Behavior and Top-2 Structure}{11}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Tight Dual-Report Pilot}{11}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Summary of the current focused tight dual-report pilot.\relax }}{12}{table.caption.9}\protected@file@percent }
+\newlabel{tab:dual-report}{{4}{12}{Summary of the current focused tight dual-report pilot.\relax }{table.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Summary of the current tight dual-report pilot. After the ambiguity policy was tightened, ambiguity reports became rare and were restricted to semantically plausible close pairs.\relax }}{12}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:dual-report}{{6}{12}{Summary of the current tight dual-report pilot. After the ambiguity policy was tightened, ambiguity reports became rare and were restricted to semantically plausible close pairs.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}What Is Still Not Measured}{13}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{13}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{14}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix: Configuration and Project Scope Notes}{14}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Completed Versus Ongoing Work}{14}{subsection.A.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Current project status summary.\relax }}{15}{table.caption.11}\protected@file@percent }
+\newlabel{tab:status-appendix}{{5}{15}{Current project status summary.\relax }{table.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}MiniGPT Training Configuration in the Repository}{15}{subsection.A.2}\protected@file@percent }
+\bibstyle{unsrtnat}
+\bibdata{references}
+\bibcite{mohanty2016plantdisease}{{1}{2016}{{Mohanty et~al.}}{{Mohanty, Hughes, and Salath{\'e}}}}
+\bibcite{he2016resnet}{{2}{2016}{{He et~al.}}{{He, Zhang, Ren, and Sun}}}
+\bibcite{guo2017calibration}{{3}{2017}{{Guo et~al.}}{{Guo, Pleiss, Sun, and Weinberger}}}
+\bibcite{zhu2023minigpt4}{{4}{2023}{{Zhu et~al.}}{{Zhu, Chen, Shen, Li, and Elhoseiny}}}
+\bibcite{chen2023minigptv2}{{5}{2023}{{Chen et~al.}}{{Chen, Zhu, Shen, Li, Liu, Zhang, Krishnamoorthi, Chandra, Xiong, and Elhoseiny}}}
+\bibcite{touvron2023llama2}{{6}{2023}{{Touvron et~al.}}{{Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov, Batra, Bhargava, Bhosale, Bikel, Blecher, Ferrer, Chen, Cucurull, Esiobu, Fernandes, Fu, Fu, Fuller, Gao, Goswami, Goyal, Hartshorn, Hosseini, Hou, Inan, Kardas, Khandelwal, Paluri, and et~al.}}}
+\bibcite{hu2021lora}{{7}{2021}{{Hu et~al.}}{{Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Runtime Thresholds}{16}{subsection.A.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Ambiguity Policy Scope}{16}{subsection.A.4}\protected@file@percent }
