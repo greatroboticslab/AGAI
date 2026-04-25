@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+\captionsetup{font=small}
+\title{AGAI: A ResNet-Anchored, RF-DETR-Grounded Dual-Model Pipeline for Strawberry Disease Diagnosis and Report Generation\\[0.4em]
+\large Current Technical Report and Reproducible System Status}
+\author{
+\begin{tabular}{c}
+William Starks\\
+Middle Tennessee State University\\[0.5em]
+Gus Marcum\\
+University of Tennessee at Martin\\[0.5em]
+Lab advisor: Dr.\ Hongbo Zhang\\
+Middle Tennessee State University
+\end{tabular}
+}
+\date{April 25, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper reports the current state of AGAI, a strawberry disease diagnosis pipeline that couples a ResNet-50 classifier, RF-DETR part grounding, and a report-generation stage built on MiniGPT-v2. The current dataset has been rebalanced in two ways. First, the active holdout now contains 20 images for each of the seven classes, giving a balanced 140-image evaluation split. Second, the augmented training split has been topped up to a minimum of 300 images for every underrepresented class using lightweight deterministic image augmentation. On this balanced holdout, the current ResNet v3 checkpoint reaches 83.57\% top-1 accuracy, 92.14\% top-2 accuracy, and 6.15\% expected calibration error under two-view test-time augmentation and temperature scaling. Gray mold and root rot each reach 100.0\% top-1 accuracy, healthy reaches 95.0\%, frost and white mold each reach 85.0\%, overwatered reaches 70.0\%, and drought reaches 50.0\%.
+
+The runtime stack includes a threshold-based acceptance gate, RF-DETR part grounding, optional knowledge-graph retrieval, and heuristic hallucination-retry logic. On the language side, the system now has a tightened offline dual-report generation path that uses GPT-5.4 only during dataset construction. The current pilot generates one standard farmer-facing report for every image and conditionally generates a second ambiguity-aware report only for semantically realistic close pairs under a strict margin policy. The focused pilot completed successfully with 36 generated records from 20 images, including 2 tightly gated ambiguity reports and no fallback generations.
+
+The resulting manuscript is a current technical paper for the project as it exists now. The classifier side is measured on the active balanced split. The report-generation side has a completed pilot and a clear next step for full stage-2 regeneration, retraining, and clean holdout explanation evaluation.
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_data_and_split}
+\input{sections/04_system}
+\input{sections/05_results_status}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+\input{sections/08_appendix}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}
