@@ -1,0 +1,37 @@
+\appendix
+
+\section{Appendix: Configuration and Project Scope Notes}
+
+\subsection{Completed Versus Ongoing Work}
+
+Table~\ref{tab:status-appendix} summarizes the current project state. The classifier side is complete enough to support the results reported in the main text. The report-generation side has completed a pilot but still needs full stage-2 regeneration, clean retraining, and clean holdout evaluation before it can support a final end-to-end claim.
+
+\begin{table}[H]
+\centering
+\caption{Current project status summary.}
+\label{tab:status-appendix}
+\input{generated/status_table.tex}
+\end{table}
+
+\subsection{MiniGPT Training Configuration in the Repository}
+
+The active MiniGPT training configuration in the repository uses:
+\begin{itemize}[leftmargin=1.3em]
+\item image size 448 for both train and evaluation processors,
+\item maximum text length 500,
+\item LoRA rank 64, LoRA alpha 128, and dropout 0.05,
+\item initial learning rate \(10^{-5}\),
+\item 20 epochs,
+\item per-GPU batch size 2 with 8 gradient accumulation steps,
+\item a 10\% auto-validation split.
+\end{itemize}
+
+These are active repository settings, not proof of a clean MiniGPT training run on the current balanced stage-2 dataset. The current configuration still points to the older stage-2 annotation path, which is why the clean regeneration remains a pending item in Table~\ref{tab:status-appendix}.
+
+\subsection{Runtime Thresholds}
+
+The current runtime thresholds are listed in Equation~\ref{eq:class-thresholds}. The live application currently uses threshold-only acceptance, logs p1/p2 margins for later analysis, and applies a second conservative low-confidence demotion when the accepted p1 value falls below 0.50. The margin rule is intentionally not active yet because its operating point has not been calibrated on sufficient real decision logs.
+
+\subsection{Ambiguity Policy Scope}
+
+The current ambiguity pilot exists only in the offline dataset-generation path. It does not yet imply that the runtime report generator should present possible alternatives directly to farmers. Before that can become a product claim, the project still needs a clean post-regeneration MiniGPT retrain and a clean holdout explanation evaluation with and without RF-DETR grounding.

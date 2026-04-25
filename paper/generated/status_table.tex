@@ -1,0 +1,16 @@
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.33\linewidth} >{\raggedright\arraybackslash}p{0.13\linewidth} X}
+\toprule
+Component & Status & Notes \\
+\midrule
+Balanced holdout rebuild with provenance & Done & The active holdout now contains 20 images for each of the seven classes \\
+Augmented class-floor balancing & Done & Underrepresented classes in the active augmented split were raised to a minimum of 300 images \\
+ResNet v3 retrain on the balanced split & Done & The current classifier checkpoint is evaluated on the balanced 140-image holdout \\
+Runtime promotion with rollback path & Done & The runtime app defaults to the current v3 checkpoint and keeps an explicit override path \\
+p1/p2 runtime logging & Done & JSONL logging added for downstream calibration analysis \\
+Tight dual-report generation pilot & Done & Focused 20-image pilot completed with 36 generated reports \\
+Full stage-2 regeneration under tight policy & Pending & The current stage-2 JSON remains stale relative to the augmented training root \\
+MiniGPT retrain on regenerated stage-2 & Pending & Current checkpoint predates the holdout carve and dual-report policy \\
+Clean holdout explanation evaluation & Pending & No post-regeneration holdout explanation metric exists yet \\
+RF-DETR on/off ablation on clean holdout & Pending & Planned but not executed \\
+\bottomrule
+\end{tabularx}
