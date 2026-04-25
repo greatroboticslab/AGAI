@@ -5,6 +5,10 @@ An AI-powered strawberry disease detection and diagnostic system built on three 
 
 > Research prototype developed at Middle Tennessee State University. Not a substitute for professional agronomic advice.
 
+## Research Paper
+
+- [RESEARCH_PAPER.pdf](RESEARCH_PAPER.pdf)
+
 ---
 
 ## How It Works
