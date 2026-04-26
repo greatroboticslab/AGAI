@@ -1,45 +1,65 @@
-\section{System Architecture and Current Methods}
+\section{System Architecture}
+\label{sec:system}
 
-Figure~\ref{fig:pipeline-overview} summarizes the current AGAI pipeline. Solid arrows represent the deployed runtime path. Dashed arrows represent the offline stage-2 data-generation path used for the current dual-report pilot.
+Figure~\ref{fig:pipeline-overview} summarizes the pipeline. Solid arrows
+denote the deployed runtime path; dashed arrows denote the offline
+stage-2 supervision-generation path used for the dual-report pilot. We
+describe each stage below.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/generated/pipeline_overview.pdf}
-\caption{Current AGAI pipeline. The classifier and runtime prompt assembly are deployed. The dual-report path is currently an offline pilot for stage-2 regeneration. Clean MiniGPT retraining and clean holdout explanation evaluation are still pending.}
+\caption{AGAI pipeline. Solid arrows denote the deployed runtime path:
+ResNet-50 classification with two-view test-time augmentation, per-class
+threshold gating, RF-DETR part grounding, optional knowledge-graph
+retrieval, and constrained MiniGPT-v2 report generation. Dashed arrows
+denote the offline stage-2 supervision-generation path used for the
+dual-report pilot.}
 \label{fig:pipeline-overview}
 \end{figure*}
 
-\subsection{Classifier Backbone, Test-Time Augmentation, and Calibration}
+\subsection{Classifier: Backbone, Test-Time Augmentation, and Calibration}
 
-The active classifier is a ResNet-50 \citep{he2016resnet}. The repository training script uses standard ImageNet normalization, moderate geometric and photometric augmentation during training, and a 256-pixel evaluation crop. At inference time, the deployed classifier averages two views: the original center-cropped image and its horizontal flip. If the raw logit vector for image $x$ is $z(x) \in \mathbb{R}^{7}$ and the learned temperature is $T > 0$, then the deployed class distribution is
+The diagnostic classifier is a ResNet-50~\citep{he2016resnet} with an
+ImageNet-pretrained backbone~\citep{russakovsky2015imagenet} and a
+seven-class linear head. Training uses standard ImageNet normalization,
+moderate geometric and photometric augmentation, and a 256-pixel
+evaluation crop. At inference, the classifier averages the softmax
+probabilities of the original center-cropped image and its horizontal
+flip. Let $z(x)\in\mathbb{R}^{7}$ be the logit vector for image $x$, let
+$T>0$ be the temperature learned by post-hoc calibration on the internal
+validation split, and let $\mathrm{flip}(x)$ denote the horizontal flip
+of $x$. The deployed class distribution is
 \begin{equation}
 \bar{p}(c \mid x)
 = \frac{1}{2}\left[
-\mathrm{softmax}\!\left(\frac{z(x)}{T}\right)_c
+\mathrm{softmax}\!\left(\tfrac{z(x)}{T}\right)_c
 +
-\mathrm{softmax}\!\left(\frac{z(\mathrm{flip}(x))}{T}\right)_c
-\right].
+\mathrm{softmax}\!\left(\tfrac{z(\mathrm{flip}(x))}{T}\right)_c
+\right],
 \label{eq:tta-calibration}
 \end{equation}
-
-The predicted class is the maximum-probability class under $\bar{p}(c \mid x)$:
+and the predicted label is
 \begin{equation}
 \hat{y}(x) = \arg\max_{c \in \mathcal{C}} \bar{p}(c \mid x),
 \end{equation}
-where $\mathcal{C}$ is the seven-class label set.
-
-The current balanced-split checkpoint uses a learned temperature of 0.7810 on the active holdout evaluation. The deployed classifier continues to use the same two-view TTA policy.
+where $\mathcal{C}$ is the seven-class label set. The current deployed
+checkpoint uses a learned temperature $T = 0.7513$ obtained by minimizing
+negative log-likelihood on the held-out validation split, following the
+single-parameter temperature-scaling recipe of
+\citet{guo2017calibration}.
 
 \subsection{Runtime Acceptance Gate}
+\label{sec:gate}
 
-The runtime application does not accept every classifier output as an actionable diagnosis. It applies a per-class threshold gate:
+Not every classifier output is forwarded to the report writer. The
+runtime applies a per-class confidence threshold:
 \begin{equation}
 \mathrm{accept}(x)
 = \mathbf{1}\!\left[\bar{p}(\hat{y}(x)\mid x) \ge \tau_{\hat{y}(x)}\right].
 \label{eq:threshold-gate}
 \end{equation}
-
-The current thresholds are
+The deployed thresholds are
 \begin{align}
 \tau_{\mathrm{healthy}} &= 0.40, &
 \tau_{\mathrm{overwatered}} &= 0.60, &
@@ -50,32 +70,89 @@ The current thresholds are
 \tau_{\mathrm{white\ mold}} = 0.60.
 \label{eq:class-thresholds}
 \end{align}
-The default threshold for any unmapped class is 0.55. A second conservative guard in the runtime code demotes the prediction to \texttt{unknown} when the accepted top-1 probability falls below 0.50 after prompt assembly.
+The default for any unmapped class is $0.55$. A second guard demotes the
+prediction to the explicit \texttt{unknown} state when the accepted
+top-1 probability drops below $0.50$ after prompt assembly. The
+runtime additionally records the top-1 and top-2 probabilities $p_1, p_2$
+and the margin $\Delta = p_1 - p_2$ to a structured decision log; a
+margin threshold of $0.08$ is currently logged but not enforced. The
+classifier accuracy figures reported in \S\ref{sec:results} are
+threshold-only and do not depend on margin gating.
 
-The system also logs $p_1$, $p_2$, and the margin $p_1-p_2$ for later analysis. A margin threshold of 0.08 exists in the codebase only as a logging quantity. It is not currently applied at runtime. This is important because the current classifier claims in this paper are threshold-only runtime claims, not threshold-plus-margin claims.
+\subsection{Detector-Grounded Prompt Assembly}
 
-\subsection{Grounded Runtime Report Path}
+Downstream of the classifier, the runtime invokes RF-DETR
+Small~\citep{robinson2025rfdetr,carion2020detr} to produce a
+multi-label visibility vector over the six-part vocabulary
+$\mathcal{P} = \{\mathrm{flower}, \mathrm{fruit}, \mathrm{leaf},
+\mathrm{root}, \mathrm{soil}, \mathrm{stem}\}$. Per-part thresholds are
+tuned to each class:
+\begin{align*}
+\theta_{\mathrm{flower}} &= 0.50, &
+\theta_{\mathrm{fruit}} &= 0.50, &
+\theta_{\mathrm{leaf}} &= 0.40, \\
+\theta_{\mathrm{root}} &= 0.30, &
+\theta_{\mathrm{soil}} &= 0.40, &
+\theta_{\mathrm{stem}} &= 0.40.
+\end{align*}
+Let $V(x) \subseteq \mathcal{P}$ denote the set of parts whose maximum
+detection confidence exceeds the corresponding threshold. The prompt
+assembler constructs visible-part and not-visible-part lists,
+$V(x)$ and $\mathcal{P}\setminus V(x)$, and instructs the language model
+to describe symptoms only on parts in $V(x)$. A small post-processing
+heuristic remaps mentions of \emph{leaf} in mold-disease contexts to
+\emph{fruit} when the surrounding sentence references the calyx, since
+the green sepals of a strawberry fruit are commonly miscategorized as
+foliage in free-text descriptions.
 
-The report-generation stage is deliberately downstream of the classifier. The ResNet label is injected into the prompt as the authoritative diagnosis, RF-DETR contributes the visible-part and not-visible-part evidence summary, and the report writer is expected to explain that grounded diagnosis rather than re-predict it.
+\subsection{Optional Retrieval and Hallucination Retry}
 
-The runtime stack has one required grounding stage and two additional support mechanisms:
+The runtime stack includes two additional support modules:
 \begin{enumerate}[leftmargin=1.3em]
-\item \textbf{RF-DETR part grounding.} The detector is part of the runtime pipeline. Its part detections are converted into visible-part and not-visible-part lists that constrain what the report is allowed to claim about the image.
-\item \textbf{Knowledge-graph retrieval.} If the local disease QA resources load successfully, retrieved snippets can be appended to the report prompt as supplemental context.
-\item \textbf{Heuristic hallucination retry.} A phrase-triggered retry gate attempts to catch certain known overclaims by matching hard-coded substrings such as disease names or visual claims. This is currently heuristic and not yet calibrated against a clean false-positive budget.
+    \item \textbf{Knowledge-graph retrieval.} A local disease knowledge
+    base, populated from cooperative-extension sources, exposes a
+    retrieval interface following the pattern of
+    \citet{lewis2020rag}. When the accepted label is not
+    \texttt{unknown}, retrieved snippets are appended to the
+    report-writer prompt as supplemental context. Treatment passages may
+    be conditioned on detected parts (for example, fruit-specific advice
+    when \emph{fruit}~$\in V(x)$).
+    \item \textbf{Heuristic hallucination retry.} A phrase-pattern matcher
+    inspects the generated report for a curated list of overclaim
+    triggers (for instance, references to disease names that disagree
+    with the classifier label, or claims about parts in
+    $\mathcal{P}\setminus V(x)$). When a trigger fires, the runtime
+    re-issues the generation. This module is explicitly heuristic and
+    has not yet been calibrated against a false-positive budget.
 \end{enumerate}
+All three modules execute locally; no external model is queried at
+inference time.
 
-All three components operate locally at runtime. GPT is not used at inference time.
+\subsection{Report Writer Configuration}
 
-\subsection{Current MiniGPT Configuration}
+The report-writer backbone is MiniGPT-v2~\citep{chen2023minigptv2}, with
+a Llama 2 chat backbone~\citep{touvron2023llama2} and LoRA
+adaptation~\citep{hu2021lora}. The active training configuration uses
+448-pixel image inputs, a maximum text length of 500 tokens, LoRA rank
+$r=64$ with $\alpha=128$ and dropout $0.05$, batch size 2 per GPU with 8
+gradient-accumulation steps, and 20 epochs with a 10\% auto-validation
+split. These are the active repository settings; we note in
+\S\ref{sec:results} that the deployed checkpoint predates the constrained
+stage-2 redesign.
 
-The current MiniGPT training configuration uses a MiniGPT-v2 architecture \citep{chen2023minigptv2} with a Llama 2 chat backbone \citep{touvron2023llama2} and LoRA adaptation \citep{hu2021lora}. The active settings specify a 448-pixel image size, maximum text length 500, LoRA rank 64, LoRA alpha 128, dropout 0.05, batch size 2 per GPU, 8 gradient accumulation steps, and 20 epochs with a 10\% auto-validation split. These are the active training settings in the repository, not proof that a clean MiniGPT retrain on the newly balanced stage-2 dataset has already been completed.
+\subsection{Constrained Dual-Report Supervision Policy}
+\label{sec:dualpolicy}
 
-\subsection{Offline Dual-Report Generation Policy}
+Stage-2 supervision targets are generated offline from a frontier model
+(used only at dataset-construction time). For each input image, the
+policy emits a primary farmer-facing report. A second report is emitted
+only if the classifier exposes a \emph{semantically plausible} close
+alternative, where plausibility is determined by both a margin condition
+and a curated pair whitelist.
 
-The current stage-2 redesign uses GPT-5.4 only offline. Every image receives one standard farmer-facing report. Some images also receive a second report, but only under a deliberately strict ambiguity policy.
-
-Let the ground-truth folder label be $g(x)$, the top-1 classifier label be $y_1(x)$, and the top-2 classifier label be $y_2(x)$. The strongest competing class used for the offline policy is
+Let $g(x)$ denote the ground-truth folder label, $y_1(x)$ the top-1
+classifier label, and $y_2(x)$ the top-2 classifier label. The competing
+class used by the policy is
 \begin{equation}
 a(x) =
 \begin{cases}
@@ -84,8 +161,7 @@ y_1(x), & y_1(x) \neq g(x).
 \end{cases}
 \label{eq:alt-class}
 \end{equation}
-
-The second report is allowed to be ambiguity-aware only when the candidate pair is semantically plausible and the probabilities are genuinely close. The current allowed pair set is
+The allowed pair set is
 \begin{equation}
 \mathcal{A} =
 \left\{
@@ -94,13 +170,13 @@ The second report is allowed to be ambiguity-aware only when the candidate pair 
 &\{\mathrm{drought}, \mathrm{overwatered}\}, \\
 &\{\mathrm{drought}, \mathrm{frost}\}, \\
 &\{\mathrm{healthy}, \mathrm{overwatered}\}, \\
-&\{\mathrm{root\ rot}, \mathrm{overwatered}\}
+&\{\mathrm{root\ rot}, \mathrm{overwatered}\}.
 \end{aligned}
-\right\}.
+\right\}
 \label{eq:allowed-pairs}
 \end{equation}
-
-Under the current builder, a second report is marked \emph{ambiguous} only if one of two cases holds:
+A second report is labelled \emph{ambiguous} only when one of two
+conditions holds:
 \begin{align}
 y_1(x) = g(x), \qquad
 \bar{p}(y_1 \mid x) - \bar{p}(y_2 \mid x) &\le 0.10, \nonumber \\
@@ -108,11 +184,15 @@ y_1(x) = g(x), \qquad
 \{g(x), y_2(x)\} &\in \mathcal{A}, \label{eq:amb-case-1} \\
 y_1(x) \neq g(x), \qquad
 \mathrm{rank}(g(x)) = 2, \nonumber \\
-\bar{p}(y_1 \mid x) - \bar{p}(g \mid x) &\le 0.10, \nonumber \\
-\bar{p}(g \mid x) \ge 0.15, \qquad
+\bar{p}(y_1 \mid x) - \bar{p}(g(x) \mid x) &\le 0.10, \nonumber \\
+\bar{p}(g(x) \mid x) \ge 0.15, \qquad
 \{g(x), y_1(x)\} &\in \mathcal{A}. \label{eq:amb-case-2}
 \end{align}
-
-If the classifier is correct and the margin is clear, the second report becomes a \emph{standard variant} rather than an ambiguity report. If the classifier is wrong and the ground truth is not a close rank-2 competitor, the second report is skipped entirely. This prevents obvious classifier failures from being laundered into fake ambiguity.
-
-This policy is currently a pilot-stage data-generation policy only. It is not yet a claim about the live runtime behavior of the deployed report generator.
+When the classifier is correct and the margin is wide, the second report
+is emitted as a \emph{standard variant}: a paraphrase under the same
+diagnostic label, used to expand training-target diversity. When the
+classifier is incorrect and the ground-truth label is not a close
+rank-2 competitor, no second report is emitted, which prevents
+classifier failures from being relabelled as ambiguity events. The
+policy is restricted to dataset construction and does not currently
+imply any user-facing alternative-presentation behavior at runtime.

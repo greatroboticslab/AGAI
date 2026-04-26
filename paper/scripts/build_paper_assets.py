@@ -5,10 +5,10 @@ Generate current paper figures and LaTeX tables from local AGAI artifacts.
 Assumptions
 -----------
 1. The JSON evaluation artifacts under ``evaluation/holdout`` are the canonical
-   measured outputs for the current ResNet checkpoints.
+   measured outputs for the current reported ResNet checkpoint evaluations.
 2. The filesystem under ``plant_diagnostic/data`` is the canonical source of
-   current dataset sizes after the balanced holdout rebuild, training-root
-   leakage cleanup, and class-floor augmentation.
+   current dataset sizes after the active holdout release, training-root
+   rebuild, external imports, and class-floor augmentation.
 3. The dual-report pilot summary under ``evaluation/stage2_pilot`` is the
    current factual basis for the report-generation section of the manuscript.
 4. This script should fail loudly if probabilities leave the physical interval
@@ -37,7 +37,7 @@ PAPER_ROOT = REPO_ROOT / "paper"
 FIG_ROOT = PAPER_ROOT / "figures" / "generated"
 TEX_ROOT = PAPER_ROOT / "generated"
 
-HOLDOUT_V3 = REPO_ROOT / "evaluation" / "holdout" / "resnet_v3_balanced20holdout_full_holdout.json"
+HOLDOUT_V4 = REPO_ROOT / "evaluation" / "holdout" / "resnet_v4_release10holdout_full_holdout.json"
 DUAL_REPORT_SUMMARY = (
     REPO_ROOT
     / "evaluation"
@@ -253,7 +253,7 @@ def render_dataset_composition(counts: SplitCounts) -> None:
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=20, ha="right")
     ax.set_ylabel("Image count")
-    ax.set_title("Current dataset composition after the balanced holdout rebuild and detector-audit imports")
+    ax.set_title("Current dataset composition after the active holdout release, rebuild, and balancing pass")
     ax.legend(frameon=False, ncol=3)
     for ext in ("png", "pdf"):
         fig.savefig(FIG_ROOT / f"dataset_composition.{ext}", bbox_inches="tight")
@@ -280,7 +280,7 @@ def render_holdout_grid() -> None:
     axes[-1].text(
         0.02,
         0.95,
-        "Holdout set\nn = 140\n20 images per class\nBalanced across all\nseven disease states",
+        "Holdout set\nn = 70\n10 images per class\nBalanced across all\nseven disease states",
         va="top",
         ha="left",
         fontsize=11,
@@ -293,8 +293,8 @@ def render_holdout_grid() -> None:
     plt.close(fig)
 
 
-def render_confusion_matrix(v3: dict[str, Any]) -> None:
-    cm = np.asarray(v3["confusion_matrix"], dtype=np.float64)
+def render_confusion_matrix(v4: dict[str, Any]) -> None:
+    cm = np.asarray(v4["confusion_matrix"], dtype=np.float64)
     if cm.shape != (len(CLASS_ORDER), len(CLASS_ORDER)):
         raise ValueError(f"Unexpected confusion matrix shape: {cm.shape}")
 
@@ -306,7 +306,7 @@ def render_confusion_matrix(v3: dict[str, Any]) -> None:
     ax.set_yticklabels([DISPLAY_LABELS[x] for x in CLASS_ORDER])
     ax.set_xlabel("Predicted class")
     ax.set_ylabel("True class")
-    ax.set_title("ResNet v3 confusion matrix on the balanced 140-image holdout")
+    ax.set_title("ResNet v4 confusion matrix on the balanced 70-image holdout")
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
             value = int(cm[i, j])
@@ -314,32 +314,32 @@ def render_confusion_matrix(v3: dict[str, Any]) -> None:
             ax.text(j, i, str(value), ha="center", va="center", color=color, fontsize=10)
     fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
     for ext in ("png", "pdf"):
-        fig.savefig(FIG_ROOT / f"resnet_v3_confusion_matrix.{ext}", bbox_inches="tight")
+        fig.savefig(FIG_ROOT / f"resnet_v4_confusion_matrix.{ext}", bbox_inches="tight")
     plt.close(fig)
 
 
-def render_accuracy_and_calibration(v3: dict[str, Any]) -> None:
-    v3_summary = v3["summary"]
+def render_accuracy_and_calibration(v4: dict[str, Any]) -> None:
+    v4_summary = v4["summary"]
 
-    v3_per = [v3["per_class"][c]["top1_accuracy"] for c in CLASS_ORDER]
-    validate_probability_range(v3_per, "per-class top-1 accuracy")
+    v4_per = [v4["per_class"][c]["top1_accuracy"] for c in CLASS_ORDER]
+    validate_probability_range(v4_per, "per-class top-1 accuracy")
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.0, 5.0))
 
     x = np.arange(len(CLASS_ORDER))
-    ax1.bar(x, v3_per, width=0.58, color="#3182bd")
+    ax1.bar(x, v4_per, width=0.58, color="#3182bd")
     ax1.set_ylim(0.0, 1.05)
     ax1.set_xticks(x)
     ax1.set_xticklabels([DISPLAY_LABELS[c] for c in CLASS_ORDER], rotation=25, ha="right")
     ax1.set_ylabel("Top-1 accuracy")
-    ax1.set_title("Per-class top-1 accuracy on the balanced holdout")
+    ax1.set_title("Per-class top-1 accuracy on the active balanced holdout")
     ax1.text(
         0.02,
         0.97,
         (
-            f"Overall top-1: {100*v3_summary['top1_accuracy']:.1f}%\n"
-            f"Top-2: {100*v3_summary['top2_accuracy']:.1f}%\n"
-            f"ECE: {100*v3_summary['ece']:.2f}%"
+            f"Overall top-1: {100*v4_summary['top1_accuracy']:.1f}%\n"
+            f"Top-2: {100*v4_summary['top2_accuracy']:.1f}%\n"
+            f"ECE: {100*v4_summary['ece']:.2f}%"
         ),
         transform=ax1.transAxes,
         va="top",
@@ -347,7 +347,7 @@ def render_accuracy_and_calibration(v3: dict[str, Any]) -> None:
         bbox={"boxstyle": "round", "facecolor": "white", "alpha": 0.9, "edgecolor": "#cccccc"},
     )
 
-    rel = v3["reliability"]
+    rel = v4["reliability"]
     xs = [row["mean_confidence"] for row in rel if row["count"] > 0]
     ys = [row["accuracy"] for row in rel if row["count"] > 0]
     weights = [row["count"] for row in rel if row["count"] > 0]
@@ -363,7 +363,7 @@ def render_accuracy_and_calibration(v3: dict[str, Any]) -> None:
     ax2.set_xlabel("Mean predicted confidence")
     ax2.set_ylabel("Empirical accuracy")
     ax2.set_title(
-        f"V3 reliability diagram, ECE = {100*v3_summary['ece']:.2f}%"
+        f"V4 reliability diagram, ECE = {100*v4_summary['ece']:.2f}%"
     )
     ax2.legend(frameon=False, loc="lower right")
 
@@ -426,17 +426,17 @@ def write_dataset_counts_table(counts: SplitCounts) -> None:
     write_text(TEX_ROOT / "dataset_counts_table.tex", table)
 
 
-def write_resnet_summary_table(v3: dict[str, Any]) -> None:
-    s3 = v3["summary"]
+def write_resnet_summary_table(v4: dict[str, Any]) -> None:
+    s4 = v4["summary"]
     table = f"""\\begin{{tabular}}{{lr}}
 \\toprule
-Metric & Current v3 \\\\
+Metric & Current v4 \\\\
 \\midrule
-Holdout samples & {s3['samples']} \\\\
-Top-1 accuracy & {100*s3['top1_accuracy']:.2f}\\% \\\\
-Top-2 accuracy & {100*s3['top2_accuracy']:.2f}\\% \\\\
-ECE & {100*s3['ece']:.2f}\\% \\\\
-Temperature & {s3['temperature_used']:.4f} \\\\
+Holdout samples & {s4['samples']} \\\\
+Top-1 accuracy & {100*s4['top1_accuracy']:.2f}\\% \\\\
+Top-2 accuracy & {100*s4['top2_accuracy']:.2f}\\% \\\\
+ECE & {100*s4['ece']:.2f}\\% \\\\
+Temperature & {s4['temperature_used']:.4f} \\\\
 Horizontal-flip TTA & yes \\\\
 \\bottomrule
 \\end{{tabular}}
@@ -444,10 +444,10 @@ Horizontal-flip TTA & yes \\\\
     write_text(TEX_ROOT / "resnet_summary_table.tex", table)
 
 
-def write_per_class_table(v3: dict[str, Any]) -> None:
+def write_per_class_table(v4: dict[str, Any]) -> None:
     lines = []
     for label in CLASS_ORDER:
-        row = v3["per_class"][label]
+        row = v4["per_class"][label]
         ci = row["top1_wilson95"]
         lines.append(
             f"{tex_escape(DISPLAY_LABELS[label])} & {row['support']} & "
@@ -469,10 +469,13 @@ def write_per_class_table(v3: dict[str, Any]) -> None:
 
 def write_status_table() -> None:
     rows = [
-        ("Balanced holdout rebuild with provenance", "Done", "The active holdout now contains 20 images for each of the seven classes"),
+        ("Balanced holdout with provenance", "Done", "The active holdout now contains 10 images for each of the seven classes"),
+        ("Compact-train release and train_aug rebuild", "Done", "Ten images per class were released from holdout back to train and the augmented root was rebuilt from scratch"),
         ("Augmented class-floor balancing", "Done", "Underrepresented classes in the active augmented split were raised to a minimum of 300 images"),
-        ("ResNet v3 retrain on the balanced split", "Done", "The current classifier checkpoint is evaluated on the balanced 140-image holdout"),
-        ("Runtime promotion with rollback path", "Done", "The runtime app defaults to the current v3 checkpoint and keeps an explicit override path"),
+        ("Conservative external image additions", "Done", "Human-audited frost and drought additions were imported into train and propagated into train_aug"),
+        ("ResNet retrain on the rebuilt current split", "Done", "A fresh v4 checkpoint was trained on the rebuilt train_aug root and calibrated on its internal validation split"),
+        ("Latest ResNet checkpoint evaluation on active holdout", "Done", "The v4 checkpoint was evaluated on the active 70-image balanced holdout"),
+        ("Runtime promotion with rollback path", "Done", "The runtime app defaults to the current v4 checkpoint and keeps an explicit override path"),
         ("p1/p2 runtime logging", "Done", "JSONL logging added for downstream calibration analysis"),
         ("Tight dual-report generation pilot", "Done", "Focused 20-image pilot completed with 36 generated reports"),
         ("Full stage-2 regeneration under tight policy", "Pending", "The current stage-2 JSON remains stale relative to the augmented training root"),
@@ -525,7 +528,7 @@ def main() -> None:
     ensure_dirs()
     set_style()
 
-    v3 = load_json(HOLDOUT_V3)
+    v4 = load_json(HOLDOUT_V4)
     dual_summary = load_json(DUAL_REPORT_SUMMARY)
     dual_audit = load_jsonl(DUAL_REPORT_AUDIT)
     counts = collect_counts()
@@ -533,13 +536,13 @@ def main() -> None:
     render_pipeline_overview()
     render_dataset_composition(counts)
     render_holdout_grid()
-    render_confusion_matrix(v3)
-    render_accuracy_and_calibration(v3)
+    render_confusion_matrix(v4)
+    render_accuracy_and_calibration(v4)
     render_dual_report_summary(dual_summary, dual_audit)
 
     write_dataset_counts_table(counts)
-    write_resnet_summary_table(v3)
-    write_per_class_table(v3)
+    write_resnet_summary_table(v4)
+    write_per_class_table(v4)
     write_status_table()
     write_dual_report_table(dual_summary, dual_audit)
 

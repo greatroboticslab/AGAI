@@ -1,37 +1,181 @@
 \appendix
 
-\section{Appendix: Configuration and Project Scope Notes}
+\section{Appendix: Configuration and Reproducibility Notes}
 
-\subsection{Completed Versus Ongoing Work}
+\subsection{Project Status Summary}
 
-Table~\ref{tab:status-appendix} summarizes the current project state. The classifier side is complete enough to support the results reported in the main text. The report-generation side has completed a pilot but still needs full stage-2 regeneration, clean retraining, and clean holdout evaluation before it can support a final end-to-end claim.
+Table~\ref{tab:status-appendix} summarizes the state of the components
+referenced in the main text. The classifier and detector evidence are
+sufficient to support the results in \S\ref{sec:results}; the
+language-stage components remain in transition.
 
 \begin{table}[H]
 \centering
-\caption{Current project status summary.}
+\caption{Status summary for the components referenced in this
+manuscript.}
 \label{tab:status-appendix}
 \input{generated/status_table.tex}
 \end{table}
 
-\subsection{MiniGPT Training Configuration in the Repository}
+\subsection{Classifier Training and Calibration Details}
 
-The active MiniGPT training configuration in the repository uses:
+The deployed ResNet-50 checkpoint is trained on the rebuilt
+\texttt{train\_aug} root described in \S\ref{sec:data} with standard
+ImageNet normalization, moderate train-time augmentation, and a
+256-pixel evaluation crop. The post-hoc temperature parameter
+$T = 0.7513$ in Eq.~\ref{eq:tta-calibration} is fit by minimizing
+negative log-likelihood on the internal validation
+split~\citep{guo2017calibration}. Reliability bins are constructed on a
+ten-bin equal-width partition of $[0,1]$, following the protocol used
+in the calibration literature~\citep{naeini2015ece}.
+
+\subsection{Grounding-Detector Training Configuration}
+
+The RF-DETR Small grounding detector is fine-tuned from a publicly
+released checkpoint with the following configuration:
+
 \begin{itemize}[leftmargin=1.3em]
-\item image size 448 for both train and evaluation processors,
-\item maximum text length 500,
-\item LoRA rank 64, LoRA alpha 128, and dropout 0.05,
-\item initial learning rate \(10^{-5}\),
-\item 20 epochs,
-\item per-GPU batch size 2 with 8 gradient accumulation steps,
-\item a 10\% auto-validation split.
+\item six-class plant-part vocabulary ($\mathrm{flower}, \mathrm{fruit},
+\mathrm{leaf}, \mathrm{root}, \mathrm{soil}, \mathrm{stem}$);
+\item COCO-format dataset with 753 train images / 19{,}487 train
+annotations and 322 validation images / 8{,}582 validation annotations;
+\item 100 training epochs at resolution 560;
+\item batch size 8 with gradient accumulation factor 2 (effective
+batch 16);
+\item encoder learning rate $1.5\times 10^{-4}$, decoder learning rate
+$1\times 10^{-4}$, weight decay $1\times 10^{-4}$;
+\item cosine learning-rate schedule with five warmup epochs and minimum
+learning-rate factor $0.01$;
+\item drop-path $0.1$;
+\item exponential moving average enabled;
+\item seed 42;
+\item per-class runtime thresholds $\theta_p$ tuned per part as listed
+in \S\ref{sec:system}.
 \end{itemize}
 
-These are active repository settings, not proof of a clean MiniGPT training run on the current balanced stage-2 dataset. The current configuration still points to the older stage-2 annotation path, which is why the clean regeneration remains a pending item in Table~\ref{tab:status-appendix}.
+\subsection{Report-Writer Training Configuration}
 
-\subsection{Runtime Thresholds}
+The active MiniGPT-v2 training configuration is summarized below. These
+values are repository-current settings; we reiterate that the deployed
+checkpoint predates the constrained stage-2 redesign and the holdout
+carve, and that retraining on the regenerated targets is identified as
+pending in Table~\ref{tab:status-appendix}.
 
-The current runtime thresholds are listed in Equation~\ref{eq:class-thresholds}. The live application currently uses threshold-only acceptance, logs p1/p2 margins for later analysis, and applies a second conservative low-confidence demotion when the accepted p1 value falls below 0.50. The margin rule is intentionally not active yet because its operating point has not been calibrated on sufficient real decision logs.
+\begin{itemize}[leftmargin=1.3em]
+\item image size 448 for both train and evaluation processors;
+\item maximum text length of 500 tokens;
+\item LoRA rank $r=64$, $\alpha=128$, dropout $0.05$;
+\item initial learning rate $1\times 10^{-5}$, minimum
+$5\times 10^{-6}$, warmup $1\times 10^{-6}$;
+\item 20 epochs with linear warmup and cosine decay;
+\item per-GPU batch size 2 with 8 gradient-accumulation steps;
+\item 10\% auto-validation split;
+\item seed 42.
+\end{itemize}
 
-\subsection{Ambiguity Policy Scope}
+\subsection{Runtime Decision Rule}
 
-The current ambiguity pilot exists only in the offline dataset-generation path. It does not yet imply that the runtime report generator should present possible alternatives directly to farmers. Before that can become a product claim, the project still needs a clean post-regeneration MiniGPT retrain and a clean holdout explanation evaluation with and without RF-DETR grounding.
+The deployed runtime applies threshold-only acceptance under
+Eq.~\ref{eq:threshold-gate} with the per-class thresholds listed in
+Eq.~\ref{eq:class-thresholds}, the default threshold of $0.55$ for any
+unmapped class, and a post-prompt-assembly low-confidence guard that
+demotes accepted predictions whose top-1 probability falls below
+$0.50$. The margin threshold of $0.08$ is recorded to the structured
+decision log but is not currently activated as a runtime demotion rule;
+its operating point will be calibrated from production decision logs.
+
+\subsection{Scope of the Ambiguity Policy}
+
+The constrained dual-report policy of \S\ref{sec:dualpolicy} is a
+dataset-construction policy. It does not at present imply a user-facing
+behavior in which the deployed report writer presents alternatives to
+end users. A user-facing alternative-presentation feature would require
+both a retrained MiniGPT-v2 checkpoint on regenerated targets and a
+clean holdout explanation evaluation, both of which are listed as
+pending in Table~\ref{tab:status-appendix}.
+
+\subsection{Per-Image Misclassifications on the Holdout}
+
+For qualitative inspection, Table~\ref{tab:misclassifications} lists
+every misclassified holdout image for the deployed v4 checkpoint
+together with the calibrated top-1 probability $p_1$ assigned by the
+classifier. Eight of the 70 holdout images are misclassified; of these,
+five would be demoted to \texttt{unknown} by the deployed acceptance
+gate (Table~\ref{tab:acceptance-gate}), and the remaining three would
+be accepted. The accepted misclassifications are concentrated on the
+\emph{overwatered} class, where the classifier transfers probability to
+\emph{drought} or \emph{frost} on examples whose visible symptoms are
+shared between drought and waterlogging.
+
+\begin{table}[H]
+\centering
+\caption{Misclassified holdout images for the deployed v4 checkpoint.
+$p_1$ is the calibrated top-1 probability assigned by the classifier;
+images with $p_1$ below the per-class acceptance threshold $\tau_c$
+(Eq.~\ref{eq:class-thresholds}) or below the $0.50$ post-prompt-assembly
+floor are demoted to \texttt{unknown} by the deployed runtime gate.}
+\label{tab:misclassifications}
+\input{generated/misclassification_table.tex}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/generated/misclassification_grid.pdf}
+\caption{The eight misclassified holdout images for the deployed v4
+checkpoint, with ground-truth $\rightarrow$ predicted labels, the
+calibrated top-1 probability $p_1$, and the deployed gate decision
+(``demoted'' images are sent to \texttt{unknown} at runtime; ``accepted''
+images are forwarded to the report writer).}
+\label{fig:misclassification-grid}
+\end{figure}
+
+\subsection{Reproducibility Manifest}
+
+The artifacts referenced in the main text are pinned as follows.
+
+\paragraph{Source revision.}
+Repository commit hash \texttt{6eaa403e021261f31f50e99a70c5b4a17944b497}.
+
+\paragraph{Model weights (SHA-256).}
+\begin{itemize}[leftmargin=1.3em]
+\item ResNet-50 v4 classifier
+(\texttt{plant\_diagnostic/models/resnet\_strawberry\_v4\_release10holdout.pth}):\\
+\texttt{3d41c944c46b3f0bf5f356eb5e85df7f33afa69f2b121255421afc5558a569a2}.
+\item RF-DETR Small detector
+(\texttt{rfdetr\_parts/output/checkpoint\_best\_total.pth}):\\
+\texttt{0274206eb1f851835193a1c30fc455d8cf2edaf98b5fb26dff16d785b45a431a}.
+\end{itemize}
+
+\paragraph{Evaluation artifacts.}
+The classifier evaluation JSON is
+\texttt{evaluation/holdout/resnet\_v4\_release10holdout\_full\_holdout.json}.
+The dual-report pilot summary and per-record audit are
+\texttt{evaluation/stage2\_pilot/dual\_report\_focus20\_tight/}
+\texttt{dual\_report\_focus20\_tight\_summary.json} and
+\texttt{...\_audit.jsonl}.
+
+\paragraph{Random seed.}
+Both training pipelines fix \texttt{seed=42}. The bootstrap confidence
+intervals reported in \S\ref{sec:results-classifier} use a percentile
+bootstrap with 10{,}000 resamples and seed 42.
+
+\paragraph{Build pipeline.}
+All figures and tables in the manuscript are generated by the following
+scripts operating on the artifacts above:
+\begin{itemize}[leftmargin=1.3em]
+\item \texttt{paper/scripts/build\_paper\_assets.py} -- pipeline figure,
+dataset counts, classifier confusion matrix, accuracy/calibration
+figure, dual-report pilot summary;
+\item \texttt{paper/scripts/compute\_extra\_metrics.py} -- bootstrap
+confidence intervals, acceptance-gate replay, per-image
+misclassification table;
+\item \texttt{paper/scripts/compute\_threshold\_sweep.py} -- threshold
+sensitivity sweep, risk-coverage curve, selective-accuracy table;
+\item \texttt{paper/scripts/compute\_mcnemar.py} -- McNemar paired test
+between v3 and v4 holdout predictions;
+\item \texttt{paper/scripts/render\_misclass\_grid.py} -- per-image
+misclassification grid;
+\item \texttt{paper/scripts/run\_rfdetr\_on\_holdout.py} -- detector
+inference on the disease holdout, per-class firing-rate table and
+heatmap, latency summary (run inside the \texttt{rfdetr} conda env).
+\end{itemize}

@@ -1,7 +1,33 @@
 \section{Conclusion}
 
-AGAI now has a clean and defensible classifier core. The current ResNet v3 checkpoint is trained on the balanced augmented split and reaches 83.57\% top-1 accuracy and 92.14\% top-2 accuracy on the balanced seven-class holdout, with especially strong performance on gray mold, root rot, and healthy examples. The runtime system already supports classifier-anchored reporting, RF-DETR grounding, optional knowledge-graph retrieval, and classifier decision logging.
+We described AGAI, a strawberry disease diagnostic pipeline that
+factors the task into a calibrated classifier, a part-level visibility
+detector, and a constrained report writer. On the active balanced
+seven-class holdout, the deployed ResNet-50 v4 checkpoint attains
+88.57\% top-1 accuracy, 92.86\% top-2 accuracy, and 8.56\% expected
+calibration error under two-view test-time augmentation and post-hoc
+temperature scaling, with 100.0\% per-class top-1 accuracy on frost,
+healthy, and root rot. The RF-DETR Small grounding detector reaches a
+validation $\mathrm{mAP}_{50}$ of 0.772 and $\mathrm{mAP}_{50:95}$ of
+0.598, supporting its runtime use as a binary visibility oracle for the
+language stage.
 
-At the same time, the report-generation side is in the middle of an important transition. The project has moved beyond free-form paragraph targets toward a stricter farmer-facing report format and a tightly constrained ambiguity policy. The focused dual-report pilot indicates that this direction is useful and that ambiguity can be kept rare, believable, and semantically grounded. However, the full stage-2 regeneration on the current balanced split, the corresponding MiniGPT retrain, and the clean holdout explanation evaluation are still pending.
+We further described and exercised a constrained dual-report
+supervision policy that produces a primary report for every image and
+an ambiguity-aware second report only when both a probability-margin
+condition and a curated semantic-pair whitelist are satisfied. A
+focused 20-image pilot under this policy produced 36 records (20
+standard, 14 standard variants, 2 ambiguity) with no fallback
+generations, supporting the feasibility of the redesign as a
+target-distribution change before full-scale regeneration.
 
-The paper therefore closes on a simple factual statement. AGAI is already a real system with a measured and methodologically clean classifier component. Its grounded reporting redesign is promising and partially implemented, but not yet finished enough to support a clean end-to-end explanation claim. That is not a weakness of the manuscript. It is the reason the manuscript is trustworthy.
+Three classes of experiments remain open and are explicitly deferred:
+full-scale regeneration of stage-2 supervision under the constrained
+policy, MiniGPT-v2 retraining on the regenerated targets, and clean
+holdout explanation evaluation with and without the visibility
+constraint. We frame those as future work rather than as missing
+results, and we limit the present manuscript's claims to the
+classifier, detector, and pilot evidence currently in hand. Within those
+limits, the manuscript documents a reproducible split protocol, a
+calibrated classifier evaluation, a measured detector backbone, and a
+controlled feasibility study of the constrained supervision policy.

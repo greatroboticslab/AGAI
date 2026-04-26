@@ -1,13 +1,93 @@
 \section{Related Work}
 
-Image-based plant disease classification has been studied extensively, especially since the availability of curated crop image datasets and transfer learning from ImageNet-scale backbones. Mohanty et al. showed that deep convolutional networks can perform strongly on plant disease datasets when given labeled images and sufficient transfer-learning support \citep{mohanty2016plantdisease}. That result helped establish the basic feasibility of smartphone-style plant diagnosis, but most work in that tradition terminates at classification. It does not address how a system should explain its answer, how it should qualify uncertainty, or how it should avoid detailed but unsupported claims.
+\subsection{Image-Based Plant Disease Classification}
 
-ResNet remains a strong baseline for this setting because its residual formulation supports deep feature extraction without the optimization instability that affected earlier very deep CNNs \citep{he2016resnet}. In AGAI, the important point is not that ResNet is novel. The important point is that a calibrated ResNet-50 can serve as a high-precision disease anchor while the language model is constrained to explain rather than relabel.
+Image-based plant disease classification has a substantial literature,
+particularly since the public release of large curated crop image
+collections such as PlantVillage~\citep{hughes2015plantvillage}.
+\citet{mohanty2016plantdisease} demonstrated that deep convolutional
+networks pretrained on ImageNet~\citep{russakovsky2015imagenet} can be
+transferred to plant disease classification with strong in-distribution
+performance, establishing the basic feasibility of smartphone-style
+diagnosis. Most subsequent work in this tradition terminates at the class
+label and does not address downstream questions of explanation,
+uncertainty quantification, or evidence selection. AGAI inherits the
+classifier-as-anchor design from this body of work but treats explanation
+as a separate stage with its own constraints.
 
-Calibration matters because a diagnostic system should use probabilities in a meaningful way, not merely output them. Guo et al. showed that modern neural networks are often miscalibrated and that temperature scaling provides a simple and effective post-hoc correction \citep{guo2017calibration}. AGAI follows that practical recipe. Two-view test-time augmentation and temperature scaling are used to produce the classifier probabilities that drive both the runtime acceptance gate and the offline ambiguity pilot.
+ResNet-50~\citep{he2016resnet} remains a strong choice for this setting
+because residual connections support deep feature extraction without the
+optimization instability that historically affected very deep CNNs. We do
+not claim novelty for the classifier architecture; rather, the contribution
+of the classifier in our pipeline is that it is calibrated, gated, and
+isolated from the language model.
 
-On the language side, the current system inherits its report-writing backbone from the MiniGPT line of models \citep{zhu2023minigpt4, chen2023minigptv2}, which align a vision encoder with a large language model. The active repository configuration uses Llama 2 as the language backbone \citep{touvron2023llama2} and LoRA for parameter-efficient adaptation \citep{hu2021lora}. These choices are pragmatic rather than novel. The distinctive feature in AGAI is the surrounding policy: the language model is not treated as a free diagnostician. It is trained and prompted as a constrained report generator.
+\subsection{Probability Calibration}
 
-That distinction connects AGAI to broader work on guardrails and grounded generation. In mission-critical domains such as medicine, safety, and defense, a model that expresses uncertainty honestly can be more useful than a model that simply maximizes fluency. The ambiguity work reported here should be read in that tradition. The goal is not to let the language model wander through the seven disease classes. The goal is to teach it a narrow and useful uncertainty behavior when the classifier itself exposes a plausible close alternative.
+Modern neural classifiers are commonly miscalibrated, producing
+overconfident maximum-softmax probabilities. \citet{guo2017calibration}
+showed that a single-parameter post-hoc temperature scaling correction
+substantially reduces calibration error without affecting accuracy. We
+adopt this recipe. Expected calibration error
+(ECE)~\citep{naeini2015ece} is reported for the deployed classifier, and
+Wilson score intervals~\citep{wilson1927interval} are used for per-class
+accuracy uncertainty due to the small per-class support of the balanced
+holdout.
 
-AGAI still differs from many guardrail settings in one important respect. The live product must remain fully local and free at inference time. GPT-5.4 is used only offline during stage-2 dataset generation. That means any improvement has to survive deployment without access to GPT or external scoring signals. The system must therefore learn better behavior from better targets, not from a runtime API dependency.
+\subsection{Detection Transformers and Visible-Part Grounding}
+
+The DETR family~\citep{carion2020detr} formulates object detection as a
+direct set prediction problem, eliminating hand-tuned anchors and
+non-maximum suppression. RF-DETR~\citep{robinson2025rfdetr} is a
+real-time variant in this family and forms the basis of our plant-part
+detector. In AGAI, the detector serves a non-standard purpose: rather
+than localize disease symptoms, it produces a binary mask over a fixed
+six-part vocabulary that is injected into the language model prompt as a
+visibility constraint. This converts a downstream-only inference task
+(``what plant parts may be discussed?'') into an upstream perception
+task with an explicit ground truth.
+
+\subsection{Vision-Language Models and Parameter-Efficient Adaptation}
+
+The MiniGPT line~\citep{zhu2023minigpt4,chen2023minigptv2} aligns a
+vision encoder with a large language backbone via a learned linear
+projection and lightweight instruction tuning. The closely related LLaVA
+family~\citep{liu2023llava} demonstrates the broader utility of this
+class of architectures. AGAI uses MiniGPT-v2 with a Llama 2 chat
+backbone~\citep{touvron2023llama2} adapted via low-rank
+adaptation~\citep{hu2021lora}. The architectural choices are pragmatic;
+the contribution lies in how the language model is wrapped: as a
+constrained report writer downstream of an authoritative classifier and
+detector, rather than as a free diagnostician.
+
+\subsection{Retrieval-Augmented Generation and Grounded Output}
+
+Retrieval-augmented generation~\citep{lewis2020rag} attaches an external
+non-parametric memory to a generative model so that factual content can
+be sourced from a curated corpus rather than parameterized weights. We
+follow this pattern at runtime: a curated disease knowledge graph,
+populated from cooperative-extension publications, supplies optional
+treatment-context snippets to the report-writer prompt. The retrieval
+stage is not the diagnostic authority; it provides citation-backed
+context for the explanation.
+
+\subsection{Hallucination in Multimodal Models}
+
+The recent survey of \citet{huang2024hallucinationsurvey} catalogues
+the landscape of hallucination behaviors in large language models and
+multimodal systems, including object hallucination, attribute
+hallucination, and unsupported causal claims. AGAI's design responds to
+this literature by reducing the surface area on which the language model
+can hallucinate: the classifier label is fixed, the visible-part list is
+fixed, and the generation is restricted to explanation conditioned on
+both. The constrained dual-report supervision policy described in
+\S\ref{sec:system} extends this idea to training-data generation.
+
+\subsection{Locality and Inference-Time Cost}
+
+Several recent agricultural-AI deployments rely on hosted multimodal APIs
+at inference time. AGAI deviates from this pattern: the deployed runtime
+is fully local, with no external model calls during serving. GPT-class
+models are used only offline during stage-2 supervision generation. Any
+quality improvement therefore must survive deployment without privileged
+runtime access to a frontier model.

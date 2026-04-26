@@ -29,3 +29,22 @@ GW AGAI*/
 rfdetr_parts/dataset/
 rfdetr_parts/output/
 rfdetr_parts/*.pth
+
+# Image datasets (large, local-only). The repository keeps placeholder
+# directories with README.md files documenting the expected layout; the
+# image content itself is not tracked in git.
+plant_diagnostic/data/holdout/*/*.jpg
+plant_diagnostic/data/holdout/*/*.jpeg
+plant_diagnostic/data/holdout/*/*.png
+plant_diagnostic/data/holdout/*/*.webp
+plant_diagnostic/data/train/*/*.jpg
+plant_diagnostic/data/train/*/*.jpeg
+plant_diagnostic/data/train/*/*.png
+plant_diagnostic/data/train/*/*.webp
+plant_diagnostic/data/train_aug/*/*.jpg
+plant_diagnostic/data/train_aug/*/*.jpeg
+plant_diagnostic/data/train_aug/*/*.png
+plant_diagnostic/data/train_aug/*/*.webp
+plant_diagnostic/data/train_aug_backup_*/
+plant_diagnostic/data/train_aug_external_swap_archive/
+annotationjsons/

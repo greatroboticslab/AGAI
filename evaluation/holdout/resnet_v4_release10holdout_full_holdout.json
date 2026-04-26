@@ -1,0 +1,1473 @@
+{
+  "summary": {
+    "samples": 70,
+    "top1_accuracy": 0.8857142857142857,
+    "top2_accuracy": 0.9285714285714286,
+    "ece": 0.08559268287249971,
+    "temperature_used": 0.7512747049331665,
+    "tta_hflip": true
+  },
+  "per_class": {
+    "drought": {
+      "support": 10,
+      "top1_accuracy": 0.8,
+      "top1_wilson95": {
+        "low": 0.4901624715366418,
+        "high": 0.9433178485456248
+      },
+      "top2_accuracy": 0.9,
+      "top2_wilson95": {
+        "low": 0.5958499732047615,
+        "high": 0.9821237869049271
+      },
+      "mean_p1_correct": 0.7364616766571999,
+      "mean_p1_incorrect": 0.5944397151470184,
+      "row_predictions": {
+        "drought": 8,
+        "frost": 0,
+        "gray_mold": 2,
+        "healthy": 0,
+        "overwatered": 0,
+        "root_rot": 0,
+        "white_mold": 0
+      }
+    },
+    "frost": {
+      "support": 10,
+      "top1_accuracy": 1.0,
+      "top1_wilson95": {
+        "low": 0.7224672001371107,
+        "high": 0.9999999999999999
+      },
+      "top2_accuracy": 1.0,
+      "top2_wilson95": {
+        "low": 0.7224672001371107,
+        "high": 0.9999999999999999
+      },
+      "mean_p1_correct": 0.8772525548934936,
+      "mean_p1_incorrect": NaN,
+      "row_predictions": {
+        "drought": 0,
+        "frost": 10,
+        "gray_mold": 0,
+        "healthy": 0,
+        "overwatered": 0,
+        "root_rot": 0,
+        "white_mold": 0
+      }
+    },
+    "gray_mold": {
+      "support": 10,
+      "top1_accuracy": 0.9,
+      "top1_wilson95": {
+        "low": 0.5958499732047615,
+        "high": 0.9821237869049271
+      },
+      "top2_accuracy": 1.0,
+      "top2_wilson95": {
+        "low": 0.7224672001371107,
+        "high": 0.9999999999999999
+      },
+      "mean_p1_correct": 0.9118249085214403,
+      "mean_p1_incorrect": 0.4013494551181793,
+      "row_predictions": {
+        "drought": 0,
+        "frost": 0,
+        "gray_mold": 9,
+        "healthy": 1,
+        "overwatered": 0,
+        "root_rot": 0,
+        "white_mold": 0
+      }
+    },
+    "healthy": {
+      "support": 10,
+      "top1_accuracy": 1.0,
+      "top1_wilson95": {
+        "low": 0.7224672001371107,
+        "high": 0.9999999999999999
+      },
+      "top2_accuracy": 1.0,
+      "top2_wilson95": {
+        "low": 0.7224672001371107,
+        "high": 0.9999999999999999
+      },
+      "mean_p1_correct": 0.9174733638763428,
+      "mean_p1_incorrect": NaN,
+      "row_predictions": {
+        "drought": 0,
+        "frost": 0,
+        "gray_mold": 0,
+        "healthy": 10,
+        "overwatered": 0,
+        "root_rot": 0,
+        "white_mold": 0
+      }
+    },
+    "overwatered": {
+      "support": 10,
+      "top1_accuracy": 0.7,
+      "top1_wilson95": {
+        "low": 0.39677814746114537,
+        "high": 0.8922087325936989
+      },
+      "top2_accuracy": 0.8,
+      "top2_wilson95": {
+        "low": 0.4901624715366418,
+        "high": 0.9433178485456248
+      },
+      "mean_p1_correct": 0.9681399975504194,
+      "mean_p1_incorrect": 0.6717338363329569,
+      "row_predictions": {
+        "drought": 2,
+        "frost": 1,
+        "gray_mold": 0,
+        "healthy": 0,
+        "overwatered": 7,
+        "root_rot": 0,
+        "white_mold": 0
+      }
+    },
+    "root_rot": {
+      "support": 10,
+      "top1_accuracy": 1.0,
+      "top1_wilson95": {
+        "low": 0.7224672001371107,
+        "high": 0.9999999999999999
+      },
+      "top2_accuracy": 1.0,
+      "top2_wilson95": {
+        "low": 0.7224672001371107,
+        "high": 0.9999999999999999
+      },
+      "mean_p1_correct": 0.9279579997062684,
+      "mean_p1_incorrect": NaN,
+      "row_predictions": {
+        "drought": 0,
+        "frost": 0,
+        "gray_mold": 0,
+        "healthy": 0,
+        "overwatered": 0,
+        "root_rot": 10,
+        "white_mold": 0
+      }
+    },
+    "white_mold": {
+      "support": 10,
+      "top1_accuracy": 0.8,
+      "top1_wilson95": {
+        "low": 0.4901624715366418,
+        "high": 0.9433178485456248
+      },
+      "top2_accuracy": 0.8,
+      "top2_wilson95": {
+        "low": 0.4901624715366418,
+        "high": 0.9433178485456248
+      },
+      "mean_p1_correct": 0.9268718287348747,
+      "mean_p1_incorrect": 0.5354676991701126,
+      "row_predictions": {
+        "drought": 0,
+        "frost": 0,
+        "gray_mold": 1,
+        "healthy": 1,
+        "overwatered": 0,
+        "root_rot": 0,
+        "white_mold": 8
+      }
+    }
+  },
+  "class_order": [
+    "drought",
+    "frost",
+    "gray_mold",
+    "healthy",
+    "overwatered",
+    "root_rot",
+    "white_mold"
+  ],
+  "confusion_matrix": [
+    [
+      8,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      9,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      0,
+      0,
+      7,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      10,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      8
+    ]
+  ],
+  "reliability": [
+    {
+      "bin": 0,
+      "lo": 0.0,
+      "hi": 0.1,
+      "count": 0,
+      "mean_confidence": NaN,
+      "accuracy": NaN
+    },
+    {
+      "bin": 1,
+      "lo": 0.1,
+      "hi": 0.2,
+      "count": 0,
+      "mean_confidence": NaN,
+      "accuracy": NaN
+    },
+    {
+      "bin": 2,
+      "lo": 0.2,
+      "hi": 0.30000000000000004,
+      "count": 1,
+      "mean_confidence": 0.21988266706466675,
+      "accuracy": 0.0
+    },
+    {
+      "bin": 3,
+      "lo": 0.30000000000000004,
+      "hi": 0.4,
+      "count": 0,
+      "mean_confidence": NaN,
+      "accuracy": NaN
+    },
+    {
+      "bin": 4,
+      "lo": 0.4,
+      "hi": 0.5,
+      "count": 3,
+      "mean_confidence": 0.4056490461031596,
+      "accuracy": 0.0
+    },
+    {
+      "bin": 5,
+      "lo": 0.5,
+      "hi": 0.6000000000000001,
+      "count": 6,
+      "mean_confidence": 0.5401876866817474,
+      "accuracy": 1.0
+    },
+    {
+      "bin": 6,
+      "lo": 0.6000000000000001,
+      "hi": 0.7000000000000001,
+      "count": 1,
+      "mean_confidence": 0.6555526852607727,
+      "accuracy": 0.0
+    },
+    {
+      "bin": 7,
+      "lo": 0.7000000000000001,
+      "hi": 0.8,
+      "count": 5,
+      "mean_confidence": 0.7417039394378662,
+      "accuracy": 0.8
+    },
+    {
+      "bin": 8,
+      "lo": 0.8,
+      "hi": 0.9,
+      "count": 11,
+      "mean_confidence": 0.8512045741081238,
+      "accuracy": 0.9090909090909091
+    },
+    {
+      "bin": 9,
+      "lo": 0.9,
+      "hi": 1.0,
+      "count": 43,
+      "mean_confidence": 0.9718139199323432,
+      "accuracy": 0.9767441860465116
+    }
+  ],
+  "predictions": [
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/Chateau1.png",
+      "truth": "drought",
+      "pred_top1": "drought",
+      "p1": 0.5396851897239685,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.5396851897239685
+        },
+        {
+          "label": "root_rot",
+          "prob": 0.2562672197818756
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/PLPATH-FRU-32-Verticillium-Wilt-Strawberry-figure-1.png",
+      "truth": "drought",
+      "pred_top1": "drought",
+      "p1": 0.5086025595664978,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.5086025595664978
+        },
+        {
+          "label": "overwatered",
+          "prob": 0.29179248213768005
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/XkvoUQ5ffAU8j5Fq8DK3Vf (1).jpg",
+      "truth": "drought",
+      "pred_top1": "drought",
+      "p1": 0.9928455948829651,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.9928455948829651
+        },
+        {
+          "label": "frost",
+          "prob": 0.004316166043281555
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/drought.jpg",
+      "truth": "drought",
+      "pred_top1": "drought",
+      "p1": 0.9681916236877441,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.9681916236877441
+        },
+        {
+          "label": "frost",
+          "prob": 0.024030907079577446
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/drought_1.jpg",
+      "truth": "drought",
+      "pred_top1": "drought",
+      "p1": 0.9115290641784668,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.9115290641784668
+        },
+        {
+          "label": "frost",
+          "prob": 0.03700900450348854
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/drought_13.jpg",
+      "truth": "drought",
+      "pred_top1": "drought",
+      "p1": 0.5108449459075928,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.5108449459075928
+        },
+        {
+          "label": "healthy",
+          "prob": 0.1501617431640625
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/drought_18.jpg",
+      "truth": "drought",
+      "pred_top1": "drought",
+      "p1": 0.7494722604751587,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.7494722604751587
+        },
+        {
+          "label": "white_mold",
+          "prob": 0.113741934299469
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/drought_2.jpg",
+      "truth": "drought",
+      "pred_top1": "gray_mold",
+      "p1": 0.9689967632293701,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.9689967632293701
+        },
+        {
+          "label": "overwatered",
+          "prob": 0.00737976748496294
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/drought_23.jpg",
+      "truth": "drought",
+      "pred_top1": "gray_mold",
+      "p1": 0.21988266706466675,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.21988266706466675
+        },
+        {
+          "label": "drought",
+          "prob": 0.19784386456012726
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/drought/drought_25.jpg",
+      "truth": "drought",
+      "pred_top1": "drought",
+      "p1": 0.7105221748352051,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.7105221748352051
+        },
+        {
+          "label": "healthy",
+          "prob": 0.20150446891784668
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/1f8b6c0293a94782937279f2535b1ed5.webp",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.9823660254478455,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.9823660254478455
+        },
+        {
+          "label": "root_rot",
+          "prob": 0.0046987226232886314
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/Strawberry-flower-frosted-3.jpg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.9830880761146545,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.9830880761146545
+        },
+        {
+          "label": "drought",
+          "prob": 0.006629063747823238
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/frost_02.jpg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.8448827862739563,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.8448827862739563
+        },
+        {
+          "label": "healthy",
+          "prob": 0.04360862076282501
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/frost_03.jpg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.99540776014328,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.99540776014328
+        },
+        {
+          "label": "white_mold",
+          "prob": 0.0013736594701185822
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/frost_04.jpg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.7079126834869385,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.7079126834869385
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.19416481256484985
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/frost_1.jpeg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.9975020289421082,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.9975020289421082
+        },
+        {
+          "label": "root_rot",
+          "prob": 0.0010107989655807614
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/frost_30.jpeg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.9786219000816345,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.9786219000816345
+        },
+        {
+          "label": "healthy",
+          "prob": 0.01535068266093731
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/frost_32.jpeg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.8401579856872559,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.8401579856872559
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.13282857835292816
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/frost_41.jpeg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.5256606340408325,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.5256606340408325
+        },
+        {
+          "label": "drought",
+          "prob": 0.17921246588230133
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/frost/frost_47.jpeg",
+      "truth": "frost",
+      "pred_top1": "frost",
+      "p1": 0.9169256687164307,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.9169256687164307
+        },
+        {
+          "label": "drought",
+          "prob": 0.045206278562545776
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0020.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.8897886276245117,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.8897886276245117
+        },
+        {
+          "label": "drought",
+          "prob": 0.04947146773338318
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0095.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.9864174127578735,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.9864174127578735
+        },
+        {
+          "label": "overwatered",
+          "prob": 0.0065871719270944595
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0099.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.8672055602073669,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.8672055602073669
+        },
+        {
+          "label": "white_mold",
+          "prob": 0.057379141449928284
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0119.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.5807970762252808,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.5807970762252808
+        },
+        {
+          "label": "frost",
+          "prob": 0.13378681242465973
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0144.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "healthy",
+      "p1": 0.4013494551181793,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.4013494551181793
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.3918548822402954
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0416.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.987594485282898,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.987594485282898
+        },
+        {
+          "label": "root_rot",
+          "prob": 0.0026181426364928484
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0463.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.9589859843254089,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.9589859843254089
+        },
+        {
+          "label": "drought",
+          "prob": 0.015688456594944
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0586.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.984093427658081,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.984093427658081
+        },
+        {
+          "label": "overwatered",
+          "prob": 0.004106857813894749
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0876.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.9651792049407959,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.9651792049407959
+        },
+        {
+          "label": "healthy",
+          "prob": 0.018203463405370712
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/gray_mold/GrayMold0910.jpg",
+      "truth": "gray_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.9863623976707458,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.9863623976707458
+        },
+        {
+          "label": "white_mold",
+          "prob": 0.003042559139430523
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy.webp",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.9834510087966919,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.9834510087966919
+        },
+        {
+          "label": "drought",
+          "prob": 0.008832246996462345
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy1.webp",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.9089428186416626,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.9089428186416626
+        },
+        {
+          "label": "white_mold",
+          "prob": 0.035148002207279205
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy_01.jpg",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.9848179221153259,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.9848179221153259
+        },
+        {
+          "label": "drought",
+          "prob": 0.007761488202959299
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy_02.jpg",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.8817501664161682,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.8817501664161682
+        },
+        {
+          "label": "drought",
+          "prob": 0.10005641728639603
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy_04.jpg",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.5755357146263123,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.5755357146263123
+        },
+        {
+          "label": "drought",
+          "prob": 0.2057788223028183
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy_111.jpg",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.9479982256889343,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.9479982256889343
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.013618497177958488
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy_134.jpg",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.9359853863716125,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.9359853863716125
+        },
+        {
+          "label": "frost",
+          "prob": 0.04222637042403221
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy_142.jpg",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.9883849620819092,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.9883849620819092
+        },
+        {
+          "label": "drought",
+          "prob": 0.00473735062405467
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy_158.jpg",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.9797245264053345,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.9797245264053345
+        },
+        {
+          "label": "white_mold",
+          "prob": 0.008181432262063026
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/healthy/healthy_21.jpg",
+      "truth": "healthy",
+      "pred_top1": "healthy",
+      "p1": 0.9881429076194763,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.9881429076194763
+        },
+        {
+          "label": "root_rot",
+          "prob": 0.0047255693934857845
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/actzlp00vipa1.jpg",
+      "truth": "overwatered",
+      "pred_top1": "frost",
+      "p1": 0.8443658947944641,
+      "top2": [
+        {
+          "label": "frost",
+          "prob": 0.8443658947944641
+        },
+        {
+          "label": "drought",
+          "prob": 0.06658530235290527
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/droopy-strawberry-just-got-my-dream-garden-plant-v0-dfb4nwahjv3d1.jpg",
+      "truth": "overwatered",
+      "pred_top1": "drought",
+      "p1": 0.7706206440925598,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.7706206440925598
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.11197887361049652
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/overwatered_1.jpg",
+      "truth": "overwatered",
+      "pred_top1": "overwatered",
+      "p1": 0.8399820923805237,
+      "top2": [
+        {
+          "label": "overwatered",
+          "prob": 0.8399820923805237
+        },
+        {
+          "label": "drought",
+          "prob": 0.10480718314647675
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/overwatered_10.jpg",
+      "truth": "overwatered",
+      "pred_top1": "overwatered",
+      "p1": 0.9893022179603577,
+      "top2": [
+        {
+          "label": "overwatered",
+          "prob": 0.9893022179603577
+        },
+        {
+          "label": "healthy",
+          "prob": 0.003717579413205385
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/overwatered_12.jpg",
+      "truth": "overwatered",
+      "pred_top1": "overwatered",
+      "p1": 0.9897300004959106,
+      "top2": [
+        {
+          "label": "overwatered",
+          "prob": 0.9897300004959106
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.0050988830626010895
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/overwatered_16.jpg",
+      "truth": "overwatered",
+      "pred_top1": "overwatered",
+      "p1": 0.984319269657135,
+      "top2": [
+        {
+          "label": "overwatered",
+          "prob": 0.984319269657135
+        },
+        {
+          "label": "drought",
+          "prob": 0.006319219246506691
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/overwatered_2.jpg",
+      "truth": "overwatered",
+      "pred_top1": "drought",
+      "p1": 0.4002149701118469,
+      "top2": [
+        {
+          "label": "drought",
+          "prob": 0.4002149701118469
+        },
+        {
+          "label": "overwatered",
+          "prob": 0.27329686284065247
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/overwatered_20.jpg",
+      "truth": "overwatered",
+      "pred_top1": "overwatered",
+      "p1": 0.9935325384140015,
+      "top2": [
+        {
+          "label": "overwatered",
+          "prob": 0.9935325384140015
+        },
+        {
+          "label": "drought",
+          "prob": 0.004050372168421745
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/overwatered_24.jpg",
+      "truth": "overwatered",
+      "pred_top1": "overwatered",
+      "p1": 0.9827722907066345,
+      "top2": [
+        {
+          "label": "overwatered",
+          "prob": 0.9827722907066345
+        },
+        {
+          "label": "drought",
+          "prob": 0.007626987062394619
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/overwatered/overwatered_28.jpg",
+      "truth": "overwatered",
+      "pred_top1": "overwatered",
+      "p1": 0.9973415732383728,
+      "top2": [
+        {
+          "label": "overwatered",
+          "prob": 0.9973415732383728
+        },
+        {
+          "label": "drought",
+          "prob": 0.000635000120382756
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/5-root-rot-in-strawberry-729x1024_jpg.rf.MLgWABFLO18uhENNjfpd.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.9665653705596924,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.9665653705596924
+        },
+        {
+          "label": "healthy",
+          "prob": 0.011228811927139759
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/Aardbei-Phytophthora_fragariae_jpg.rf.PX1YoBsrSmVLdeqkuYwg.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.9985929131507874,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.9985929131507874
+        },
+        {
+          "label": "drought",
+          "prob": 0.00036799450754188
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/Strawberry%20Blackrootrot%20Fanny%20copy.preview.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.851557195186615,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.851557195186615
+        },
+        {
+          "label": "drought",
+          "prob": 0.08429279178380966
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/rootrot.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.8279941082000732,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.8279941082000732
+        },
+        {
+          "label": "frost",
+          "prob": 0.13386942446231842
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/rootrot_03.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.9946303367614746,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.9946303367614746
+        },
+        {
+          "label": "healthy",
+          "prob": 0.0024132065009325743
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/rootrot_04.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.8208765983581543,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.8208765983581543
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.10221538692712784
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/rootrot_1.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.9575223326683044,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.9575223326683044
+        },
+        {
+          "label": "drought",
+          "prob": 0.02673400193452835
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/rootrot_103.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.9086119532585144,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.9086119532585144
+        },
+        {
+          "label": "healthy",
+          "prob": 0.03561461716890335
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/rootrot_109.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.9895840287208557,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.9895840287208557
+        },
+        {
+          "label": "drought",
+          "prob": 0.008790812455117702
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/root_rot/rootrot_119.jpg",
+      "truth": "root_rot",
+      "pred_top1": "root_rot",
+      "p1": 0.9636451601982117,
+      "top2": [
+        {
+          "label": "root_rot",
+          "prob": 0.9636451601982117
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.023774290457367897
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0015.jpg",
+      "truth": "white_mold",
+      "pred_top1": "white_mold",
+      "p1": 0.9504109025001526,
+      "top2": [
+        {
+          "label": "white_mold",
+          "prob": 0.9504109025001526
+        },
+        {
+          "label": "healthy",
+          "prob": 0.04170302301645279
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0031.jpg",
+      "truth": "white_mold",
+      "pred_top1": "white_mold",
+      "p1": 0.9931026697158813,
+      "top2": [
+        {
+          "label": "white_mold",
+          "prob": 0.9931026697158813
+        },
+        {
+          "label": "root_rot",
+          "prob": 0.0022840932942926884
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0035.jpg",
+      "truth": "white_mold",
+      "pred_top1": "white_mold",
+      "p1": 0.8546893000602722,
+      "top2": [
+        {
+          "label": "white_mold",
+          "prob": 0.8546893000602722
+        },
+        {
+          "label": "frost",
+          "prob": 0.08782456070184708
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0036.jpg",
+      "truth": "white_mold",
+      "pred_top1": "white_mold",
+      "p1": 0.769991934299469,
+      "top2": [
+        {
+          "label": "white_mold",
+          "prob": 0.769991934299469
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.14338260889053345
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0040.jpg",
+      "truth": "white_mold",
+      "pred_top1": "gray_mold",
+      "p1": 0.4153827130794525,
+      "top2": [
+        {
+          "label": "gray_mold",
+          "prob": 0.4153827130794525
+        },
+        {
+          "label": "healthy",
+          "prob": 0.22991737723350525
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0045.jpg",
+      "truth": "white_mold",
+      "pred_top1": "healthy",
+      "p1": 0.6555526852607727,
+      "top2": [
+        {
+          "label": "healthy",
+          "prob": 0.6555526852607727
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.19785013794898987
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0091.jpg",
+      "truth": "white_mold",
+      "pred_top1": "white_mold",
+      "p1": 0.9049695730209351,
+      "top2": [
+        {
+          "label": "white_mold",
+          "prob": 0.9049695730209351
+        },
+        {
+          "label": "root_rot",
+          "prob": 0.04915511980652809
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0117.jpg",
+      "truth": "white_mold",
+      "pred_top1": "white_mold",
+      "p1": 0.990561306476593,
+      "top2": [
+        {
+          "label": "white_mold",
+          "prob": 0.990561306476593
+        },
+        {
+          "label": "healthy",
+          "prob": 0.0035775508731603622
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0122.jpg",
+      "truth": "white_mold",
+      "pred_top1": "white_mold",
+      "p1": 0.9660719037055969,
+      "top2": [
+        {
+          "label": "white_mold",
+          "prob": 0.9660719037055969
+        },
+        {
+          "label": "root_rot",
+          "prob": 0.020372305065393448
+        }
+      ]
+    },
+    {
+      "path": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout/white_mold/WhiteMold0128.jpg",
+      "truth": "white_mold",
+      "pred_top1": "white_mold",
+      "p1": 0.9851770401000977,
+      "top2": [
+        {
+          "label": "white_mold",
+          "prob": 0.9851770401000977
+        },
+        {
+          "label": "gray_mold",
+          "prob": 0.005997162312269211
+        }
+      ]
+    }
+  ],
+  "checkpoint": "/data/AGAI/MiniGPT-4/plant_diagnostic/models/resnet_strawberry_v4_release10holdout.pth",
+  "holdout_root": "/data/AGAI/MiniGPT-4/plant_diagnostic/data/holdout",
+  "evaluated_classes": [
+    "drought",
+    "frost",
+    "gray_mold",
+    "healthy",
+    "overwatered",
+    "root_rot",
+    "white_mold"
+  ],
+  "notes": [
+    "Mold-class metrics on the pre-carve checkpoint are leakage-biased because that checkpoint was trained before the mold holdout carve.",
+    "Non-mold classes have very small holdout support in the current split and should be treated as sanity checks, not headline metrics."
+  ]
+}

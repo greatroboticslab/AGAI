@@ -16,77 +16,193 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{he2016resnet}
+\citation{robinson2025rfdetr,carion2020detr}
+\citation{chen2023minigptv2,hu2021lora}
+\citation{guo2017calibration}
+\citation{lewis2020rag}
+\citation{huang2024hallucinationsurvey}
+\citation{he2016resnet,guo2017calibration}
+\citation{robinson2025rfdetr,carion2020detr}
+\citation{chen2023minigptv2,hu2021lora,touvron2023llama2}
+\citation{shorten2019augmentation}
+\citation{naeini2015ece}
+\citation{wilson1927interval}
+\citation{lin2014cocoeval}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contribution 1: Reproducible split protocol.}{2}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contribution 2: Calibrated classifier evaluation.}{2}{section*.2}\protected@file@percent }
+\citation{hughes2015plantvillage}
 \citation{mohanty2016plantdisease}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\citation{russakovsky2015imagenet}
 \citation{he2016resnet}
 \citation{guo2017calibration}
+\citation{naeini2015ece}
+\citation{wilson1927interval}
+\citation{carion2020detr}
+\citation{robinson2025rfdetr}
+\@writefile{toc}{\contentsline {paragraph}{Contribution 3: Detector-grounded runtime stack.}{3}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contribution 4: Constrained dual-report supervision.}{3}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Image-Based Plant Disease Classification}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Probability Calibration}{3}{subsection.2.2}\protected@file@percent }
 \citation{zhu2023minigpt4,chen2023minigptv2}
+\citation{liu2023llava}
 \citation{touvron2023llama2}
 \citation{hu2021lora}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset Curation and Split Integrity}{3}{section.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Current dataset counts after the balanced holdout rebuild, leakage cleanup, augmentation top-up, and detector-audit imports.\relax }}{4}{table.caption.1}\protected@file@percent }
+\citation{lewis2020rag}
+\citation{huang2024hallucinationsurvey}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Detection Transformers and Visible-Part Grounding}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Vision-Language Models and Parameter-Efficient Adaptation}{4}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Retrieval-Augmented Generation and Grounded Output}{4}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Hallucination in Multimodal Models}{4}{subsection.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7}Locality and Inference-Time Cost}{4}{subsection.2.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Operational definitions of the seven disease classes, extracted from the runtime disease knowledge graph. The primary visual indicator listed here is the head symptom from the corresponding knowledge-graph entry; classes are not pairwise visually orthogonal, which motivates the constrained dual-report policy of \S  \ref  {sec:dualpolicy} for semantically plausible close pairs.\relax }}{5}{table.caption.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:dataset-counts}{{1}{4}{Current dataset counts after the balanced holdout rebuild, leakage cleanup, augmentation top-up, and detector-audit imports.\relax }{table.caption.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Current per-class image counts in the compact training split, the augmented training split, and the active balanced holdout. The augmented split now enforces a minimum of 300 images for each underrepresented class.\relax }}{4}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:dataset-composition}{{1}{4}{Current per-class image counts in the compact training split, the augmented training split, and the active balanced holdout. The augmented split now enforces a minimum of 300 images for each underrepresented class.\relax }{figure.caption.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Representative holdout images. The active holdout contains 20 images for each of the seven classes.\relax }}{5}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:holdout-grid}{{2}{5}{Representative holdout images. The active holdout contains 20 images for each of the seven classes.\relax }{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Balanced Holdout Construction}{5}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Balanced Augmented Training Split}{5}{subsection.3.2}\protected@file@percent }
+\newlabel{tab:class-defs}{{1}{5}{Operational definitions of the seven disease classes, extracted from the runtime disease knowledge graph. The primary visual indicator listed here is the head symptom from the corresponding knowledge-graph entry; classes are not pairwise visually orthogonal, which motivates the constrained dual-report policy of \S \ref {sec:dualpolicy} for semantically plausible close pairs.\relax }{table.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset and Split Protocol}{5}{section.3}\protected@file@percent }
+\newlabel{sec:data}{{3}{5}{Dataset and Split Protocol}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Class Definition and Split Roots}{5}{subsection.3.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Per-class image counts in the three split roots. Counts reflect the state after the holdout release, augmented-root rebuild, class-floor balancing, and conservative external image audit described in this section.\relax }}{6}{table.caption.6}\protected@file@percent }
+\newlabel{tab:dataset-counts}{{2}{6}{Per-class image counts in the three split roots. Counts reflect the state after the holdout release, augmented-root rebuild, class-floor balancing, and conservative external image audit described in this section.\relax }{table.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Per-class image counts in the compact training split, the augmented training split, and the active balanced holdout. The augmented split enforces a minimum of 300 images for each underrepresented class.\relax }}{6}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:dataset-composition}{{1}{6}{Per-class image counts in the compact training split, the augmented training split, and the active balanced holdout. The augmented split enforces a minimum of 300 images for each underrepresented class.\relax }{figure.caption.7}{}}
+\citation{shorten2019augmentation}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Representative holdout images, one per class. The active holdout contains 10 images per class for a total of $n{=}70$ evaluation images.\relax }}{7}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:holdout-grid}{{2}{7}{Representative holdout images, one per class. The active holdout contains 10 images per class for a total of $n{=}70$ evaluation images.\relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Holdout Construction by Physical Relocation}{7}{subsection.3.2}\protected@file@percent }
 \citation{he2016resnet}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Current AGAI pipeline. The classifier and runtime prompt assembly are deployed. The dual-report path is currently an offline pilot for stage-2 regeneration. Clean MiniGPT retraining and clean holdout explanation evaluation are still pending.\relax }}{6}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:pipeline-overview}{{3}{6}{Current AGAI pipeline. The classifier and runtime prompt assembly are deployed. The dual-report path is currently an offline pilot for stage-2 regeneration. Clean MiniGPT retraining and clean holdout explanation evaluation are still pending.\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Detector-Audit Imports}{6}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}What This Fixes}{6}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}System Architecture and Current Methods}{6}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Classifier Backbone, Test-Time Augmentation, and Calibration}{7}{subsection.4.1}\protected@file@percent }
-\newlabel{eq:tta-calibration}{{1}{7}{Classifier Backbone, Test-Time Augmentation, and Calibration}{equation.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Runtime Acceptance Gate}{7}{subsection.4.2}\protected@file@percent }
-\newlabel{eq:threshold-gate}{{3}{7}{Runtime Acceptance Gate}{equation.4.3}{}}
-\newlabel{eq:class-thresholds}{{4}{7}{Runtime Acceptance Gate}{equation.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Grounded Runtime Report Path}{7}{subsection.4.3}\protected@file@percent }
+\citation{russakovsky2015imagenet}
+\citation{guo2017calibration}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Class-Floor Balancing}{8}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Conservative External-Image Audit}{8}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Effect of the Split Protocol}{8}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}System Architecture}{8}{section.4}\protected@file@percent }
+\newlabel{sec:system}{{4}{8}{System Architecture}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Classifier: Backbone, Test-Time Augmentation, and Calibration}{8}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:tta-calibration}{{1}{8}{Classifier: Backbone, Test-Time Augmentation, and Calibration}{equation.4.1}{}}
+\citation{robinson2025rfdetr,carion2020detr}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces AGAI pipeline. Solid arrows denote the deployed runtime path: ResNet-50 classification with two-view test-time augmentation, per-class threshold gating, RF-DETR part grounding, optional knowledge-graph retrieval, and constrained MiniGPT-v2 report generation. Dashed arrows denote the offline stage-2 supervision-generation path used for the dual-report pilot.\relax }}{9}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:pipeline-overview}{{3}{9}{AGAI pipeline. Solid arrows denote the deployed runtime path: ResNet-50 classification with two-view test-time augmentation, per-class threshold gating, RF-DETR part grounding, optional knowledge-graph retrieval, and constrained MiniGPT-v2 report generation. Dashed arrows denote the offline stage-2 supervision-generation path used for the dual-report pilot.\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Runtime Acceptance Gate}{9}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:gate}{{4.2}{9}{Runtime Acceptance Gate}{subsection.4.2}{}}
+\newlabel{eq:threshold-gate}{{3}{9}{Runtime Acceptance Gate}{equation.4.3}{}}
+\newlabel{eq:class-thresholds}{{4}{9}{Runtime Acceptance Gate}{equation.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Detector-Grounded Prompt Assembly}{9}{subsection.4.3}\protected@file@percent }
+\citation{lewis2020rag}
 \citation{chen2023minigptv2}
 \citation{touvron2023llama2}
 \citation{hu2021lora}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Current MiniGPT Configuration}{8}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Offline Dual-Report Generation Policy}{8}{subsection.4.5}\protected@file@percent }
-\newlabel{eq:alt-class}{{5}{8}{Offline Dual-Report Generation Policy}{equation.4.5}{}}
-\newlabel{eq:allowed-pairs}{{6}{8}{Offline Dual-Report Generation Policy}{equation.4.6}{}}
-\newlabel{eq:amb-case-1}{{7}{9}{Offline Dual-Report Generation Policy}{equation.4.7}{}}
-\newlabel{eq:amb-case-2}{{8}{9}{Offline Dual-Report Generation Policy}{equation.4.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Current Experimental Results}{9}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Clean ResNet Holdout Results}{9}{subsection.5.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces ResNet holdout summary for the current balanced-split checkpoint.\relax }}{9}{table.caption.5}\protected@file@percent }
-\newlabel{tab:resnet-summary}{{2}{9}{ResNet holdout summary for the current balanced-split checkpoint.\relax }{table.caption.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Per-class holdout performance for the current balanced-split ResNet checkpoint.\relax }}{10}{table.caption.6}\protected@file@percent }
-\newlabel{tab:per-class}{{3}{10}{Per-class holdout performance for the current balanced-split ResNet checkpoint.\relax }{table.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Confusion matrix for the current ResNet checkpoint on the balanced 140-image holdout. The balanced split makes the weaker drought and overwatered rows immediately visible.\relax }}{10}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:resnet-confusion}{{4}{10}{Confusion matrix for the current ResNet checkpoint on the balanced 140-image holdout. The balanced split makes the weaker drought and overwatered rows immediately visible.\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Left: per-class top-1 accuracy on the current balanced holdout. Right: the current reliability diagram. The current checkpoint is better calibrated than the earlier mold-heavy split under expected calibration error, even though the balanced holdout is harder overall.\relax }}{11}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:resnet-accuracy-calibration}{{5}{11}{Left: per-class top-1 accuracy on the current balanced holdout. Right: the current reliability diagram. The current checkpoint is better calibrated than the earlier mold-heavy split under expected calibration error, even though the balanced holdout is harder overall.\relax }{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Runtime Gating Behavior and Top-2 Structure}{11}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Tight Dual-Report Pilot}{11}{subsection.5.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Summary of the current focused tight dual-report pilot.\relax }}{12}{table.caption.9}\protected@file@percent }
-\newlabel{tab:dual-report}{{4}{12}{Summary of the current focused tight dual-report pilot.\relax }{table.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Summary of the current tight dual-report pilot. After the ambiguity policy was tightened, ambiguity reports became rare and were restricted to semantically plausible close pairs.\relax }}{12}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:dual-report}{{6}{12}{Summary of the current tight dual-report pilot. After the ambiguity policy was tightened, ambiguity reports became rare and were restricted to semantically plausible close pairs.\relax }{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}What Is Still Not Measured}{13}{subsection.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{13}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{14}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix: Configuration and Project Scope Notes}{14}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Completed Versus Ongoing Work}{14}{subsection.A.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Current project status summary.\relax }}{15}{table.caption.11}\protected@file@percent }
-\newlabel{tab:status-appendix}{{5}{15}{Current project status summary.\relax }{table.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}MiniGPT Training Configuration in the Repository}{15}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Optional Retrieval and Hallucination Retry}{10}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Report Writer Configuration}{10}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Constrained Dual-Report Supervision Policy}{10}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:dualpolicy}{{4.6}{10}{Constrained Dual-Report Supervision Policy}{subsection.4.6}{}}
+\newlabel{eq:alt-class}{{5}{11}{Constrained Dual-Report Supervision Policy}{equation.4.5}{}}
+\newlabel{eq:allowed-pairs}{{6}{11}{Constrained Dual-Report Supervision Policy}{equation.4.6}{}}
+\newlabel{eq:amb-case-1}{{7}{11}{Constrained Dual-Report Supervision Policy}{equation.4.7}{}}
+\newlabel{eq:amb-case-2}{{8}{11}{Constrained Dual-Report Supervision Policy}{equation.4.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experimental Results}{11}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{11}{Experimental Results}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Classifier Evaluation on the Balanced Holdout}{11}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:results-classifier}{{5.1}{11}{Classifier Evaluation on the Balanced Holdout}{subsection.5.1}{}}
+\citation{naeini2015ece}
+\citation{wilson1927interval}
+\citation{wilson1927interval}
+\citation{wilson1927interval}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Per-class holdout performance for the deployed ResNet-50 v4 checkpoint. Wilson 95\% confidence intervals\nobreakspace  {}\citep  {wilson1927interval} are reported because the per-class support of $n=10$ is small. Both top-1 and top-2 accuracy are computed under the two-view TTA protocol.\relax }}{12}{table.caption.12}\protected@file@percent }
+\newlabel{tab:per-class}{{5}{12}{Per-class holdout performance for the deployed ResNet-50 v4 checkpoint. Wilson 95\% confidence intervals~\citep {wilson1927interval} are reported because the per-class support of $n=10$ is small. Both top-1 and top-2 accuracy are computed under the two-view TTA protocol.\relax }{table.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Aggregate holdout metrics for the deployed ResNet-50 v4 checkpoint on the active balanced 70-image holdout. ``Temperature'' refers to the value $T$ in Eq.\nobreakspace  {}\ref  {eq:tta-calibration}.\relax }}{12}{table.caption.10}\protected@file@percent }
+\newlabel{tab:resnet-summary}{{3}{12}{Aggregate holdout metrics for the deployed ResNet-50 v4 checkpoint on the active balanced 70-image holdout. ``Temperature'' refers to the value $T$ in Eq.~\ref {eq:tta-calibration}.\relax }{table.caption.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Nonparametric bootstrap 95\% confidence intervals for the deployed v4 checkpoint on the balanced 70-image holdout.\relax }}{12}{table.caption.11}\protected@file@percent }
+\newlabel{tab:bootstrap-ci}{{4}{12}{Nonparametric bootstrap 95\% confidence intervals for the deployed v4 checkpoint on the balanced 70-image holdout.\relax }{table.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Confusion matrix for the deployed ResNet-50 v4 checkpoint on the balanced 70-image holdout. Rows correspond to ground-truth classes; columns to predicted classes.\relax }}{13}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:resnet-confusion}{{4}{13}{Confusion matrix for the deployed ResNet-50 v4 checkpoint on the balanced 70-image holdout. Rows correspond to ground-truth classes; columns to predicted classes.\relax }{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Left: per-class top-1 accuracy on the balanced holdout. Right: reliability diagram for the deployed v4 checkpoint under two-view horizontal-flip TTA. Marker area is proportional to bin support; the diagonal denotes perfect calibration. The expected calibration error is 8.56\%.\relax }}{14}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:resnet-accuracy-calibration}{{5}{14}{Left: per-class top-1 accuracy on the balanced holdout. Right: reliability diagram for the deployed v4 checkpoint under two-view horizontal-flip TTA. Marker area is proportional to bin support; the diagonal denotes perfect calibration. The expected calibration error is 8.56\%.\relax }{figure.caption.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Acceptance-gate behavior on the balanced holdout. ``Acceptance rate'' is the fraction of class examples whose top-1 probability clears both $\tau _c$ and the $0.50$ floor; ``Acc. $\mid $ accepted'' is the conditional accuracy on the accepted subset. The aggregate row reports a nonparametric bootstrap 95\% CI on conditional accuracy.\relax }}{14}{table.caption.16}\protected@file@percent }
+\newlabel{tab:acceptance-gate}{{6}{14}{Acceptance-gate behavior on the balanced holdout. ``Acceptance rate'' is the fraction of class examples whose top-1 probability clears both $\tau _c$ and the $0.50$ floor; ``Acc. $\mid $ accepted'' is the conditional accuracy on the accepted subset. The aggregate row reports a nonparametric bootstrap 95\% CI on conditional accuracy.\relax }{table.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Threshold sensitivity on the balanced holdout under a uniform threshold $\tau $ on $\bar  {p}(\hat  {y}\mid x)$. The dashed lines mark the deployed (per-class) gate operating point.\relax }}{15}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:threshold-sweep}{{6}{15}{Threshold sensitivity on the balanced holdout under a uniform threshold $\tau $ on $\bar {p}(\hat {y}\mid x)$. The dashed lines mark the deployed (per-class) gate operating point.\relax }{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Risk-coverage curve obtained by ordering holdout predictions by descending top-1 probability. The red marker shows the operating point of the deployed per-class gate.\relax }}{15}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:risk-coverage}{{7}{15}{Risk-coverage curve obtained by ordering holdout predictions by descending top-1 probability. The red marker shows the operating point of the deployed per-class gate.\relax }{figure.caption.19}{}}
+\citation{lin2014cocoeval}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Selective top-1 accuracy at fixed coverage levels on the balanced holdout, computed by ordering predictions by descending top-1 probability.\relax }}{16}{table.caption.20}\protected@file@percent }
+\newlabel{tab:selective-acc}{{7}{16}{Selective top-1 accuracy at fixed coverage levels on the balanced holdout, computed by ordering predictions by descending top-1 probability.\relax }{table.caption.20}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces McNemar paired test comparing v3 and v4 ResNet-50 checkpoints on the shared 70-image holdout.\relax }}{16}{table.caption.22}\protected@file@percent }
+\newlabel{tab:mcnemar}{{8}{16}{McNemar paired test comparing v3 and v4 ResNet-50 checkpoints on the shared 70-image holdout.\relax }{table.caption.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}RF-DETR Grounding-Detector Evaluation}{16}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:results-detector}{{5.2}{16}{RF-DETR Grounding-Detector Evaluation}{subsection.5.2}{}}
+\citation{lin2014cocoeval}
+\citation{lin2014cocoeval}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces RF-DETR Small validation metrics at the final training epoch. Class-conditional AP is reported at IoU threshold 0.5; aggregate quantities follow the COCO evaluation protocol\nobreakspace  {}\citep  {lin2014cocoeval}.\relax }}{17}{table.caption.23}\protected@file@percent }
+\newlabel{tab:rfdetr-final}{{9}{17}{RF-DETR Small validation metrics at the final training epoch. Class-conditional AP is reported at IoU threshold 0.5; aggregate quantities follow the COCO evaluation protocol~\citep {lin2014cocoeval}.\relax }{table.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Per-disease plant-part detection rates of the deployed RF-DETR Small checkpoint on the 70 disease-holdout images, using the runtime thresholds $\theta _p$ of \S  \ref  {sec:system}. The reported quantity is the fraction of class images for which the corresponding part fires at least once above $\theta _p$. ``Mean parts'' is the average number of distinct visible parts per image.\relax }}{18}{table.caption.25}\protected@file@percent }
+\newlabel{tab:rfdetr-holdout}{{10}{18}{Per-disease plant-part detection rates of the deployed RF-DETR Small checkpoint on the 70 disease-holdout images, using the runtime thresholds $\theta _p$ of \S \ref {sec:system}. The reported quantity is the fraction of class images for which the corresponding part fires at least once above $\theta _p$. ``Mean parts'' is the average number of distinct visible parts per image.\relax }{table.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Per-class plant-part detection rate (\%) of the deployed RF-DETR Small checkpoint on the disease-holdout images.\relax }}{18}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:rfdetr-heatmap}{{8}{18}{Per-class plant-part detection rate (\%) of the deployed RF-DETR Small checkpoint on the disease-holdout images.\relax }{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Constrained Dual-Report Pilot}{19}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:results-dualreport}{{5.3}{19}{Constrained Dual-Report Pilot}{subsection.5.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Statistics for the constrained dual-report pilot (\S  \ref  {sec:dualpolicy}). Selection rule counts and report-mode counts are reported separately. ``Self-reported overclaim risk'' is a generator metadata field that records the model's own coarse self-rating of overclaim risk per record.\relax }}{19}{table.caption.27}\protected@file@percent }
+\newlabel{tab:dual-report}{{11}{19}{Statistics for the constrained dual-report pilot (\S \ref {sec:dualpolicy}). Selection rule counts and report-mode counts are reported separately. ``Self-reported overclaim risk'' is a generator metadata field that records the model's own coarse self-rating of overclaim risk per record.\relax }{table.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Constrained dual-report pilot summary. After the policy was restricted to the pair whitelist of Eq.\nobreakspace  {}\ref  {eq:allowed-pairs} and the margin condition of Eq.\nobreakspace  {}\ref  {eq:amb-case-1}--\ref  {eq:amb-case-2}, ambiguity reports are rare and concentrated on semantically plausible disease pairs.\relax }}{19}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:dual-report}{{9}{19}{Constrained dual-report pilot summary. After the policy was restricted to the pair whitelist of Eq.~\ref {eq:allowed-pairs} and the margin condition of Eq.~\ref {eq:amb-case-1}--\ref {eq:amb-case-2}, ambiguity reports are rare and concentrated on semantically plausible disease pairs.\relax }{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Pending Experiments}{20}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:results-pending}{{5.4}{20}{Pending Experiments}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{20}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Asymmetry Between Classifier and Language Claims}{20}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Decoupling Classifier Quality from Deployed Diagnosis Rate}{21}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Upstream--Downstream Coupling for Ambiguity}{21}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Detector Use as Constraint, Not Localization}{21}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Limits of Local Inference}{22}{subsection.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Threats to Validity}{22}{subsection.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Small per-class support.}{22}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Single-distribution evaluation.}{22}{section*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Calibration data overlap.}{22}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Detector measurement is firing-rate, not precision/recall.}{22}{section*.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{v3-to-v4 retrain not significant at $n=70$.}{22}{section*.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Pilot scope.}{22}{section*.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Heuristic hallucination retry.}{23}{section*.35}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Summary}{23}{subsection.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{23}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix: Configuration and Reproducibility Notes}{23}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Project Status Summary}{23}{subsection.A.1}\protected@file@percent }
+\citation{guo2017calibration}
+\citation{naeini2015ece}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Status summary for the components referenced in this manuscript.\relax }}{24}{table.caption.36}\protected@file@percent }
+\newlabel{tab:status-appendix}{{12}{24}{Status summary for the components referenced in this manuscript.\relax }{table.caption.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Classifier Training and Calibration Details}{24}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Grounding-Detector Training Configuration}{25}{subsection.A.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Report-Writer Training Configuration}{25}{subsection.A.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Runtime Decision Rule}{26}{subsection.A.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Scope of the Ambiguity Policy}{26}{subsection.A.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.7}Per-Image Misclassifications on the Holdout}{26}{subsection.A.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Misclassified holdout images for the deployed v4 checkpoint. $p_1$ is the calibrated top-1 probability assigned by the classifier; images with $p_1$ below the per-class acceptance threshold $\tau _c$ (Eq.\nobreakspace  {}\ref  {eq:class-thresholds}) or below the $0.50$ post-prompt-assembly floor are demoted to \texttt  {unknown} by the deployed runtime gate.\relax }}{26}{table.caption.37}\protected@file@percent }
+\newlabel{tab:misclassifications}{{13}{26}{Misclassified holdout images for the deployed v4 checkpoint. $p_1$ is the calibrated top-1 probability assigned by the classifier; images with $p_1$ below the per-class acceptance threshold $\tau _c$ (Eq.~\ref {eq:class-thresholds}) or below the $0.50$ post-prompt-assembly floor are demoted to \texttt {unknown} by the deployed runtime gate.\relax }{table.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces The eight misclassified holdout images for the deployed v4 checkpoint, with ground-truth $\rightarrow $ predicted labels, the calibrated top-1 probability $p_1$, and the deployed gate decision (``demoted'' images are sent to \texttt  {unknown} at runtime; ``accepted'' images are forwarded to the report writer).\relax }}{27}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:misclassification-grid}{{10}{27}{The eight misclassified holdout images for the deployed v4 checkpoint, with ground-truth $\rightarrow $ predicted labels, the calibrated top-1 probability $p_1$, and the deployed gate decision (``demoted'' images are sent to \texttt {unknown} at runtime; ``accepted'' images are forwarded to the report writer).\relax }{figure.caption.38}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.8}Reproducibility Manifest}{27}{subsection.A.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Source revision.}{27}{section*.39}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Model weights (SHA-256).}{27}{section*.40}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Evaluation artifacts.}{27}{section*.41}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Random seed.}{27}{section*.42}\protected@file@percent }
 \bibstyle{unsrtnat}
 \bibdata{references}
-\bibcite{mohanty2016plantdisease}{{1}{2016}{{Mohanty et~al.}}{{Mohanty, Hughes, and Salath{\'e}}}}
-\bibcite{he2016resnet}{{2}{2016}{{He et~al.}}{{He, Zhang, Ren, and Sun}}}
-\bibcite{guo2017calibration}{{3}{2017}{{Guo et~al.}}{{Guo, Pleiss, Sun, and Weinberger}}}
-\bibcite{zhu2023minigpt4}{{4}{2023}{{Zhu et~al.}}{{Zhu, Chen, Shen, Li, and Elhoseiny}}}
-\bibcite{chen2023minigptv2}{{5}{2023}{{Chen et~al.}}{{Chen, Zhu, Shen, Li, Liu, Zhang, Krishnamoorthi, Chandra, Xiong, and Elhoseiny}}}
-\bibcite{touvron2023llama2}{{6}{2023}{{Touvron et~al.}}{{Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov, Batra, Bhargava, Bhosale, Bikel, Blecher, Ferrer, Chen, Cucurull, Esiobu, Fernandes, Fu, Fu, Fuller, Gao, Goswami, Goyal, Hartshorn, Hosseini, Hou, Inan, Kardas, Khandelwal, Paluri, and et~al.}}}
-\bibcite{hu2021lora}{{7}{2021}{{Hu et~al.}}{{Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Runtime Thresholds}{16}{subsection.A.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Ambiguity Policy Scope}{16}{subsection.A.4}\protected@file@percent }
+\bibcite{he2016resnet}{{1}{2016}{{He et~al.}}{{He, Zhang, Ren, and Sun}}}
+\bibcite{robinson2025rfdetr}{{2}{2025}{{Robinson et~al.}}{{Robinson, Robicheaux, and Popov}}}
+\bibcite{carion2020detr}{{3}{2020}{{Carion et~al.}}{{Carion, Massa, Synnaeve, Usunier, Kirillov, and Zagoruyko}}}
+\bibcite{chen2023minigptv2}{{4}{2023}{{Chen et~al.}}{{Chen, Zhu, Shen, Li, Liu, Zhang, Krishnamoorthi, Chandra, Xiong, and Elhoseiny}}}
+\bibcite{hu2021lora}{{5}{2021}{{Hu et~al.}}{{Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
+\bibcite{guo2017calibration}{{6}{2017}{{Guo et~al.}}{{Guo, Pleiss, Sun, and Weinberger}}}
+\bibcite{lewis2020rag}{{7}{2020}{{Lewis et~al.}}{{Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal, K\"{u}ttler, Lewis, tau Yih, Rockt\"{a}schel, Riedel, and Kiela}}}
+\@writefile{toc}{\contentsline {paragraph}{Build pipeline.}{28}{section*.43}\protected@file@percent }
+\bibcite{huang2024hallucinationsurvey}{{8}{2024}{{Huang et~al.}}{{Huang, Yu, Ma, Zhong, Feng, Wang, Chen, Peng, Feng, Qin, and Liu}}}
+\bibcite{touvron2023llama2}{{9}{2023}{{Touvron et~al.}}{{Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov, Batra, Bhargava, Bhosale, Bikel, Blecher, Ferrer, Chen, Cucurull, Esiobu, Fernandes, Fu, Fu, Fuller, Gao, Goswami, Goyal, Hartshorn, Hosseini, Hou, Inan, Kardas, Khandelwal, Paluri, and et~al.}}}
+\bibcite{shorten2019augmentation}{{10}{2019}{{Shorten and Khoshgoftaar}}{{}}}
+\bibcite{naeini2015ece}{{11}{2015}{{Naeini et~al.}}{{Naeini, Cooper, and Hauskrecht}}}
+\bibcite{wilson1927interval}{{12}{1927}{{Wilson}}{{}}}
+\bibcite{lin2014cocoeval}{{13}{2014}{{Lin et~al.}}{{Lin, Maire, Belongie, Hays, Perona, Ramanan, Doll{\'a}r, and Zitnick}}}
+\bibcite{hughes2015plantvillage}{{14}{2015}{{Hughes and Salath{\'e}}}{{}}}
+\bibcite{mohanty2016plantdisease}{{15}{2016}{{Mohanty et~al.}}{{Mohanty, Hughes, and Salath{\'e}}}}
+\bibcite{russakovsky2015imagenet}{{16}{2015}{{Russakovsky et~al.}}{{Russakovsky, Deng, Su, Krause, Satheesh, Ma, Huang, Karpathy, Khosla, Bernstein, Berg, and Fei-Fei}}}
+\bibcite{zhu2023minigpt4}{{17}{2023}{{Zhu et~al.}}{{Zhu, Chen, Shen, Li, and Elhoseiny}}}
+\bibcite{liu2023llava}{{18}{2023}{{Liu et~al.}}{{Liu, Li, Wu, and Lee}}}

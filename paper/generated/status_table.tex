@@ -2,10 +2,13 @@
 \toprule
 Component & Status & Notes \\
 \midrule
-Balanced holdout rebuild with provenance & Done & The active holdout now contains 20 images for each of the seven classes \\
+Balanced holdout with provenance & Done & The active holdout now contains 10 images for each of the seven classes \\
+Compact-train release and train\_aug rebuild & Done & Ten images per class were released from holdout back to train and the augmented root was rebuilt from scratch \\
 Augmented class-floor balancing & Done & Underrepresented classes in the active augmented split were raised to a minimum of 300 images \\
-ResNet v3 retrain on the balanced split & Done & The current classifier checkpoint is evaluated on the balanced 140-image holdout \\
-Runtime promotion with rollback path & Done & The runtime app defaults to the current v3 checkpoint and keeps an explicit override path \\
+Conservative external image additions & Done & Human-audited frost and drought additions were imported into train and propagated into train\_aug \\
+ResNet retrain on the rebuilt current split & Done & A fresh v4 checkpoint was trained on the rebuilt train\_aug root and calibrated on its internal validation split \\
+Latest ResNet checkpoint evaluation on active holdout & Done & The v4 checkpoint was evaluated on the active 70-image balanced holdout \\
+Runtime promotion with rollback path & Done & The runtime app defaults to the current v4 checkpoint and keeps an explicit override path \\
 p1/p2 runtime logging & Done & JSONL logging added for downstream calibration analysis \\
 Tight dual-report generation pilot & Done & Focused 20-image pilot completed with 36 generated reports \\
 Full stage-2 regeneration under tight policy & Pending & The current stage-2 JSON remains stale relative to the augmented training root \\

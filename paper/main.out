@@ -1,25 +1,45 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Related Work}{}% 2
-\BOOKMARK [1][-]{section.3}{Dataset Curation and Split Integrity}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Balanced Holdout Construction}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Balanced Augmented Training Split}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Detector-Audit Imports}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{What This Fixes}{section.3}% 7
-\BOOKMARK [1][-]{section.4}{System Architecture and Current Methods}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{Classifier Backbone, Test-Time Augmentation, and Calibration}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{Runtime Acceptance Gate}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.3}{Grounded Runtime Report Path}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.4}{Current MiniGPT Configuration}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.5}{Offline Dual-Report Generation Policy}{section.4}% 13
-\BOOKMARK [1][-]{section.5}{Current Experimental Results}{}% 14
-\BOOKMARK [2][-]{subsection.5.1}{Clean ResNet Holdout Results}{section.5}% 15
-\BOOKMARK [2][-]{subsection.5.2}{Runtime Gating Behavior and Top-2 Structure}{section.5}% 16
-\BOOKMARK [2][-]{subsection.5.3}{Tight Dual-Report Pilot}{section.5}% 17
-\BOOKMARK [2][-]{subsection.5.4}{What Is Still Not Measured}{section.5}% 18
-\BOOKMARK [1][-]{section.6}{Discussion}{}% 19
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 20
-\BOOKMARK [1][-]{appendix.A}{Appendix: Configuration and Project Scope Notes}{}% 21
-\BOOKMARK [2][-]{subsection.A.1}{Completed Versus Ongoing Work}{appendix.A}% 22
-\BOOKMARK [2][-]{subsection.A.2}{MiniGPT Training Configuration in the Repository}{appendix.A}% 23
-\BOOKMARK [2][-]{subsection.A.3}{Runtime Thresholds}{appendix.A}% 24
-\BOOKMARK [2][-]{subsection.A.4}{Ambiguity Policy Scope}{appendix.A}% 25
+\BOOKMARK [2][-]{subsection.2.1}{Image-Based Plant Disease Classification}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Probability Calibration}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Detection Transformers and Visible-Part Grounding}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Vision-Language Models and Parameter-Efficient Adaptation}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Retrieval-Augmented Generation and Grounded Output}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.6}{Hallucination in Multimodal Models}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.7}{Locality and Inference-Time Cost}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Dataset and Split Protocol}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Class Definition and Split Roots}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Holdout Construction by Physical Relocation}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Class-Floor Balancing}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Conservative External-Image Audit}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.5}{Effect of the Split Protocol}{section.3}% 15
+\BOOKMARK [1][-]{section.4}{System Architecture}{}% 16
+\BOOKMARK [2][-]{subsection.4.1}{Classifier: Backbone, Test-Time Augmentation, and Calibration}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Runtime Acceptance Gate}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.3}{Detector-Grounded Prompt Assembly}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.4}{Optional Retrieval and Hallucination Retry}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.5}{Report Writer Configuration}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.6}{Constrained Dual-Report Supervision Policy}{section.4}% 22
+\BOOKMARK [1][-]{section.5}{Experimental Results}{}% 23
+\BOOKMARK [2][-]{subsection.5.1}{Classifier Evaluation on the Balanced Holdout}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.2}{RF-DETR Grounding-Detector Evaluation}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.3}{Constrained Dual-Report Pilot}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.4}{Pending Experiments}{section.5}% 27
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 28
+\BOOKMARK [2][-]{subsection.6.1}{Asymmetry Between Classifier and Language Claims}{section.6}% 29
+\BOOKMARK [2][-]{subsection.6.2}{Decoupling Classifier Quality from Deployed Diagnosis Rate}{section.6}% 30
+\BOOKMARK [2][-]{subsection.6.3}{Upstream\205Downstream Coupling for Ambiguity}{section.6}% 31
+\BOOKMARK [2][-]{subsection.6.4}{Detector Use as Constraint, Not Localization}{section.6}% 32
+\BOOKMARK [2][-]{subsection.6.5}{Limits of Local Inference}{section.6}% 33
+\BOOKMARK [2][-]{subsection.6.6}{Threats to Validity}{section.6}% 34
+\BOOKMARK [2][-]{subsection.6.7}{Summary}{section.6}% 35
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 36
+\BOOKMARK [1][-]{appendix.A}{Appendix: Configuration and Reproducibility Notes}{}% 37
+\BOOKMARK [2][-]{subsection.A.1}{Project Status Summary}{appendix.A}% 38
+\BOOKMARK [2][-]{subsection.A.2}{Classifier Training and Calibration Details}{appendix.A}% 39
+\BOOKMARK [2][-]{subsection.A.3}{Grounding-Detector Training Configuration}{appendix.A}% 40
+\BOOKMARK [2][-]{subsection.A.4}{Report-Writer Training Configuration}{appendix.A}% 41
+\BOOKMARK [2][-]{subsection.A.5}{Runtime Decision Rule}{appendix.A}% 42
+\BOOKMARK [2][-]{subsection.A.6}{Scope of the Ambiguity Policy}{appendix.A}% 43
+\BOOKMARK [2][-]{subsection.A.7}{Per-Image Misclassifications on the Holdout}{appendix.A}% 44
+\BOOKMARK [2][-]{subsection.A.8}{Reproducibility Manifest}{appendix.A}% 45

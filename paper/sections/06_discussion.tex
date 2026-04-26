@@ -1,13 +1,159 @@
 \section{Discussion}
 
-The current system supports a stronger classifier claim than language-model claim, and the paper should say so plainly.
+\subsection{Asymmetry Between Classifier and Language Claims}
 
-On the classifier side, the methodology is now substantially cleaner than it was during the earlier development phase. The active holdout is physically separate, the current split support is balanced across classes, the augmented training split has been raised to a minimum floor for the previously underrepresented classes, and the current checkpoint is evaluated on that active dataset state. That is enough to support the classifier results in this manuscript with confidence.
+The classifier and the language stages of the pipeline are at different
+levels of empirical maturity, and the manuscript reflects that
+asymmetry. On the classifier side, the methodology is now substantially
+more rigorous than in earlier development phases: the active holdout is
+physically separated from the training roots, per-class support is
+balanced at $n=10$, the augmented training root has been rebuilt from
+the compact root with a class-floor balancing pass, and a fresh v4
+checkpoint has been retrained on the rebuilt root and evaluated on the
+balanced holdout under calibrated two-view TTA. The classifier results
+in \S\ref{sec:results-classifier} are therefore reproducible from the
+recorded artifacts.
 
-On the language side, the story is more nuanced. The runtime integration of MiniGPT, RF-DETR, and RAG is real. The prompt-design work is real. The dual-report pilot is real. But the current MiniGPT checkpoint still predates the fully regenerated balanced stage-2 dataset, which means any strong claim about holdout explanation quality would still be contaminated by outdated supervision. The correct interpretation is therefore that the report-generation redesign is promising but not yet complete enough for a final benchmark claim.
+On the language side, the picture is more partial. The runtime
+integration of MiniGPT-v2, the RF-DETR visibility constraint, the
+optional retrieval module, and the heuristic hallucination retry are
+deployed and exercised on a regular basis. The constrained dual-report
+supervision policy has been validated by the focused pilot described in
+\S\ref{sec:results-dualreport}. However, the deployed report-writer
+checkpoint predates the constrained stage-2 redesign and the balanced
+holdout carve, which means any explanation-quality measurement on the
+current holdout would be confounded by training-time exposure.
+Accordingly, we restrict the language claims of this manuscript to (i) a
+description of the runtime integration and (ii) a feasibility result for
+the constrained supervision policy. We do not assert post-policy
+explanation quality.
 
-The current threshold policy still deserves separate treatment from raw classifier accuracy. The classifier can be correct while the deployment gate suppresses a diagnosis, and the converse can also happen on harder cases. This is a reminder that classifier quality and deployed diagnosis rate are not identical. The current paper does not retune those thresholds because the project now has p1/p2 runtime logging and should use real decision data rather than intuition for future retuning.
+\subsection{Decoupling Classifier Quality from Deployed Diagnosis Rate}
 
-The ambiguity work is valuable for the same reason. A naive ``top-2 means possible alternative'' rule is not safe. Raw ResNet probabilities can surface numerically close but semantically implausible competitors. The pilot only became credible after the policy was tightened with both a lower margin threshold and a realistic pair whitelist. That is exactly the sort of upstream-downstream interaction that matters in a system paper: the usefulness of ambiguity is not determined by the language model alone. It depends on how the classifier's uncertainty structure is filtered before it ever becomes text.
+The threshold gate of Eq.~\ref{eq:threshold-gate} introduces a
+deliberate gap between classifier accuracy on the holdout and the
+deployed diagnosis-acceptance rate. A correct prediction can be demoted
+to \texttt{unknown} when its top-1 probability falls below
+$\tau_{\hat{y}}$, and a marginal correct prediction can be subsequently
+demoted by the post-prompt-assembly $0.50$ guard. We do not retune the
+thresholds in this manuscript because the deployed runtime now logs the
+top-1 and top-2 probabilities to a structured decision log, and we
+prefer to retune from real decision data rather than from holdout
+evaluation alone. The current manuscript therefore reports classifier
+accuracy as a property of the model, not as the deployed user-facing
+diagnosis rate.
 
-Finally, this project should be judged against the right target. The goal is not to maximize fluent prose. The goal is to produce a usable agricultural diagnostic system in which the diagnosis is anchored, the report is grounded, and uncertainty is surfaced honestly. Under that definition, the current paper is strongest when it reports the measured classifier and pilot results cleanly, while reserving full end-to-end language claims for the retrained model and the clean holdout evaluation that still need to be completed.
+\subsection{Upstream--Downstream Coupling for Ambiguity}
+
+The constrained dual-report policy underscores a more general property
+of the system: usefulness of the language-stage uncertainty behavior is
+not determined by the language model alone. A naive ``top-2 implies
+plausible alternative'' rule would surface numerically close but
+semantically implausible competitors (for example, frost as the rank-2
+competitor for healthy on a uniformly green plant), and these would
+become legitimate-looking ambiguity reports. The policy becomes
+defensible only after both a margin condition
+(Eq.~\ref{eq:amb-case-1}--\ref{eq:amb-case-2}) and a curated pair
+whitelist (Eq.~\ref{eq:allowed-pairs}) are applied. This is a concrete
+instance of a more general principle for systems in which a fluent
+generator follows a structured predictor: the generator's uncertainty
+expression is only as well-formed as the upstream filter that produces
+its inputs.
+
+\subsection{Detector Use as Constraint, Not Localization}
+
+The deployed RF-DETR Small detector reaches a validation
+$\mathrm{mAP}_{50}$ of 0.772 and $\mathrm{mAP}_{50:95}$ of 0.598. These
+numbers are competitive for a six-class plant-part vocabulary at the
+training data scale described in \S\ref{sec:results-detector}, but they
+are also not the full criterion for the detector's intended runtime
+role. The detector is deployed as a binary visibility oracle, not as a
+fine-grained localizer: the report writer consumes the set $V(x)$ of
+parts for which any detection clears the per-part threshold $\theta_p$,
+not the bounding boxes themselves. We tune $\theta_p$ in favor of recall
+on parts whose absence is more frequently asserted than their presence
+(in particular \emph{root}). A formal ablation of the visibility
+constraint against an unconstrained baseline is identified as future
+work.
+
+\subsection{Limits of Local Inference}
+
+A persistent design constraint is that the deployed runtime must be
+fully local: no frontier-model API is queried at inference time. Any
+quality improvement therefore has to survive deployment without
+privileged runtime access to a frontier model. In practice, this places
+the burden on stage-2 supervision quality rather than on online
+distillation or runtime auxiliary scoring. The constrained dual-report
+policy is the principal tool we use to translate frontier-model quality
+into local-model quality through the offline supervision channel.
+
+\subsection{Threats to Validity}
+
+We note the following threats to validity.
+
+\paragraph{Small per-class support.}
+With $n=10$ per class, both Wilson and bootstrap intervals on per-class
+top-1 accuracy are wide (Table~\ref{tab:per-class}). Observed
+differences between classes should be treated as suggestive rather than
+significant; the aggregate bootstrap interval in
+Table~\ref{tab:bootstrap-ci} (80.0--95.7\% top-1) is the appropriate
+level at which to compare the deployed checkpoint to alternatives.
+
+\paragraph{Single-distribution evaluation.}
+The active holdout reflects a single-cultivar, single-region image
+distribution. The manuscript does not include cross-cultivar or
+cross-region generalization, and we do not claim it. This is a
+deliberate scope restriction: external evaluation is identified as
+future work alongside the experiments listed in
+\S\ref{sec:results-pending}.
+
+\paragraph{Calibration data overlap.}
+The temperature parameter $T$ in Eq.~\ref{eq:tta-calibration} is fit on
+the internal validation split of the augmented training root, and ECE
+is reported on the disjoint physical holdout. However, both splits are
+drawn from the same source distribution, so the reported ECE is an
+in-distribution calibration estimate rather than a cross-distribution
+estimate.
+
+\paragraph{Detector measurement is firing-rate, not precision/recall.}
+The RF-DETR mAP metrics in Table~\ref{tab:rfdetr-final} are computed on
+the detector's COCO validation split. We additionally report visibility
+firing rates of the deployed detector on the disease-holdout
+distribution (Table~\ref{tab:rfdetr-holdout}), but those firing rates
+do not constitute precision/recall numbers because the disease holdout
+has no plant-part ground truth. Per-disease firing rates are consistent
+with what the deployment intent of the detector requires (e.g., 100\%
+\emph{root} firing on \emph{root rot}; 80\% \emph{soil} firing on
+\emph{overwatered}), but a like-for-like detection benchmark on the
+disease distribution would require additional plant-part annotation of
+the holdout images.
+
+\paragraph{v3-to-v4 retrain not significant at $n=70$.}
+The McNemar paired test in Table~\ref{tab:mcnemar} reports a
+two-sided exact $p=0.688$ for the comparison of v3 (85.71\%) and v4
+(88.57\%) on the shared 70-image holdout. The retrain is therefore
+motivated by split-hygiene reasons (\S\ref{sec:data}) rather than by
+a statistically significant accuracy improvement at this sample size.
+
+\paragraph{Pilot scope.}
+The dual-report pilot is a 20-image feasibility result. It supports
+claims about pipeline executability and policy filtering, but does not
+constitute a measurement of post-retraining explanation quality. The
+pending experiments in \S\ref{sec:results-pending} are required before
+stronger end-to-end claims can be supported.
+
+\paragraph{Heuristic hallucination retry.}
+The phrase-trigger retry module is not calibrated against a
+false-positive budget; we do not characterize its precision or recall
+on any test distribution. It is described in \S\ref{sec:system} as part
+of the deployed runtime, but no claim about its effect on report
+quality is made.
+
+\subsection{Summary}
+
+The deployed AGAI pipeline supports a stronger classifier claim than
+language claim, and the manuscript reports them at the level of evidence
+they currently support: the classifier and detector results are
+calibrated and measured, while the language stage is described and
+shown feasible under the constrained supervision policy without yet
+being benchmarked end-to-end.

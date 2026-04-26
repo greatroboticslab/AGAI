@@ -1,15 +1,9 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[Mohanty et~al.(2016)Mohanty, Hughes, and
-  Salath{\'e}]{mohanty2016plantdisease}
-Sharada~Prasanna Mohanty, David Hughes, and Marcel Salath{\'e}.
-\newblock Using deep learning for image-based plant disease detection, 2016.
-\newblock URL \url{https://arxiv.org/abs/1604.03169}.
 
 \bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{he2016resnet}
 Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
@@ -18,19 +12,20 @@ Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
   Pattern Recognition}, 2016.
 \newblock URL \url{https://arxiv.org/abs/1512.03385}.
 
-\bibitem[Guo et~al.(2017)Guo, Pleiss, Sun, and Weinberger]{guo2017calibration}
-Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q. Weinberger.
-\newblock On calibration of modern neural networks.
-\newblock In \emph{Proceedings of the 34th International Conference on Machine
-  Learning}, volume~70 of \emph{Proceedings of Machine Learning Research},
-  pages 1321--1330, 2017.
-\newblock URL \url{https://proceedings.mlr.press/v70/guo17a.html}.
+\bibitem[Robinson et~al.(2025)Robinson, Robicheaux, and
+  Popov]{robinson2025rfdetr}
+Isaac Robinson, Peter Robicheaux, and Matvei Popov.
+\newblock {RF-DETR}: A real-time, open-world object detection model.
+\newblock Roboflow technical report, 2025.
+\newblock URL \url{https://blog.roboflow.com/rf-detr}.
 
-\bibitem[Zhu et~al.(2023)Zhu, Chen, Shen, Li, and Elhoseiny]{zhu2023minigpt4}
-Deyao Zhu, Jun Chen, Xiaoqian Shen, Xiang Li, and Mohamed Elhoseiny.
-\newblock Minigpt-4: Enhancing vision-language understanding with advanced
-  large language models, 2023.
-\newblock URL \url{https://arxiv.org/abs/2304.10592}.
+\bibitem[Carion et~al.(2020)Carion, Massa, Synnaeve, Usunier, Kirillov, and
+  Zagoruyko]{carion2020detr}
+Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander
+  Kirillov, and Sergey Zagoruyko.
+\newblock End-to-end object detection with transformers.
+\newblock In \emph{European Conference on Computer Vision (ECCV)}, 2020.
+\newblock URL \url{https://arxiv.org/abs/2005.12872}.
 
 \bibitem[Chen et~al.(2023)Chen, Zhu, Shen, Li, Liu, Zhang, Krishnamoorthi,
   Chandra, Xiong, and Elhoseiny]{chen2023minigptv2}
@@ -40,6 +35,40 @@ Jun Chen, Deyao Zhu, Xiaoqian Shen, Xiang Li, Zechun Liu, Pengchuan Zhang,
 \newblock Minigpt-v2: large language model as a unified interface for
   vision-language multi-task learning, 2023.
 \newblock URL \url{https://arxiv.org/abs/2310.09478}.
+
+\bibitem[Hu et~al.(2021)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
+  Chen]{hu2021lora}
+Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+  Wang, Lu~Wang, and Weizhu Chen.
+\newblock Lora: Low-rank adaptation of large language models, 2021.
+\newblock URL \url{https://arxiv.org/abs/2106.09685}.
+
+\bibitem[Guo et~al.(2017)Guo, Pleiss, Sun, and Weinberger]{guo2017calibration}
+Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q. Weinberger.
+\newblock On calibration of modern neural networks.
+\newblock In \emph{Proceedings of the 34th International Conference on Machine
+  Learning}, volume~70 of \emph{Proceedings of Machine Learning Research},
+  pages 1321--1330, 2017.
+\newblock URL \url{https://proceedings.mlr.press/v70/guo17a.html}.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  K\"{u}ttler, Lewis, tau Yih, Rockt\"{a}schel, Riedel, and
+  Kiela]{lewis2020rag}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K\"{u}ttler, Mike Lewis, Wen tau Yih, Tim
+  Rockt\"{a}schel, Sebastian Riedel, and Douwe Kiela.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2020.
+\newblock URL \url{https://arxiv.org/abs/2005.11401}.
+
+\bibitem[Huang et~al.(2024)Huang, Yu, Ma, Zhong, Feng, Wang, Chen, Peng, Feng,
+  Qin, and Liu]{huang2024hallucinationsurvey}
+Lei Huang, Weijiang Yu, Weitao Ma, Weihong Zhong, Zhangyin Feng, Haotian Wang,
+  Qianglong Chen, Weihua Peng, Xiaocheng Feng, Bing Qin, and Ting Liu.
+\newblock A survey on hallucination in large language models: Principles,
+  taxonomy, challenges, and open questions, 2024.
+\newblock URL \url{https://arxiv.org/abs/2311.05232}.
 
 \bibitem[Touvron et~al.(2023)Touvron, Martin, Stone, Albert, Almahairi, Babaei,
   Bashlykov, Batra, Bhargava, Bhosale, Bikel, Blecher, Ferrer, Chen, Cucurull,
@@ -55,11 +84,68 @@ Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine
 \newblock Llama 2: Open foundation and fine-tuned chat models, 2023.
 \newblock URL \url{https://arxiv.org/abs/2307.09288}.
 
-\bibitem[Hu et~al.(2021)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
-  Chen]{hu2021lora}
-Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
-  Wang, Lu~Wang, and Weizhu Chen.
-\newblock Lora: Low-rank adaptation of large language models, 2021.
-\newblock URL \url{https://arxiv.org/abs/2106.09685}.
+\bibitem[Shorten and Khoshgoftaar(2019)]{shorten2019augmentation}
+Connor Shorten and Taghi~M. Khoshgoftaar.
+\newblock A survey on image data augmentation for deep learning.
+\newblock \emph{Journal of Big Data}, 6\penalty0 (1):\penalty0 1--48, 2019.
+\newblock URL \url{https://doi.org/10.1186/s40537-019-0197-0}.
+
+\bibitem[Naeini et~al.(2015)Naeini, Cooper, and Hauskrecht]{naeini2015ece}
+Mahdi~Pakdaman Naeini, Gregory~F. Cooper, and Milos Hauskrecht.
+\newblock Obtaining well calibrated probabilities using {B}ayesian binning.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, 2015.
+\newblock URL \url{https://ojs.aaai.org/index.php/AAAI/article/view/9602}.
+
+\bibitem[Wilson(1927)]{wilson1927interval}
+Edwin~B. Wilson.
+\newblock Probable inference, the law of succession, and statistical inference.
+\newblock \emph{Journal of the American Statistical Association}, 22\penalty0
+  (158):\penalty0 209--212, 1927.
+
+\bibitem[Lin et~al.(2014)Lin, Maire, Belongie, Hays, Perona, Ramanan,
+  Doll{\'a}r, and Zitnick]{lin2014cocoeval}
+Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva
+  Ramanan, Piotr Doll{\'a}r, and C.~Lawrence Zitnick.
+\newblock Microsoft {COCO}: Common objects in context.
+\newblock In \emph{European Conference on Computer Vision (ECCV)}, 2014.
+\newblock URL \url{https://arxiv.org/abs/1405.0312}.
+
+\bibitem[Hughes and Salath{\'e}(2015)]{hughes2015plantvillage}
+David~P. Hughes and Marcel Salath{\'e}.
+\newblock An open access repository of images on plant health to enable the
+  development of mobile disease diagnostics.
+\newblock \emph{arXiv preprint arXiv:1511.08060}, 2015.
+\newblock URL \url{https://arxiv.org/abs/1511.08060}.
+
+\bibitem[Mohanty et~al.(2016)Mohanty, Hughes, and
+  Salath{\'e}]{mohanty2016plantdisease}
+Sharada~Prasanna Mohanty, David Hughes, and Marcel Salath{\'e}.
+\newblock Using deep learning for image-based plant disease detection, 2016.
+\newblock URL \url{https://arxiv.org/abs/1604.03169}.
+
+\bibitem[Russakovsky et~al.(2015)Russakovsky, Deng, Su, Krause, Satheesh, Ma,
+  Huang, Karpathy, Khosla, Bernstein, Berg, and
+  Fei-Fei]{russakovsky2015imagenet}
+Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
+  Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein,
+  Alexander~C. Berg, and Li~Fei-Fei.
+\newblock {ImageNet} large scale visual recognition challenge.
+\newblock \emph{International Journal of Computer Vision}, 115\penalty0
+  (3):\penalty0 211--252, 2015.
+\newblock URL \url{https://arxiv.org/abs/1409.0575}.
+
+\bibitem[Zhu et~al.(2023)Zhu, Chen, Shen, Li, and Elhoseiny]{zhu2023minigpt4}
+Deyao Zhu, Jun Chen, Xiaoqian Shen, Xiang Li, and Mohamed Elhoseiny.
+\newblock Minigpt-4: Enhancing vision-language understanding with advanced
+  large language models, 2023.
+\newblock URL \url{https://arxiv.org/abs/2304.10592}.
+
+\bibitem[Liu et~al.(2023)Liu, Li, Wu, and Lee]{liu2023llava}
+Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong~Jae Lee.
+\newblock Visual instruction tuning.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2304.08485}.
 
 \end{thebibliography}
