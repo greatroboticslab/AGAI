@@ -1,243 +1,156 @@
-<p>
-  <center>
 <img width="300" height="300" alt="AGAI__1_-removebg-preview (1)" src="https://github.com/user-attachments/assets/fa829d87-0660-4292-8563-a695f01290dd" />
-</p>
 
-# Plant Diagnostic System 
-An AI-powered strawberry disease detection and diagnostic system built on three complementary models: a **ResNet-50** image classifier for disease identification, an **RF-DETR Small** object detector for plant-part grounding, and **MiniGPT-v2** for generating detailed, visually grounded diagnostic reports. The system serves a Gradio web interface where users upload or capture images of strawberry plants and receive structured diagnoses with actionable treatment recommendations sourced from university extension publications.
+# AGAI: Plant Diagnostic System
 
-> Research prototype developed at Middle Tennessee State University. Not a substitute for professional agronomic advice.
+An AI system that diagnoses strawberry plant problems from a photo and explains the diagnosis: it classifies the
+image into seven conditions (healthy, drought, overwatering, root rot, frost injury, gray mold, white mold), finds
+the visible plant parts, and writes a grounded report with treatment advice sourced from university extension
+publications.
 
-## Research Paper
+> Research prototype developed at Middle Tennessee State University. Not a substitute for professional agronomic
+> advice.
 
-- [RESEARCH_PAPER.pdf](RESEARCH_PAPER.pdf)
+**[Research paper (v1)](RESEARCH_PAPER.pdf)** · **[Lab notebook](cluster/EXPERIMENT_LOG.md)** ·
+**[Roadmap](docs/ROADMAP.md)** · **[v1 setup and demo](docs/V1_SYSTEM.md)**
 
----
+## Overview
 
-## How It Works
+**v1** (the paper) chains a ResNet-50 classifier, an RF-DETR Small plant-part detector and a LoRA-adapted
+MiniGPT-v2 explainer behind a Gradio demo.
 
-The system runs a three-stage pipeline on every uploaded image:
+**The 2026 revival** re-establishes the system on the university's Slurm cluster and re-examines every component
+under a stricter protocol: the v1 results are reproduced first, then each component is replaced only where a
+leak-free, seed-replicated, paired comparison shows a gain. All annotation and captioning runs on open models locally
+(no API spending). The work is organised around four questions:
 
-1. **ResNet-50 Classification** -- A fine-tuned ResNet-50 classifies the image into one of seven conditions: healthy, drought, overwatering, root rot, frost injury, gray mold, or white mold. Test-time augmentation and temperature scaling produce calibrated confidence scores.
+1. **Benchmark.** Is the evaluation sound? The paper's holdout leaks through near-duplicates and is too small to rank
+   models; a grouped split with paired statistics replaces it.
+2. **Diagnosis.** How much of the classifier's error is architecture, how much data?
+3. **Honesty.** Can the explainer *disagree* with a wrong diagnosis instead of rationalising it?
+4. **Faithfulness.** Which open vision-language model describes a photo without inventing symptoms, and can
+   invented symptoms be caught automatically?
 
-2. **RF-DETR Part Detection** -- An RF-DETR Small object detector identifies which plant parts are visible in the image (flower, fruit, leaf, root, soil, stem). Per-class confidence thresholds are tuned to each part's detection characteristics. The detected parts constrain MiniGPT's output so it only describes what is actually visible.
+## Architecture
 
-3. **MiniGPT-v2 Grounded Explanation** -- A LoRA-adapted MiniGPT-v2 (LLaMA-2-7B backbone) receives the ResNet diagnosis as ground truth and the RF-DETR part detections as visibility constraints. It generates a structured diagnostic report covering the diagnosis, visible symptoms on detected parts, and treatment recommendations. Parts that are not detected are excluded from the response, reducing hallucination.
-
-```
-Image Upload --> ResNet-50 Classification --> RF-DETR Part Detection --> MiniGPT-v2 Grounded Report
-```
-
-A knowledge graph RAG system supports follow-up Q&A and provides part-specific treatment advice when RF-DETR detects particular plant structures.
-
----
-
-## Features
-
-- **Three-stage AI pipeline** with classification, detection, and vision-language explanation
-- **Seven disease classes**: healthy, drought, overwatering, root rot, frost injury, gray mold, white mold
-- **Plant-part grounding**: RF-DETR constrains MiniGPT to only describe visible parts, with optional bounding box overlay on the uploaded image
-- **Knowledge graph RAG**: disease-specific follow-up Q&A with part-specific treatment recommendations grounded in university extension publications
-- **Hallucination detection**: cross-checks model output against known disease indicators to flag and regenerate confused responses
-- **Web search integration**: optional SERP API enrichment for supplementary context
-- **Dark-themed Gradio interface** with chat, settings, and an interactive disease knowledge graph visualization
-
----
-
-## Requirements
-
-- Python 3.9+ (the demo runs in a `minigptv` Conda environment; RF-DETR training uses a separate `rfdetr` environment with Python 3.11)
-- CUDA GPU with 16 GB+ VRAM (RTX 3090 or better recommended)
-- PyTorch with CUDA support
-- Model weights (not included in the repository):
-  - LLaMA-2-7B-chat: `llama_weights/Llama-2-7b-chat-hf/`
-  - MiniGPT-v2 fine-tuned checkpoint: `output/minigpt_strawberry/checkpoint_best.pth`
-  - ResNet-50 classifier: `plant_diagnostic/models/resnet_strawberry.pth`
-  - RF-DETR Small fine-tuned checkpoint: `rfdetr_parts/output/checkpoint_best_total.pth`
-- (Optional) SERP API key in a `.env` file for web search features
-
----
-
-## Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/greatroboticslab/AGAI.git
-cd AGAI
-
-# Create the Conda environment for the demo
-conda env create -f environment.yml
-conda activate minigptv
-
-# Install PyTorch with CUDA support (adjust cu121 to match your driver)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
-# Install remaining dependencies
-pip install transformers==4.41.1 bitsandbytes gradio pillow numpy pandas plotly networkx python-dotenv timm serpapi
+```mermaid
+flowchart TB
+    subgraph V1["v1 (paper)"]
+        a1["ResNet-50<br/>7-class diagnosis"] --> a3["MiniGPT-v2 (LLaMA-2-7B)<br/>treats the diagnosis as ground truth"]
+        a2["RF-DETR Small<br/>visible plant parts"] --> a3
+    end
+    subgraph V2["v2 (revival, in progress)"]
+        b1["SigLIP 2 classifier<br/>designed synthetic data +<br/>low-quality augmentation"] --> b3["Qwen3-VL-8B honest student<br/>can reject the diagnosis,<br/>names the alternative"]
+        b2["RF-DETR Large<br/>visible plant parts"] --> b3
+        b4["Training annotations:<br/>label-blind open captioners,<br/>claims verified by a zoom-in judge"] -.->|distillation| b3
+    end
+    V1 ==>|"replace a component only when a<br/>paired, seed-replicated test shows a gain"| V2
 ```
 
-For RF-DETR training, a separate environment is needed:
+## Results so far
 
-```bash
-conda create -n rfdetr python=3.11 -y
-conda activate rfdetr
-pip install rfdetr torch torchvision --index-url https://download.pytorch.org/whl/cu121
-```
+All numbers on the leak-free split v1 test set (398 photos) unless noted; ± is the standard deviation over seeds.
 
-### Environment Variables
+| Component | v1 | Revival | Details |
+|---|---|---|---|
+| Benchmark | 70-photo holdout; 14 "clean" images had near-copies in training | split v1, 1,017 / 161 / 398, near-duplicate groups never cross splits; paired McNemar tests; pre-registered analyses | [Benchmark](docs/BENCHMARK.md) |
+| Diagnosis accuracy | ResNet-50: 90.2 ± 1.5 % | SigLIP 2: 95.6 ± 1.3 %, EVA-02-L: 95.7 ± 1.1 %; with the data recipe 96.3 ± 0.8 %; ensembles 97.2-97.7 % (≈ label-noise ceiling) | [Classifier](docs/CLASSIFIER.md) |
+| Low-detail photos (128 px) | not measured | 83.7 → 92.1 % with train-time phone degradation, clean accuracy unchanged | [Synthetic data](docs/SYNTHETIC_DATA.md) |
+| "Roots visible → root rot" shortcut | present (0-1 of 6 healthy dug-up roots called healthy) | removed (5-6 of 6) by designed synthetic counter-examples | [Synthetic data](docs/SYNTHETIC_DATA.md#the-roots-shortcut) |
+| Plant-part detection, mAP@50:95 | RF-DETR Small 0.598 | RF-DETR Large 0.631 (+3.8 points over a like-for-like retrained Small, 0.593) | [Detector](docs/DETECTOR.md) |
+| Explainer honesty (label-swap test, balanced) | explainer receives the label as ground truth (not testable as built) | 8B student 82.5 % vs its 32B teacher 77.6 % (p = 0.00013); best zero-shot model (Qwen3-VL-235B) 80.7 % | [VLM honesty](docs/VLM_HONESTY.md) |
+| Test-time compute instead of training | — | zero-shot VLMs: voting over 20 samples +1-2 points (n.s.), debate and reference images +0, explanation before the answer −5 to −9 points; best zero-shot 76.1 % (GLM-4.6V, vote) vs 96.3 % fine-tuned | [Test-time compute](docs/TEST_TIME_COMPUTE.md) |
+| Caption faithfulness (blind human ratings) | — | 4 open captioners: 4.0-10.3 % of claims not in the photo (interim, 615 of 845 claims) | [Captioning](docs/CAPTIONING.md) |
+| Hallucination filtering | — | a judge model that re-examines each claim (8B-235B) removes 2.8-3.7 false claims per real claim lost, and a bigger judge is not better; agreement and self-consistency checks 1.3-1.5 | [Captioning](docs/CAPTIONING.md#4-hallucination-filters) |
 
-```bash
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-export SERP_API_KEY=your_key_here   # optional, for web search features
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/classifier_dark.png">
+  <img alt="Dot plot of split v1 test accuracy by method, from ResNet-50 at 90.2 percent to an ensemble at 97.7 percent" src="docs/figures/classifier_light.png" width="760">
+</picture>
 
-Or place `SERP_API_KEY=your_key_here` in a `.env` file at the project root (gitignored).
+**What the evidence says so far.**
 
----
+- **The data, not the model, is now the bottleneck.** At ~97 % the remaining test errors are mostly label noise or
+  ambiguous photos; the next gains come from expert relabeling and new real photos of the weak classes.
+- **Explanations need a model that can say "this photo does not show that".** Off-the-shelf VLMs accept a wrong
+  label about a quarter of the time; distillation filtered to correct verdicts fixes much of it.
+- **Agreement is not truth.** Open captioners share blind spots (normal stem hairs read as mold by three of four
+  models), so voting and self-consistency make poor hallucination filters. Asking a judge model to re-examine each
+  claim at the place it points to works far better, and an 8B judge is enough; look-alikes of disease signs still
+  fool every judge.
+- **Inference tricks do not replace training.** Voting over many sampled answers, multi-round debate between models
+  and reference images leave zero-shot diagnosis ~20 points below a 10-minute fine-tune, and asking a model to explain
+  before answering makes it worse. Sampling is useful for *uncertainty*: vote share and model disagreement flag most
+  errors, and when two models disagree the truth is one of their two answers ~70 % of the time.
 
-## Running the Demo
+## Documentation
 
-```bash
-python demo_v5.py
-```
+| Page | Contents |
+|---|---|
+| [Benchmark](docs/BENCHMARK.md) | split v1, auxiliary test sets, low-quality suite, statistics, known data defects |
+| [Classifier](docs/CLASSIFIER.md) | v1 reproduction, zero-shot VLMs, frozen probes, fine-tuned backbones, ensembles, error analysis |
+| [Synthetic data](docs/SYNTHETIC_DATA.md) | the lab's GPT images, a shortcut-aware synthetic set, robustness to poor photos |
+| [VLM honesty](docs/VLM_HONESTY.md) | annotation schema, label-swap test, filtered distillation, teacher comparison |
+| [Captioning](docs/CAPTIONING.md) | two-pass captioning, captioner bake-off, blind human ratings, hallucination filters |
+| [Test-time compute](docs/TEST_TIME_COMPUTE.md) | voting over samples, two-answer captions, debate, reference images, answer format |
+| [Detector](docs/DETECTOR.md) | RF-DETR Small / Medium / Large |
+| [Compute](docs/COMPUTE.md) | cluster, environments, multi-node serving of 100B+ models, reproducing a result |
+| [Roadmap](docs/ROADMAP.md) | what is done, running and next; decisions; paper outline |
+| [v1 system](docs/V1_SYSTEM.md) | the paper's system: setup, demo, training, knowledge graph |
+| [`cluster/README.md`](cluster/README.md) | index of the experiment code, grouped by study, and the Slurm launchers |
+| [`cluster/EXPERIMENT_LOG.md`](cluster/EXPERIMENT_LOG.md) | the lab notebook: every run, pre-registration and correction |
 
-This starts a Gradio web interface. Open the printed URL in your browser, upload a strawberry plant image, and the system will return a structured diagnosis. Use the settings panel to toggle bounding box visualization, adjust generation temperature, or explore the knowledge graph tab.
+## Status
 
----
+| Done | Running | Next |
+|---|---|---|
+| v1 reproduced (ResNet v4 predictions 68/68 identical; end-to-end pipeline) | blind ratings (615 / 845 claims) | choose teacher + verifier (gate 1) |
+| leak-free benchmark and data audit | cross-family claim judge (GLM-4.6V inconclusive on vLLM) | regenerate training annotations, retrain the student |
+| classifier, synthetic-data and detector studies | | assemble the v2 pipeline and demo; v1 vs v2 end to end |
+| label-swap test, honest 8B student, teacher comparison (5 models) | | expert relabeling; new real photos of weak classes; paper |
+| captioner bake-off; consistency filters; 8B / 27B / 32B claim judges; test-time compute study | | |
 
-## Training
+Full plan with acceptance criteria: [Roadmap](docs/ROADMAP.md).
 
-### MiniGPT-v2 Fine-tuning
+## Quick start
 
-```bash
-CUDA_VISIBLE_DEVICES=0,1 MASTER_PORT=29607 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
-  python -m torch.distributed.run --nproc_per_node=2 train.py \
-  --cfg-path train_configs/minigptv2_strawberry_v2.yaml
-```
+- **Run the v1 demo:** environment setup, weights and `python demo_v5.py` in [docs/V1_SYSTEM.md](docs/V1_SYSTEM.md).
+- **Reproduce a revival result:** find its entry in the [lab notebook](cluster/EXPERIMENT_LOG.md), then run the named
+  script with the logged arguments ([docs/COMPUTE.md](docs/COMPUTE.md#reproducing-a-result); [`cluster/README.md`](cluster/README.md)
+  gives each script's folder).
+- **Regenerate the figures:** `python docs/figures/make_figures.py`.
 
-### RF-DETR Part Detector
-
-Prepare the COCO-format dataset and launch training (in the `rfdetr` Conda environment):
-
-```bash
-conda activate rfdetr
-python rfdetr_parts/prepare_dataset.py
-python rfdetr_parts/train_rfdetr.py
-```
-
-Training hyperparameters are in `rfdetr_parts/rfdetr_config.yaml`. The trained checkpoint is saved to `rfdetr_parts/output/`.
-
----
-
-## Project Structure
+## Repository layout
 
 ```
 AGAI/
-├── demo_v5.py                  # Gradio web interface (main entry point)
-├── resnet_classifier.py        # ResNet-50 inference and TTA
-├── train.py                    # MiniGPT-v2 training script
-├── eval_only.py                # Non-interactive evaluation
-├── eval_holdout.py             # Holdout set evaluation
-├── test_grounding.py           # End-to-end grounding test orchestrator
-├── ui_components.py            # Gradio UI HTML/CSS constants
-├── dark_theme.css              # UI theme stylesheet
-├── AGAILogo.png                # Project logo
-├── environment.yml             # Conda environment definition
-│
-├── grounding/                  # RF-DETR grounding pipeline
-│   ├── config.py               # Paths, part lists, thresholds
-│   ├── detector.py             # Subprocess wrapper for RF-DETR inference
-│   ├── analyzer.py             # Text analysis (negation, advice, calyx remap)
-│   ├── inference.py            # MiniGPT loading and prompt construction
-│   └── report.py               # Structured terminal output
-│
-├── rfdetr_parts/               # RF-DETR Small training and inference
-│   ├── rfdetr_config.yaml      # Training hyperparameters
-│   ├── prepare_dataset.py      # COCO dataset preparation and splitting
-│   ├── train_rfdetr.py         # Training script
-│   ├── detect_images.py        # Inference with per-class thresholds
-│   └── eval_thresholds.py      # Confidence threshold evaluation
-│
-├── knowledge_graph/            # Disease knowledge RAG system
-│   ├── disease_knowledge_base.json  # Sourced treatments, part-specific advice
-│   ├── rag_retriever.py        # Context retrieval, hallucination checks
-│   ├── qa_retriever.py         # Follow-up Q&A with pattern matching
-│   └── README.md
-│
-├── minigpt4/                   # Core MiniGPT-v2 framework
-│   ├── models/                 # Model architectures (MiniGPT-v2, EVA-ViT, Q-Former)
-│   ├── datasets/               # Dataset builders and loaders
-│   ├── processors/             # Image and text processors
-│   ├── runners/                # Training runners
-│   ├── tasks/                  # Training task definitions
-│   ├── conversation/           # Conversation management
-│   └── common/                 # Utilities, config, registry
-│
-├── plant_diagnostic/           # ResNet-50 training data and models
-│   ├── data/                   # Training images (7 classes)
-│   ├── models/                 # Trained ResNet checkpoint
-│   ├── scripts/                # Training and utility scripts
-│   └── src/                    # Source modules
-│
-├── hallucination_evaluation/   # Response quality evaluation suite
-├── evaluation/                 # Model evaluation scripts
-├── configs/                    # MiniGPT model config YAMLs
-├── eval_configs/               # Inference configuration
-├── train_configs/              # Training configuration
-├── figs/                       # Architecture diagrams and paper figures
-├── documentation/              # Session notes
-├── annotationjsons/            # Label Studio annotation exports
-├── RESEARCH_PAPER.md           # Research paper (Markdown)
-└── RESEARCH_PAPER.docx         # Research paper (Word)
+├── README.md                  # this page
+├── docs/                      # revival documentation and figures (start here)
+├── cluster/                   # revival code, grouped by study, and the lab notebook
+│   ├── benchmark/             # leak-free split, data audits, v1 baselines, leaderboards
+│   ├── classifier/            # backbones, fine-tunes, ensembles, robustness, shortcut test
+│   ├── synthetic/             # synthetic-image import and training trees
+│   ├── vlm/                   # annotation, honesty test, student, captioning, judges, voting
+│   ├── detector/              # RF-DETR evaluation and training
+│   ├── infra/                 # cluster setup, model staging and verification
+│   ├── slurm/                 # launchers: multi-node vLLM and LoRA, honest student, synthetic arms
+│   └── EXPERIMENT_LOG.md      # every run, pre-registration and correction
+├── evaluation/                # v1 holdout evaluation, label audit
+├── demo_v5.py                 # v1 Gradio interface (entry point)
+├── resnet_classifier.py       # v1 ResNet-50 inference and TTA
+├── grounding/                 # v1 RF-DETR grounding + MiniGPT prompting
+├── rfdetr_parts/              # RF-DETR training and inference
+├── knowledge_graph/           # disease knowledge base and RAG
+├── minigpt4/                  # MiniGPT-v2 framework
+├── plant_diagnostic/          # classifier data, models and training scripts
+├── hallucination_evaluation/  # v1 response quality evaluation
+├── paper/                     # paper sources
+├── configs/, eval_configs/, train_configs/   # MiniGPT model, inference and training configs
+├── figs/, documentation/, annotationjsons/, tests/
+└── RESEARCH_PAPER.pdf
 ```
 
-Large directories excluded from the repository via `.gitignore`:
-
-- `llama_weights/` -- LLaMA-2-7B-chat model weights
-- `output/` -- MiniGPT training checkpoints
-- `checkpoints/` -- Stage-2 checkpoints
-- `rfdetr_parts/dataset/` and `rfdetr_parts/output/` -- RF-DETR training data and checkpoints
-
----
-
-## Knowledge Graph and RAG
-
-The `knowledge_graph/disease_knowledge_base.json` file contains detailed, citation-backed information for all seven disease classes, including:
-
-- Symptoms, causes, visual indicators, and severity ratings
-- Treatment protocols web-crawled and curated from UC IPM, Penn State Extension, NC State Extension, Cornell Extension, University of Minnesota Extension, and others
-- **Part-specific treatments** keyed to RF-DETR detections (e.g., fruit-specific advice for gray mold when fruit is detected in the image)
-- Recovery timelines and prevention strategies
-
-The `DiseaseRAG` retriever provides context injection and hallucination checking, while `DiseaseQA` handles follow-up questions with pattern-matched routing to the appropriate knowledge section.
-
----
-
-## Architecture Diagrams (outdated)
-
-### Inference Dataflow
-![Inference Dataflow](https://github.com/user-attachments/assets/b6f433ad-d25a-4b06-b0c5-e00addd43984)
-
-### End-to-End Inference Sequence
-![End-to-End Inference Sequence](https://github.com/user-attachments/assets/7bf297ba-d818-48be-a803-d94d6994c62c)
-
-### Training Pipeline
-![Training Pipeline](https://github.com/user-attachments/assets/fc1dfc01-c445-4c3f-9398-709c4845fcfc)
-
----
-
-## Demo Videos (outdated)
-
-### Project Overview
-[![Plant Diagnostic Project Demo](https://img.youtube.com/vi/-QEf8KkALK4/0.jpg)](https://youtu.be/-QEf8KkALK4?si=mVatePAGOcpFYOXw)
-
-### Current Demo (demo_v5)
-[![Demo v5](https://img.youtube.com/vi/eduSbkigjLY/0.jpg)](https://youtu.be/eduSbkigjLY?si=24JHh-qNNbvROLdD)
-
-### Webcam and Unknown Scenario
-[![Webcam Demo](https://img.youtube.com/vi/PXN6_6oj7_M/0.jpg)](https://youtu.be/PXN6_6oj7_M)
-
----
+Model weights and training outputs are not stored in the repository (`.gitignore`); the labeled photos are, with Git
+LFS.
 
 ## Citation
 
@@ -250,19 +163,16 @@ The `DiseaseRAG` retriever provides context injection and hallucination checking
 }
 ```
 
----
+## License and credits
 
-## License and Credits
+v1 builds on [MiniGPT-v2](https://github.com/Vision-CAIR/MiniGPT-4), [LLaMA-2](https://ai.meta.com/llama/),
+[RF-DETR](https://github.com/roboflow/rf-detr) and [ResNet](https://arxiv.org/abs/1512.03385). The revival
+additionally uses open models and tools including Qwen3-VL, GLM-4.6V, SigLIP 2, EVA-02, Perception Encoder, DINOv2/v3,
+BioCLIP and [vLLM](https://github.com/vllm-project/vllm); each is subject to its own licence.
 
-This project builds on:
-
-- [MiniGPT-v2](https://github.com/Vision-CAIR/MiniGPT-4) -- vision-language model framework
-- [LLaMA-2](https://ai.meta.com/llama/) -- language model backbone (Meta AI)
-- [RF-DETR](https://github.com/roboflow/rf-detr) -- real-time detection transformer (Roboflow)
-- [ResNet](https://arxiv.org/abs/1512.03385) -- image classification architecture
-
-Treatment recommendations in the knowledge base are web-crawled and sourced from university cooperative extension publications (UC IPM, Cornell, Penn State, NC State, UMN, Virginia Tech, Utah State, UGA). See individual disease entries in `knowledge_graph/disease_knowledge_base.json` for full citations.
+Treatment recommendations in the knowledge base are web-crawled and sourced from university cooperative extension
+publications (UC IPM, Cornell, Penn State, NC State, UMN, Virginia Tech, Utah State, UGA). See individual disease
+entries in `knowledge_graph/disease_knowledge_base.json` for full citations.
 
 The models were trained on a curated corpus of publicly available web-scale data and indexed digital repositories.
-
 Please respect upstream licenses and dataset terms of use.
