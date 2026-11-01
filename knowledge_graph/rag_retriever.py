@@ -13,6 +13,7 @@ Usage:
 """
 
 import json
+import re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -462,42 +463,68 @@ class DiseaseRAG:
         """
         label = self._normalize_label(disease_label)
         diseases = self.knowledge_base.get("diseases", {})
-        
+
         if label not in diseases:
             return {"has_definite_hallucination": False, "error": f"Unknown disease: {label}"}
-        
-        text_lower = generated_text.lower()
-        
+
         # Only check UNIQUE visual indicators from OTHER diseases
         # These are definite hallucinations - no ambiguity
         definite_hallucinations = []
+        negated_mentions = []
         confused_with = set()
-        
-        # Highly specific indicators that are UNIQUE to each disease
-        # If these appear for wrong disease, it's definitely a hallucination
-        unique_indicators = {
-            "drought": ["cracked soil", "limp petioles"],
-            "overwatering": ["mushy crown", "algae growth", "waterlogged"],
-            "root_rot": ["foul odor", "red stele", "brown roots"],
-            "frost_injury": ["black eye", "translucent leaves", "glassy tissue"],
-            "gray_mold": ["gray fuzz", "dusty spores", "tan mummies", "botrytis"],
-            "white_mold": ["white cotton", "black sclerotia", "cottony mycelium"],
-            "healthy": []  # Don't flag healthy indicators as hallucinations
-        }
-        
-        for other_disease, indicators in unique_indicators.items():
+
+        # A phrase only counts when it is asserted: "no gray fuzz is present" or "unlike gray mold's dusty spores"
+        # used to be flagged, so the check is done per sentence with the negation rules in _is_negated().
+        sentences = [s for s in re.split(r"(?<=[.!?;])\s+|\n+", generated_text.lower()) if s.strip()]
+        for other_disease, indicators in self.DEFINITE_INDICATORS.items():
             if other_disease != label and other_disease != "healthy":
                 for indicator in indicators:
-                    if indicator.lower() in text_lower:
+                    asserted = False
+                    for sentence in sentences:
+                        for m in re.finditer(re.escape(indicator.lower()), sentence):
+                            if self._is_negated(sentence, m.start(), m.end()):
+                                negated_mentions.append(f"{indicator} (indicates {other_disease}; negated)")
+                            else:
+                                asserted = True
+                    if asserted:
                         definite_hallucinations.append(f"{indicator} (indicates {other_disease})")
                         confused_with.add(other_disease)
-        
+
         return {
             "has_definite_hallucination": len(definite_hallucinations) > 0,
             "hallucinations": definite_hallucinations,
+            "negated_mentions": negated_mentions,
             "disease_confused_with": list(confused_with),
             "diagnosed_as": label
         }
+
+    # Hallmark phrases of the consistency check: visual indicators meant to be specific to one condition. A report for
+    # another condition that asserts one of them is regenerated once. 2026-10-30: "brown roots" (also a listed sign
+    # of overwatering) and "botrytis" (named as a secondary-infection risk under frost injury, overwatering and root
+    # rot) were removed because they flagged correct reports; 16 phrases remain.
+    DEFINITE_INDICATORS = {
+        "drought": ["cracked soil", "limp petioles"],
+        "overwatering": ["mushy crown", "algae growth", "waterlogged"],
+        "root_rot": ["foul odor", "red stele"],
+        "frost_injury": ["black eye", "translucent leaves", "glassy tissue"],
+        "gray_mold": ["gray fuzz", "dusty spores", "tan mummies"],
+        "white_mold": ["white cotton", "black sclerotia", "cottony mycelium"],
+        "healthy": []  # Don't flag healthy indicators as hallucinations
+    }
+
+    _NEGATION_BEFORE = re.compile(
+        r"\b(?:no|not|non|never|neither|nor|without|absent|absence of|free of|lack of|lacks|lacking|unlike|"
+        r"rather than|instead of|no (?:signs?|evidence|trace) of)\b")
+    _NEGATION_AFTER = re.compile(
+        r"^\W*(?:\w+\W+){0,3}(?:(?:is|are|was|were|appears?|seems?)\s+)?(?:not|n't|absent|missing|lacking|never)\b")
+
+    @classmethod
+    def _is_negated(cls, sentence: str, start: int, end: int) -> bool:
+        """A phrase is negated when a negation cue sits within the five words before it, or when it is followed by
+        'is not ...' / 'are absent' and the like."""
+        before = " ".join(sentence[:start].split()[-5:])
+        after = sentence[end:end + 40]
+        return bool(cls._NEGATION_BEFORE.search(before)) or bool(cls._NEGATION_AFTER.search(after))
 
 
 # Quick test

@@ -1004,7 +1004,17 @@ Be detailed and thorough. Complete all recommendations fully.
         max_attempts = 2  # Try up to 2 times if hallucination detected
         body = None
         hallucination_warning = None
-        
+
+        # Part lists for the regeneration prompt; empty when the detector found nothing (the retry used to fail
+        # with an undefined name in that case)
+        if detected_parts:
+            retry_part_lines = (
+                f"VISIBLE (describe these): {', '.join(sorted(detected_parts.keys()))}.\n"
+                f"NOT VISIBLE (do NOT mention these at all): {', '.join(sorted(PLANT_PARTS - set(detected_parts.keys())))}.\n"
+            )
+        else:
+            retry_part_lines = ""
+
         for attempt in range(max_attempts):
             # Reset conversation for each attempt
             if attempt > 0:
@@ -1017,9 +1027,7 @@ Be detailed and thorough. Complete all recommendations fully.
 <<SYS>>You are a plant diagnostician. The diagnosis has already been determined: {final_label.title()}
 Your task is to examine the image and explain why this diagnosis is correct.
 You MUST use this exact diagnosis: {final_label.title()}
-VISIBLE (describe these): {visible_csv}.
-NOT VISIBLE (do NOT mention these at all): {hidden_csv}.
-Provide a detailed medical report in this format:
+{retry_part_lines}Provide a detailed medical report in this format:
 1) Diagnosis: {final_label.title()}
 2) Visible cues: Describe the visual symptoms you observe that support this diagnosis.
 3) Recommendation: Provide specific, actionable treatment steps.
