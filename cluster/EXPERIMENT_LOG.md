@@ -1242,3 +1242,14 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   smallest real classes and gray mold the largest, so the batch targeted confusions, not class size. The files enter
   no reported result (the study's synthetic arm uses the 601 named files). Local notebook only until the ssh master is
   back.
+- **2026-10-31, 20:45 CDT. (p) Committed and pushed to the lab repository (greatroboticslab/AGAI, main) with W.S.'s
+  authorization of 2026-10-31 ("u have final commit push perm"); no Claude co-author trailer, per W.S.** Six commits on
+  top of G.M.'s 3b0a31f (figure scripts), fast-forwarded first: ee006d9 report writer retrained on split v1 (training
+  fixes, matched prompts, Table S16 scoring, result files; `.gitattributes` keeps `evaluation/paper_data/*.json` out of
+  LFS); 53c59d5 detector test split, RF-DETR Small / Large retrains, per-part AP; 340c148 classifier calibration, gate
+  metrics, mirrored-view ablation; 6f055df latency and GPU memory scripts, job file, RFDETR_PYTHON in
+  `grounding/detector.py`, result files; 3a493fd consistency-check fixes (negation-aware matching, retry without parts,
+  16-phrase list); 3916082 docs (`docs/MANUSCRIPT_QA.md`, DETECTOR / V1_SYSTEM / COMPUTE corrections, README,
+  environment freezes, this notebook through entry (o)). Pre-commit checks: all 24 changed or new Python files compile;
+  no secrets or machine-specific paths in the changes. This entry is committed separately. The Hamilton working copy
+  (branch labbox, flat `cluster/` layout) is unchanged; its two notebook copies carry the same entries.
