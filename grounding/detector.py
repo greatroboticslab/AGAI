@@ -3,9 +3,11 @@ RF-DETR detection via subprocess.
 
 Calls detect_images.py inside the rfdetr conda environment so the main
 process (running in minigptv) never needs to import the rfdetr package.
+Set RFDETR_PYTHON to a venv's python to skip conda (e.g. on the cluster).
 """
 
 import json
+import os
 import subprocess
 import sys
 
@@ -20,13 +22,17 @@ def run_rfdetr(image_paths):
         'detected_parts', 'all_detections', 'num_detections'.
         Empty dict on failure.
     """
-    cmd = [
-        "bash", "-c",
-        'eval "$(conda shell.bash hook 2>/dev/null)" && '
-        f'conda activate {RFDETR_CONDA_ENV} && '
-        f'python "{RFDETR_DETECT_SCRIPT}" --images ' +
-        " ".join(f'"{p}"' for p in image_paths)
-    ]
+    rfdetr_python = os.environ.get("RFDETR_PYTHON")
+    if rfdetr_python:
+        cmd = [rfdetr_python, str(RFDETR_DETECT_SCRIPT), "--images", *map(str, image_paths)]
+    else:
+        cmd = [
+            "bash", "-c",
+            'eval "$(conda shell.bash hook 2>/dev/null)" && '
+            f'conda activate {RFDETR_CONDA_ENV} && '
+            f'python "{RFDETR_DETECT_SCRIPT}" --images ' +
+            " ".join(f'"{p}"' for p in image_paths)
+        ]
     result = subprocess.run(
         cmd, capture_output=True, text=True, cwd=str(PROJECT_ROOT),
     )

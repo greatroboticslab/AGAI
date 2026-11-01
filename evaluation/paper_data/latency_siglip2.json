@@ -1,0 +1,563 @@
+{
+ "model": "ft_siglip2-so400m-512_chatgpt_nof3_lq_s0",
+ "backbone": "siglip2-so400m-512",
+ "res": 512,
+ "temperature": 0.7389068603515625,
+ "gpu": "NVIDIA RTX 5000 Ada Generation",
+ "n": 49,
+ "t_load_s": 101.14340543746948,
+ "t_classify": {
+  "median_s": 0.03543829917907715,
+  "p90_s": 0.04180121421813965,
+  "mean_s": 0.04391121864318848,
+  "n": 49
+ },
+ "accuracy": 0.9591836734693877,
+ "peak_alloc_gb": 2.632992768,
+ "peak_reserved_gb": 2.87309824,
+ "smi_process_mb": 3116,
+ "device_used_mb": 3125,
+ "predictions": {
+  "plant_diagnostic/data/train/drought/strawberry-plants-are-dying-v0-qy797dp3m80f1.webp": {
+   "pred": "drought",
+   "p1": 0.9894780516624451
+  },
+  "plant_diagnostic/data/train/drought/drought_5.jpg": {
+   "pred": "drought",
+   "p1": 0.9504005908966064
+  },
+  "plant_diagnostic/data/train/drought/drought_26.jpg": {
+   "pred": "drought",
+   "p1": 0.993559718132019
+  },
+  "plant_diagnostic/data/train/drought/drought_29.jpg": {
+   "pred": "drought",
+   "p1": 0.7512948513031006
+  },
+  "plant_diagnostic/data/train/drought/drought_25.jpg": {
+   "pred": "drought",
+   "p1": 0.9873433113098145
+  },
+  "plant_diagnostic/data/train/drought/whats-happening-to-her-v0-oy6sb0oglhcf1.webp": {
+   "pred": "drought",
+   "p1": 0.8764460682868958
+  },
+  "plant_diagnostic/data/train/drought/strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp": {
+   "pred": "drought",
+   "p1": 0.9024662375450134
+  },
+  "plant_diagnostic/data/holdout/frost/frost_17.jpeg": {
+   "pred": "frost",
+   "p1": 0.96917724609375
+  },
+  "plant_diagnostic/data/holdout/frost/Strawberry-Disorder-_399037 (1).jpg": {
+   "pred": "frost",
+   "p1": 0.9993485808372498
+  },
+  "plant_diagnostic/data/holdout/frost/frost_64.jpeg": {
+   "pred": "frost",
+   "p1": 0.9955614805221558
+  },
+  "plant_diagnostic/data/train/frost/frost_6.jpeg": {
+   "pred": "frost",
+   "p1": 0.9828232526779175
+  },
+  "plant_diagnostic/data/holdout/frost/20110329alpinestrawberryflower.jpg": {
+   "pred": "frost",
+   "p1": 0.999259889125824
+  },
+  "plant_diagnostic/data/train/frost/frost_35.jpeg": {
+   "pred": "frost",
+   "p1": 0.9913640022277832
+  },
+  "plant_diagnostic/data/train/frost/frost_76.jpeg": {
+   "pred": "frost",
+   "p1": 0.9978406429290771
+  },
+  "plant_diagnostic/data/holdout/gray_mold/GrayMold2221.jpg": {
+   "pred": "gray_mold",
+   "p1": 0.9942891597747803
+  },
+  "plant_diagnostic/data/train/gray_mold/GrayMold1699.jpg": {
+   "pred": "gray_mold",
+   "p1": 0.9943200349807739
+  },
+  "plant_diagnostic/data/train/gray_mold/GrayMold1782.jpg": {
+   "pred": "gray_mold",
+   "p1": 0.9873127341270447
+  },
+  "plant_diagnostic/data/train/gray_mold/GrayMold1918.jpg": {
+   "pred": "gray_mold",
+   "p1": 0.9935556054115295
+  },
+  "plant_diagnostic/data/train/gray_mold/GrayMold0354.jpg": {
+   "pred": "gray_mold",
+   "p1": 0.9189112186431885
+  },
+  "plant_diagnostic/data/train/gray_mold/GrayMold0205.jpg": {
+   "pred": "gray_mold",
+   "p1": 0.9880313873291016
+  },
+  "plant_diagnostic/data/holdout/gray_mold/GrayMold0398.jpg": {
+   "pred": "gray_mold",
+   "p1": 0.9970642924308777
+  },
+  "plant_diagnostic/data/train/healthy/strawberry-leaf-leaves-Peter-Miller-Flickr-800x462.jpg": {
+   "pred": "healthy",
+   "p1": 0.8435133099555969
+  },
+  "plant_diagnostic/data/train/healthy/healthy_117.jpg": {
+   "pred": "healthy",
+   "p1": 0.9766473770141602
+  },
+  "plant_diagnostic/data/train/healthy/healthy_63.jpg": {
+   "pred": "healthy",
+   "p1": 0.9610174298286438
+  },
+  "plant_diagnostic/data/train/healthy/healthydry.webp": {
+   "pred": "healthy",
+   "p1": 0.8770155310630798
+  },
+  "plant_diagnostic/data/train/healthy/healthy_7.jpg": {
+   "pred": "healthy",
+   "p1": 0.9903057813644409
+  },
+  "plant_diagnostic/data/train/healthy/healthy_196.jpg": {
+   "pred": "healthy",
+   "p1": 0.9556968212127686
+  },
+  "plant_diagnostic/data/train/healthy/healthy_211.jpg": {
+   "pred": "healthy",
+   "p1": 0.9642919301986694
+  },
+  "plant_diagnostic/data/train/overwatered/is-this-strawberry-plant-too-far-gone-or-has-anyone-got-any-v0-17n6k1us47ee1.webp": {
+   "pred": "overwatered",
+   "p1": 0.9734212756156921
+  },
+  "plant_diagnostic/data/train/overwatered/images.jpeg": {
+   "pred": "drought",
+   "p1": 0.49767449498176575
+  },
+  "plant_diagnostic/data/train/overwatered/overwateredverymuch.webp": {
+   "pred": "overwatered",
+   "p1": 0.961676836013794
+  },
+  "plant_diagnostic/data/train/overwatered/overwatered_45.jpg": {
+   "pred": "overwatered",
+   "p1": 0.9792801737785339
+  },
+  "plant_diagnostic/data/train/overwatered/overwatered_7.jpg": {
+   "pred": "overwatered",
+   "p1": 0.9955848455429077
+  },
+  "plant_diagnostic/data/train/overwatered/overwatered_34.jpg": {
+   "pred": "overwatered",
+   "p1": 0.9900908470153809
+  },
+  "plant_diagnostic/data/train/overwatered/overwatered_47.jpg": {
+   "pred": "frost",
+   "p1": 0.3700476288795471
+  },
+  "plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg": {
+   "pred": "root_rot",
+   "p1": 0.9492530226707458
+  },
+  "plant_diagnostic/data/train/root_rot/rootrot_30.jpg": {
+   "pred": "root_rot",
+   "p1": 0.9977436065673828
+  },
+  "plant_diagnostic/data/train/root_rot/rootrot_148.jpg": {
+   "pred": "root_rot",
+   "p1": 0.9005213975906372
+  },
+  "plant_diagnostic/data/train/root_rot/rootrot_147.jpg": {
+   "pred": "root_rot",
+   "p1": 0.9988691210746765
+  },
+  "plant_diagnostic/data/train/root_rot/rootrot_45.jpg": {
+   "pred": "root_rot",
+   "p1": 0.9979402422904968
+  },
+  "plant_diagnostic/data/train/root_rot/rootrot_26.jpg": {
+   "pred": "root_rot",
+   "p1": 0.9892587065696716
+  },
+  "plant_diagnostic/data/holdout/root_rot/rootrot_50.jpg": {
+   "pred": "root_rot",
+   "p1": 0.9983738660812378
+  },
+  "plant_diagnostic/data/train/white_mold/WhiteMold0101.jpg": {
+   "pred": "white_mold",
+   "p1": 0.9867441654205322
+  },
+  "plant_diagnostic/data/train/white_mold/WhiteMold0012.jpg": {
+   "pred": "white_mold",
+   "p1": 0.9968672394752502
+  },
+  "plant_diagnostic/data/train/white_mold/WhiteMold0272.jpg": {
+   "pred": "white_mold",
+   "p1": 0.9853721261024475
+  },
+  "plant_diagnostic/data/holdout/white_mold/WhiteMold0143.jpg": {
+   "pred": "white_mold",
+   "p1": 0.9921161532402039
+  },
+  "plant_diagnostic/data/train/white_mold/WhiteMold0132.jpg": {
+   "pred": "white_mold",
+   "p1": 0.9970007538795471
+  },
+  "plant_diagnostic/data/train/white_mold/WhiteMold0278.jpg": {
+   "pred": "white_mold",
+   "p1": 0.989980161190033
+  },
+  "plant_diagnostic/data/train/white_mold/WhiteMold0050.jpg": {
+   "pred": "white_mold",
+   "p1": 0.9901611804962158
+  }
+ },
+ "records": [
+  {
+   "image": "plant_diagnostic/data/train/drought/strawberry-plants-are-dying-v0-qy797dp3m80f1.webp",
+   "label": "drought",
+   "pred": "drought",
+   "p1": 0.9894780516624451,
+   "t_classify": 0.04342365264892578
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_5.jpg",
+   "label": "drought",
+   "pred": "drought",
+   "p1": 0.9504005908966064,
+   "t_classify": 0.03801536560058594
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_26.jpg",
+   "label": "drought",
+   "pred": "drought",
+   "p1": 0.993559718132019,
+   "t_classify": 0.04430556297302246
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_29.jpg",
+   "label": "drought",
+   "pred": "drought",
+   "p1": 0.7512948513031006,
+   "t_classify": 0.03627133369445801
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_25.jpg",
+   "label": "drought",
+   "pred": "drought",
+   "p1": 0.9873433113098145,
+   "t_classify": 0.03740954399108887
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/whats-happening-to-her-v0-oy6sb0oglhcf1.webp",
+   "label": "drought",
+   "pred": "drought",
+   "p1": 0.8764460682868958,
+   "t_classify": 0.04180121421813965
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp",
+   "label": "drought",
+   "pred": "drought",
+   "p1": 0.9024662375450134,
+   "t_classify": 0.04594683647155762
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/frost_17.jpeg",
+   "label": "frost",
+   "pred": "frost",
+   "p1": 0.96917724609375,
+   "t_classify": 0.036623239517211914
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/Strawberry-Disorder-_399037 (1).jpg",
+   "label": "frost",
+   "pred": "frost",
+   "p1": 0.9993485808372498,
+   "t_classify": 0.035750627517700195
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/frost_64.jpeg",
+   "label": "frost",
+   "pred": "frost",
+   "p1": 0.9955614805221558,
+   "t_classify": 0.038839101791381836
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_6.jpeg",
+   "label": "frost",
+   "pred": "frost",
+   "p1": 0.9828232526779175,
+   "t_classify": 0.03666877746582031
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/20110329alpinestrawberryflower.jpg",
+   "label": "frost",
+   "pred": "frost",
+   "p1": 0.999259889125824,
+   "t_classify": 0.03638458251953125
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_35.jpeg",
+   "label": "frost",
+   "pred": "frost",
+   "p1": 0.9913640022277832,
+   "t_classify": 0.39406728744506836
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_76.jpeg",
+   "label": "frost",
+   "pred": "frost",
+   "p1": 0.9978406429290771,
+   "t_classify": 0.03435492515563965
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2221.jpg",
+   "label": "gray_mold",
+   "pred": "gray_mold",
+   "p1": 0.9942891597747803,
+   "t_classify": 0.03276848793029785
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1699.jpg",
+   "label": "gray_mold",
+   "pred": "gray_mold",
+   "p1": 0.9943200349807739,
+   "t_classify": 0.03370356559753418
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1782.jpg",
+   "label": "gray_mold",
+   "pred": "gray_mold",
+   "p1": 0.9873127341270447,
+   "t_classify": 0.03238654136657715
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1918.jpg",
+   "label": "gray_mold",
+   "pred": "gray_mold",
+   "p1": 0.9935556054115295,
+   "t_classify": 0.032517194747924805
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0354.jpg",
+   "label": "gray_mold",
+   "pred": "gray_mold",
+   "p1": 0.9189112186431885,
+   "t_classify": 0.03426003456115723
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0205.jpg",
+   "label": "gray_mold",
+   "pred": "gray_mold",
+   "p1": 0.9880313873291016,
+   "t_classify": 0.03252673149108887
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0398.jpg",
+   "label": "gray_mold",
+   "pred": "gray_mold",
+   "p1": 0.9970642924308777,
+   "t_classify": 0.03282666206359863
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/strawberry-leaf-leaves-Peter-Miller-Flickr-800x462.jpg",
+   "label": "healthy",
+   "pred": "healthy",
+   "p1": 0.8435133099555969,
+   "t_classify": 0.037845611572265625
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_117.jpg",
+   "label": "healthy",
+   "pred": "healthy",
+   "p1": 0.9766473770141602,
+   "t_classify": 0.034313201904296875
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_63.jpg",
+   "label": "healthy",
+   "pred": "healthy",
+   "p1": 0.9610174298286438,
+   "t_classify": 0.03350996971130371
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthydry.webp",
+   "label": "healthy",
+   "pred": "healthy",
+   "p1": 0.8770155310630798,
+   "t_classify": 0.05191612243652344
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_7.jpg",
+   "label": "healthy",
+   "pred": "healthy",
+   "p1": 0.9903057813644409,
+   "t_classify": 0.03466439247131348
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_196.jpg",
+   "label": "healthy",
+   "pred": "healthy",
+   "p1": 0.9556968212127686,
+   "t_classify": 0.0332643985748291
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_211.jpg",
+   "label": "healthy",
+   "pred": "healthy",
+   "p1": 0.9642919301986694,
+   "t_classify": 0.034317970275878906
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/is-this-strawberry-plant-too-far-gone-or-has-anyone-got-any-v0-17n6k1us47ee1.webp",
+   "label": "overwatered",
+   "pred": "overwatered",
+   "p1": 0.9734212756156921,
+   "t_classify": 0.041525840759277344
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/images.jpeg",
+   "label": "overwatered",
+   "pred": "drought",
+   "p1": 0.49767449498176575,
+   "t_classify": 0.03500986099243164
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwateredverymuch.webp",
+   "label": "overwatered",
+   "pred": "overwatered",
+   "p1": 0.961676836013794,
+   "t_classify": 0.03928780555725098
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_45.jpg",
+   "label": "overwatered",
+   "pred": "overwatered",
+   "p1": 0.9792801737785339,
+   "t_classify": 0.038025617599487305
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_7.jpg",
+   "label": "overwatered",
+   "pred": "overwatered",
+   "p1": 0.9955848455429077,
+   "t_classify": 0.039809465408325195
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_34.jpg",
+   "label": "overwatered",
+   "pred": "overwatered",
+   "p1": 0.9900908470153809,
+   "t_classify": 0.039147138595581055
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_47.jpg",
+   "label": "overwatered",
+   "pred": "frost",
+   "p1": 0.3700476288795471,
+   "t_classify": 0.03543829917907715
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg",
+   "label": "root_rot",
+   "pred": "root_rot",
+   "p1": 0.9492530226707458,
+   "t_classify": 0.036219120025634766
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_30.jpg",
+   "label": "root_rot",
+   "pred": "root_rot",
+   "p1": 0.9977436065673828,
+   "t_classify": 0.038693904876708984
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_148.jpg",
+   "label": "root_rot",
+   "pred": "root_rot",
+   "p1": 0.9005213975906372,
+   "t_classify": 0.035083770751953125
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_147.jpg",
+   "label": "root_rot",
+   "pred": "root_rot",
+   "p1": 0.9988691210746765,
+   "t_classify": 0.039165496826171875
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_45.jpg",
+   "label": "root_rot",
+   "pred": "root_rot",
+   "p1": 0.9979402422904968,
+   "t_classify": 0.03517723083496094
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_26.jpg",
+   "label": "root_rot",
+   "pred": "root_rot",
+   "p1": 0.9892587065696716,
+   "t_classify": 0.03323173522949219
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_50.jpg",
+   "label": "root_rot",
+   "pred": "root_rot",
+   "p1": 0.9983738660812378,
+   "t_classify": 0.03575468063354492
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0101.jpg",
+   "label": "white_mold",
+   "pred": "white_mold",
+   "p1": 0.9867441654205322,
+   "t_classify": 0.03460812568664551
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0012.jpg",
+   "label": "white_mold",
+   "pred": "white_mold",
+   "p1": 0.9968672394752502,
+   "t_classify": 0.033960580825805664
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0272.jpg",
+   "label": "white_mold",
+   "pred": "white_mold",
+   "p1": 0.9853721261024475,
+   "t_classify": 0.033234357833862305
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0143.jpg",
+   "label": "white_mold",
+   "pred": "white_mold",
+   "p1": 0.9921161532402039,
+   "t_classify": 0.03466153144836426
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0132.jpg",
+   "label": "white_mold",
+   "pred": "white_mold",
+   "p1": 0.9970007538795471,
+   "t_classify": 0.0343320369720459
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0278.jpg",
+   "label": "white_mold",
+   "pred": "white_mold",
+   "p1": 0.989980161190033,
+   "t_classify": 0.034047842025756836
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0050.jpg",
+   "label": "white_mold",
+   "pred": "white_mold",
+   "p1": 0.9901611804962158,
+   "t_classify": 0.03455233573913574
+  }
+ ]
+}

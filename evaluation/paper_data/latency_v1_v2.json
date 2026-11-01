@@ -1,0 +1,109 @@
+{
+ "stages": {
+  "v1 MiniGPT-v2 image encoding": {
+   "median_s": 0.055,
+   "p90_s": 0.058,
+   "mean_s": 0.059,
+   "n": 49
+  },
+  "v1 ResNet-50, two views + gate": {
+   "median_s": 0.031,
+   "p90_s": 0.042,
+   "mean_s": 0.045,
+   "n": 49
+  },
+  "v1 RF-DETR Small, application subprocess": {
+   "median_s": 15.869,
+   "p90_s": 16.272,
+   "mean_s": 15.411,
+   "n": 49
+  },
+  "v1 RF-DETR Small, in-process": {
+   "median_s": 0.016,
+   "p90_s": 0.023,
+   "mean_s": 0.025,
+   "n": 49
+  },
+  "v1 MiniGPT-v2 report, first attempt": {
+   "median_s": 46.183,
+   "p90_s": 58.84,
+   "mean_s": 46.874,
+   "n": 49
+  },
+  "v1 regeneration (flagged photographs only)": null,
+  "v2 SigLIP 2 classifier, two views": {
+   "median_s": 0.035,
+   "p90_s": 0.042,
+   "mean_s": 0.044,
+   "n": 49
+  },
+  "v2 RF-DETR Large, in-process": {
+   "median_s": 0.017,
+   "p90_s": 0.023,
+   "mean_s": 0.024,
+   "n": 49
+  },
+  "v2 Qwen3-VL-8B student, one request under vLLM": {
+   "median_s": 21.604,
+   "p90_s": 24.833,
+   "mean_s": 21.51,
+   "n": 49
+  }
+ },
+ "pipelines": {
+  "v1 as deployed": {
+   "median_s": 62.232,
+   "p90_s": 75.163,
+   "mean_s": 62.389,
+   "n": 49
+  },
+  "v1, detector in-process": {
+   "median_s": 46.283,
+   "p90_s": 58.952,
+   "mean_s": 47.003,
+   "n": 49
+  },
+  "v2": {
+   "median_s": 21.655,
+   "p90_s": 24.894,
+   "mean_s": 21.578,
+   "n": 49
+  }
+ },
+ "memory": {
+  "v1 MiniGPT-v2 + ResNet-50 process, nvidia-smi MB": 11828,
+  "v1 MiniGPT-v2 + ResNet-50 process, torch peak reserved GB": 12.0,
+  "v1 RF-DETR Small process, nvidia-smi MB": 1040,
+  "v1 RF-DETR Small process, torch peak reserved GB": 0.7,
+  "v1 co-resident total, MB": 12868,
+  "v2 SigLIP 2 process, nvidia-smi MB": 3116,
+  "v2 SigLIP 2 process, torch peak reserved GB": 2.87,
+  "v2 RF-DETR Large process, nvidia-smi MB": 1098,
+  "v2 RF-DETR Large process, torch peak reserved GB": 0.76,
+  "v2 student weights on disk, GB": 17.5,
+  "v2 student (vLLM engine) processes, nvidia-smi MB": 26184,
+  "v2 student GPU in use at gpu_memory_utilization, MB": 26194,
+  "v2 student gpu_memory_utilization": 0.85
+ },
+ "counts": {
+  "n_photographs": 49,
+  "v1 report tokens, median": 337,
+  "v1 gate: unknown": 0,
+  "v1 consistency check: flagged": 0,
+  "v1 still flagged after regeneration": 0,
+  "v2 classifier accuracy on the sample": 0.959,
+  "v2 tokens, median": 725,
+  "v2 valid JSON": 49,
+  "v2 accepts the proposed label": 38,
+  "v2 proposed label equals dataset label": 47,
+  "v2 batched throughput, photographs per s": 1.197,
+  "gpu": "NVIDIA RTX 5000 Ada Generation"
+ },
+ "load_times_s": {
+  "v1 MiniGPT-v2 + ResNet-50": 25.163451671600342,
+  "RF-DETR Small": 0.5423789024353027,
+  "RF-DETR Large": 2.186824083328247,
+  "SigLIP 2": 101.14340543746948,
+  "student (vLLM engine)": 169.01516270637512
+ }
+}

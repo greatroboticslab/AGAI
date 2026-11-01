@@ -1,0 +1,1021 @@
+{
+ "gpu": "NVIDIA RTX 5000 Ada Generation",
+ "n": 49,
+ "small_lab_v1": {
+  "weights": "rfdetr_parts/output/checkpoint_best_total.pth",
+  "t_load_s": 0.5423789024353027,
+  "t_first_predict_s": 0.836169958114624,
+  "floor": 0.3,
+  "thresholds": {
+   "flower": 0.5,
+   "fruit": 0.5,
+   "leaf": 0.4,
+   "root": 0.3,
+   "soil": 0.4,
+   "stem": 0.4
+  },
+  "median_s": 0.01637411117553711,
+  "p90_s": 0.022866010665893555,
+  "mean_s": 0.025050571986607144,
+  "n": 49,
+  "peak_alloc_gb": 0.62174464,
+  "peak_reserved_gb": 0.700448768,
+  "smi_process_mb": 1040,
+  "device_used_mb": 1049,
+  "per_image": [
+   {
+    "image": "plant_diagnostic/data/train/drought/strawberry-plants-are-dying-v0-qy797dp3m80f1.webp",
+    "label": "drought",
+    "t_detect": 0.024705171585083008,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/drought_5.jpg",
+    "label": "drought",
+    "t_detect": 0.016845226287841797,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/drought_26.jpg",
+    "label": "drought",
+    "t_detect": 0.023477554321289062,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/drought_29.jpg",
+    "label": "drought",
+    "t_detect": 0.016675233840942383,
+    "visible": [
+     "flower",
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/drought_25.jpg",
+    "label": "drought",
+    "t_detect": 0.017307519912719727,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/whats-happening-to-her-v0-oy6sb0oglhcf1.webp",
+    "label": "drought",
+    "t_detect": 0.022866010665893555,
+    "visible": [
+     "flower",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp",
+    "label": "drought",
+    "t_detect": 0.027436256408691406,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/frost/frost_17.jpeg",
+    "label": "frost",
+    "t_detect": 0.01656508445739746,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/frost/Strawberry-Disorder-_399037 (1).jpg",
+    "label": "frost",
+    "t_detect": 0.016263723373413086,
+    "visible": [
+     "flower",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/frost/frost_64.jpeg",
+    "label": "frost",
+    "t_detect": 0.01858663558959961,
+    "visible": [
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/frost/frost_6.jpeg",
+    "label": "frost",
+    "t_detect": 0.016398191452026367,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/frost/20110329alpinestrawberryflower.jpg",
+    "label": "frost",
+    "t_detect": 0.015773296356201172,
+    "visible": [
+     "flower",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/frost/frost_35.jpeg",
+    "label": "frost",
+    "t_detect": 0.3760218620300293,
+    "visible": [
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/frost/frost_76.jpeg",
+    "label": "frost",
+    "t_detect": 0.01665806770324707,
+    "visible": [
+     "leaf",
+     "soil"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2221.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.016915321350097656,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold1699.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.01663827896118164,
+    "visible": [
+     "fruit",
+     "leaf",
+     "root",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold1782.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.016276121139526367,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold1918.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.01538991928100586,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold0354.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.016278982162475586,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold0205.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.01605701446533203,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0398.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.015486478805541992,
+    "visible": [
+     "flower",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/strawberry-leaf-leaves-Peter-Miller-Flickr-800x462.jpg",
+    "label": "healthy",
+    "t_detect": 0.017414569854736328,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_117.jpg",
+    "label": "healthy",
+    "t_detect": 0.015435934066772461,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_63.jpg",
+    "label": "healthy",
+    "t_detect": 0.014893770217895508,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthydry.webp",
+    "label": "healthy",
+    "t_detect": 0.035117149353027344,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_7.jpg",
+    "label": "healthy",
+    "t_detect": 0.015503406524658203,
+    "visible": [
+     "fruit",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_196.jpg",
+    "label": "healthy",
+    "t_detect": 0.015540599822998047,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_211.jpg",
+    "label": "healthy",
+    "t_detect": 0.01479959487915039,
+    "visible": [
+     "flower",
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/is-this-strawberry-plant-too-far-gone-or-has-anyone-got-any-v0-17n6k1us47ee1.webp",
+    "label": "overwatered",
+    "t_detect": 0.02261662483215332,
+    "visible": [
+     "soil"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/images.jpeg",
+    "label": "overwatered",
+    "t_detect": 0.015402078628540039,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwateredverymuch.webp",
+    "label": "overwatered",
+    "t_detect": 0.02047586441040039,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwatered_45.jpg",
+    "label": "overwatered",
+    "t_detect": 0.01816844940185547,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwatered_7.jpg",
+    "label": "overwatered",
+    "t_detect": 0.019318342208862305,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwatered_34.jpg",
+    "label": "overwatered",
+    "t_detect": 0.018984079360961914,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwatered_47.jpg",
+    "label": "overwatered",
+    "t_detect": 0.015865325927734375,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg",
+    "label": "root_rot",
+    "t_detect": 0.01747441291809082,
+    "visible": [
+     "leaf",
+     "root",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_30.jpg",
+    "label": "root_rot",
+    "t_detect": 0.018416166305541992,
+    "visible": [
+     "fruit",
+     "leaf",
+     "root",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_148.jpg",
+    "label": "root_rot",
+    "t_detect": 0.015920162200927734,
+    "visible": [
+     "leaf",
+     "root",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_147.jpg",
+    "label": "root_rot",
+    "t_detect": 0.0189971923828125,
+    "visible": [
+     "leaf",
+     "root"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_45.jpg",
+    "label": "root_rot",
+    "t_detect": 0.01612091064453125,
+    "visible": [
+     "leaf",
+     "root",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_26.jpg",
+    "label": "root_rot",
+    "t_detect": 0.015186309814453125,
+    "visible": [
+     "root"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/root_rot/rootrot_50.jpg",
+    "label": "root_rot",
+    "t_detect": 0.01637411117553711,
+    "visible": [
+     "flower",
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0101.jpg",
+    "label": "white_mold",
+    "t_detect": 0.01632094383239746,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0012.jpg",
+    "label": "white_mold",
+    "t_detect": 0.01583099365234375,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0272.jpg",
+    "label": "white_mold",
+    "t_detect": 0.015631914138793945,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0143.jpg",
+    "label": "white_mold",
+    "t_detect": 0.016204118728637695,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0132.jpg",
+    "label": "white_mold",
+    "t_detect": 0.015888690948486328,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0278.jpg",
+    "label": "white_mold",
+    "t_detect": 0.01582813262939453,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0050.jpg",
+    "label": "white_mold",
+    "t_detect": 0.015126228332519531,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   }
+  ]
+ },
+ "large_splitv1_v2": {
+  "weights": "/projects/was4g/agai/rfdetr_runs/large_splitv1/checkpoint_best_total.pth",
+  "t_load_s": 2.186824083328247,
+  "t_first_predict_s": 0.17722415924072266,
+  "floor": 0.3,
+  "thresholds": {
+   "flower": 0.5,
+   "fruit": 0.5,
+   "leaf": 0.4,
+   "root": 0.3,
+   "soil": 0.4,
+   "stem": 0.4
+  },
+  "median_s": 0.017070770263671875,
+  "p90_s": 0.02291250228881836,
+  "mean_s": 0.02409807516604054,
+  "n": 49,
+  "peak_alloc_gb": 0.631958016,
+  "peak_reserved_gb": 0.761266176,
+  "smi_process_mb": 1098,
+  "device_used_mb": 1107,
+  "per_image": [
+   {
+    "image": "plant_diagnostic/data/train/drought/strawberry-plants-are-dying-v0-qy797dp3m80f1.webp",
+    "label": "drought",
+    "t_detect": 0.02408123016357422,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/drought_5.jpg",
+    "label": "drought",
+    "t_detect": 0.018134355545043945,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/drought_26.jpg",
+    "label": "drought",
+    "t_detect": 0.021579980850219727,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/drought_29.jpg",
+    "label": "drought",
+    "t_detect": 0.017242431640625,
+    "visible": [
+     "flower",
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/drought_25.jpg",
+    "label": "drought",
+    "t_detect": 0.017691850662231445,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/whats-happening-to-her-v0-oy6sb0oglhcf1.webp",
+    "label": "drought",
+    "t_detect": 0.02291250228881836,
+    "visible": [
+     "flower",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/drought/strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp",
+    "label": "drought",
+    "t_detect": 0.027698040008544922,
+    "visible": [
+     "leaf",
+     "soil"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/frost/frost_17.jpeg",
+    "label": "frost",
+    "t_detect": 0.016898393630981445,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/frost/Strawberry-Disorder-_399037 (1).jpg",
+    "label": "frost",
+    "t_detect": 0.017233848571777344,
+    "visible": [
+     "flower",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/frost/frost_64.jpeg",
+    "label": "frost",
+    "t_detect": 0.018897533416748047,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/frost/frost_6.jpeg",
+    "label": "frost",
+    "t_detect": 0.016431570053100586,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/frost/20110329alpinestrawberryflower.jpg",
+    "label": "frost",
+    "t_detect": 0.017070770263671875,
+    "visible": [
+     "flower",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/frost/frost_35.jpeg",
+    "label": "frost",
+    "t_detect": 0.29653429985046387,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/frost/frost_76.jpeg",
+    "label": "frost",
+    "t_detect": 0.016533374786376953,
+    "visible": [
+     "soil"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2221.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.017529726028442383,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold1699.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.017536640167236328,
+    "visible": [
+     "fruit",
+     "leaf",
+     "root",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold1782.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.017522335052490234,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold1918.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.016672134399414062,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold0354.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.01698613166809082,
+    "visible": [
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/gray_mold/GrayMold0205.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.016923189163208008,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0398.jpg",
+    "label": "gray_mold",
+    "t_detect": 0.016831159591674805,
+    "visible": [
+     "flower",
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/strawberry-leaf-leaves-Peter-Miller-Flickr-800x462.jpg",
+    "label": "healthy",
+    "t_detect": 0.018430709838867188,
+    "visible": [
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_117.jpg",
+    "label": "healthy",
+    "t_detect": 0.01622319221496582,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_63.jpg",
+    "label": "healthy",
+    "t_detect": 0.015883207321166992,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthydry.webp",
+    "label": "healthy",
+    "t_detect": 0.03249216079711914,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_7.jpg",
+    "label": "healthy",
+    "t_detect": 0.016631603240966797,
+    "visible": [
+     "fruit",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_196.jpg",
+    "label": "healthy",
+    "t_detect": 0.01583242416381836,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/healthy/healthy_211.jpg",
+    "label": "healthy",
+    "t_detect": 0.01596689224243164,
+    "visible": [
+     "flower",
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/is-this-strawberry-plant-too-far-gone-or-has-anyone-got-any-v0-17n6k1us47ee1.webp",
+    "label": "overwatered",
+    "t_detect": 0.0238649845123291,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/images.jpeg",
+    "label": "overwatered",
+    "t_detect": 0.016168832778930664,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwateredverymuch.webp",
+    "label": "overwatered",
+    "t_detect": 0.021451950073242188,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwatered_45.jpg",
+    "label": "overwatered",
+    "t_detect": 0.01941847801208496,
+    "visible": [
+     "fruit",
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwatered_7.jpg",
+    "label": "overwatered",
+    "t_detect": 0.020714521408081055,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwatered_34.jpg",
+    "label": "overwatered",
+    "t_detect": 0.020354747772216797,
+    "visible": [
+     "leaf",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/overwatered/overwatered_47.jpg",
+    "label": "overwatered",
+    "t_detect": 0.016856670379638672,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg",
+    "label": "root_rot",
+    "t_detect": 0.01743340492248535,
+    "visible": [
+     "leaf",
+     "root",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_30.jpg",
+    "label": "root_rot",
+    "t_detect": 0.019562721252441406,
+    "visible": [
+     "fruit",
+     "leaf",
+     "root",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_148.jpg",
+    "label": "root_rot",
+    "t_detect": 0.016477584838867188,
+    "visible": [
+     "leaf",
+     "root",
+     "soil",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_147.jpg",
+    "label": "root_rot",
+    "t_detect": 0.019845008850097656,
+    "visible": [
+     "leaf",
+     "root"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_45.jpg",
+    "label": "root_rot",
+    "t_detect": 0.016474008560180664,
+    "visible": [
+     "leaf",
+     "root",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/root_rot/rootrot_26.jpg",
+    "label": "root_rot",
+    "t_detect": 0.016070127487182617,
+    "visible": [
+     "root"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/root_rot/rootrot_50.jpg",
+    "label": "root_rot",
+    "t_detect": 0.0188596248626709,
+    "visible": [
+     "flower",
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0101.jpg",
+    "label": "white_mold",
+    "t_detect": 0.016733646392822266,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0012.jpg",
+    "label": "white_mold",
+    "t_detect": 0.016919851303100586,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0272.jpg",
+    "label": "white_mold",
+    "t_detect": 0.016854524612426758,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0143.jpg",
+    "label": "white_mold",
+    "t_detect": 0.015944719314575195,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0132.jpg",
+    "label": "white_mold",
+    "t_detect": 0.016315698623657227,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0278.jpg",
+    "label": "white_mold",
+    "t_detect": 0.017058849334716797,
+    "visible": [
+     "fruit",
+     "leaf"
+    ]
+   },
+   {
+    "image": "plant_diagnostic/data/train/white_mold/WhiteMold0050.jpg",
+    "label": "white_mold",
+    "t_detect": 0.01702404022216797,
+    "visible": [
+     "fruit",
+     "leaf",
+     "stem"
+    ]
+   }
+  ]
+ }
+}
