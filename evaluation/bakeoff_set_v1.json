@@ -1,0 +1,210 @@
+{
+ "name": "bakeoff_v1",
+ "note": "hard but plausibly correctly labeled split v1 test images (ensemble p_label 0.5-0.97, teacher did not reject)",
+ "images": [
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0177.jpg",
+   "label": "gray_mold",
+   "p_label": 0.834
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/depositphotos_479595984-stock-photo-leaves-strawberries-affected-white-spot.jpg",
+   "label": "gray_mold",
+   "p_label": 0.518
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1524.jpg",
+   "label": "gray_mold",
+   "p_label": 0.958
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0137.jpg",
+   "label": "gray_mold",
+   "p_label": 0.968
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0557.jpg",
+   "label": "gray_mold",
+   "p_label": 0.922
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (1).jpg",
+   "label": "gray_mold",
+   "p_label": 0.946
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2348.jpg",
+   "label": "gray_mold",
+   "p_label": 0.965
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0006.jpg",
+   "label": "white_mold",
+   "p_label": 0.732
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0181.jpg",
+   "label": "white_mold",
+   "p_label": 0.952
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0171.jpg",
+   "label": "white_mold",
+   "p_label": 0.943
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0240.jpg",
+   "label": "white_mold",
+   "p_label": 0.965
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0096.jpg",
+   "label": "white_mold",
+   "p_label": 0.947
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0243.jpg",
+   "label": "white_mold",
+   "p_label": 0.851
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp",
+   "label": "drought",
+   "p_label": 0.821
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_26.jpg",
+   "label": "drought",
+   "p_label": 0.966
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/drought/strawberry-plants-are-dying-v0-wparrcp3m80f1.webp",
+   "label": "drought",
+   "p_label": 0.964
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/new-strawberry-leaves-appear-burnt-v0-owasxhleqt6f1.webp",
+   "label": "drought",
+   "p_label": 0.827
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/drowned-a-plant-is-it-salvageable-v0-28x08g3kfw6f1.webp",
+   "label": "overwatered",
+   "p_label": 0.527
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/overwatered/holdrel_overwatered_4.jpg",
+   "label": "overwatered",
+   "p_label": 0.726
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_45.jpg",
+   "label": "overwatered",
+   "p_label": 0.943
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_47.jpg",
+   "label": "overwatered",
+   "p_label": 0.726
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_32.jpg",
+   "label": "overwatered",
+   "p_label": 0.978
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_7.jpg",
+   "label": "overwatered",
+   "p_label": 0.995
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/images (1).jpeg",
+   "label": "frost",
+   "p_label": 0.816
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_92.jpeg",
+   "label": "frost",
+   "p_label": 0.923
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_96.jpeg",
+   "label": "frost",
+   "p_label": 0.945
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_5.jpeg",
+   "label": "frost",
+   "p_label": 0.898
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_58.jpeg",
+   "label": "frost",
+   "p_label": 0.841
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_42.jpeg",
+   "label": "frost",
+   "p_label": 0.919
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_129.jpg",
+   "label": "root_rot",
+   "p_label": 0.946
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_147.jpg",
+   "label": "root_rot",
+   "p_label": 0.97
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_50.jpg",
+   "label": "root_rot",
+   "p_label": 0.968
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg",
+   "label": "root_rot",
+   "p_label": 0.907
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/frostyhealthy.jpeg",
+   "label": "healthy",
+   "p_label": 0.693
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_224.jpg",
+   "label": "healthy",
+   "p_label": 0.936
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_46.jpg",
+   "label": "healthy",
+   "p_label": 0.953
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy.webp",
+   "label": "healthy",
+   "p_label": 0.93
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthydry.webp",
+   "label": "healthy",
+   "p_label": 0.528
+  }
+ ],
+ "dropped": [
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_19.jpg",
+   "label": "drought",
+   "p_label": 0.854,
+   "why": "video thumbnail whose overlaid headline names the condition"
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/drought/strawberry-plants-are-dying-v0-wparrcp3m80f1.jpg",
+   "label": "drought",
+   "p_label": 0.941,
+   "why": "same photo as #16"
+  }
+ ]
+}
