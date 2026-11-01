@@ -24,10 +24,11 @@ ap.add_argument("--epochs", type=int, default=0, help="0 = the lab's yaml (100)"
 ap.add_argument("--batch-size", type=int, default=0)
 ap.add_argument("--accum", type=int, default=0)
 ap.add_argument("--config", default="rfdetr_parts/rfdetr_config.yaml")
+ap.add_argument("--dataset-dir", default="", help="COCO dataset root (train/valid[/test]); default: the yaml's")
 args = ap.parse_args()
 
 cfg = yaml.safe_load(open(args.config))
-dataset_dir = cfg["dataset_dir"]
+dataset_dir = args.dataset_dir or cfg["dataset_dir"]
 out_dir = f"/projects/{os.environ['USER']}/agai/rfdetr_runs/{args.name}"
 os.makedirs(out_dir, exist_ok=True)
 Model = SIZES[args.size]
