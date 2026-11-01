@@ -24,11 +24,18 @@ flowchart TB
    scaling produce calibrated confidence scores.
 2. **RF-DETR part detection.** An RF-DETR Small object detector identifies which plant parts are visible (flower,
    fruit, leaf, root, soil, stem). Per-class confidence thresholds are tuned to each part's detection
-   characteristics. The detected parts constrain MiniGPT's output so it only describes what is actually visible.
+   characteristics. The detected parts are meant to constrain MiniGPT's output to what is visible; the detector
+   on/off ablation of 2026-10-31 found that the writer does not follow the constraint (see
+   [DETECTOR.md](DETECTOR.md), Caveats). The application runs the detector in a separate interpreter per
+   photograph (`grounding/detector.py`), which cost 15.9 s of v1's 62 s median per photograph on an RTX 5000 Ada
+   (lab notebook, 2026-10-31); the forward pass itself takes 0.016 s.
 3. **MiniGPT-v2 grounded explanation.** A LoRA-adapted MiniGPT-v2 (LLaMA-2-7B backbone) receives the ResNet diagnosis
    as ground truth and the RF-DETR part detections as visibility constraints. It generates a structured diagnostic
    report covering the diagnosis, visible symptoms on detected parts, and treatment recommendations. Parts that are
-   not detected are excluded from the response, reducing hallucination.
+   not detected are listed in the prompt as not visible; in the ablation this did not reduce part hallucination
+   (86.1 % of reports without the lists, 92.1 % with them, on 151 split v1 test photographs). Loaded in 8-bit as
+   the application does, the writer produced a report in 46 s median on an RTX 5000 Ada (337 tokens at 7.3 tokens
+   per second; lab notebook, 2026-10-31).
 
 A knowledge-graph RAG system supports follow-up Q&A and provides part-specific treatment advice when RF-DETR detects
 particular plant structures.
@@ -54,7 +61,8 @@ particular plant structures.
 
 - Python 3.9+ (the demo runs in a `minigptv` Conda environment; RF-DETR training uses a separate `rfdetr` environment
   with Python 3.11)
-- CUDA GPU with 16 GB+ VRAM (RTX 3090 or better recommended)
+- CUDA GPU with 16 GB+ VRAM (RTX 3090 or better recommended; the lab's original server, where v1 was trained and
+  served, had two RTX 3090 with 24 GB each)
 - PyTorch with CUDA support
 - Model weights (not included in the repository):
   - LLaMA-2-7B-chat: `llama_weights/Llama-2-7b-chat-hf/`
@@ -146,7 +154,7 @@ The `knowledge_graph/disease_knowledge_base.json` file contains detailed, citati
 disease classes, including:
 
 - Symptoms, causes, visual indicators, and severity ratings
-- Treatment protocols web-crawled and curated from UC IPM, Penn State Extension, NC State Extension, Cornell
+- Treatment protocols compiled from UC IPM, Penn State Extension, NC State Extension, Cornell
   Extension, University of Minnesota Extension, and others
 - **Part-specific treatments** keyed to RF-DETR detections (e.g., fruit-specific advice for gray mold when fruit is
   detected in the image)

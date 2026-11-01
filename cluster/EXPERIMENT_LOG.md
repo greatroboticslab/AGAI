@@ -918,3 +918,327 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   the commands in this notebook keep the flat `cluster/<script>` layout of the cluster working copy. Not published:
   one-off diagnostics, superseded annotators, the per-experiment Slurm wrappers, and the blind-rating key (until the
   ratings are complete; the rating-page link in the 2026-10-20 entry is replaced by a placeholder in the public copy).
+
+## 2026-10-30
+
+- **Context.** Gus's manuscript draft (24 Oct build, "Leak-free re-evaluation of a strawberry plant health AI system")
+  leaves the clean v1 numbers to William: calibration and acceptance gate of the classifier (its Table S7 / Fig. S9),
+  a mirrored-view ablation, a detector test split, the report writer retrained without split v1 test images and the
+  detector on/off ablation (Table S16), the v1 vs v2 end-to-end comparison, software versions. Answer sheet for the
+  co-authors: private claude.ai page (link not published). Analyses below are registered before their results are seen.
+- **Pre-registered: calibration and acceptance gate on split v1 (`cluster/calibration_metrics.py`).** Inputs: the saved
+  per-image probability files, no new training: ResNet-50 lab recipe, 5 seeds (`scores_resnet50_split_v1_runtime_*`,
+  `scores_resnet50_v1_s1-4_runtime_*`; runtime = the app's resize-294 / centre-crop-256 path) and the recommended
+  SigLIP 2 recipe, 3 seeds (`ft_siglip2-so400m-512_chatgpt_nof3_lq_s0-2_*`). Unscaled probabilities are recovered
+  exactly from the stored temperature-scaled ones (p_raw ∝ p_cal^T). Metrics, with and without temperature scaling:
+  accuracy, macro accuracy, macro-F1, ECE (10 equal-width bins of the top-1 probability), AURC and the risk-coverage
+  curve; the deployed v1 gate (p1 ≥ max(τ_c, 0.5), app thresholds healthy 0.40, drought / root rot 0.65, frost 0.70,
+  others 0.60) and a validation-chosen gate (per predicted class, the smallest τ ≥ 0.5 on a 0.01 grid at which the
+  accepted validation images of that class are ≥ 95 % correct; if never reached, the τ with the highest such accuracy);
+  per-class precision / recall / F1, confusion matrix; 10,000-resample percentile bootstrap intervals over test images;
+  seeds as mean ± sd. Predictions: temperature scaling lowers the ECE of the ResNet-50 (its fitted T ≈ 0.75 sharpens an
+  under-confident model); the validation-chosen gate keeps ≥ 80 % of test images at ≥ 95 % accuracy for SigLIP 2 and
+  less coverage for the ResNet-50. Gus's figure script consumes the per-image files `evaluation/calib_<name>_test_seed<k>.json`.
+- **Pre-registered: mirrored-view ablation (`cluster/tta_ablation.py`).** ResNet-50, 5 seeds, split v1 test, runtime
+  preprocessing: one view vs image + mirror (logits averaged), with the counts of predictions the mirror turns from
+  right to wrong and from wrong to right (Shanmugam et al. 2021). Prediction: the mirror changes < 2 % of predictions
+  and the net gain is within ±2 images per seed.
+- **Report-writer retraining, data step (`cluster/filter_stage2_records.py`), descriptive.** The 2159 o3 reports
+  are assigned to split v1 by their source photograph (augmented copies follow their original): train records train the
+  writer, val records select the checkpoint, test records are dropped. Counts recorded when the script runs.
+- **Finding: the 93 generated files with random names in the lab machine's `train_aug` (Gus's question).** They are
+  UUID-named PNG files of 2.9-3.8 MB (ChatGPT web downloads carry such names), all dated 2026-04-27, in drought (50),
+  frost (20) and gray mold (23); they carry the OpenAI C2PA record. Added two days after the paper's synthetic set (the
+  601 `synth_*GPT*` files, 602 before one exact duplicate was dropped), on the day the lab's "synth" / "synthOOD"
+  ResNet checkpoints v5-v12 start, so they belong to those later runs. The revival's synthetic-data arms used only the
+  601 named files; the 93 enter no reported result.
+- **Published-copy note.** The public copy of this notebook (lab repository, `cluster/EXPERIMENT_LOG.md`) replaces the
+  blind-rating page link with a placeholder and omits nothing else; the canonical copy stays `evaluation/EXPERIMENT_LOG.md`
+  on Hamilton.
+- **Result, calibration and acceptance gate (jobs 72331 / 72332, research partition, `cluster/calibration_metrics.py`;
+  files `evaluation/calib_<model>_test_seed<k>.json`, `evaluation/calib_<model>_summary.json`).** Split v1 test,
+  mean ± sd over seeds, without -> with temperature scaling. ResNet-50 lab recipe (5 seeds, T = 0.72-0.78): accuracy
+  90.2 ± 1.5, macro 85.5 ± 2.0, macro-F1 0.857 ± 0.023 (unchanged by T); ECE 16.7 ± 1.7 -> 6.7 ± 0.8 %; AURC 0.0249 ±
+  0.0078 -> 0.0240 ± 0.0072; deployed v1 gate coverage 87.6 ± 1.1 % at 94.5 ± 0.6 % accuracy on accepted images;
+  validation-chosen gate 84.2 ± 3.2 % at 95.7 ± 0.6 %. SigLIP 2 recommended recipe (3 seeds, T = 0.73-0.76): accuracy
+  96.3 ± 0.8, macro 94.3 ± 0.7, macro-F1 0.936 ± 0.008; ECE 8.3 ± 1.3 -> 2.7 ± 0.3 %; AURC 0.0048 ± 0.0013 -> 0.0046 ±
+  0.0016; v1 gate 97.7 ± 1.6 % at 97.5 ± 0.1 %; validation-chosen gate 96.6 ± 1.0 % at 97.9 ± 0.5 %. Prediction held
+  (scaling sharpens an under-confident model and lowers ECE); the coverage prediction for SigLIP 2 held (≥ 80 % at
+  ≥ 95 %) and the ResNet-50 also exceeds it (84 %). Caveat: the validation-chosen thresholds swing across seeds for the
+  small conditions (drought 0.64-0.93) because 3-7 validation images are predicted as those conditions; report the
+  deployed thresholds as v1's setting and the validation rule as the alternative with its variance.
+- **Result, mirrored-view ablation (job 72330, c3, `cluster/tta_ablation.py`; `evaluation/tta_<ckpt>_split_v1_test.json`).**
+  ResNet-50, 5 seeds (42, 1, 2, 3, 4), two views vs one: 91.7 / 91.0, 91.5 / 91.2, 90.2 / 90.0, 88.9 / 89.5, 88.4 / 87.9 %.
+  Predictions changed: 6, 5, 5, 14, 11 of 398 (1.3-3.5 %); wrong -> right 4, 2, 3, 4, 5; right -> wrong 1, 1, 2, 6, 3
+  (18 vs 13 over seeds; mean +0.25 points, range -0.5 to +0.8; n.s.). The "< 2 % changed" prediction failed for two
+  seeds; the "net gain within ±2 images" prediction failed for seed 42 (+3) and seed 3 (-2 is within).
+- **Finding: the v1 RF-DETR checkpoint was trained at 512 px, not the YAML's 560.** Its saved arguments hold no
+  resolution field, but `backbone.0.encoder.encoder.embeddings.position_embeddings` has shape (1, 1025, 384): 1024 patch
+  positions = 32 × 32 patches of 16 px = 512 px (`square_resize_div_64` on). `rfdetr_parts/train_rfdetr.py` builds
+  `RFDETRSmall()` at the library default and the YAML value passed to `train()` did not rebuild the model. DETECTOR.md's
+  "560" for the lab checkpoint is wrong and will be corrected; the retrained Small at 512 is therefore like for like.
+- **Environments frozen** to `/projects/was4g/agai/envs/<env>.freeze.2026-10-30.txt` (minigptv: torch 2.5.1+cu121,
+  transformers 4.45.2, peft 0.13.2 (COMPUTE.md says 0.11.1: correct it), bitsandbytes 0.43.3, timm 0.6.13, Python 3.9.23;
+  rfdetr: rfdetr 1.11.2, torch 2.14.1, Python 3.11.17; vision: torch 2.9.1+cu128, timm 1.0.30, open_clip_torch 3.3.0,
+  diffusers 0.41.0, transformers 5.20.2; vllm: vllm 0.32.0, torch 2.13.0, transformers 5.19.0, ray 2.59.0, xgrammar 0.2.8).
+- **Report-writer data (`cluster/filter_stage2_records.py` -> `plant_diagnostic/datasets/split_v1/`):** of the 2159
+  records, train 1364 (drought 192, frost 67, gray mold 399, healthy 208, overwatered 163, root rot 193, white mold 142),
+  val 212, dropped 517 (test photographs) and 66 unmatched (16 photographs such as `drought_10.jpg`, `drought_23.jpg`,
+  `whats-happening-to-her-...webp` and their augmented copies, which are no longer in `data/train`, so they are not in
+  the 1580-image pool; dropped to be safe). Part detection with the v1 checkpoint on the 1576 train + val images: job 72335.
+- **Detector split agreeing with split v1 (`cluster/make_detector_split.py` -> `rfdetr_parts/dataset_splitv1`,
+  `evaluation/detector_split_v1.json`).** pHash (64-bit DCT, distance ≤ 6) matching of the 1075 annotated images to the
+  1576 split v1 photographs; near-copies among annotated images kept together (none had to be moved). Test 163 images
+  (matched photographs: healthy 81, frost 28, root rot 31, gray mold 12, white mold 7, drought 2, overwatered 2), 429
+  annotation-only images unmatched (train). Train / val counts in the report file. Note for the paper: the annotated set
+  overlaps the condition photographs mostly through healthy, frost and root-rot photos, so the detector test split is
+  light on the molds and water stresses. Pre-registered: RF-DETR Small (job 72333) and Large (72334) retrained with the
+  lab configuration (100 epochs, selection on the detector validation split), then `cluster/eval_parts.py` on the test
+  split: per-part AP50 / AP50:95 and image-level presence precision / recall / F1, with per-part thresholds chosen by F1
+  on the validation split. Prediction: mAP50:95 on the test split within ±3 points of the earlier validation-split
+  values (Small 0.593, Large 0.631); AP lowest for flowers, roots and stems.
+- **Report writer retrained on split v1: launched (job 72338, c7, `cluster/slurm/train_minigpt_splitv1.sbatch`,
+  `train_configs/minigptv2_strawberry_splitv1.yaml`).** The lab's v2 recipe (LoRA r 64 / α 128 on q,v, visual
+  projection trained, 8-bit LLaMA-2-7B-chat, 448 px, AdamW 1e-5 → 5e-6 cosine, label smoothing none, max 500 text
+  tokens) with: training records = the 1364 split v1 training photographs and their augmented copies (the 617
+  augmented copies missing from the cluster data were restored from the GitHub copy of `train_aug`, 31 MB); validation
+  = the 212 records of split v1 validation photographs; the human turn = the application's system prompt and user text
+  with the v1 detector's part lists (`cluster/detect_parts.py` on the 1576 train + val images, job 72336: 1357 of 1364
+  training images had at least one part, 7 none; `cluster/build_stage2_prompts.py`), passed through unchanged by a
+  new `identity_text` processor (the lab's `blip_caption` processor lowercases, strips punctuation and cuts at 50
+  words: a first submission, job 72337, was cancelled after two minutes for this reason); one GPU, batch 2 ×
+  accumulation 16 = effective 32, 10 epochs × 2000 iterations (half the lab's 20); checkpoint selection by validation
+  loss (`minigpt4/tasks/image_text_pretrain.py` `evaluation()` patched to compute the loss over 106 validation batches
+  and return exp(-loss) as the runner's metric; the lab's version returned 0 and never saved a best checkpoint, which
+  is why the April writer is its last epoch).
+- **Report test set (`plant_diagnostic/datasets/split_v1/report_test_set.json`):** the 163 detector test images are
+  151 distinct split v1 test photographs with part masks (healthy 74, root rot 30, frost 24, gray mold 12, white mold 7,
+  drought 2, overwatered 2; 1-5 annotated parts, median 3). The v1 detector's part lists for them: job 72339
+  (`evaluation/parts_report_test.json`).
+- **Pre-registered: detector on/off ablation of the report writer (manuscript Table S16; `cluster/minigpt_reports.py`,
+  `cluster/score_reports.py`).** Each test photograph gets one report under the application's prompt with the
+  detector's part lists and one under the same prompt without them (decoding as the app: temperature 0.2, top-p 0.9,
+  repetition penalty 1.01, seed 0; the consistency check regenerates once with the stricter prompt). Scoring rules,
+  fixed now: a report "asserts" a part when a part word (leaf/foliage, fruit/berry/calyx, stem/petiole/runner,
+  flower/blossom/petal, soil/substrate/ground/mulch, root) occurs and is not negated within its sentence (the
+  consistency check's negation cues plus "not visible / not seen"); H_part = share of reports asserting at least one
+  part absent from the photograph's annotation (also reported counting every mention, and against the detector's
+  list); condition consistency = the "Diagnosis:" line names the given condition; regeneration rate = share flagged at
+  least once; length in words; bootstrap 95 % intervals over photographs; the with/without difference by exact McNemar
+  on discordant photographs. Models: the retrained writer (best validation loss) and, as a labelled leaky reference,
+  the April writer (`output/minigpt_strawberry/checkpoint_best.pth`, which trained on reports of most of these
+  photographs). Predictions: with part lists H_part (asserted) is at most half of the value without them for the
+  retrained writer; condition consistency ≥ 95 % in both arms; regeneration ≤ 15 %; the April writer's H_part is lower
+  than the retrained writer's in both arms (it has seen these photographs).
+- **Check: RF-DETR class ids (`cluster/check_class_ids.py`, lab checkpoint on the lab's 322-image validation split,
+  detections ≥ 0.3 matched to ground-truth boxes at IoU ≥ 0.5).** Predicted id 0 → flower (229 of 247 matched), 1 →
+  fruit (1592 / 1615), 2 → leaf (3964 / 4017), 3 → root (99 / 108), 4 → soil (166 / 174), 5 → stem (1153 / 1199): the
+  0-based mapping of `rfdetr_parts/detect_images.py` (and of `cluster/detect_parts.py`, which fed the training
+  prompts) is right; the COCO categories are 1..6, and an id 6 appears only below the 0.3 floor (a no-object slot).
+  `cluster/eval_parts.py` shifts predictions by one and drops ids outside the categories; the first evaluation
+  (job 72344) failed on this before the fix.
+- **Report-writer training speed (job 72341, c7):** 1.7 s per iteration (batch 2) at 16.5 GB, so one epoch of 2000
+  iterations takes about an hour and the 10-epoch run ends around 04:00 on 31 Oct. The April-writer reference run
+  (72340) shares c3 with the Small detector training and generates about one report per 65-90 s.
+- **Result, detector on the split that agrees with split v1 (jobs 72333 train / 72346 eval, `cluster/eval_parts.py`;
+  `evaluation/parts_small_splitv1_{valid,test}.json`, `evaluation/parts_lab_small_on_splitv1_{valid,test}.json`).**
+  RF-DETR Small retrained with the lab configuration (100 epochs, 47 min, selection on the 67-image detector
+  validation split): test (163 images) mAP50:95 **0.564**, mAP50 0.716, mAP75 0.608; validation 0.499 / 0.691.
+  Per-part test AP50:95 (AP50): flower 0.687 (0.844), fruit 0.702 (0.878), leaf 0.578 (0.769), root 0.288 (0.392),
+  soil 0.660 (0.725), stem 0.471 (0.688): roots and stems lowest, as predicted. Image-level part presence on the test
+  split at the application's thresholds, F1: flower 0.87, fruit 0.96, leaf 0.97, root 0.86, soil 0.72, stem 0.92; at
+  thresholds chosen by F1 on the validation split (flower 0.60, fruit 0.25, leaf 0.20, root 0.55, soil 0.20, stem
+  0.35): 0.83 / 0.95 / 0.96 / 0.71 / 0.63 / 0.93, i.e. no better than the hand-set values, because 67 validation
+  images (4-25 per part) are too few to set six thresholds; keep the application's thresholds and say so.
+  Prediction (within ±3 points of the earlier validation-split 0.593) held narrowly (-2.9). **Leakage check:** the
+  lab's April checkpoint scored on the same test split reaches 0.681 / 0.834 (per part: flower 0.756, fruit 0.789,
+  leaf 0.693, root 0.522, soil 0.716, stem 0.609), 11.7 points above the clean retrain, because the lab's random
+  split put most of these photographs in its training data (they are near-copies of split v1 test photographs); the
+  lab's own 322-image validation split gave it 0.598. So the earlier detector numbers were optimistic by roughly ten
+  points, and 0.564 (Small) is the number to report for v1. Large: job 72334 / 72347, pending.
+- **Result, RF-DETR Large on the split that agrees with split v1 (jobs 72334 train, 67 min / 72347 eval;
+  `evaluation/parts_large_splitv1_{valid,test}.json`).** Test (163 images) mAP50:95 **0.593**, mAP50 0.720, mAP75
+  0.641; validation 0.530 / 0.704. Per-part test AP50:95 (AP50): flower 0.734 (0.850), fruit 0.734 (0.891), leaf 0.616
+  (0.782), root 0.293 (0.380), soil 0.650 (0.698), stem 0.531 (0.721). Small → Large: +2.9 points on the clean test
+  split (0.564 → 0.593), in line with the +3.8 seen earlier on the lab's validation split; prediction (within ±3 of
+  0.631) failed (-3.8), the validation-split figure having been inflated like the Small one. Presence F1 on test at
+  the application's thresholds: flower 0.86, fruit 0.96, leaf 0.98, root 0.84, soil 0.72, stem 0.93 (chosen-on-val
+  thresholds again no better). The detector numbers for the paper: Small 0.564, Large 0.593 on the clean test split.
+- **April-writer reference run (72340) note:** with the application's long prompt, the April writer (trained with an
+  empty instruction) sometimes echoes the user text ("Examine this image. The diagnosis ...") instead of starting with
+  "Diagnosis:"; counted as it falls under the pre-registered rules (condition consistency reads the Diagnosis line).
+- **Report-writer run: no epoch-end validation after all.** The lab's runner resolves `valid_splits=[]` whenever
+  `evaluate` is false (training mode), whatever `val_splits` says (log: "Eval gate: evaluate=False, cfg.val_splits=['val'],
+  resolved(valid_splits)=[]"), which is the mechanism behind the April writer being its last epoch. The run saves one
+  checkpoint per epoch (`checkpoint_<epoch>.pth`, 685 MB each; epoch 0 train loss 0.120), so selection is done after
+  training instead: `cluster/minigpt_val_loss.py` scores every epoch checkpoint on the 212 validation records (same
+  prompted format as training) and copies the lowest-loss one to `checkpoint_best.pth`; `cluster/slurm/select_and_report.sbatch`
+  chains that with the report generation (replaces job 72351).
+- **2026-10-30, 21:30 CDT. (g) Documentation corrections in the working copy (uncommitted, for W.S. to review):**
+  `docs/DETECTOR.md` (the lab checkpoint's input is 512 px, not 560; a clean-test-split section with the Small 0.564 /
+  Large 0.593 / leaky lab-checkpoint 0.681 numbers, per-part AP and presence F1 from
+  `evaluation/paper_data/parts_*_splitv1_test.json`; caveats and next steps updated), `docs/COMPUTE.md` (peft 0.13.2),
+  `README.md` and `docs/V1_SYSTEM.md` (the knowledge base's treatment entries were "compiled from" the extension
+  publications: there is no crawler in the repository; who wrote the entries, and whether a language model helped, is
+  a question for W.S.). The co-authors' answer sheet carries the same status.
+  Operational: the ssh master to Hamilton dropped at about 21:10 CDT before the overnight watcher could score anything;
+  the Slurm chain (72340 April-writer reports, 72341 training, 72352 selection + reports) is unaffected, and
+  `cluster/score_reports.py` runs once the connection is back.
+- **2026-10-30, 22:00 CDT. Pre-registered: v1 vs v2 end-to-end latency and GPU memory on one RTX 5000 Ada
+  (`cluster/latency_v1.py`, `latency_rfdetr.py`, `latency_siglip.py`, `latency_student.py`, `latency_summary.py`;
+  `cluster/slurm/latency_v1_v2.sbatch`; written while the cluster was unreachable, to run when the connection is back).**
+  Sample: 7 split v1 test photographs per condition, seeded (49), the same in every script; latency is a property of
+  the system, so the sample is small, while accuracy and honesty come from all 398 test photographs as already recorded.
+  v1 as deployed = demo_v5.py's path and settings (image encoding, ResNet-50 two views + gate, RF-DETR Small through the
+  application's subprocess, MiniGPT-v2 report at temperature 0.2 / top-p 0.9 / repetition penalty 1.01 / up to 2000 new
+  tokens, consistency check, one regeneration); also v1 with the detector in-process. v2 = fine-tuned SigLIP 2 (two
+  views) + RF-DETR Large (split v1 retrain) + the distilled Qwen3-VL-8B student under vLLM (one request at a time, JSON
+  schema, greedy), each stage in its own process on the same photographs, summed per photograph; batched throughput
+  reported separately. Memory per process from nvidia-smi and torch peaks; the student's figure is the weights on disk
+  plus the engine log, since vLLM pre-allocates. Two warm-up photographs excluded; medians and p90 reported.
+  Predictions: (1) v1 as deployed is dominated by the detector subprocess (interpreter start plus model load, > 5 s per
+  photograph) and the MiniGPT-v2 report (several hundred tokens at a 7B model's single-stream speed), so v1 as deployed
+  takes longer per photograph than v2; (2) with the detector in-process, v1 and v2 are within a factor of two of each
+  other, the report writers dominating both; (3) v2 needs more GPU memory than v1 (8B bf16 weights alone about 16 GB;
+  MiniGPT-v2's 7B LLaMA-2 in 16-bit plus the ViT about 15 GB), both fitting a 32 GB card; (4) each classifier and
+  detector takes well under 0.5 s per photograph in-process.
+- **2026-10-31, 09:50 CDT. (i) Desk-check of the latency scripts before their first run (the ssh master was still down;
+  the sentinel timed out at 09:15 CDT).** Checked against demo_v5.py, grounding/, resnet_classifier.py, the Chat class,
+  backbones.py / eval_probe.py, train_backbone.py's checkpoint, annotate_vllm.py and annotation_spec.py: the gate (class
+  thresholds; the margin rule is inactive because diagnose_or_none returns no p2; p1 < 0.50 -> unknown), the three
+  prompts and the regeneration prompt, the decoding settings (temperature slider default 0.2, top-p 0.9 from
+  answer_prepare, repetition penalty 1.01, 2000 new tokens, max_length 4000), the re-encoding before the regeneration,
+  the checkpoint formats and the vLLM call all match. Fixed before any run: (1) the application does a debug forward
+  pass (two views, softmax at T = 0.78, printed only) before diagnose_or_none and applies _postprocess_caption before
+  the consistency check; latency_v1.py now does both, so "v1 as deployed" includes them. (2) grounding/detector.py
+  activates a conda environment, which the cluster does not have (no branch of the repository has an alternative,
+  although agai_env.sh exports RFDETR_PYTHON for it); the local copy now uses the interpreter named by RFDETR_PYTHON
+  when the variable is set, otherwise conda as before, so the lab server's behaviour is unchanged; latency_v1.py raises
+  on a failed detector call instead of timing the application's silent fall-back to the no-parts prompt; the job file
+  checks RFDETR_PYTHON, the wrapper and every weight file before starting. The Hamilton copy of detector.py is to be
+  compared with this one before anything is copied. (3) GPU memory: nvidia-smi's first row is not necessarily the job's
+  GPU on a multi-GPU node, so each script now reports its own process's memory (compute-apps by PID on the GPU that
+  CUDA_VISIBLE_DEVICES names) and the device's memory in use from torch's mem_get_info; the student reports the engine
+  processes on its GPU; latency_summary.py sums the two v1 processes only when both figures exist. (4) latency_rfdetr.py
+  guards a None prediction. Local checks: the helpers against a fake two-GPU nvidia-smi listing, _postprocess_caption
+  against the demo's own on a sample, the seeded sampling, and latency_summary.py on mock stage files. The predictions
+  of entry (h) are unchanged.
+- **2026-10-31, 17:05 CDT. (k) Latency job submitted:** `cluster/slurm/latency_v1_v2.sbatch
+  /projects/was4g/agai/adapters/Qwen3-VL-8B-Instruct-clsft_reports_v1` -> job 72394 on c6 (RTX 5000 Ada, 32 GB,
+  driver 580.142). The paper's student sits on the classification-tuned 8B (`models/Qwen3-VL-8B-Instruct-clsft`; the
+  adapter's config and job 72215's merge confirm it), so the job file now derives the base from the adapter's config
+  instead of assuming the plain 8B. Pre-flight passed (RFDETR_PYTHON, the detector wrapper, every weight file). The
+  Hamilton copy of `grounding/detector.py` already carried the RFDETR_PYTHON override (uncommitted there); the local copy
+  was made identical to it (it also casts the paths to str). The deployed eval config loads the MiniGPT-v2 writer in
+  8-bit (`low_resource: true`), so prediction (3) of entry (h) assumed 16-bit weights wrongly; the measurement reports
+  what the application loads. The ssh master had come back at 16:57 CDT; entries (g)-(i) were appended then.
+- **2026-10-31, 17:20 CDT. (j) Result, detector on/off ablation of the report writer (Table S16; jobs 72341 training,
+  72352 selection + reports, 72340 April-writer reference; `cluster/score_reports.py`; files
+  `evaluation/reports_splitv1.json`, `reports_april_writer.json`, `*_scores.json`, `minigpt_splitv1_val_loss.json`,
+  copied to the repository's `evaluation/paper_data/` with the training log).**
+  Training (10 epochs x 2000 iterations, batch 2 x 16 accumulation, 9 h 40 min on c7): train loss per epoch 0.120 ->
+  0.064; validation loss on the 212 validation records 1.619, 1.421, 1.344, 1.305, 1.282, 1.272, 1.262, 1.257, 1.252,
+  1.248, still falling at the last epoch, so the lowest-validation-loss rule keeps epoch 9 (`checkpoint_best.pth`). The
+  20x gap between training and validation loss says the writer memorises its 1364 training reports (about 30 passes
+  over them); the lab's schedule was kept for comparability. Reports: 151 split v1 test photographs with part masks,
+  one report per condition (302), 47 s per report (238.5 min). **Retrained writer: H_part (asserted) 86.1 % (80.8-91.4)
+  without the part lists vs 92.1 % (87.4-96.0) with them**; paired: with-parts only 14 / without only 5 of 151, exact
+  McNemar P = 0.064. Counting every mention: 90.7 vs 92.1 %. A part the prompt declared NOT VISIBLE is named in 91.4 %
+  of the with-parts reports. Condition consistency 100.0 vs 96.0 % (0 / 6 discordant, P = 0.031; the 6 reports omit the
+  "Diagnosis:" line and their opening sentences describe the labelled condition, so this is format, not a wrong
+  diagnosis). Regenerated at least once 15.2 vs 11.9 %; still flagged after regeneration 8 vs 6, all healthy
+  photographs whose reports advise watching for "gray fuzz" ("inspect ... for any gray fuzz"; 15 of the 16 asserted
+  mentions are such advice, the other a negated list that the five-word negation window misses), which the deployed
+  check reads as an assertion: a limitation of the check, not a hallucination. Mean length 203 vs 200 words. April writer
+  (leaky reference): H_part 85.4 vs 88.1 % (10 / 6, P = 0.45); it writes a "Diagnosis:" line in only 54 and 5 of 151
+  reports, so its consistency figures (39.7 / 10.6 %) measure format; regenerated 17.9 / 6.6 %; length 186 / 174 words.
+  Predictions vs results: (P1) "with part lists H_part at most half of the value without" **not supported**: the lists
+  did not reduce part hallucination and the point estimate moved the other way; (P2) consistency >= 95 % in both arms:
+  supported (100 / 96 %); (P3) regeneration <= 15 %: 15.2 and 11.9 %, borderline; (P4) the April writer's H_part below
+  the retrained writer's in both arms: direction only (0.7 and 4.0 points, inside the intervals).
+  Exploratory, post hoc (`cluster/score_reports_exploratory.py`): soil accounts for most false assertions, 113 / 127
+  (without) and 127 / 127 (with) of the 127 photographs without annotated soil, nearly all in care advice (irrigation
+  depth, "clean straw mulch"); "mulch" occurs in 75 vs 129 reports, so the NOT VISIBLE instruction for soil was followed
+  by more mulch advice, not less (the soil regex counts mulch and substrate by the pre-registered rule). Without soil,
+  H_part is 33.8 vs 39.1 % (17 / 25, P = 0.28); per part (false assertions / photographs without the part) leaf 11/21 vs
+  11/21, fruit 2/54 vs 12/54, stem 10/41 vs 11/41, flower 7/124 vs 10/124, root 26/127 vs 20/127. The detector's lists
+  are mostly right: they miss an annotated part in 9 and add an unannotated one in 18 of 151 photographs. A "Visible
+  cues" section cannot be isolated (the heading appears in 2 and 0 reports), so a restriction to visual claims was not
+  computable. Reading: the v1 writer (LLaMA-2 7B with a LoRA) does not obey the prompt's part constraints; the detector
+  lists carry no measurable grounding benefit for this writer, and the April writer, which trained on reports of most
+  of these photographs, does no better. For the manuscript: Table S16 takes the retrained writer's four rows with the
+  paired tests and a leaky-reference note; 3.9 and the discussion sentence "no claim about reduced part hallucination
+  can be made yet" become "the ablation found no reduction".
+- **2026-10-31, 18:50 CDT. (l) Result, v1 vs v2 end-to-end latency and GPU memory (pre-registered in entry (h),
+  2026-10-30 22:00; job 72394 on c6, RTX 5000 Ada 32 GB, driver 580.142, 1 h 30 min including staging and merging the
+  student; `cluster/latency_v1.py`, `latency_rfdetr.py`, `latency_siglip.py`, `latency_student.py`,
+  `latency_summary.py`; files `evaluation/latency_v1.json`, `latency_rfdetr.json`, `latency_siglip2.json`,
+  `latency_student.json`, `evaluation/paper_data/latency_v1_v2.json`, copied to the repository's
+  `evaluation/paper_data/`).**
+  Protocol as pre-registered: 49 seeded split v1 test photographs (7 per condition, seed 0, the same in every script),
+  two warm-up photographs before timing, each stage in its own process, CUDA synchronised; the one deviation is the one
+  recorded in (k): the writer loads in 8-bit as the application does, not in 16-bit as prediction (3) assumed. Medians
+  (p90) per photograph: **v1 as deployed 62.2 s (75.2)** = image encoding 0.06 + ResNet-50 two views and gate 0.03 +
+  RF-DETR Small through the application's subprocess 15.9 (16.3) + MiniGPT-v2 report 46.2 (58.8; median 337 tokens,
+  7.3 tokens/s over the run), no gate rejection, no consistency flag, no regeneration; **v1 with the detector
+  in-process 46.3 s (59.0)** (RF-DETR Small in-process 0.016 s); **v2 21.7 s (24.9)** = SigLIP 2 two views 0.035 +
+  RF-DETR Large 0.017 + student under vLLM, one request at a time, 21.6 (24.8; median 725 tokens, 33.5 tokens/s);
+  batched, the student wrote the 49 reports in 40.9 s (1.20 photographs/s). The subprocess costs 15.9 s because
+  `grounding/detector.py` starts an interpreter and loads the model for every call; the forward pass itself is 0.016 s.
+  GPU memory (nvidia-smi per process; torch peak reserved): v1 writer + ResNet process 11828 MB (12.0 GB), RF-DETR Small
+  process 1040 MB (0.70 GB), 12.9 GB together; v2 SigLIP 2 process 3116 MB (2.87 GB), RF-DETR Large process 1098 MB
+  (0.76 GB), student weights 17.5 GB on disk (bf16), vLLM engine processes 26184 MB at gpu_memory_utilization 0.85
+  (max_model_len 8192), 30.4 GB summed as configured. Load times: MiniGPT-v2 + ResNet 25 s, RF-DETR Small 0.5 s, Large
+  2.2 s, SigLIP 2 101 s, vLLM engine 169 s (plus 213 s staging the base to /scratch and the LoRA merge).
+  Predictions vs results: (1) v1 as deployed dominated by the detector subprocess (> 5 s) and the report, and slower
+  than v2: **supported** (15.9 + 46.2 of 62.2 s; 2.9x v2). (2) with the detector in-process, v1 and v2 within a factor of
+  two, the writers dominating both: **not supported on the factor** (46.3 vs 21.7 s, 2.1x); the writers do dominate
+  (99.8 % and 99.7 % of the totals); the student writes twice the tokens at 4.6x the token rate (bf16 under vLLM against
+  8-bit bitsandbytes in Hugging Face generate). (3) v2 needs more GPU memory than v1, both fitting a 32 GB card:
+  **supported in direction**; the v1 figure is 12.9 GB rather than the ~16 GB estimated from 16-bit weights (8-bit
+  load), and the v2 figure depends on the engine's reservation (26.2 GB at 0.85; the weights alone 17.5 GB); the stages
+  ran one at a time, so co-residence of v2's three processes on one card was not tested. (4) each classifier and
+  detector well under 0.5 s in-process: **supported** (0.02-0.06 s).
+  Side counts, not pre-registered: the SigLIP 2 classifier was right on 47 of 49 (`images.jpeg`, overwatering, read as
+  drought; `overwatered_47.jpg` read as frost injury); all 49 student answers were valid JSON; verdicts clearly supports
+  3, partially supports 35, does not support 11, so 38 given labels accepted: 10 of the 47 correct labels rejected and 1
+  of the 2 wrong labels rejected, in line with the test-set honesty figures (the sample is for timing, not honesty). The
+  manuscript's 2.13 lab-server timings (report median 25.3 s over 16 reports, classifier 9.1 ms, detector forward
+  18.4 ms) come from the lab GPU; the writer's 46 s here is the 8-bit model at 7.3 tokens/s on the Ada card, so the two
+  need not agree. For the manuscript: 3.9 gets the latency and memory paragraph and table; the abstract/conclusion
+  sentence reads 22 s per photograph for v2 against 62 s for v1 (46 s with v1's detector kept in memory);
+  `docs/DETECTOR.md` and `docs/V1_SYSTEM.md` note the subprocess cost. Also placed in the repository: the four
+  environment freezes of 2026-10-30 as `cluster/infra/requirements/<env>.freeze.2026-10-30.txt` (named in
+  `docs/COMPUTE.md`).
+- **2026-10-31, 19:10 CDT. (m) Provenance answers from W.S. (chat, 2026-10-31) to the manuscript's bracketed
+  questions.** (1) 2.13, lab server GPU: the laboratory's pre-cluster server had two NVIDIA GeForce RTX 3090 (24 GB
+  each), so "two GPUs with 24 GB of memory each" stands and the model is the RTX 3090. (2) 2.2, April synthetic
+  prompts: the text prompts used to generate the April synthetic images were not kept; the manuscript states that the
+  prompts were not retained. (3) 2.11, knowledge base: the entries of `knowledge_graph/disease_knowledge_base.json`
+  are a corpus of information pulled from university extension publications, as the README's "compiled from" wording
+  (entry (g)) says; no crawler existed. Whether a language model helped with the wording is not yet stated. The
+  co-authors' answer sheet carries the same answers.
+- **2026-10-31, 19:55 CDT. (n) Further answers from W.S. (chat, 2026-10-31).** (1) 2.11: a language model,
+  Anthropic's Claude (the current model at the time, autumn 2025; the version was not recorded), helped adjust the
+  wording of the knowledge-base entries; the content came from the university extension publications (entry (m)); the
+  manuscript's generative-AI statement should say so. (2) 2.5: W.S. does not know the 93 generated files of 27 April
+  2026 (UUID-named PNGs, drought 50 / frost 20 / gray mold 23, OpenAI C2PA record, in the lab machine's training
+  folders); the question goes to G.M. and H.Z., since the files appeared on the day the lab's synth / synthOOD ResNet
+  checkpoints begin; no reported result uses them. (3) Author contributions: W.S. says the manuscript's line covers it
+  for the most part and points to the commits; the GitHub history agrees. His commits: 2025-09-29 "MiniGPT-v2 + ResNet
+  strawberry diagnostician", 2025-10-04 "Complete implementation with ResNet-50 + MiniGPT-v2", 2026-04-12 "Add RF-DETR
+  grounding pipeline, update knowledge base", 2026-04-25 paper refresh, 2026-10-21/22 revival (leak-free benchmark,
+  experiment code, lab notebook, documentation). G.M.'s commits: 2025-10-06 demo security / reliability / UX,
+  2025-10-17 demo_v5 with webcam, tests folder, knowledge-graph folder, 2025-10-21 system improvements and test suite,
+  2026-01-21 YOLOv8 detection project. Entries (m) and (n) are in the local notebook only until the ssh master is back
+  (it closed at about 19:10 CDT).
+- **2026-10-31, 20:20 CDT. (o) The 93 generated files of 27 April 2026 (manuscript 2.5), from W.S. (chat,
+  2026-10-31); supersedes item (2) of entry (n).** Shown the per-condition counts of Fig. S2(a) (real 324 / 65 / 115 /
+  73 / 131 / 650 / 222 for healthy, drought, frost, overwatering, root rot, gray mold, white mold; synthetic in the 601
+  named files 97 / 76 / 52 / 154 / 30 / 99 / 93; the 93 add drought 50, frost 20, gray mold 23), W.S. recalls
+  generating them as further clear and ambiguous examples of drought stress, frost injury and gray mold, the
+  conditions the April classifier was confusing, to try to fix those confusions; the lab's "synth" and "synthOOD"
+  ResNet checkpoints (v5 to v12) begin the same day. Recalled, not documented. Drought and frost are among the three
+  smallest real classes and gray mold the largest, so the batch targeted confusions, not class size. The files enter
+  no reported result (the study's synthetic arm uses the 601 named files). Local notebook only until the ssh master is
+  back.

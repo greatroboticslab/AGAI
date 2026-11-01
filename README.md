@@ -56,7 +56,7 @@ All numbers on the leak-free split v1 test set (398 photos) unless noted; ± is 
 | Diagnosis accuracy | ResNet-50: 90.2 ± 1.5 % | SigLIP 2: 95.6 ± 1.3 %, EVA-02-L: 95.7 ± 1.1 %; with the data recipe 96.3 ± 0.8 %; ensembles 97.2-97.7 % (≈ label-noise ceiling) | [Classifier](docs/CLASSIFIER.md) |
 | Low-detail photos (128 px) | not measured | 83.7 → 92.1 % with train-time phone degradation, clean accuracy unchanged | [Synthetic data](docs/SYNTHETIC_DATA.md) |
 | "Roots visible → root rot" shortcut | present (0-1 of 6 healthy dug-up roots called healthy) | removed (5-6 of 6) by designed synthetic counter-examples | [Synthetic data](docs/SYNTHETIC_DATA.md#the-roots-shortcut) |
-| Plant-part detection, mAP@50:95 | RF-DETR Small 0.598 | RF-DETR Large 0.631 (+3.8 points over a like-for-like retrained Small, 0.593) | [Detector](docs/DETECTOR.md) |
+| Plant-part detection, mAP@50:95 | RF-DETR Small 0.598 on the lab's validation split; 0.564 on a clean test split that agrees with split v1 | RF-DETR Large 0.631 (+3.8 points over a like-for-like retrained Small, 0.593); 0.593 on the clean test split (+2.9) | [Detector](docs/DETECTOR.md) |
 | Explainer honesty (label-swap test, balanced) | explainer receives the label as ground truth (not testable as built) | 8B student 82.5 % vs its 32B teacher 77.6 % (p = 0.00013); best zero-shot model (Qwen3-VL-235B) 80.7 % | [VLM honesty](docs/VLM_HONESTY.md) |
 | Test-time compute instead of training | — | zero-shot VLMs: voting over 20 samples +1-2 points (n.s.), debate and reference images +0, explanation before the answer −5 to −9 points; best zero-shot 76.1 % (GLM-4.6V, vote) vs 96.3 % fine-tuned | [Test-time compute](docs/TEST_TIME_COMPUTE.md) |
 | Caption faithfulness (blind human ratings) | — | 4 open captioners: 4.0-10.3 % of claims not in the photo (interim, 615 of 845 claims) | [Captioning](docs/CAPTIONING.md) |
@@ -96,6 +96,7 @@ All numbers on the leak-free split v1 test set (398 photos) unless noted; ± is 
 | [Compute](docs/COMPUTE.md) | cluster, environments, multi-node serving of 100B+ models, reproducing a result |
 | [Roadmap](docs/ROADMAP.md) | what is done, running and next; decisions; paper outline |
 | [v1 system](docs/V1_SYSTEM.md) | the paper's system: setup, demo, training, knowledge graph |
+| [Manuscript Q&A](docs/MANUSCRIPT_QA.md) | answers to the bracketed notes of the journal manuscript (24 October build): paste-ready text, evidence, open items |
 | [`cluster/README.md`](cluster/README.md) | index of the experiment code, grouped by study, and the Slurm launchers |
 | [`cluster/EXPERIMENT_LOG.md`](cluster/EXPERIMENT_LOG.md) | the lab notebook: every run, pre-registration and correction |
 
@@ -105,9 +106,10 @@ All numbers on the leak-free split v1 test set (398 photos) unless noted; ± is 
 |---|---|---|
 | v1 reproduced (ResNet v4 predictions 68/68 identical; end-to-end pipeline) | blind ratings (615 / 845 claims) | choose teacher + verifier (gate 1) |
 | leak-free benchmark and data audit | cross-family claim judge (GLM-4.6V inconclusive on vLLM) | regenerate training annotations, retrain the student |
-| classifier, synthetic-data and detector studies | | assemble the v2 pipeline and demo; v1 vs v2 end to end |
+| classifier, synthetic-data and detector studies | | v2 demo; v1 vs v2 claim faithfulness (blind ratings of v1 against v2 reports) |
 | label-swap test, honest 8B student, teacher comparison (5 models) | | expert relabeling; new real photos of weak classes; paper |
 | captioner bake-off; consistency filters; 8B / 27B / 32B claim judges; test-time compute study | | |
+| for the manuscript (30 to 31 Oct): calibration and gate metrics, TTA ablation, detector test split + RF-DETR retrains, report writer retrained on split v1 + grounding ablation (Table S16), v1 vs v2 latency and memory ([Manuscript Q&A](docs/MANUSCRIPT_QA.md)) | | |
 
 Full plan with acceptance criteria: [Roadmap](docs/ROADMAP.md).
 
@@ -170,7 +172,7 @@ v1 builds on [MiniGPT-v2](https://github.com/Vision-CAIR/MiniGPT-4), [LLaMA-2](h
 additionally uses open models and tools including Qwen3-VL, GLM-4.6V, SigLIP 2, EVA-02, Perception Encoder, DINOv2/v3,
 BioCLIP and [vLLM](https://github.com/vllm-project/vllm); each is subject to its own licence.
 
-Treatment recommendations in the knowledge base are web-crawled and sourced from university cooperative extension
+Treatment recommendations in the knowledge base were compiled from university cooperative extension
 publications (UC IPM, Cornell, Penn State, NC State, UMN, Virginia Tech, Utah State, UGA). See individual disease
 entries in `knowledge_graph/disease_knowledge_base.json` for full citations.
 

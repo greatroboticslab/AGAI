@@ -31,10 +31,13 @@ Plain venvs on shared storage (conda hung on the shared filesystem), built by
 
 | Environment | Key versions | Used for |
 |---|---|---|
-| `minigptv` | torch 2.5.1 + cu121, **transformers 4.45.2**, peft 0.11.1, bitsandbytes 0.43.3, gradio 4.44.1 | the v1 pipeline (MiniGPT-v2, demo) |
+| `minigptv` | torch 2.5.1 + cu121, **transformers 4.45.2**, peft 0.13.2, bitsandbytes 0.43.3, gradio 4.44.1 | the v1 pipeline (MiniGPT-v2, demo) |
 | `rfdetr` | rfdetr 1.11.2 (`[train,loggers]`), torch 2.14 + cu130, portable Python 3.11 | detector training and evaluation |
 | `vision` | timm, open_clip, diffusers | backbone probes and fine-tunes, synthetic images, scoring |
 | `vllm` | vLLM 0.32 | all VLM inference: zero-shot, annotation, captioning, judging |
+
+Exact package lists (`pip freeze`, 2026-10-30) are in [`cluster/infra/requirements/`](../cluster/infra/requirements/),
+one `<env>.freeze.2026-10-30.txt` per environment.
 
 **v1 pipeline note.** MiniGPT-v2 needs transformers **4.45.2**, not the 4.41.1 in the original instructions. Under
 4.41 the lab's `cache_position` shim hides the forward signature, `generate()` builds no attention mask and re-feeds
