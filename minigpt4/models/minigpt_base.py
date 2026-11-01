@@ -339,13 +339,11 @@ class MiniGPTBase(BaseModel):
             targets[i, input_lens[i] + 1:input_lens[i] + len(target) + 1] = target  # plus 1 for bos
 
         with self.maybe_autocast():
-            outputs = self.llama_model(
-                inputs_embeds=inputs_embeds,
-                attention_mask=attention_mask,
-                return_dict=True,
-                labels=targets,
-                reduction=reduction
-            )
+            llm_kwargs = dict(inputs_embeds=inputs_embeds, attention_mask=attention_mask, return_dict=True,
+                              labels=targets)
+            if reduction != "mean":  # only the repo's modeling_llama accepts it; the HF forward averages anyway
+                llm_kwargs["reduction"] = reduction
+            outputs = self.llama_model(**llm_kwargs)
         loss = outputs.loss
 
         return {"loss": loss}

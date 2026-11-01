@@ -138,3 +138,16 @@ class Blip2ImageEvalProcessor(BlipImageBaseProcessor):
         std = cfg.get("std", None)
 
         return cls(image_size=image_size, mean=mean, std=std)
+
+
+@registry.register_processor("identity_text")
+class IdentityTextProcessor(BaseProcessor):
+    """Leaves the text unchanged. Used for the report writer retrained on split v1, whose training instruction is
+    the inference prompt verbatim; blip_caption would lowercase it, strip punctuation and cut it at 50 words."""
+
+    def __call__(self, item):
+        return item
+
+    @classmethod
+    def from_config(cls, cfg=None):
+        return cls()

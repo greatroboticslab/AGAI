@@ -1,0 +1,80 @@
+# MiniGPT-v2 report writer retrained on split v1 (2026-10-31): the lab's v2 recipe (train_configs/minigptv2_strawberry.yaml)
+# with three changes asked for by the manuscript (2.7):
+#   - records restricted to split v1 training photographs; validation records select the checkpoint (val loss,
+#     minigpt4/tasks/image_text_pretrain.py evaluation()); no test photograph or copy of one is seen
+#   - the training instruction is the inference prompt (cluster/build_stage2_prompts.py), not an empty string
+#   - one GPU: batch 2 x accumulation 16 = effective 32 (the lab: 2 GPUs x 2 x 8); 10 epochs x 2000 iterations
+# Paths are the Hamilton checkout.
+
+model:
+  arch: minigpt_v2
+  model_type: pretrain
+  max_txt_len: 500
+  end_sym: "</s>"
+  llama_model: "/projects/was4g/agai/MiniGPT-4/llama_weights/Llama-2-7b-chat-hf"
+  ckpt: "/projects/was4g/agai/MiniGPT-4/checkpoints/checkpoint_stage2.pth"
+  use_grad_checkpoint: true
+  low_resource: true
+  chat_template: true
+  lora_r: 64
+  lora_alpha: 128
+  lora_dropout: 0.05
+
+datasets:
+  strawberry_diagnostic:
+    data_type: images
+    build_info:
+      annotations:
+        train:
+          storage: "/projects/was4g/agai/MiniGPT-4/plant_diagnostic/datasets/split_v1/stage2_train_prompted.json"
+        val:
+          storage: "/projects/was4g/agai/MiniGPT-4/plant_diagnostic/datasets/split_v1/stage2_val_prompted.json"
+      images:
+        train: "/projects/was4g/agai/MiniGPT-4"
+        val: "/projects/was4g/agai/MiniGPT-4"
+    vis_processor:
+      train:
+        name: "blip2_image_train"
+        image_size: 448
+      eval:
+        name: "blip2_image_eval"
+        image_size: 448
+    text_processor:           # identity: blip_caption lowercases, strips punctuation and cuts at 50 words
+      train:
+        name: "identity_text"
+      eval:
+        name: "identity_text"
+    batch_size: 2
+
+run:
+  task: image_text_pretrain
+  output_dir: "/projects/was4g/agai/minigpt_runs"
+  iters_per_epoch: 2000
+  lr_sched: "linear_warmup_cosine_lr"
+  init_lr: 1e-5
+  min_lr: 5e-6
+  warmup_lr: 1e-6
+  warmup_steps_ratio: 0.05
+
+  weight_decay: 0.05
+  max_epoch: 10
+  num_workers: 4
+  seed: 42
+
+  batch_size_train: 2
+  batch_size_eval: 2
+  accumulation_steps: 16
+  amp: true
+  max_grad_norm: 1.0
+
+  distributed: false
+  dist_url: "env://"
+  device: "cuda"
+
+  wandb_log: false
+  job_name: "minigpt_strawberry_splitv1"
+  resume_ckpt_path: null
+  evaluate: false
+  train_splits: ["train"]
+  val_splits: ["val"]
+  max_val_steps: 106

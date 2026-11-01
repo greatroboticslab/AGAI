@@ -1,0 +1,36 @@
+{
+ "noparts": {
+  "n": 151,
+  "h_part_asserted": 0.8543046357615894,
+  "h_part_any": 0.8675496688741722,
+  "names_not_visible_part": 0.0,
+  "consistency": 0.3973509933774834,
+  "regenerated": 0.17880794701986755,
+  "length": 185.52317880794703,
+  "false_parts": {
+   "leaf": 9,
+   "fruit": 5,
+   "stem": 19,
+   "flower": 17,
+   "soil": 121,
+   "root": 20
+  }
+ },
+ "parts": {
+  "n": 151,
+  "h_part_asserted": 0.8807947019867549,
+  "h_part_any": 0.9072847682119205,
+  "names_not_visible_part": 0.8543046357615894,
+  "consistency": 0.10596026490066225,
+  "regenerated": 0.06622516556291391,
+  "length": 174.36423841059602,
+  "false_parts": {
+   "leaf": 12,
+   "fruit": 21,
+   "stem": 12,
+   "flower": 20,
+   "soil": 117,
+   "root": 20
+  }
+ }
+}

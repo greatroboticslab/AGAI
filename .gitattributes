@@ -9,6 +9,7 @@
 # git blobs (not LFS) so they can be committed without an LFS-budget call.
 evaluation/holdout/*.json !filter !diff !merge text
 paper/generated/*.json !filter !diff !merge text
+evaluation/paper_data/*.json !filter !diff !merge text
 dataset/train2014.zip !text !filter !merge !diff
 dataset/val2014.zip !text !filter !merge !diff
 wandb/run-20241118_074911-f1v5jvmq/run-f1v5jvmq.wandb !text !filter !merge !diff

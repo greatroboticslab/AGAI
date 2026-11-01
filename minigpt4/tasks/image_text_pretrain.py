@@ -40,9 +40,8 @@ class ImageTextPretrainTask(BaseTask):
         - Uses batch_size=1 + unwrap collate to avoid custom collate issues
         - Returns a tiny dict; demo UIs generally don't use this anyway
         """
-        # Early exit if evaluation is disabled in config or no val splits
-        if (not getattr(self.cfg.run_cfg, "evaluate", False) or
-            not self.cfg.run_cfg.get("val_splits")):
+        # No val split: nothing to evaluate (eval-only mode is handled by the runner)
+        if not self.cfg.run_cfg.get("val_splits"):
             return {"num_samples": 0, "agg_metrics": 0.0}
 
         # Optional smoke test assertion (remove in production if not needed)
@@ -92,22 +91,13 @@ class ImageTextPretrainTask(BaseTask):
                 ds, batch_size=1, shuffle=False, num_workers=0, collate_fn=lambda b: b[0]
             )
 
-        # 5) quick pass to prove it iterates (demo doesn't need full eval)
-        # Bound evaluation for endless loaders - configurable from config
+        # 5) validation loss over at most max_val_steps batches; the runner keeps the checkpoint with the
+        #    highest agg_metrics, so exp(-loss) is returned (higher is better)
+        import math
         max_val_steps = getattr(self.cfg.run_cfg, "max_val_steps", 200)
-        n = 0
-        for batch in loader:
-            # move tensors if present (kept minimal)
-            if isinstance(batch, dict):
-                batch = {k: _to(v) for k, v in batch.items()}
-            else:
-                batch = _to(batch)
-            n += 1
-            if n >= max_val_steps:
-                break
-
-        # 6) return a small dict so callers don't choke
-        return {"num_samples": n, "agg_metrics": 0.0}
+        avg_loss, n = self.compute_validation_loss(model, loader, device, max_steps=max_val_steps)
+        logging.info(f"[validation] loss {avg_loss:.4f} over {n} batches")
+        return {"num_samples": n, "val_loss": avg_loss, "agg_metrics": (math.exp(-avg_loss) if n else 0.0)}
 
     def compute_validation_loss(self, model, data_loader, device, max_steps=50):
         """Compute average validation loss over max_steps batches."""
