@@ -1,0 +1,855 @@
+{
+ "rule": {
+  "phash_max": 8,
+  "dhash_max": 10,
+  "mirror": true,
+  "exif_transpose": true
+ },
+ "pairs": [
+  {
+   "a": "plant_diagnostic/data/holdout/drought/drought.jpg",
+   "b": "plant_diagnostic/data/train/drought/XkvoUQ5ffAU8j5Fq8DK3Vf (1).jpg",
+   "mirrored": false,
+   "sets": [
+    "val"
+   ],
+   "labels": [
+    "drought"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/drought/strawberry-plants-are-dying-v0-wparrcp3m80f1.jpg",
+   "b": "plant_diagnostic/data/holdout/drought/strawberry-plants-are-dying-v0-wparrcp3m80f1.webp",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "drought"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/frost/frost_86.jpeg",
+   "b": "plant_diagnostic/data/train/frost/frost_62.jpeg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "frost"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/frost/frost_95.jpeg",
+   "b": "plant_diagnostic/data/holdout/frost/frosty.jpg",
+   "mirrored": false,
+   "sets": [
+    "val"
+   ],
+   "labels": [
+    "frost"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold0027.jpg",
+   "b": "plant_diagnostic/data/holdout/gray_mold/GrayMold2312.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold0046.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0209.jpg",
+   "mirrored": true,
+   "sets": [
+    "train",
+    "val"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold0088.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0229.jpg",
+   "mirrored": true,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold0154.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0248.jpg",
+   "mirrored": true,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold0180.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1489.jpg",
+   "mirrored": true,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold0187.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1567.jpg",
+   "mirrored": true,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold1002.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1000.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold1449.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0177.jpg",
+   "mirrored": true,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold1483.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1481.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold1548.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0304.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold1628.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0198.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold1941.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold2283.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold2057.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold2058.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold2183.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold2178.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/gray_mold/GrayMold2333.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold2268.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/healthy/81jYGTSaGZL._UF1000,1000_QL80_ (1).jpg",
+   "b": "plant_diagnostic/data/train/healthy/81jYGTSaGZL._UF1000,1000_QL80_.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/healthy/healthy_199.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_8.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/healthy/healthy_28.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_179.jpg",
+   "mirrored": false,
+   "sets": [
+    "val"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/healthy/healthy_82.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_192.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/holdout/overwatered/holdrel_overwatered_3.jpg",
+   "b": "plant_diagnostic/data/train/overwatered/overwaterewetmedia.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "overwatered"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/drought/5stzg4otkyw81.jpg",
+   "b": "plant_diagnostic/data/train/drought/5stzg4otkyw81.webp",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "drought"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/drought/drought_12.jpg",
+   "b": "plant_diagnostic/data/train/drought/drought_13.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "drought"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/drought/drought_8.jpg",
+   "b": "plant_diagnostic/data/train/drought/stock-photo-dry-plants-from-drought-in-the-garden-the-dried-bushes-of-a-strawberries-on-sunny-day-the-plant-2296671525.jpg",
+   "mirrored": false,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "drought"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/frost/close-up-strawberry-flower-visible-frost-damage-center-turns-black-petals-white-shot-spring-371585130 (1).webp",
+   "b": "plant_diagnostic/data/train/frost/close-up-strawberry-flower-visible-frost-damage-center-turns-black-petals-white-shot-spring-371585130.webp",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "frost"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/frost/frost_21.jpeg",
+   "b": "plant_diagnostic/data/train/frost/img_2375-crop-resize.webp",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "frost"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/frost/frost_26.jpeg",
+   "b": "plant_diagnostic/data/train/frost/frosty.webp",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "frost"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/frost/frost_35.jpeg",
+   "b": "plant_diagnostic/data/train/frost/img_2149.webp",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "frost"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/frost/frost_73.jpeg",
+   "b": "plant_diagnostic/data/train/frost/images (1).jpeg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "frost"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/Gray mold- strawberry.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0304.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0016.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold2297.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0042.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold2340.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0095.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0318.jpg",
+   "mirrored": true,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0147.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0148.jpg",
+   "mirrored": false,
+   "sets": [
+    "train",
+    "val"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0149.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0245.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0162.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/images (9).jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0265.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0364.jpg",
+   "mirrored": true,
+   "sets": [
+    "train",
+    "val"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0281.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1352.jpg",
+   "mirrored": true,
+   "sets": [
+    "test",
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0388.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0391.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0558.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0560.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold0858.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold0862.jpg",
+   "mirrored": false,
+   "sets": [
+    "val"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold1178.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1180.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold1213.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1215.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold1281.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1285.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold1381.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1382.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold1435.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1441.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold1834.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold1837.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold1895.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold2374.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold2020.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/GrayMold2023.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold2355.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/images (11).jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/gray_mold/GrayMold2376.jpg",
+   "b": "plant_diagnostic/data/train/gray_mold/images.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "gray_mold"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/Strawberries-New.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_254.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/frostyhealthy.jpeg",
+   "b": "plant_diagnostic/data/train/healthy/healthyfrost.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_10.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_35.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_103.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_198.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_105.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_91.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_111.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_200.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_127.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_77.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_127.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_78.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_133.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_300.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_140.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_2.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_169.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_7.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_20.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_33.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_207.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_44.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_24.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_49.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_264.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_66.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_269.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_74.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_281.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_290.jpg",
+   "mirrored": false,
+   "sets": [
+    "train"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/healthy/healthy_77.jpg",
+   "b": "plant_diagnostic/data/train/healthy/healthy_78.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "healthy"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/root_rot/rootrot_03.jpg",
+   "b": "plant_diagnostic/data/train/root_rot/rootrot_62.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "root_rot"
+   ]
+  },
+  {
+   "a": "plant_diagnostic/data/train/root_rot/rootrot_1.jpg",
+   "b": "plant_diagnostic/data/train/root_rot/rootrot_75.jpg",
+   "mirrored": false,
+   "sets": [
+    "test"
+   ],
+   "labels": [
+    "root_rot"
+   ]
+  }
+ ],
+ "test_images_affected": [
+  "plant_diagnostic/data/holdout/gray_mold/GrayMold1628.jpg",
+  "plant_diagnostic/data/holdout/gray_mold/GrayMold2312.jpg",
+  "plant_diagnostic/data/holdout/gray_mold/GrayMold2333.jpg",
+  "plant_diagnostic/data/train/drought/drought_8.jpg",
+  "plant_diagnostic/data/train/gray_mold/GrayMold0245.jpg",
+  "plant_diagnostic/data/train/gray_mold/GrayMold0304.jpg",
+  "plant_diagnostic/data/train/gray_mold/GrayMold1352.jpg",
+  "plant_diagnostic/data/train/gray_mold/GrayMold2283.jpg",
+  "plant_diagnostic/data/train/gray_mold/GrayMold2297.jpg",
+  "plant_diagnostic/data/train/gray_mold/GrayMold2340.jpg"
+ ],
+ "val_images_affected": [
+  "plant_diagnostic/data/train/gray_mold/GrayMold0147.jpg",
+  "plant_diagnostic/data/train/gray_mold/GrayMold0209.jpg",
+  "plant_diagnostic/data/train/gray_mold/GrayMold0265.jpg"
+ ]
+}

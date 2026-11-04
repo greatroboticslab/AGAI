@@ -1,0 +1,40 @@
+| run | images | accepts TRUE label | rejects WRONG label | balanced | true condition in differential (wrong label) | invalid |
+|---|---|---|---|---|---|---|
+| recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl | 398 | 322/398 = 80.9% | 340/398 = 85.4% | 83.2% | 389/398 = 97.7% | 0/796 |
+| student_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl | 398 | 318/398 = 79.9% | 339/398 = 85.2% | 82.5% | 389/398 = 97.7% | 0/796 |
+| student_Qwen3-VL-8B-Instruct-reports_v1/test_both.jsonl | 397 | 315/397 = 79.3% | 325/397 = 81.9% | 80.6% | 372/397 = 93.7% | 1/796 |
+| v1_Qwen3-VL-235B-A22B-Instruct-AWQ/test_both.jsonl | 396 | 340/396 = 85.9% | 299/396 = 75.5% | 80.7% | 349/396 = 88.1% | 3/796 |
+| v1_Qwen3.8-27B/test_both.jsonl | 398 | 360/398 = 90.5% | 270/398 = 67.8% | 79.1% | 299/398 = 75.1% | 0/796 |
+| v1_Qwen3-VL-32B-Instruct/test_both.jsonl | 398 | 313/398 = 78.6% | 305/398 = 76.6% | 77.6% | 379/398 = 95.2% | 0/796 |
+| base_Qwen3-VL-8B-Instruct/test_both.jsonl | 398 | 288/398 = 72.4% | 295/398 = 74.1% | 73.2% | 355/398 = 89.2% | 0/796 |
+| v1_GLM-4.6V-FP8/test_both.jsonl | 398 | 199/398 = 50.0% | 311/398 = 78.1% | 64.1% | 312/398 = 78.4% | 0/796 |
+
+paired exact McNemar on shared verdicts (only A right / only B right, p):
+  recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs student_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl: n=796, 15 / 10, p = 0.42
+  recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs student_Qwen3-VL-8B-Instruct-reports_v1/test_both.jsonl: n=795, 43 / 23, p = 0.019
+  recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs v1_Qwen3-VL-235B-A22B-Instruct-AWQ/test_both.jsonl: n=793, 63 / 43, p = 0.064
+  recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs v1_Qwen3.8-27B/test_both.jsonl: n=796, 91 / 59, p = 0.011
+  recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs v1_Qwen3-VL-32B-Instruct/test_both.jsonl: n=796, 72 / 28, p = 1.3e-05
+  recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs base_Qwen3-VL-8B-Instruct/test_both.jsonl: n=796, 112 / 33, p = 3e-11
+  recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs v1_GLM-4.6V-FP8/test_both.jsonl: n=796, 206 / 54, p = 4.3e-22
+  student_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs student_Qwen3-VL-8B-Instruct-reports_v1/test_both.jsonl: n=795, 42 / 27, p = 0.091
+  student_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs v1_Qwen3-VL-235B-A22B-Instruct-AWQ/test_both.jsonl: n=793, 62 / 47, p = 0.18
+  student_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs v1_Qwen3.8-27B/test_both.jsonl: n=796, 92 / 65, p = 0.038
+  student_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs v1_Qwen3-VL-32B-Instruct/test_both.jsonl: n=796, 70 / 31, p = 0.00013
+  student_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs base_Qwen3-VL-8B-Instruct/test_both.jsonl: n=796, 113 / 39, p = 1.5e-09
+  student_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl vs v1_GLM-4.6V-FP8/test_both.jsonl: n=796, 202 / 55, p = 6.4e-21
+  student_Qwen3-VL-8B-Instruct-reports_v1/test_both.jsonl vs v1_Qwen3-VL-235B-A22B-Instruct-AWQ/test_both.jsonl: n=792, 57 / 57, p = 1
+  student_Qwen3-VL-8B-Instruct-reports_v1/test_both.jsonl vs v1_Qwen3.8-27B/test_both.jsonl: n=795, 78 / 66, p = 0.36
+  student_Qwen3-VL-8B-Instruct-reports_v1/test_both.jsonl vs v1_Qwen3-VL-32B-Instruct/test_both.jsonl: n=795, 65 / 41, p = 0.025
+  student_Qwen3-VL-8B-Instruct-reports_v1/test_both.jsonl vs base_Qwen3-VL-8B-Instruct/test_both.jsonl: n=795, 106 / 47, p = 2.1e-06
+  student_Qwen3-VL-8B-Instruct-reports_v1/test_both.jsonl vs v1_GLM-4.6V-FP8/test_both.jsonl: n=795, 199 / 68, p = 4.4e-16
+  v1_Qwen3-VL-235B-A22B-Instruct-AWQ/test_both.jsonl vs v1_Qwen3.8-27B/test_both.jsonl: n=793, 67 / 55, p = 0.32
+  v1_Qwen3-VL-235B-A22B-Instruct-AWQ/test_both.jsonl vs v1_Qwen3-VL-32B-Instruct/test_both.jsonl: n=793, 68 / 44, p = 0.029
+  v1_Qwen3-VL-235B-A22B-Instruct-AWQ/test_both.jsonl vs base_Qwen3-VL-8B-Instruct/test_both.jsonl: n=793, 100 / 41, p = 7.2e-07
+  v1_Qwen3-VL-235B-A22B-Instruct-AWQ/test_both.jsonl vs v1_GLM-4.6V-FP8/test_both.jsonl: n=793, 198 / 68, p = 6.6e-16
+  v1_Qwen3.8-27B/test_both.jsonl vs v1_Qwen3-VL-32B-Instruct/test_both.jsonl: n=796, 74 / 62, p = 0.35
+  v1_Qwen3.8-27B/test_both.jsonl vs base_Qwen3-VL-8B-Instruct/test_both.jsonl: n=796, 116 / 69, p = 0.00068
+  v1_Qwen3.8-27B/test_both.jsonl vs v1_GLM-4.6V-FP8/test_both.jsonl: n=796, 199 / 79, p = 4.1e-13
+  v1_Qwen3-VL-32B-Instruct/test_both.jsonl vs base_Qwen3-VL-8B-Instruct/test_both.jsonl: n=796, 88 / 53, p = 0.004
+  v1_Qwen3-VL-32B-Instruct/test_both.jsonl vs v1_GLM-4.6V-FP8/test_both.jsonl: n=796, 182 / 74, p = 1.1e-11
+  base_Qwen3-VL-8B-Instruct/test_both.jsonl vs v1_GLM-4.6V-FP8/test_both.jsonl: n=796, 172 / 99, p = 1.1e-05

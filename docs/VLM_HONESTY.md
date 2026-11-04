@@ -10,7 +10,7 @@ v1 run also showed hallucinated details (for example "white powdery spores" on a
 diagnosis it was given, and (c) names the likely alternative.
 
 **Result.** An 8B student distilled from a 32B teacher's annotations, *filtered to the teacher's correct verdicts*,
-is significantly more honest than its teacher (balanced 82.5 % vs 77.6 %, McNemar p = 0.00013) on a label-swap test.
+is significantly more honest than its teacher (balanced 83.2 % vs 77.6 % in the verified run, McNemar p = 1.3e-5) on a label-swap test.
 
 ## The annotation schema
 
@@ -52,12 +52,12 @@ Scoring: [`cluster/vlm/score_honesty.py`](../cluster/vlm/score_honesty.py).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/honesty_dark.png">
-  <img alt="Scatter of accepts-true-label versus rejects-wrong-label: base 8B 72.4/74.1, 32B teacher 78.6/76.6, Qwen3.8-27B 90.5/67.8, student from base 8B 79.3/81.9, student from classification-tuned 8B 79.9/85.2" src="figures/honesty_light.png" width="700">
+  <img alt="Scatter of accepts-true-label versus rejects-wrong-label: base 8B 72.4/74.1, 32B teacher 78.6/76.6, Qwen3.8-27B 90.5/67.8, student from base 8B 79.3/81.9, student from classification-tuned 8B 80.9/85.4" src="figures/honesty_light.png" width="700">
 </picture>
 
 | Annotator | Accepts TRUE label | Rejects WRONG label | Balanced | True condition in differential (wrong label) |
 |---|---|---|---|---|
-| **8B student, from the classification-tuned 8B** | 318/398 = 79.9 % | 339/398 = 85.2 % | **82.5 %** | 389/398 = 97.7 % |
+| **8B student, from the classification-tuned 8B** (verified run; first run 79.9 / 85.2 / 82.5 %) | 322/398 = 80.9 % | 340/398 = 85.4 % | **83.2 %** | 389/398 = 97.7 % |
 | Qwen3-VL-235B-A22B (AWQ), zero-shot | 340/396 = 85.9 % | 299/396 = 75.5 % | 80.7 % | 349/396 = 88.1 % |
 | 8B student, from the base 8B | 315/397 = 79.3 % | 325/397 = 81.9 % | 80.6 % | 372/397 = 93.7 % |
 | Qwen3.8-27B, zero-shot | 360/398 = 90.5 % | 270/398 = 67.8 % | 79.1 % | 299/398 = 75.1 % |
@@ -96,12 +96,12 @@ Paired McNemar on the 796 verdicts (only A right / only B right):
   teacher, although it is the best zero-shot *diagnoser* of the five (75.6 %,
   [Test-time compute](TEST_TIME_COMPUTE.md#1-voting-over-sampled-diagnoses)): diagnosing a photo and judging a given
   label are different skills.
-- **No zero-shot model is more honest than the filtered 8B student** (82.5 %).
+- **No zero-shot model is more honest than the filtered 8B student** (83.2 % in the verified run).
 - **Filtered distillation.** In the training data we know which given labels are wrong, so
   [`cluster/vlm/train_vlm_reports.py`](../cluster/vlm/train_vlm_reports.py) keeps only teacher annotations whose verdict is
   correct (accepts a true label / rejects a swapped one): 795 true-label + 302 wrong-label examples, LoRA r = 16,
   2 epochs. The student therefore never learns the teacher's ~23 % sycophantic verdicts. Starting from the
-  classification-tuned 8B helps (trend, p = 0.091). The validation split gives the same ordering
+  classification-tuned 8B helps (43 / 23 discordant verdicts, p = 0.019 with the verified verdicts; 42 / 27, p = 0.091 in the first run). The validation split gives the same ordering
   (79.2 / 77.0 / 77.3 / 71.4 %).
 
 ## Caveats

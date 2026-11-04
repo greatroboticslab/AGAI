@@ -1297,3 +1297,36 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   corrected, and H.Z.'s choice of 2026-11-04 to reconstruct the script is moot. Also recorded from H.Z. the same day:
   the SigLIP 2 recipe is the chosen classifier of Table S7. Entries (q) and (r) stay local until the ssh master is
   back.
+- **2026-11-04, 14:50 CST. (s) Results: honesty table from the verified verdicts; mirror-aware near-duplicate audit
+  of split v1 and its sensitivity analysis.** (1) `cluster/score_honesty.py` over the verified student run (job 72215,
+  `annotations/recheck_Qwen3-VL-8B-Instruct-clsft-reports_v1/test_both.jsonl`) and the other test runs: the verified
+  student accepts the true label 322/398 (80.9 %), rejects the wrong one 340/398 (85.4 %), balanced 83.2 %,
+  differential 389/398 (97.7 %); paired exact McNemar vs its first (c5) run 15/10, P = 0.42; vs the student from the
+  base 8B 43/23, P = 0.019 (first run 42/27, P = 0.091); vs Qwen3-VL-235B 63/43, P = 0.064 (62/47, P = 0.18); vs
+  Qwen3.8-27B 91/59, P = 0.011 (92/65, P = 0.038); vs the 32B teacher 72/28, P = 1.3e-5; vs zero-shot 8B 112/33,
+  P = 3e-11; vs GLM-4.6V 206/54, P = 4.3e-22. Output `evaluation/paper_data/honesty_verified_comparisons.txt`; the
+  manuscript's Table S12, the text of 3.6 and `docs/VLM_HONESTY.md` now carry the verified run. (2) Mirror-aware
+  audit (`cluster/benchmark/mirror_dupes.py`, the manuscript's audit rule: pHash within 8 and dHash within 10 bits on
+  the image or its mirror after EXIF orientation; `evaluation/paper_data/mirror_dupes_v1.json`): 74 near-duplicate
+  pairs among the 1576 split v1 images (18 mirrored); 14 pairs cross the sets (12 mirrored, all gray mold); 10 test
+  images (9 gray mold, 1 drought) have a copy in training or validation and 3 validation images have one in training,
+  which reproduces G.M.'s count of 10. (3) Sensitivity, post hoc (`cluster/benchmark/sensitivity_mirror.py`,
+  `evaluation/paper_data/sensitivity_mirror_v1.txt`): dropping the 10 test images lowers accuracy by 0.1 to 0.3
+  points for every one of the 22 result files rescored (ResNet-50 seeds 91.7 / 91.5 / 90.2 / 88.9 / 88.4 -> 91.5 /
+  91.2 / 89.9 / 88.7 / 88.1; SigLIP 2 recipe 95.5 / 96.5 / 97.0 -> 95.4 / 96.4 / 96.9; EVA-02-L, PE-Core-G, the two
+  probes, the 8B and 32B fine-tunes, zero-shot 8B 77.1 -> 76.8; ensembles E2 97.2 -> 97.2 and X3 97.7 -> 97.7) and
+  macro accuracy by at most 0.5: the affected images are mostly correctly classified gray mold photographs, so no
+  comparison in the paper changes. A full regrouping and retraining is not needed for the conclusions; the manuscript's
+  regrouping note is answered with this result.
+- **2026-11-04, 14:55 CST. (t) Pre-registered: ResNet-50 at 512 pixels, the resolution control for the backbone
+  comparison (manuscript 3.3).** The lab's own script and recipe (`cluster/slurm/train_resnet_split.sbatch` ->
+  `train_resnet_straw5.py`, split v1 train/val folders, defaults) with `--img_size 512` (random 90-100 % crop resized
+  to 512; validation resize to 589 and center crop 512), seeds 42, 1, 2, 3 and 4, one RTX 5000 Ada each; to be scored on
+  the 398 split v1 test photographs with the deployed two-view path at 512 (short side 589, center crop 512) and the
+  checkpoint's temperature (`cluster/classifier/resnet_scores.py` gains an image-size option before scoring).
+  Comparison: mean +- s.d. over five seeds against the 256-pixel ResNet-50 (90.2 +- 1.5 %) and the fine-tuned SigLIP 2
+  (95.6 +- 1.3 %) and EVA-02-L (95.7 +- 1.1 %), with paired exact McNemar tests of the best seeds. Predictions: (P1)
+  the 512-pixel ResNet-50 gains less than half of the 5.4-point backbone gap (mean below 92.9 %), so most of the gain
+  stays with the backbone; (P2) its macro accuracy gains more than its accuracy, because the small classes are the
+  large phone photographs; (P3) the mirror-sensitivity result holds for it too. Jobs 80917 80918 80919 80920 80921; checkpoints
+  `/projects/was4g/agai/models/resnet50_512_s<seed>.pth`, logs `agai-resnet-train-<job>.out`.
