@@ -40,7 +40,8 @@ else:
             continue
         d = json.loads(line)
         rows.append(d.get("data", d))
-rows = [r for r in rows if r.get("claim") in key and r.get("v") in ("supported", "not_supported", "unsure", "not_visual")]
+VERDICTS = ("supported", "not_supported", "unsure", "not_visual", "advice_not_visible")
+rows = [r for r in rows if r.get("claim") in key and r.get("v") in VERDICTS]
 by_rater = defaultdict(dict)
 for r in rows:
     who = r.get("name") or r.get("rater")
@@ -173,8 +174,18 @@ print(f"discordant: v1 only {b}, v2 only {c}; exact McNemar P = {mcnemar(b, c):.
 print("\n== M3 claims per report (rated claims) ==")
 for s in SYS:
     vis = [pp[p][s]["supported"] + pp[p][s]["not_supported"] + pp[p][s]["unsure"] for p in photos]
-    nonvis = [pp[p][s]["not_visual"] for p in photos]
+    nonvis = [pp[p][s]["not_visual"] + pp[p][s]["advice_not_visible"] for p in photos]
     print(f"{s}: visual (incl. unsure) {st.mean(vis):.1f} per report, non-visual {st.mean(nonvis):.1f} per report")
+
+print("\n== M5 (secondary, added 2026-11-04 before the first photograph was complete): advice assuming something not visible ==")
+for s in SYS:
+    adv = sum(pp[p][s]["advice_not_visible"] for p in photos)
+    nonvis = sum(pp[p][s]["not_visual"] + pp[p][s]["advice_not_visible"] for p in photos)
+    reports = sum(1 for p in photos if pp[p][s]["advice_not_visible"] > 0)
+    print(f"{s}: {adv} sentences ({adv / max(1, len(photos)):.2f} per report; {100 * adv / nonvis if nonvis else float('nan'):.1f} % of non-visual sentences); "
+          f"reports with at least one: {reports} of {len(photos)}")
+a1 = sum(pp[p]['v1']['advice_not_visible'] for p in photos); a2 = sum(pp[p]['v2']['advice_not_visible'] for p in photos)
+print(f"P5 (v1 has more such sentences per report than v2): v1 {a1} vs v2 {a2} -> {'supported' if a1 > a2 else 'not supported'}")
 
 print("\n== M4 (exploratory) unsupported claims by plant part named in the claim ==")
 for s in SYS:

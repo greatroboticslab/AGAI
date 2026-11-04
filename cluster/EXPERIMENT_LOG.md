@@ -1354,3 +1354,14 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   manuscript states. The training preprocessing scores 1.5 points above the deployed one at 512 pixels, the reverse
   of the 256-pixel result (0.4 points below); noted, not interpreted. Manuscript: the hedges in the abstract,
   introduction, discussion and conclusion are replaced by the control result; 3.3 and Table S5 carry the numbers.
+- **2026-11-04, 16:50 CST. (q, addendum) Fifth verdict added to the rating page at W.S.'s request, after 71 claims on
+  photographs p00-p04 had been rated (16:21-16:33 CST; 8 of them "not a visual claim").** New verdict "advice assuming
+  something not visible": advice that only makes sense if the photograph showed a part or sign it does not show (for
+  example mulching the bed when no soil is in the picture). It counts as non-visual for M1 (the denominator stays
+  supported + not supported) and adds a secondary count M5: such sentences per system, per report and as a share of
+  the non-visual sentences, with reports having at least one. Prediction P5: v1 has more such sentences than v2 (it
+  writes care advice for every report). Rating rule made explicit on the page: if a sentence asserts anything that can
+  be checked in the photograph, that assertion is rated (supported / not supported) even when the rest is instruction;
+  "not a visual claim" only when nothing in the sentence can be checked. The rater will revisit the 8 sentences rated
+  "not a visual claim" on p00-p04 under the new rule. `cluster/vlm/score_faithfulness.py` updated accordingly before
+  any further rating was read.
