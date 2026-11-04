@@ -4,6 +4,8 @@
   squash:  resize to 256x256 with no crop, which is what train_resnet_straw5.py trains and validates with
 Writes evaluation/scores_<ckpt>_<variant>_split_v1_<split>.json (zero-shot result format plus "probs").
   python cluster/classifier/resnet_scores.py /projects/$USER/agai/models/resnet50_split_v1.pth [more.pth ...]
+  --img-size N scores checkpoints trained at another input size with the same two preprocessings scaled to N
+  (runtime: short side to 1.15 N, center crop N; squash: N x N), e.g. the 512-pixel resolution control.
 """
 import json
 import os
@@ -17,12 +19,18 @@ from torchvision import transforms
 sys.path.insert(0, os.getcwd())
 import resnet_classifier as rc  # noqa: E402
 
+args = sys.argv[1:]
+IMG = 256
+if "--img-size" in args:
+    i = args.index("--img-size")
+    IMG = int(args[i + 1])
+    del args[i:i + 2]
 NORM = transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
-TFMS = {"runtime": rc._tfm(256),
-        "squash": transforms.Compose([transforms.Resize((256, 256)), transforms.ToTensor(), NORM])}
+TFMS = {"runtime": rc._tfm(IMG),
+        "squash": transforms.Compose([transforms.Resize((IMG, IMG)), transforms.ToTensor(), NORM])}
 split = json.load(open("evaluation/split_v1.json"))
 
-for ckpt in sys.argv[1:]:
+for ckpt in args:
     model = rc.load_resnet(ckpt)
     classes = [rc._normalize_label(c) for c in rc._CLASSES]
     temp = rc._TEMPERATURE
