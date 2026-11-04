@@ -1253,3 +1253,47 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   environment freezes, this notebook through entry (o)). Pre-commit checks: all 24 changed or new Python files compile;
   no secrets or machine-specific paths in the changes. This entry is committed separately. The Hamilton working copy
   (branch labbox, flat `cluster/` layout) is unchanged; its two notebook copies carry the same entries.
+- **2026-11-04, 13:45 CST. (q) Pre-registered: claim-level faithfulness of v1 against v2 reports (manuscript 3.9),
+  blind human ratings.** Sample: the 49 seeded split v1 test photographs of the latency measurement (entry (h); 7 per
+  condition, seed 0) and the reports both systems wrote for them as deployed (entry (l)): v1 = the `report` field of
+  `evaluation/paper_data/latency_v1.json` (retrained writer, ResNet-50 label, detector part lists, consistency check
+  applied), v2 = the `report` field of `latency_student.json` (distilled 8B student, SigLIP 2 label, vLLM, JSON
+  schema). Chosen over the 38 bake-off photographs because both systems' reports already exist for these and the
+  sample is representative (7 per condition) rather than hard; the bake-off set served the captioner comparison, not
+  the deployed explainers. Unit: one claim = one sentence of the report (split at sentence punctuation and line
+  breaks; list numbering and the section labels "Visible cues:" / "Recommendation:" removed; v1's "Diagnosis: <label>"
+  line excluded because it restates the label; fragments under 20 characters dropped): 696 claims, v1 445 (9.1 per
+  report), v2 251 (5.1 per report). Blinding: per photograph the claims of both reports are pooled and shuffled with
+  a seeded RNG (`faith-v1v2:<photo index>`); the rater sees the photograph, the dataset label on demand, and each
+  claim's text; the system key (`key.json`) stays outside the page until the ratings are complete. Limitation:
+  writing style can reveal the system (v1's symptom-and-treatment prose, v2's hedged sentences); recorded, not
+  fixable. Ratings per claim: Supported (the photograph shows it), Not supported (the photograph shows otherwise, or
+  the thing is not there), Unsure (cannot tell from the photograph), Not a visual claim (advice, generic statements,
+  diagnostic judgement). Raters: W.S. all 49 photographs; G.M. at least 10 photographs for agreement (Cohen's kappa on
+  Supported / Not supported) if available by Saturday 2026-11-07. Metrics: (M1) unsupported-claim rate per system =
+  Not supported / (Supported + Not supported), bootstrap 95 % intervals over photographs; (M2) share of reports with
+  at least one unsupported claim; (M3) visual and non-visual claims per report; (M4, exploratory) unsupported claims by
+  plant part and by whether the part was in the detector's list. Tests, paired over photographs: Wilcoxon signed-rank
+  on the per-photograph difference in unsupported-claim rate, exact McNemar on M2. Predictions: (P1) v2's
+  unsupported-claim rate is at most half of v1's; (P2) v1 makes more visual claims per report than v2 (it lists
+  symptoms for every part in its prompt) and more non-visual ones (treatment advice); (P3) v1's unsupported claims
+  concentrate on parts the photograph does not show (soil, roots, flowers), as in Table S16; (P4) v2 reports with a
+  "does not support" verdict have no more unsupported claims than its other reports (the rejections are grounded, not
+  evasive). The scoring script is written before any rating is read. Storage: the rating page's database, one
+  document per rater and claim; claims file `faith/claims.json` and key `faith/key.json` in the session scratchpad,
+  to be added to `evaluation/paper_data/` with the ratings.
+- **2026-11-04, 14:25 CST. (r) Correction: the report-generation script was never lost.**
+  `plant_diagnostic/scripts/gptscripts/json_generation/generate_json_openai.py` (committed 2025-09-29, updated 2025-10-04
+  and 2025-10-17) is the stage-2 generator: OpenAI o3 (default of `OPENAI_VISION_MODEL`), one image per record, label
+  = folder name, system prompt fixing the label, visible-only content, one paragraph of 6-9 sentences starting
+  "Diagnosis: <label>." with 3-6 visual clues, a cause, 2-3 actionable steps with measurements and 2-3 monitoring
+  checks for the next 7 days, strict JSON {"report": ...}; a templated fallback per label when the call fails; the
+  "Diagnosis: <label>" prefix enforced; records {image, conversations [human "<Img><ImageHere></Img>", assistant
+  report]}, the dataset's exact format. The empty `generate_stage2_jsonl.py` is a stub from the 2025-06-28 "clean
+  snapshot" commit. Checks on `plant_diagnostic/datasets/stage2_train_7class.fixed.jsonl` (2159 records, identical to
+  the `_fixed.json`): all begin "Diagnosis:", all distinct (fallbacks are identical per label, so none is in the set),
+  mean 207 words, 823 mention the next 7 days. The answer sheet's statement of 2026-10-30 that the generator was lost
+  (made from the empty file alone) is withdrawn; the sheet, `docs/MANUSCRIPT_QA.md` and the manuscript's 2.7 are
+  corrected, and H.Z.'s choice of 2026-11-04 to reconstruct the script is moot. Also recorded from H.Z. the same day:
+  the SigLIP 2 recipe is the chosen classifier of Table S7. Entries (q) and (r) stay local until the ssh master is
+  back.

@@ -46,7 +46,7 @@ For Claude or another assistant applying the answers to the LaTeX source:
 | 13 | 2.6 Plant-part detector | William needs to confirm this: the checkpoint metadata records 512 pixels, while his docs/DETECTOR.md lists the lab checkpoint at 560 | Confirmed: 512 pixels | 2.6 Detector input resolution: 512 or 560 |
 | 14 | 2.6 Plant-part detector | William needs to add a detector test split that agrees with split v1. | Done | 2.6 / 3.5 A detector test split that agrees with split v1 |
 | 15 | 2.6 Plant-part detector | William needs to answer this: how were these thresholds chosen? A sweep script exists (eval_thresholds.py), but no output was saved. | Answered: hand-set after a sweep; sweep rerun and saved | 2.6 Part-presence thresholds |
-| 16 | 2.7 Grounded report generation | William needs to fix this: the script that generated this file is empty in every commit, so it has to be recovered or rewritten before the procedure can be published. | Facts given; option (a) or (b) is Dr. Zhang's decision | 2.7 The script that generated the instruction reports |
+| 16 | 2.7 Grounded report generation | William needs to fix this: the script that generated this file is empty in every commit, so it has to be recovered or rewritten before the procedure can be published. | Resolved 4 November: the generator exists (generate_json_openai.py); nothing to reconstruct | 2.7 The script that generated the instruction reports |
 | 17 | 2.7 Grounded report generation | William needs to fix these in the final run: (1) no validation was run, so the kept checkpoint is simply the last epoch; (2) the training instruction q was empty, while at inference the model receives a long system prompt, so training and inference prompts should be made to match. Also, 228 of the 231 current holdout images appear in this instruction data, so the report writer must be retrained without the test images before reports are evaluated. | Done: retrained with validation selection, matched prompt, no test images | 2.7 Report-writer training; 2.1 |
 | 18 | 2.7 Grounded report generation | William needs to fix this before the final evaluation: the check is a plain substring match with no negation handling, so a sentence such as “no gray fuzz is present” is flagged; and the retry path fails when no parts were detected (demo_v5.py, lines 1020 to 1021). William also needs to decide whether brown roots and botrytis stay in the hallmark list (knowledge_graph/rag_retriever.py), since they cause the false flags described above. | Done: fixes implemented, awaiting review before commit | 2.7 Consistency check: negation, retry path, hallmark list |
 | 19 | 2.9 Claim-level faithfulness and | William needs to say who rated the claims; a second rater is planned for inter-rater agreement. | Answered | 2.9 Who rated the claims |
@@ -83,7 +83,7 @@ Status chips are given in square brackets. Every item is answered below in manus
 | 2.6 Detector input resolution 512 vs 560 | [Done: 512] | below |
 | 2.6 Part thresholds: origin and a validation-based choice | [Done] | below |
 | 2.6 / 3.5 Detector test split agreeing with split v1, per-part AP | [Done] | below |
-| 2.7 Lost report-generation script | [Facts] [Decision] | below |
+| 2.7 Lost report-generation script | [Script found] | below |
 | 2.7 Report writer retrained without test images; S16 grounding ablation | [Done] | below: the part lists did not reduce part hallucination |
 | 2.7 Consistency-check fixes (negation, retry path, hallmark list) | [Done] | committed 31 October |
 | 2.9 Who rated the claims | [Done] | below |
@@ -217,16 +217,18 @@ On a detector test split of 163 annotated images that agrees with split v1 (no t
 
 ### 2.7 The script that generated the instruction reports
 
-Status: Facts; Decision for Dr. Zhang.
+Status: Corrected 4 November: the script exists.
 
 > Manuscript note: "The script that generated this file is empty in every commit, so it has to be recovered or rewritten before the procedure can be published."
 
-Confirmed: `plant_diagnostic/scripts/gptscripts/json_generation/generate_stage2_jsonl.py` is zero bytes in every commit, and it is absent from the lab machine's exported working tree as well, so it cannot be recovered. The reports themselves exist (2159 records in `plant_diagnostic/datasets/stage2_train_7class_fixed.json`; every report begins "Diagnosis: <label>."), but the prompt is not stored with them. Two honest options: (a) state that the generation script was lost and describe the procedure from the rules recorded at the time and from the reports; (b) additionally provide a re-implementation in the repository, documented as a reconstruction and not rerun (there are no API credits, and v2 draws its annotations from local models anyway). I recommend (b).
+**Correction, 4 November: the script was never lost.** `plant_diagnostic/scripts/gptscripts/json_generation/generate_json_openai.py`, in the repository since the first commit (29 September 2025, updated 4 and 17 October 2025), is the stage-2 generator: OpenAI's o3 model, one image per record, the label taken from the folder name, a system prompt that fixes the label, restricts the content to what is visible and asks for one paragraph of six to nine sentences beginning "Diagnosis: <label>." with three to six visual clues, a likely cause, two or three actionable steps with measurements and two or three monitoring checks for the next seven days, returned as strict JSON; a templated fallback report per label when the call fails; the "Diagnosis: <label>" prefix enforced on every record; records written as image plus a two-turn conversation, the dataset's exact format. The empty `generate_stage2_jsonl.py` is a stub from the June 2025 snapshot. Checks on the 2159 records: all begin "Diagnosis:", all are distinct (a fallback would repeat per label, so none is in the set), mean length 207 words, 823 mention the next seven days. Dr. Zhang's option (b) is therefore moot: the paper cites the script and the supplement can quote its prompt.
+
+Earlier note (30 October, superseded): `plant_diagnostic/scripts/gptscripts/json_generation/generate_stage2_jsonl.py` is zero bytes in every commit, and it is absent from the lab machine's exported working tree as well, so it cannot be recovered. The reports themselves exist (2159 records in `plant_diagnostic/datasets/stage2_train_7class_fixed.json`; every report begins "Diagnosis: <label>."), but the prompt is not stored with them. Two honest options: (a) state that the generation script was lost and describe the procedure from the rules recorded at the time and from the reports; (b) additionally provide a re-implementation in the repository, documented as a reconstruction and not rerun (there are no API credits, and v2 draws its annotations from local models anyway). I recommended (b) before the correction above; Dr. Zhang chose (b) on 4 November, which the correction makes unnecessary.
 
 **Text for 2.7**
 
 ```text
-The script that produced the reports was not preserved; the procedure is described from its recorded rules and its outputs, and a reconstruction of the script is provided in the repository for reference.
+The reports were generated with OpenAI's o3 model by the script generate_json_openai.py in the repository: the model received the photograph and its label, and was instructed to use the label as given, to describe only what is visible, and to write one paragraph beginning with the diagnosis that gives three to six visual clues, a likely cause, two or three care steps with measurements and monitoring checks for the following week (the prompt is reproduced in the Supplementary Information). A templated fallback was defined for failed calls; none of the 2159 reports is a fallback.
 ```
 
 ### 2.7 Report-writer training: validation, matching prompts, no test images; Table S16
@@ -340,7 +342,7 @@ Computed from the saved per-image probability files (no new training): the five 
 
 Fitted temperatures are 0.72 to 0.78 for every seed, so scaling sharpens an under-confident model: ECE falls by ten points for the ResNet-50 and by 5.6 for SigLIP 2, while accuracy, ranking and AURC are unchanged, as the paper says. The validation-chosen thresholds (per predicted condition, the smallest value of at least 0.5 at which 95 percent of accepted validation images are correct) vary across seeds for the small conditions (drought 0.64 to 0.93) because only three to seven validation images are predicted as those conditions, so the deployed thresholds are the better setting to report as v1's, with the validation rule as the principled alternative and its seed variance stated. ECE uses ten equal-width bins of the top-1 probability; AURC follows Geifman and El-Yaniv; intervals are 10,000-resample bootstraps over photographs.
 
-Files for Gus's figure script: `evaluation/calib_<model>_test_seed<k>.json` (per photograph: image, truth, prediction, probabilities with and without temperature, top-1 probability, both gate decisions) and `evaluation/paper_data/calib_<model>_summary.json` (per-class precision, recall and F1, confusion matrices, risk-coverage curves, bootstrap intervals, chosen thresholds). Which model is "the chosen classifier" of Table S7 remains Dr. Zhang's call; both are supplied.
+Files for Gus's figure script: `evaluation/calib_<model>_test_seed<k>.json` (per photograph: image, truth, prediction, probabilities with and without temperature, top-1 probability, both gate decisions) and `evaluation/paper_data/calib_<model>_summary.json` (per-class precision, recall and F1, confusion matrices, risk-coverage curves, bootstrap intervals, chosen thresholds). Dr. Zhang chose the SigLIP 2 recipe as the chosen classifier of Table S7 on 4 November; the ResNet-50 column stays beside it as the v1 comparison.
 
 ### 4 Was the mirrored view ablated on split v1?
 
@@ -433,7 +435,7 @@ Note: Every run is recorded in the lab notebook (cluster/EXPERIMENT_LOG.md) with
 ## Open items, by person
 
 - **William:** nothing open. Answered on 31 October: the April prompts were not kept (2.2); the lab server had two RTX 3090 (2.13); the knowledge base is a corpus pulled from university extension publications, with a Claude model helping with the wording (2.11); the author-contribution line stands, checked against the commits; the 93 files of 27 April were William's extra drought, frost and gray mold examples, made to fix confusions (2.5).
-- **Dr. Zhang or Gus:** which classifier is "the chosen classifier" of Table S7 (v1 ResNet-50 or v2 SigLIP 2 recipe); option (a) or (b) for the lost generation script (2.7); which PDF build Gus is editing, so the right one gets these changes.
+- **Dr. Zhang:** answered on 4 November: the SigLIP 2 recipe is the chosen classifier of Table S7, and the lost generation script was to be reconstructed (option b), which became moot when the generator was found in the repository the same day (2.7). The draft is the Overleaf project "AGAI paper-William-Gus" (Paper2026.tex with a sections folder), where William's items are being applied. Still open: Dr. Zhang's own bracketed notes (white mold class definition, specialist label check, grower ratings, plant-material wording, rover plan, data sharing, funding).
 
 ## Result files in the repository
 

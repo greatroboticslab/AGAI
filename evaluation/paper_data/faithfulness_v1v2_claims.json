@@ -1,0 +1,3182 @@
+{
+ "name": "faithfulness_v1v2",
+ "seed": "faith-v1v2:<photo index>",
+ "photos": [
+  {
+   "id": "p00",
+   "image": "plant_diagnostic/data/train/drought/strawberry-plants-are-dying-v0-qy797dp3m80f1.webp",
+   "label": "drought",
+   "file": "strawberry-plants-are-dying-v0-qy797dp3m80f1.webp",
+   "claims": [
+    {
+     "id": "p00c00",
+     "text": "This suggests the plant has not received adequate moisture recently."
+    },
+    {
+     "id": "p00c01",
+     "text": "Immediately apply 1-2 L of water per plant, allowing it to soak to at least 5 cm depth, then repeat every 2-3 days until new leaves regain turgor."
+    },
+    {
+     "id": "p00c02",
+     "text": "Some leaves have a grayish-white powdery residue, which may be a fungal issue or mineral deposit rather than dehydration."
+    },
+    {
+     "id": "p00c03",
+     "text": "Add a 2-3 cm layer of straw or shredded leaf mulch around the crown to retain remaining moisture and moderate soil temperature."
+    },
+    {
+     "id": "p00c04",
+     "text": "Leaf: The most prominent leaf shows a distinctive brown, crispy margin with a dull, matte texture, indicating water loss and tissue desiccation."
+    },
+    {
+     "id": "p00c05",
+     "text": "Soil: The upper 2-3 cm of soil appears light-brown and powdery, lacking the dark, evenly moist surface typical of well-hydrated soil."
+    },
+    {
+     "id": "p00c06",
+     "text": "Install a drip irrigation system or watering can with slow-release emitters to deliver consistent moisture without overwhelming the root zone."
+    },
+    {
+     "id": "p00c07",
+     "text": "The green inner tissue is still intact, but the margins have curled downward, a classic sign of moisture stress."
+    },
+    {
+     "id": "p00c08",
+     "text": "Stem: The stem is slightly limp and lacks the firm, upright posture expected in well-watered plants, indicating reduced turgor pressure."
+    },
+    {
+     "id": "p00c09",
+     "text": "To confirm, check the roots for dark, mushy decay and inspect the crown area for any signs of rot or fungal growth."
+    },
+    {
+     "id": "p00c10",
+     "text": "The plants in this photo show signs of wilting and drooping foliage, which could indicate stress, but the soil appears moist and lacks the dry, cracked texture typical of drought."
+    },
+    {
+     "id": "p00c11",
+     "text": "While the dataset labels this as drought, the visual evidence does not support it."
+    },
+    {
+     "id": "p00c12",
+     "text": "It’s possible the plants are suffering from overwatering, root rot, or another stressor."
+    }
+   ]
+  },
+  {
+   "id": "p01",
+   "image": "plant_diagnostic/data/train/drought/drought_5.jpg",
+   "label": "drought",
+   "file": "drought_5.jpg",
+   "claims": [
+    {
+     "id": "p01c00",
+     "text": "This strawberry plant shows signs of mild water stress, likely due to drought."
+    },
+    {
+     "id": "p01c01",
+     "text": "Also, monitor for further leaf curling or browning over the next day or two."
+    },
+    {
+     "id": "p01c02",
+     "text": "The green sepals on the top of the strawberry fruit indicate moisture loss and early leaf desiccation."
+    },
+    {
+     "id": "p01c03",
+     "text": "Additionally, ensure at least 20 cm (8 in) of clear space around each plant to improve airflow and reduce heat buildup."
+    },
+    {
+     "id": "p01c04",
+     "text": "The most striking symptom is the entire plant's wilted posture, with limp, downward-curling leaves that lack the typical glossy green sheen."
+    },
+    {
+     "id": "p01c05",
+     "text": "Add a 2–3 cm layer of straw or shredded bark mulch around the plant to reduce evaporation and keep the soil evenly moist."
+    },
+    {
+     "id": "p01c06",
+     "text": "The soil surface appears light-colored and cracked, lacking the dark, even moisture layer usually seen around the roots."
+    },
+    {
+     "id": "p01c07",
+     "text": "However, many leaves remain green and upright, and the fruit appears firm and undamaged, which suggests the plant is not severely stressed."
+    },
+    {
+     "id": "p01c08",
+     "text": "By these steps, the plant should regain its upright stance, and new leaves should regain their firmness within 3–5 days."
+    },
+    {
+     "id": "p01c09",
+     "text": "To confirm drought as the cause, check the soil moisture deeper down (e.g., 2–4 inches) — if it’s dry there, then drought is likely."
+    },
+    {
+     "id": "p01c10",
+     "text": "Immediately apply a deep soaking of 2–3 cm (about 1 in) of water, allowing it to penetrate at least 10 cm (4 in) into the root zone, then repeat every 3–4 days until normal leaf turgor returns."
+    },
+    {
+     "id": "p01c11",
+     "text": "Continual monitoring of soil moisture with a probe or finger test will confirm the mulch is effective and adjust watering accordingly."
+    },
+    {
+     "id": "p01c12",
+     "text": "If midday temperatures exceed 30 °C (86 °F), set up a shade cloth providing 30–40 % shade during the hottest six hours of the day."
+    },
+    {
+     "id": "p01c13",
+     "text": "The most noticeable symptoms are slightly wilted and drooping leaves, particularly at the base, and dry, clumpy soil without visible cracks."
+    },
+    {
+     "id": "p01c14",
+     "text": "There is no evidence of overwatering, root rot, or frost damage."
+    }
+   ]
+  },
+  {
+   "id": "p02",
+   "image": "plant_diagnostic/data/train/drought/drought_26.jpg",
+   "label": "drought",
+   "file": "drought_26.jpg",
+   "claims": [
+    {
+     "id": "p02c00",
+     "text": "Fine, downward-curling margins on the leaf edge, a sign of dehydration stress that can lead to further leaf drop if water is not restored."
+    },
+    {
+     "id": "p02c01",
+     "text": "Small, shriveled calyx (green sepals) on the top of the fruit, showing the plant's last attempt to retain moisture in the developing berry."
+    },
+    {
+     "id": "p02c02",
+     "text": "The fruit is firm and healthy, and stems remain upright."
+    },
+    {
+     "id": "p02c03",
+     "text": "If midday temperatures exceed 30 °C (86 °F), set up a shade cloth or move the plant to a shaded area for the hottest part of the day."
+    },
+    {
+     "id": "p02c04",
+     "text": "These observations suggest the plant may be experiencing mild nutrient or light stress rather than water deficit."
+    },
+    {
+     "id": "p02c05",
+     "text": "Add a 5 cm (2 inch) layer of straw or shredded bark mulch around the plant to reduce evaporation and keep the soil cooler."
+    },
+    {
+     "id": "p02c06",
+     "text": "Wilted, limp leaf with a pale yellow-green color, indicating loss of turgor and water deficit."
+    },
+    {
+     "id": "p02c07",
+     "text": "Immediately apply a deep soaking of 2–3 cm (about 1 inch) of water around the root zone, ensuring the soil is moist but not waterlogged, and repeat every 3–4 days until new leaves regain firmness."
+    },
+    {
+     "id": "p02c08",
+     "text": "While a few leaves appear slightly dull and have minor edge browning, the soil is visibly moist and clumpy, contradicting the expected dry, cracked soil of drought stress."
+    },
+    {
+     "id": "p02c09",
+     "text": "Dry, dull surface of the stem, lacking the usual plump, glossy texture, which suggests the plant is not receiving enough water to sustain cellular turgor."
+    },
+    {
+     "id": "p02c10",
+     "text": "To confirm, check soil moisture at a deeper level (e.g., 2–4 inches down) and assess if other plants in the row show similar symptoms."
+    },
+    {
+     "id": "p02c11",
+     "text": "Over the next 7 days, check soil moisture daily by inserting a finger 5 cm (2 inches) deep and confirm it feels cool and damp, and watch for the leaf edges to regain turgor and for new berries to swell and darken without further shriveling."
+    },
+    {
+     "id": "p02c12",
+     "text": "This strawberry plant does not show strong evidence of drought."
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "image": "plant_diagnostic/data/train/drought/drought_29.jpg",
+   "label": "drought",
+   "file": "drought_29.jpg",
+   "claims": [
+    {
+     "id": "p03c00",
+     "text": "Fruits appear plump and healthy, and there is no visible soil to assess moisture content."
+    },
+    {
+     "id": "p03c01",
+     "text": "Add a 3 cm (1¼ in) layer of straw or pine needle mulch to reduce evaporation and promote even moisture release."
+    },
+    {
+     "id": "p03c02",
+     "text": "While the dataset labels this as drought, the visual evidence contradicts that assessment."
+    },
+    {
+     "id": "p03c03",
+     "text": "Over the next seven days, irrigate to the soil depth of 5 cm (2 in) every other morning, adjusting frequency if the top 2 cm of soil feels dry to the touch."
+    },
+    {
+     "id": "p03c04",
+     "text": "The stems and petioles also show a similar loss of turgor, hanging limply instead of standing upright."
+    },
+    {
+     "id": "p03c05",
+     "text": "Note that the green sepals at the top of the fruit cluster remain turgid and green, indicating the plant is prioritizing fruit development over leaf growth."
+    },
+    {
+     "id": "p03c06",
+     "text": "To confirm hydration status, check the soil moisture level near the crown—dig down 2–3 inches to see if it’s moist or dry."
+    },
+    {
+     "id": "p03c07",
+     "text": "Leaves are green, turgid, and have no curling or browning at the edges, which are typical indicators of water deficit."
+    },
+    {
+     "id": "p03c08",
+     "text": "The strawberry plant in this photo does not show signs of drought."
+    },
+    {
+     "id": "p03c09",
+     "text": "Immediately apply a deep soaking of 2–3 cm (about 1 in) of water around the root zone, ensuring the soil is moist but not waterlogged."
+    },
+    {
+     "id": "p03c10",
+     "text": "Increase airflow by spacing the plant 20 cm (8 in) apart to reduce heat buildup and improve uptake of available moisture."
+    },
+    {
+     "id": "p03c11",
+     "text": "The most striking symptom is the widespread wilting and curling of the green leaves, indicating severe water loss."
+    },
+    {
+     "id": "p03c12",
+     "text": "These dehydration signs are most pronounced on the outer leaves, suggesting the plant is prioritizing foliage retention over water conservation."
+    },
+    {
+     "id": "p03c13",
+     "text": "However, the calyx edges show slight browning, a subtle sign of early water stress that can worsen if conditions remain dry."
+    },
+    {
+     "id": "p03c14",
+     "text": "The plant appears healthy overall."
+    },
+    {
+     "id": "p03c15",
+     "text": "The leaf margins are curled downward and the leaf surface appears dull and limp, rather than firm and upright."
+    },
+    {
+     "id": "p03c16",
+     "text": "Maintain this watering schedule and monitor leaf turgor daily to catch any worsening of wilting or new browning before it spreads further."
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "image": "plant_diagnostic/data/train/drought/drought_25.jpg",
+   "label": "drought",
+   "file": "drought_25.jpg",
+   "claims": [
+    {
+     "id": "p04c00",
+     "text": "Visible symptoms on the visible parts:"
+    },
+    {
+     "id": "p04c01",
+     "text": "The plants show clear signs of water stress, including many dry, curled, and crispy leaves — classic indicators of drought."
+    },
+    {
+     "id": "p04c02",
+     "text": "This could also indicate other stresses like nutrient deficiency or heat shock."
+    },
+    {
+     "id": "p04c03",
+     "text": "However, the soil is covered with black plastic mulch, making direct assessment of soil moisture impossible."
+    },
+    {
+     "id": "p04c04",
+     "text": "These visual cues point to insufficient water uptake and excessive transpiration, which are classic signs of drought in strawberry plants."
+    },
+    {
+     "id": "p04c05",
+     "text": "The berries themselves appear small, under-ripe, and slightly shrunken, with a matte, non-glossy surface that signals insufficient sugar production."
+    },
+    {
+     "id": "p04c06",
+     "text": "Some plants still retain green leaves, suggesting either partial recovery or uneven water distribution."
+    },
+    {
+     "id": "p04c07",
+     "text": "Leaf blades are curled, limp, and have a dull, gray-green color, indicating loss of turgor and water stress."
+    },
+    {
+     "id": "p04c08",
+     "text": "The green calyx on the top of each strawberry is shriveled and curled back, showing moisture loss and early fruit dehydration."
+    },
+    {
+     "id": "p04c09",
+     "text": "To confirm drought, check the moisture level of the soil just below the mulch layer using a probe or by gently lifting the edge of the plastic to inspect the underlying soil."
+    },
+    {
+     "id": "p04c10",
+     "text": "The overall plant posture is drooping and lacking the crisp, upright turgor expected in well-hydrated strawberries."
+    },
+    {
+     "id": "p04c11",
+     "text": "To alleviate this, immediately increase irrigation to a deep soak of 2–3 cm (≈1 in) every 48 hours, ensuring water penetrates at least 10 cm (4 in) into the root zone; additionally, install a 15% shade cloth during the hottest part of the day to reduce evaporation."
+    },
+    {
+     "id": "p04c12",
+     "text": "Maintain this schedule until new, firm leaves emerge and berries regain normal size and sheen."
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "image": "plant_diagnostic/data/train/drought/whats-happening-to-her-v0-oy6sb0oglhcf1.webp",
+   "label": "drought",
+   "file": "whats-happening-to-her-v0-oy6sb0oglhcf1.webp",
+   "claims": [
+    {
+     "id": "p05c00",
+     "text": "Symptoms visible on the strawberry plant are:"
+    },
+    {
+     "id": "p05c01",
+     "text": "Leaf edges are curled downward and slightly curled inward, a sign of stress caused by low humidity."
+    },
+    {
+     "id": "p05c02",
+     "text": "If the soil is consistently dry at depth, then drought may be occurring despite surface appearance."
+    },
+    {
+     "id": "p05c03",
+     "text": "Wilting of the central flower, where the yellowed, drooping petals indicate dehydration and reduced bloom."
+    },
+    {
+     "id": "p05c04",
+     "text": "Over the next 7 days, check soil moisture daily by inserting a finger 5 cm (2 in) deep and confirm it feels cool and damp, watch for new leaves regaining firmness and a brighter green color, and inspect the soil surface each morning for any top layer drying before the next watering."
+    },
+    {
+     "id": "p05c05",
+     "text": "Crucially, the soil surface is dark and moist beneath the mulch, contradicting typical drought symptoms like dryness or cracking."
+    },
+    {
+     "id": "p05c06",
+     "text": "Stem appears thin and slightly translucent, suggesting water deficit."
+    },
+    {
+     "id": "p05c07",
+     "text": "Wilted, limp leaves with a pale green to yellowish hue, indicating loss of turgor due to reduced water uptake."
+    },
+    {
+     "id": "p05c08",
+     "text": "Position a small fan or misting system to maintain at least 20 cm (8 in) of airflow around the plant to reduce surface heat and speed recovery."
+    },
+    {
+     "id": "p05c09",
+     "text": "Dry, crusty soil surface with no visible moisture patches, confirming inadequate irrigation."
+    },
+    {
+     "id": "p05c10",
+     "text": "Add a 3 cm (1.2 in) layer of straw or shredded bark mulch around the plant to reduce evaporation and improve soil insulation."
+    },
+    {
+     "id": "p05c11",
+     "text": "There is no visible leaf curling, crisping, or browning—key indicators of drought."
+    },
+    {
+     "id": "p05c12",
+     "text": "However, some lower leaves show mild drooping, which could suggest slight water stress."
+    },
+    {
+     "id": "p05c13",
+     "text": "The strawberry plant appears mostly healthy with green leaves and flowers, indicating active growth."
+    },
+    {
+     "id": "p05c14",
+     "text": "Drought is the most likely cause of these symptoms, so the recommended action is to provide deep watering immediately, aiming for about 2.5 cm (1 in) of water applied around the root zone every 2-3 days, ensuring moisture penetrates at least 10 cm (4 in) into the soil."
+    },
+    {
+     "id": "p05c15",
+     "text": "To confirm whether the plant is experiencing mild stress, check the soil moisture level just below the surface using a finger test or moisture meter."
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "image": "plant_diagnostic/data/train/drought/strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp",
+   "label": "drought",
+   "file": "strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp",
+   "claims": [
+    {
+     "id": "p06c00",
+     "text": "However, the presence of some green leaves suggests the plants may have received recent water or are recovering."
+    },
+    {
+     "id": "p06c01",
+     "text": "Also inspect the crowns and roots for any signs of rot, as these could indicate a different issue despite surface symptoms."
+    },
+    {
+     "id": "p06c02",
+     "text": "Over the next 7 days, check each morning whether the top 2 cm (0.8 in) of soil stays cool and damp to the touch, observe if new leaves regain upright posture by day 3, and verify that no additional leaf edges brown or crisp."
+    },
+    {
+     "id": "p06c03",
+     "text": "Stem tissue along the edges of the canopy shows slight wilting and a pale yellow hue."
+    },
+    {
+     "id": "p06c04",
+     "text": "Soil surface appears light-brown and powdery, lacking the dark, moist sheen typical of well-hydrated soil."
+    },
+    {
+     "id": "p06c05",
+     "text": "These visual signs point to insufficient soil moisture, causing the plant to conserve water by reducing leaf turgor and delaying stem growth."
+    },
+    {
+     "id": "p06c06",
+     "text": "Leaf blades are curled downward and have a dull, matte green color with irregular margins, indicating water loss and stomatal closure."
+    },
+    {
+     "id": "p06c07",
+     "text": "Add a 3 cm (1.2 in) layer of straw or shredded bark mulch around each crown to retain moisture and moderate soil temperature."
+    },
+    {
+     "id": "p06c08",
+     "text": "Position a 30 % shade cloth 40 cm (16 in) above the plant during the hottest afternoon hours to reduce further water loss."
+    },
+    {
+     "id": "p06c09",
+     "text": "To confirm, check the soil moisture depth below the surface—dig down 2–3 inches to see if it’s dry throughout."
+    },
+    {
+     "id": "p06c10",
+     "text": "The plants exhibit symptoms commonly associated with drought, including numerous brown, curled, and desiccated leaves, along with dry, loose soil."
+    },
+    {
+     "id": "p06c11",
+     "text": "There is no visible wilting of the entire plant or crispy leaf texture, which would strengthen the drought diagnosis."
+    },
+    {
+     "id": "p06c12",
+     "text": "Immediately apply a deep irrigation of 2.5 cm (1 in) of water, ensuring penetration to at least 10 cm (4 in) depth, and repeat every 3-4 days for the next week."
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "image": "plant_diagnostic/data/holdout/frost/frost_17.jpeg",
+   "label": "frost",
+   "file": "frost_17.jpeg",
+   "claims": [
+    {
+     "id": "p07c00",
+     "text": "Visible cues on the strawberry fruit indicate a classic pattern of Frost Injury, with multiple areas showing a distinctive \"frost-dried\" texture and a dull, water-soaked sheen."
+    },
+    {
+     "id": "p07c01",
+     "text": "The fused appearance may be due to natural fruit development or handling, not cold damage."
+    },
+    {
+     "id": "p07c02",
+     "text": "No flowers or green stem are visible in this image, so those structures remain intact and unaffected by frost."
+    },
+    {
+     "id": "p07c03",
+     "text": "They are large, red, and firm, with no visible signs of frost injury such as blackened flower centers, bronzing, or water-soaked tissue."
+    },
+    {
+     "id": "p07c04",
+     "text": "The leaf visible at the top is also curled and edged with a pale, necrotic band, confirming that the injury extended to the leaf tissue as well."
+    },
+    {
+     "id": "p07c05",
+     "text": "The strawberries shown appear healthy and undamaged."
+    },
+    {
+     "id": "p07c06",
+     "text": "The calyx (the green, cup-shaped structure at the blossom end) is blackened and browned, while the upper side of the berry shows a translucent, slightly sunken zone that has lost its normal glossy red color."
+    },
+    {
+     "id": "p07c07",
+     "text": "The small leaf attached is also green and healthy."
+    },
+    {
+     "id": "p07c08",
+     "text": "There is no evidence of mold, rot, or other diseases."
+    },
+    {
+     "id": "p07c09",
+     "text": "To confirm whether frost occurred, check nearby plants for typical frost symptoms like blackened blossoms or wilted, discolored leaves, especially on lower canopy or exposed areas."
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "image": "plant_diagnostic/data/holdout/frost/Strawberry-Disorder-_399037 (1).jpg",
+   "label": "frost",
+   "file": "Strawberry-Disorder-_399037 (1).jpg",
+   "claims": [
+    {
+     "id": "p08c00",
+     "text": "Water plants in the early morning with 2 cm (¾ in) of water before sunset on cold nights to reduce further moisture loss."
+    },
+    {
+     "id": "p08c01",
+     "text": "This is not sufficient to confirm frost injury, as there are no signs of bronzing, water-soaking, or leaf necrosis—common indicators of cold injury."
+    },
+    {
+     "id": "p08c02",
+     "text": "However, a few flowers display darkened centers, which may indicate mild frost damage."
+    },
+    {
+     "id": "p08c03",
+     "text": "Frost-crusted, translucent edges of the green leaf blades, with some margins turning translucent and papery."
+    },
+    {
+     "id": "p08c04",
+     "text": "Also inspect the undersides of leaves and crowns for any hidden damage."
+    },
+    {
+     "id": "p08c05",
+     "text": "To confirm whether frost occurred, check if similar symptoms appear on adjacent plants or if recent cold weather was experienced."
+    },
+    {
+     "id": "p08c06",
+     "text": "Immediately cover exposed plants with a breathable fabric or lightweight row cover before temperatures drop below 2°C (36°F) to reduce further cellular injury."
+    },
+    {
+     "id": "p08c07",
+     "text": "Stem segments remain green but may show slight wilting and translucent patches where buds meet the stem."
+    },
+    {
+     "id": "p08c08",
+     "text": "The plant appears largely healthy, with green, turgid leaves and multiple flowers."
+    },
+    {
+     "id": "p08c09",
+     "text": "The dry soil also does not support frost conditions, which often involve moisture."
+    },
+    {
+     "id": "p08c10",
+     "text": "Apply a 5 cm (2 in) layer of clean straw mulch around each crown to insulate roots and moderate soil temperature."
+    },
+    {
+     "id": "p08c11",
+     "text": "Soil surface appears dark and unblemished, indicating the damage is localized above-ground."
+    },
+    {
+     "id": "p08c12",
+     "text": "Frost-discolored, bronze-red petals around the yellow center of the flower, indicating tissue death from cold exposure."
+    },
+    {
+     "id": "p08c13",
+     "text": "Ensure drainage by lifting the mulch edge 5 cm (2 in) away from stems to prevent rot."
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "image": "plant_diagnostic/data/holdout/frost/frost_64.jpeg",
+   "label": "frost",
+   "file": "frost_64.jpeg",
+   "claims": [
+    {
+     "id": "p09c00",
+     "text": "However, there are no visible signs of active frost injury such as blackened flower centers or bronzed/water-soaked tissue—these features are not present in the image."
+    },
+    {
+     "id": "p09c01",
+     "text": "Apply a 5 cm (2 in) layer of straw or pine-needle mulch around the crown to insulate roots and reduce radiative heat loss."
+    },
+    {
+     "id": "p09c02",
+     "text": "Faint brown margins: Some margins of the leaves show a darker, scorched look, suggesting the freezing front burned the outer cells."
+    },
+    {
+     "id": "p09c03",
+     "text": "Delay morning irrigation until temperatures rise above 5°C (41°F) to minimize the risk of water freezing on the leaves."
+    },
+    {
+     "id": "p09c04",
+     "text": "Many older leaves are brown and dried out, suggesting prior cold damage or natural senescence."
+    },
+    {
+     "id": "p09c05",
+     "text": "Flaccid texture: The leaf edges appear limp and slightly curled downward, a sign of cellular collapse caused by ice formation in the epidermis."
+    },
+    {
+     "id": "p09c06",
+     "text": "The plants in this photo are currently under frost conditions, as evidenced by the thick layer of white ice crystals covering the leaves and stems."
+    },
+    {
+     "id": "p09c07",
+     "text": "To verify if frost damage has occurred, check for any remaining flowers or young shoots that may show blackening or browning after thawing."
+    },
+    {
+     "id": "p09c08",
+     "text": "It’s possible the plants were recently exposed to freezing temperatures, but the current visual state does not confirm ongoing cold injury."
+    },
+    {
+     "id": "p09c09",
+     "text": "Instead, water in the early afternoon when air is warmer."
+    },
+    {
+     "id": "p09c10",
+     "text": "Immediately cover exposed plants with a breathable fabric or light fleece each evening when temperatures are forecast to drop below 2°C (35°F) to prevent further freeze damage."
+    },
+    {
+     "id": "p09c11",
+     "text": "Frost crystals: Small white crystals are visible on the upper surfaces of the leaves and stem, especially where they meet the soil, indicating rapid freezing of moist cells."
+    },
+    {
+     "id": "p09c12",
+     "text": "Frost-discoloration: Large areas of the leaf and stem show a pale, bluish-gray cast, indicating tissue death from exposure to sub-freezing temperatures."
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "image": "plant_diagnostic/data/train/frost/frost_6.jpeg",
+   "label": "frost",
+   "file": "frost_6.jpeg",
+   "claims": [
+    {
+     "id": "p10c00",
+     "text": "To confirm, check if nearby plants show similar fruit damage and inspect the undersides of leaves and crowns for signs of fungal growth or necrosis."
+    },
+    {
+     "id": "p10c01",
+     "text": "Frost-discolored, mottled red and white berries, particularly on the upper halves, indicating tissue death from cold exposure."
+    },
+    {
+     "id": "p10c02",
+     "text": "Instead, the pattern resembles sunscald or early-stage gray mold (Botrytis)."
+    },
+    {
+     "id": "p10c03",
+     "text": "Immediately cover exposed plants with a breathable fabric or lightweight fleece before the next predicted frost, ensuring the material drapes 10-15 cm (4-6 in) beyond the crown to prevent radiant heat loss."
+    },
+    {
+     "id": "p10c04",
+     "text": "Remove any dead or damaged fruitlets with sanitized shears to reduce inoculum and improve airflow."
+    },
+    {
+     "id": "p10c05",
+     "text": "Over the next week, monitor daily canopy temperature with a thermometer, protect buds with a 2 cm (¾ in) layer of straw mulch if temperatures dip below 2 °C (36 °F), and prune excess leaves to maintain a 30 cm (12 in) open center for better ventilation."
+    },
+    {
+     "id": "p10c06",
+     "text": "Since no flowers or leaves are visible, we cannot rule out frost injury entirely, but the current symptoms are more consistent with heat or light stress."
+    },
+    {
+     "id": "p10c07",
+     "text": "This does not match the expected signs of frost damage, such as blackened flower centers or bronzed, water-soaked tissue."
+    },
+    {
+     "id": "p10c08",
+     "text": "Water the soil to a depth of 5 cm (2 in) in the early afternoon on the day before a frost to release latent heat, then withhold irrigation until daytime temperatures rise above 0 °C (32 °F)."
+    },
+    {
+     "id": "p10c09",
+     "text": "The calyx of each strawberry is bright green and slightly puckered, suggesting cell collapse rather than full blossom drop."
+    },
+    {
+     "id": "p10c10",
+     "text": "Edges of the green leaves show dark brown to black necrotic patches, with intact green centers, a classic sign of frost desiccation."
+    },
+    {
+     "id": "p10c11",
+     "text": "The strawberries in this photo exhibit irregular browning and discoloration, especially around the calyx and along the sides, with some appearing shriveled or sunken."
+    }
+   ]
+  },
+  {
+   "id": "p11",
+   "image": "plant_diagnostic/data/holdout/frost/20110329alpinestrawberryflower.jpg",
+   "label": "frost",
+   "file": "20110329alpinestrawberryflower.jpg",
+   "claims": [
+    {
+     "id": "p11c00",
+     "text": "Stem segments appear slightly darker than the rest of the plant, suggesting cold damage to the vascular tissue."
+    },
+    {
+     "id": "p11c01",
+     "text": "This photo shows a strawberry flower with a dark, necrotic center, which may indicate frost damage to the reproductive tissue."
+    },
+    {
+     "id": "p11c02",
+     "text": "To confirm frost injury, check nearby plants for similar symptoms, especially on flowers and young fruits, and inspect for any residual frost on leaves or soil after a cold night."
+    },
+    {
+     "id": "p11c03",
+     "text": "Apply a 5 cm (2 in) layer of straw or pine-needle mulch around the crown to insulate roots and reduce radiant heat loss."
+    },
+    {
+     "id": "p11c04",
+     "text": "Frost-discolored, translucent petals surrounding the yellow center of the flower, indicating tissue death from freezing temperatures."
+    },
+    {
+     "id": "p11c05",
+     "text": "Also consider whether the plant was exposed to temperatures below freezing recently."
+    },
+    {
+     "id": "p11c06",
+     "text": "The surrounding leaves and soil do not show signs of widespread cold injury such as bronzing or water-soaking."
+    },
+    {
+     "id": "p11c07",
+     "text": "Immediately cover the plant with a breathable fabric or lightweight fleece each evening when temperatures are forecast to drop below 2°C (36°F) to prevent further injury."
+    },
+    {
+     "id": "p11c08",
+     "text": "However, the absence of ice or frost crystals on the surface makes definitive confirmation difficult."
+    },
+    {
+     "id": "p11c09",
+     "text": "Leaf blades show dark brown, water-soaked margins and a crisp, papery texture, a classic sign of frost desiccation."
+    },
+    {
+     "id": "p11c10",
+     "text": "Ensure good airflow by pruning any encroaching foliage and keeping a 10 cm (4 in) gap between crowns to speed overnight thawing."
+    }
+   ]
+  },
+  {
+   "id": "p12",
+   "image": "plant_diagnostic/data/train/frost/frost_35.jpeg",
+   "label": "frost",
+   "file": "frost_35.jpeg",
+   "claims": [
+    {
+     "id": "p12c00",
+     "text": "Also inspect the affected bud under magnification to determine if the white substance is fungal hyphae, insect secretions, or a natural exudate."
+    },
+    {
+     "id": "p12c01",
+     "text": "Immediately provide 2–3 cm (about 1 in) of overhead irrigation to release stored heat and rehydrate the plant, repeating every 8 hours until daytime temperatures exceed 10 °C (50 °F)."
+    },
+    {
+     "id": "p12c02",
+     "text": "Prune and discard any severely blackened or fallen leaves to reduce infection points and improve airflow."
+    },
+    {
+     "id": "p12c03",
+     "text": "However, the presence of a white, waxy substance on the bud surface is not characteristic of frost and may point to a different problem such as a fungal infection or insect activity."
+    },
+    {
+     "id": "p12c04",
+     "text": "The flower bud exhibits a dark, necrotic area at the top, which could indicate frost damage."
+    },
+    {
+     "id": "p12c05",
+     "text": "Install a floating row cover or lightweight fleece (50 g/m²) over the bed each evening when forecasts predict temperatures below 4 °C (39 °F), holding it 10 cm (4 in) above the foliage to trap radiant heat."
+    },
+    {
+     "id": "p12c06",
+     "text": "Ensure the removed debris is removed from the bed to prevent fungal growth."
+    },
+    {
+     "id": "p12c07",
+     "text": "The surrounding sepals look healthy, suggesting the damage is localized."
+    },
+    {
+     "id": "p12c08",
+     "text": "Frost-discolored, bronze-to-gray blotches cover the upper leaf surface, particularly along the serrated margins, indicating tissue death from cold stress."
+    },
+    {
+     "id": "p12c09",
+     "text": "The green, downward-curling leaf blade shows a distinct line where the damaged tissue meets the still-green lower leaf, indicating a localized freeze burn."
+    },
+    {
+     "id": "p12c10",
+     "text": "To confirm whether this is frost injury, check nearby plants for similar symptoms, especially on flowers and young fruits, and look for signs of water-soaking or bronzing on leaves."
+    },
+    {
+     "id": "p12c11",
+     "text": "Apply a 2 cm (¾ in) layer of clean straw or pine-needle mulch around the crown to insulate roots and reduce future freezing."
+    },
+    {
+     "id": "p12c12",
+     "text": "The stem appears slightly darkened and water-soaked at the intersection with the leaf, suggesting the plant's vascular tissue was damaged during the freeze event."
+    }
+   ]
+  },
+  {
+   "id": "p13",
+   "image": "plant_diagnostic/data/train/frost/frost_76.jpeg",
+   "label": "frost",
+   "file": "frost_76.jpeg",
+   "claims": [
+    {
+     "id": "p13c00",
+     "text": "To confirm whether frost injury occurred, check the plants after the frost thaws: look for blackened or wilted leaves, especially near the crown, and test for tissue firmness — injured tissue will feel mushy or soft."
+    },
+    {
+     "id": "p13c01",
+     "text": "It’s possible the plants are still recovering or the damage has not yet manifested."
+    },
+    {
+     "id": "p13c02",
+     "text": "The plants in this photo are covered in frost, which indicates exposure to freezing temperatures."
+    },
+    {
+     "id": "p13c03",
+     "text": "The majority of the leaf blades display a distinctive dark-brown, glassy edge, indicating Frost-induced necrosis; many leaf serrations are crisply blackened and curled downward; and the soil surface remains powdery white where the foliage meets it, indicating rapid freeze-thaw desiccation."
+    },
+    {
+     "id": "p13c04",
+     "text": "Also inspect the flowers and developing fruit for any discoloration or rot."
+    },
+    {
+     "id": "p13c05",
+     "text": "No Frost-resistant buds or new growth are visible, confirming the injury occurred during the recent cold event."
+    },
+    {
+     "id": "p13c06",
+     "text": "Over the next seven days, check each morning for new blackened margins spreading inward, confirm soil temperature with a probe reaches 5°C before sunrise, and verify that emerging buds remain firm and green rather than turning brown or mushy."
+    },
+    {
+     "id": "p13c07",
+     "text": "This could lead to frost injury, especially if the freeze was prolonged or intense."
+    },
+    {
+     "id": "p13c08",
+     "text": "Immediately cover exposed plants with a breathable Frost cloth or straw mulch 30 cm deep each evening when forecasts predict temperatures below 2°C; ensure soil moisture is kept at about 5 cm depth by irrigating early in the afternoon, then allowing it to freeze only briefly; and install a low-emission heating mat or Frost-protective film around the crown zone to maintain 1–2°C above ambient."
+    },
+    {
+     "id": "p13c09",
+     "text": "However, the leaves do not yet show classic signs of damage like blackened flower centers, bronzing, or water-soaked tissue — these symptoms are not visible."
+    },
+    {
+     "id": "p13c10",
+     "text": "Remove any dead or damaged leaves with sterile scissors to reduce pathogen entry points and improve airflow."
+    },
+    {
+     "id": "p13c11",
+     "text": "These symptoms point to overnight temperatures dropping below 0°C, causing water inside the leaf cells to freeze and rupture cell membranes."
+    }
+   ]
+  },
+  {
+   "id": "p14",
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2221.jpg",
+   "label": "gray_mold",
+   "file": "GrayMold2221.jpg",
+   "claims": [
+    {
+     "id": "p14c00",
+     "text": "Leaf: A pale yellow-green area near the stem shows a similar velvety growth, indicating infection spreading upward."
+    },
+    {
+     "id": "p14c01",
+     "text": "Fruit: Several gray, fuzzy growths cover the green calyx and part of the red achenes, indicating colonization on the surface."
+    },
+    {
+     "id": "p14c02",
+     "text": "This photo shows a single strawberry flower that has become shriveled, brown, and mottled, which could indicate advanced gray mold (Botrytis cinerea)."
+    },
+    {
+     "id": "p14c03",
+     "text": "Over the next 7 days, inspect daily for new gray fuzz on calyxes, check the underside of leaves for tan spores, and verify that mulch remains dry to the touch; adjust watering or spacing if any of these signs worsen."
+    },
+    {
+     "id": "p14c04",
+     "text": "Thin surrounding foliage to create a 5-10 cm air gap between plants for better airflow, and apply a 2 cm layer of clean straw mulch to keep berries off damp surfaces."
+    },
+    {
+     "id": "p14c05",
+     "text": "Other flowers and stems appear healthy, suggesting localized infection."
+    },
+    {
+     "id": "p14c06",
+     "text": "However, the classic gray, fuzzy, or dusty mold growth expected in gray mold is not visible."
+    },
+    {
+     "id": "p14c07",
+     "text": "Irrigate only the soil, not the plant, with 250 ml per plant every 3 days in early morning, ensuring foliage dries quickly."
+    },
+    {
+     "id": "p14c08",
+     "text": "Since the key diagnostic feature (mold) is absent, the diagnosis remains uncertain."
+    },
+    {
+     "id": "p14c09",
+     "text": "The margin is slightly curled and edged with a faint brown ring, suggesting tissue degradation."
+    },
+    {
+     "id": "p14c10",
+     "text": "These tufts are soft, water-soaked, and slightly sunken, signaling fungal sporulation."
+    },
+    {
+     "id": "p14c11",
+     "text": "Remove and discard all visibly infected fruit and debris, cutting at least 2 cm below the infection point to prevent spore spread."
+    },
+    {
+     "id": "p14c12",
+     "text": "Stem: The stem remains green, but the lower half is slightly water-soaked and has a few small, darkened lesions, suggesting internal infection."
+    },
+    {
+     "id": "p14c13",
+     "text": "To confirm, check nearby fruits and flowers for any gray mold development, especially under humid conditions or after rain."
+    }
+   ]
+  },
+  {
+   "id": "p15",
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1699.jpg",
+   "label": "gray_mold",
+   "file": "GrayMold1699.jpg",
+   "claims": [
+    {
+     "id": "p15c00",
+     "text": "This photo shows a strawberry flower that has dried out and turned brownish-red, indicating decay."
+    },
+    {
+     "id": "p15c01",
+     "text": "To confirm gray mold, look for grayish-brown mold covering the fruit or flower, especially under humid conditions."
+    },
+    {
+     "id": "p15c02",
+     "text": "While the dataset labels this as gray mold (Botrytis cinerea), there is no visible gray, fuzzy, or dusty mold—key diagnostic features of this disease."
+    },
+    {
+     "id": "p15c03",
+     "text": "Root: No visible symptoms are visible on the stem, so the infection is limited to the crown and fruit."
+    },
+    {
+     "id": "p15c04",
+     "text": "Every morning irrigate only the soil, delivering 2.5 cm (1 in) of water at the base, and avoid wetting leaves."
+    },
+    {
+     "id": "p15c05",
+     "text": "Check nearby plants and fruits for similar symptoms and mold development."
+    },
+    {
+     "id": "p15c06",
+     "text": "The flower appears desiccated rather than soft-rotted, which may suggest advanced stage decay or another cause such as frost or drought."
+    },
+    {
+     "id": "p15c07",
+     "text": "Apply a coarse straw or pine-needle mulch 3 cm (1.2 in) deep to keep fruit off damp soil and improve drainage."
+    },
+    {
+     "id": "p15c08",
+     "text": "Fruit: Several brown, sunken lesions cover the calyx and upper third of the berry, with a dusty gray-white fuzz visible on the softening tissue."
+    },
+    {
+     "id": "p15c09",
+     "text": "Over the next 7 days, inspect daily for new soft spots on calyces, check for a sour or earthy odor on the mulch, and verify that the top 2 cm (0.8 in) of soil dries within 24 hours after watering."
+    },
+    {
+     "id": "p15c10",
+     "text": "Immediately remove and discard all visibly infected fruit and leaves, then thin surrounding foliage to create at least 5 cm (2 in) of open space between plants for airflow."
+    },
+    {
+     "id": "p15c11",
+     "text": "The infection starts where the calyx meets the fruit, indicating active fungal growth."
+    },
+    {
+     "id": "p15c12",
+     "text": "This edge collapse is a common early sign of fungal invasion."
+    },
+    {
+     "id": "p15c13",
+     "text": "Leaf: The green blade shows a water-soaked, slightly translucent band running along the margins, and some tissue appears darkened and curling downward."
+    }
+   ]
+  },
+  {
+   "id": "p16",
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1782.jpg",
+   "label": "gray_mold",
+   "file": "GrayMold1782.jpg",
+   "claims": [
+    {
+     "id": "p16c00",
+     "text": "The surrounding leaves and a nearby developing fruit appear healthy, indicating the plant is otherwise vigorous."
+    },
+    {
+     "id": "p16c01",
+     "text": "There is no visible gray, fuzzy, or dusty mold on the flower or any other part of the plant, which is characteristic of gray mold (Botrytis cinerea)."
+    },
+    {
+     "id": "p16c02",
+     "text": "Several of the nearby leaf serrations (the pale green edges) show slight yellowing and a slight curl, a common early sign of tissue dehydration that can allow the mold to gain entry."
+    },
+    {
+     "id": "p16c03",
+     "text": "To confirm whether the flower was infected by Botrytis, examine the same flower under magnification for microscopic mold growth or test a sample for fungal presence."
+    },
+    {
+     "id": "p16c04",
+     "text": "Increase airflow by thinning surrounding foliage to create at least 10 cm of space between plants, and water only the soil, not the crowns, with 1 cm of water early in the morning to keep leaves dry."
+    },
+    {
+     "id": "p16c05",
+     "text": "The stem remains firm and green, indicating that the infection is localized to the fruit and not spread to the vascular tissue."
+    },
+    {
+     "id": "p16c06",
+     "text": "The green calyx (the top part of the fruit) is water-soaked and turning brown, signaling the fungus's early invasion of the fruit tissue."
+    },
+    {
+     "id": "p16c07",
+     "text": "Sanitize cutting tools with 70% alcohol between plants to prevent cross-contamination."
+    },
+    {
+     "id": "p16c08",
+     "text": "However, the absence of mold makes a definitive diagnosis of gray mold impossible from this image alone."
+    },
+    {
+     "id": "p16c09",
+     "text": "The photo shows a single strawberry flower that is dried and discolored, possibly due to natural senescence or environmental stress."
+    },
+    {
+     "id": "p16c10",
+     "text": "Immediately remove and discard the infected fruit and any debris within a 5 cm radius to prevent spore spread."
+    },
+    {
+     "id": "p16c11",
+     "text": "The most prominent symptom is a dense, gray-white fuzzy growth covering the entire receptacle of the rotting strawberry, indicating the fungal mat characteristic of this disease."
+    },
+    {
+     "id": "p16c12",
+     "text": "Apply a 1 cm layer of clean straw mulch under the canopy to reduce soil splash and keep fruit off damp surfaces."
+    }
+   ]
+  },
+  {
+   "id": "p17",
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1918.jpg",
+   "label": "gray_mold",
+   "file": "GrayMold1918.jpg",
+   "claims": [
+    {
+     "id": "p17c00",
+     "text": "The plant shows signs of flower senescence or early-stage disease, with multiple dried, brownish-orange flowers."
+    },
+    {
+     "id": "p17c01",
+     "text": "There is no soft rot on the fruit or flowers, nor any other typical Botrytis symptoms such as gray spore masses."
+    },
+    {
+     "id": "p17c02",
+     "text": "Stem: The stem shows darkened, water-soaked patches near the fruit, suggesting infection has penetrated the pedicel."
+    },
+    {
+     "id": "p17c03",
+     "text": "However, the key diagnostic feature — gray, fuzzy mold — is not visible in this photo."
+    },
+    {
+     "id": "p17c04",
+     "text": "To confirm gray mold, check if the affected flowers have developed a gray, dusty mold over time, especially under humid conditions."
+    },
+    {
+     "id": "p17c05",
+     "text": "Every morning, inspect and remove any new gray fuzz or browning patches on stems and leaves, and re-thin any crowded runners to maintain a 10 cm (4 in) spacing."
+    },
+    {
+     "id": "p17c06",
+     "text": "The leaves and stems look healthy, ruling out widespread stress or root issues."
+    },
+    {
+     "id": "p17c07",
+     "text": "Fruit: Several berries show soft, water-soaked lesions with a distinct gray, fuzzy growth on the calyx and shoulders, indicating Botrytis infection."
+    },
+    {
+     "id": "p17c08",
+     "text": "Leaf: The upper leaf edge is brown and dry, with a slight translucent edge where moisture has been trapped, indicating early infection spreading upward."
+    },
+    {
+     "id": "p17c09",
+     "text": "This could be consistent with gray mold (Botrytis cinerea), as the fungus often starts by infecting flowers."
+    },
+    {
+     "id": "p17c10",
+     "text": "Improve airflow by thinning crowded foliage to create a 5–7 cm (2–3 in) gap between plants, and angle any overhead structures so leaves dry quickly."
+    },
+    {
+     "id": "p17c11",
+     "text": "Immediately remove and discard all visibly infected fruit and necrotic leaf debris, cutting at least 2 cm (¾ in) into healthy tissue to prevent spore spread."
+    },
+    {
+     "id": "p17c12",
+     "text": "Apply a coarse-leaf straw mulch 3 cm (1¼ in) deep under the canopy to keep fruit off damp soil and reduce splashing."
+    },
+    {
+     "id": "p17c13",
+     "text": "Over the next 7 days, re-check the calyx and underside of leaves for fresh gray growth, and verify that the mulch surface remains dry to the touch by midday."
+    },
+    {
+     "id": "p17c14",
+     "text": "The affected areas turn pale green and begin to collapse, signaling tissue decay."
+    },
+    {
+     "id": "p17c15",
+     "text": "Also inspect nearby plants and fruit for similar symptoms."
+    }
+   ]
+  },
+  {
+   "id": "p18",
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0354.jpg",
+   "label": "gray_mold",
+   "file": "GrayMold0354.jpg",
+   "claims": [
+    {
+     "id": "p18c00",
+     "text": "Over the next 7 days, inspect daily for new gray fuzz on calyxes, firmness of strawberry shoulders, and any fresh yellowing of leaves, adjusting airflow and watering accordingly."
+    },
+    {
+     "id": "p18c01",
+     "text": "Water-soaked lesions: The upper third of the strawberry fruit shows soft, darker red areas that have begun to translate into sunken, water-soaked patches, indicating tissue decay caused by the fungus invading moist tissue."
+    },
+    {
+     "id": "p18c02",
+     "text": "Remove and discard all visibly infected fruit and calyces, cutting at least 2 cm (¾ in) below the moldy area to prevent spore spread."
+    },
+    {
+     "id": "p18c03",
+     "text": "Water only the soil, not the leaves, with a slow drip irrigation that keeps the crown dry; aim for deep watering every 3-4 days, allowing the top 5 cm (2 in) of soil to dry before the next cycle."
+    },
+    {
+     "id": "p18c04",
+     "text": "Slight yellowing: The leaf edges appear slightly yellowed and curled, a common sign of nutrient deficiency or stress that can make the plant more susceptible to disease."
+    },
+    {
+     "id": "p18c05",
+     "text": "To confirm, check nearby fruits and flowers for gray mold, especially under humid conditions or after rain."
+    },
+    {
+     "id": "p18c06",
+     "text": "Leaves and stem look green and intact."
+    },
+    {
+     "id": "p18c07",
+     "text": "This strawberry plant appears largely healthy based on visible parts."
+    },
+    {
+     "id": "p18c08",
+     "text": "To address this diagnosis, recommend the following steps:"
+    },
+    {
+     "id": "p18c09",
+     "text": "This growth is typically grayish-white and velvety, and it can spread quickly over the affected tissue."
+    },
+    {
+     "id": "p18c10",
+     "text": "Based on the provided image, the following are the visible symptoms of gray mold on the strawberry plant:"
+    },
+    {
+     "id": "p18c11",
+     "text": "Since the dataset labels this as gray mold, but no characteristic symptoms are present, the diagnosis is inconsistent with the image."
+    },
+    {
+     "id": "p18c12",
+     "text": "Limited infection so far: While the calyx is heavily infected, the stem and main leaf remain relatively clean, suggesting that the fungus has spread from a localized wound or over-moistened area."
+    },
+    {
+     "id": "p18c13",
+     "text": "Gray-white, fuzzy growth: A dense, powdery layer of spores is visible on the green calyx of the strawberry, indicating active fungal colonization."
+    },
+    {
+     "id": "p18c14",
+     "text": "The unripe fruit shows a color gradient from red-orange to pale white, which could indicate natural ripening stages or minor blemishes, but there is no visible gray mold, soft rot, or fuzzy growth typical of Botrytis cinerea."
+    },
+    {
+     "id": "p18c15",
+     "text": "Improve airflow by thinning foliage to create a 10-15 cm (4-6 in) gap between crowns and removing any plastic mulch that touches the plant."
+    },
+    {
+     "id": "p18c16",
+     "text": "Apply a 2 cm (¾ in) layer of clean straw mulch around the plant to reduce splash and keep fruit off damp soil."
+    }
+   ]
+  },
+  {
+   "id": "p19",
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0205.jpg",
+   "label": "gray_mold",
+   "file": "GrayMold0205.jpg",
+   "claims": [
+    {
+     "id": "p19c00",
+     "text": "Other fruits and leaves appear healthy, suggesting the infection is localized."
+    },
+    {
+     "id": "p19c01",
+     "text": "Avoid overhead irrigation entirely."
+    },
+    {
+     "id": "p19c02",
+     "text": "However, there is no visible soft rot or brown discoloration beneath the mold, which may indicate a mild or early stage."
+    },
+    {
+     "id": "p19c03",
+     "text": "The tissue beneath appears wilted and slightly brown, indicating infection progression."
+    },
+    {
+     "id": "p19c04",
+     "text": "Leaf: The upper leaf edge shows a similar gray coating, with a slight translucent texture that suggests sporulation."
+    },
+    {
+     "id": "p19c05",
+     "text": "The affected areas appear water-soaked and slightly sunken compared to the firm, glossy red fruit nearby."
+    },
+    {
+     "id": "p19c06",
+     "text": "Immediately remove and discard all visibly infected fruit and leaves, cutting at least 2 cm (¾ in) below the infection point to prevent spore spread."
+    },
+    {
+     "id": "p19c07",
+     "text": "To confirm, check if nearby flowers or other fruits show similar symptoms, especially those in contact with the ground or in shaded areas."
+    },
+    {
+     "id": "p19c08",
+     "text": "Stem: The stem near the blossom end is discolored to a dull yellow-brown, indicating capillaria penetration into the stem tissue."
+    },
+    {
+     "id": "p19c09",
+     "text": "Sanitize shears with 70% alcohol between cuts."
+    },
+    {
+     "id": "p19c10",
+     "text": "Fruit: Several berries show a dense, gray-white fuzzy growth on the surface, especially around the calyx area, indicating active fungal colonization."
+    },
+    {
+     "id": "p19c11",
+     "text": "This photo shows a strawberry fruit with a grayish-white, powdery to slightly fuzzy growth, which is consistent with gray mold (Botrytis cinerea)."
+    },
+    {
+     "id": "p19c12",
+     "text": "Increase airflow by thinning foliage so that each crown has a minimum 10 cm (4 in) gap around it, and run a fan or open row covers for 4–6 hours daily to keep humidity below 85%."
+    },
+    {
+     "id": "p19c13",
+     "text": "Water only the soil, not the foliage, to a depth of 2 cm (¾ in) every 3–4 days in the early morning, allowing surfaces to dry by midday."
+    },
+    {
+     "id": "p19c14",
+     "text": "Apply a 1 cm (⅜ in) layer of clean straw mulch under the canopy to reduce soil splash and keep fruit dry."
+    },
+    {
+     "id": "p19c15",
+     "text": "The affected area is sunken and softened, indicating early to moderate infection."
+    }
+   ]
+  },
+  {
+   "id": "p20",
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0398.jpg",
+   "label": "gray_mold",
+   "file": "GrayMold0398.jpg",
+   "claims": [
+    {
+     "id": "p20c00",
+     "text": "Based on the provided image, the following are the visible symptoms of gray mold on the strawberry plant:"
+    },
+    {
+     "id": "p20c01",
+     "text": "However, there is no visible gray, fuzzy mold on any part of the plant, which is the hallmark of gray mold."
+    },
+    {
+     "id": "p20c02",
+     "text": "Over the next seven days, inspect daily for any new gray fuzz on calyxes, check that leaf surfaces feel dry within two hours of watering, and verify that mulch remains dry to the touch to ensure proper drainage and airflow."
+    },
+    {
+     "id": "p20c03",
+     "text": "Since the classic symptoms of gray mold are missing, this may represent very early infection or a different cause such as minor mechanical damage or nutrient deficiency."
+    },
+    {
+     "id": "p20c04",
+     "text": "Gray, fuzzy growth: A dense, velvety layer of gray spores is visible on the green calyx, particularly where the flower meets the stem."
+    },
+    {
+     "id": "p20c05",
+     "text": "Edge browning: The margins of several leaf serrations appear darker and dryer than the rest, suggesting tissue death and entry points for the mold."
+    },
+    {
+     "id": "p20c06",
+     "text": "The plant shows one flower with clear signs of necrosis—reddish-brown, shriveled tissue—which could indicate early Botrytis infection."
+    },
+    {
+     "id": "p20c07",
+     "text": "To confirm, check nearby plants for similar symptoms and look for gray mold on other flowers or fruit, especially under humid conditions."
+    },
+    {
+     "id": "p20c08",
+     "text": "Sporulation: Fine gray conidia are scattered along the stem and leaf surfaces, indicating active sporulation and the potential for further spread."
+    },
+    {
+     "id": "p20c09",
+     "text": "To contain the infection, follow these steps:"
+    },
+    {
+     "id": "p20c10",
+     "text": "Thin foliage to maintain at least 10 cm of open space between crowns, improving airflow and reducing humidity."
+    },
+    {
+     "id": "p20c11",
+     "text": "Other flowers and leaves appear healthy, suggesting the issue is localized."
+    },
+    {
+     "id": "p20c12",
+     "text": "This indicates the fungus is colonizing the moist, inner tissue of the flower."
+    },
+    {
+     "id": "p20c13",
+     "text": "Irrigate only the upper 1 cm of soil every other morning with a gentle hose, ensuring leaves and flowers dry within two hours; avoid overhead watering."
+    },
+    {
+     "id": "p20c14",
+     "text": "Apply a 2 cm layer of clean straw mulch under the canopy to keep fruit off damp soil and reduce splashing."
+    },
+    {
+     "id": "p20c15",
+     "text": "Remove and discard all visibly infected flowers, calyces, and the lower 2 cm of the stem, bagging them to prevent spore release."
+    },
+    {
+     "id": "p20c16",
+     "text": "Water-soaked tissue: The receptacle (the green, fuzzy part) is slightly soft and translates slightly toward a yellowish hue, indicating localized moisture damage that allows the fungus to invade."
+    },
+    {
+     "id": "p20c17",
+     "text": "Sanitize shears with 70 % alcohol between cuts to prevent spore transfer."
+    }
+   ]
+  },
+  {
+   "id": "p21",
+   "image": "plant_diagnostic/data/train/healthy/strawberry-leaf-leaves-Peter-Miller-Flickr-800x462.jpg",
+   "label": "healthy",
+   "file": "strawberry-leaf-leaves-Peter-Miller-Flickr-800x462.jpg",
+   "claims": [
+    {
+     "id": "p21c00",
+     "text": "Space plants 15 cm (6 in) apart to enhance ventilation and reduce humidity around the canopy."
+    },
+    {
+     "id": "p21c01",
+     "text": "The leaf appears vibrant green with a smooth, unblemished surface, indicating adequate chlorophyll production and no signs of nutrient deficiency or pest damage."
+    },
+    {
+     "id": "p21c02",
+     "text": "The green calyx at the top of each strawberry indicates proper fruit development and absence of blight or browning."
+    },
+    {
+     "id": "p21c03",
+     "text": "There is no visible evidence of gray mold, white mold, frost damage, or drought stress."
+    },
+    {
+     "id": "p21c04",
+     "text": "Over the next week, inspect daily for any new leaf spots larger than 0.5 cm, gently squeeze fruit for firmness, and check the soil 5 cm below the surface for dryness before each watering."
+    },
+    {
+     "id": "p21c05",
+     "text": "The fruit is bright red, firm, and free of mold or rot, while the surrounding leaves are uniformly green, turgid, and show no signs of disease or nutrient deficiency."
+    },
+    {
+     "id": "p21c06",
+     "text": "Provide 3–4 hours of direct sunlight per day while keeping surrounding foliage trimmed to 5 cm (2 in) from the plant to improve airflow and reduce disease risk."
+    },
+    {
+     "id": "p21c07",
+     "text": "This strawberry plant appears healthy."
+    },
+    {
+     "id": "p21c08",
+     "text": "The fruit surfaces show a uniform bright red color without sunken areas, uneven coloration, or white powdery patches, indicating proper ripening and absence of fungal infections."
+    },
+    {
+     "id": "p21c09",
+     "text": "To confirm health, check the soil moisture and inspect the crown and roots for any hidden issues."
+    },
+    {
+     "id": "p21c10",
+     "text": "Maintain current conditions by watering to a depth of 2.5 cm (1 in) every 2–3 days in the morning, ensuring the top 5 cm (2 in) of soil stays moist but not waterlogged."
+    }
+   ]
+  },
+  {
+   "id": "p22",
+   "image": "plant_diagnostic/data/train/healthy/healthy_117.jpg",
+   "label": "healthy",
+   "file": "healthy_117.jpg",
+   "claims": [
+    {
+     "id": "p22c00",
+     "text": "The pale color could be due to variety, under-ripeness, or other factors."
+    },
+    {
+     "id": "p22c01",
+     "text": "While the fruit has intact green calyxes, there is no visible foliage, stems, or roots to evaluate the plant's overall health."
+    },
+    {
+     "id": "p22c02",
+     "text": "Continue providing 2–3 cm of water per week, ensuring the soil drains fully between applications to prevent root rot."
+    },
+    {
+     "id": "p22c03",
+     "text": "No visible signs of flower development or root deterioration are present, so no action is required in these areas."
+    },
+    {
+     "id": "p22c04",
+     "text": "The leaf blades appear green and turgid with no curling or chlorotic patches, indicating balanced photosynthesis and transpiration."
+    },
+    {
+     "id": "p22c05",
+     "text": "Thin any excess foliage to maintain at least 10 cm of space around the crown for airflow and light penetration."
+    },
+    {
+     "id": "p22c06",
+     "text": "The bright yellow-white flesh of each berry shows even coloration without sunken areas or dark spots, suggesting adequate sugar production."
+    },
+    {
+     "id": "p22c07",
+     "text": "This photo shows a collection of harvested strawberries that appear pale pink to cream-colored rather than the usual deep red."
+    },
+    {
+     "id": "p22c08",
+     "text": "The green sepals on the top of each strawberry indicate that they are fully expanded and free of browning or necrosis, indicating proper water and nutrient uptake."
+    },
+    {
+     "id": "p22c09",
+     "text": "To determine plant health, inspect the leaves, stems, and roots for uniform green color, turgidity, and absence of disease or stress symptoms."
+    },
+    {
+     "id": "p22c10",
+     "text": "Therefore, we cannot confirm if the plant was healthy as defined by the dataset label."
+    },
+    {
+     "id": "p22c11",
+     "text": "The stem segments appear firm and unblemished, suggesting strong vascular tissue and transportation of water and nutrients."
+    },
+    {
+     "id": "p22c12",
+     "text": "Harvest ripe berries every 2–3 days to encourage continued fruiting and discourage pests."
+    }
+   ]
+  },
+  {
+   "id": "p23",
+   "image": "plant_diagnostic/data/train/healthy/healthy_63.jpg",
+   "label": "healthy",
+   "file": "healthy_63.jpg",
+   "claims": [
+    {
+     "id": "p23c00",
+     "text": "The stem remains straight and firm, indicating proper water flow and nutrient uptake."
+    },
+    {
+     "id": "p23c01",
+     "text": "The dataset label 'healthy' is partially supported by the fruit appearance, but lacks visual confirmation of foliage turgidity or absence of stress."
+    },
+    {
+     "id": "p23c02",
+     "text": "Based on the visible fruit, these strawberries appear healthy and undamaged—plump, vibrant red, and free of mold, rot, or discoloration."
+    },
+    {
+     "id": "p23c03",
+     "text": "To verify overall plant health, inspect the leaves for uniform green color and firmness, and check for any signs of wilting, yellowing, or disease on the crown or roots."
+    },
+    {
+     "id": "p23c04",
+     "text": "However, since no leaves, stems, or flowers are visible, we cannot confirm whether the entire plant is healthy."
+    },
+    {
+     "id": "p23c05",
+     "text": "Continue providing 2-3 cm (≈1 inch) of water every 2-3 days, ensuring the soil stays moist but not waterlogged; maintain at least 20 cm (8 inches) of space between plants for airflow and light penetration; and rotate the pots or lay them on a 3-4 cm (1.5 inch) layer of clean straw to prevent soil splash and keep fruit dry."
+    },
+    {
+     "id": "p23c06",
+     "text": "Based on the provided image, the following is the detailed medical report:"
+    },
+    {
+     "id": "p23c07",
+     "text": "The green sepals on top of the red berries indicate that these are immature fruit, while the glossy, unblemished green leaves show no scorching, curling, or discoloration."
+    },
+    {
+     "id": "p23c08",
+     "text": "All visible strawberry parts appear vibrant and intact, with no signs of wilting, discoloration, or pest activity."
+    }
+   ]
+  },
+  {
+   "id": "p24",
+   "image": "plant_diagnostic/data/train/healthy/healthydry.webp",
+   "label": "healthy",
+   "file": "healthydry.webp",
+   "claims": [
+    {
+     "id": "p24c00",
+     "text": "Soil conditions appear moist but not waterlogged, which supports good health."
+    },
+    {
+     "id": "p24c01",
+     "text": "No symptoms of common diseases like gray mold, white mold, or frost damage are visible."
+    },
+    {
+     "id": "p24c02",
+     "text": "The strawberry plant in this photo appears healthy."
+    },
+    {
+     "id": "p24c03",
+     "text": "Prune any yellowing or damaged leaves with sterilized shears to keep airflow and pest control."
+    },
+    {
+     "id": "p24c04",
+     "text": "Maintain 2–3 cm of straw or leaf-mulch around the crown to regulate moisture and prevent soil splash."
+    },
+    {
+     "id": "p24c05",
+     "text": "No visible symptoms are present on the fruit, leaves, or stem, so there is no need to adjust irrigation or fertilization."
+    },
+    {
+     "id": "p24c06",
+     "text": "Ensure at least 4 hours of direct sunlight per day for optimal flavor development."
+    },
+    {
+     "id": "p24c07",
+     "text": "Stem tissue appears turgid and unwrinkled, indicating sufficient water flow."
+    },
+    {
+     "id": "p24c08",
+     "text": "Continue watering to a depth of 5–7 cm every 2–3 days, ensuring the top 2 cm of soil stays moist but not waterlogged."
+    },
+    {
+     "id": "p24c09",
+     "text": "To confirm health, check the roots for firmness and absence of dark decay if possible."
+    },
+    {
+     "id": "p24c10",
+     "text": "Over the next week, check daily for new leaf spots larger than 0.5 cm, firmness of the fruit shoulders, and soil consistency 2 cm below the surface; adjust watering accordingly."
+    },
+    {
+     "id": "p24c11",
+     "text": "Leaves are uniformly green and turgid, stems are firm and upright, and both unripe and ripe fruits look normal without any signs of rot or mold."
+    },
+    {
+     "id": "p24c12",
+     "text": "White, unblemished strawberry fruit, suggesting proper nutrient uptake and ripening."
+    },
+    {
+     "id": "p24c13",
+     "text": "Dark, evenly colored soil with no signs of dryness or compaction, indicating good root health."
+    },
+    {
+     "id": "p24c14",
+     "text": "Green, glossy leaves with intact serrated edges, indicating adequate photosynthesis and moisture levels."
+    }
+   ]
+  },
+  {
+   "id": "p25",
+   "image": "plant_diagnostic/data/train/healthy/healthy_7.jpg",
+   "label": "healthy",
+   "file": "healthy_7.jpg",
+   "claims": [
+    {
+     "id": "p25c00",
+     "text": "To verify the 'healthy' status, inspect the leaves for uniform green color and turgidity, and check the soil moisture and root system for signs of stress or disease."
+    },
+    {
+     "id": "p25c01",
+     "text": "If temperatures exceed 30 °C, provide 30-40 % shade cloth during the hottest hours to prevent berry heat damage."
+    },
+    {
+     "id": "p25c02",
+     "text": "The strawberries shown in this photo appear healthy and undamaged."
+    },
+    {
+     "id": "p25c03",
+     "text": "The calyx (the green, sepaled top of each berry) is intact and evenly green, indicating proper watering and nutrient uptake."
+    },
+    {
+     "id": "p25c04",
+     "text": "The fruit surface shows no sunken or water-soaked spots, and the glossy sheen suggests recent moisture retention."
+    },
+    {
+     "id": "p25c05",
+     "text": "However, since no foliage, flowers, or roots are visible, we cannot confirm the overall health of the entire plant."
+    },
+    {
+     "id": "p25c06",
+     "text": "The stem (the pale, slightly curved stem between berries) appears firm and unblemished, suggesting adequate support and hydration."
+    },
+    {
+     "id": "p25c07",
+     "text": "Maintain at least 20 cm of space between plants for airflow and remove any fallen leaves or debris daily to prevent fungal growth."
+    },
+    {
+     "id": "p25c08",
+     "text": "The green, plump strawberries with a uniform red color indicate a thriving plant, and the absence of browning, mold, or insect frass suggests good overall health."
+    },
+    {
+     "id": "p25c09",
+     "text": "They have a vibrant red color, smooth glossy skin, and intact green caps—typical characteristics of ripe, disease-free fruit."
+    },
+    {
+     "id": "p25c10",
+     "text": "Continue irrigating the soil gently to a depth of 5-7 cm every 2-3 days, ensuring moisture reaches the root zone without overwhelming the fruit."
+    },
+    {
+     "id": "p25c11",
+     "text": "Based on the provided image, the following is the detailed medical report:"
+    }
+   ]
+  },
+  {
+   "id": "p26",
+   "image": "plant_diagnostic/data/train/healthy/healthy_196.jpg",
+   "label": "healthy",
+   "file": "healthy_196.jpg",
+   "claims": [
+    {
+     "id": "p26c00",
+     "text": "There are no visible signs of disease such as mold, rot, or discoloration."
+    },
+    {
+     "id": "p26c01",
+     "text": "Ensure at least 20 cm (8 in) of clear space between plants for airflow and remove any dead or damaged leaves weekly to keep the plant healthy."
+    },
+    {
+     "id": "p26c02",
+     "text": "White, fully formed calyx (the green tops of the strawberries) that are turgid and evenly spaced, suggesting proper fruit development."
+    },
+    {
+     "id": "p26c03",
+     "text": "No visible signs of wilting, discoloration, or insect frass on any part of the plant suggest a well-established, disease-free strawberry."
+    },
+    {
+     "id": "p26c04",
+     "text": "However, the lack of flowers or developing fruit suggests the plant may be past its flowering stage, which is normal."
+    },
+    {
+     "id": "p26c05",
+     "text": "To maintain this health, water deeply to 5–7 cm (about 2–3 in) every 2–3 days, adjusting frequency if the top 1 cm (0.4 in) of soil feels dry, and apply a 2 cm (0.8 in) layer of clean straw mulch around the base to retain moisture and suppress splashing soil."
+    },
+    {
+     "id": "p26c06",
+     "text": "Soil moisture is not clearly visible, so while the plant doesn’t show signs of drought or overwatering, we cannot rule out either condition entirely without closer inspection."
+    },
+    {
+     "id": "p26c07",
+     "text": "Red, plump berries with no visible sunken areas or mold, indicating good ripening conditions."
+    },
+    {
+     "id": "p26c08",
+     "text": "The strawberry plants in this photo appear largely healthy, with vibrant green leaves and well-formed, undamaged red fruit."
+    },
+    {
+     "id": "p26c09",
+     "text": "Crisp, unblemished stems that remain upright and green, indicating sound vascular tissue."
+    },
+    {
+     "id": "p26c10",
+     "text": "To confirm health, check the soil moisture level near the base of the plants and look for any hidden root or crown damage."
+    },
+    {
+     "id": "p26c11",
+     "text": "Bright green, glossy leaves with intact serrated edges, indicating adequate photosynthesis and moisture levels."
+    }
+   ]
+  },
+  {
+   "id": "p27",
+   "image": "plant_diagnostic/data/train/healthy/healthy_211.jpg",
+   "label": "healthy",
+   "file": "healthy_211.jpg",
+   "claims": [
+    {
+     "id": "p27c00",
+     "text": "Irrigate to 2–3 cm (about 1 in) soil depth every 2–3 days in the morning, ensuring excess water drains away to prevent root rot."
+    },
+    {
+     "id": "p27c01",
+     "text": "Soil: The dark, evenly colored soil with a slight sheen suggests good moisture retention and aeration."
+    },
+    {
+     "id": "p27c02",
+     "text": "To confirm health, check the soil moisture level and inspect the crown and roots if symptoms develop later."
+    },
+    {
+     "id": "p27c03",
+     "text": "Leaves are uniformly green and turgid, flowers are intact and white, and both ripe and unripe fruit look normal without any signs of mold, rot, or discoloration."
+    },
+    {
+     "id": "p27c04",
+     "text": "Flower: The white, five-petaled blossom appears plump and evenly colored, indicating normal blooming activity."
+    },
+    {
+     "id": "p27c05",
+     "text": "gently remove any fallen leaves or spent flowers weekly to keep the bed looking tidy and reducing fungal buildup."
+    },
+    {
+     "id": "p27c06",
+     "text": "Provide 3–4 hours of direct sunlight per day while maintaining at least 20 cm (8 in) of space between plants for airflow."
+    },
+    {
+     "id": "p27c07",
+     "text": "However, the calyx (green sepals) at the top of each fruit indicate they are fully open and not showing any browning or necrosis, which is normal for this stage of fruit development."
+    },
+    {
+     "id": "p27c08",
+     "text": "Fruit: The bright red, glossy strawberries show no signs of mold, water-soaked spots, or sunken areas, suggesting they are ripening normally."
+    },
+    {
+     "id": "p27c09",
+     "text": "Based on the provided image, the following symptoms are visible on the visible parts:"
+    },
+    {
+     "id": "p27c10",
+     "text": "There is no visible evidence of drought, overwatering, root rot, frost damage, or fungal infections such as gray or white mold."
+    },
+    {
+     "id": "p27c11",
+     "text": "Therefore, the diagnosis is Healthy."
+    },
+    {
+     "id": "p27c12",
+     "text": "To maintain this status, recommend the following:"
+    },
+    {
+     "id": "p27c13",
+     "text": "Leaf: The green, unblemished leaf blade lies flat with a slight serrated edge, indicating adequate chlorophyll production and turgor."
+    },
+    {
+     "id": "p27c14",
+     "text": "No visible symptoms are present on the stem or soil, indicating that these areas are healthy."
+    },
+    {
+     "id": "p27c15",
+     "text": "The strawberry plant in this photo appears healthy."
+    }
+   ]
+  },
+  {
+   "id": "p28",
+   "image": "plant_diagnostic/data/train/overwatered/is-this-strawberry-plant-too-far-gone-or-has-anyone-got-any-v0-17n6k1us47ee1.webp",
+   "label": "overwatered",
+   "file": "is-this-strawberry-plant-too-far-gone-or-has-anyone-got-any-v0-17n6k1us47ee1.webp",
+   "claims": [
+    {
+     "id": "p28c00",
+     "text": "Water only when the top 2 cm of soil feel dry, applying about 250 ml per plant, and allow excess to drain fully."
+    },
+    {
+     "id": "p28c01",
+     "text": "Also inspect the roots if possible; if they are dry and brittle, drought is likely; if they are dark and mushy, consider root rot."
+    },
+    {
+     "id": "p28c02",
+     "text": "These visual cues suggest the plant has been receiving more water than it can absorb, causing root suffocation and foliage wilt."
+    },
+    {
+     "id": "p28c03",
+     "text": "Over the next seven days, check daily for: 1) soil color lightening to a lighter brown, 2) calyx standing upright and regaining green sheen, and 3) absence of new yellow or white fungal spots on the soil surface, which would signal recovery."
+    },
+    {
+     "id": "p28c04",
+     "text": "To confirm, check the soil moisture level just below the surface—dry soil would support a drought diagnosis."
+    },
+    {
+     "id": "p28c05",
+     "text": "The absence of green foliage and the presence of desiccated leaves point toward insufficient water uptake."
+    },
+    {
+     "id": "p28c06",
+     "text": "Add a 2 cm layer of coarse straw or pine-needle mulch to improve surface aeration without trapping excess water, and gently loosen the top 1 cm of soil to enhance airflow."
+    },
+    {
+     "id": "p28c07",
+     "text": "While the soil appears dark and moist, there is no visible waterlogging or puddling, which is expected in overwatered conditions."
+    },
+    {
+     "id": "p28c08",
+     "text": "The top 2-3 cm of soil appear densely packed and matte-finish, while the soil-colored calyx tips are wilted and curled downward, showing loss of turgor pressure."
+    },
+    {
+     "id": "p28c09",
+     "text": "The plants in this photo show clear signs of stress, primarily through their wilted, brownish-orange, and shriveled leaves."
+    },
+    {
+     "id": "p28c10",
+     "text": "Immediately reduce irrigation frequency and depth."
+    },
+    {
+     "id": "p28c11",
+     "text": "Visible symptoms: The most striking feature is the uniformly dark, glossy, and compacted soil surface, indicating excess moisture has suffocated the plant's roots, preventing normal oxygen uptake."
+    },
+    {
+     "id": "p28c12",
+     "text": "These symptoms strongly suggest drought or severe water deficit, not overwatering as labeled."
+    }
+   ]
+  },
+  {
+   "id": "p29",
+   "image": "plant_diagnostic/data/train/overwatered/images.jpeg",
+   "label": "overwatered",
+   "file": "images.jpeg",
+   "claims": [
+    {
+     "id": "p29c00",
+     "text": "The plant shows signs of wilting and slight leaf curl, which could indicate water stress."
+    },
+    {
+     "id": "p29c01",
+     "text": "Trim and discard the most severely yellow or browned leaves with sterilized shears, and reposition the plant so the drainage hole remains clear and water drains within 30 minutes of each watering."
+    },
+    {
+     "id": "p29c02",
+     "text": "However, the soil appears dark and moist, which is inconsistent with drought conditions."
+    },
+    {
+     "id": "p29c03",
+     "text": "Soil appears dark, compacted, and glossy, confirming it is excessively saturated."
+    },
+    {
+     "id": "p29c04",
+     "text": "To confirm, check the soil moisture deeper down near the crown and assess root health — if roots are firm and white, the issue may be temporary water imbalance rather than chronic drought."
+    },
+    {
+     "id": "p29c05",
+     "text": "Yellowing: several leaf blades show a uniform yellowing along the margins, indicating water-logged tissue."
+    },
+    {
+     "id": "p29c06",
+     "text": "Over the next week, check daily that the soil surface feels dry to the touch before watering, watch for new leaves regaining upright posture, and inspect the crown area for any fresh brown lesions to ensure the plant is recovering."
+    },
+    {
+     "id": "p29c07",
+     "text": "This suggests either recent watering, poor drainage, or early-stage stress before full dehydration."
+    },
+    {
+     "id": "p29c08",
+     "text": "To alleviate this condition, reduce irrigation to a single deep watering of about 250 ml every 3–4 days, allowing the top 2 cm of soil to dry before the next watering; improve drainage by gently loosening the top 1 cm of soil and adding a 1 cm layer of coarse mulch."
+    },
+    {
+     "id": "p29c09",
+     "text": "Darkening: the stem base shows a brown, slightly sunken area, a sign of decaying tissue from prolonged wetness."
+    },
+    {
+     "id": "p29c10",
+     "text": "Small brown spots: several dark, circular patches are present on the yellowed areas, suggesting early leaf necrosis from oxygen deprivation."
+    },
+    {
+     "id": "p29c11",
+     "text": "Symptoms on the stem:"
+    },
+    {
+     "id": "p29c12",
+     "text": "Symptoms visible on the leaf:"
+    },
+    {
+     "id": "p29c13",
+     "text": "Softened texture: the stem near the soil line appears slightly water-soaked and translucent, indicating loss of firmness."
+    },
+    {
+     "id": "p29c14",
+     "text": "Wilting: the leaflets lie limp and flat instead of standing upright, a sign of reduced turgor due to excess moisture."
+    }
+   ]
+  },
+  {
+   "id": "p30",
+   "image": "plant_diagnostic/data/train/overwatered/overwateredverymuch.webp",
+   "label": "overwatered",
+   "file": "overwateredverymuch.webp",
+   "claims": [
+    {
+     "id": "p30c00",
+     "text": "To confirm overwatering, check the roots for dark, mushy decay and inspect the crown area for any signs of rot or discoloration."
+    },
+    {
+     "id": "p30c01",
+     "text": "Soil: The surface layer looks glossy and water-logged, with no visible dry crust, confirming excess irrigation has left the soil saturated."
+    },
+    {
+     "id": "p30c02",
+     "text": "Leaf: Several leaves appear limp and pale green, with edges curling downward and a matte, water-soaked surface, indicating loss of turgor and potential nutrient deficiency."
+    },
+    {
+     "id": "p30c03",
+     "text": "The calyxes (green, fuzzy cups) remain intact, showing the collapse is limited to the fruit itself rather than the petals."
+    },
+    {
+     "id": "p30c04",
+     "text": "Fruit: Many strawberries are dark, mushy, and have begun to collapse, indicating excess moisture that has caused internal rot."
+    },
+    {
+     "id": "p30c05",
+     "text": "Reduce watering to 200 ml every 3 days, delivered slowly at soil level to a depth of 5 cm."
+    },
+    {
+     "id": "p30c06",
+     "text": "However, the visible leaves are green and turgid, lacking the limpness or yellowing typically associated with excess moisture."
+    },
+    {
+     "id": "p30c07",
+     "text": "Install a 1 cm straw mulch between plants to slow evaporation and keep roots cooler."
+    },
+    {
+     "id": "p30c08",
+     "text": "Over the next 7 days, check soil moisture daily with a finger test, confirm it dries to the top 2 cm before the next irrigation, and watch for any new soft spots on leaves or fruit to adjust watering frequency accordingly."
+    },
+    {
+     "id": "p30c09",
+     "text": "The field appears heavily waterlogged, with standing water and muddy soil between rows, which strongly suggests overwatering."
+    },
+    {
+     "id": "p30c10",
+     "text": "This could indicate recent irrigation or poor drainage rather than chronic overwatering."
+    },
+    {
+     "id": "p30c11",
+     "text": "Improve drainage by gently loosening the top 2 cm of soil and adding 20 % coarse perlite to each planting bed."
+    },
+    {
+     "id": "p30c12",
+     "text": "Stem: No wilting or browning is visible on the white stem, so water stress is currently limited to the fruit and foliage."
+    },
+    {
+     "id": "p30c13",
+     "text": "There are no signs of root rot, fungal growth, or frost damage."
+    }
+   ]
+  },
+  {
+   "id": "p31",
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_45.jpg",
+   "label": "overwatered",
+   "file": "overwatered_45.jpg",
+   "claims": [
+    {
+     "id": "p31c00",
+     "text": "Discoloration of the stem near the soil line, where it looks slightly pale and soft, another sign of oxygen deprivation."
+    },
+    {
+     "id": "p31c01",
+     "text": "Over the next seven days, check daily for: soil color returning to a lighter brown, leaf firmness regaining within 24 hours of watering, and absence of new brown or black spots on the crown."
+    },
+    {
+     "id": "p31c02",
+     "text": "This strawberry plant exhibits symptoms including wilted leaves and a dark, shriveled crown, which are concerning."
+    },
+    {
+     "id": "p31c03",
+     "text": "Lack of white, fuzzy root tips on the crown, which would indicate the roots are suffocating from excess water."
+    },
+    {
+     "id": "p31c04",
+     "text": "Reduce irrigation frequency: Water only when the top 2–3 cm (about 1 inch) of soil feels dry, and aim for a single deep watering of 200–250 ml per plant instead of frequent light sprinkles."
+    },
+    {
+     "id": "p31c05",
+     "text": "However, the crown decay strongly suggests possible root rot caused by pathogens like Phytophthora or Pythium."
+    },
+    {
+     "id": "p31c06",
+     "text": "Wilting and drooping of the green leaf, indicating water-logged tissue and reduced turgor pressure."
+    },
+    {
+     "id": "p31c07",
+     "text": "Based on the provided image, the following symptoms are visible on the strawberry plant:"
+    },
+    {
+     "id": "p31c08",
+     "text": "Improve drainage by gently loosening the surface layer and adding coarse compost or perlite to increase airflow around the roots."
+    },
+    {
+     "id": "p31c09",
+     "text": "While the soil appears moist, there is no visible waterlogging or puddling, and the leaves are pale green rather than yellow, which reduces the likelihood of classic overwatering."
+    },
+    {
+     "id": "p31c10",
+     "text": "To confirm, gently remove the plant from the pot and inspect the roots—if they are dark, mushy, or rotten, root rot is likely."
+    },
+    {
+     "id": "p31c11",
+     "text": "Trim away the brown calyx and any shriveled leaf tips with clean scissors to improve airflow and discourage fungal growth."
+    },
+    {
+     "id": "p31c12",
+     "text": "Soil surface appears uniformly dark and compacted, suggesting excess moisture has seeped into the root zone."
+    },
+    {
+     "id": "p31c13",
+     "text": "If roots are still firm and white, then overwatering may have been the initial stressor leading to secondary crown decline."
+    },
+    {
+     "id": "p31c14",
+     "text": "Together, these symptoms point to overwatering as the primary stress factor, causing root suffocation, reduced leaf turgor, and early fruit crown decay."
+    },
+    {
+     "id": "p31c15",
+     "text": "To address this, follow these recommendations:"
+    },
+    {
+     "id": "p31c16",
+     "text": "Dark brown, shriveled calyx (the green tops of the strawberries) that have turned papery and brittle, a classic sign of root-zone saturation."
+    },
+    {
+     "id": "p31c17",
+     "text": "Keep the plant at a slight angle on a raised bed or pot to enhance drainage and air circulation."
+    }
+   ]
+  },
+  {
+   "id": "p32",
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_7.jpg",
+   "label": "overwatered",
+   "file": "overwatered_7.jpg",
+   "claims": [
+    {
+     "id": "p32c00",
+     "text": "To confirm, check if there are any black sclerotia (hard, seed-like structures) around the crown or on affected tissues, which would strongly support white mold."
+    },
+    {
+     "id": "p32c01",
+     "text": "Leaf: The upper surface of the largest leaf is darker, more mottled, and slightly curled, indicating water-soaked tissue."
+    },
+    {
+     "id": "p32c02",
+     "text": "Gently fork the top 2 cm of soil to improve aeration and raise the crown 2 cm to improve drainage."
+    },
+    {
+     "id": "p32c03",
+     "text": "Reduce irrigation immediately to 200 ml per plant every 3 days, ensuring water penetrates only 5 cm deep, and allow the top 2 cm of soil to dry before the next watering."
+    },
+    {
+     "id": "p32c04",
+     "text": "Also inspect the roots for dark, mushy decay, which would point to root rot."
+    },
+    {
+     "id": "p32c05",
+     "text": "This suggests the issue may be more related to a soilborne pathogen than simply excess water."
+    },
+    {
+     "id": "p32c06",
+     "text": "Soil: The majority of the soil surface appears glossy and water-logged, with no visible dry crust or texture, indicating excess moisture has seeped into the root zone."
+    },
+    {
+     "id": "p32c07",
+     "text": "A faint yellow-green margin separates the discolored area from the lighter green vein, showing chlorosis and tissue death."
+    },
+    {
+     "id": "p32c08",
+     "text": "The stem color change and slight give when pressed indicate reduced turgor."
+    },
+    {
+     "id": "p32c09",
+     "text": "The texture looks dull and floppy rather than crisp."
+    },
+    {
+     "id": "p32c10",
+     "text": "Over the next 7 days, check daily for: (1) whether the newest leaf growth regains a firm, green color, (2) soil texture becoming lighter and crumbly by day 4, and (3) absence of any fresh yellowing or mushy stem sections."
+    },
+    {
+     "id": "p32c11",
+     "text": "Stem: The lower 2–3 cm of the stem is slightly soft and pale, suggesting root stress from saturated conditions."
+    },
+    {
+     "id": "p32c12",
+     "text": "These visual cues point to excess water entering the plant, overwhelming its root system and causing cellular collapse in the leaf, stem, and soil."
+    },
+    {
+     "id": "p32c13",
+     "text": "Visible symptoms on the visible parts:"
+    },
+    {
+     "id": "p32c14",
+     "text": "The plant shows signs of stress near the crown, including a dark, sunken appearance and the presence of fine white filaments, which may indicate a fungal infection such as white mold (Sclerotinia)."
+    },
+    {
+     "id": "p32c15",
+     "text": "The soil is moist but not visibly waterlogged, and the leaves appear desiccated rather than limp or yellow—typical symptoms of overwatering."
+    }
+   ]
+  },
+  {
+   "id": "p33",
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_34.jpg",
+   "label": "overwatered",
+   "file": "overwatered_34.jpg",
+   "claims": [
+    {
+     "id": "p33c00",
+     "text": "The plant shows mixed symptoms: some leaves are vibrant green and healthy, while others are pale, wilted, and appear dead."
+    },
+    {
+     "id": "p33c01",
+     "text": "Improve drainage by gently loosening the root ball and adding a 1 cm layer of coarse straw mulch around the plant."
+    },
+    {
+     "id": "p33c02",
+     "text": "Soil surface appears dark, compacted, and glossy, indicating excess moisture that has compacted the soil rather than allowing proper drainage."
+    },
+    {
+     "id": "p33c03",
+     "text": "Over the next week, check soil moisture daily, remove any new yellowing leaves with sterile scissors, and ensure at least 5 cm of clear air space around the crown for better airflow."
+    },
+    {
+     "id": "p33c04",
+     "text": "Over the next 7 days, inspect the crown area each morning for any new soft or dark spots, and gently squeeze the stem to confirm it regains firmness within 24 hours of watering."
+    },
+    {
+     "id": "p33c05",
+     "text": "Dull, matte leaf surface with slight wilt, a classic sign of oxygen-starved roots."
+    },
+    {
+     "id": "p33c06",
+     "text": "Immediately reduce watering to 200 ml every 3–4 days, or until the top 2 cm of soil feels dry to the touch."
+    },
+    {
+     "id": "p33c07",
+     "text": "Stems appear slightly softened and translucent, a sign of water-swollen cells."
+    },
+    {
+     "id": "p33c08",
+     "text": "The soil is dark and clumpy, indicating moisture retention, which is consistent with overwatering or poor drainage."
+    },
+    {
+     "id": "p33c09",
+     "text": "However, there are no clear signs of limp or yellowing leaves typically associated with overwatering, nor any visible fungal growth."
+    },
+    {
+     "id": "p33c10",
+     "text": "To confirm, check the roots for dark, mushy decay — if they’re healthy, the issue may be environmental stress or nutrient imbalance rather than root rot."
+    },
+    {
+     "id": "p33c11",
+     "text": "Yellowing and browning along the margins of the top leaf, indicating water-soaked tissue that may rot if not removed."
+    },
+    {
+     "id": "p33c12",
+     "text": "This suggests either partial root damage, early-stage decline, or a combination of factors."
+    }
+   ]
+  },
+  {
+   "id": "p34",
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_47.jpg",
+   "label": "overwatered",
+   "file": "overwatered_47.jpg",
+   "claims": [
+    {
+     "id": "p34c00",
+     "text": "To address this, reduce irrigation immediately to only water when the top 2.5 cm (1 in) of soil feels dry, and apply no more than 250 ml per plant session; improve airflow by spacing crowns 15 cm (6 in) apart and gently lifting the crown slightly; and top-dress with a 2 cm (¾ in) layer of coarse straw mulch to enhance surface drainage."
+    },
+    {
+     "id": "p34c01",
+     "text": "These changes suggest the plant is retaining excess moisture rather than drying out."
+    },
+    {
+     "id": "p34c02",
+     "text": "Calyx: The green, fuzzy calyx at the fruit cap is curled and slightly translucent, indicating water-stressed tissue that may have turned soft and translucent if the plant has been kept consistently wet."
+    },
+    {
+     "id": "p34c03",
+     "text": "The strawberry shown appears healthy and undamaged, with a vibrant red color and intact surface."
+    },
+    {
+     "id": "p34c04",
+     "text": "To confirm, check other fruits and flowers on the same plant for any signs of frost damage, especially near the crown or on developing blooms."
+    },
+    {
+     "id": "p34c05",
+     "text": "Since the labeled condition (frost) is not supported by visual evidence, the plant likely does not have cold injury."
+    },
+    {
+     "id": "p34c06",
+     "text": "Over the next seven days, check soil moisture daily at 5 cm (2 in) depth, inspect leaves for new leaf blight or wilting, and inspect developing berries for any spread of white powdery patches to confirm recovery."
+    },
+    {
+     "id": "p34c07",
+     "text": "There are no signs of frost injury—such as blackened flower centers, bronzed tissue, or water-soaked areas—on either the fruit or the visible leaf."
+    },
+    {
+     "id": "p34c08",
+     "text": "This is a common indicator of overwatering."
+    },
+    {
+     "id": "p34c09",
+     "text": "Together, these visual cues point to the strawberry being overwatered, leading to leaf and fruit stress."
+    },
+    {
+     "id": "p34c10",
+     "text": "These spots indicate the plant is not drying out fast enough and is retaining excess moisture."
+    },
+    {
+     "id": "p34c11",
+     "text": "Leaf: The upper surface of the leaf is darker green than the lower surface, indicating water-soaked, edematous tissue, and several veins appear slightly sunken, a sign of leaf blight."
+    },
+    {
+     "id": "p34c12",
+     "text": "The fruit’s appearance is consistent with a healthy, mature berry."
+    },
+    {
+     "id": "p34c13",
+     "text": "Based on the provided image, the following symptoms are visible on the strawberry plant:"
+    },
+    {
+     "id": "p34c14",
+     "text": "Fruit: The berry surface shows small, white, cottony patches, which are fungal powdery mildew that thrives in stagnant, humid conditions typical of overwatered plants."
+    }
+   ]
+  },
+  {
+   "id": "p35",
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg",
+   "label": "root_rot",
+   "file": "rootrot_41.jpg",
+   "claims": [
+    {
+     "id": "p35c00",
+     "text": "The crown (where stem meets root) is dark brown and mushy, showing extensive decay of the root system."
+    },
+    {
+     "id": "p35c01",
+     "text": "Also, test the soil for high moisture content and pH, as these favor root rot pathogens."
+    },
+    {
+     "id": "p35c02",
+     "text": "Soil moisture appears moderate, not waterlogged, which reduces the likelihood of Pythium."
+    },
+    {
+     "id": "p35c03",
+     "text": "Immediately remove the affected plant section, cutting at least 5 cm (2 in) back from the diseased crown, and replant in a raised bed or pot with a well-draining mix containing 30–40 % coarse perlite."
+    },
+    {
+     "id": "p35c04",
+     "text": "The most prominent visual symptoms are:"
+    },
+    {
+     "id": "p35c05",
+     "text": "The root itself is visibly shriveled and blackened, lacking the usual white, fibrous texture, indicating rot."
+    },
+    {
+     "id": "p35c06",
+     "text": "However, the absence of dark, decayed roots or crown rotting tissue outside the cut section, along with the presence of healthy green leaves, indicates the plant may be in early stages or partially affected."
+    },
+    {
+     "id": "p35c07",
+     "text": "Add a 2 cm (¾ in) layer of clean straw mulch around the stem to keep it dry and improve airflow."
+    },
+    {
+     "id": "p35c08",
+     "text": "Soil consistency at 2 cm depth—if it remains soggy, withhold water until it feels dry."
+    },
+    {
+     "id": "p35c09",
+     "text": "Any spread of brown lesions along the stem or leaves, which would signal continuing rot and require further pruning or repotting."
+    },
+    {
+     "id": "p35c10",
+     "text": "These symptoms point to root rot caused by poor drainage, overwatering, or fungal infection that starves roots of oxygen."
+    },
+    {
+     "id": "p35c11",
+     "text": "To confirm root rot, carefully remove and inspect the roots for dark, mushy decay and check for any oomycete ooze or fungal growth."
+    },
+    {
+     "id": "p35c12",
+     "text": "Wilting and browning of the leaf's upper surface, with a sharp boundary between green and yellow-brown tissue, indicating water-logged, oxygen-starved cells."
+    },
+    {
+     "id": "p35c13",
+     "text": "The plant exhibits symptoms suggestive of root rot, particularly the cross-sectional view of the crown showing internal discoloration and water-soaking, which aligns with Phytophthora or Pythium infections."
+    },
+    {
+     "id": "p35c14",
+     "text": "Over the next 7 days, check daily for:"
+    },
+    {
+     "id": "p35c15",
+     "text": "The stem shows slight collapse and loss of turgor, another sign of root failure transferring water stress to the above-ground parts."
+    },
+    {
+     "id": "p35c16",
+     "text": "Irrigate only when the top 2 cm (¾ in) of soil feels dry, applying no more than 250 ml (1 cup) per plant every 3–4 days, ensuring full watering without standing water."
+    },
+    {
+     "id": "p35c17",
+     "text": "New green growth emerging from the crown as evidence of recovering root function."
+    }
+   ]
+  },
+  {
+   "id": "p36",
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_30.jpg",
+   "label": "root_rot",
+   "file": "rootrot_30.jpg",
+   "claims": [
+    {
+     "id": "p36c00",
+     "text": "Also, test soil moisture and drainage to rule out other causes like poor drainage contributing to root decay."
+    },
+    {
+     "id": "p36c01",
+     "text": "However, the plant is still upright and producing new growth, which may indicate early-stage disease or partial recovery."
+    },
+    {
+     "id": "p36c02",
+     "text": "There is no visible fungal growth or waterlogging, which rules out overwatering."
+    },
+    {
+     "id": "p36c03",
+     "text": "Fruit: The green calyx remains intact, but the berry is shriveled and has a dull, grey-brown surface, a classic sign of fruit suffocation due to impaired root function."
+    },
+    {
+     "id": "p36c04",
+     "text": "Over the next 7 days, check daily for: (i) any new soft brown roots emerging from the crown, (ii) leaf wilting or yellowing reappearance, and (iii) fruit firmness and color change; adjust watering or airflow if these signs persist."
+    },
+    {
+     "id": "p36c05",
+     "text": "This is most consistent with Phytophthora or Pythium infection."
+    },
+    {
+     "id": "p36c06",
+     "text": "Provide 30 % shade cloth or install a shade cloth ring to reduce midday stress and slow further root decay."
+    },
+    {
+     "id": "p36c07",
+     "text": "The plant shows clear signs of root rot, particularly dark, decayed roots and discoloration at the crown."
+    },
+    {
+     "id": "p36c08",
+     "text": "Improve drainage by repotting into a well-draining mix (e.g., 50 % peat-free compost, 50 % perlite) and ensuring each pot has at least 10 cm (4 in) of clearance from the base."
+    },
+    {
+     "id": "p36c09",
+     "text": "To confirm, check if the crown tissue feels soft or mushy when gently pressed — this would support root rot."
+    },
+    {
+     "id": "p36c10",
+     "text": "Stem: The main stem is slightly darkened and brittle near the crown, suggesting water-logging and decay that can progress upward if not addressed."
+    },
+    {
+     "id": "p36c11",
+     "text": "Remove and discard all affected roots and leaves with a sterile cutting tool, cutting at least 2 cm (¾ in) beyond any mushy tissue to prevent spread."
+    },
+    {
+     "id": "p36c12",
+     "text": "Root: Several dark brown, mushy roots are visible near the crown, indicating decay and collapse of the root system."
+    },
+    {
+     "id": "p36c13",
+     "text": "The margins are dry and crisp, confirming moisture loss."
+    },
+    {
+     "id": "p36c14",
+     "text": "These roots are soft, water-soaked, and lack the firm, white texture of healthy roots."
+    },
+    {
+     "id": "p36c15",
+     "text": "Leaf: The upper leaf is wilted and curled downward with a pale yellow-green coloration, indicating root failure to supply water and nutrients."
+    },
+    {
+     "id": "p36c16",
+     "text": "Water slowly with 2–3 cm (1 in) of water every 3–4 days, allowing the top 5 cm (2 in) of soil to dry before the next irrigation, and never leave the plant in standing water."
+    }
+   ]
+  },
+  {
+   "id": "p37",
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_148.jpg",
+   "label": "root_rot",
+   "file": "rootrot_148.jpg",
+   "claims": [
+    {
+     "id": "p37c00",
+     "text": "Softness: Several roots appear soft and mushy rather than firm and crisp, a sign of tissue breakdown."
+    },
+    {
+     "id": "p37c01",
+     "text": "To confirm, inspect the crown and lower stem for dark, mushy areas, and check for wilting or stunted growth above ground."
+    },
+    {
+     "id": "p37c02",
+     "text": "Elevate the pot or bed on 2 cm spacers to improve drainage and airflow around the crown."
+    },
+    {
+     "id": "p37c03",
+     "text": "There is no visible fungal growth or oozing, which would further support a diagnosis of oomycete root rot."
+    },
+    {
+     "id": "p37c04",
+     "text": "Reduce irrigation frequency to once every 3–4 days, delivering about 250 ml of water per plant, ensuring the top 5 cm of soil dries between waterings."
+    },
+    {
+     "id": "p37c05",
+     "text": "Over the next 7 days, check soil moisture daily with a finger test, inspect roots for any new darkening or softness, and ensure the plant regains firm, upright leaf posture."
+    },
+    {
+     "id": "p37c06",
+     "text": "However, without seeing the crown, stems, or above-ground foliage, we cannot confirm if the entire plant is affected or if this is localized root damage."
+    },
+    {
+     "id": "p37c07",
+     "text": "The roots shown in the photo exhibit dark, shriveled, and decayed characteristics, which are commonly associated with root rot caused by pathogens like Phytophthora or Pythium."
+    },
+    {
+     "id": "p37c08",
+     "text": "Based on the provided image, the following symptoms are visible on the root and stem:"
+    },
+    {
+     "id": "p37c09",
+     "text": "Remove and discard all visibly rotted roots with sterilized pruning shears, then sanitize cutting tools with 70% alcohol between cuts to prevent spread."
+    },
+    {
+     "id": "p37c10",
+     "text": "Dark brown/black discoloration: The majority of the exposed root mass is covered in a uniform dark, water-soaked band, indicating decay and rot."
+    },
+    {
+     "id": "p37c11",
+     "text": "White/gray growth: A fine, cotton-like substance is visible on the rotted root surface, which could be fungal mycelium feeding on decaying tissue."
+    },
+    {
+     "id": "p37c12",
+     "text": "Immediately repot the plant into a well-draining mix (e.g., 60% peat, 30% perlite, 10% sand) with at least 20% coarse material to improve aeration."
+    },
+    {
+     "id": "p37c13",
+     "text": "Mulch lightly with 1 cm of straw to keep soil moist but not saturated."
+    },
+    {
+     "id": "p37c14",
+     "text": "Lack of fibrous roots: The remaining roots are sparse and lack the fine, thread-like structures typical of healthy roots, suggesting extensive root degradation."
+    },
+    {
+     "id": "p37c15",
+     "text": "Apply a 1 cm layer of loose straw mulch around but not touching the crown to reduce splashing water and keep roots dry."
+    },
+    {
+     "id": "p37c16",
+     "text": "Also, consider testing the soil for pathogens if multiple plants show similar symptoms."
+    },
+    {
+     "id": "p37c17",
+     "text": "Wilting leaves: The single visible leaf is limp and slightly curled downward, indicating reduced water uptake and potential root failure."
+    },
+    {
+     "id": "p37c18",
+     "text": "These visual cues point to Root Rot caused by insufficient oxygenation, overwatering, or poor drainage, which has allowed soil-borne pathogens to infect the roots."
+    }
+   ]
+  },
+  {
+   "id": "p38",
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_147.jpg",
+   "label": "root_rot",
+   "file": "rootrot_147.jpg",
+   "claims": [
+    {
+     "id": "p38c00",
+     "text": "Over the next seven days, irrigate to 3 cm depth every three days, ensuring excess water drains within 15 minutes, and lift the plant to improve airflow around its base."
+    },
+    {
+     "id": "p38c01",
+     "text": "The plant exhibits clear signs of root rot, including dark, shriveled, and decayed roots and discolored crown tissue."
+    },
+    {
+     "id": "p38c02",
+     "text": "Over the next week, inspect the crown daily for any new soft or darkened tissue, and verify that soil moisture feels dry to the touch before the next watering."
+    },
+    {
+     "id": "p38c03",
+     "text": "Visible symptoms on the root: The white, water-soaked root section is the most prominent feature, indicating extensive decay inside the root system."
+    },
+    {
+     "id": "p38c04",
+     "text": "However, since only the roots and crown are visible, we cannot confirm whether the entire plant has collapsed or if there is active fungal growth."
+    },
+    {
+     "id": "p38c05",
+     "text": "Immediately repot the plant in a well-draining mix (e.g., 50% peat, 30% perlite, 20% coarse sand) using only sterilized tools, and water until moisture reaches 2.5 cm depth while keeping the pot saucer empty to prevent standing water."
+    },
+    {
+     "id": "p38c06",
+     "text": "No visible symptoms on the calyx, which remains firm and green, showing that the infection has not yet spread to the fruit."
+    },
+    {
+     "id": "p38c07",
+     "text": "These symptoms are highly suggestive of Phytophthora or Pythium infection, especially given the moist soil environment."
+    },
+    {
+     "id": "p38c08",
+     "text": "Symptoms on the leaf: The upper surface of the leaf is dull green but has a yellow-brown necrotic band along the margins, indicating tissue collapse starting from the crown."
+    },
+    {
+     "id": "p38c09",
+     "text": "To verify, remove the plant from the soil and inspect the crown for water-soaked lesions or oozing, and test for pathogens using lab analysis if needed."
+    },
+    {
+     "id": "p38c10",
+     "text": "Remove all mushy roots with sterilized scissors and discard them outside to reduce inoculum."
+    }
+   ]
+  },
+  {
+   "id": "p39",
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_45.jpg",
+   "label": "root_rot",
+   "file": "rootrot_45.jpg",
+   "claims": [
+    {
+     "id": "p39c00",
+     "text": "No fresh white or pale green growth at the crown, which is typical of root-rot inhibiting new shoot development."
+    },
+    {
+     "id": "p39c01",
+     "text": "This is highly suggestive of root rot caused by pathogens like Phytophthora or Pythium."
+    },
+    {
+     "id": "p39c02",
+     "text": "Also, examine the soil for waterlogging or poor drainage, as these favor root rot development."
+    },
+    {
+     "id": "p39c03",
+     "text": "Immediately lift the plant and prune away all black, mushy roots with sterilized shears, then replant in a raised bed or pot with fresh, well-draining mix."
+    },
+    {
+     "id": "p39c04",
+     "text": "A yellowing, wilted leaf stem section near the crown, suggesting root failure to supply sufficient water and nutrients."
+    },
+    {
+     "id": "p39c05",
+     "text": "The most prominent visual symptoms on the visible parts are:"
+    },
+    {
+     "id": "p39c06",
+     "text": "These symptoms point to overwatering or poor drainage allowing root-dwelling fungi to infect and kill the root system."
+    },
+    {
+     "id": "p39c07",
+     "text": "A brittle, light-green stem section that is slightly angled downward, indicating impaired support from decayed root tissue."
+    },
+    {
+     "id": "p39c08",
+     "text": "Add a 5 cm (2 in) layer of coarse mulch to regulate moisture and keep crowns off damp soil."
+    },
+    {
+     "id": "p39c09",
+     "text": "Dark brown-black, water-soaked roots with a soft, stringy texture, indicating decay and loss of structural integrity."
+    },
+    {
+     "id": "p39c10",
+     "text": "The plant exhibits clear signs of root and crown decay, including dark, shriveled crown tissue and desiccated, brownish-gray roots without healthy white tips."
+    },
+    {
+     "id": "p39c11",
+     "text": "Irrigate only when the top 2 cm (¾ in) of soil feels dry, delivering about 250 ml (1 cup) of water per plant every 3–4 days."
+    },
+    {
+     "id": "p39c12",
+     "text": "Over the next week, check daily for any new sour odor or further yellowing at the crown, and gently tug the stem to confirm it remains firm; both indicate the root system is recovering."
+    },
+    {
+     "id": "p39c13",
+     "text": "However, the lack of water-soaked or slimy crown tissue—common in active root rot—and the absence of visible plant collapse above ground make a definitive diagnosis difficult from this photo alone."
+    },
+    {
+     "id": "p39c14",
+     "text": "To confirm, check if the crown feels soft and mushy when gently pressed, and inspect nearby plants for similar symptoms."
+    }
+   ]
+  },
+  {
+   "id": "p40",
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_26.jpg",
+   "label": "root_rot",
+   "file": "rootrot_26.jpg",
+   "claims": [
+    {
+     "id": "p40c00",
+     "text": "Improve drainage: Dig a shallow trench around the plant, adding 5–7 cm (2–3 in) of well-draining composted mix to raise the crown level and ensure good airflow."
+    },
+    {
+     "id": "p40c01",
+     "text": "No healthy root hairs: There are no fine, white root hairs protruding from the crown, indicating a lack of root function."
+    },
+    {
+     "id": "p40c02",
+     "text": "Dark brown to black discoloration: The entire root is covered in a thick, sunken, dark band, indicating decay and the presence of rot."
+    },
+    {
+     "id": "p40c03",
+     "text": "Based on the provided image, the following are the visible symptoms of Root Rot on the strawberry plant:"
+    },
+    {
+     "id": "p40c04",
+     "text": "The discoloration is most prominent near the tip and suggests decay, which could be due to Phytophthora or Pythium."
+    },
+    {
+     "id": "p40c05",
+     "text": "However, there is no visible crown involvement, plant collapse, or water-soaked tissue, which are common signs of active root rot."
+    },
+    {
+     "id": "p40c06",
+     "text": "Lack of white feeder roots: No white, fibrous roots are visible, which suggests the root system has been severely damaged or collapsed."
+    },
+    {
+     "id": "p40c07",
+     "text": "Soft, water-soaked texture: The root surface looks soft and spongy rather than firm and hard, indicating tissue breakdown."
+    },
+    {
+     "id": "p40c08",
+     "text": "To verify, check if other roots or the crown show similar dark, mushy decay, and inspect the soil moisture level around the plant base."
+    },
+    {
+     "id": "p40c09",
+     "text": "Together, these symptoms point to Root Rot, which is most commonly caused by overwatering, poor drainage, or fungal infections that attack the root system."
+    },
+    {
+     "id": "p40c10",
+     "text": "Without seeing the entire plant or soil conditions, we cannot confirm the diagnosis."
+    },
+    {
+     "id": "p40c11",
+     "text": "Add a 2 cm layer of coarse mulch to prevent soil splash and keep roots dry."
+    },
+    {
+     "id": "p40c12",
+     "text": "This photo shows a strawberry root with dark, discolored areas, suggesting possible root rot."
+    },
+    {
+     "id": "p40c13",
+     "text": "Reduce watering: Limit irrigation to 2.5 cm (1 in) of water every 5–7 days, ensuring the top 5 cm (2 in) of soil dries before the next watering."
+    },
+    {
+     "id": "p40c14",
+     "text": "Over the next 7 days, check daily for any new darkening or soft spots on the root surface, ensure the top 5 cm of soil feels dry before watering, and monitor for the appearance of white, feather-like roots emerging from the crown."
+    },
+    {
+     "id": "p40c15",
+     "text": "Remove affected roots: Carefully cut out the rotted section with sterilized scissors, leaving 2 cm (¾ in) of healthy tissue, and discard it away from the bed."
+    },
+    {
+     "id": "p40c16",
+     "text": "Apply a 1 cm (⅜ in) layer of straw or pine needle mulch around the crown to reduce moisture buildup and prevent further rot."
+    },
+    {
+     "id": "p40c17",
+     "text": "To address this issue, follow these recommended actions:"
+    }
+   ]
+  },
+  {
+   "id": "p41",
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_50.jpg",
+   "label": "root_rot",
+   "file": "rootrot_50.jpg",
+   "claims": [
+    {
+     "id": "p41c00",
+     "text": "Elevate the bed or place a raised ring (≈5 cm/2 in) around the plant to improve drainage and reduce standing water, ensuring the crown remains above any wet soil."
+    },
+    {
+     "id": "p41c01",
+     "text": "Hydroponically irrigate with a slow, deep watering of 500 ml per plant, ensuring moisture reaches 10 cm (4 in) depth without wetting the crown; repeat every 48 hours until new growth appears."
+    },
+    {
+     "id": "p41c02",
+     "text": "Add a 3 cm (1.2 in) layer of clean straw mulch around the crown to keep the root zone cool and dry, improving drainage and reducing further decay."
+    },
+    {
+     "id": "p41c03",
+     "text": "Leaf: Several leaf edges are crisp and tan, showing necrosis that typically begins at the base and spreads upward, a pattern of oxygen-starved tissue."
+    },
+    {
+     "id": "p41c04",
+     "text": "This suggests localized infection rather than widespread disease."
+    },
+    {
+     "id": "p41c05",
+     "text": "The plants in this photo show signs of root rot, primarily indicated by dark, decayed roots and crown tissue visible in the close-up images."
+    },
+    {
+     "id": "p41c06",
+     "text": "This indicates roots are no longer supplying the foliage with adequate nutrients."
+    },
+    {
+     "id": "p41c07",
+     "text": "Affected plants appear collapsed and have brown, desiccated leaves, whereas nearby plants look healthy."
+    },
+    {
+     "id": "p41c08",
+     "text": "To confirm root rot, inspect the roots of symptomatic plants for dark, mushy decay and test for pathogens such as Phytophthora or Pythium using lab analysis."
+    },
+    {
+     "id": "p41c09",
+     "text": "Calyx: The green, slightly wilted sepals at the fruit end signal that the root system is still functioning, but the tops are dying, confirming the diagnosis of Root Rot rather than a leaf disease."
+    },
+    {
+     "id": "p41c10",
+     "text": "Flower: The blossom is dark brown and mushy, with petals curled inward, indicating water-soaked tissue death."
+    },
+    {
+     "id": "p41c11",
+     "text": "Immediately remove and discard all affected plant debris, cutting at least 5 cm (2 in) below the rotted crown to prevent spread."
+    },
+    {
+     "id": "p41c12",
+     "text": "However, the presence of dry, cracked soil raises concern about drought stress potentially exacerbating or mimicking root rot symptoms."
+    },
+    {
+     "id": "p41c13",
+     "text": "This is a classic sign of root failure, as the plant's feeding organs wither when roots cannot absorb moisture."
+    }
+   ]
+  },
+  {
+   "id": "p42",
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0101.jpg",
+   "label": "white_mold",
+   "file": "WhiteMold0101.jpg",
+   "claims": [
+    {
+     "id": "p42c00",
+     "text": "Some berries also have areas of browning underneath the growth, suggesting tissue decay."
+    },
+    {
+     "id": "p42c01",
+     "text": "Improve airflow by thinning crowded foliage so that each crown has at least 10 cm (4 in) of space, and water plants only at the soil line in the early morning, applying no more than 2 cm (¾ in) of water per session to keep surfaces dry."
+    },
+    {
+     "id": "p42c02",
+     "text": "To contain this infection:"
+    },
+    {
+     "id": "p42c03",
+     "text": "Fruit: White, cottony mycelium blankets the entire berry, especially the green calyx, indicating active fungal growth."
+    },
+    {
+     "id": "p42c04",
+     "text": "Remove and discard all visibly infected fruit and leaves, cutting at least 2 cm (¾ in) into clean, dry soil to prevent spore spread."
+    },
+    {
+     "id": "p42c05",
+     "text": "The soft, water-soaked surface and loss of normal gloss signal advanced decay."
+    },
+    {
+     "id": "p42c06",
+     "text": "Apply a 3 cm (1¼ in) layer of clean straw or pine-needle mulch under the canopy to reduce soil splash and maintain humidity below 60%."
+    },
+    {
+     "id": "p42c07",
+     "text": "Sanitize shears with 70% alcohol between cuts."
+    },
+    {
+     "id": "p42c08",
+     "text": "This browning and fuzz are classic signs of white mold on moist foliage."
+    },
+    {
+     "id": "p42c09",
+     "text": "To confirm, examine the crown and stem bases for white mycelium or black sclerotia, and check if the infection spreads to other plants or into the soil."
+    },
+    {
+     "id": "p42c10",
+     "text": "While this is consistent with white mold (Sclerotinia), the absence of black sclerotia — a key diagnostic feature — makes confirmation challenging."
+    },
+    {
+     "id": "p42c11",
+     "text": "Leaf: Several leaf edges show brown, crispy margins with a faint white fuzz, indicating infection spreading upward from the fruit."
+    },
+    {
+     "id": "p42c12",
+     "text": "It’s possible this could be an early stage of Sclerotinia or another similar fungus."
+    },
+    {
+     "id": "p42c13",
+     "text": "Over the next 7 days, inspect daily for new white tufts on fruit or leaves, check that mulch remains dry to the touch, and verify that morning leaf surfaces are dry within 2 hours of sunrise."
+    },
+    {
+     "id": "p42c14",
+     "text": "The strawberries in this photo show clear signs of a fungal infection characterized by white, cottony to powdery growth on the fruit surface, especially near the stem end."
+    },
+    {
+     "id": "p42c15",
+     "text": "Stem: The stem near the fruit is slightly darkened and water-soaked, suggesting infection has penetrated the vascular tissue, allowing spores to move upward."
+    }
+   ]
+  },
+  {
+   "id": "p43",
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0012.jpg",
+   "label": "white_mold",
+   "file": "WhiteMold0012.jpg",
+   "claims": [
+    {
+     "id": "p43c00",
+     "text": "The entire surface of the strawberry fruit is covered in a thick, cotton-like white mycelium, indicating active fungal growth."
+    },
+    {
+     "id": "p43c01",
+     "text": "Since only fruit is visible and no stems or crowns are present, we cannot rule out other causes such as contamination or secondary infections."
+    },
+    {
+     "id": "p43c02",
+     "text": "The leaf appears dull, slightly curled, and has small, white tufts along the edges, signaling sporulation on moist surfaces."
+    },
+    {
+     "id": "p43c03",
+     "text": "Over the next 7 days, inspect daily for any new white fuzz on calyxes or soft spots on leaves, and check that mulch remains dry to the touch; also verify that morning irrigation completes within 30 minutes and that humidity inside the greenhouse stays below 60%."
+    },
+    {
+     "id": "p43c04",
+     "text": "The green calyx (the top part of the fruit) is water-soaked and turning brown, showing tissue collapse under fungal pressure."
+    },
+    {
+     "id": "p43c05",
+     "text": "The growth is dense and fluffy, covering parts of the fruit, and some berries show underlying brown discoloration."
+    },
+    {
+     "id": "p43c06",
+     "text": "To confirm, examine the base of the fruit or any attached stems for black sclerotia or signs of stem/crown rot."
+    },
+    {
+     "id": "p43c07",
+     "text": "However, the absence of black sclerotia — small, hard, black fungal structures commonly associated with Sclerotinia — limits certainty."
+    },
+    {
+     "id": "p43c08",
+     "text": "This photo shows strawberries with white, cottony fungal growth, which is highly suggestive of white mold caused by Sclerotinia."
+    },
+    {
+     "id": "p43c09",
+     "text": "Immediately remove and discard all visibly moldy fruit and leaves, then thin the canopy to maintain at least 5 cm (2 in) of airflow between berries."
+    },
+    {
+     "id": "p43c10",
+     "text": "Apply a 3 cm (1¼ in) layer of clean straw mulch to reduce splashing and improve drainage."
+    },
+    {
+     "id": "p43c11",
+     "text": "No flowers, roots, or stem tissue are visible in the image, so the infection is localized to the fruit and foliage."
+    },
+    {
+     "id": "p43c12",
+     "text": "Sanitize cutting tools with 70% alcohol after each use, and irrigate only at soil level, delivering 2 cm (¾ in) of water early morning twice a week to keep berries dry."
+    }
+   ]
+  },
+  {
+   "id": "p44",
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0272.jpg",
+   "label": "white_mold",
+   "file": "WhiteMold0272.jpg",
+   "claims": [
+    {
+     "id": "p44c00",
+     "text": "Leaf: The green leaf shows small, circular tan-brown lesions with a powdery, velvety texture, indicating infection spreading from the fruit to the leaf surface."
+    },
+    {
+     "id": "p44c01",
+     "text": "The strawberries in this photo show clear signs of a fungal infection, primarily characterized by a grayish-white, fuzzy or powdery surface growth on the fruit, especially near the calyx."
+    },
+    {
+     "id": "p44c02",
+     "text": "Sanitize shears with 70% alcohol between cuts."
+    },
+    {
+     "id": "p44c03",
+     "text": "The growth appears fuzzy, water-soaked, and slightly sunken, indicating active fungal colonization."
+    },
+    {
+     "id": "p44c04",
+     "text": "Over the next 7 days, inspect daily for any new white fuzz on berries or leaves, check that mulch remains dry to the touch after sunrise, and verify that leaf surfaces stay dry and free of fresh tan spots."
+    },
+    {
+     "id": "p44c05",
+     "text": "Lay a clean straw or plastic mulch layer 3 cm (1¼ in) thick under the canopy to keep fruit off damp soil."
+    },
+    {
+     "id": "p44c06",
+     "text": "This appearance is highly suggestive of gray mold (Botrytis cinerea), which commonly affects strawberries in humid environments."
+    },
+    {
+     "id": "p44c07",
+     "text": "These spots are concentrated along the leaf edges, suggesting direct contact with moist berries."
+    },
+    {
+     "id": "p44c08",
+     "text": "Immediately remove and discard all visibly infected fruit and leaves, cutting at least 2 cm (¾ in) into healthy tissue to prevent spore spread."
+    },
+    {
+     "id": "p44c09",
+     "text": "Increase airflow by thinning foliage so that each plant has a minimum 10 cm (4 in) gap between crowns, and water only at the soil line with 200 ml (¾ cup) per plant every 3–4 days, allowing surfaces to dry before the next irrigation."
+    },
+    {
+     "id": "p44c10",
+     "text": "To confirm the diagnosis, examine the affected fruit closely for soft rot extending beneath the surface, and check nearby plants for similar symptoms or signs of stem base rot, which would support a white mold diagnosis."
+    },
+    {
+     "id": "p44c11",
+     "text": "Fruit: Several berries show thick, cotton-like white mycelial growth covering the calyx and upper half of the fruit, especially where the calyx meets the red flesh."
+    },
+    {
+     "id": "p44c12",
+     "text": "It's important to note that the infection appears limited to the fruit surface and there is no visible damage to stems or crowns."
+    },
+    {
+     "id": "p44c13",
+     "text": "While the dataset labels this as white mold (Sclerotinia), the visual evidence does not support the typical white cottony mycelium or black sclerotia associated with Sclerotinia."
+    }
+   ]
+  },
+  {
+   "id": "p45",
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0143.jpg",
+   "label": "white_mold",
+   "file": "WhiteMold0143.jpg",
+   "claims": [
+    {
+     "id": "p45c00",
+     "text": "The fungus appears fluffy in many areas, which supports the diagnosis, but the lack of visible black sclerotia (hard, seed-like structures) makes confirmation difficult."
+    },
+    {
+     "id": "p45c01",
+     "text": "No flowers, roots, or soil are visible in this image, so those tissues are not affected."
+    },
+    {
+     "id": "p45c02",
+     "text": "To confirm, check if any infected plants have white mycelium or black sclerotia on the crown or lower stems, or if the fruit is soft and mushy under the white growth."
+    },
+    {
+     "id": "p45c03",
+     "text": "This photo shows strawberries with white, cottony fungal growth on their surfaces, along with dark rot underneath—classic signs of white mold (Sclerotinia)."
+    },
+    {
+     "id": "p45c04",
+     "text": "Some areas of the white growth look more powdery, which could indicate early gray mold (Botrytis) instead."
+    },
+    {
+     "id": "p45c05",
+     "text": "The most striking symptom is a thick, cottony white growth covering large patches of the strawberry's red fruit."
+    },
+    {
+     "id": "p45c06",
+     "text": "Since only fruit is visible, we cannot assess if the infection started at the crown or stem."
+    },
+    {
+     "id": "p45c07",
+     "text": "There is no visible discoloration or wilting of the green leaf blade, which suggests the mold is primarily limited to the fruit and calyx."
+    },
+    {
+     "id": "p45c08",
+     "text": "These fuzzy growths are evenly distributed over the fruit and leaf, indicating an active fungal colonization."
+    },
+    {
+     "id": "p45c09",
+     "text": "The upper calyx of several berries is water-soaked and turning brown, and the surface of the visible leaf edge shows dark, sunken lesions with a similar whitish fuzz."
+    }
+   ]
+  },
+  {
+   "id": "p46",
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0132.jpg",
+   "label": "white_mold",
+   "file": "WhiteMold0132.jpg",
+   "claims": [
+    {
+     "id": "p46c00",
+     "text": "Over the next 7 days, inspect daily for any new white, fluffy patches on fruit or leaves, gently tap plants to check for hidden mold on the underside of leaves, and verify that mulch remains dry to the touch; if any area feels damp, widen spacing or shorten watering intervals."
+    },
+    {
+     "id": "p46c01",
+     "text": "The visible fruit shows a thick, cottony white growth covering the calyx and most of the red surface, indicating colonization by the fungus."
+    },
+    {
+     "id": "p46c02",
+     "text": "The white growth could also resemble early-stage gray mold (Botrytis), which typically appears grayish-brown."
+    },
+    {
+     "id": "p46c03",
+     "text": "The affected tissue appears water-soaked and slightly sunken, and the texture looks matted and brittle."
+    },
+    {
+     "id": "p46c04",
+     "text": "To confirm the diagnosis, examine the base of the affected fruit for any hard, black sclerotia, or test the sample for Sclerotinia-specific PCR or culture."
+    },
+    {
+     "id": "p46c05",
+     "text": "However, the absence of black sclerotia—a hallmark of Sclerotinia—is notable."
+    },
+    {
+     "id": "p46c06",
+     "text": "No flowers or green tissue are visible, and the stem is not present in this image, so those parts are not affected."
+    },
+    {
+     "id": "p46c07",
+     "text": "If no sclerotia are found, consider re-evaluating whether this is a case of Botrytis or another fungal infection."
+    },
+    {
+     "id": "p46c08",
+     "text": "These visual cues point to white mold thriving on moist, damaged fruit and nearby leaves."
+    },
+    {
+     "id": "p46c09",
+     "text": "The leaf edge is also discolored with a light brown edge, indicating tissue death and potential entry points for the mold."
+    },
+    {
+     "id": "p46c10",
+     "text": "Apply a 3-4 cm layer of clean straw or pine needle mulch under the plant to keep fruit off damp soil and speed drying."
+    },
+    {
+     "id": "p46c11",
+     "text": "To stop further spread, remove and discard all moldy berries and leaf debris, then rinse the remaining foliage with clean water and space it 20-25 cm apart to improve airflow."
+    },
+    {
+     "id": "p46c12",
+     "text": "This photo shows a single strawberry in a container exhibiting a white, cottony to powdery fungal growth, which is consistent with white mold (Sclerotinia)."
+    },
+    {
+     "id": "p46c13",
+     "text": "The affected fruit appears shriveled and desiccated, while surrounding berries look healthy."
+    }
+   ]
+  },
+  {
+   "id": "p47",
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0278.jpg",
+   "label": "white_mold",
+   "file": "WhiteMold0278.jpg",
+   "claims": [
+    {
+     "id": "p47c00",
+     "text": "Fruit: Several berries show dense, cottony white growth on the calyx and shoulder, with soft, water-soaked tissue collapsing inward."
+    },
+    {
+     "id": "p47c01",
+     "text": "Leaf: The green blade nearest the fruit is discolored and has a dull, pale tone, indicating moisture-related stress that favors mold growth."
+    },
+    {
+     "id": "p47c02",
+     "text": "The affected berries are shriveled and discolored, indicating advanced decay."
+    },
+    {
+     "id": "p47c03",
+     "text": "Over the next 7 days, inspect daily for new white fuzz on calyxes and soft spots on leaves, and verify that mulch remains dry to the touch after watering."
+    },
+    {
+     "id": "p47c04",
+     "text": "To confirm, examine the base of the plants or any remaining stems for white mycelium or black sclerotia."
+    },
+    {
+     "id": "p47c05",
+     "text": "Also, note that some areas look grayish-white and powdery, which could indicate co-infection or a different fungus like gray mold (Botrytis)."
+    },
+    {
+     "id": "p47c06",
+     "text": "Irrigate only at the base early in the morning, delivering about 2 cm of water every 3 days, allowing surfaces to dry by midday."
+    },
+    {
+     "id": "p47c07",
+     "text": "Thin foliage to improve airflow by trimming excess leaves, leaving 5 cm of space between crowns, and lay a 2 cm layer of clean straw mulch to keep fruit off damp soil."
+    },
+    {
+     "id": "p47c08",
+     "text": "It’s possible the infection is progressing into a stage where sclerotia have not yet formed, or the sample does not include the crown or stem where they typically develop."
+    },
+    {
+     "id": "p47c09",
+     "text": "This photo shows strawberries infected with a fungal disease characterized by white, cottony mycelium growing on the fruit surfaces, especially near the calyx."
+    },
+    {
+     "id": "p47c10",
+     "text": "The infection is unevenly distributed, indicating a fungal rather than bacterial spread."
+    },
+    {
+     "id": "p47c11",
+     "text": "While the symptoms are most consistent with white mold (Sclerotinia), the absence of black sclerotia makes definitive identification difficult from this image alone."
+    },
+    {
+     "id": "p47c12",
+     "text": "Nowhere else on the image are flowers, roots, or stems visible, confirming the diagnosis is based solely on the visible fruit and leaf."
+    },
+    {
+     "id": "p47c13",
+     "text": "The edges are slightly curled and edged with a faint brown margin, a common sign of early infection spreading upward."
+    },
+    {
+     "id": "p47c14",
+     "text": "Immediately remove and discard all moldy berries and any debris within a 10 cm radius to reduce spore load."
+    }
+   ]
+  },
+  {
+   "id": "p48",
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0050.jpg",
+   "label": "white_mold",
+   "file": "WhiteMold0050.jpg",
+   "claims": [
+    {
+     "id": "p48c00",
+     "text": "The stem shows slight darkening and slight collapse, suggesting water retention in the tissue."
+    },
+    {
+     "id": "p48c01",
+     "text": "The most visible symptoms on the visible parts are:"
+    },
+    {
+     "id": "p48c02",
+     "text": "To confirm, inspect nearby plants for white mycelium on stems or crowns, and look for small black sclerotia near infected areas."
+    },
+    {
+     "id": "p48c03",
+     "text": "Soft, water-soaked lesions with a slight translucent edge on the calyx of several berries, showing tissue collapse under moisture."
+    },
+    {
+     "id": "p48c04",
+     "text": "This appearance is most consistent with white mold (Sclerotinia), which typically affects fruit, stems, and crowns."
+    },
+    {
+     "id": "p48c05",
+     "text": "White, cottony mycelial growth covering the upper third of the green strawberry berry, indicating active fungal colonization."
+    },
+    {
+     "id": "p48c06",
+     "text": "However, key diagnostic features such as black sclerotia (hard, dark fungal structures) are not visible here, and the texture of the growth appears somewhat powdery rather than distinctly cottony, which may also suggest early-stage gray mold (Botrytis)."
+    },
+    {
+     "id": "p48c07",
+     "text": "Increase airflow by spacing foliage so that at least 10 cm (4 in) of open space remains between crowns and running fans for 6–8 hours daily."
+    },
+    {
+     "id": "p48c08",
+     "text": "To control the infection:"
+    },
+    {
+     "id": "p48c09",
+     "text": "Over the next 7 days, inspect daily for any new white fuzz on calyx edges, check for further softening or darkening of leaves, and verify that mulch remains dry to the touch after sunrise."
+    },
+    {
+     "id": "p48c10",
+     "text": "Since only fruit is visible and no stems or crowns are present, a definitive diagnosis is challenging."
+    },
+    {
+     "id": "p48c11",
+     "text": "Apply a 3 cm (1¼ in) layer of clean straw mulch under the canopy to reduce soil splash and keep fruit off damp soil."
+    },
+    {
+     "id": "p48c12",
+     "text": "These visual cues point to stagnant moisture and poor airflow, ideal conditions for white mold to colonize ripening fruit and leaf tissue."
+    },
+    {
+     "id": "p48c13",
+     "text": "Dull, dull-green leaves with small, tan, sunken spots along the margins, indicating systemic moisture stress that favors mold growth."
+    },
+    {
+     "id": "p48c14",
+     "text": "The strawberries in this photo show signs of a fungal infection, primarily indicated by a white, cottony growth on some fruits."
+    },
+    {
+     "id": "p48c15",
+     "text": "Water only at soil level with a slow, deep irrigation early in the morning, allowing surfaces to dry by midday; avoid overhead misting or overhead watering."
+    },
+    {
+     "id": "p48c16",
+     "text": "Trim and discard all visibly moldy berries and stems, sanitizing blades with 70% alcohol between cuts."
+    }
+   ]
+  }
+ ]
+}
