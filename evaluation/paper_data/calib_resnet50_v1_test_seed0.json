@@ -1,0 +1,10363 @@
+{
+ "classes": [
+  "drought",
+  "frost",
+  "gray_mold",
+  "healthy",
+  "overwatered",
+  "root_rot",
+  "white_mold"
+ ],
+ "temperature": 0.7475408911705017,
+ "source": "evaluation/scores_resnet50_split_v1_runtime_split_v1_test.json",
+ "results": [
+  {
+   "image": "plant_diagnostic/data/train/drought/Chateau2.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.94047,
+    0.04992,
+    0.00028,
+    0.00017,
+    0.00279,
+    0.00627,
+    0.0001
+   ],
+   "p_raw": [
+    0.8674,
+    0.09661,
+    0.00201,
+    0.00138,
+    0.01118,
+    0.02049,
+    0.00093
+   ],
+   "p1": 0.94047,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_5.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.95627,
+    0.00115,
+    9e-05,
+    0.03657,
+    0.00183,
+    0.00074,
+    0.00335
+   ],
+   "p_raw": [
+    0.89021,
+    0.00584,
+    0.00087,
+    0.0776,
+    0.00827,
+    0.0042,
+    0.013
+   ],
+   "p1": 0.95627,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_29.jpg",
+   "truth": "drought",
+   "pred": "healthy",
+   "p_cal": [
+    0.03551,
+    0.02391,
+    0.15999,
+    0.75869,
+    0.00985,
+    0.01099,
+    0.00106
+   ],
+   "p_raw": [
+    0.06427,
+    0.04782,
+    0.19801,
+    0.63387,
+    0.02464,
+    0.02674,
+    0.00466
+   ],
+   "p1": 0.75869,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_8.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.89851,
+    0.00038,
+    0.00223,
+    0.01132,
+    0.01438,
+    0.07261,
+    0.00057
+   ],
+   "p_raw": [
+    0.79723,
+    0.0024,
+    0.009,
+    0.0303,
+    0.03624,
+    0.12158,
+    0.00324
+   ],
+   "p1": 0.89851,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/new-strawberry-leaves-appear-burnt-v0-owasxhleqt6f1.webp",
+   "truth": "drought",
+   "pred": "healthy",
+   "p_cal": [
+    0.16316,
+    0.06182,
+    0.0097,
+    0.71454,
+    0.04559,
+    0.00497,
+    0.00022
+   ],
+   "p_raw": [
+    0.19654,
+    0.09514,
+    0.02383,
+    0.59285,
+    0.07577,
+    0.01445,
+    0.00141
+   ],
+   "p1": 0.71454,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/holdrel_drought_3.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.97496,
+    0.01346,
+    0.00175,
+    0.00385,
+    0.0013,
+    0.00452,
+    0.00016
+   ],
+   "p_raw": [
+    0.91566,
+    0.03727,
+    0.00811,
+    0.01462,
+    0.00649,
+    0.01648,
+    0.00136
+   ],
+   "p1": 0.97496,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.44057,
+    0.33536,
+    0.00451,
+    0.00595,
+    0.14196,
+    0.05796,
+    0.0137
+   ],
+   "p_raw": [
+    0.38297,
+    0.31231,
+    0.01246,
+    0.01533,
+    0.16424,
+    0.08408,
+    0.0286
+   ],
+   "p1": 0.44057,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/drought/stock-photo-dried-strawberry-leaves-strawberries-old-runners-and-leaves-in-autumn-garden-with-selective-focus-2139753869.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.42513,
+    0.25904,
+    0.00035,
+    0.00073,
+    0.0791,
+    0.01098,
+    0.22466
+   ],
+   "p_raw": [
+    0.37393,
+    0.2582,
+    0.00185,
+    0.0032,
+    0.10637,
+    0.02431,
+    0.23213
+   ],
+   "p1": 0.42513,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/drought/strawberry-plants-are-dying-v0-wparrcp3m80f1.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.64833,
+    0.0509,
+    0.01123,
+    0.00768,
+    0.21631,
+    0.06482,
+    0.00073
+   ],
+   "p_raw": [
+    0.53792,
+    0.08028,
+    0.02594,
+    0.01953,
+    0.23678,
+    0.09619,
+    0.00336
+   ],
+   "p1": 0.64833,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/drought/strawberry-plants-are-dying-v0-wparrcp3m80f1.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.51255,
+    0.09696,
+    0.00744,
+    0.01364,
+    0.2905,
+    0.07784,
+    0.00107
+   ],
+   "p_raw": [
+    0.4338,
+    0.12494,
+    0.01833,
+    0.02884,
+    0.28376,
+    0.10602,
+    0.0043
+   ],
+   "p1": 0.51255,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/strawberry-plants-are-dying-v0-qy797dp3m80f1.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.41754,
+    0.00113,
+    0.00476,
+    0.00524,
+    0.31782,
+    0.25312,
+    0.00039
+   ],
+   "p_raw": [
+    0.38551,
+    0.00464,
+    0.0136,
+    0.01461,
+    0.31437,
+    0.26518,
+    0.0021
+   ],
+   "p1": 0.41754,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/whats-happening-to-her-v0-oy6sb0oglhcf1.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.46807,
+    0.01214,
+    0.07269,
+    0.01301,
+    0.40909,
+    0.02457,
+    0.00043
+   ],
+   "p_raw": [
+    0.41624,
+    0.02714,
+    0.10344,
+    0.02859,
+    0.37637,
+    0.04598,
+    0.00223
+   ],
+   "p1": 0.46807,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/whats-wrong-with-my-strawberry-plant-leaves-turning-brown-v0-rfmcyq54622b1.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.57697,
+    0.1306,
+    0.07752,
+    0.03388,
+    0.14421,
+    0.0364,
+    0.00042
+   ],
+   "p_raw": [
+    0.46329,
+    0.15259,
+    0.10332,
+    0.05565,
+    0.16433,
+    0.05872,
+    0.00209
+   ],
+   "p1": 0.57697,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_19.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.62731,
+    0.00472,
+    0.03476,
+    0.00773,
+    0.0816,
+    0.11914,
+    0.12474
+   ],
+   "p_raw": [
+    0.50408,
+    0.01303,
+    0.05798,
+    0.01885,
+    0.10973,
+    0.14562,
+    0.1507
+   ],
+   "p1": 0.62731,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_25.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.57453,
+    0.00622,
+    0.0061,
+    0.14135,
+    0.07807,
+    0.17963,
+    0.0141
+   ],
+   "p_raw": [
+    0.47065,
+    0.01597,
+    0.01574,
+    0.16498,
+    0.10585,
+    0.19735,
+    0.02945
+   ],
+   "p1": 0.57453,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_26.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "p_cal": [
+    0.87707,
+    0.00375,
+    1e-05,
+    0.00794,
+    0.00769,
+    0.00171,
+    0.10183
+   ],
+   "p_raw": [
+    0.77809,
+    0.01319,
+    0.00016,
+    0.0231,
+    0.02256,
+    0.00733,
+    0.15558
+   ],
+   "p1": 0.87707,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/umd_dry_plug_wilt_015.jpg",
+   "truth": "drought",
+   "pred": "overwatered",
+   "p_cal": [
+    0.02551,
+    0.2907,
+    0.05813,
+    0.00436,
+    0.59743,
+    0.02142,
+    0.00245
+   ],
+   "p_raw": [
+    0.04785,
+    0.29502,
+    0.08857,
+    0.01278,
+    0.50549,
+    0.04199,
+    0.0083
+   ],
+   "p1": 0.59743,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_96.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.05901,
+    0.91309,
+    0.00205,
+    0.00938,
+    0.00959,
+    0.00654,
+    0.00034
+   ],
+   "p_raw": [
+    0.10466,
+    0.81104,
+    0.00849,
+    0.02647,
+    0.02691,
+    0.02021,
+    0.00222
+   ],
+   "p1": 0.91309,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_6.jpeg",
+   "truth": "frost",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01936,
+    0.01949,
+    0.81536,
+    0.05411,
+    0.04059,
+    0.02053,
+    0.03056
+   ],
+   "p_raw": [
+    0.04043,
+    0.04063,
+    0.66232,
+    0.08718,
+    0.07032,
+    0.04224,
+    0.05688
+   ],
+   "p1": 0.81536,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_5.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.00097,
+    0.97134,
+    0.00122,
+    0.01478,
+    0.00968,
+    0.00092,
+    0.00109
+   ],
+   "p_raw": [
+    0.00519,
+    0.90918,
+    0.00617,
+    0.0398,
+    0.029,
+    0.00499,
+    0.00567
+   ],
+   "p1": 0.97134,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_92.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.00554,
+    0.98353,
+    0.00026,
+    0.00422,
+    0.00494,
+    0.00111,
+    0.0004
+   ],
+   "p_raw": [
+    0.01949,
+    0.93613,
+    0.00198,
+    0.01591,
+    0.01789,
+    0.00586,
+    0.00273
+   ],
+   "p1": 0.98353,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_35.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.02944,
+    0.90054,
+    0.00114,
+    0.00112,
+    0.01328,
+    0.04289,
+    0.01159
+   ],
+   "p_raw": [
+    0.0608,
+    0.7842,
+    0.00535,
+    0.00528,
+    0.03353,
+    0.08055,
+    0.03029
+   ],
+   "p1": 0.90054,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/img_2149.webp",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.16271,
+    0.55362,
+    0.00763,
+    0.00708,
+    0.04715,
+    0.15604,
+    0.06577
+   ],
+   "p_raw": [
+    0.17958,
+    0.44853,
+    0.01823,
+    0.01724,
+    0.07114,
+    0.17404,
+    0.09124
+   ],
+   "p1": 0.55362,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_42.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.0056,
+    0.9834,
+    0.00151,
+    0.0007,
+    0.00549,
+    0.00241,
+    0.00089
+   ],
+   "p_raw": [
+    0.01961,
+    0.93416,
+    0.00736,
+    0.00414,
+    0.01932,
+    0.01044,
+    0.00496
+   ],
+   "p1": 0.9834,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_58.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.07942,
+    0.73561,
+    0.0042,
+    0.07515,
+    0.08082,
+    0.01239,
+    0.01241
+   ],
+   "p_raw": [
+    0.11283,
+    0.59577,
+    0.01253,
+    0.10826,
+    0.11431,
+    0.02814,
+    0.02817
+   ],
+   "p1": 0.73561,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_65.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.13193,
+    0.68299,
+    0.01235,
+    0.00633,
+    0.11815,
+    0.04156,
+    0.00669
+   ],
+   "p_raw": [
+    0.16282,
+    0.55654,
+    0.02772,
+    0.01682,
+    0.14993,
+    0.06866,
+    0.01753
+   ],
+   "p1": 0.68299,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/frost_17.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.11891,
+    0.29546,
+    0.14394,
+    0.21712,
+    0.05144,
+    0.17148,
+    0.00164
+   ],
+   "p_raw": [
+    0.13181,
+    0.26028,
+    0.15205,
+    0.20674,
+    0.07046,
+    0.1733,
+    0.00536
+   ],
+   "p1": 0.29546,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/frostinjury.jpg",
+   "truth": "frost",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.06372,
+    0.13771,
+    0.70585,
+    0.00509,
+    0.02867,
+    0.0303,
+    0.02866
+   ],
+   "p_raw": [
+    0.09398,
+    0.16719,
+    0.56726,
+    0.01421,
+    0.05173,
+    0.05391,
+    0.05172
+   ],
+   "p1": 0.70585,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_12.jpeg",
+   "truth": "frost",
+   "pred": "healthy",
+   "p_cal": [
+    0.19612,
+    0.20867,
+    0.09126,
+    0.23785,
+    0.11815,
+    0.05118,
+    0.09676
+   ],
+   "p_raw": [
+    0.18492,
+    0.1937,
+    0.10438,
+    0.21361,
+    0.12661,
+    0.06774,
+    0.10905
+   ],
+   "p1": 0.23785,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/frost_64.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.04088,
+    0.78527,
+    0.03614,
+    0.0006,
+    0.10571,
+    0.01923,
+    0.01217
+   ],
+   "p_raw": [
+    0.07107,
+    0.64735,
+    0.06481,
+    0.00303,
+    0.14458,
+    0.04044,
+    0.02873
+   ],
+   "p1": 0.78527,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_22.jpeg",
+   "truth": "frost",
+   "pred": "healthy",
+   "p_cal": [
+    0.09716,
+    0.14268,
+    0.21019,
+    0.42585,
+    0.04719,
+    0.04278,
+    0.03414
+   ],
+   "p_raw": [
+    0.11477,
+    0.15295,
+    0.20433,
+    0.34639,
+    0.06689,
+    0.06216,
+    0.05251
+   ],
+   "p1": 0.42585,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_79.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.04479,
+    0.7508,
+    0.09625,
+    0.0357,
+    0.00925,
+    0.00324,
+    0.05997
+   ],
+   "p_raw": [
+    0.07389,
+    0.60787,
+    0.13089,
+    0.06236,
+    0.02272,
+    0.01037,
+    0.0919
+   ],
+   "p1": 0.7508,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/uky_frost_dissection_003.jpg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.01864,
+    0.7887,
+    0.06782,
+    0.00502,
+    0.05014,
+    0.00958,
+    0.0601
+   ],
+   "p_raw": [
+    0.03915,
+    0.64358,
+    0.10281,
+    0.01468,
+    0.08203,
+    0.0238,
+    0.09393
+   ],
+   "p1": 0.7887,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/20110329alpinestrawberryflower.jpg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.02196,
+    0.96995,
+    0.00136,
+    0.0004,
+    0.00319,
+    0.00273,
+    0.00041
+   ],
+   "p_raw": [
+    0.05363,
+    0.91028,
+    0.0067,
+    0.00269,
+    0.01268,
+    0.01129,
+    0.00274
+   ],
+   "p1": 0.96995,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/Strawberry-Disorder-_399037 (1).jpg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.00278,
+    0.98243,
+    0.00076,
+    0.0044,
+    0.00797,
+    0.00052,
+    0.00114
+   ],
+   "p_raw": [
+    0.01161,
+    0.93282,
+    0.0044,
+    0.01637,
+    0.02552,
+    0.00332,
+    0.00596
+   ],
+   "p1": 0.98243,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_76.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.01367,
+    0.86071,
+    0.00221,
+    0.00337,
+    0.10556,
+    0.00849,
+    0.00599
+   ],
+   "p_raw": [
+    0.0338,
+    0.74794,
+    0.00866,
+    0.01187,
+    0.15581,
+    0.02368,
+    0.01824
+   ],
+   "p1": 0.86071,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_15.jpeg",
+   "truth": "frost",
+   "pred": "healthy",
+   "p_cal": [
+    0.2437,
+    0.04987,
+    0.09815,
+    0.40398,
+    0.09815,
+    0.02878,
+    0.07737
+   ],
+   "p_raw": [
+    0.22704,
+    0.06935,
+    0.11504,
+    0.33127,
+    0.11504,
+    0.04598,
+    0.0963
+   ],
+   "p1": 0.40398,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_4.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.00435,
+    0.98296,
+    0.00024,
+    0.00389,
+    0.00511,
+    0.00177,
+    0.00168
+   ],
+   "p_raw": [
+    0.01621,
+    0.93248,
+    0.00186,
+    0.01491,
+    0.01829,
+    0.00828,
+    0.00796
+   ],
+   "p1": 0.98296,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_56.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.09215,
+    0.77198,
+    0.06652,
+    0.02076,
+    0.02301,
+    0.0172,
+    0.00838
+   ],
+   "p_raw": [
+    0.12793,
+    0.62667,
+    0.10027,
+    0.04199,
+    0.04535,
+    0.03648,
+    0.02131
+   ],
+   "p1": 0.77198,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_73.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.11396,
+    0.77415,
+    0.00035,
+    0.00217,
+    0.10251,
+    0.00577,
+    0.00109
+   ],
+   "p_raw": [
+    0.15834,
+    0.66314,
+    0.0021,
+    0.0082,
+    0.14629,
+    0.01703,
+    0.0049
+   ],
+   "p1": 0.77415,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/images (1).jpeg",
+   "truth": "frost",
+   "pred": "healthy",
+   "p_cal": [
+    0.0675,
+    0.15594,
+    0.01232,
+    0.59435,
+    0.13978,
+    0.02946,
+    0.00065
+   ],
+   "p_raw": [
+    0.09499,
+    0.17764,
+    0.02664,
+    0.48298,
+    0.16369,
+    0.05111,
+    0.00295
+   ],
+   "p1": 0.59435,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_19.jpeg",
+   "truth": "frost",
+   "pred": "healthy",
+   "p_cal": [
+    0.06902,
+    0.01162,
+    0.01483,
+    0.80208,
+    0.03649,
+    0.04186,
+    0.0241
+   ],
+   "p_raw": [
+    0.10415,
+    0.02749,
+    0.03299,
+    0.65159,
+    0.06468,
+    0.07167,
+    0.04743
+   ],
+   "p1": 0.80208,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_72.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.00217,
+    0.99046,
+    0.00146,
+    0.00214,
+    0.00245,
+    0.00083,
+    0.00049
+   ],
+   "p_raw": [
+    0.00981,
+    0.95443,
+    0.0073,
+    0.00971,
+    0.01074,
+    0.00478,
+    0.00323
+   ],
+   "p1": 0.99046,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_55.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "p_cal": [
+    0.00052,
+    0.99111,
+    0.00011,
+    0.00018,
+    0.00315,
+    0.00029,
+    0.00464
+   ],
+   "p_raw": [
+    0.0034,
+    0.96133,
+    0.00106,
+    0.00154,
+    0.01305,
+    0.00219,
+    0.01743
+   ],
+   "p1": 0.99111,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_26.jpeg",
+   "truth": "frost",
+   "pred": "white_mold",
+   "p_cal": [
+    0.04876,
+    0.24627,
+    0.07077,
+    0.01394,
+    0.07616,
+    0.01516,
+    0.52894
+   ],
+   "p_raw": [
+    0.07233,
+    0.24273,
+    0.09556,
+    0.02837,
+    0.10095,
+    0.0302,
+    0.42984
+   ],
+   "p1": 0.52894,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frosty.webp",
+   "truth": "frost",
+   "pred": "white_mold",
+   "p_cal": [
+    0.04677,
+    0.09684,
+    0.08255,
+    0.09764,
+    0.06442,
+    0.01265,
+    0.59913
+   ],
+   "p_raw": [
+    0.06963,
+    0.11998,
+    0.10648,
+    0.12072,
+    0.08846,
+    0.0262,
+    0.46854
+   ],
+   "p1": 0.59913,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/depositphotos_479595984-stock-photo-leaves-strawberries-affected-white-spot.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.1528,
+    0.0387,
+    0.42558,
+    0.02199,
+    0.14005,
+    0.01948,
+    0.2014
+   ],
+   "p_raw": [
+    0.16329,
+    0.05849,
+    0.35115,
+    0.03834,
+    0.15299,
+    0.03501,
+    0.20073
+   ],
+   "p1": 0.42558,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1449.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.08285,
+    0.01464,
+    0.85969,
+    0.00178,
+    0.03185,
+    0.00506,
+    0.00413
+   ],
+   "p_raw": [
+    0.12824,
+    0.0351,
+    0.73715,
+    0.00726,
+    0.06276,
+    0.01586,
+    0.01363
+   ],
+   "p1": 0.85969,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0681.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02237,
+    0.00569,
+    0.87646,
+    0.001,
+    0.07903,
+    0.0133,
+    0.00215
+   ],
+   "p_raw": [
+    0.04903,
+    0.01762,
+    0.76086,
+    0.0048,
+    0.12594,
+    0.03324,
+    0.00851
+   ],
+   "p1": 0.87646,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0600.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02005,
+    0.00464,
+    0.93824,
+    0.00369,
+    0.01679,
+    0.01561,
+    0.00098
+   ],
+   "p_raw": [
+    0.04728,
+    0.01583,
+    0.83797,
+    0.01334,
+    0.04141,
+    0.03921,
+    0.00495
+   ],
+   "p1": 0.93824,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0875.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02938,
+    0.00801,
+    0.8922,
+    0.03907,
+    0.01007,
+    0.0178,
+    0.00347
+   ],
+   "p_raw": [
+    0.05958,
+    0.02255,
+    0.76433,
+    0.07373,
+    0.02676,
+    0.04097,
+    0.01207
+   ],
+   "p1": 0.8922,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1957.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01636,
+    0.017,
+    0.92154,
+    0.00306,
+    0.02838,
+    0.01035,
+    0.00331
+   ],
+   "p_raw": [
+    0.03969,
+    0.04084,
+    0.80801,
+    0.01133,
+    0.05991,
+    0.02819,
+    0.01202
+   ],
+   "p1": 0.92154,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0847.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02508,
+    0.01289,
+    0.92059,
+    0.00215,
+    0.02191,
+    0.00646,
+    0.01092
+   ],
+   "p_raw": [
+    0.05449,
+    0.03313,
+    0.80541,
+    0.00868,
+    0.04925,
+    0.01977,
+    0.02927
+   ],
+   "p1": 0.92059,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2216.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01402,
+    0.00591,
+    0.9336,
+    0.01307,
+    0.0148,
+    0.00904,
+    0.00956
+   ],
+   "p_raw": [
+    0.03564,
+    0.01869,
+    0.8223,
+    0.03382,
+    0.03711,
+    0.02567,
+    0.02677
+   ],
+   "p1": 0.9336,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1279.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01427,
+    0.00541,
+    0.94114,
+    0.0024,
+    0.01835,
+    0.00729,
+    0.01114
+   ],
+   "p_raw": [
+    0.03663,
+    0.01774,
+    0.83914,
+    0.00966,
+    0.04421,
+    0.02217,
+    0.03044
+   ],
+   "p1": 0.94114,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/5605472.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05184,
+    0.03572,
+    0.79631,
+    0.04466,
+    0.03848,
+    0.00591,
+    0.02708
+   ],
+   "p_raw": [
+    0.08353,
+    0.06323,
+    0.64379,
+    0.07472,
+    0.06685,
+    0.01648,
+    0.05141
+   ],
+   "p1": 0.79631,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (2).jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03308,
+    0.01064,
+    0.86671,
+    0.01378,
+    0.04045,
+    0.02746,
+    0.00788
+   ],
+   "p_raw": [
+    0.06325,
+    0.02709,
+    0.72661,
+    0.03287,
+    0.07351,
+    0.05503,
+    0.02164
+   ],
+   "p1": 0.86671,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0565.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01835,
+    0.00692,
+    0.93081,
+    0.00343,
+    0.03212,
+    0.00519,
+    0.00318
+   ],
+   "p_raw": [
+    0.04392,
+    0.02118,
+    0.82669,
+    0.01254,
+    0.06674,
+    0.01709,
+    0.01185
+   ],
+   "p1": 0.93081,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0304.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0118,
+    0.00726,
+    0.92516,
+    0.00058,
+    0.01919,
+    0.02815,
+    0.00786
+   ],
+   "p_raw": [
+    0.03129,
+    0.02176,
+    0.81562,
+    0.00329,
+    0.04501,
+    0.05993,
+    0.02309
+   ],
+   "p1": 0.92516,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2189.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02495,
+    0.01472,
+    0.91122,
+    0.00111,
+    0.02347,
+    0.02032,
+    0.00421
+   ],
+   "p_raw": [
+    0.05384,
+    0.03629,
+    0.79277,
+    0.00526,
+    0.05143,
+    0.04618,
+    0.01424
+   ],
+   "p1": 0.91122,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1524.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.11452,
+    0.01219,
+    0.81023,
+    0.0034,
+    0.02378,
+    0.02819,
+    0.00769
+   ],
+   "p_raw": [
+    0.15701,
+    0.02942,
+    0.67785,
+    0.01133,
+    0.04848,
+    0.05506,
+    0.02085
+   ],
+   "p1": 0.81023,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0452.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03532,
+    0.01208,
+    0.90892,
+    0.00377,
+    0.01773,
+    0.01054,
+    0.01164
+   ],
+   "p_raw": [
+    0.0694,
+    0.03112,
+    0.78662,
+    0.01303,
+    0.04146,
+    0.0281,
+    0.03027
+   ],
+   "p1": 0.90892,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0986.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04632,
+    0.00963,
+    0.85419,
+    0.00192,
+    0.04418,
+    0.0376,
+    0.00616
+   ],
+   "p_raw": [
+    0.08144,
+    0.02517,
+    0.71954,
+    0.00754,
+    0.07861,
+    0.06968,
+    0.01802
+   ],
+   "p1": 0.85419,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0910.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01048,
+    0.00672,
+    0.95311,
+    0.00175,
+    0.01513,
+    0.00782,
+    0.00499
+   ],
+   "p_raw": [
+    0.02959,
+    0.02122,
+    0.86173,
+    0.00776,
+    0.03893,
+    0.02377,
+    0.01699
+   ],
+   "p1": 0.95311,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1917.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02813,
+    0.0117,
+    0.92238,
+    0.00367,
+    0.02437,
+    0.00789,
+    0.00186
+   ],
+   "p_raw": [
+    0.05974,
+    0.03101,
+    0.81161,
+    0.01303,
+    0.05366,
+    0.0231,
+    0.00784
+   ],
+   "p1": 0.92238,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2283.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01226,
+    0.00508,
+    0.94913,
+    0.00568,
+    0.01446,
+    0.00866,
+    0.00473
+   ],
+   "p_raw": [
+    0.03301,
+    0.01708,
+    0.85234,
+    0.01857,
+    0.03734,
+    0.02546,
+    0.0162
+   ],
+   "p1": 0.94913,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2064.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01208,
+    0.00457,
+    0.90606,
+    0.00464,
+    0.03575,
+    0.02448,
+    0.01242
+   ],
+   "p_raw": [
+    0.0311,
+    0.01504,
+    0.78421,
+    0.01521,
+    0.06998,
+    0.05273,
+    0.03175
+   ],
+   "p1": 0.90606,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/image005.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04323,
+    0.05972,
+    0.70398,
+    0.0048,
+    0.03984,
+    0.01611,
+    0.13232
+   ],
+   "p_raw": [
+    0.0702,
+    0.08939,
+    0.56521,
+    0.01358,
+    0.06605,
+    0.03357,
+    0.16201
+   ],
+   "p1": 0.70398,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0557.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02202,
+    0.0155,
+    0.91616,
+    0.00319,
+    0.02547,
+    0.01197,
+    0.00569
+   ],
+   "p_raw": [
+    0.04914,
+    0.0378,
+    0.79766,
+    0.01159,
+    0.05479,
+    0.03116,
+    0.01787
+   ],
+   "p1": 0.91616,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2099.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0281,
+    0.01605,
+    0.8638,
+    0.01257,
+    0.02145,
+    0.03048,
+    0.02755
+   ],
+   "p_raw": [
+    0.0555,
+    0.03652,
+    0.71853,
+    0.03042,
+    0.04536,
+    0.05898,
+    0.05469
+   ],
+   "p1": 0.8638,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1847.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03373,
+    0.01792,
+    0.86573,
+    0.00285,
+    0.05154,
+    0.02544,
+    0.00279
+   ],
+   "p_raw": [
+    0.0648,
+    0.04039,
+    0.73308,
+    0.01022,
+    0.08897,
+    0.05248,
+    0.01006
+   ],
+   "p1": 0.86573,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1395.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.09199,
+    0.07485,
+    0.55647,
+    0.01731,
+    0.18516,
+    0.0132,
+    0.06102
+   ],
+   "p_raw": [
+    0.11573,
+    0.09919,
+    0.4444,
+    0.0332,
+    0.19522,
+    0.02711,
+    0.08515
+   ],
+   "p1": 0.55647,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0939.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02552,
+    0.02047,
+    0.91095,
+    0.00301,
+    0.0227,
+    0.01309,
+    0.00426
+   ],
+   "p_raw": [
+    0.05461,
+    0.04631,
+    0.79052,
+    0.01105,
+    0.05003,
+    0.03315,
+    0.01432
+   ],
+   "p1": 0.91095,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0792.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03565,
+    0.04615,
+    0.85509,
+    0.03794,
+    0.01363,
+    0.00903,
+    0.00251
+   ],
+   "p_raw": [
+    0.06668,
+    0.08087,
+    0.71704,
+    0.06985,
+    0.0325,
+    0.02389,
+    0.00917
+   ],
+   "p1": 0.85509,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2138.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05072,
+    0.01345,
+    0.80629,
+    0.02941,
+    0.06506,
+    0.02866,
+    0.00641
+   ],
+   "p_raw": [
+    0.08324,
+    0.03086,
+    0.65819,
+    0.05539,
+    0.10027,
+    0.05433,
+    0.01773
+   ],
+   "p1": 0.80629,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1011.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02804,
+    0.0236,
+    0.90509,
+    0.0096,
+    0.02015,
+    0.00954,
+    0.00398
+   ],
+   "p_raw": [
+    0.05809,
+    0.05107,
+    0.77996,
+    0.02607,
+    0.04538,
+    0.02595,
+    0.0135
+   ],
+   "p1": 0.90509,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0571.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03327,
+    0.01115,
+    0.91156,
+    0.00623,
+    0.0225,
+    0.01183,
+    0.00346
+   ],
+   "p_raw": [
+    0.06667,
+    0.02945,
+    0.79199,
+    0.01906,
+    0.04977,
+    0.03078,
+    0.01228
+   ],
+   "p1": 0.91156,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1925.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05725,
+    0.04517,
+    0.7709,
+    0.00895,
+    0.06588,
+    0.03548,
+    0.01637
+   ],
+   "p_raw": [
+    0.0887,
+    0.0743,
+    0.61952,
+    0.02215,
+    0.09851,
+    0.06203,
+    0.03479
+   ],
+   "p1": 0.7709,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1155.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.12082,
+    0.01101,
+    0.54896,
+    0.02191,
+    0.13699,
+    0.05898,
+    0.10133
+   ],
+   "p_raw": [
+    0.14071,
+    0.02348,
+    0.43628,
+    0.03927,
+    0.15457,
+    0.08232,
+    0.12337
+   ],
+   "p1": 0.54896,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (1).jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0294,
+    0.02524,
+    0.62015,
+    0.25907,
+    0.03806,
+    0.01433,
+    0.01375
+   ],
+   "p_raw": [
+    0.05232,
+    0.04668,
+    0.51114,
+    0.26617,
+    0.06346,
+    0.03058,
+    0.02965
+   ],
+   "p1": 0.62015,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1348.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01893,
+    0.02593,
+    0.87462,
+    0.01184,
+    0.01649,
+    0.04859,
+    0.0036
+   ],
+   "p_raw": [
+    0.04212,
+    0.0533,
+    0.73951,
+    0.02966,
+    0.038,
+    0.08523,
+    0.01218
+   ],
+   "p1": 0.87462,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1738.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04656,
+    0.0305,
+    0.87031,
+    0.0023,
+    0.02099,
+    0.02148,
+    0.00786
+   ],
+   "p_raw": [
+    0.0824,
+    0.06006,
+    0.73542,
+    0.0087,
+    0.04542,
+    0.04621,
+    0.0218
+   ],
+   "p1": 0.87031,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2297.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04587,
+    0.00489,
+    0.91531,
+    0.00165,
+    0.01087,
+    0.0157,
+    0.00571
+   ],
+   "p_raw": [
+    0.08589,
+    0.01611,
+    0.80494,
+    0.00715,
+    0.02927,
+    0.03854,
+    0.01809
+   ],
+   "p1": 0.91531,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1067.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03284,
+    0.03219,
+    0.87979,
+    0.00644,
+    0.02568,
+    0.01537,
+    0.00769
+   ],
+   "p_raw": [
+    0.0637,
+    0.06276,
+    0.74406,
+    0.01885,
+    0.053,
+    0.03611,
+    0.02152
+   ],
+   "p1": 0.87979,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2015.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01689,
+    0.01007,
+    0.93756,
+    0.00199,
+    0.01439,
+    0.01409,
+    0.00501
+   ],
+   "p_raw": [
+    0.04135,
+    0.02809,
+    0.83272,
+    0.00836,
+    0.03669,
+    0.03611,
+    0.01667
+   ],
+   "p1": 0.93756,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1493.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04747,
+    0.019,
+    0.88274,
+    0.00448,
+    0.01391,
+    0.02659,
+    0.00581
+   ],
+   "p_raw": [
+    0.08459,
+    0.04266,
+    0.75203,
+    0.01449,
+    0.03379,
+    0.05485,
+    0.01759
+   ],
+   "p1": 0.88274,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2065.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.06478,
+    0.01074,
+    0.86035,
+    0.00371,
+    0.03512,
+    0.01391,
+    0.01139
+   ],
+   "p_raw": [
+    0.10511,
+    0.02743,
+    0.72662,
+    0.01239,
+    0.06651,
+    0.03328,
+    0.02866
+   ],
+   "p1": 0.86035,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/D-ST-BCIN-FR.002.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0187,
+    0.01799,
+    0.77397,
+    0.02867,
+    0.0806,
+    0.00945,
+    0.07062
+   ],
+   "p_raw": [
+    0.03876,
+    0.03766,
+    0.62675,
+    0.05335,
+    0.11554,
+    0.02327,
+    0.10467
+   ],
+   "p1": 0.77397,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/Strawberry_HU.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.20215,
+    0.01404,
+    0.57084,
+    0.04325,
+    0.14527,
+    0.01648,
+    0.00797
+   ],
+   "p_raw": [
+    0.21512,
+    0.0293,
+    0.46741,
+    0.06793,
+    0.16804,
+    0.03302,
+    0.01919
+   ],
+   "p1": 0.57084,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1026.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01235,
+    0.00181,
+    0.86461,
+    0.07444,
+    0.01823,
+    0.02408,
+    0.00448
+   ],
+   "p_raw": [
+    0.03079,
+    0.00733,
+    0.73758,
+    0.11794,
+    0.0412,
+    0.05073,
+    0.01443
+   ],
+   "p1": 0.86461,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (4).jpg",
+   "truth": "gray_mold",
+   "pred": "healthy",
+   "p_cal": [
+    0.02493,
+    0.04606,
+    0.00749,
+    0.70371,
+    0.14027,
+    0.06907,
+    0.00847
+   ],
+   "p_raw": [
+    0.04681,
+    0.07407,
+    0.01905,
+    0.5686,
+    0.1703,
+    0.10028,
+    0.02089
+   ],
+   "p1": 0.70371,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0188.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0464,
+    0.02294,
+    0.87063,
+    0.01663,
+    0.02345,
+    0.01755,
+    0.0024
+   ],
+   "p_raw": [
+    0.08198,
+    0.04842,
+    0.73373,
+    0.03807,
+    0.04922,
+    0.03963,
+    0.00896
+   ],
+   "p1": 0.87063,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1502.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0691,
+    0.00895,
+    0.87906,
+    0.00238,
+    0.02706,
+    0.01221,
+    0.00124
+   ],
+   "p_raw": [
+    0.11349,
+    0.02463,
+    0.75973,
+    0.00915,
+    0.05631,
+    0.03106,
+    0.00562
+   ],
+   "p1": 0.87906,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1880.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02377,
+    0.01321,
+    0.91121,
+    0.01665,
+    0.02346,
+    0.00892,
+    0.00278
+   ],
+   "p_raw": [
+    0.05168,
+    0.03331,
+    0.78902,
+    0.0396,
+    0.05117,
+    0.02484,
+    0.01039
+   ],
+   "p1": 0.91121,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1780.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.00801,
+    0.01224,
+    0.92708,
+    0.00265,
+    0.02649,
+    0.0108,
+    0.01273
+   ],
+   "p_raw": [
+    0.02337,
+    0.03208,
+    0.81495,
+    0.01022,
+    0.05713,
+    0.02922,
+    0.03304
+   ],
+   "p1": 0.92708,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1978.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02121,
+    0.00827,
+    0.94491,
+    0.00158,
+    0.01633,
+    0.00615,
+    0.00155
+   ],
+   "p_raw": [
+    0.0498,
+    0.02463,
+    0.8507,
+    0.00715,
+    0.04095,
+    0.01974,
+    0.00704
+   ],
+   "p1": 0.94491,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0075.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0924,
+    0.03022,
+    0.74111,
+    0.00137,
+    0.02211,
+    0.08407,
+    0.02872
+   ],
+   "p_raw": [
+    0.12641,
+    0.05482,
+    0.59938,
+    0.00543,
+    0.0434,
+    0.11779,
+    0.05277
+   ],
+   "p1": 0.74111,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0007.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01215,
+    0.00422,
+    0.95871,
+    0.00175,
+    0.00734,
+    0.01152,
+    0.00431
+   ],
+   "p_raw": [
+    0.03335,
+    0.01513,
+    0.8734,
+    0.00783,
+    0.02288,
+    0.03205,
+    0.01537
+   ],
+   "p1": 0.95871,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0700.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.06279,
+    0.06183,
+    0.77952,
+    0.00832,
+    0.06378,
+    0.01114,
+    0.01262
+   ],
+   "p_raw": [
+    0.09643,
+    0.09533,
+    0.63385,
+    0.02128,
+    0.09757,
+    0.02647,
+    0.02906
+   ],
+   "p1": 0.77952,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1618.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01418,
+    0.007,
+    0.90649,
+    0.00358,
+    0.04108,
+    0.01987,
+    0.0078
+   ],
+   "p_raw": [
+    0.03513,
+    0.02072,
+    0.78612,
+    0.01255,
+    0.0778,
+    0.04521,
+    0.02247
+   ],
+   "p1": 0.90649,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1472.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02774,
+    0.01002,
+    0.91754,
+    0.00395,
+    0.0286,
+    0.00993,
+    0.00222
+   ],
+   "p_raw": [
+    0.05878,
+    0.02746,
+    0.80377,
+    0.01369,
+    0.06014,
+    0.02727,
+    0.0089
+   ],
+   "p1": 0.91754,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1858.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03488,
+    0.01195,
+    0.85579,
+    0.00239,
+    0.0317,
+    0.06014,
+    0.00315
+   ],
+   "p_raw": [
+    0.06613,
+    0.02969,
+    0.72335,
+    0.00892,
+    0.06157,
+    0.09938,
+    0.01096
+   ],
+   "p1": 0.85579,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2201.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03413,
+    0.01374,
+    0.8769,
+    0.00401,
+    0.04445,
+    0.01584,
+    0.01093
+   ],
+   "p_raw": [
+    0.06562,
+    0.03324,
+    0.74296,
+    0.01324,
+    0.07995,
+    0.03697,
+    0.02802
+   ],
+   "p1": 0.8769,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0914.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0075,
+    0.00298,
+    0.96564,
+    0.00113,
+    0.01144,
+    0.00754,
+    0.00377
+   ],
+   "p_raw": [
+    0.02354,
+    0.01181,
+    0.88896,
+    0.00572,
+    0.03227,
+    0.02363,
+    0.01408
+   ],
+   "p1": 0.96564,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0354.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.09908,
+    0.01382,
+    0.47881,
+    0.09488,
+    0.16617,
+    0.14449,
+    0.00276
+   ],
+   "p_raw": [
+    0.12033,
+    0.0276,
+    0.39067,
+    0.11649,
+    0.17711,
+    0.15953,
+    0.00828
+   ],
+   "p1": 0.47881,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/Cline_Strawb_gray_at_cap3.jpeg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.00814,
+    0.01723,
+    0.94565,
+    0.00016,
+    0.0214,
+    0.00217,
+    0.00525
+   ],
+   "p_raw": [
+    0.02443,
+    0.04279,
+    0.85446,
+    0.00129,
+    0.05032,
+    0.00909,
+    0.0176
+   ],
+   "p1": 0.94565,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1830.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0241,
+    0.00985,
+    0.91178,
+    0.00264,
+    0.02173,
+    0.02513,
+    0.00477
+   ],
+   "p_raw": [
+    0.05242,
+    0.02685,
+    0.79248,
+    0.01004,
+    0.04851,
+    0.05408,
+    0.01562
+   ],
+   "p1": 0.91178,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1178.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02582,
+    0.03352,
+    0.88949,
+    0.01951,
+    0.01284,
+    0.01758,
+    0.00124
+   ],
+   "p_raw": [
+    0.05385,
+    0.06545,
+    0.75911,
+    0.04367,
+    0.03194,
+    0.0404,
+    0.00557
+   ],
+   "p1": 0.88949,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1180.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02719,
+    0.03458,
+    0.89286,
+    0.01726,
+    0.01166,
+    0.01494,
+    0.00151
+   ],
+   "p_raw": [
+    0.0562,
+    0.06726,
+    0.7643,
+    0.04001,
+    0.02984,
+    0.03592,
+    0.00647
+   ],
+   "p1": 0.89286,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2213.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04592,
+    0.06138,
+    0.76225,
+    0.01372,
+    0.04692,
+    0.02702,
+    0.04279
+   ],
+   "p_raw": [
+    0.07434,
+    0.09234,
+    0.60712,
+    0.03013,
+    0.07554,
+    0.05001,
+    0.07052
+   ],
+   "p1": 0.76225,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/strawberrybotrytis3.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01692,
+    0.02541,
+    0.78863,
+    0.04172,
+    0.0458,
+    0.06392,
+    0.0176
+   ],
+   "p_raw": [
+    0.03594,
+    0.04871,
+    0.63506,
+    0.07056,
+    0.07566,
+    0.09707,
+    0.03701
+   ],
+   "p1": 0.78863,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1352.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0574,
+    0.01441,
+    0.8159,
+    0.0547,
+    0.013,
+    0.04211,
+    0.00248
+   ],
+   "p_raw": [
+    0.09249,
+    0.03292,
+    0.67269,
+    0.08922,
+    0.03048,
+    0.07337,
+    0.00883
+   ],
+   "p1": 0.8159,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1028.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01412,
+    0.00307,
+    0.96649,
+    0.0019,
+    0.00896,
+    0.00402,
+    0.00144
+   ],
+   "p_raw": [
+    0.03791,
+    0.01212,
+    0.89282,
+    0.00846,
+    0.02698,
+    0.01482,
+    0.00688
+   ],
+   "p1": 0.96649,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1474.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02452,
+    0.01136,
+    0.90024,
+    0.01376,
+    0.04213,
+    0.00647,
+    0.00152
+   ],
+   "p_raw": [
+    0.05266,
+    0.02963,
+    0.77855,
+    0.03419,
+    0.07893,
+    0.01945,
+    0.00659
+   ],
+   "p1": 0.90024,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0599.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03987,
+    0.02399,
+    0.86718,
+    0.00729,
+    0.02796,
+    0.0286,
+    0.00511
+   ],
+   "p_raw": [
+    0.07287,
+    0.04985,
+    0.72839,
+    0.02046,
+    0.05589,
+    0.05685,
+    0.01569
+   ],
+   "p1": 0.86718,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1128.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01191,
+    0.00418,
+    0.87001,
+    0.0044,
+    0.02654,
+    0.08097,
+    0.00199
+   ],
+   "p_raw": [
+    0.03037,
+    0.01388,
+    0.75082,
+    0.01443,
+    0.05528,
+    0.12725,
+    0.00797
+   ],
+   "p1": 0.87001,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1309.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01819,
+    0.0174,
+    0.92525,
+    0.00712,
+    0.01691,
+    0.00934,
+    0.00579
+   ],
+   "p_raw": [
+    0.04291,
+    0.04151,
+    0.80937,
+    0.02128,
+    0.04063,
+    0.02607,
+    0.01823
+   ],
+   "p1": 0.92525,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1611.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01704,
+    0.00864,
+    0.90448,
+    0.00247,
+    0.04343,
+    0.01884,
+    0.0051
+   ],
+   "p_raw": [
+    0.04031,
+    0.02426,
+    0.78498,
+    0.00951,
+    0.08112,
+    0.04345,
+    0.01636
+   ],
+   "p1": 0.90448,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2312.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.00976,
+    0.00943,
+    0.94819,
+    0.0026,
+    0.0131,
+    0.0121,
+    0.00482
+   ],
+   "p_raw": [
+    0.02781,
+    0.02711,
+    0.85101,
+    0.01035,
+    0.03466,
+    0.03266,
+    0.01641
+   ],
+   "p1": 0.94819,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0736.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05165,
+    0.01524,
+    0.85641,
+    0.00519,
+    0.04343,
+    0.02563,
+    0.00245
+   ],
+   "p_raw": [
+    0.08838,
+    0.03549,
+    0.72123,
+    0.01586,
+    0.07764,
+    0.05234,
+    0.00905
+   ],
+   "p1": 0.85641,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2241.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02401,
+    0.00784,
+    0.88132,
+    0.00026,
+    0.05169,
+    0.00911,
+    0.02577
+   ],
+   "p_raw": [
+    0.05112,
+    0.02214,
+    0.75564,
+    0.00174,
+    0.09069,
+    0.02477,
+    0.0539
+   ],
+   "p1": 0.88132,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0663.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02034,
+    0.01008,
+    0.92893,
+    0.00462,
+    0.02419,
+    0.0051,
+    0.00674
+   ],
+   "p_raw": [
+    0.04704,
+    0.02783,
+    0.81871,
+    0.01553,
+    0.05355,
+    0.01673,
+    0.0206
+   ],
+   "p1": 0.92893,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/graymoldNonsynth.jpeg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05715,
+    0.01666,
+    0.80682,
+    0.00063,
+    0.03129,
+    0.03602,
+    0.05143
+   ],
+   "p_raw": [
+    0.09142,
+    0.03638,
+    0.66154,
+    0.00314,
+    0.05828,
+    0.06474,
+    0.08449
+   ],
+   "p1": 0.80682,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0538.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02409,
+    0.01248,
+    0.89378,
+    0.00374,
+    0.02765,
+    0.02585,
+    0.01241
+   ],
+   "p_raw": [
+    0.0512,
+    0.03131,
+    0.76286,
+    0.01272,
+    0.05676,
+    0.05397,
+    0.03118
+   ],
+   "p1": 0.89378,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0555.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01708,
+    0.00318,
+    0.92919,
+    0.00155,
+    0.02347,
+    0.02416,
+    0.00137
+   ],
+   "p_raw": [
+    0.04166,
+    0.01186,
+    0.8264,
+    0.00693,
+    0.05284,
+    0.05399,
+    0.00632
+   ],
+   "p1": 0.92919,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0204.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.00949,
+    0.00305,
+    0.96021,
+    0.00199,
+    0.01468,
+    0.00704,
+    0.00354
+   ],
+   "p_raw": [
+    0.02782,
+    0.01191,
+    0.87751,
+    0.00865,
+    0.03855,
+    0.02225,
+    0.01331
+   ],
+   "p1": 0.96021,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0386.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04964,
+    0.03948,
+    0.80046,
+    0.00932,
+    0.07469,
+    0.02146,
+    0.00495
+   ],
+   "p_raw": [
+    0.08203,
+    0.06912,
+    0.65557,
+    0.02349,
+    0.11132,
+    0.04382,
+    0.01464
+   ],
+   "p1": 0.80046,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1945.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05179,
+    0.04565,
+    0.83262,
+    0.01016,
+    0.04277,
+    0.01324,
+    0.00377
+   ],
+   "p_raw": [
+    0.08659,
+    0.0788,
+    0.69049,
+    0.02563,
+    0.07505,
+    0.03124,
+    0.01221
+   ],
+   "p1": 0.83262,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0219.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04295,
+    0.00998,
+    0.84285,
+    0.02333,
+    0.02696,
+    0.04959,
+    0.00434
+   ],
+   "p_raw": [
+    0.07561,
+    0.0254,
+    0.69987,
+    0.04792,
+    0.05339,
+    0.08419,
+    0.01363
+   ],
+   "p1": 0.84285,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1173.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03491,
+    0.02167,
+    0.905,
+    0.00322,
+    0.02304,
+    0.01013,
+    0.00203
+   ],
+   "p_raw": [
+    0.0689,
+    0.04824,
+    0.78523,
+    0.0116,
+    0.0505,
+    0.02732,
+    0.00822
+   ],
+   "p1": 0.905,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1937.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02485,
+    0.00478,
+    0.90941,
+    0.00348,
+    0.0313,
+    0.02267,
+    0.00351
+   ],
+   "p_raw": [
+    0.0537,
+    0.01566,
+    0.79192,
+    0.01235,
+    0.06381,
+    0.05013,
+    0.01243
+   ],
+   "p1": 0.90941,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2355.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01283,
+    0.00552,
+    0.92158,
+    0.00011,
+    0.03141,
+    0.01617,
+    0.01238
+   ],
+   "p_raw": [
+    0.03323,
+    0.01769,
+    0.81137,
+    0.00095,
+    0.0649,
+    0.03951,
+    0.03236
+   ],
+   "p1": 0.92158,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (11).jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01084,
+    0.00706,
+    0.864,
+    0.00228,
+    0.03329,
+    0.0539,
+    0.02863
+   ],
+   "p_raw": [
+    0.02768,
+    0.02009,
+    0.73053,
+    0.00863,
+    0.06404,
+    0.09181,
+    0.05721
+   ],
+   "p1": 0.864,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1294.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02735,
+    0.00981,
+    0.90502,
+    0.01086,
+    0.0351,
+    0.00836,
+    0.0035
+   ],
+   "p_raw": [
+    0.05722,
+    0.02659,
+    0.78266,
+    0.02869,
+    0.06895,
+    0.02359,
+    0.0123
+   ],
+   "p1": 0.90502,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0444.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03942,
+    0.16477,
+    0.73226,
+    0.01057,
+    0.02989,
+    0.01568,
+    0.00741
+   ],
+   "p_raw": [
+    0.06769,
+    0.1972,
+    0.60137,
+    0.02531,
+    0.05504,
+    0.03398,
+    0.01941
+   ],
+   "p1": 0.73226,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1163.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01612,
+    0.00917,
+    0.92785,
+    0.00455,
+    0.0326,
+    0.00773,
+    0.00198
+   ],
+   "p_raw": [
+    0.03966,
+    0.02602,
+    0.8206,
+    0.01541,
+    0.06715,
+    0.0229,
+    0.00827
+   ],
+   "p1": 0.92785,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1035.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01843,
+    0.00431,
+    0.94484,
+    0.00245,
+    0.01991,
+    0.00713,
+    0.00293
+   ],
+   "p_raw": [
+    0.04477,
+    0.01511,
+    0.84945,
+    0.00991,
+    0.04743,
+    0.02201,
+    0.01132
+   ],
+   "p1": 0.94484,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2183.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04733,
+    0.02213,
+    0.83057,
+    0.03898,
+    0.03082,
+    0.02764,
+    0.00253
+   ],
+   "p_raw": [
+    0.08031,
+    0.0455,
+    0.68374,
+    0.06946,
+    0.05828,
+    0.05372,
+    0.00899
+   ],
+   "p1": 0.83057,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2178.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03011,
+    0.0425,
+    0.88729,
+    0.0044,
+    0.02477,
+    0.00914,
+    0.00179
+   ],
+   "p_raw": [
+    0.06072,
+    0.07856,
+    0.76157,
+    0.01442,
+    0.05247,
+    0.0249,
+    0.00736
+   ],
+   "p1": 0.88729,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1699.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02426,
+    0.00339,
+    0.96083,
+    0.00015,
+    0.00684,
+    0.00326,
+    0.00127
+   ],
+   "p_raw": [
+    0.05676,
+    0.01304,
+    0.88799,
+    0.00127,
+    0.02203,
+    0.01266,
+    0.00626
+   ],
+   "p1": 0.96083,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/5558468.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01495,
+    0.08216,
+    0.41885,
+    0.00182,
+    0.11832,
+    0.01802,
+    0.34588
+   ],
+   "p_raw": [
+    0.03015,
+    0.10775,
+    0.36411,
+    0.00625,
+    0.14152,
+    0.03466,
+    0.31556
+   ],
+   "p1": 0.41885,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1389.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05518,
+    0.04052,
+    0.81625,
+    0.00732,
+    0.03327,
+    0.04247,
+    0.00499
+   ],
+   "p_raw": [
+    0.08944,
+    0.071,
+    0.67015,
+    0.01976,
+    0.06127,
+    0.07354,
+    0.01484
+   ],
+   "p1": 0.81625,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1220.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03864,
+    0.01568,
+    0.89503,
+    0.00313,
+    0.02738,
+    0.01672,
+    0.00342
+   ],
+   "p_raw": [
+    0.07347,
+    0.03744,
+    0.7698,
+    0.01123,
+    0.05679,
+    0.03928,
+    0.01199
+   ],
+   "p1": 0.89503,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1296.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01526,
+    0.00301,
+    0.95036,
+    0.00184,
+    0.01943,
+    0.00794,
+    0.00216
+   ],
+   "p_raw": [
+    0.03923,
+    0.01166,
+    0.86088,
+    0.00807,
+    0.04699,
+    0.02407,
+    0.0091
+   ],
+   "p1": 0.95036,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1344.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04383,
+    0.01034,
+    0.89035,
+    0.0075,
+    0.03121,
+    0.01126,
+    0.00551
+   ],
+   "p_raw": [
+    0.08029,
+    0.02728,
+    0.76258,
+    0.02145,
+    0.06229,
+    0.02907,
+    0.01704
+   ],
+   "p1": 0.89035,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (3).jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03185,
+    0.01038,
+    0.73492,
+    0.11928,
+    0.04752,
+    0.04557,
+    0.01048
+   ],
+   "p_raw": [
+    0.05664,
+    0.0245,
+    0.59176,
+    0.152,
+    0.07639,
+    0.07404,
+    0.02468
+   ],
+   "p1": 0.73492,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1399.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03821,
+    0.0181,
+    0.86561,
+    0.00329,
+    0.04728,
+    0.01859,
+    0.00892
+   ],
+   "p_raw": [
+    0.07077,
+    0.04048,
+    0.72928,
+    0.01132,
+    0.08299,
+    0.0413,
+    0.02385
+   ],
+   "p1": 0.86561,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0998.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05791,
+    0.01973,
+    0.82374,
+    0.0332,
+    0.03819,
+    0.02518,
+    0.00205
+   ],
+   "p_raw": [
+    0.09315,
+    0.04165,
+    0.67786,
+    0.06146,
+    0.06824,
+    0.04998,
+    0.00766
+   ],
+   "p1": 0.82374,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0579.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02081,
+    0.01339,
+    0.92847,
+    0.00233,
+    0.02179,
+    0.00923,
+    0.00398
+   ],
+   "p_raw": [
+    0.04788,
+    0.03443,
+    0.81884,
+    0.00932,
+    0.04955,
+    0.02607,
+    0.0139
+   ],
+   "p1": 0.92847,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0177.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.09607,
+    0.01699,
+    0.82664,
+    0.00296,
+    0.04396,
+    0.00542,
+    0.00796
+   ],
+   "p_raw": [
+    0.13937,
+    0.03817,
+    0.69652,
+    0.01034,
+    0.07769,
+    0.01625,
+    0.02166
+   ],
+   "p1": 0.82664,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1381.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02668,
+    0.00421,
+    0.94592,
+    0.00095,
+    0.01664,
+    0.00431,
+    0.00129
+   ],
+   "p_raw": [
+    0.05953,
+    0.01497,
+    0.85734,
+    0.00492,
+    0.04183,
+    0.01524,
+    0.00618
+   ],
+   "p1": 0.94592,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1382.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05212,
+    0.00914,
+    0.89207,
+    0.00611,
+    0.02616,
+    0.01029,
+    0.00411
+   ],
+   "p_raw": [
+    0.09196,
+    0.02503,
+    0.76844,
+    0.01852,
+    0.05493,
+    0.02735,
+    0.01377
+   ],
+   "p1": 0.89207,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1628.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01788,
+    0.03868,
+    0.88337,
+    0.01021,
+    0.03572,
+    0.00663,
+    0.00751
+   ],
+   "p_raw": [
+    0.0407,
+    0.07246,
+    0.75114,
+    0.02677,
+    0.06827,
+    0.01939,
+    0.02128
+   ],
+   "p1": 0.88337,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0740.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01335,
+    0.01061,
+    0.93783,
+    0.00148,
+    0.01881,
+    0.00695,
+    0.01097
+   ],
+   "p_raw": [
+    0.0347,
+    0.02923,
+    0.83327,
+    0.0067,
+    0.04484,
+    0.0213,
+    0.02996
+   ],
+   "p1": 0.93783,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1357.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02631,
+    0.01366,
+    0.91074,
+    0.00541,
+    0.02791,
+    0.01438,
+    0.00159
+   ],
+   "p_raw": [
+    0.05596,
+    0.03428,
+    0.79164,
+    0.01715,
+    0.05848,
+    0.03562,
+    0.00687
+   ],
+   "p1": 0.91074,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1918.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0436,
+    0.01189,
+    0.90418,
+    0.00496,
+    0.01602,
+    0.01753,
+    0.00182
+   ],
+   "p_raw": [
+    0.08134,
+    0.03079,
+    0.78462,
+    0.01602,
+    0.03848,
+    0.04116,
+    0.00757
+   ],
+   "p1": 0.90418,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0718.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05773,
+    0.02095,
+    0.87653,
+    0.01548,
+    0.01961,
+    0.00627,
+    0.00343
+   ],
+   "p_raw": [
+    0.09765,
+    0.04577,
+    0.7461,
+    0.03651,
+    0.04356,
+    0.01858,
+    0.01183
+   ],
+   "p1": 0.87653,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1782.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02997,
+    0.09939,
+    0.77592,
+    0.00471,
+    0.05591,
+    0.02578,
+    0.00832
+   ],
+   "p_raw": [
+    0.05569,
+    0.13644,
+    0.63404,
+    0.01396,
+    0.08875,
+    0.04976,
+    0.02136
+   ],
+   "p1": 0.77592,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1134.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01669,
+    0.00812,
+    0.94896,
+    0.00338,
+    0.01072,
+    0.00424,
+    0.00789
+   ],
+   "p_raw": [
+    0.0416,
+    0.02428,
+    0.85293,
+    0.01261,
+    0.02988,
+    0.01494,
+    0.02376
+   ],
+   "p1": 0.94896,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2061.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02588,
+    0.00439,
+    0.93679,
+    0.00176,
+    0.01735,
+    0.01209,
+    0.00174
+   ],
+   "p_raw": [
+    0.05725,
+    0.0152,
+    0.8374,
+    0.00767,
+    0.04246,
+    0.03241,
+    0.00761
+   ],
+   "p1": 0.93679,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1213.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02562,
+    0.01651,
+    0.91408,
+    0.00628,
+    0.02676,
+    0.00812,
+    0.00263
+   ],
+   "p_raw": [
+    0.05501,
+    0.03961,
+    0.796,
+    0.01923,
+    0.05683,
+    0.0233,
+    0.01003
+   ],
+   "p1": 0.91408,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1215.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02344,
+    0.01838,
+    0.91,
+    0.00685,
+    0.02898,
+    0.00981,
+    0.00254
+   ],
+   "p_raw": [
+    0.0512,
+    0.04269,
+    0.78926,
+    0.02041,
+    0.06001,
+    0.0267,
+    0.00972
+   ],
+   "p1": 0.91,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1639.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01672,
+    0.00848,
+    0.90221,
+    0.01988,
+    0.0392,
+    0.00595,
+    0.00756
+   ],
+   "p_raw": [
+    0.03943,
+    0.02374,
+    0.77739,
+    0.04488,
+    0.07456,
+    0.01821,
+    0.02179
+   ],
+   "p1": 0.90221,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0554.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02731,
+    0.00905,
+    0.87823,
+    0.00698,
+    0.03644,
+    0.03937,
+    0.00262
+   ],
+   "p_raw": [
+    0.05581,
+    0.02444,
+    0.74732,
+    0.02013,
+    0.06924,
+    0.07337,
+    0.00968
+   ],
+   "p1": 0.87823,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2340.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02243,
+    0.00998,
+    0.94634,
+    0.00189,
+    0.01221,
+    0.0052,
+    0.00195
+   ],
+   "p_raw": [
+    0.05198,
+    0.02838,
+    0.85266,
+    0.00818,
+    0.03299,
+    0.01743,
+    0.00837
+   ],
+   "p1": 0.94634,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0388.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03129,
+    0.00938,
+    0.85073,
+    0.00933,
+    0.08015,
+    0.01773,
+    0.00139
+   ],
+   "p_raw": [
+    0.061,
+    0.02479,
+    0.72045,
+    0.02469,
+    0.12323,
+    0.0399,
+    0.00595
+   ],
+   "p1": 0.85073,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0391.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02052,
+    0.00754,
+    0.87357,
+    0.00759,
+    0.07525,
+    0.01262,
+    0.00291
+   ],
+   "p_raw": [
+    0.04539,
+    0.02147,
+    0.74955,
+    0.02158,
+    0.1199,
+    0.03156,
+    0.01054
+   ],
+   "p1": 0.87357,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/boytris-fruit-rot-strawberry.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01983,
+    0.03681,
+    0.52861,
+    0.00052,
+    0.17503,
+    0.07321,
+    0.16599
+   ],
+   "p_raw": [
+    0.03713,
+    0.05895,
+    0.43205,
+    0.00244,
+    0.1891,
+    0.09857,
+    0.18175
+   ],
+   "p1": 0.52861,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2193.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01834,
+    0.01248,
+    0.93304,
+    0.00103,
+    0.02966,
+    0.00467,
+    0.00078
+   ],
+   "p_raw": [
+    0.04421,
+    0.03316,
+    0.83409,
+    0.00514,
+    0.06333,
+    0.0159,
+    0.00417
+   ],
+   "p1": 0.93304,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0191.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0806,
+    0.00614,
+    0.77518,
+    0.0112,
+    0.04861,
+    0.05939,
+    0.01888
+   ],
+   "p_raw": [
+    0.11595,
+    0.01692,
+    0.62971,
+    0.02652,
+    0.07945,
+    0.09228,
+    0.03918
+   ],
+   "p1": 0.77518,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0784.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04177,
+    0.00975,
+    0.87867,
+    0.00365,
+    0.03648,
+    0.02483,
+    0.00485
+   ],
+   "p_raw": [
+    0.07675,
+    0.02587,
+    0.74824,
+    0.01241,
+    0.06936,
+    0.05203,
+    0.01535
+   ],
+   "p1": 0.87867,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2221.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03839,
+    0.00572,
+    0.88126,
+    0.00297,
+    0.01718,
+    0.0526,
+    0.00188
+   ],
+   "p_raw": [
+    0.07292,
+    0.01757,
+    0.75885,
+    0.01076,
+    0.03998,
+    0.09227,
+    0.00765
+   ],
+   "p1": 0.88126,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/Straw-Botrytis-berries.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04291,
+    0.00677,
+    0.89451,
+    0.00155,
+    0.04097,
+    0.00586,
+    0.00743
+   ],
+   "p_raw": [
+    0.08013,
+    0.02015,
+    0.77593,
+    0.00669,
+    0.07741,
+    0.01809,
+    0.0216
+   ],
+   "p1": 0.89451,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0830.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.0108,
+    0.0057,
+    0.94537,
+    0.00166,
+    0.02727,
+    0.0082,
+    0.001
+   ],
+   "p_raw": [
+    0.03016,
+    0.01871,
+    0.85377,
+    0.00744,
+    0.06028,
+    0.02455,
+    0.00509
+   ],
+   "p1": 0.94537,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0245.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03944,
+    0.01665,
+    0.88465,
+    0.01154,
+    0.03144,
+    0.00884,
+    0.00744
+   ],
+   "p_raw": [
+    0.07347,
+    0.03856,
+    0.75149,
+    0.02932,
+    0.06202,
+    0.02402,
+    0.02112
+   ],
+   "p1": 0.88465,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0166.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02831,
+    0.01804,
+    0.81746,
+    0.02397,
+    0.0566,
+    0.04466,
+    0.01096
+   ],
+   "p_raw": [
+    0.05397,
+    0.03854,
+    0.66679,
+    0.04766,
+    0.09059,
+    0.07589,
+    0.02655
+   ],
+   "p1": 0.81746,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2251.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01306,
+    0.01522,
+    0.91067,
+    0.01752,
+    0.02233,
+    0.01405,
+    0.00715
+   ],
+   "p_raw": [
+    0.03286,
+    0.03684,
+    0.78466,
+    0.04093,
+    0.04907,
+    0.0347,
+    0.02094
+   ],
+   "p1": 0.91067,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0918.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01571,
+    0.00219,
+    0.91232,
+    0.00137,
+    0.06353,
+    0.00287,
+    0.00201
+   ],
+   "p_raw": [
+    0.03913,
+    0.00897,
+    0.81499,
+    0.00632,
+    0.1112,
+    0.01098,
+    0.00841
+   ],
+   "p1": 0.91232,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1583.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01977,
+    0.02319,
+    0.84133,
+    0.06684,
+    0.02245,
+    0.00752,
+    0.0189
+   ],
+   "p_raw": [
+    0.04224,
+    0.04759,
+    0.69736,
+    0.10501,
+    0.04645,
+    0.02051,
+    0.04084
+   ],
+   "p1": 0.84133,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1479.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02961,
+    0.00457,
+    0.87021,
+    0.01519,
+    0.05015,
+    0.02689,
+    0.00338
+   ],
+   "p_raw": [
+    0.05888,
+    0.01457,
+    0.73708,
+    0.03575,
+    0.08731,
+    0.05479,
+    0.01163
+   ],
+   "p1": 0.87021,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1992.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04793,
+    0.04424,
+    0.8614,
+    0.0114,
+    0.01682,
+    0.01459,
+    0.00362
+   ],
+   "p_raw": [
+    0.08359,
+    0.07873,
+    0.72444,
+    0.02857,
+    0.03821,
+    0.03435,
+    0.01212
+   ],
+   "p1": 0.8614,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2039.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04711,
+    0.02496,
+    0.82527,
+    0.00903,
+    0.05825,
+    0.02561,
+    0.00977
+   ],
+   "p_raw": [
+    0.07981,
+    0.04964,
+    0.67858,
+    0.02321,
+    0.09353,
+    0.0506,
+    0.02462
+   ],
+   "p1": 0.82527,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1099.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01146,
+    0.00329,
+    0.96543,
+    0.00083,
+    0.01466,
+    0.00301,
+    0.00132
+   ],
+   "p_raw": [
+    0.03246,
+    0.01277,
+    0.89279,
+    0.00456,
+    0.03902,
+    0.01195,
+    0.00645
+   ],
+   "p1": 0.96543,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2333.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01193,
+    0.00644,
+    0.94471,
+    0.00205,
+    0.022,
+    0.0054,
+    0.00747
+   ],
+   "p_raw": [
+    0.03226,
+    0.02035,
+    0.8472,
+    0.00865,
+    0.05097,
+    0.01784,
+    0.02273
+   ],
+   "p1": 0.94471,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1384.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05679,
+    0.01571,
+    0.8147,
+    0.00728,
+    0.05003,
+    0.05234,
+    0.00315
+   ],
+   "p_raw": [
+    0.09186,
+    0.03515,
+    0.67267,
+    0.01978,
+    0.08355,
+    0.08642,
+    0.01057
+   ],
+   "p1": 0.8147,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1888.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01943,
+    0.01225,
+    0.92581,
+    0.00194,
+    0.02373,
+    0.01467,
+    0.00217
+   ],
+   "p_raw": [
+    0.04542,
+    0.03217,
+    0.81592,
+    0.00811,
+    0.05274,
+    0.03681,
+    0.00882
+   ],
+   "p1": 0.92581,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0661.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01245,
+    0.00703,
+    0.95862,
+    0.00318,
+    0.00911,
+    0.00826,
+    0.00135
+   ],
+   "p_raw": [
+    0.03396,
+    0.02215,
+    0.87332,
+    0.01224,
+    0.02689,
+    0.02499,
+    0.00645
+   ],
+   "p1": 0.95862,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2348.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.10363,
+    0.03252,
+    0.65452,
+    0.06873,
+    0.1068,
+    0.01653,
+    0.01727
+   ],
+   "p_raw": [
+    0.13054,
+    0.05489,
+    0.51773,
+    0.09603,
+    0.13351,
+    0.0331,
+    0.0342
+   ],
+   "p1": 0.65452,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1027.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03489,
+    0.00719,
+    0.91342,
+    0.00271,
+    0.03287,
+    0.00563,
+    0.00329
+   ],
+   "p_raw": [
+    0.06983,
+    0.02144,
+    0.80178,
+    0.01034,
+    0.06679,
+    0.01786,
+    0.01195
+   ],
+   "p1": 0.91342,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0903.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02263,
+    0.01198,
+    0.90102,
+    0.00351,
+    0.03061,
+    0.02318,
+    0.00707
+   ],
+   "p_raw": [
+    0.04934,
+    0.03067,
+    0.77499,
+    0.01225,
+    0.06184,
+    0.05023,
+    0.02068
+   ],
+   "p1": 0.90102,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0996.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03152,
+    0.01142,
+    0.90118,
+    0.00602,
+    0.03209,
+    0.01627,
+    0.0015
+   ],
+   "p_raw": [
+    0.0635,
+    0.02973,
+    0.77873,
+    0.01842,
+    0.06436,
+    0.03874,
+    0.00652
+   ],
+   "p1": 0.90118,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1707.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01793,
+    0.01714,
+    0.91358,
+    0.00472,
+    0.01723,
+    0.02585,
+    0.00355
+   ],
+   "p_raw": [
+    0.04201,
+    0.04061,
+    0.79338,
+    0.01549,
+    0.04077,
+    0.05522,
+    0.01252
+   ],
+   "p1": 0.91358,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1388.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.07934,
+    0.10432,
+    0.71956,
+    0.01689,
+    0.03049,
+    0.04087,
+    0.00853
+   ],
+   "p_raw": [
+    0.11078,
+    0.13594,
+    0.57584,
+    0.03485,
+    0.0542,
+    0.06747,
+    0.02091
+   ],
+   "p1": 0.71956,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0137.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01927,
+    0.00149,
+    0.95179,
+    0.00082,
+    0.01809,
+    0.00568,
+    0.00286
+   ],
+   "p_raw": [
+    0.04697,
+    0.00693,
+    0.86673,
+    0.00443,
+    0.0448,
+    0.01885,
+    0.01128
+   ],
+   "p1": 0.95179,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2347.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.12058,
+    0.00399,
+    0.79946,
+    0.00475,
+    0.0356,
+    0.01059,
+    0.02503
+   ],
+   "p_raw": [
+    0.16253,
+    0.01272,
+    0.66842,
+    0.01449,
+    0.06529,
+    0.02638,
+    0.05018
+   ],
+   "p1": 0.79946,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1138.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02467,
+    0.00876,
+    0.92886,
+    0.0077,
+    0.01764,
+    0.00914,
+    0.00323
+   ],
+   "p_raw": [
+    0.05429,
+    0.02504,
+    0.81795,
+    0.02274,
+    0.04225,
+    0.02585,
+    0.01188
+   ],
+   "p1": 0.92886,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1231.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01888,
+    0.0059,
+    0.94028,
+    0.00097,
+    0.01463,
+    0.01635,
+    0.00299
+   ],
+   "p_raw": [
+    0.0453,
+    0.01899,
+    0.84123,
+    0.00492,
+    0.03744,
+    0.04068,
+    0.01143
+   ],
+   "p1": 0.94028,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0063.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.00574,
+    0.00203,
+    0.97792,
+    0.00366,
+    0.00616,
+    0.00385,
+    0.00064
+   ],
+   "p_raw": [
+    0.01971,
+    0.00906,
+    0.91791,
+    0.01408,
+    0.02078,
+    0.01462,
+    0.00382
+   ],
+   "p1": 0.97792,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0946.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05266,
+    0.01167,
+    0.79215,
+    0.01696,
+    0.07761,
+    0.02282,
+    0.02613
+   ],
+   "p_raw": [
+    0.08472,
+    0.02746,
+    0.64278,
+    0.03632,
+    0.11321,
+    0.04534,
+    0.05017
+   ],
+   "p1": 0.79215,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0865.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04104,
+    0.00926,
+    0.91074,
+    0.00479,
+    0.01898,
+    0.01205,
+    0.00314
+   ],
+   "p_raw": [
+    0.07822,
+    0.0257,
+    0.79368,
+    0.0157,
+    0.04395,
+    0.03129,
+    0.01145
+   ],
+   "p1": 0.91074,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0233.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01345,
+    0.00195,
+    0.9626,
+    0.00184,
+    0.01436,
+    0.0034,
+    0.0024
+   ],
+   "p_raw": [
+    0.03637,
+    0.00859,
+    0.88559,
+    0.00822,
+    0.03819,
+    0.01301,
+    0.01003
+   ],
+   "p1": 0.9626,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1555.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01132,
+    0.00619,
+    0.94811,
+    0.00249,
+    0.01846,
+    0.01024,
+    0.00319
+   ],
+   "p_raw": [
+    0.03115,
+    0.01984,
+    0.85308,
+    0.01004,
+    0.0449,
+    0.0289,
+    0.01209
+   ],
+   "p1": 0.94811,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0398.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01923,
+    0.01468,
+    0.91428,
+    0.00554,
+    0.03363,
+    0.01134,
+    0.0013
+   ],
+   "p_raw": [
+    0.0445,
+    0.03637,
+    0.79808,
+    0.01755,
+    0.06758,
+    0.02998,
+    0.00594
+   ],
+   "p1": 0.91428,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0711.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.09564,
+    0.03327,
+    0.55153,
+    0.21468,
+    0.06729,
+    0.02892,
+    0.00867
+   ],
+   "p_raw": [
+    0.12,
+    0.05449,
+    0.44462,
+    0.21962,
+    0.09226,
+    0.04908,
+    0.01994
+   ],
+   "p1": 0.55153,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1775.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01805,
+    0.00757,
+    0.92827,
+    0.0071,
+    0.02626,
+    0.00803,
+    0.00472
+   ],
+   "p_raw": [
+    0.04296,
+    0.02244,
+    0.81713,
+    0.02139,
+    0.05686,
+    0.02345,
+    0.01576
+   ],
+   "p1": 0.92827,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1512.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01268,
+    0.00287,
+    0.94385,
+    0.00554,
+    0.01958,
+    0.0108,
+    0.00468
+   ],
+   "p_raw": [
+    0.03368,
+    0.01109,
+    0.84461,
+    0.01814,
+    0.04661,
+    0.02988,
+    0.01599
+   ],
+   "p1": 0.94385,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0026.jpg",
+   "truth": "gray_mold",
+   "pred": "drought",
+   "p_cal": [
+    0.47509,
+    0.02248,
+    0.26843,
+    0.00947,
+    0.1022,
+    0.09435,
+    0.02798
+   ],
+   "p_raw": [
+    0.393,
+    0.04017,
+    0.25648,
+    0.02105,
+    0.12461,
+    0.11738,
+    0.04731
+   ],
+   "p1": 0.47509,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0205.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.02263,
+    0.01107,
+    0.92685,
+    0.00299,
+    0.01081,
+    0.0095,
+    0.01615
+   ],
+   "p_raw": [
+    0.0507,
+    0.02971,
+    0.81335,
+    0.01117,
+    0.02918,
+    0.0265,
+    0.0394
+   ],
+   "p1": 0.92685,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0033.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.04493,
+    0.00799,
+    0.85671,
+    0.00332,
+    0.03545,
+    0.04144,
+    0.01016
+   ],
+   "p_raw": [
+    0.07946,
+    0.02185,
+    0.71983,
+    0.01133,
+    0.06656,
+    0.0748,
+    0.02615
+   ],
+   "p1": 0.85671,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_303.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01307,
+    0.003,
+    0.00511,
+    0.95289,
+    0.01423,
+    0.0081,
+    0.0036
+   ],
+   "p_raw": [
+    0.03489,
+    0.01161,
+    0.01729,
+    0.86133,
+    0.03718,
+    0.0244,
+    0.01331
+   ],
+   "p1": 0.95289,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_310.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.04774,
+    0.00342,
+    0.00087,
+    0.92485,
+    0.00718,
+    0.0043,
+    0.01164
+   ],
+   "p_raw": [
+    0.08999,
+    0.01254,
+    0.00451,
+    0.82491,
+    0.02183,
+    0.01488,
+    0.03133
+   ],
+   "p1": 0.92485,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_14.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.0261,
+    0.00485,
+    0.01744,
+    0.91515,
+    0.01174,
+    0.01079,
+    0.01393
+   ],
+   "p_raw": [
+    0.05555,
+    0.01579,
+    0.0411,
+    0.79354,
+    0.03057,
+    0.0287,
+    0.03474
+   ],
+   "p1": 0.91515,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_26.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02522,
+    0.04022,
+    0.004,
+    0.88486,
+    0.02508,
+    0.01932,
+    0.0013
+   ],
+   "p_raw": [
+    0.05295,
+    0.07506,
+    0.01337,
+    0.75672,
+    0.05273,
+    0.04339,
+    0.00577
+   ],
+   "p1": 0.88486,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_12.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01266,
+    0.00961,
+    0.00987,
+    0.94334,
+    0.01683,
+    0.00669,
+    0.001
+   ],
+   "p_raw": [
+    0.03362,
+    0.02736,
+    0.02791,
+    0.84361,
+    0.04159,
+    0.02087,
+    0.00504
+   ],
+   "p1": 0.94334,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_80.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.03252,
+    0.01556,
+    0.0849,
+    0.69609,
+    0.11066,
+    0.02468,
+    0.03559
+   ],
+   "p_raw": [
+    0.05592,
+    0.03223,
+    0.11458,
+    0.55229,
+    0.13968,
+    0.0455,
+    0.05982
+   ],
+   "p1": 0.69609,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_214.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01896,
+    0.01093,
+    0.00882,
+    0.92794,
+    0.01808,
+    0.01021,
+    0.00506
+   ],
+   "p_raw": [
+    0.0444,
+    0.02942,
+    0.02506,
+    0.81378,
+    0.04285,
+    0.02795,
+    0.01654
+   ],
+   "p1": 0.92794,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthysunny.webp",
+   "truth": "healthy",
+   "pred": "drought",
+   "p_cal": [
+    0.54838,
+    0.02131,
+    0.16542,
+    0.05105,
+    0.15338,
+    0.03442,
+    0.02604
+   ],
+   "p_raw": [
+    0.43849,
+    0.03869,
+    0.17901,
+    0.07433,
+    0.16918,
+    0.05536,
+    0.04494
+   ],
+   "p1": 0.54838,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_46.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.05306,
+    0.00988,
+    0.0669,
+    0.60133,
+    0.16542,
+    0.08153,
+    0.02188
+   ],
+   "p_raw": [
+    0.07783,
+    0.02215,
+    0.09256,
+    0.4779,
+    0.18211,
+    0.10731,
+    0.04014
+   ],
+   "p1": 0.60133,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_313.jpg",
+   "truth": "healthy",
+   "pred": "overwatered",
+   "p_cal": [
+    0.22205,
+    0.29089,
+    0.00011,
+    0.00377,
+    0.36301,
+    0.11849,
+    0.00168
+   ],
+   "p_raw": [
+    0.22884,
+    0.28003,
+    0.00077,
+    0.01087,
+    0.33045,
+    0.1431,
+    0.00594
+   ],
+   "p1": 0.36301,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_59.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00835,
+    0.00832,
+    0.00331,
+    0.95516,
+    0.00781,
+    0.01493,
+    0.00212
+   ],
+   "p_raw": [
+    0.02505,
+    0.02498,
+    0.01254,
+    0.86594,
+    0.02383,
+    0.03867,
+    0.00899
+   ],
+   "p1": 0.95516,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_224.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.04432,
+    0.01735,
+    0.13842,
+    0.68242,
+    0.08076,
+    0.03252,
+    0.00421
+   ],
+   "p_raw": [
+    0.07097,
+    0.0352,
+    0.16626,
+    0.54792,
+    0.11114,
+    0.0563,
+    0.01221
+   ],
+   "p1": 0.68242,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_109.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01192,
+    0.00544,
+    0.00053,
+    0.96303,
+    0.00452,
+    0.00843,
+    0.00613
+   ],
+   "p_raw": [
+    0.03314,
+    0.01844,
+    0.00323,
+    0.88341,
+    0.01605,
+    0.02558,
+    0.02016
+   ],
+   "p1": 0.96303,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_236.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01912,
+    0.00521,
+    0.00648,
+    0.94728,
+    0.01248,
+    0.00599,
+    0.00344
+   ],
+   "p_raw": [
+    0.04599,
+    0.0174,
+    0.02048,
+    0.85062,
+    0.03343,
+    0.01931,
+    0.01276
+   ],
+   "p1": 0.94728,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_103.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.06196,
+    0.00385,
+    0.02598,
+    0.82718,
+    0.03131,
+    0.04738,
+    0.00234
+   ],
+   "p_raw": [
+    0.09908,
+    0.01242,
+    0.05174,
+    0.68764,
+    0.05949,
+    0.08108,
+    0.00856
+   ],
+   "p1": 0.82718,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_198.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.05046,
+    0.00395,
+    0.02328,
+    0.84966,
+    0.02827,
+    0.04137,
+    0.00301
+   ],
+   "p_raw": [
+    0.08623,
+    0.01284,
+    0.04836,
+    0.71183,
+    0.05592,
+    0.07433,
+    0.01048
+   ],
+   "p1": 0.84966,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/wild-strawberry.jpg",
+   "truth": "healthy",
+   "pred": "frost",
+   "p_cal": [
+    0.08037,
+    0.41337,
+    0.12773,
+    0.30081,
+    0.05491,
+    0.01674,
+    0.00607
+   ],
+   "p_raw": [
+    0.10305,
+    0.35053,
+    0.14569,
+    0.27639,
+    0.07751,
+    0.03189,
+    0.01494
+   ],
+   "p1": 0.41337,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_68.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01504,
+    0.00436,
+    0.00653,
+    0.95046,
+    0.01573,
+    0.00617,
+    0.00171
+   ],
+   "p_raw": [
+    0.03867,
+    0.01532,
+    0.02072,
+    0.85783,
+    0.03998,
+    0.01986,
+    0.00761
+   ],
+   "p1": 0.95046,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_127.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01985,
+    0.00442,
+    0.008,
+    0.92385,
+    0.01422,
+    0.01521,
+    0.01445
+   ],
+   "p_raw": [
+    0.04572,
+    0.01488,
+    0.02318,
+    0.80706,
+    0.03563,
+    0.03747,
+    0.03606
+   ],
+   "p1": 0.92385,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_77.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01982,
+    0.00479,
+    0.00799,
+    0.93337,
+    0.01291,
+    0.01233,
+    0.00879
+   ],
+   "p_raw": [
+    0.04623,
+    0.01599,
+    0.02344,
+    0.8232,
+    0.03355,
+    0.03242,
+    0.02517
+   ],
+   "p1": 0.93337,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_78.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02048,
+    0.00458,
+    0.00746,
+    0.92787,
+    0.01374,
+    0.01323,
+    0.01264
+   ],
+   "p_raw": [
+    0.04704,
+    0.01536,
+    0.02211,
+    0.81385,
+    0.03491,
+    0.03393,
+    0.0328
+   ],
+   "p1": 0.92787,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_58.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02618,
+    0.00704,
+    0.01516,
+    0.90071,
+    0.01467,
+    0.02687,
+    0.00937
+   ],
+   "p_raw": [
+    0.05478,
+    0.02052,
+    0.03641,
+    0.77148,
+    0.03553,
+    0.05586,
+    0.02541
+   ],
+   "p1": 0.90071,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_172.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.05554,
+    0.01306,
+    0.18302,
+    0.64408,
+    0.07598,
+    0.0211,
+    0.00722
+   ],
+   "p_raw": [
+    0.0834,
+    0.02826,
+    0.20338,
+    0.52095,
+    0.10541,
+    0.04045,
+    0.01815
+   ],
+   "p1": 0.64408,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_17.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.03399,
+    0.00672,
+    0.00278,
+    0.93022,
+    0.01667,
+    0.00829,
+    0.00133
+   ],
+   "p_raw": [
+    0.06972,
+    0.02075,
+    0.01073,
+    0.82741,
+    0.04093,
+    0.02428,
+    0.00618
+   ],
+   "p1": 0.93022,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_228.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.0194,
+    0.01254,
+    0.00313,
+    0.87598,
+    0.03597,
+    0.04078,
+    0.0122
+   ],
+   "p_raw": [
+    0.04297,
+    0.03101,
+    0.01099,
+    0.74158,
+    0.06818,
+    0.07489,
+    0.03038
+   ],
+   "p1": 0.87598,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_150.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00835,
+    0.00381,
+    0.0012,
+    0.97706,
+    0.00412,
+    0.00422,
+    0.00124
+   ],
+   "p_raw": [
+    0.02605,
+    0.01449,
+    0.00611,
+    0.91608,
+    0.01536,
+    0.01564,
+    0.00626
+   ],
+   "p1": 0.97706,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_287.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02079,
+    0.00843,
+    0.00759,
+    0.92428,
+    0.03089,
+    0.00621,
+    0.00181
+   ],
+   "p_raw": [
+    0.04774,
+    0.02431,
+    0.02248,
+    0.81425,
+    0.06418,
+    0.01935,
+    0.0077
+   ],
+   "p1": 0.92428,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/images.jpeg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00988,
+    0.04612,
+    0.00146,
+    0.90793,
+    0.01505,
+    0.01726,
+    0.0023
+   ],
+   "p_raw": [
+    0.02704,
+    0.08556,
+    0.00648,
+    0.79376,
+    0.03704,
+    0.04104,
+    0.0091
+   ],
+   "p1": 0.90793,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/Wild-Strawberry-e1537188257940.jpg",
+   "truth": "healthy",
+   "pred": "frost",
+   "p_cal": [
+    0.00501,
+    0.94997,
+    0.02782,
+    0.00569,
+    0.00565,
+    0.00245,
+    0.00341
+   ],
+   "p_raw": [
+    0.01707,
+    0.86117,
+    0.0615,
+    0.01878,
+    0.01868,
+    0.01,
+    0.01281
+   ],
+   "p1": 0.94997,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_202.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02722,
+    0.02763,
+    0.04556,
+    0.82709,
+    0.02868,
+    0.0262,
+    0.01762
+   ],
+   "p_raw": [
+    0.0525,
+    0.05309,
+    0.07715,
+    0.67373,
+    0.05459,
+    0.05102,
+    0.03793
+   ],
+   "p1": 0.82709,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_230.jpg",
+   "truth": "healthy",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.08211,
+    0.05636,
+    0.38585,
+    0.35221,
+    0.08235,
+    0.0337,
+    0.00742
+   ],
+   "p_raw": [
+    0.10432,
+    0.07874,
+    0.33168,
+    0.30982,
+    0.10454,
+    0.05361,
+    0.0173
+   ],
+   "p1": 0.38585,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_82.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01855,
+    0.0245,
+    0.02602,
+    0.87391,
+    0.0174,
+    0.02366,
+    0.01596
+   ],
+   "p_raw": [
+    0.04102,
+    0.0505,
+    0.05283,
+    0.73068,
+    0.0391,
+    0.0492,
+    0.03666
+   ],
+   "p1": 0.87391,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_192.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01433,
+    0.02279,
+    0.01331,
+    0.90717,
+    0.01178,
+    0.01778,
+    0.01284
+   ],
+   "p_raw": [
+    0.03504,
+    0.04957,
+    0.03316,
+    0.7785,
+    0.03027,
+    0.04118,
+    0.03228
+   ],
+   "p1": 0.90717,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_279.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01514,
+    0.00985,
+    0.00343,
+    0.93577,
+    0.01727,
+    0.01587,
+    0.00267
+   ],
+   "p_raw": [
+    0.03804,
+    0.02759,
+    0.01254,
+    0.83007,
+    0.04197,
+    0.0394,
+    0.0104
+   ],
+   "p1": 0.93577,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/frostyhealthy.jpeg",
+   "truth": "healthy",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.08125,
+    0.01117,
+    0.77031,
+    0.08944,
+    0.03705,
+    0.00816,
+    0.00262
+   ],
+   "p_raw": [
+    0.11783,
+    0.02673,
+    0.63313,
+    0.1266,
+    0.06551,
+    0.02114,
+    0.00904
+   ],
+   "p1": 0.77031,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthyfrost.jpg",
+   "truth": "healthy",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.10848,
+    0.0176,
+    0.77401,
+    0.03078,
+    0.05698,
+    0.00812,
+    0.00403
+   ],
+   "p_raw": [
+    0.14623,
+    0.03755,
+    0.6353,
+    0.05702,
+    0.09036,
+    0.02106,
+    0.01247
+   ],
+   "p1": 0.77401,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_169.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00777,
+    0.0044,
+    0.00085,
+    0.96289,
+    0.00542,
+    0.0042,
+    0.01447
+   ],
+   "p_raw": [
+    0.02408,
+    0.01574,
+    0.0046,
+    0.88367,
+    0.01839,
+    0.0152,
+    0.03832
+   ],
+   "p1": 0.96289,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_7.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00816,
+    0.0039,
+    0.0007,
+    0.96536,
+    0.00463,
+    0.00372,
+    0.01353
+   ],
+   "p_raw": [
+    0.02509,
+    0.01445,
+    0.004,
+    0.88948,
+    0.01642,
+    0.01395,
+    0.03661
+   ],
+   "p1": 0.96536,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthywet.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.03837,
+    0.0221,
+    0.17461,
+    0.67073,
+    0.07747,
+    0.00913,
+    0.00759
+   ],
+   "p_raw": [
+    0.06416,
+    0.04248,
+    0.19916,
+    0.54467,
+    0.10849,
+    0.02194,
+    0.01911
+   ],
+   "p1": 0.67073,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_176.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01243,
+    0.00578,
+    0.0044,
+    0.95346,
+    0.013,
+    0.00531,
+    0.00562
+   ],
+   "p_raw": [
+    0.03357,
+    0.01894,
+    0.01545,
+    0.86099,
+    0.03472,
+    0.01778,
+    0.01855
+   ],
+   "p1": 0.95346,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_190.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01919,
+    0.03724,
+    0.01493,
+    0.815,
+    0.06514,
+    0.03915,
+    0.00935
+   ],
+   "p_raw": [
+    0.04043,
+    0.06636,
+    0.03351,
+    0.66639,
+    0.1008,
+    0.06889,
+    0.02362
+   ],
+   "p1": 0.815,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_210.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00728,
+    0.01047,
+    0.00078,
+    0.9646,
+    0.01091,
+    0.00482,
+    0.00114
+   ],
+   "p_raw": [
+    0.02303,
+    0.03022,
+    0.00434,
+    0.88858,
+    0.03116,
+    0.01692,
+    0.00576
+   ],
+   "p1": 0.9646,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_182.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01142,
+    0.00649,
+    0.02057,
+    0.90648,
+    0.03628,
+    0.01305,
+    0.00571
+   ],
+   "p_raw": [
+    0.02977,
+    0.01951,
+    0.04622,
+    0.78323,
+    0.07064,
+    0.03289,
+    0.01773
+   ],
+   "p1": 0.90648,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_174.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00437,
+    0.00437,
+    0.00048,
+    0.96447,
+    0.01409,
+    0.01064,
+    0.00158
+   ],
+   "p_raw": [
+    0.01575,
+    0.01575,
+    0.00302,
+    0.88973,
+    0.03778,
+    0.03062,
+    0.00736
+   ],
+   "p1": 0.96447,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_19.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02152,
+    0.0149,
+    0.00692,
+    0.89357,
+    0.03907,
+    0.02184,
+    0.00218
+   ],
+   "p_raw": [
+    0.04728,
+    0.03592,
+    0.02025,
+    0.76636,
+    0.07384,
+    0.04781,
+    0.00854
+   ],
+   "p1": 0.89357,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthydry.webp",
+   "truth": "healthy",
+   "pred": "drought",
+   "p_cal": [
+    0.90114,
+    0.003,
+    0.00911,
+    0.03448,
+    0.03803,
+    0.00292,
+    0.01132
+   ],
+   "p_raw": [
+    0.78183,
+    0.01099,
+    0.02521,
+    0.06818,
+    0.07337,
+    0.01077,
+    0.02965
+   ],
+   "p1": 0.90114,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_250.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.0441,
+    0.00588,
+    0.05648,
+    0.8068,
+    0.05666,
+    0.02523,
+    0.00485
+   ],
+   "p_raw": [
+    0.07539,
+    0.01672,
+    0.09071,
+    0.66213,
+    0.09092,
+    0.04966,
+    0.01448
+   ],
+   "p1": 0.8068,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/k3KMfyp4B0sbPOFaIq1cLARnCf35B7RkVSJQUTtB.jpg",
+   "truth": "healthy",
+   "pred": "frost",
+   "p_cal": [
+    0.02715,
+    0.56828,
+    0.31711,
+    0.05901,
+    0.01585,
+    0.00818,
+    0.00442
+   ],
+   "p_raw": [
+    0.04972,
+    0.48291,
+    0.31222,
+    0.08883,
+    0.03325,
+    0.02028,
+    0.0128
+   ],
+   "p1": 0.56828,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_293.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01258,
+    0.00363,
+    0.00206,
+    0.95885,
+    0.00706,
+    0.01334,
+    0.00248
+   ],
+   "p_raw": [
+    0.03429,
+    0.01354,
+    0.00886,
+    0.87504,
+    0.02226,
+    0.03582,
+    0.01018
+   ],
+   "p1": 0.95885,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_161.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00953,
+    0.03581,
+    0.00262,
+    0.93138,
+    0.01003,
+    0.00737,
+    0.00326
+   ],
+   "p_raw": [
+    0.02694,
+    0.07247,
+    0.01026,
+    0.82802,
+    0.02799,
+    0.02223,
+    0.01208
+   ],
+   "p1": 0.93138,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_101.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00835,
+    0.00367,
+    0.00058,
+    0.97172,
+    0.0058,
+    0.00503,
+    0.00485
+   ],
+   "p_raw": [
+    0.02577,
+    0.01394,
+    0.00351,
+    0.90236,
+    0.01962,
+    0.01764,
+    0.01717
+   ],
+   "p1": 0.97172,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_183.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01476,
+    0.006,
+    0.01003,
+    0.91611,
+    0.02692,
+    0.02193,
+    0.00425
+   ],
+   "p_raw": [
+    0.03642,
+    0.01858,
+    0.02729,
+    0.79729,
+    0.05708,
+    0.04897,
+    0.01436
+   ],
+   "p1": 0.91611,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy1.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02172,
+    0.0226,
+    0.00167,
+    0.91909,
+    0.01623,
+    0.00587,
+    0.01282
+   ],
+   "p_raw": [
+    0.04885,
+    0.05032,
+    0.00718,
+    0.80305,
+    0.03929,
+    0.01837,
+    0.03294
+   ],
+   "p1": 0.91909,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_216.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.03657,
+    0.02475,
+    0.14358,
+    0.73349,
+    0.03878,
+    0.02031,
+    0.00252
+   ],
+   "p_raw": [
+    0.06345,
+    0.04739,
+    0.17639,
+    0.59699,
+    0.0663,
+    0.04088,
+    0.00859
+   ],
+   "p1": 0.73349,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_45.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.09476,
+    0.00739,
+    0.12475,
+    0.65705,
+    0.08455,
+    0.02577,
+    0.00573
+   ],
+   "p_raw": [
+    0.12425,
+    0.01845,
+    0.1526,
+    0.5284,
+    0.1141,
+    0.04694,
+    0.01526
+   ],
+   "p1": 0.65705,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_117.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02501,
+    0.01287,
+    0.01635,
+    0.88323,
+    0.01533,
+    0.04155,
+    0.00566
+   ],
+   "p_raw": [
+    0.05213,
+    0.03173,
+    0.03794,
+    0.74867,
+    0.03616,
+    0.07619,
+    0.01717
+   ],
+   "p1": 0.88323,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_276.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.04806,
+    0.00711,
+    0.06372,
+    0.79735,
+    0.02479,
+    0.05189,
+    0.00708
+   ],
+   "p_raw": [
+    0.07971,
+    0.0191,
+    0.09842,
+    0.65073,
+    0.04859,
+    0.08441,
+    0.01904
+   ],
+   "p1": 0.79735,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_40.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.06595,
+    0.01604,
+    0.04525,
+    0.75473,
+    0.07847,
+    0.03553,
+    0.00403
+   ],
+   "p_raw": [
+    0.09824,
+    0.03414,
+    0.07413,
+    0.60759,
+    0.11187,
+    0.06187,
+    0.01216
+   ],
+   "p1": 0.75473,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_269.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.03871,
+    0.02342,
+    0.0095,
+    0.87475,
+    0.0221,
+    0.02766,
+    0.00386
+   ],
+   "p_raw": [
+    0.07176,
+    0.04929,
+    0.02511,
+    0.73804,
+    0.04719,
+    0.05581,
+    0.01281
+   ],
+   "p1": 0.87475,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_74.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.03095,
+    0.02123,
+    0.00572,
+    0.89562,
+    0.02354,
+    0.01985,
+    0.00309
+   ],
+   "p_raw": [
+    0.06203,
+    0.04679,
+    0.01756,
+    0.76749,
+    0.05055,
+    0.0445,
+    0.01108
+   ],
+   "p1": 0.89562,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_196.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.0183,
+    0.00677,
+    0.00711,
+    0.9232,
+    0.01769,
+    0.02349,
+    0.00344
+   ],
+   "p_raw": [
+    0.04313,
+    0.02051,
+    0.02128,
+    0.80867,
+    0.04206,
+    0.05199,
+    0.01237
+   ],
+   "p1": 0.9232,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_234.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01921,
+    0.01004,
+    0.01008,
+    0.93259,
+    0.01426,
+    0.00988,
+    0.00394
+   ],
+   "p_raw": [
+    0.04512,
+    0.02778,
+    0.02786,
+    0.82189,
+    0.03611,
+    0.02745,
+    0.0138
+   ],
+   "p1": 0.93259,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_110.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.03009,
+    0.01444,
+    0.00225,
+    0.90639,
+    0.01167,
+    0.02347,
+    0.01169
+   ],
+   "p_raw": [
+    0.06139,
+    0.03546,
+    0.00884,
+    0.7828,
+    0.03024,
+    0.05099,
+    0.03028
+   ],
+   "p1": 0.90639,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_43.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.017,
+    0.01446,
+    0.01487,
+    0.90646,
+    0.01525,
+    0.01895,
+    0.01301
+   ],
+   "p_raw": [
+    0.03975,
+    0.03522,
+    0.03597,
+    0.77675,
+    0.03665,
+    0.04311,
+    0.03255
+   ],
+   "p1": 0.90646,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_238.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02244,
+    0.01931,
+    0.00348,
+    0.85091,
+    0.07933,
+    0.02374,
+    0.00079
+   ],
+   "p_raw": [
+    0.04766,
+    0.0426,
+    0.01183,
+    0.7218,
+    0.12249,
+    0.04971,
+    0.00391
+   ],
+   "p1": 0.85091,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_308.jpg",
+   "truth": "healthy",
+   "pred": "frost",
+   "p_cal": [
+    0.07826,
+    0.76209,
+    0.00023,
+    0.01655,
+    0.11752,
+    0.02252,
+    0.00283
+   ],
+   "p_raw": [
+    0.11573,
+    0.63443,
+    0.00148,
+    0.03623,
+    0.15684,
+    0.04561,
+    0.00968
+   ],
+   "p1": 0.76209,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_211.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01819,
+    0.01314,
+    0.04321,
+    0.87093,
+    0.02025,
+    0.02538,
+    0.0089
+   ],
+   "p_raw": [
+    0.04053,
+    0.03178,
+    0.07738,
+    0.73067,
+    0.04391,
+    0.05198,
+    0.02375
+   ],
+   "p1": 0.87093,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/IMG_0479.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01452,
+    0.05842,
+    0.00062,
+    0.90463,
+    0.01651,
+    0.00455,
+    0.00075
+   ],
+   "p_raw": [
+    0.03635,
+    0.10292,
+    0.00344,
+    0.79803,
+    0.04002,
+    0.01527,
+    0.00397
+   ],
+   "p1": 0.90463,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_63.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02421,
+    0.00212,
+    0.00415,
+    0.92294,
+    0.01165,
+    0.01272,
+    0.02221
+   ],
+   "p_raw": [
+    0.05328,
+    0.00863,
+    0.01426,
+    0.81012,
+    0.03084,
+    0.03293,
+    0.04995
+   ],
+   "p1": 0.92294,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_20.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02462,
+    0.03109,
+    0.00461,
+    0.89154,
+    0.01389,
+    0.02703,
+    0.00722
+   ],
+   "p_raw": [
+    0.052,
+    0.0619,
+    0.01486,
+    0.76081,
+    0.0339,
+    0.05576,
+    0.02078
+   ],
+   "p1": 0.89154,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_33.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01917,
+    0.02515,
+    0.00526,
+    0.90843,
+    0.01315,
+    0.0226,
+    0.00624
+   ],
+   "p_raw": [
+    0.04383,
+    0.0537,
+    0.01667,
+    0.78421,
+    0.03307,
+    0.04957,
+    0.01894
+   ],
+   "p1": 0.90843,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/strawberry-leaf-leaves-Peter-Miller-Flickr-800x462.jpg",
+   "truth": "healthy",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.05908,
+    0.24434,
+    0.34677,
+    0.0742,
+    0.22222,
+    0.03996,
+    0.01343
+   ],
+   "p_raw": [
+    0.07937,
+    0.22938,
+    0.298,
+    0.09411,
+    0.21367,
+    0.05925,
+    0.02622
+   ],
+   "p1": 0.34677,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.01279,
+    0.00953,
+    0.00048,
+    0.96775,
+    0.00737,
+    0.00155,
+    0.00053
+   ],
+   "p_raw": [
+    0.03542,
+    0.02843,
+    0.00304,
+    0.89906,
+    0.02346,
+    0.00731,
+    0.00328
+   ],
+   "p1": 0.96775,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_264.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02148,
+    0.00814,
+    0.00232,
+    0.91969,
+    0.02011,
+    0.01955,
+    0.00871
+   ],
+   "p_raw": [
+    0.04842,
+    0.02344,
+    0.00917,
+    0.80307,
+    0.0461,
+    0.04513,
+    0.02466
+   ],
+   "p1": 0.91969,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_66.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02153,
+    0.00808,
+    0.00213,
+    0.92284,
+    0.0195,
+    0.01795,
+    0.00797
+   ],
+   "p_raw": [
+    0.0487,
+    0.02341,
+    0.00864,
+    0.80834,
+    0.04523,
+    0.04251,
+    0.02317
+   ],
+   "p1": 0.92284,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_241.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.07695,
+    0.01438,
+    0.03893,
+    0.79392,
+    0.03256,
+    0.04037,
+    0.00289
+   ],
+   "p_raw": [
+    0.11313,
+    0.03229,
+    0.06798,
+    0.64754,
+    0.05948,
+    0.06985,
+    0.00973
+   ],
+   "p1": 0.79392,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_120.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02848,
+    0.00589,
+    0.02795,
+    0.8653,
+    0.02449,
+    0.02867,
+    0.01922
+   ],
+   "p_raw": [
+    0.05627,
+    0.01732,
+    0.05549,
+    0.72215,
+    0.05027,
+    0.05655,
+    0.04194
+   ],
+   "p1": 0.8653,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_99.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.02307,
+    0.08801,
+    0.00097,
+    0.79869,
+    0.01881,
+    0.06023,
+    0.01022
+   ],
+   "p_raw": [
+    0.0467,
+    0.12705,
+    0.00437,
+    0.6607,
+    0.04009,
+    0.09568,
+    0.02541
+   ],
+   "p1": 0.79869,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_143.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.00958,
+    0.00459,
+    0.00056,
+    0.96115,
+    0.01057,
+    0.00733,
+    0.00622
+   ],
+   "p_raw": [
+    0.02804,
+    0.01618,
+    0.00336,
+    0.87898,
+    0.03018,
+    0.02296,
+    0.02031
+   ],
+   "p1": 0.96115,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_304.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.11145,
+    0.06453,
+    0.00857,
+    0.68373,
+    0.07083,
+    0.00897,
+    0.05192
+   ],
+   "p_raw": [
+    0.14041,
+    0.09332,
+    0.02063,
+    0.5449,
+    0.10005,
+    0.02135,
+    0.07932
+   ],
+   "p1": 0.68373,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_271.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "p_cal": [
+    0.04029,
+    0.02428,
+    0.00131,
+    0.873,
+    0.01284,
+    0.0462,
+    0.00208
+   ],
+   "p_raw": [
+    0.07479,
+    0.05122,
+    0.00577,
+    0.74541,
+    0.03181,
+    0.08284,
+    0.00816
+   ],
+   "p1": 0.873,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/drowned-a-plant-is-it-salvageable-v0-28x08g3kfw6f1.webp",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.02283,
+    0.00138,
+    0.00749,
+    0.02195,
+    0.91822,
+    0.01218,
+    0.01595
+   ],
+   "p_raw": [
+    0.05065,
+    0.00622,
+    0.02201,
+    0.04918,
+    0.80154,
+    0.03166,
+    0.03874
+   ],
+   "p1": 0.91822,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_47.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.02753,
+    0.06925,
+    0.13856,
+    0.00534,
+    0.68915,
+    0.05885,
+    0.01132
+   ],
+   "p_raw": [
+    0.04996,
+    0.09956,
+    0.16722,
+    0.01466,
+    0.55472,
+    0.08816,
+    0.02571
+   ],
+   "p1": 0.68915,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/overwatered/overwatered_43.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.01336,
+    0.00733,
+    0.00457,
+    0.00147,
+    0.96219,
+    0.01052,
+    0.00056
+   ],
+   "p_raw": [
+    0.03614,
+    0.02307,
+    0.01621,
+    0.00694,
+    0.88405,
+    0.03022,
+    0.00337
+   ],
+   "p1": 0.96219,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/overwatered/overwatered_35.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.00423,
+    0.00042,
+    0.00081,
+    0.00066,
+    0.99291,
+    0.00064,
+    0.00033
+   ],
+   "p_raw": [
+    0.01632,
+    0.0029,
+    0.00474,
+    0.00407,
+    0.96556,
+    0.00398,
+    0.00242
+   ],
+   "p1": 0.99291,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_1.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.00559,
+    0.00071,
+    0.00099,
+    0.00013,
+    0.99184,
+    0.00025,
+    0.00049
+   ],
+   "p_raw": [
+    0.02008,
+    0.00429,
+    0.0055,
+    0.00121,
+    0.9637,
+    0.00197,
+    0.00325
+   ],
+   "p1": 0.99184,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_27.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.00229,
+    0.00022,
+    0.00013,
+    0.00011,
+    0.99702,
+    0.0002,
+    3e-05
+   ],
+   "p_raw": [
+    0.01047,
+    0.00182,
+    0.00123,
+    0.00108,
+    0.9833,
+    0.00169,
+    0.00041
+   ],
+   "p1": 0.99702,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_7.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.00122,
+    0.00042,
+    0.00034,
+    0.0,
+    0.99576,
+    0.00105,
+    0.00121
+   ],
+   "p_raw": [
+    0.0065,
+    0.00293,
+    0.0025,
+    3e-05,
+    0.97578,
+    0.00581,
+    0.00646
+   ],
+   "p1": 0.99576,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_34.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.0059,
+    0.0216,
+    0.00275,
+    0.0002,
+    0.96433,
+    0.00418,
+    0.00104
+   ],
+   "p_raw": [
+    0.01981,
+    0.05227,
+    0.0112,
+    0.00158,
+    0.89441,
+    0.01531,
+    0.00541
+   ],
+   "p1": 0.96433,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_45.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.002,
+    0.00141,
+    9e-05,
+    7e-05,
+    0.99463,
+    0.00121,
+    0.00059
+   ],
+   "p_raw": [
+    0.00937,
+    0.00721,
+    0.00092,
+    0.00076,
+    0.97154,
+    0.00643,
+    0.00376
+   ],
+   "p1": 0.99463,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/overwatered/holdrel_overwatered_4.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.12791,
+    0.00053,
+    2e-05,
+    0.0044,
+    0.86257,
+    0.00205,
+    0.00252
+   ],
+   "p_raw": [
+    0.18649,
+    0.00309,
+    0.00027,
+    0.01502,
+    0.77675,
+    0.00849,
+    0.0099
+   ],
+   "p1": 0.86257,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/quarrive-til-\u00e0-mes-fraises-v0-63ca5sf4o8se1.webp",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.05012,
+    0.01243,
+    0.00355,
+    0.00509,
+    0.92601,
+    0.00217,
+    0.00063
+   ],
+   "p_raw": [
+    0.09387,
+    0.0331,
+    0.01297,
+    0.01698,
+    0.83054,
+    0.00898,
+    0.00356
+   ],
+   "p1": 0.92601,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/is-this-strawberry-plant-too-far-gone-or-has-anyone-got-any-v0-17n6k1us47ee1.webp",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.20081,
+    0.01343,
+    0.03359,
+    0.0027,
+    0.65901,
+    0.07746,
+    0.013
+   ],
+   "p_raw": [
+    0.22292,
+    0.02951,
+    0.05856,
+    0.0089,
+    0.54194,
+    0.10937,
+    0.0288
+   ],
+   "p1": 0.65901,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatereddd.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.03137,
+    0.01974,
+    0.00019,
+    0.0004,
+    0.58985,
+    0.11242,
+    0.24603
+   ],
+   "p_raw": [
+    0.05558,
+    0.03931,
+    0.00122,
+    0.00213,
+    0.49827,
+    0.14431,
+    0.25917
+   ],
+   "p1": 0.58985,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_29.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.00043,
+    0.00041,
+    0.00047,
+    7e-05,
+    0.99793,
+    0.00033,
+    0.00036
+   ],
+   "p_raw": [
+    0.003,
+    0.0029,
+    0.00321,
+    0.00077,
+    0.98503,
+    0.00246,
+    0.00263
+   ],
+   "p1": 0.99793,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwateredverymuch.webp",
+   "truth": "overwatered",
+   "pred": "healthy",
+   "p_cal": [
+    0.08305,
+    0.01649,
+    0.01701,
+    0.47119,
+    0.1231,
+    0.01573,
+    0.27343
+   ],
+   "p_raw": [
+    0.10716,
+    0.032,
+    0.03275,
+    0.39225,
+    0.14381,
+    0.03089,
+    0.26114
+   ],
+   "p1": 0.47119,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/images.jpeg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.04278,
+    0.00748,
+    0.03675,
+    0.0607,
+    0.45468,
+    0.39585,
+    0.00177
+   ],
+   "p_raw": [
+    0.0681,
+    0.01849,
+    0.06079,
+    0.08846,
+    0.39854,
+    0.35933,
+    0.0063
+   ],
+   "p1": 0.45468,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_38.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.00029,
+    9e-05,
+    0.00042,
+    0.0,
+    0.99901,
+    0.00012,
+    7e-05
+   ],
+   "p_raw": [
+    0.00225,
+    0.00094,
+    0.00297,
+    3e-05,
+    0.99187,
+    0.00116,
+    0.00078
+   ],
+   "p1": 0.99901,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/droopy-strawberry-just-got-my-dream-garden-plant-v0-dfb4nwahjv3d1.jpg",
+   "truth": "overwatered",
+   "pred": "drought",
+   "p_cal": [
+    0.89499,
+    0.00572,
+    0.02768,
+    0.016,
+    0.036,
+    0.01959,
+    2e-05
+   ],
+   "p_raw": [
+    0.77223,
+    0.01767,
+    0.05744,
+    0.03813,
+    0.06991,
+    0.04436,
+    0.00026
+   ],
+   "p1": 0.89499,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_32.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "p_cal": [
+    0.00342,
+    0.00207,
+    6e-05,
+    2e-05,
+    0.98842,
+    0.00559,
+    0.00042
+   ],
+   "p_raw": [
+    0.01379,
+    0.00947,
+    0.00067,
+    0.0003,
+    0.95299,
+    0.01991,
+    0.00287
+   ],
+   "p1": 0.98842,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_6.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00163,
+    0.00023,
+    6e-05,
+    0.0,
+    0.00062,
+    0.99744,
+    2e-05
+   ],
+   "p_raw": [
+    0.00813,
+    0.00188,
+    0.00069,
+    3e-05,
+    0.00395,
+    0.98501,
+    0.0003
+   ],
+   "p1": 0.99744,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_21.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.02058,
+    0.0007,
+    0.00175,
+    3e-05,
+    0.00865,
+    0.96824,
+    5e-05
+   ],
+   "p_raw": [
+    0.05109,
+    0.00408,
+    0.00809,
+    0.00039,
+    0.02672,
+    0.90906,
+    0.00057
+   ],
+   "p1": 0.96824,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_147.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.05416,
+    0.02069,
+    0.01677,
+    0.03725,
+    0.06619,
+    0.80163,
+    0.00331
+   ],
+   "p_raw": [
+    0.0874,
+    0.04257,
+    0.03639,
+    0.06607,
+    0.10154,
+    0.6552,
+    0.01082
+   ],
+   "p1": 0.80163,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_50.jpg",
+   "truth": "root_rot",
+   "pred": "drought",
+   "p_cal": [
+    0.29822,
+    0.15801,
+    0.00408,
+    0.00973,
+    0.23686,
+    0.28406,
+    0.00904
+   ],
+   "p_raw": [
+    0.2763,
+    0.17186,
+    0.01117,
+    0.02139,
+    0.2326,
+    0.26643,
+    0.02025
+   ],
+   "p1": 0.29822,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_40.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.03752,
+    0.01652,
+    0.02225,
+    0.00144,
+    0.07792,
+    0.83815,
+    0.0062
+   ],
+   "p_raw": [
+    0.06901,
+    0.03738,
+    0.0467,
+    0.00603,
+    0.11918,
+    0.70374,
+    0.01797
+   ],
+   "p1": 0.83815,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_84.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.0018,
+    0.00016,
+    2e-05,
+    0.0,
+    0.001,
+    0.99684,
+    0.00018
+   ],
+   "p_raw": [
+    0.00874,
+    0.00143,
+    0.0003,
+    3e-05,
+    0.00563,
+    0.9823,
+    0.00156
+   ],
+   "p1": 0.99684,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_47.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00264,
+    0.00084,
+    0.00149,
+    0.00021,
+    0.00453,
+    0.9896,
+    0.00069
+   ],
+   "p_raw": [
+    0.01136,
+    0.00483,
+    0.00741,
+    0.00171,
+    0.017,
+    0.95353,
+    0.00417
+   ],
+   "p1": 0.9896,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_126.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00454,
+    0.00347,
+    0.00203,
+    0.00106,
+    0.00693,
+    0.98002,
+    0.00195
+   ],
+   "p_raw": [
+    0.01662,
+    0.01359,
+    0.0091,
+    0.0056,
+    0.02279,
+    0.92346,
+    0.00883
+   ],
+   "p1": 0.98002,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_29.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.22286,
+    0.0186,
+    0.00281,
+    0.00284,
+    0.02063,
+    0.72955,
+    0.00272
+   ],
+   "p_raw": [
+    0.25872,
+    0.04042,
+    0.00984,
+    0.00992,
+    0.04367,
+    0.62782,
+    0.0096
+   ],
+   "p1": 0.72955,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.06547,
+    0.01464,
+    0.00292,
+    0.00252,
+    0.04078,
+    0.87009,
+    0.00358
+   ],
+   "p_raw": [
+    0.10818,
+    0.03531,
+    0.01058,
+    0.00948,
+    0.07594,
+    0.7482,
+    0.01232
+   ],
+   "p1": 0.87009,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_108.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.0054,
+    0.00059,
+    0.00014,
+    0.0003,
+    0.0021,
+    0.99105,
+    0.00042
+   ],
+   "p_raw": [
+    0.01952,
+    0.00373,
+    0.00127,
+    0.00225,
+    0.00963,
+    0.96071,
+    0.00289
+   ],
+   "p1": 0.99105,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_88.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.01999,
+    0.00459,
+    0.008,
+    0.01946,
+    0.0161,
+    0.92738,
+    0.00448
+   ],
+   "p_raw": [
+    0.04629,
+    0.01541,
+    0.02334,
+    0.04537,
+    0.03937,
+    0.81508,
+    0.01513
+   ],
+   "p1": 0.92738,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_26.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00741,
+    0.01321,
+    0.00892,
+    0.00406,
+    0.03137,
+    0.92669,
+    0.00834
+   ],
+   "p_raw": [
+    0.02207,
+    0.034,
+    0.02535,
+    0.01407,
+    0.0649,
+    0.81551,
+    0.02411
+   ],
+   "p1": 0.92669,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_141.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00255,
+    0.00123,
+    0.00098,
+    0.00386,
+    0.00254,
+    0.988,
+    0.00084
+   ],
+   "p_raw": [
+    0.011,
+    0.00638,
+    0.00538,
+    0.01499,
+    0.01097,
+    0.94649,
+    0.0048
+   ],
+   "p1": 0.988,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_45.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.01066,
+    0.00553,
+    0.01225,
+    0.00502,
+    0.00738,
+    0.95853,
+    0.00063
+   ],
+   "p_raw": [
+    0.03026,
+    0.01852,
+    0.03357,
+    0.01723,
+    0.02298,
+    0.87378,
+    0.00365
+   ],
+   "p1": 0.95853,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_144.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.01404,
+    0.0013,
+    0.00195,
+    0.00015,
+    0.00867,
+    0.97294,
+    0.00095
+   ],
+   "p_raw": [
+    0.03842,
+    0.00649,
+    0.00878,
+    0.00129,
+    0.02679,
+    0.9131,
+    0.00513
+   ],
+   "p1": 0.97294,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_42.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00882,
+    0.00376,
+    0.00113,
+    0.00014,
+    0.002,
+    0.97843,
+    0.00572
+   ],
+   "p_raw": [
+    0.0273,
+    0.01443,
+    0.00588,
+    0.00123,
+    0.009,
+    0.92241,
+    0.01975
+   ],
+   "p1": 0.97843,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_90.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00349,
+    0.01412,
+    0.02242,
+    0.00013,
+    0.08176,
+    0.85086,
+    0.02722
+   ],
+   "p_raw": [
+    0.0119,
+    0.03383,
+    0.0478,
+    0.00102,
+    0.12575,
+    0.72443,
+    0.05526
+   ],
+   "p1": 0.85086,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_94.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00171,
+    0.00066,
+    9e-05,
+    0.00019,
+    0.00068,
+    0.99625,
+    0.00042
+   ],
+   "p_raw": [
+    0.00838,
+    0.00411,
+    0.00093,
+    0.00162,
+    0.0042,
+    0.97783,
+    0.00293
+   ],
+   "p1": 0.99625,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_129.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.13498,
+    0.00343,
+    0.10356,
+    0.05644,
+    0.22615,
+    0.47528,
+    0.00016
+   ],
+   "p_raw": [
+    0.15515,
+    0.00996,
+    0.12727,
+    0.08085,
+    0.22819,
+    0.39757,
+    0.00101
+   ],
+   "p1": 0.47528,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_87.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.01496,
+    0.00109,
+    0.00314,
+    0.0043,
+    0.00244,
+    0.97345,
+    0.00062
+   ],
+   "p_raw": [
+    0.0402,
+    0.00567,
+    0.01252,
+    0.01583,
+    0.01036,
+    0.91169,
+    0.00372
+   ],
+   "p1": 0.97345,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_39.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00226,
+    0.00016,
+    4e-05,
+    4e-05,
+    0.00207,
+    0.9954,
+    3e-05
+   ],
+   "p_raw": [
+    0.01032,
+    0.00143,
+    0.00051,
+    0.00051,
+    0.00966,
+    0.97718,
+    0.00041
+   ],
+   "p1": 0.9954,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_9.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00029,
+    0.00016,
+    1e-05,
+    1e-05,
+    6e-05,
+    0.99947,
+    0.0
+   ],
+   "p_raw": [
+    0.00226,
+    0.00145,
+    0.00018,
+    0.00018,
+    0.0007,
+    0.9952,
+    3e-05
+   ],
+   "p1": 0.99947,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_67.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00505,
+    0.0073,
+    0.00973,
+    0.00109,
+    0.04255,
+    0.93306,
+    0.00122
+   ],
+   "p_raw": [
+    0.01695,
+    0.02232,
+    0.02767,
+    0.00539,
+    0.08337,
+    0.83845,
+    0.00586
+   ],
+   "p1": 0.93306,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_30.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.03555,
+    0.01289,
+    0.00068,
+    0.0047,
+    0.00147,
+    0.94444,
+    0.00027
+   ],
+   "p_raw": [
+    0.07426,
+    0.03478,
+    0.00386,
+    0.01636,
+    0.00686,
+    0.86195,
+    0.00193
+   ],
+   "p1": 0.94444,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_33.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.002,
+    0.00162,
+    6e-05,
+    0.0004,
+    0.01185,
+    0.98309,
+    0.00098
+   ],
+   "p_raw": [
+    0.00914,
+    0.00781,
+    0.00066,
+    0.00274,
+    0.03456,
+    0.93972,
+    0.00536
+   ],
+   "p1": 0.98309,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_116.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00149,
+    0.00145,
+    0.00057,
+    0.00018,
+    0.00162,
+    0.99412,
+    0.00057
+   ],
+   "p_raw": [
+    0.0075,
+    0.00734,
+    0.00365,
+    0.00154,
+    0.00798,
+    0.96833,
+    0.00365
+   ],
+   "p1": 0.99412,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_03.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.01125,
+    0.00081,
+    0.00019,
+    0.00305,
+    0.01019,
+    0.97437,
+    0.00014
+   ],
+   "p_raw": [
+    0.03267,
+    0.00457,
+    0.00155,
+    0.01231,
+    0.03034,
+    0.91734,
+    0.00123
+   ],
+   "p1": 0.97437,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_62.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.0098,
+    0.00109,
+    3e-05,
+    0.0003,
+    0.00405,
+    0.98455,
+    0.00018
+   ],
+   "p_raw": [
+    0.0301,
+    0.00583,
+    0.0004,
+    0.00222,
+    0.01555,
+    0.94439,
+    0.00152
+   ],
+   "p1": 0.98455,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_1.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.01087,
+    0.00107,
+    0.00018,
+    0.00015,
+    0.00246,
+    0.98509,
+    0.00018
+   ],
+   "p_raw": [
+    0.03259,
+    0.00576,
+    0.00152,
+    0.00133,
+    0.01073,
+    0.94656,
+    0.00152
+   ],
+   "p1": 0.98509,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_75.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00705,
+    0.00037,
+    0.0001,
+    0.0001,
+    0.00084,
+    0.99146,
+    8e-05
+   ],
+   "p_raw": [
+    0.02394,
+    0.00264,
+    0.00099,
+    0.00099,
+    0.00488,
+    0.96571,
+    0.00084
+   ],
+   "p1": 0.99146,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_95.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.00216,
+    0.00059,
+    5e-05,
+    0.00019,
+    0.00114,
+    0.99569,
+    0.00018
+   ],
+   "p_raw": [
+    0.00996,
+    0.00378,
+    0.0006,
+    0.00162,
+    0.00618,
+    0.97631,
+    0.00155
+   ],
+   "p1": 0.99569,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_148.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "p_cal": [
+    0.17033,
+    0.00421,
+    8e-05,
+    0.01269,
+    0.02728,
+    0.78089,
+    0.00452
+   ],
+   "p_raw": [
+    0.21498,
+    0.01352,
+    0.0007,
+    0.03085,
+    0.05467,
+    0.67102,
+    0.01426
+   ],
+   "p1": 0.78089,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0049.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00081,
+    0.00178,
+    0.00082,
+    0.00118,
+    0.00493,
+    0.00115,
+    0.98933
+   ],
+   "p_raw": [
+    0.00469,
+    0.00844,
+    0.00473,
+    0.00621,
+    0.01808,
+    0.00609,
+    0.95175
+   ],
+   "p1": 0.98933,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0320.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01747,
+    0.01358,
+    0.09268,
+    0.00369,
+    0.01771,
+    0.03462,
+    0.82025
+   ],
+   "p_raw": [
+    0.03836,
+    0.03178,
+    0.13355,
+    0.012,
+    0.03875,
+    0.06396,
+    0.6816
+   ],
+   "p1": 0.82025,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0088.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00924,
+    0.02285,
+    0.13033,
+    0.00213,
+    0.00399,
+    0.00395,
+    0.82751
+   ],
+   "p_raw": [
+    0.02476,
+    0.04872,
+    0.17904,
+    0.00827,
+    0.01322,
+    0.01312,
+    0.71288
+   ],
+   "p1": 0.82751,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0071.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.08447,
+    0.02172,
+    0.00871,
+    0.00927,
+    0.01923,
+    0.01476,
+    0.84184
+   ],
+   "p_raw": [
+    0.12632,
+    0.04576,
+    0.02311,
+    0.02422,
+    0.04178,
+    0.03429,
+    0.70452
+   ],
+   "p1": 0.84184,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0258.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.03749,
+    0.00509,
+    0.03509,
+    0.27344,
+    0.03939,
+    0.10959,
+    0.49992
+   ],
+   "p_raw": [
+    0.05954,
+    0.01338,
+    0.05667,
+    0.26298,
+    0.06179,
+    0.13277,
+    0.41287
+   ],
+   "p1": 0.49992,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0272.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00795,
+    0.0041,
+    0.00477,
+    0.00085,
+    0.0083,
+    0.00511,
+    0.96892
+   ],
+   "p_raw": [
+    0.0247,
+    0.01506,
+    0.01686,
+    0.00464,
+    0.02551,
+    0.01775,
+    0.89547
+   ],
+   "p1": 0.96892,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0095.jpg",
+   "truth": "white_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03283,
+    0.04022,
+    0.74108,
+    0.00531,
+    0.11774,
+    0.03925,
+    0.02357
+   ],
+   "p_raw": [
+    0.05808,
+    0.0676,
+    0.59686,
+    0.01488,
+    0.15088,
+    0.06637,
+    0.04533
+   ],
+   "p1": 0.74108,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0266.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01363,
+    0.01786,
+    0.00052,
+    0.32061,
+    0.03323,
+    0.02197,
+    0.59218
+   ],
+   "p_raw": [
+    0.03026,
+    0.03703,
+    0.00263,
+    0.32066,
+    0.0589,
+    0.04323,
+    0.50729
+   ],
+   "p1": 0.59218,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0192.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00232,
+    0.00022,
+    6e-05,
+    0.00014,
+    0.00139,
+    0.0003,
+    0.99557
+   ],
+   "p_raw": [
+    0.01051,
+    0.00181,
+    0.00068,
+    0.00129,
+    0.00717,
+    0.00228,
+    0.97627
+   ],
+   "p1": 0.99557,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0166.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.02279,
+    0.00893,
+    0.051,
+    0.0023,
+    0.01997,
+    0.0092,
+    0.88581
+   ],
+   "p_raw": [
+    0.04916,
+    0.0244,
+    0.08976,
+    0.00885,
+    0.04453,
+    0.02495,
+    0.75835
+   ],
+   "p1": 0.88581,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0075.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.0052,
+    0.00607,
+    0.04972,
+    0.00143,
+    0.00584,
+    0.00842,
+    0.92332
+   ],
+   "p_raw": [
+    0.01711,
+    0.0192,
+    0.09249,
+    0.00652,
+    0.01866,
+    0.02452,
+    0.8215
+   ],
+   "p1": 0.92332,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0260.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00164,
+    0.00056,
+    0.00022,
+    0.00033,
+    0.00289,
+    0.00061,
+    0.99375
+   ],
+   "p_raw": [
+    0.00805,
+    0.00361,
+    0.00179,
+    0.00243,
+    0.0123,
+    0.00384,
+    0.96798
+   ],
+   "p1": 0.99375,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0013.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00142,
+    0.00034,
+    0.00042,
+    0.00023,
+    0.0045,
+    0.00076,
+    0.99233
+   ],
+   "p_raw": [
+    0.00721,
+    0.00248,
+    0.0029,
+    0.00185,
+    0.01707,
+    0.00452,
+    0.96398
+   ],
+   "p1": 0.99233,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0247.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.02457,
+    0.01318,
+    0.19467,
+    0.13318,
+    0.06396,
+    0.06328,
+    0.50716
+   ],
+   "p_raw": [
+    0.04246,
+    0.02666,
+    0.19952,
+    0.15023,
+    0.08682,
+    0.08613,
+    0.40818
+   ],
+   "p1": 0.50716,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0133.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00822,
+    0.00079,
+    0.00288,
+    0.01028,
+    0.02909,
+    0.00594,
+    0.9428
+   ],
+   "p_raw": [
+    0.0245,
+    0.00425,
+    0.01119,
+    0.02896,
+    0.06303,
+    0.01922,
+    0.84884
+   ],
+   "p1": 0.9428,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0096.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.03181,
+    0.02998,
+    0.11031,
+    0.35977,
+    0.03103,
+    0.02192,
+    0.41518
+   ],
+   "p_raw": [
+    0.05213,
+    0.04987,
+    0.13207,
+    0.31959,
+    0.05117,
+    0.03946,
+    0.35571
+   ],
+   "p1": 0.41518,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0243.jpg",
+   "truth": "white_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.23018,
+    0.01821,
+    0.58568,
+    0.07887,
+    0.0168,
+    0.02142,
+    0.04884
+   ],
+   "p_raw": [
+    0.23619,
+    0.03545,
+    0.47476,
+    0.10606,
+    0.03338,
+    0.04003,
+    0.07412
+   ],
+   "p1": 0.58568,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0143.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.04389,
+    0.00632,
+    0.00398,
+    0.00181,
+    0.01169,
+    0.01148,
+    0.92083
+   ],
+   "p_raw": [
+    0.0836,
+    0.01963,
+    0.0139,
+    0.00771,
+    0.03109,
+    0.03068,
+    0.81339
+   ],
+   "p1": 0.92083,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0111.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01729,
+    0.00444,
+    0.07627,
+    0.00129,
+    0.01602,
+    0.00644,
+    0.87825
+   ],
+   "p_raw": [
+    0.04031,
+    0.01459,
+    0.12226,
+    0.00579,
+    0.03808,
+    0.01927,
+    0.75969
+   ],
+   "p1": 0.87825,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0181.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01815,
+    0.01782,
+    0.05666,
+    0.00237,
+    0.04425,
+    0.01821,
+    0.84254
+   ],
+   "p_raw": [
+    0.03982,
+    0.03928,
+    0.09326,
+    0.00869,
+    0.07752,
+    0.03992,
+    0.70151
+   ],
+   "p1": 0.84254,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0068.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01719,
+    0.00976,
+    0.33994,
+    0.00031,
+    0.04154,
+    0.01642,
+    0.57484
+   ],
+   "p_raw": [
+    0.0361,
+    0.02365,
+    0.33606,
+    0.00179,
+    0.06982,
+    0.03488,
+    0.4977
+   ],
+   "p1": 0.57484,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0264.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.02477,
+    0.03046,
+    0.00052,
+    0.05478,
+    0.05012,
+    0.11526,
+    0.72409
+   ],
+   "p_raw": [
+    0.04684,
+    0.05467,
+    0.00261,
+    0.08477,
+    0.07932,
+    0.14783,
+    0.58396
+   ],
+   "p1": 0.72409,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0134.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01489,
+    0.00178,
+    0.00026,
+    0.03821,
+    0.00332,
+    0.00371,
+    0.93783
+   ],
+   "p_raw": [
+    0.03833,
+    0.00783,
+    0.00186,
+    0.07754,
+    0.01248,
+    0.01357,
+    0.84838
+   ],
+   "p1": 0.93783,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0019.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.0355,
+    0.01763,
+    0.01215,
+    0.01719,
+    0.00905,
+    0.02235,
+    0.88613
+   ],
+   "p_raw": [
+    0.06771,
+    0.04012,
+    0.03038,
+    0.03937,
+    0.02437,
+    0.04791,
+    0.75014
+   ],
+   "p1": 0.88613,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0226.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.0054,
+    0.00446,
+    0.43432,
+    0.00187,
+    0.03048,
+    0.0076,
+    0.51587
+   ],
+   "p_raw": [
+    0.01561,
+    0.01353,
+    0.41487,
+    0.00707,
+    0.05694,
+    0.02016,
+    0.47182
+   ],
+   "p1": 0.51587,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0313.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.02949,
+    0.00671,
+    0.08551,
+    0.00291,
+    0.02727,
+    0.03007,
+    0.81804
+   ],
+   "p_raw": [
+    0.05659,
+    0.01871,
+    0.12542,
+    0.01002,
+    0.05338,
+    0.05742,
+    0.67846
+   ],
+   "p1": 0.81804,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0254.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00856,
+    0.00058,
+    0.00035,
+    0.00078,
+    0.00166,
+    0.0013,
+    0.98677
+   ],
+   "p_raw": [
+    0.02725,
+    0.00364,
+    0.0025,
+    0.00455,
+    0.00799,
+    0.00666,
+    0.94742
+   ],
+   "p1": 0.98677,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0003.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00341,
+    0.001,
+    0.00413,
+    0.0005,
+    0.00713,
+    0.00113,
+    0.9827
+   ],
+   "p_raw": [
+    0.01352,
+    0.00541,
+    0.01561,
+    0.00322,
+    0.02347,
+    0.00592,
+    0.93285
+   ],
+   "p1": 0.9827,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0122.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00819,
+    0.00573,
+    0.00595,
+    0.00057,
+    0.00479,
+    0.0097,
+    0.96507
+   ],
+   "p_raw": [
+    0.0251,
+    0.01922,
+    0.01977,
+    0.00342,
+    0.01681,
+    0.02848,
+    0.8872
+   ],
+   "p1": 0.96507,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0171.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01803,
+    0.00862,
+    0.04504,
+    0.00405,
+    0.01016,
+    0.01572,
+    0.89838
+   ],
+   "p_raw": [
+    0.04164,
+    0.02399,
+    0.08256,
+    0.01364,
+    0.02712,
+    0.03758,
+    0.77348
+   ],
+   "p1": 0.89838,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0047.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.03287,
+    0.02705,
+    0.10206,
+    0.36731,
+    0.0771,
+    0.0238,
+    0.36981
+   ],
+   "p_raw": [
+    0.05248,
+    0.04536,
+    0.1224,
+    0.31883,
+    0.09925,
+    0.04122,
+    0.32045
+   ],
+   "p1": 0.36981,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0238.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.03478,
+    0.01154,
+    0.039,
+    0.02643,
+    0.0514,
+    0.0132,
+    0.82365
+   ],
+   "p_raw": [
+    0.06322,
+    0.02771,
+    0.06887,
+    0.05149,
+    0.08466,
+    0.03064,
+    0.67341
+   ],
+   "p1": 0.82365,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0030.jpg",
+   "truth": "white_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.01754,
+    0.03368,
+    0.91728,
+    0.00016,
+    0.02354,
+    0.00329,
+    0.00451
+   ],
+   "p_raw": [
+    0.042,
+    0.06839,
+    0.80879,
+    0.00125,
+    0.05233,
+    0.01202,
+    0.01522
+   ],
+   "p1": 0.91728,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0101.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.008,
+    0.00694,
+    0.03409,
+    0.00084,
+    0.00542,
+    0.00286,
+    0.94185
+   ],
+   "p_raw": [
+    0.02405,
+    0.02163,
+    0.07108,
+    0.00446,
+    0.01798,
+    0.01115,
+    0.84965
+   ],
+   "p1": 0.94185,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0241.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.04165,
+    0.02538,
+    0.1723,
+    0.24019,
+    0.12015,
+    0.01124,
+    0.38909
+   ],
+   "p_raw": [
+    0.06179,
+    0.04267,
+    0.17861,
+    0.22895,
+    0.13641,
+    0.02321,
+    0.32836
+   ],
+   "p1": 0.38909,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0322.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.0082,
+    0.00688,
+    0.00046,
+    0.00892,
+    0.00147,
+    0.00531,
+    0.96876
+   ],
+   "p_raw": [
+    0.02533,
+    0.02222,
+    0.00294,
+    0.02698,
+    0.00701,
+    0.01831,
+    0.89721
+   ],
+   "p1": 0.96876,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0236.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.03852,
+    0.02195,
+    0.05319,
+    0.27599,
+    0.0477,
+    0.01284,
+    0.54981
+   ],
+   "p_raw": [
+    0.06174,
+    0.04055,
+    0.07859,
+    0.26908,
+    0.07244,
+    0.02716,
+    0.45044
+   ],
+   "p1": 0.54981,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0229.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01223,
+    0.01226,
+    0.09329,
+    0.0099,
+    0.04638,
+    0.0188,
+    0.80714
+   ],
+   "p_raw": [
+    0.02905,
+    0.0291,
+    0.13266,
+    0.0248,
+    0.07868,
+    0.04006,
+    0.66566
+   ],
+   "p1": 0.80714,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0235.jpg",
+   "truth": "white_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.03035,
+    0.0397,
+    0.77899,
+    0.00385,
+    0.04105,
+    0.0255,
+    0.08056
+   ],
+   "p_raw": [
+    0.0557,
+    0.06808,
+    0.63008,
+    0.0119,
+    0.0698,
+    0.0489,
+    0.11555
+   ],
+   "p1": 0.77899,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0240.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.0228,
+    0.03028,
+    0.16251,
+    0.00524,
+    0.03108,
+    0.01032,
+    0.73777
+   ],
+   "p_raw": [
+    0.04509,
+    0.05575,
+    0.19576,
+    0.01502,
+    0.05685,
+    0.02493,
+    0.60659
+   ],
+   "p1": 0.73777,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0012.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00103,
+    0.00057,
+    0.00038,
+    0.00095,
+    0.00812,
+    0.00099,
+    0.98796
+   ],
+   "p_raw": [
+    0.00561,
+    0.00361,
+    0.00266,
+    0.00528,
+    0.02627,
+    0.00545,
+    0.95112
+   ],
+   "p1": 0.98796,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0087.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01473,
+    0.00423,
+    0.03752,
+    0.00076,
+    0.01386,
+    0.01373,
+    0.91517
+   ],
+   "p_raw": [
+    0.0366,
+    0.0144,
+    0.07362,
+    0.00399,
+    0.03497,
+    0.03472,
+    0.8017
+   ],
+   "p1": 0.91517,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0102.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01993,
+    0.011,
+    0.00422,
+    0.00626,
+    0.00426,
+    0.01836,
+    0.93597
+   ],
+   "p_raw": [
+    0.04672,
+    0.02996,
+    0.01464,
+    0.01966,
+    0.01474,
+    0.04394,
+    0.83032
+   ],
+   "p1": 0.93597,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0199.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.02244,
+    0.00878,
+    0.00699,
+    0.06706,
+    0.1804,
+    0.03105,
+    0.68328
+   ],
+   "p_raw": [
+    0.04337,
+    0.0215,
+    0.01813,
+    0.0983,
+    0.20599,
+    0.05528,
+    0.55743
+   ],
+   "p1": 0.68328,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0164.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00642,
+    0.00281,
+    0.00461,
+    0.00048,
+    0.00864,
+    0.00315,
+    0.97389
+   ],
+   "p_raw": [
+    0.02128,
+    0.01147,
+    0.01661,
+    0.00306,
+    0.02657,
+    0.0125,
+    0.90851
+   ],
+   "p1": 0.97389,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0270.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01745,
+    0.0008,
+    0.0002,
+    0.0064,
+    0.00518,
+    0.00086,
+    0.96911
+   ],
+   "p_raw": [
+    0.04492,
+    0.00448,
+    0.00159,
+    0.02122,
+    0.01812,
+    0.00473,
+    0.90492
+   ],
+   "p1": 0.96911,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0155.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00427,
+    0.00183,
+    0.00028,
+    0.00092,
+    0.00221,
+    0.00514,
+    0.98535
+   ],
+   "p_raw": [
+    0.01609,
+    0.00854,
+    0.0021,
+    0.00511,
+    0.00983,
+    0.01848,
+    0.93985
+   ],
+   "p1": 0.98535,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0248.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.04369,
+    0.03545,
+    0.20865,
+    0.07145,
+    0.03487,
+    0.01473,
+    0.59116
+   ],
+   "p_raw": [
+    0.06749,
+    0.05773,
+    0.2172,
+    0.09749,
+    0.05702,
+    0.02994,
+    0.47312
+   ],
+   "p1": 0.59116,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0036.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.1287,
+    0.03363,
+    0.28329,
+    0.03281,
+    0.04108,
+    0.02337,
+    0.45713
+   ],
+   "p_raw": [
+    0.14674,
+    0.05381,
+    0.26467,
+    0.05282,
+    0.06249,
+    0.04099,
+    0.37848
+   ],
+   "p1": 0.45713,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0132.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.00679,
+    0.00136,
+    0.00781,
+    0.00065,
+    0.01882,
+    0.00255,
+    0.96202
+   ],
+   "p_raw": [
+    0.02185,
+    0.00657,
+    0.02425,
+    0.00378,
+    0.04681,
+    0.01051,
+    0.88624
+   ],
+   "p1": 0.96202,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0194.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.12054,
+    0.03422,
+    0.00562,
+    0.05981,
+    0.02882,
+    0.01423,
+    0.73676
+   ],
+   "p_raw": [
+    0.15387,
+    0.06003,
+    0.01556,
+    0.09112,
+    0.0528,
+    0.03115,
+    0.59548
+   ],
+   "p1": 0.73676,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0050.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01506,
+    0.0221,
+    0.09344,
+    0.01551,
+    0.01419,
+    0.00988,
+    0.82982
+   ],
+   "p_raw": [
+    0.03451,
+    0.04596,
+    0.13505,
+    0.03527,
+    0.03301,
+    0.02518,
+    0.69102
+   ],
+   "p1": 0.82982,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0149.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.01141,
+    0.0013,
+    0.00159,
+    0.00131,
+    0.00359,
+    0.00307,
+    0.97773
+   ],
+   "p_raw": [
+    0.03303,
+    0.00651,
+    0.00757,
+    0.00655,
+    0.01391,
+    0.01238,
+    0.92005
+   ],
+   "p1": 0.97773,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0278.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.0109,
+    0.00844,
+    0.02514,
+    0.00101,
+    0.0058,
+    0.01017,
+    0.93854
+   ],
+   "p_raw": [
+    0.02995,
+    0.02473,
+    0.05593,
+    0.00506,
+    0.01869,
+    0.02843,
+    0.83721
+   ],
+   "p1": 0.93854,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0006.jpg",
+   "truth": "white_mold",
+   "pred": "gray_mold",
+   "p_cal": [
+    0.07691,
+    0.02007,
+    0.45689,
+    0.13105,
+    0.07631,
+    0.02998,
+    0.20879
+   ],
+   "p_raw": [
+    0.09763,
+    0.03576,
+    0.36988,
+    0.14542,
+    0.09706,
+    0.04828,
+    0.20598
+   ],
+   "p1": 0.45689,
+   "accepted_v1_gate": false,
+   "accepted_val_gate": false
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0187.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "p_cal": [
+    0.0096,
+    0.00184,
+    0.00312,
+    0.00259,
+    0.00466,
+    0.00511,
+    0.97308
+   ],
+   "p_raw": [
+    0.02866,
+    0.00834,
+    0.01237,
+    0.01076,
+    0.0167,
+    0.01789,
+    0.90528
+   ],
+   "p1": 0.97308,
+   "accepted_v1_gate": true,
+   "accepted_val_gate": true
+  }
+ ]
+}
