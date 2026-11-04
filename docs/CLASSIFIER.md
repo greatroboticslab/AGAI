@@ -7,7 +7,7 @@ and the lab's training recipe fixed, swap the backbone, and compare everything o
 ([Benchmark](BENCHMARK.md)) with seeds and paired tests.
 
 **Answer in one line.** A ~10-minute fine-tune of a 0.4B web-pretrained ViT with the lab's own recipe beats the
-lab's ResNet-50 by ~5.4 points (95.6 ± 1.3 % vs 90.2 ± 1.5 %); ensembles reach 97.2-97.7 %, which is about the
+lab's ResNet-50 by ~5.4 points (95.6 ± 1.3 % vs 90.2 ± 1.5 %); a ResNet-50 trained with the same recipe at 512 px gained nothing (88.5 ± 1.0 %), so the gap is the backbone's, not the resolution's; ensembles reach 97.2-97.7 %, which is about the
 ceiling that the current labels allow.
 
 <picture>
@@ -97,6 +97,7 @@ loss, head-then-full schedule, temperature scaling), so the backbone is the only
 | Qwen3-VL-32B QLoRA (classification) | 1 | 93.7 % | 88.0 % |
 | ResNet-50 + lab GPT synthetic | 5 | 90.4 ± 0.9 % | 84.2 ± 1.3 % |
 | ResNet-50, lab recipe | 5 | 90.2 ± 1.5 % | 85.5 ± 2.0 % |
+| ResNet-50, lab recipe at 512 px (resolution control, 2026-11-04) | 5 | 88.5 ± 1.0 % (deployed preprocessing); 90.0 ± 0.7 % (training preprocessing) | 83.8 ± 1.9 % |
 
 - **SigLIP 2 is the efficient pick**: 0.4B parameters, ~33 s per epoch on one A100, ~10 minutes per fine-tune. Its
   best seed vs ResNet-50 seed 42: 26 / 6, p = 0.00054. PE-Core-G matches it at 4.7× the parameters.

@@ -1330,3 +1330,27 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   stays with the backbone; (P2) its macro accuracy gains more than its accuracy, because the small classes are the
   large phone photographs; (P3) the mirror-sensitivity result holds for it too. Jobs 80917 80918 80919 80920 80921; checkpoints
   `/projects/was4g/agai/models/resnet50_512_s<seed>.pth`, logs `agai-resnet-train-<job>.out`.
+- **2026-11-04, 15:50 CST. (t, addendum) The first five 512-pixel jobs (80917-80921, RTX 5000 Ada 32 GB) ran out of GPU
+  memory at the start of the full-network phase (batch 32 at 512 pixels; 80920 and 80921 cancelled before reaching it).
+  Rerun with the recipe unchanged on the A100 80 GB node: jobs 80922 80923 80924 80925 80926(same script and arguments; the partition is
+  the only change).
+- **2026-11-04, 16:05 CST. (u) Result: ResNet-50 at 512 pixels (pre-registered in (t); jobs 80922-80926 on the A100,
+  about 7 min each; scoring job 80927; files `evaluation/scores_resnet50_512_s<seed>_<runtime|squash>_split_v1_<val|test>.json`,
+  the test files copied to `evaluation/paper_data/`).** Best validation accuracy 95.0-96.9 % (seed 42 at 256 px:
+  92.5 %), fitted temperatures 0.67-0.70. Split v1 test, seeds 42 / 1 / 2 / 3 / 4: deployed preprocessing (short
+  side to 589, center crop 512) 87.7 / 87.2 / 89.2 / 89.7 / 88.7 = **88.5 +- 1.0 %**, macro 83.7 / 81.3 / 85.3 /
+  85.9 / 82.9 = 83.8 +- 1.9 %; training preprocessing (512 x 512 squash) 89.9 / 88.9 / 90.2 / 90.5 / 90.7 = 90.0 +-
+  0.7 %, macro 86.6 +- 0.9 %. Against the 256-pixel runs with the deployed preprocessing (90.2 +- 1.5 %, macro 85.5 +-
+  2.0 %): seed-matched discordant images pooled over the five pairs 53 (512 only) vs 86 (256 only), exact binomial
+  P = 0.0064, so the 512-pixel model is slightly worse; best seeds 89.7 vs 91.7 % (7 / 15, P = 0.13); best 512-pixel
+  squash seed 90.7 vs 91.7 % (8 / 12, P = 0.50). SigLIP 2 real-only seed 0 (96.7 %) vs the best 512-pixel ResNet:
+  34 / 6, P = 8.4e-6 (deployed preprocessing) and 28 / 4, P = 1.9e-5 (squash). Per class, seed 3, deployed: drought
+  14/17, frost 22/29, gray mold 157/163, healthy 71/81, overwatered 15/19, root rot 33/33, white mold 45/56. Mirror
+  sensitivity (entry (s) rule): -0.3 to +0.2 points. Predictions: (P1) gain below half the backbone gap: **supported**
+  (no gain at all); (P2) macro gains more than accuracy: **not supported** (macro fell 1.7 points with the deployed
+  preprocessing); (P3) mirror sensitivity holds: supported. Reading: under the lab's recipe the ResNet-50 does not
+  profit from 512-pixel input, so the 5.4-point gap to the fine-tuned backbones is the backbone's, not the
+  resolution's; the recipe's schedule and learning rates were tuned at 256 pixels and were not re-tuned, which the
+  manuscript states. The training preprocessing scores 1.5 points above the deployed one at 512 pixels, the reverse
+  of the 256-pixel result (0.4 points below); noted, not interpreted. Manuscript: the hedges in the abstract,
+  introduction, discussion and conclusion are replaced by the control result; 3.3 and Table S5 carry the numbers.

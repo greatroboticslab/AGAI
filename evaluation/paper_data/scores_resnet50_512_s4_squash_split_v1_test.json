@@ -1,0 +1,5594 @@
+{
+ "summary": {
+  "model": "resnet50_512_s4",
+  "preprocess": "squash",
+  "set": "split_v1_test",
+  "n": 398,
+  "accuracy": "361/398 = 0.907",
+  "macro_accuracy": 0.872,
+  "per_class": {
+   "drought": "14/17",
+   "frost": "23/29",
+   "gray_mold": "154/163",
+   "healthy": "71/81",
+   "overwatered": "14/19",
+   "root_rot": "33/33",
+   "white_mold": "52/56"
+  },
+  "temperature": 0.6705907583236694
+ },
+ "results": [
+  {
+   "image": "plant_diagnostic/data/train/drought/Chateau2.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.99363,
+    "frost": 0.00039,
+    "gray_mold": 0.0,
+    "healthy": 5e-05,
+    "overwatered": 0.00534,
+    "root_rot": 0.00056,
+    "white_mold": 2e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_5.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.93114,
+    "frost": 0.0052,
+    "gray_mold": 3e-05,
+    "healthy": 0.03105,
+    "overwatered": 0.0094,
+    "root_rot": 0.00038,
+    "white_mold": 0.0228
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_29.jpg",
+   "truth": "drought",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.08526,
+    "frost": 0.2839,
+    "gray_mold": 0.02005,
+    "healthy": 0.56941,
+    "overwatered": 0.00602,
+    "root_rot": 0.01231,
+    "white_mold": 0.02304
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_8.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.94049,
+    "frost": 0.00056,
+    "gray_mold": 3e-05,
+    "healthy": 0.02902,
+    "overwatered": 0.00325,
+    "root_rot": 0.0253,
+    "white_mold": 0.00136
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/new-strawberry-leaves-appear-burnt-v0-owasxhleqt6f1.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.43137,
+    "frost": 0.12239,
+    "gray_mold": 0.00124,
+    "healthy": 0.41372,
+    "overwatered": 0.01151,
+    "root_rot": 0.01934,
+    "white_mold": 0.00043
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/holdrel_drought_3.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.997,
+    "frost": 0.00182,
+    "gray_mold": 0.0,
+    "healthy": 6e-05,
+    "overwatered": 0.00022,
+    "root_rot": 0.00088,
+    "white_mold": 2e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/strawberry-leaf-spots-disease-old-strawberry-bed-grass-clippings-mulch-cleanup-spring-garden-plants-dry-brown-276895335.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.71223,
+    "frost": 0.07691,
+    "gray_mold": 0.00034,
+    "healthy": 0.00025,
+    "overwatered": 0.03344,
+    "root_rot": 0.17628,
+    "white_mold": 0.00056
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/drought/stock-photo-dried-strawberry-leaves-strawberries-old-runners-and-leaves-in-autumn-garden-with-selective-focus-2139753869.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.89192,
+    "frost": 0.04179,
+    "gray_mold": 0.0,
+    "healthy": 0.00019,
+    "overwatered": 0.04052,
+    "root_rot": 0.00363,
+    "white_mold": 0.02194
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/drought/strawberry-plants-are-dying-v0-wparrcp3m80f1.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.86739,
+    "frost": 0.03178,
+    "gray_mold": 0.00175,
+    "healthy": 0.00776,
+    "overwatered": 0.08516,
+    "root_rot": 0.00475,
+    "white_mold": 0.0014
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/drought/strawberry-plants-are-dying-v0-wparrcp3m80f1.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.89034,
+    "frost": 0.0259,
+    "gray_mold": 0.0003,
+    "healthy": 0.02155,
+    "overwatered": 0.05497,
+    "root_rot": 0.00623,
+    "white_mold": 0.00072
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/strawberry-plants-are-dying-v0-qy797dp3m80f1.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.96729,
+    "frost": 0.00053,
+    "gray_mold": 0.00014,
+    "healthy": 0.00179,
+    "overwatered": 0.02896,
+    "root_rot": 0.00123,
+    "white_mold": 5e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/whats-happening-to-her-v0-oy6sb0oglhcf1.webp",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.77578,
+    "frost": 0.01553,
+    "gray_mold": 0.00384,
+    "healthy": 0.00393,
+    "overwatered": 0.17569,
+    "root_rot": 0.02037,
+    "white_mold": 0.00487
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/whats-wrong-with-my-strawberry-plant-leaves-turning-brown-v0-rfmcyq54622b1.jpg",
+   "truth": "drought",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.36617,
+    "frost": 0.11309,
+    "gray_mold": 0.00603,
+    "healthy": 0.00265,
+    "overwatered": 0.50657,
+    "root_rot": 0.00453,
+    "white_mold": 0.00096
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_19.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.98403,
+    "frost": 0.00103,
+    "gray_mold": 0.00016,
+    "healthy": 9e-05,
+    "overwatered": 0.00253,
+    "root_rot": 0.00726,
+    "white_mold": 0.00489
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_25.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.78036,
+    "frost": 0.00796,
+    "gray_mold": 0.00011,
+    "healthy": 0.00136,
+    "overwatered": 0.01361,
+    "root_rot": 0.1929,
+    "white_mold": 0.0037
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/drought_26.jpg",
+   "truth": "drought",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.97794,
+    "frost": 0.00655,
+    "gray_mold": 0.0,
+    "healthy": 0.00173,
+    "overwatered": 0.00161,
+    "root_rot": 0.0006,
+    "white_mold": 0.01157
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/drought/umd_dry_plug_wilt_015.jpg",
+   "truth": "drought",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.08864,
+    "frost": 0.09891,
+    "gray_mold": 0.00443,
+    "healthy": 0.00608,
+    "overwatered": 0.71169,
+    "root_rot": 0.07946,
+    "white_mold": 0.01079
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_96.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.01985,
+    "frost": 0.9544,
+    "gray_mold": 0.00129,
+    "healthy": 0.01041,
+    "overwatered": 0.00771,
+    "root_rot": 0.00573,
+    "white_mold": 0.00062
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_6.jpeg",
+   "truth": "frost",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.01789,
+    "frost": 0.05227,
+    "gray_mold": 0.03015,
+    "healthy": 0.13342,
+    "overwatered": 0.04835,
+    "root_rot": 0.13143,
+    "white_mold": 0.5865
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_5.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.00461,
+    "frost": 0.88961,
+    "gray_mold": 0.00122,
+    "healthy": 0.06751,
+    "overwatered": 0.0275,
+    "root_rot": 0.00459,
+    "white_mold": 0.00496
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_92.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.02515,
+    "frost": 0.96387,
+    "gray_mold": 0.00019,
+    "healthy": 0.00074,
+    "overwatered": 0.00905,
+    "root_rot": 0.00094,
+    "white_mold": 7e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_35.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.01223,
+    "frost": 0.93332,
+    "gray_mold": 4e-05,
+    "healthy": 0.00044,
+    "overwatered": 0.00147,
+    "root_rot": 0.0521,
+    "white_mold": 0.0004
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/img_2149.webp",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.05628,
+    "frost": 0.84755,
+    "gray_mold": 0.00054,
+    "healthy": 0.01006,
+    "overwatered": 0.01354,
+    "root_rot": 0.06906,
+    "white_mold": 0.00297
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_42.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.00139,
+    "frost": 0.99038,
+    "gray_mold": 0.00233,
+    "healthy": 0.00097,
+    "overwatered": 0.00161,
+    "root_rot": 0.00299,
+    "white_mold": 0.00033
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_58.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.0697,
+    "frost": 0.64822,
+    "gray_mold": 0.00054,
+    "healthy": 0.21646,
+    "overwatered": 0.0303,
+    "root_rot": 0.00683,
+    "white_mold": 0.02795
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_65.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.28634,
+    "frost": 0.64571,
+    "gray_mold": 0.01499,
+    "healthy": 0.00717,
+    "overwatered": 0.03247,
+    "root_rot": 0.00564,
+    "white_mold": 0.00768
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/frost_17.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.08959,
+    "frost": 0.45843,
+    "gray_mold": 0.02891,
+    "healthy": 0.16647,
+    "overwatered": 0.12718,
+    "root_rot": 0.03314,
+    "white_mold": 0.09629
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/frostinjury.jpg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.03595,
+    "frost": 0.54418,
+    "gray_mold": 0.35616,
+    "healthy": 0.0076,
+    "overwatered": 0.02869,
+    "root_rot": 0.00486,
+    "white_mold": 0.02255
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_12.jpeg",
+   "truth": "frost",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.08059,
+    "frost": 0.21401,
+    "gray_mold": 0.06409,
+    "healthy": 0.02644,
+    "overwatered": 0.17133,
+    "root_rot": 0.04987,
+    "white_mold": 0.39368
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/frost_64.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.00085,
+    "frost": 0.96612,
+    "gray_mold": 6e-05,
+    "healthy": 4e-05,
+    "overwatered": 0.02774,
+    "root_rot": 0.00484,
+    "white_mold": 0.00034
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_22.jpeg",
+   "truth": "frost",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.16765,
+    "frost": 0.06037,
+    "gray_mold": 0.42818,
+    "healthy": 0.27403,
+    "overwatered": 0.02699,
+    "root_rot": 0.02992,
+    "white_mold": 0.01286
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_79.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.01439,
+    "frost": 0.5307,
+    "gray_mold": 0.00137,
+    "healthy": 0.00287,
+    "overwatered": 0.00506,
+    "root_rot": 0.00211,
+    "white_mold": 0.4435
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/uky_frost_dissection_003.jpg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.00357,
+    "frost": 0.94537,
+    "gray_mold": 0.00373,
+    "healthy": 0.00015,
+    "overwatered": 0.01327,
+    "root_rot": 0.00133,
+    "white_mold": 0.03258
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/20110329alpinestrawberryflower.jpg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.039,
+    "frost": 0.94134,
+    "gray_mold": 0.00653,
+    "healthy": 0.00347,
+    "overwatered": 0.00815,
+    "root_rot": 0.00051,
+    "white_mold": 0.001
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/frost/Strawberry-Disorder-_399037 (1).jpg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 9e-05,
+    "frost": 0.99961,
+    "gray_mold": 0.0,
+    "healthy": 4e-05,
+    "overwatered": 0.00012,
+    "root_rot": 8e-05,
+    "white_mold": 5e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_76.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.00145,
+    "frost": 0.96988,
+    "gray_mold": 0.00016,
+    "healthy": 0.00167,
+    "overwatered": 0.0192,
+    "root_rot": 0.00491,
+    "white_mold": 0.00273
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_15.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.1191,
+    "frost": 0.23388,
+    "gray_mold": 0.03823,
+    "healthy": 0.17117,
+    "overwatered": 0.15751,
+    "root_rot": 0.09777,
+    "white_mold": 0.18234
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_4.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.00043,
+    "frost": 0.99761,
+    "gray_mold": 1e-05,
+    "healthy": 0.0001,
+    "overwatered": 0.00051,
+    "root_rot": 0.00056,
+    "white_mold": 0.00078
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_56.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.15546,
+    "frost": 0.56278,
+    "gray_mold": 0.0859,
+    "healthy": 0.06381,
+    "overwatered": 0.07082,
+    "root_rot": 0.02262,
+    "white_mold": 0.03862
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_73.jpeg",
+   "truth": "frost",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.10416,
+    "frost": 0.39546,
+    "gray_mold": 2e-05,
+    "healthy": 0.00297,
+    "overwatered": 0.4887,
+    "root_rot": 0.00738,
+    "white_mold": 0.0013
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/images (1).jpeg",
+   "truth": "frost",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.14308,
+    "frost": 0.14695,
+    "gray_mold": 0.00256,
+    "healthy": 0.46365,
+    "overwatered": 0.11386,
+    "root_rot": 0.12943,
+    "white_mold": 0.00047
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_19.jpeg",
+   "truth": "frost",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.07411,
+    "frost": 0.02082,
+    "gray_mold": 0.01281,
+    "healthy": 0.8406,
+    "overwatered": 0.01685,
+    "root_rot": 0.00554,
+    "white_mold": 0.02928
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_72.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.02658,
+    "frost": 0.9623,
+    "gray_mold": 0.00045,
+    "healthy": 0.00063,
+    "overwatered": 0.00483,
+    "root_rot": 0.00184,
+    "white_mold": 0.00337
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_55.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 7e-05,
+    "frost": 0.99894,
+    "gray_mold": 1e-05,
+    "healthy": 0.00017,
+    "overwatered": 0.00054,
+    "root_rot": 9e-05,
+    "white_mold": 0.00018
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frost_26.jpeg",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.01809,
+    "frost": 0.77377,
+    "gray_mold": 0.10052,
+    "healthy": 0.00079,
+    "overwatered": 0.03299,
+    "root_rot": 0.00951,
+    "white_mold": 0.06433
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/frost/frosty.webp",
+   "truth": "frost",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.04133,
+    "frost": 0.56319,
+    "gray_mold": 0.10581,
+    "healthy": 0.0087,
+    "overwatered": 0.12283,
+    "root_rot": 0.02664,
+    "white_mold": 0.1315
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/depositphotos_479595984-stock-photo-leaves-strawberries-affected-white-spot.jpg",
+   "truth": "gray_mold",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.87187,
+    "frost": 0.03351,
+    "gray_mold": 0.00205,
+    "healthy": 0.00956,
+    "overwatered": 0.01632,
+    "root_rot": 0.02106,
+    "white_mold": 0.04563
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1449.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03937,
+    "frost": 0.0042,
+    "gray_mold": 0.92711,
+    "healthy": 0.00962,
+    "overwatered": 0.01288,
+    "root_rot": 0.00533,
+    "white_mold": 0.00149
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0681.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01206,
+    "frost": 0.00182,
+    "gray_mold": 0.95011,
+    "healthy": 0.0015,
+    "overwatered": 0.02397,
+    "root_rot": 0.00929,
+    "white_mold": 0.00124
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0600.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01815,
+    "frost": 0.00645,
+    "gray_mold": 0.91612,
+    "healthy": 0.00609,
+    "overwatered": 0.02117,
+    "root_rot": 0.0282,
+    "white_mold": 0.00383
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0875.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00955,
+    "frost": 0.00204,
+    "gray_mold": 0.97747,
+    "healthy": 0.00332,
+    "overwatered": 0.00331,
+    "root_rot": 0.00363,
+    "white_mold": 0.00068
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1957.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01396,
+    "frost": 0.00935,
+    "gray_mold": 0.94649,
+    "healthy": 0.00166,
+    "overwatered": 0.02016,
+    "root_rot": 0.00605,
+    "white_mold": 0.00231
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0847.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01816,
+    "frost": 0.01768,
+    "gray_mold": 0.92953,
+    "healthy": 0.00891,
+    "overwatered": 0.01601,
+    "root_rot": 0.00628,
+    "white_mold": 0.00343
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2216.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00465,
+    "frost": 0.00285,
+    "gray_mold": 0.96023,
+    "healthy": 0.00844,
+    "overwatered": 0.00782,
+    "root_rot": 0.0058,
+    "white_mold": 0.01022
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1279.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01878,
+    "frost": 0.00586,
+    "gray_mold": 0.94352,
+    "healthy": 0.00208,
+    "overwatered": 0.01252,
+    "root_rot": 0.00262,
+    "white_mold": 0.01462
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/5605472.jpg",
+   "truth": "gray_mold",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.06427,
+    "frost": 0.32339,
+    "gray_mold": 0.2173,
+    "healthy": 0.11186,
+    "overwatered": 0.03607,
+    "root_rot": 0.01103,
+    "white_mold": 0.23607
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (2).jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.06691,
+    "frost": 0.02123,
+    "gray_mold": 0.37721,
+    "healthy": 0.28653,
+    "overwatered": 0.12608,
+    "root_rot": 0.11252,
+    "white_mold": 0.00952
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0565.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01555,
+    "frost": 0.00666,
+    "gray_mold": 0.94749,
+    "healthy": 0.00156,
+    "overwatered": 0.01484,
+    "root_rot": 0.00867,
+    "white_mold": 0.00522
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0304.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00985,
+    "frost": 0.00114,
+    "gray_mold": 0.97927,
+    "healthy": 0.00128,
+    "overwatered": 0.00189,
+    "root_rot": 0.00478,
+    "white_mold": 0.00177
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2189.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02399,
+    "frost": 0.01041,
+    "gray_mold": 0.92277,
+    "healthy": 0.00222,
+    "overwatered": 0.02524,
+    "root_rot": 0.01317,
+    "white_mold": 0.0022
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1524.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.08861,
+    "frost": 0.00594,
+    "gray_mold": 0.83918,
+    "healthy": 0.00473,
+    "overwatered": 0.03537,
+    "root_rot": 0.01418,
+    "white_mold": 0.01198
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0452.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03673,
+    "frost": 0.01312,
+    "gray_mold": 0.89664,
+    "healthy": 0.0079,
+    "overwatered": 0.02208,
+    "root_rot": 0.01014,
+    "white_mold": 0.01339
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0986.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02808,
+    "frost": 0.00551,
+    "gray_mold": 0.92814,
+    "healthy": 0.00108,
+    "overwatered": 0.01365,
+    "root_rot": 0.01449,
+    "white_mold": 0.00905
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0910.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00982,
+    "frost": 0.00433,
+    "gray_mold": 0.95733,
+    "healthy": 0.00241,
+    "overwatered": 0.01801,
+    "root_rot": 0.00328,
+    "white_mold": 0.00481
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1917.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01723,
+    "frost": 0.00628,
+    "gray_mold": 0.95596,
+    "healthy": 0.00182,
+    "overwatered": 0.01009,
+    "root_rot": 0.00761,
+    "white_mold": 0.00102
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2283.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01794,
+    "frost": 0.0056,
+    "gray_mold": 0.94761,
+    "healthy": 0.00639,
+    "overwatered": 0.01249,
+    "root_rot": 0.0089,
+    "white_mold": 0.00106
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2064.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03113,
+    "frost": 0.00664,
+    "gray_mold": 0.80187,
+    "healthy": 0.0151,
+    "overwatered": 0.05475,
+    "root_rot": 0.05675,
+    "white_mold": 0.03375
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/image005.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03098,
+    "frost": 0.0342,
+    "gray_mold": 0.65938,
+    "healthy": 0.01119,
+    "overwatered": 0.06196,
+    "root_rot": 0.0144,
+    "white_mold": 0.1879
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0557.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00806,
+    "frost": 0.00298,
+    "gray_mold": 0.97747,
+    "healthy": 0.00035,
+    "overwatered": 0.00719,
+    "root_rot": 0.00287,
+    "white_mold": 0.00107
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2099.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03666,
+    "frost": 0.01527,
+    "gray_mold": 0.68363,
+    "healthy": 0.03514,
+    "overwatered": 0.06578,
+    "root_rot": 0.07926,
+    "white_mold": 0.08426
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1847.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04292,
+    "frost": 0.01006,
+    "gray_mold": 0.87817,
+    "healthy": 0.00337,
+    "overwatered": 0.04686,
+    "root_rot": 0.01735,
+    "white_mold": 0.00129
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1395.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.06884,
+    "frost": 0.05596,
+    "gray_mold": 0.78377,
+    "healthy": 0.00188,
+    "overwatered": 0.05839,
+    "root_rot": 0.00834,
+    "white_mold": 0.02282
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0939.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01597,
+    "frost": 0.00704,
+    "gray_mold": 0.94074,
+    "healthy": 0.00347,
+    "overwatered": 0.01689,
+    "root_rot": 0.01164,
+    "white_mold": 0.00425
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0792.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04807,
+    "frost": 0.01586,
+    "gray_mold": 0.83794,
+    "healthy": 0.04356,
+    "overwatered": 0.0172,
+    "root_rot": 0.031,
+    "white_mold": 0.00636
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2138.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04924,
+    "frost": 0.00525,
+    "gray_mold": 0.84619,
+    "healthy": 0.04436,
+    "overwatered": 0.03034,
+    "root_rot": 0.02217,
+    "white_mold": 0.00245
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1011.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01536,
+    "frost": 0.00802,
+    "gray_mold": 0.94726,
+    "healthy": 0.00288,
+    "overwatered": 0.01686,
+    "root_rot": 0.00467,
+    "white_mold": 0.00494
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0571.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02059,
+    "frost": 0.00453,
+    "gray_mold": 0.93185,
+    "healthy": 0.00827,
+    "overwatered": 0.01937,
+    "root_rot": 0.0058,
+    "white_mold": 0.00959
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1925.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01216,
+    "frost": 0.00934,
+    "gray_mold": 0.95511,
+    "healthy": 0.00158,
+    "overwatered": 0.01501,
+    "root_rot": 0.00491,
+    "white_mold": 0.0019
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1155.jpg",
+   "truth": "gray_mold",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.78166,
+    "frost": 0.00712,
+    "gray_mold": 0.02765,
+    "healthy": 0.01923,
+    "overwatered": 0.05688,
+    "root_rot": 0.02633,
+    "white_mold": 0.08112
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (1).jpg",
+   "truth": "gray_mold",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.04434,
+    "frost": 0.01792,
+    "gray_mold": 0.17426,
+    "healthy": 0.62697,
+    "overwatered": 0.07998,
+    "root_rot": 0.04719,
+    "white_mold": 0.00935
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1348.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00381,
+    "frost": 0.00172,
+    "gray_mold": 0.9559,
+    "healthy": 0.00624,
+    "overwatered": 0.00373,
+    "root_rot": 0.02715,
+    "white_mold": 0.00145
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1738.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00333,
+    "frost": 0.00057,
+    "gray_mold": 0.99194,
+    "healthy": 5e-05,
+    "overwatered": 0.00245,
+    "root_rot": 0.00157,
+    "white_mold": 0.0001
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2297.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0049,
+    "frost": 0.00059,
+    "gray_mold": 0.99186,
+    "healthy": 1e-05,
+    "overwatered": 0.0007,
+    "root_rot": 0.00177,
+    "white_mold": 0.00017
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1067.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02949,
+    "frost": 0.01672,
+    "gray_mold": 0.91008,
+    "healthy": 0.00419,
+    "overwatered": 0.01607,
+    "root_rot": 0.01661,
+    "white_mold": 0.00684
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2015.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02054,
+    "frost": 0.00953,
+    "gray_mold": 0.91961,
+    "healthy": 0.00314,
+    "overwatered": 0.0126,
+    "root_rot": 0.0266,
+    "white_mold": 0.00798
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1493.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04179,
+    "frost": 0.00295,
+    "gray_mold": 0.89217,
+    "healthy": 0.00665,
+    "overwatered": 0.03482,
+    "root_rot": 0.01513,
+    "white_mold": 0.00649
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2065.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0117,
+    "frost": 0.00364,
+    "gray_mold": 0.94593,
+    "healthy": 0.00171,
+    "overwatered": 0.01702,
+    "root_rot": 0.01271,
+    "white_mold": 0.00729
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/D-ST-BCIN-FR.002.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01733,
+    "frost": 0.00489,
+    "gray_mold": 0.70402,
+    "healthy": 0.00434,
+    "overwatered": 0.02192,
+    "root_rot": 0.01673,
+    "white_mold": 0.23077
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/Strawberry_HU.jpg",
+   "truth": "gray_mold",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.39898,
+    "frost": 0.03389,
+    "gray_mold": 0.34279,
+    "healthy": 0.00845,
+    "overwatered": 0.08767,
+    "root_rot": 0.02608,
+    "white_mold": 0.10214
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1026.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00388,
+    "frost": 0.00115,
+    "gray_mold": 0.95539,
+    "healthy": 0.02964,
+    "overwatered": 0.00613,
+    "root_rot": 0.00245,
+    "white_mold": 0.00136
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (4).jpg",
+   "truth": "gray_mold",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.03053,
+    "frost": 0.03881,
+    "gray_mold": 0.00357,
+    "healthy": 0.76239,
+    "overwatered": 0.14481,
+    "root_rot": 0.01893,
+    "white_mold": 0.00096
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0188.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01551,
+    "frost": 0.01496,
+    "gray_mold": 0.85174,
+    "healthy": 0.0038,
+    "overwatered": 0.07486,
+    "root_rot": 0.03411,
+    "white_mold": 0.00502
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1502.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03516,
+    "frost": 0.00606,
+    "gray_mold": 0.94144,
+    "healthy": 0.00175,
+    "overwatered": 0.01021,
+    "root_rot": 0.00421,
+    "white_mold": 0.00116
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1880.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01043,
+    "frost": 0.00597,
+    "gray_mold": 0.95907,
+    "healthy": 0.00445,
+    "overwatered": 0.014,
+    "root_rot": 0.00413,
+    "white_mold": 0.00195
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1780.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0116,
+    "frost": 0.00347,
+    "gray_mold": 0.93498,
+    "healthy": 0.00095,
+    "overwatered": 0.01409,
+    "root_rot": 0.02771,
+    "white_mold": 0.0072
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1978.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0094,
+    "frost": 0.00399,
+    "gray_mold": 0.97437,
+    "healthy": 0.00062,
+    "overwatered": 0.00897,
+    "root_rot": 0.0019,
+    "white_mold": 0.00073
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0075.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.11107,
+    "frost": 0.01902,
+    "gray_mold": 0.33217,
+    "healthy": 0.03989,
+    "overwatered": 0.08724,
+    "root_rot": 0.2857,
+    "white_mold": 0.12491
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0007.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0105,
+    "frost": 0.00095,
+    "gray_mold": 0.97587,
+    "healthy": 0.00078,
+    "overwatered": 0.00386,
+    "root_rot": 0.00657,
+    "white_mold": 0.00147
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0700.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04183,
+    "frost": 0.02047,
+    "gray_mold": 0.89706,
+    "healthy": 0.00373,
+    "overwatered": 0.02135,
+    "root_rot": 0.00936,
+    "white_mold": 0.00619
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1618.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0137,
+    "frost": 0.00417,
+    "gray_mold": 0.94722,
+    "healthy": 0.00159,
+    "overwatered": 0.02854,
+    "root_rot": 0.00133,
+    "white_mold": 0.00345
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1472.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03109,
+    "frost": 0.01658,
+    "gray_mold": 0.87649,
+    "healthy": 0.01478,
+    "overwatered": 0.03916,
+    "root_rot": 0.01552,
+    "white_mold": 0.00639
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1858.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03896,
+    "frost": 0.00526,
+    "gray_mold": 0.8905,
+    "healthy": 0.00254,
+    "overwatered": 0.02263,
+    "root_rot": 0.03767,
+    "white_mold": 0.00243
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2201.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00376,
+    "frost": 0.00313,
+    "gray_mold": 0.97305,
+    "healthy": 0.00048,
+    "overwatered": 0.01396,
+    "root_rot": 0.00236,
+    "white_mold": 0.00326
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0914.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01425,
+    "frost": 0.00498,
+    "gray_mold": 0.94502,
+    "healthy": 0.00438,
+    "overwatered": 0.01841,
+    "root_rot": 0.00531,
+    "white_mold": 0.00764
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0354.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.12773,
+    "frost": 0.02478,
+    "gray_mold": 0.58996,
+    "healthy": 0.00762,
+    "overwatered": 0.13873,
+    "root_rot": 0.10825,
+    "white_mold": 0.00293
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/Cline_Strawb_gray_at_cap3.jpeg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0017,
+    "frost": 0.00227,
+    "gray_mold": 0.96528,
+    "healthy": 0.00015,
+    "overwatered": 0.02975,
+    "root_rot": 0.00018,
+    "white_mold": 0.00066
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1830.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01271,
+    "frost": 0.00199,
+    "gray_mold": 0.9492,
+    "healthy": 0.001,
+    "overwatered": 0.02449,
+    "root_rot": 0.00765,
+    "white_mold": 0.00297
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1178.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00708,
+    "frost": 0.01167,
+    "gray_mold": 0.96686,
+    "healthy": 0.00206,
+    "overwatered": 0.00621,
+    "root_rot": 0.00434,
+    "white_mold": 0.00178
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1180.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01295,
+    "frost": 0.01829,
+    "gray_mold": 0.94113,
+    "healthy": 0.00591,
+    "overwatered": 0.00833,
+    "root_rot": 0.0107,
+    "white_mold": 0.00269
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2213.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0099,
+    "frost": 0.00268,
+    "gray_mold": 0.93493,
+    "healthy": 0.00051,
+    "overwatered": 0.00955,
+    "root_rot": 0.02124,
+    "white_mold": 0.02119
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/strawberrybotrytis3.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.07072,
+    "frost": 0.01554,
+    "gray_mold": 0.47291,
+    "healthy": 0.12895,
+    "overwatered": 0.13715,
+    "root_rot": 0.15448,
+    "white_mold": 0.02025
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1352.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01844,
+    "frost": 0.01715,
+    "gray_mold": 0.72252,
+    "healthy": 0.03162,
+    "overwatered": 0.01213,
+    "root_rot": 0.19305,
+    "white_mold": 0.00509
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1028.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00944,
+    "frost": 0.00185,
+    "gray_mold": 0.97555,
+    "healthy": 0.00189,
+    "overwatered": 0.00735,
+    "root_rot": 0.0033,
+    "white_mold": 0.00062
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1474.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01868,
+    "frost": 0.00903,
+    "gray_mold": 0.91408,
+    "healthy": 0.03665,
+    "overwatered": 0.01721,
+    "root_rot": 0.00366,
+    "white_mold": 0.00068
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0599.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02638,
+    "frost": 0.01012,
+    "gray_mold": 0.91955,
+    "healthy": 0.00501,
+    "overwatered": 0.02003,
+    "root_rot": 0.01621,
+    "white_mold": 0.0027
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1128.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0023,
+    "frost": 0.00162,
+    "gray_mold": 0.98251,
+    "healthy": 0.00269,
+    "overwatered": 0.00645,
+    "root_rot": 0.00414,
+    "white_mold": 0.00029
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1309.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02463,
+    "frost": 0.01349,
+    "gray_mold": 0.92476,
+    "healthy": 0.0048,
+    "overwatered": 0.013,
+    "root_rot": 0.00846,
+    "white_mold": 0.01087
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1611.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01044,
+    "frost": 0.00458,
+    "gray_mold": 0.92724,
+    "healthy": 0.00209,
+    "overwatered": 0.04008,
+    "root_rot": 0.01292,
+    "white_mold": 0.00264
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2312.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0068,
+    "frost": 0.0045,
+    "gray_mold": 0.96221,
+    "healthy": 0.00376,
+    "overwatered": 0.00955,
+    "root_rot": 0.00794,
+    "white_mold": 0.00525
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0736.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03084,
+    "frost": 0.01085,
+    "gray_mold": 0.89172,
+    "healthy": 0.00412,
+    "overwatered": 0.03156,
+    "root_rot": 0.01359,
+    "white_mold": 0.01732
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2241.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.18778,
+    "frost": 0.00336,
+    "gray_mold": 0.72973,
+    "healthy": 0.00072,
+    "overwatered": 0.02579,
+    "root_rot": 0.02885,
+    "white_mold": 0.02377
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0663.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02303,
+    "frost": 0.00969,
+    "gray_mold": 0.92706,
+    "healthy": 0.0013,
+    "overwatered": 0.01926,
+    "root_rot": 0.00682,
+    "white_mold": 0.01286
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/graymoldNonsynth.jpeg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.09097,
+    "frost": 0.06775,
+    "gray_mold": 0.55891,
+    "healthy": 0.00072,
+    "overwatered": 0.13041,
+    "root_rot": 0.11474,
+    "white_mold": 0.0365
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0538.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02027,
+    "frost": 0.01372,
+    "gray_mold": 0.89807,
+    "healthy": 0.00419,
+    "overwatered": 0.01909,
+    "root_rot": 0.03589,
+    "white_mold": 0.00877
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0555.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01127,
+    "frost": 0.00356,
+    "gray_mold": 0.94876,
+    "healthy": 0.00362,
+    "overwatered": 0.012,
+    "root_rot": 0.0192,
+    "white_mold": 0.00159
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0204.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00136,
+    "frost": 0.00043,
+    "gray_mold": 0.99376,
+    "healthy": 0.00024,
+    "overwatered": 0.00215,
+    "root_rot": 0.00167,
+    "white_mold": 0.00039
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0386.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02039,
+    "frost": 0.01465,
+    "gray_mold": 0.79288,
+    "healthy": 0.00625,
+    "overwatered": 0.15571,
+    "root_rot": 0.00587,
+    "white_mold": 0.00424
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1945.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03232,
+    "frost": 0.01752,
+    "gray_mold": 0.9037,
+    "healthy": 0.00911,
+    "overwatered": 0.02619,
+    "root_rot": 0.00872,
+    "white_mold": 0.00244
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0219.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04002,
+    "frost": 0.00741,
+    "gray_mold": 0.74582,
+    "healthy": 0.04167,
+    "overwatered": 0.01899,
+    "root_rot": 0.14481,
+    "white_mold": 0.00127
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1173.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0094,
+    "frost": 0.00739,
+    "gray_mold": 0.97684,
+    "healthy": 0.0004,
+    "overwatered": 0.00345,
+    "root_rot": 0.00198,
+    "white_mold": 0.00055
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1937.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02571,
+    "frost": 0.00727,
+    "gray_mold": 0.92911,
+    "healthy": 0.00789,
+    "overwatered": 0.01842,
+    "root_rot": 0.0041,
+    "white_mold": 0.00749
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2355.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03087,
+    "frost": 0.00446,
+    "gray_mold": 0.91596,
+    "healthy": 0.00064,
+    "overwatered": 0.03256,
+    "root_rot": 0.01195,
+    "white_mold": 0.00356
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (11).jpg",
+   "truth": "gray_mold",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.01799,
+    "frost": 0.00604,
+    "gray_mold": 0.19858,
+    "healthy": 0.03106,
+    "overwatered": 0.02696,
+    "root_rot": 0.70704,
+    "white_mold": 0.01233
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1294.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01062,
+    "frost": 0.00534,
+    "gray_mold": 0.95319,
+    "healthy": 0.00548,
+    "overwatered": 0.01556,
+    "root_rot": 0.00589,
+    "white_mold": 0.00391
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0444.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03536,
+    "frost": 0.03324,
+    "gray_mold": 0.89375,
+    "healthy": 0.00464,
+    "overwatered": 0.01035,
+    "root_rot": 0.01936,
+    "white_mold": 0.00329
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1163.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00797,
+    "frost": 0.00392,
+    "gray_mold": 0.93767,
+    "healthy": 0.00363,
+    "overwatered": 0.02985,
+    "root_rot": 0.01487,
+    "white_mold": 0.00208
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1035.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01538,
+    "frost": 0.00706,
+    "gray_mold": 0.94906,
+    "healthy": 0.00285,
+    "overwatered": 0.01608,
+    "root_rot": 0.00605,
+    "white_mold": 0.00352
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2183.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03579,
+    "frost": 0.00728,
+    "gray_mold": 0.90599,
+    "healthy": 0.02164,
+    "overwatered": 0.01249,
+    "root_rot": 0.0133,
+    "white_mold": 0.00353
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2178.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02669,
+    "frost": 0.02112,
+    "gray_mold": 0.91338,
+    "healthy": 0.0128,
+    "overwatered": 0.01458,
+    "root_rot": 0.00724,
+    "white_mold": 0.0042
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1699.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03248,
+    "frost": 0.0081,
+    "gray_mold": 0.93114,
+    "healthy": 0.00276,
+    "overwatered": 0.01585,
+    "root_rot": 0.0027,
+    "white_mold": 0.00697
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/5558468.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.05358,
+    "frost": 0.12135,
+    "gray_mold": 0.60836,
+    "healthy": 0.00077,
+    "overwatered": 0.05382,
+    "root_rot": 0.04679,
+    "white_mold": 0.11532
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1389.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04684,
+    "frost": 0.0283,
+    "gray_mold": 0.89213,
+    "healthy": 0.00444,
+    "overwatered": 0.01099,
+    "root_rot": 0.0121,
+    "white_mold": 0.00519
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1220.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02227,
+    "frost": 0.00566,
+    "gray_mold": 0.95234,
+    "healthy": 0.00084,
+    "overwatered": 0.0124,
+    "root_rot": 0.00517,
+    "white_mold": 0.00132
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1296.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02085,
+    "frost": 0.00292,
+    "gray_mold": 0.94509,
+    "healthy": 0.004,
+    "overwatered": 0.01936,
+    "root_rot": 0.00556,
+    "white_mold": 0.00222
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1344.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01974,
+    "frost": 0.00571,
+    "gray_mold": 0.92838,
+    "healthy": 0.01008,
+    "overwatered": 0.02254,
+    "root_rot": 0.00858,
+    "white_mold": 0.00497
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/images (3).jpg",
+   "truth": "gray_mold",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.0385,
+    "frost": 0.02628,
+    "gray_mold": 0.08055,
+    "healthy": 0.72955,
+    "overwatered": 0.08544,
+    "root_rot": 0.03436,
+    "white_mold": 0.00533
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1399.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01596,
+    "frost": 0.00795,
+    "gray_mold": 0.94899,
+    "healthy": 0.00243,
+    "overwatered": 0.01526,
+    "root_rot": 0.00573,
+    "white_mold": 0.00367
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0998.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04156,
+    "frost": 0.01309,
+    "gray_mold": 0.81199,
+    "healthy": 0.02509,
+    "overwatered": 0.08327,
+    "root_rot": 0.01948,
+    "white_mold": 0.00552
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0579.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01365,
+    "frost": 0.00539,
+    "gray_mold": 0.96255,
+    "healthy": 0.00059,
+    "overwatered": 0.00984,
+    "root_rot": 0.00556,
+    "white_mold": 0.00241
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0177.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02971,
+    "frost": 0.00597,
+    "gray_mold": 0.93896,
+    "healthy": 0.00641,
+    "overwatered": 0.01365,
+    "root_rot": 0.00291,
+    "white_mold": 0.0024
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1381.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01043,
+    "frost": 0.00357,
+    "gray_mold": 0.96717,
+    "healthy": 0.00257,
+    "overwatered": 0.00985,
+    "root_rot": 0.00348,
+    "white_mold": 0.00293
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1382.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01233,
+    "frost": 0.00409,
+    "gray_mold": 0.94314,
+    "healthy": 0.02121,
+    "overwatered": 0.01354,
+    "root_rot": 0.00415,
+    "white_mold": 0.00154
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1628.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04396,
+    "frost": 0.02495,
+    "gray_mold": 0.88284,
+    "healthy": 0.00633,
+    "overwatered": 0.02772,
+    "root_rot": 0.00627,
+    "white_mold": 0.00793
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0740.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0182,
+    "frost": 0.01443,
+    "gray_mold": 0.90357,
+    "healthy": 0.00145,
+    "overwatered": 0.03264,
+    "root_rot": 0.01349,
+    "white_mold": 0.0162
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1357.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0196,
+    "frost": 0.00587,
+    "gray_mold": 0.95367,
+    "healthy": 0.00185,
+    "overwatered": 0.01243,
+    "root_rot": 0.00545,
+    "white_mold": 0.00113
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1918.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02567,
+    "frost": 0.00887,
+    "gray_mold": 0.95309,
+    "healthy": 0.00262,
+    "overwatered": 0.00534,
+    "root_rot": 0.00398,
+    "white_mold": 0.00043
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0718.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02424,
+    "frost": 0.01037,
+    "gray_mold": 0.93684,
+    "healthy": 0.00317,
+    "overwatered": 0.01527,
+    "root_rot": 0.00369,
+    "white_mold": 0.00642
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1782.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01604,
+    "frost": 0.01599,
+    "gray_mold": 0.9351,
+    "healthy": 0.00181,
+    "overwatered": 0.02094,
+    "root_rot": 0.00823,
+    "white_mold": 0.00188
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1134.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00277,
+    "frost": 0.00268,
+    "gray_mold": 0.98778,
+    "healthy": 0.00081,
+    "overwatered": 0.00285,
+    "root_rot": 0.00088,
+    "white_mold": 0.00223
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2061.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00486,
+    "frost": 0.00205,
+    "gray_mold": 0.95694,
+    "healthy": 0.00048,
+    "overwatered": 0.02032,
+    "root_rot": 0.01112,
+    "white_mold": 0.00422
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1213.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02307,
+    "frost": 0.01684,
+    "gray_mold": 0.88369,
+    "healthy": 0.01776,
+    "overwatered": 0.04808,
+    "root_rot": 0.00794,
+    "white_mold": 0.00262
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1215.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01041,
+    "frost": 0.00685,
+    "gray_mold": 0.94288,
+    "healthy": 0.00857,
+    "overwatered": 0.02537,
+    "root_rot": 0.00468,
+    "white_mold": 0.00125
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1639.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01459,
+    "frost": 0.01723,
+    "gray_mold": 0.91079,
+    "healthy": 0.01205,
+    "overwatered": 0.02568,
+    "root_rot": 0.00371,
+    "white_mold": 0.01594
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0554.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0081,
+    "frost": 0.00295,
+    "gray_mold": 0.96641,
+    "healthy": 0.00316,
+    "overwatered": 0.00967,
+    "root_rot": 0.00858,
+    "white_mold": 0.00113
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2340.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01542,
+    "frost": 0.00525,
+    "gray_mold": 0.94309,
+    "healthy": 0.00054,
+    "overwatered": 0.00956,
+    "root_rot": 0.02399,
+    "white_mold": 0.00214
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0388.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01973,
+    "frost": 0.01297,
+    "gray_mold": 0.80945,
+    "healthy": 0.01723,
+    "overwatered": 0.12541,
+    "root_rot": 0.01238,
+    "white_mold": 0.00282
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0391.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01683,
+    "frost": 0.00682,
+    "gray_mold": 0.91196,
+    "healthy": 0.00786,
+    "overwatered": 0.0437,
+    "root_rot": 0.00953,
+    "white_mold": 0.00331
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/boytris-fruit-rot-strawberry.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.05076,
+    "frost": 0.02162,
+    "gray_mold": 0.68553,
+    "healthy": 9e-05,
+    "overwatered": 0.05878,
+    "root_rot": 0.06377,
+    "white_mold": 0.11945
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2193.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02163,
+    "frost": 0.01087,
+    "gray_mold": 0.92582,
+    "healthy": 0.00491,
+    "overwatered": 0.02971,
+    "root_rot": 0.00621,
+    "white_mold": 0.00084
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0191.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00422,
+    "frost": 0.00076,
+    "gray_mold": 0.9879,
+    "healthy": 0.00068,
+    "overwatered": 0.00357,
+    "root_rot": 0.00143,
+    "white_mold": 0.00143
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0784.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03814,
+    "frost": 0.00784,
+    "gray_mold": 0.91383,
+    "healthy": 0.00461,
+    "overwatered": 0.0227,
+    "root_rot": 0.0105,
+    "white_mold": 0.00239
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2221.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02045,
+    "frost": 0.00123,
+    "gray_mold": 0.9479,
+    "healthy": 0.00115,
+    "overwatered": 0.01836,
+    "root_rot": 0.00981,
+    "white_mold": 0.00109
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/Straw-Botrytis-berries.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.42276,
+    "frost": 0.03542,
+    "gray_mold": 0.45816,
+    "healthy": 0.0221,
+    "overwatered": 0.05592,
+    "root_rot": 0.0035,
+    "white_mold": 0.00213
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0830.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01947,
+    "frost": 0.00553,
+    "gray_mold": 0.94359,
+    "healthy": 0.00143,
+    "overwatered": 0.01986,
+    "root_rot": 0.00873,
+    "white_mold": 0.00139
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0245.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01432,
+    "frost": 0.00269,
+    "gray_mold": 0.96975,
+    "healthy": 0.00272,
+    "overwatered": 0.00648,
+    "root_rot": 0.00344,
+    "white_mold": 0.00059
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0166.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01661,
+    "frost": 0.00431,
+    "gray_mold": 0.9292,
+    "healthy": 0.00431,
+    "overwatered": 0.02208,
+    "root_rot": 0.01326,
+    "white_mold": 0.01024
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2251.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00765,
+    "frost": 0.00629,
+    "gray_mold": 0.95441,
+    "healthy": 0.00763,
+    "overwatered": 0.01517,
+    "root_rot": 0.00712,
+    "white_mold": 0.00172
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0918.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00803,
+    "frost": 0.00413,
+    "gray_mold": 0.92472,
+    "healthy": 0.00431,
+    "overwatered": 0.04916,
+    "root_rot": 0.00399,
+    "white_mold": 0.00566
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1583.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.04332,
+    "frost": 0.00825,
+    "gray_mold": 0.8406,
+    "healthy": 0.03754,
+    "overwatered": 0.03944,
+    "root_rot": 0.02291,
+    "white_mold": 0.00793
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1479.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00727,
+    "frost": 0.00073,
+    "gray_mold": 0.97425,
+    "healthy": 0.00164,
+    "overwatered": 0.01239,
+    "root_rot": 0.00316,
+    "white_mold": 0.00057
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1992.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01617,
+    "frost": 0.01154,
+    "gray_mold": 0.95655,
+    "healthy": 0.00167,
+    "overwatered": 0.00921,
+    "root_rot": 0.00308,
+    "white_mold": 0.00178
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2039.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03035,
+    "frost": 0.01129,
+    "gray_mold": 0.87461,
+    "healthy": 0.00421,
+    "overwatered": 0.05428,
+    "root_rot": 0.02062,
+    "white_mold": 0.00464
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1099.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0158,
+    "frost": 0.00287,
+    "gray_mold": 0.95867,
+    "healthy": 0.00062,
+    "overwatered": 0.01495,
+    "root_rot": 0.00588,
+    "white_mold": 0.00121
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold2333.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01496,
+    "frost": 0.0157,
+    "gray_mold": 0.93437,
+    "healthy": 0.00735,
+    "overwatered": 0.01767,
+    "root_rot": 0.00719,
+    "white_mold": 0.00275
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1384.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01117,
+    "frost": 0.00343,
+    "gray_mold": 0.95433,
+    "healthy": 0.00534,
+    "overwatered": 0.01302,
+    "root_rot": 0.01056,
+    "white_mold": 0.00215
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1888.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0151,
+    "frost": 0.00795,
+    "gray_mold": 0.94952,
+    "healthy": 0.00206,
+    "overwatered": 0.01099,
+    "root_rot": 0.0118,
+    "white_mold": 0.00258
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0661.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01271,
+    "frost": 0.00732,
+    "gray_mold": 0.95997,
+    "healthy": 0.00512,
+    "overwatered": 0.00723,
+    "root_rot": 0.00573,
+    "white_mold": 0.00192
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2348.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03653,
+    "frost": 0.02969,
+    "gray_mold": 0.88538,
+    "healthy": 0.02415,
+    "overwatered": 0.00787,
+    "root_rot": 0.00887,
+    "white_mold": 0.0075
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1027.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02157,
+    "frost": 0.00836,
+    "gray_mold": 0.94042,
+    "healthy": 0.00275,
+    "overwatered": 0.0189,
+    "root_rot": 0.0054,
+    "white_mold": 0.0026
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0903.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01192,
+    "frost": 0.00767,
+    "gray_mold": 0.94891,
+    "healthy": 0.00069,
+    "overwatered": 0.01546,
+    "root_rot": 0.0079,
+    "white_mold": 0.00745
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0996.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01689,
+    "frost": 0.00354,
+    "gray_mold": 0.94744,
+    "healthy": 0.003,
+    "overwatered": 0.02316,
+    "root_rot": 0.002,
+    "white_mold": 0.00397
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold1707.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02278,
+    "frost": 0.01248,
+    "gray_mold": 0.91392,
+    "healthy": 0.00458,
+    "overwatered": 0.01898,
+    "root_rot": 0.02167,
+    "white_mold": 0.00559
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1388.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.06201,
+    "frost": 0.04405,
+    "gray_mold": 0.85027,
+    "healthy": 0.00241,
+    "overwatered": 0.02424,
+    "root_rot": 0.01281,
+    "white_mold": 0.0042
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0137.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03083,
+    "frost": 0.00107,
+    "gray_mold": 0.95102,
+    "healthy": 0.00045,
+    "overwatered": 0.00787,
+    "root_rot": 0.00587,
+    "white_mold": 0.00289
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold2347.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0925,
+    "frost": 0.00561,
+    "gray_mold": 0.76716,
+    "healthy": 0.00924,
+    "overwatered": 0.03205,
+    "root_rot": 0.00788,
+    "white_mold": 0.08557
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1138.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01183,
+    "frost": 0.0026,
+    "gray_mold": 0.97242,
+    "healthy": 0.00147,
+    "overwatered": 0.00734,
+    "root_rot": 0.00224,
+    "white_mold": 0.00211
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1231.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01471,
+    "frost": 0.00767,
+    "gray_mold": 0.92664,
+    "healthy": 0.00135,
+    "overwatered": 0.02959,
+    "root_rot": 0.01515,
+    "white_mold": 0.0049
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0063.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0186,
+    "frost": 0.00508,
+    "gray_mold": 0.94161,
+    "healthy": 0.00441,
+    "overwatered": 0.02084,
+    "root_rot": 0.00915,
+    "white_mold": 0.0003
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0946.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02331,
+    "frost": 0.00855,
+    "gray_mold": 0.87154,
+    "healthy": 0.02561,
+    "overwatered": 0.02988,
+    "root_rot": 0.01432,
+    "white_mold": 0.02679
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0865.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01541,
+    "frost": 0.00677,
+    "gray_mold": 0.96587,
+    "healthy": 0.00184,
+    "overwatered": 0.00559,
+    "root_rot": 0.00328,
+    "white_mold": 0.00124
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0233.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01166,
+    "frost": 0.00133,
+    "gray_mold": 0.97104,
+    "healthy": 0.00328,
+    "overwatered": 0.01021,
+    "root_rot": 0.00119,
+    "white_mold": 0.00129
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1555.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00989,
+    "frost": 0.00181,
+    "gray_mold": 0.96135,
+    "healthy": 0.00081,
+    "overwatered": 0.01683,
+    "root_rot": 0.0082,
+    "white_mold": 0.00111
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/gray_mold/GrayMold0398.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.00663,
+    "frost": 0.00492,
+    "gray_mold": 0.97221,
+    "healthy": 0.00085,
+    "overwatered": 0.01308,
+    "root_rot": 0.0019,
+    "white_mold": 0.00041
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0711.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.01558,
+    "frost": 0.0063,
+    "gray_mold": 0.96076,
+    "healthy": 0.00426,
+    "overwatered": 0.00638,
+    "root_rot": 0.0035,
+    "white_mold": 0.00322
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1775.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.02188,
+    "frost": 0.00181,
+    "gray_mold": 0.93964,
+    "healthy": 0.00332,
+    "overwatered": 0.0153,
+    "root_rot": 0.00751,
+    "white_mold": 0.01054
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold1512.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0097,
+    "frost": 0.00402,
+    "gray_mold": 0.96004,
+    "healthy": 0.00284,
+    "overwatered": 0.01515,
+    "root_rot": 0.0041,
+    "white_mold": 0.00415
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0026.jpg",
+   "truth": "gray_mold",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.05476,
+    "frost": 0.0072,
+    "gray_mold": 0.40035,
+    "healthy": 0.00036,
+    "overwatered": 0.01657,
+    "root_rot": 0.51839,
+    "white_mold": 0.00237
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0205.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.0168,
+    "frost": 0.00296,
+    "gray_mold": 0.95772,
+    "healthy": 0.00188,
+    "overwatered": 0.00756,
+    "root_rot": 0.0041,
+    "white_mold": 0.00899
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/gray_mold/GrayMold0033.jpg",
+   "truth": "gray_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.03286,
+    "frost": 0.0202,
+    "gray_mold": 0.80022,
+    "healthy": 0.00509,
+    "overwatered": 0.02842,
+    "root_rot": 0.10025,
+    "white_mold": 0.01297
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_303.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00842,
+    "frost": 0.0062,
+    "gray_mold": 0.00183,
+    "healthy": 0.96726,
+    "overwatered": 0.00996,
+    "root_rot": 0.00503,
+    "white_mold": 0.0013
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_310.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.08015,
+    "frost": 0.02312,
+    "gray_mold": 0.00669,
+    "healthy": 0.7584,
+    "overwatered": 0.02434,
+    "root_rot": 0.02498,
+    "white_mold": 0.08232
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_14.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00589,
+    "frost": 0.0011,
+    "gray_mold": 0.00035,
+    "healthy": 0.98473,
+    "overwatered": 0.00489,
+    "root_rot": 0.00218,
+    "white_mold": 0.00086
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_26.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00275,
+    "frost": 0.00342,
+    "gray_mold": 5e-05,
+    "healthy": 0.98841,
+    "overwatered": 0.00299,
+    "root_rot": 0.00198,
+    "white_mold": 0.0004
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_12.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01065,
+    "frost": 0.00237,
+    "gray_mold": 0.00213,
+    "healthy": 0.97082,
+    "overwatered": 0.00855,
+    "root_rot": 0.00505,
+    "white_mold": 0.00043
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_80.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01188,
+    "frost": 0.0027,
+    "gray_mold": 0.0016,
+    "healthy": 0.93218,
+    "overwatered": 0.02653,
+    "root_rot": 0.02188,
+    "white_mold": 0.00324
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_214.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00931,
+    "frost": 0.01077,
+    "gray_mold": 0.0024,
+    "healthy": 0.947,
+    "overwatered": 0.00831,
+    "root_rot": 0.02079,
+    "white_mold": 0.00142
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthysunny.webp",
+   "truth": "healthy",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.84307,
+    "frost": 0.01356,
+    "gray_mold": 0.00439,
+    "healthy": 0.05762,
+    "overwatered": 0.05075,
+    "root_rot": 0.02816,
+    "white_mold": 0.00245
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_46.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.07144,
+    "frost": 0.03064,
+    "gray_mold": 0.01559,
+    "healthy": 0.35779,
+    "overwatered": 0.24266,
+    "root_rot": 0.21622,
+    "white_mold": 0.06566
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_313.jpg",
+   "truth": "healthy",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.23207,
+    "frost": 0.08223,
+    "gray_mold": 0.00082,
+    "healthy": 0.01777,
+    "overwatered": 0.34825,
+    "root_rot": 0.31488,
+    "white_mold": 0.00399
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_59.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.0328,
+    "frost": 0.04136,
+    "gray_mold": 0.0023,
+    "healthy": 0.86888,
+    "overwatered": 0.01551,
+    "root_rot": 0.03437,
+    "white_mold": 0.00477
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_224.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00779,
+    "frost": 0.00886,
+    "gray_mold": 0.00416,
+    "healthy": 0.93845,
+    "overwatered": 0.025,
+    "root_rot": 0.01496,
+    "white_mold": 0.00078
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_109.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00361,
+    "frost": 0.0028,
+    "gray_mold": 0.00012,
+    "healthy": 0.98273,
+    "overwatered": 0.00453,
+    "root_rot": 0.00464,
+    "white_mold": 0.00157
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_236.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01197,
+    "frost": 0.0096,
+    "gray_mold": 0.00046,
+    "healthy": 0.96144,
+    "overwatered": 0.01018,
+    "root_rot": 0.00525,
+    "white_mold": 0.00109
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_103.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.0333,
+    "frost": 0.00216,
+    "gray_mold": 0.00114,
+    "healthy": 0.93285,
+    "overwatered": 0.00961,
+    "root_rot": 0.01974,
+    "white_mold": 0.00119
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_198.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.03898,
+    "frost": 0.00238,
+    "gray_mold": 0.00156,
+    "healthy": 0.9251,
+    "overwatered": 0.00884,
+    "root_rot": 0.022,
+    "white_mold": 0.00114
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/wild-strawberry.jpg",
+   "truth": "healthy",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.03554,
+    "frost": 0.51025,
+    "gray_mold": 0.00727,
+    "healthy": 0.41273,
+    "overwatered": 0.01595,
+    "root_rot": 0.00699,
+    "white_mold": 0.01127
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_68.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00412,
+    "frost": 0.00091,
+    "gray_mold": 0.0004,
+    "healthy": 0.98648,
+    "overwatered": 0.00442,
+    "root_rot": 0.00321,
+    "white_mold": 0.00047
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_127.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01098,
+    "frost": 0.00245,
+    "gray_mold": 0.001,
+    "healthy": 0.96284,
+    "overwatered": 0.00421,
+    "root_rot": 0.01482,
+    "white_mold": 0.00371
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_77.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00997,
+    "frost": 0.00224,
+    "gray_mold": 0.00072,
+    "healthy": 0.96949,
+    "overwatered": 0.0037,
+    "root_rot": 0.01108,
+    "white_mold": 0.0028
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_78.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01,
+    "frost": 0.00236,
+    "gray_mold": 0.00098,
+    "healthy": 0.9673,
+    "overwatered": 0.00375,
+    "root_rot": 0.01262,
+    "white_mold": 0.00299
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_58.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00523,
+    "frost": 0.00229,
+    "gray_mold": 0.00059,
+    "healthy": 0.95607,
+    "overwatered": 0.00545,
+    "root_rot": 0.02952,
+    "white_mold": 0.00086
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_172.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.0122,
+    "frost": 0.00166,
+    "gray_mold": 0.00481,
+    "healthy": 0.96358,
+    "overwatered": 0.0138,
+    "root_rot": 0.00341,
+    "white_mold": 0.00053
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_17.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00844,
+    "frost": 0.00156,
+    "gray_mold": 0.00017,
+    "healthy": 0.98534,
+    "overwatered": 0.00301,
+    "root_rot": 0.00122,
+    "white_mold": 0.00026
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_228.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00901,
+    "frost": 0.00471,
+    "gray_mold": 0.00074,
+    "healthy": 0.96144,
+    "overwatered": 0.00957,
+    "root_rot": 0.01031,
+    "white_mold": 0.00421
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_150.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00986,
+    "frost": 0.00212,
+    "gray_mold": 0.00026,
+    "healthy": 0.97705,
+    "overwatered": 0.00502,
+    "root_rot": 0.00461,
+    "white_mold": 0.00109
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_287.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00253,
+    "frost": 0.00178,
+    "gray_mold": 3e-05,
+    "healthy": 0.989,
+    "overwatered": 0.00453,
+    "root_rot": 0.00195,
+    "white_mold": 0.00018
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/images.jpeg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01567,
+    "frost": 0.01766,
+    "gray_mold": 0.00344,
+    "healthy": 0.90835,
+    "overwatered": 0.02108,
+    "root_rot": 0.03092,
+    "white_mold": 0.00288
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/Wild-Strawberry-e1537188257940.jpg",
+   "truth": "healthy",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.02654,
+    "frost": 0.42224,
+    "gray_mold": 0.38422,
+    "healthy": 0.10189,
+    "overwatered": 0.0473,
+    "root_rot": 0.01125,
+    "white_mold": 0.00655
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_202.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.02521,
+    "frost": 0.0327,
+    "gray_mold": 0.00238,
+    "healthy": 0.92099,
+    "overwatered": 0.01126,
+    "root_rot": 0.00613,
+    "white_mold": 0.00133
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_230.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01636,
+    "frost": 0.00652,
+    "gray_mold": 0.00331,
+    "healthy": 0.86807,
+    "overwatered": 0.06486,
+    "root_rot": 0.03553,
+    "white_mold": 0.00537
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_82.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01538,
+    "frost": 0.08822,
+    "gray_mold": 0.00593,
+    "healthy": 0.86151,
+    "overwatered": 0.01159,
+    "root_rot": 0.01567,
+    "white_mold": 0.0017
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_192.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01382,
+    "frost": 0.07783,
+    "gray_mold": 0.00282,
+    "healthy": 0.88356,
+    "overwatered": 0.00922,
+    "root_rot": 0.01149,
+    "white_mold": 0.00125
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_279.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01374,
+    "frost": 0.01,
+    "gray_mold": 0.0007,
+    "healthy": 0.95496,
+    "overwatered": 0.01226,
+    "root_rot": 0.0074,
+    "white_mold": 0.00094
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/frostyhealthy.jpeg",
+   "truth": "healthy",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.32574,
+    "frost": 0.01036,
+    "gray_mold": 0.33719,
+    "healthy": 0.24786,
+    "overwatered": 0.04141,
+    "root_rot": 0.0136,
+    "white_mold": 0.02385
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthyfrost.jpg",
+   "truth": "healthy",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.40962,
+    "frost": 0.01129,
+    "gray_mold": 0.38198,
+    "healthy": 0.1077,
+    "overwatered": 0.06377,
+    "root_rot": 0.00822,
+    "white_mold": 0.01741
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_169.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01093,
+    "frost": 0.00394,
+    "gray_mold": 0.00027,
+    "healthy": 0.97184,
+    "overwatered": 0.00344,
+    "root_rot": 0.00455,
+    "white_mold": 0.00503
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_7.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01167,
+    "frost": 0.00299,
+    "gray_mold": 0.00018,
+    "healthy": 0.97224,
+    "overwatered": 0.00378,
+    "root_rot": 0.00422,
+    "white_mold": 0.00491
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthywet.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.03246,
+    "frost": 0.01028,
+    "gray_mold": 0.02207,
+    "healthy": 0.7654,
+    "overwatered": 0.15279,
+    "root_rot": 0.01285,
+    "white_mold": 0.00415
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_176.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01802,
+    "frost": 0.00573,
+    "gray_mold": 0.00184,
+    "healthy": 0.94287,
+    "overwatered": 0.01731,
+    "root_rot": 0.00777,
+    "white_mold": 0.00646
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_190.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00161,
+    "frost": 0.00259,
+    "gray_mold": 0.00015,
+    "healthy": 0.98868,
+    "overwatered": 0.00467,
+    "root_rot": 0.00225,
+    "white_mold": 4e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_210.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00582,
+    "frost": 0.00292,
+    "gray_mold": 0.00048,
+    "healthy": 0.96766,
+    "overwatered": 0.01628,
+    "root_rot": 0.00493,
+    "white_mold": 0.00191
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_182.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00773,
+    "frost": 0.00735,
+    "gray_mold": 0.00071,
+    "healthy": 0.96472,
+    "overwatered": 0.01107,
+    "root_rot": 0.0068,
+    "white_mold": 0.00162
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_174.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00193,
+    "frost": 0.00095,
+    "gray_mold": 3e-05,
+    "healthy": 0.9935,
+    "overwatered": 0.00192,
+    "root_rot": 0.00132,
+    "white_mold": 0.00036
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_19.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00242,
+    "frost": 0.00018,
+    "gray_mold": 3e-05,
+    "healthy": 0.99328,
+    "overwatered": 0.00291,
+    "root_rot": 0.00107,
+    "white_mold": 0.00011
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthydry.webp",
+   "truth": "healthy",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.81314,
+    "frost": 0.00201,
+    "gray_mold": 5e-05,
+    "healthy": 0.06124,
+    "overwatered": 0.11691,
+    "root_rot": 0.0027,
+    "white_mold": 0.00396
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_250.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.02649,
+    "frost": 0.00293,
+    "gray_mold": 0.00361,
+    "healthy": 0.91441,
+    "overwatered": 0.02345,
+    "root_rot": 0.0275,
+    "white_mold": 0.0016
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/k3KMfyp4B0sbPOFaIq1cLARnCf35B7RkVSJQUTtB.jpg",
+   "truth": "healthy",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.01184,
+    "frost": 0.78167,
+    "gray_mold": 0.03806,
+    "healthy": 0.10126,
+    "overwatered": 0.03432,
+    "root_rot": 0.02909,
+    "white_mold": 0.00375
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_293.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01717,
+    "frost": 0.00486,
+    "gray_mold": 0.00056,
+    "healthy": 0.94694,
+    "overwatered": 0.01601,
+    "root_rot": 0.01289,
+    "white_mold": 0.00157
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_161.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00371,
+    "frost": 0.01117,
+    "gray_mold": 0.00018,
+    "healthy": 0.97708,
+    "overwatered": 0.00502,
+    "root_rot": 0.00199,
+    "white_mold": 0.00086
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_101.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00784,
+    "frost": 0.00537,
+    "gray_mold": 0.00021,
+    "healthy": 0.96968,
+    "overwatered": 0.00643,
+    "root_rot": 0.00699,
+    "white_mold": 0.00349
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_183.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00233,
+    "frost": 0.00055,
+    "gray_mold": 0.00018,
+    "healthy": 0.98802,
+    "overwatered": 0.0056,
+    "root_rot": 0.00309,
+    "white_mold": 0.00023
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy1.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01646,
+    "frost": 0.09699,
+    "gray_mold": 0.00545,
+    "healthy": 0.79488,
+    "overwatered": 0.04395,
+    "root_rot": 0.01847,
+    "white_mold": 0.0238
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_216.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01577,
+    "frost": 0.00552,
+    "gray_mold": 0.00493,
+    "healthy": 0.93478,
+    "overwatered": 0.02405,
+    "root_rot": 0.01391,
+    "white_mold": 0.00105
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_45.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01807,
+    "frost": 0.00038,
+    "gray_mold": 0.00062,
+    "healthy": 0.95525,
+    "overwatered": 0.0185,
+    "root_rot": 0.00593,
+    "white_mold": 0.00125
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_117.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01685,
+    "frost": 0.00794,
+    "gray_mold": 0.00196,
+    "healthy": 0.92643,
+    "overwatered": 0.01748,
+    "root_rot": 0.02713,
+    "white_mold": 0.0022
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_276.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01326,
+    "frost": 0.0035,
+    "gray_mold": 0.00148,
+    "healthy": 0.94622,
+    "overwatered": 0.00769,
+    "root_rot": 0.02686,
+    "white_mold": 0.00098
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_40.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.07615,
+    "frost": 0.00812,
+    "gray_mold": 0.00918,
+    "healthy": 0.76805,
+    "overwatered": 0.10271,
+    "root_rot": 0.03481,
+    "white_mold": 0.00098
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_269.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.03253,
+    "frost": 0.01016,
+    "gray_mold": 0.00644,
+    "healthy": 0.91599,
+    "overwatered": 0.02096,
+    "root_rot": 0.01217,
+    "white_mold": 0.00176
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_74.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.02443,
+    "frost": 0.00738,
+    "gray_mold": 0.00496,
+    "healthy": 0.93996,
+    "overwatered": 0.01513,
+    "root_rot": 0.00671,
+    "white_mold": 0.00144
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_196.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.0284,
+    "frost": 0.00364,
+    "gray_mold": 0.00223,
+    "healthy": 0.93644,
+    "overwatered": 0.01635,
+    "root_rot": 0.01144,
+    "white_mold": 0.00151
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_234.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00694,
+    "frost": 0.00122,
+    "gray_mold": 0.00069,
+    "healthy": 0.98385,
+    "overwatered": 0.00337,
+    "root_rot": 0.0019,
+    "white_mold": 0.00201
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_110.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.03433,
+    "frost": 0.00261,
+    "gray_mold": 0.00068,
+    "healthy": 0.93351,
+    "overwatered": 0.00768,
+    "root_rot": 0.01762,
+    "white_mold": 0.00357
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_43.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00468,
+    "frost": 0.00406,
+    "gray_mold": 0.00061,
+    "healthy": 0.96579,
+    "overwatered": 0.01014,
+    "root_rot": 0.01234,
+    "white_mold": 0.00239
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_238.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00323,
+    "frost": 0.01281,
+    "gray_mold": 0.00032,
+    "healthy": 0.96946,
+    "overwatered": 0.00768,
+    "root_rot": 0.00613,
+    "white_mold": 0.00037
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_308.jpg",
+   "truth": "healthy",
+   "pred": "frost",
+   "probs": {
+    "drought": 0.35169,
+    "frost": 0.38475,
+    "gray_mold": 7e-05,
+    "healthy": 0.07225,
+    "overwatered": 0.17597,
+    "root_rot": 0.00875,
+    "white_mold": 0.00652
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_211.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00436,
+    "frost": 0.00159,
+    "gray_mold": 0.00043,
+    "healthy": 0.98491,
+    "overwatered": 0.0038,
+    "root_rot": 0.00463,
+    "white_mold": 0.00028
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/IMG_0479.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01934,
+    "frost": 0.05014,
+    "gray_mold": 0.00019,
+    "healthy": 0.91589,
+    "overwatered": 0.00882,
+    "root_rot": 0.0043,
+    "white_mold": 0.00131
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_63.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01116,
+    "frost": 0.00323,
+    "gray_mold": 0.00067,
+    "healthy": 0.97596,
+    "overwatered": 0.00416,
+    "root_rot": 0.00232,
+    "white_mold": 0.0025
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_20.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00626,
+    "frost": 0.00703,
+    "gray_mold": 0.00103,
+    "healthy": 0.95006,
+    "overwatered": 0.02072,
+    "root_rot": 0.01437,
+    "white_mold": 0.00054
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_33.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00492,
+    "frost": 0.00615,
+    "gray_mold": 0.00058,
+    "healthy": 0.96161,
+    "overwatered": 0.01613,
+    "root_rot": 0.01011,
+    "white_mold": 0.0005
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/strawberry-leaf-leaves-Peter-Miller-Flickr-800x462.jpg",
+   "truth": "healthy",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.10092,
+    "frost": 0.13473,
+    "gray_mold": 0.66403,
+    "healthy": 0.01935,
+    "overwatered": 0.05244,
+    "root_rot": 0.01472,
+    "white_mold": 0.01381
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00323,
+    "frost": 0.00156,
+    "gray_mold": 4e-05,
+    "healthy": 0.9935,
+    "overwatered": 0.00135,
+    "root_rot": 0.00016,
+    "white_mold": 0.00015
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_264.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00425,
+    "frost": 0.00308,
+    "gray_mold": 0.00024,
+    "healthy": 0.97979,
+    "overwatered": 0.00548,
+    "root_rot": 0.00452,
+    "white_mold": 0.00264
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_66.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00473,
+    "frost": 0.00343,
+    "gray_mold": 0.00027,
+    "healthy": 0.97788,
+    "overwatered": 0.00608,
+    "root_rot": 0.00471,
+    "white_mold": 0.00289
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_241.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.01386,
+    "frost": 0.00078,
+    "gray_mold": 0.00059,
+    "healthy": 0.96735,
+    "overwatered": 0.01186,
+    "root_rot": 0.00527,
+    "white_mold": 0.00029
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/healthy/healthy_120.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.02462,
+    "frost": 0.00305,
+    "gray_mold": 0.00055,
+    "healthy": 0.93827,
+    "overwatered": 0.00815,
+    "root_rot": 0.01724,
+    "white_mold": 0.00811
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_99.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00618,
+    "frost": 0.00555,
+    "gray_mold": 0.00017,
+    "healthy": 0.94861,
+    "overwatered": 0.00984,
+    "root_rot": 0.02767,
+    "white_mold": 0.00198
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_143.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00601,
+    "frost": 0.01023,
+    "gray_mold": 0.0003,
+    "healthy": 0.96894,
+    "overwatered": 0.00675,
+    "root_rot": 0.00631,
+    "white_mold": 0.00146
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_304.webp",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.0217,
+    "frost": 0.4077,
+    "gray_mold": 0.00023,
+    "healthy": 0.46757,
+    "overwatered": 0.06905,
+    "root_rot": 0.00719,
+    "white_mold": 0.02656
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/healthy/healthy_271.jpg",
+   "truth": "healthy",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.03341,
+    "frost": 0.00991,
+    "gray_mold": 0.00098,
+    "healthy": 0.8998,
+    "overwatered": 0.02563,
+    "root_rot": 0.02822,
+    "white_mold": 0.00204
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/drowned-a-plant-is-it-salvageable-v0-28x08g3kfw6f1.webp",
+   "truth": "overwatered",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.513,
+    "frost": 0.0014,
+    "gray_mold": 0.00132,
+    "healthy": 0.00779,
+    "overwatered": 0.43412,
+    "root_rot": 0.00658,
+    "white_mold": 0.03578
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_47.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00516,
+    "frost": 0.03316,
+    "gray_mold": 0.03789,
+    "healthy": 0.00116,
+    "overwatered": 0.91138,
+    "root_rot": 0.00762,
+    "white_mold": 0.00363
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/overwatered/overwatered_43.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.01442,
+    "frost": 0.01327,
+    "gray_mold": 0.00113,
+    "healthy": 0.00085,
+    "overwatered": 0.96653,
+    "root_rot": 0.00255,
+    "white_mold": 0.00126
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/overwatered/overwatered_35.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.0021,
+    "frost": 0.00091,
+    "gray_mold": 0.00021,
+    "healthy": 0.00018,
+    "overwatered": 0.99592,
+    "root_rot": 0.00056,
+    "white_mold": 0.00012
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_1.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00068,
+    "frost": 0.00125,
+    "gray_mold": 2e-05,
+    "healthy": 6e-05,
+    "overwatered": 0.99778,
+    "root_rot": 0.00012,
+    "white_mold": 9e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_27.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00136,
+    "frost": 0.00016,
+    "gray_mold": 0.00027,
+    "healthy": 0.00011,
+    "overwatered": 0.99767,
+    "root_rot": 0.00037,
+    "white_mold": 6e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_7.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00022,
+    "frost": 0.00026,
+    "gray_mold": 0.0001,
+    "healthy": 1e-05,
+    "overwatered": 0.99877,
+    "root_rot": 0.00052,
+    "white_mold": 0.00013
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_34.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00133,
+    "frost": 0.01769,
+    "gray_mold": 0.0003,
+    "healthy": 0.00011,
+    "overwatered": 0.97356,
+    "root_rot": 0.00669,
+    "white_mold": 0.00033
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_45.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00103,
+    "frost": 0.0001,
+    "gray_mold": 1e-05,
+    "healthy": 1e-05,
+    "overwatered": 0.99819,
+    "root_rot": 0.00014,
+    "white_mold": 0.00052
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/overwatered/holdrel_overwatered_4.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.05415,
+    "frost": 5e-05,
+    "gray_mold": 1e-05,
+    "healthy": 0.00027,
+    "overwatered": 0.93495,
+    "root_rot": 0.00181,
+    "white_mold": 0.00875
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/quarrive-til-\u00e0-mes-fraises-v0-63ca5sf4o8se1.webp",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.01267,
+    "frost": 0.00182,
+    "gray_mold": 0.00017,
+    "healthy": 0.00082,
+    "overwatered": 0.98366,
+    "root_rot": 0.00034,
+    "white_mold": 0.00052
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/is-this-strawberry-plant-too-far-gone-or-has-anyone-got-any-v0-17n6k1us47ee1.webp",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00836,
+    "frost": 0.00077,
+    "gray_mold": 0.00021,
+    "healthy": 0.00031,
+    "overwatered": 0.97155,
+    "root_rot": 0.00603,
+    "white_mold": 0.01277
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatereddd.jpg",
+   "truth": "overwatered",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.05858,
+    "frost": 0.01193,
+    "gray_mold": 8e-05,
+    "healthy": 0.00072,
+    "overwatered": 0.33775,
+    "root_rot": 0.07316,
+    "white_mold": 0.51777
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_29.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 6e-05,
+    "frost": 2e-05,
+    "gray_mold": 2e-05,
+    "healthy": 1e-05,
+    "overwatered": 0.99984,
+    "root_rot": 5e-05,
+    "white_mold": 1e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwateredverymuch.webp",
+   "truth": "overwatered",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.00914,
+    "frost": 0.05425,
+    "gray_mold": 0.00053,
+    "healthy": 0.84923,
+    "overwatered": 0.07281,
+    "root_rot": 0.003,
+    "white_mold": 0.01105
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/images.jpeg",
+   "truth": "overwatered",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.02772,
+    "frost": 0.00182,
+    "gray_mold": 0.00081,
+    "healthy": 0.70334,
+    "overwatered": 0.23516,
+    "root_rot": 0.03063,
+    "white_mold": 0.00052
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_38.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00019,
+    "frost": 6e-05,
+    "gray_mold": 2e-05,
+    "healthy": 1e-05,
+    "overwatered": 0.99968,
+    "root_rot": 2e-05,
+    "white_mold": 2e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/droopy-strawberry-just-got-my-dream-garden-plant-v0-dfb4nwahjv3d1.jpg",
+   "truth": "overwatered",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.52817,
+    "frost": 0.0126,
+    "gray_mold": 0.00266,
+    "healthy": 0.3397,
+    "overwatered": 0.10113,
+    "root_rot": 0.01495,
+    "white_mold": 0.00078
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/overwatered/overwatered_32.jpg",
+   "truth": "overwatered",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.00168,
+    "frost": 0.00015,
+    "gray_mold": 1e-05,
+    "healthy": 5e-05,
+    "overwatered": 0.99726,
+    "root_rot": 0.00027,
+    "white_mold": 0.00057
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_6.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00033,
+    "frost": 0.00014,
+    "gray_mold": 0.0,
+    "healthy": 0.0,
+    "overwatered": 0.00059,
+    "root_rot": 0.99891,
+    "white_mold": 3e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_21.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00563,
+    "frost": 0.00059,
+    "gray_mold": 0.0005,
+    "healthy": 4e-05,
+    "overwatered": 0.00564,
+    "root_rot": 0.98754,
+    "white_mold": 6e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_147.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.19631,
+    "frost": 0.01172,
+    "gray_mold": 0.0096,
+    "healthy": 0.03975,
+    "overwatered": 0.02969,
+    "root_rot": 0.70793,
+    "white_mold": 0.00499
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_50.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.10398,
+    "frost": 0.11009,
+    "gray_mold": 0.00624,
+    "healthy": 0.00331,
+    "overwatered": 0.01563,
+    "root_rot": 0.75913,
+    "white_mold": 0.00161
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_40.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00279,
+    "frost": 0.00188,
+    "gray_mold": 0.00114,
+    "healthy": 9e-05,
+    "overwatered": 0.00246,
+    "root_rot": 0.99115,
+    "white_mold": 0.0005
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_84.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00026,
+    "frost": 1e-05,
+    "gray_mold": 0.0,
+    "healthy": 0.0,
+    "overwatered": 0.00028,
+    "root_rot": 0.99935,
+    "white_mold": 0.0001
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_47.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00047,
+    "frost": 0.00029,
+    "gray_mold": 3e-05,
+    "healthy": 2e-05,
+    "overwatered": 0.00306,
+    "root_rot": 0.99604,
+    "white_mold": 0.0001
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_126.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00427,
+    "frost": 0.00258,
+    "gray_mold": 0.04291,
+    "healthy": 0.00202,
+    "overwatered": 0.00434,
+    "root_rot": 0.94152,
+    "white_mold": 0.00235
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_29.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.08764,
+    "frost": 0.02735,
+    "gray_mold": 0.00289,
+    "healthy": 0.0019,
+    "overwatered": 0.08073,
+    "root_rot": 0.7883,
+    "white_mold": 0.0112
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.09756,
+    "frost": 0.00778,
+    "gray_mold": 0.00109,
+    "healthy": 0.00017,
+    "overwatered": 0.06325,
+    "root_rot": 0.82098,
+    "white_mold": 0.00916
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_108.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00184,
+    "frost": 0.00135,
+    "gray_mold": 7e-05,
+    "healthy": 0.00032,
+    "overwatered": 0.00287,
+    "root_rot": 0.99224,
+    "white_mold": 0.00131
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_88.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00523,
+    "frost": 0.0003,
+    "gray_mold": 0.00085,
+    "healthy": 0.00127,
+    "overwatered": 0.0022,
+    "root_rot": 0.98694,
+    "white_mold": 0.00319
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_26.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.01086,
+    "frost": 0.02264,
+    "gray_mold": 0.02061,
+    "healthy": 0.00231,
+    "overwatered": 0.04998,
+    "root_rot": 0.86218,
+    "white_mold": 0.03142
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_141.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00182,
+    "frost": 0.00122,
+    "gray_mold": 0.0002,
+    "healthy": 0.00362,
+    "overwatered": 0.00103,
+    "root_rot": 0.99171,
+    "white_mold": 0.0004
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_45.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00631,
+    "frost": 0.00151,
+    "gray_mold": 0.02889,
+    "healthy": 0.00182,
+    "overwatered": 0.00341,
+    "root_rot": 0.95786,
+    "white_mold": 0.0002
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_144.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.04632,
+    "frost": 0.00211,
+    "gray_mold": 0.00166,
+    "healthy": 0.0006,
+    "overwatered": 0.13458,
+    "root_rot": 0.79933,
+    "white_mold": 0.0154
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_42.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00103,
+    "frost": 0.00167,
+    "gray_mold": 3e-05,
+    "healthy": 4e-05,
+    "overwatered": 0.00262,
+    "root_rot": 0.99299,
+    "white_mold": 0.00161
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_90.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.01046,
+    "frost": 0.04517,
+    "gray_mold": 0.05623,
+    "healthy": 0.00915,
+    "overwatered": 0.0645,
+    "root_rot": 0.79339,
+    "white_mold": 0.02109
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_94.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00225,
+    "frost": 0.00103,
+    "gray_mold": 3e-05,
+    "healthy": 0.00024,
+    "overwatered": 0.00087,
+    "root_rot": 0.99175,
+    "white_mold": 0.00383
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_129.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.07002,
+    "frost": 0.05402,
+    "gray_mold": 0.01832,
+    "healthy": 0.00294,
+    "overwatered": 0.25638,
+    "root_rot": 0.57199,
+    "white_mold": 0.02633
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_87.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00084,
+    "frost": 0.00015,
+    "gray_mold": 1e-05,
+    "healthy": 0.00027,
+    "overwatered": 0.00039,
+    "root_rot": 0.99807,
+    "white_mold": 0.00027
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_39.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.0004,
+    "frost": 0.00021,
+    "gray_mold": 3e-05,
+    "healthy": 5e-05,
+    "overwatered": 0.00154,
+    "root_rot": 0.99772,
+    "white_mold": 4e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_9.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00014,
+    "frost": 6e-05,
+    "gray_mold": 0.0,
+    "healthy": 1e-05,
+    "overwatered": 0.00011,
+    "root_rot": 0.99966,
+    "white_mold": 1e-05
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_67.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00055,
+    "frost": 0.00205,
+    "gray_mold": 0.00166,
+    "healthy": 0.0006,
+    "overwatered": 0.01204,
+    "root_rot": 0.97925,
+    "white_mold": 0.00384
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_30.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00497,
+    "frost": 0.00396,
+    "gray_mold": 1e-05,
+    "healthy": 0.00071,
+    "overwatered": 0.00065,
+    "root_rot": 0.98955,
+    "white_mold": 0.00016
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/root_rot/rootrot_33.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00095,
+    "frost": 0.00046,
+    "gray_mold": 1e-05,
+    "healthy": 0.00016,
+    "overwatered": 0.00215,
+    "root_rot": 0.9949,
+    "white_mold": 0.00137
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_116.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00481,
+    "frost": 0.00063,
+    "gray_mold": 0.00023,
+    "healthy": 0.00018,
+    "overwatered": 0.00105,
+    "root_rot": 0.99223,
+    "white_mold": 0.00088
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_03.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.0081,
+    "frost": 0.00183,
+    "gray_mold": 0.00068,
+    "healthy": 0.00438,
+    "overwatered": 0.00396,
+    "root_rot": 0.98033,
+    "white_mold": 0.00072
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_62.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.01574,
+    "frost": 0.00282,
+    "gray_mold": 0.00045,
+    "healthy": 0.00158,
+    "overwatered": 0.0066,
+    "root_rot": 0.97177,
+    "white_mold": 0.00104
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_1.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.02453,
+    "frost": 0.0005,
+    "gray_mold": 0.0,
+    "healthy": 0.00022,
+    "overwatered": 0.00249,
+    "root_rot": 0.97205,
+    "white_mold": 0.0002
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_75.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00586,
+    "frost": 0.00053,
+    "gray_mold": 2e-05,
+    "healthy": 0.00052,
+    "overwatered": 0.005,
+    "root_rot": 0.98791,
+    "white_mold": 0.00016
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_95.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.00132,
+    "frost": 0.00051,
+    "gray_mold": 4e-05,
+    "healthy": 5e-05,
+    "overwatered": 0.00061,
+    "root_rot": 0.99685,
+    "white_mold": 0.00062
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/root_rot/rootrot_148.jpg",
+   "truth": "root_rot",
+   "pred": "root_rot",
+   "probs": {
+    "drought": 0.02273,
+    "frost": 0.01099,
+    "gray_mold": 0.00185,
+    "healthy": 0.19048,
+    "overwatered": 0.06654,
+    "root_rot": 0.69625,
+    "white_mold": 0.01115
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0049.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00026,
+    "frost": 0.00032,
+    "gray_mold": 0.00034,
+    "healthy": 8e-05,
+    "overwatered": 0.00118,
+    "root_rot": 0.00053,
+    "white_mold": 0.99729
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0320.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00639,
+    "frost": 0.01027,
+    "gray_mold": 0.00025,
+    "healthy": 0.00021,
+    "overwatered": 0.00555,
+    "root_rot": 0.00162,
+    "white_mold": 0.97571
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0088.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00879,
+    "frost": 0.00252,
+    "gray_mold": 0.00187,
+    "healthy": 0.0005,
+    "overwatered": 0.00705,
+    "root_rot": 0.0015,
+    "white_mold": 0.97778
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0071.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00765,
+    "frost": 0.00053,
+    "gray_mold": 4e-05,
+    "healthy": 0.00027,
+    "overwatered": 0.00377,
+    "root_rot": 0.00207,
+    "white_mold": 0.98566
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0258.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00158,
+    "frost": 0.00069,
+    "gray_mold": 2e-05,
+    "healthy": 0.00025,
+    "overwatered": 0.00096,
+    "root_rot": 0.00225,
+    "white_mold": 0.99425
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0272.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.003,
+    "frost": 0.00072,
+    "gray_mold": 0.00029,
+    "healthy": 0.00051,
+    "overwatered": 0.00336,
+    "root_rot": 0.00118,
+    "white_mold": 0.99095
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0095.jpg",
+   "truth": "white_mold",
+   "pred": "overwatered",
+   "probs": {
+    "drought": 0.15824,
+    "frost": 0.03997,
+    "gray_mold": 0.25572,
+    "healthy": 0.00111,
+    "overwatered": 0.41344,
+    "root_rot": 0.1037,
+    "white_mold": 0.02782
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0266.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.01618,
+    "frost": 0.02114,
+    "gray_mold": 2e-05,
+    "healthy": 0.09494,
+    "overwatered": 0.00582,
+    "root_rot": 0.00274,
+    "white_mold": 0.85915
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0192.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00211,
+    "frost": 0.00018,
+    "gray_mold": 3e-05,
+    "healthy": 0.00056,
+    "overwatered": 0.00182,
+    "root_rot": 0.00088,
+    "white_mold": 0.99442
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0166.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00627,
+    "frost": 0.00523,
+    "gray_mold": 0.00034,
+    "healthy": 0.00057,
+    "overwatered": 0.00625,
+    "root_rot": 0.00454,
+    "white_mold": 0.97679
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0075.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00132,
+    "frost": 0.00162,
+    "gray_mold": 0.00021,
+    "healthy": 4e-05,
+    "overwatered": 0.00435,
+    "root_rot": 0.00132,
+    "white_mold": 0.99114
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0260.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.0012,
+    "frost": 0.00086,
+    "gray_mold": 8e-05,
+    "healthy": 0.00019,
+    "overwatered": 0.00108,
+    "root_rot": 0.00055,
+    "white_mold": 0.99604
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0013.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00117,
+    "frost": 0.00077,
+    "gray_mold": 5e-05,
+    "healthy": 0.00022,
+    "overwatered": 0.0018,
+    "root_rot": 0.00134,
+    "white_mold": 0.99465
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0247.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00468,
+    "frost": 0.01193,
+    "gray_mold": 0.00024,
+    "healthy": 0.00276,
+    "overwatered": 0.00572,
+    "root_rot": 0.00476,
+    "white_mold": 0.96991
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0133.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.0062,
+    "frost": 0.00254,
+    "gray_mold": 5e-05,
+    "healthy": 0.00136,
+    "overwatered": 0.00401,
+    "root_rot": 0.00406,
+    "white_mold": 0.98178
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0096.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.02305,
+    "frost": 0.00415,
+    "gray_mold": 0.00393,
+    "healthy": 0.23921,
+    "overwatered": 0.01549,
+    "root_rot": 0.00579,
+    "white_mold": 0.70838
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0243.jpg",
+   "truth": "white_mold",
+   "pred": "drought",
+   "probs": {
+    "drought": 0.49281,
+    "frost": 0.01943,
+    "gray_mold": 0.01484,
+    "healthy": 0.0268,
+    "overwatered": 0.00778,
+    "root_rot": 0.0253,
+    "white_mold": 0.41304
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0143.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00435,
+    "frost": 0.00045,
+    "gray_mold": 2e-05,
+    "healthy": 5e-05,
+    "overwatered": 0.0027,
+    "root_rot": 0.00275,
+    "white_mold": 0.98967
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0111.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00297,
+    "frost": 0.00032,
+    "gray_mold": 0.00026,
+    "healthy": 0.00015,
+    "overwatered": 0.00142,
+    "root_rot": 0.00334,
+    "white_mold": 0.99153
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0181.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00075,
+    "frost": 0.00019,
+    "gray_mold": 0.00016,
+    "healthy": 0.00014,
+    "overwatered": 0.00184,
+    "root_rot": 0.00136,
+    "white_mold": 0.99556
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0068.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00073,
+    "frost": 0.00052,
+    "gray_mold": 0.0001,
+    "healthy": 0.0,
+    "overwatered": 0.0019,
+    "root_rot": 0.00117,
+    "white_mold": 0.99558
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0264.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00122,
+    "frost": 0.00162,
+    "gray_mold": 0.0,
+    "healthy": 0.0007,
+    "overwatered": 0.00056,
+    "root_rot": 0.00055,
+    "white_mold": 0.99535
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0134.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.02577,
+    "frost": 0.00606,
+    "gray_mold": 7e-05,
+    "healthy": 0.00842,
+    "overwatered": 0.00306,
+    "root_rot": 0.0012,
+    "white_mold": 0.95541
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0019.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00638,
+    "frost": 0.00536,
+    "gray_mold": 0.00039,
+    "healthy": 0.0032,
+    "overwatered": 0.00347,
+    "root_rot": 0.00183,
+    "white_mold": 0.97937
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0226.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.001,
+    "frost": 0.00173,
+    "gray_mold": 0.00224,
+    "healthy": 9e-05,
+    "overwatered": 0.00481,
+    "root_rot": 0.00182,
+    "white_mold": 0.9883
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0313.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00606,
+    "frost": 0.00019,
+    "gray_mold": 0.00293,
+    "healthy": 3e-05,
+    "overwatered": 0.00724,
+    "root_rot": 0.00255,
+    "white_mold": 0.98101
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0254.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00564,
+    "frost": 0.00011,
+    "gray_mold": 1e-05,
+    "healthy": 8e-05,
+    "overwatered": 0.00075,
+    "root_rot": 0.00015,
+    "white_mold": 0.99326
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0003.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00047,
+    "frost": 0.00053,
+    "gray_mold": 2e-05,
+    "healthy": 5e-05,
+    "overwatered": 0.00062,
+    "root_rot": 0.00124,
+    "white_mold": 0.99708
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0122.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00264,
+    "frost": 0.00298,
+    "gray_mold": 0.00276,
+    "healthy": 0.00018,
+    "overwatered": 0.00213,
+    "root_rot": 0.00406,
+    "white_mold": 0.98526
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0171.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00429,
+    "frost": 0.00275,
+    "gray_mold": 0.00309,
+    "healthy": 0.00072,
+    "overwatered": 0.00191,
+    "root_rot": 0.00198,
+    "white_mold": 0.98525
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0047.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00545,
+    "frost": 0.01217,
+    "gray_mold": 0.00017,
+    "healthy": 0.00441,
+    "overwatered": 0.01171,
+    "root_rot": 0.00183,
+    "white_mold": 0.96425
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0238.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.02452,
+    "frost": 0.0183,
+    "gray_mold": 0.00115,
+    "healthy": 0.00468,
+    "overwatered": 0.02619,
+    "root_rot": 0.00677,
+    "white_mold": 0.9184
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0030.jpg",
+   "truth": "white_mold",
+   "pred": "gray_mold",
+   "probs": {
+    "drought": 0.05491,
+    "frost": 0.04659,
+    "gray_mold": 0.84219,
+    "healthy": 9e-05,
+    "overwatered": 0.04424,
+    "root_rot": 0.00227,
+    "white_mold": 0.0097
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0101.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00028,
+    "frost": 8e-05,
+    "gray_mold": 2e-05,
+    "healthy": 5e-05,
+    "overwatered": 0.00034,
+    "root_rot": 1e-05,
+    "white_mold": 0.99921
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0241.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00314,
+    "frost": 0.00263,
+    "gray_mold": 0.00151,
+    "healthy": 0.01911,
+    "overwatered": 0.01098,
+    "root_rot": 0.00101,
+    "white_mold": 0.96163
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0322.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.01493,
+    "frost": 0.00393,
+    "gray_mold": 0.00108,
+    "healthy": 0.0062,
+    "overwatered": 0.0078,
+    "root_rot": 0.00543,
+    "white_mold": 0.96063
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0236.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00288,
+    "frost": 0.00179,
+    "gray_mold": 0.00019,
+    "healthy": 0.0021,
+    "overwatered": 0.00699,
+    "root_rot": 0.00389,
+    "white_mold": 0.98215
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0229.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.001,
+    "frost": 0.00019,
+    "gray_mold": 0.00028,
+    "healthy": 0.00035,
+    "overwatered": 0.00243,
+    "root_rot": 0.00022,
+    "white_mold": 0.99553
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0235.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.02745,
+    "frost": 0.02275,
+    "gray_mold": 0.01836,
+    "healthy": 0.00482,
+    "overwatered": 0.10681,
+    "root_rot": 0.0324,
+    "white_mold": 0.78741
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0240.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.02236,
+    "frost": 0.03974,
+    "gray_mold": 0.08626,
+    "healthy": 0.01603,
+    "overwatered": 0.0183,
+    "root_rot": 0.00519,
+    "white_mold": 0.81213
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0012.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00178,
+    "frost": 0.00103,
+    "gray_mold": 2e-05,
+    "healthy": 0.0002,
+    "overwatered": 0.00139,
+    "root_rot": 0.00113,
+    "white_mold": 0.99445
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0087.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.01705,
+    "frost": 0.00777,
+    "gray_mold": 0.34343,
+    "healthy": 0.0018,
+    "overwatered": 0.02548,
+    "root_rot": 0.01919,
+    "white_mold": 0.58526
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0102.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.0051,
+    "frost": 0.00797,
+    "gray_mold": 0.00132,
+    "healthy": 0.00107,
+    "overwatered": 0.00366,
+    "root_rot": 0.00288,
+    "white_mold": 0.97801
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0199.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.01185,
+    "frost": 0.00143,
+    "gray_mold": 0.00081,
+    "healthy": 0.00089,
+    "overwatered": 0.04673,
+    "root_rot": 0.00681,
+    "white_mold": 0.93149
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0164.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00068,
+    "frost": 0.0001,
+    "gray_mold": 2e-05,
+    "healthy": 2e-05,
+    "overwatered": 0.00135,
+    "root_rot": 0.00033,
+    "white_mold": 0.9975
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0270.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.01736,
+    "frost": 0.00277,
+    "gray_mold": 2e-05,
+    "healthy": 0.00029,
+    "overwatered": 0.00118,
+    "root_rot": 0.00042,
+    "white_mold": 0.97797
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0155.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00451,
+    "frost": 0.0032,
+    "gray_mold": 1e-05,
+    "healthy": 0.0001,
+    "overwatered": 0.00418,
+    "root_rot": 0.00308,
+    "white_mold": 0.98492
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0248.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.01614,
+    "frost": 0.00807,
+    "gray_mold": 0.00171,
+    "healthy": 0.00072,
+    "overwatered": 0.00685,
+    "root_rot": 0.00346,
+    "white_mold": 0.96305
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0036.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.02145,
+    "frost": 0.01154,
+    "gray_mold": 0.00319,
+    "healthy": 0.00463,
+    "overwatered": 0.00943,
+    "root_rot": 0.00624,
+    "white_mold": 0.94352
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0132.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00048,
+    "frost": 9e-05,
+    "gray_mold": 6e-05,
+    "healthy": 7e-05,
+    "overwatered": 0.00233,
+    "root_rot": 0.00068,
+    "white_mold": 0.99629
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0194.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.02345,
+    "frost": 0.00088,
+    "gray_mold": 2e-05,
+    "healthy": 0.00059,
+    "overwatered": 0.0022,
+    "root_rot": 0.00031,
+    "white_mold": 0.97256
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0050.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.01131,
+    "frost": 0.01644,
+    "gray_mold": 0.00876,
+    "healthy": 0.00183,
+    "overwatered": 0.00648,
+    "root_rot": 0.00614,
+    "white_mold": 0.94904
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0149.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00351,
+    "frost": 0.00067,
+    "gray_mold": 0.00018,
+    "healthy": 0.00025,
+    "overwatered": 0.00144,
+    "root_rot": 0.00094,
+    "white_mold": 0.993
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0278.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00342,
+    "frost": 0.00056,
+    "gray_mold": 0.0001,
+    "healthy": 8e-05,
+    "overwatered": 0.00068,
+    "root_rot": 0.00153,
+    "white_mold": 0.99363
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/holdout/white_mold/WhiteMold0006.jpg",
+   "truth": "white_mold",
+   "pred": "healthy",
+   "probs": {
+    "drought": 0.11661,
+    "frost": 0.07495,
+    "gray_mold": 0.2402,
+    "healthy": 0.37243,
+    "overwatered": 0.06378,
+    "root_rot": 0.02664,
+    "white_mold": 0.10539
+   }
+  },
+  {
+   "image": "plant_diagnostic/data/train/white_mold/WhiteMold0187.jpg",
+   "truth": "white_mold",
+   "pred": "white_mold",
+   "probs": {
+    "drought": 0.00527,
+    "frost": 0.00226,
+    "gray_mold": 3e-05,
+    "healthy": 0.00062,
+    "overwatered": 0.00124,
+    "root_rot": 0.00075,
+    "white_mold": 0.98984
+   }
+  }
+ ]
+}
