@@ -109,7 +109,7 @@ ax.text(126.0, 18.6, "d and V from the classifier and the detector", fontsize=5.
 arrow(ax, 152.0, 52.5, 156.0, 52.5)
 box(ax, 156.0, 46.0, 32.0, 13.5, "language", "MiniGPT-v2", ["temperature 0.2,", "top-p 0.9"], title_size=6.4, body_size=5.6)
 arrow(ax, 172.0, 46.0, 172.0, 42.6)
-box(ax, 156.0, 22.0, 32.0, 20.6, "gate", "Hallmark check", ["18 phrases of the other", "conditions, e.g. \"gray fuzz\",",
+box(ax, 156.0, 22.0, 32.0, 20.6, "gate", "Hallmark check", ["16 asserted phrases of other", "conditions, e.g. \"gray fuzz\",",
     "\"black eye\", \"red stele\"", "flagged: regenerate once;", "still flagged: warning"], title_size=6.4, body_size=5.4)
 arrow(ax, 160.0, 46.0, 160.0, 42.6, color="#e34948", style="<|-", lw=0.7)
 ax.text(161.0, 44.3, "retry", fontsize=5.0, color="#b23a3a")

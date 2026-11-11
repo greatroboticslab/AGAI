@@ -37,10 +37,10 @@ FROZEN, TRAIN = "#898781", "#e34948"
 yc = 79.0
 thumb(Image.open(cand["frost"][8]), X0, yc + 13.0, 13.0)
 thumb(Image.open(cand["gray_mold"][6]), X0 + 3.0, yc + 9.0, 13.0)
-ax.text(X0 + 8.0, yc + 5.5, "training split", ha="center", fontsize=5.4, color=INK2)
-ax.text(X0 + 8.0, yc + 2.8, "(real + synthetic)", ha="center", fontsize=5.0, color=MUTED)
-box(ax, 30.0, yc, 31.0, 27.0, "data", "Online augmentation", ["resize to 256 x 256", "rotate +/-3 deg, flip",
-    "perspective (p = 0.15)", "color jitter, blur", "autocontrast (p = 0.2)"], title_size=6.3, body_size=5.4)
+ax.text(X0 + 8.0, yc + 5.5, "split v1 training", ha="center", fontsize=5.4, color=INK2)
+ax.text(X0 + 8.0, yc + 2.8, "(1017 photographs)", ha="center", fontsize=5.0, color=MUTED)
+box(ax, 30.0, yc, 31.0, 27.0, "data", "Online augmentation", ["90-100% crop to 256 px", "rotate +/-3 deg, flip",
+    "perspective, color jitter", "blur, autocontrast", "random erasing (p 0.15)"], title_size=6.3, body_size=5.4)
 arrow(ax, 26.5, yc + 13.5, 30.0, yc + 13.5, **A)
 box(ax, 65.0, yc + 14.0, 30.0, 13.0, "classify", "Phase 1: head", ["5 epochs, lr 1e-3", "backbone frozen"], title_size=6.3,
     body_size=5.4)
@@ -57,7 +57,7 @@ box(ax, 130.0, yc, 27.0, 12.5, "gate", "Fit temperature T", ["L-BFGS on validati
     title_size=6.1, body_size=5.4)
 arrow(ax, 126.0, yc + 6.2, 130.0, yc + 6.2, **A)
 box(ax, 161.0, yc, 27.0, 27.0, "output", "Deployed", ["ResNet-50 weights", "temperature T", r"gate thresholds $\tau_c$",
-    "(April 2026 values)"], title_size=6.3, body_size=5.4)
+    "(set by hand, 2025)"], title_size=6.3, body_size=5.4)
 arrow(ax, 157.0, yc + 6.2, 161.0, yc + 6.2, **A)
 tag(80.0, yc + 29.6, "ImageNet init.", "#2a78d6")
 
@@ -68,8 +68,8 @@ coco = json.loads(z.read("train/_annotations.coco.json"))
 ann_c = json.load(open("D:/agai-paper/draft/notes/ann_cands.json"))
 meta = [i for i in coco["images"] if i["id"] == ann_c[12]["iid"]][0]
 thumb(Image.open(io.BytesIO(z.read("train/" + meta["file_name"]))), X0 + 1.5, yd + 11.0, 14.0)
-ax.text(X0 + 8.5, yd + 7.8, "1075 images", ha="center", fontsize=5.4, color=INK2)
-ax.text(X0 + 8.5, yd + 5.1, "28,069 masks", ha="center", fontsize=5.0, color=MUTED)
+ax.text(X0 + 8.5, yd + 7.8, "845 train images", ha="center", fontsize=5.4, color=INK2)
+ax.text(X0 + 8.5, yd + 5.1, "(split agrees w/ v1)", ha="center", fontsize=5.0, color=MUTED)
 box(ax, 30.0, yd, 31.0, 27.0, "detect", "RF-DETR Small", ["DINOv2 backbone,", "windowed attention", "multi-scale projector",
     "deformable decoder", "13 x 300 queries"], title_size=6.3, body_size=5.4)
 arrow(ax, 26.5, yd + 13.5, 30.0, yd + 13.5, **A)
@@ -79,7 +79,7 @@ arrow(ax, 61.0, yd + 13.5, 65.0, yd + 13.5, **A)
 box(ax, 99.0, yd, 27.0, 27.0, "data", "Optimization", ["100 epochs, batch 8", "x 2 accumulation", "AdamW, lr 1e-4", "warm-up + cosine",
     "EMA 0.993"], title_size=6.3, body_size=5.4)
 arrow(ax, 95.0, yd + 13.5, 99.0, yd + 13.5, **A)
-box(ax, 130.0, yd, 27.0, 27.0, "gate", "Select checkpoint", ["best AP50 of the", "EMA weights on", "validation images", "(the same split", "reports the score)"],
+box(ax, 130.0, yd, 27.0, 27.0, "gate", "Select checkpoint", ["best AP50 of the", "EMA weights on the", "67 validation", "images; scored on", "163 test images"],
     title_size=6.1, body_size=5.4)
 arrow(ax, 126.0, yd + 13.5, 130.0, yd + 13.5, **A)
 box(ax, 161.0, yd, 27.0, 27.0, "output", "Deployed", ["detector weights", "per-part thresholds", "0.30 to 0.50", "visible-part set V"],
@@ -91,16 +91,16 @@ tag(45.5, yd + 29.6, "COCO init.", "#1baf7a")
 yr = 4.5
 thumb(Image.open(cand["drought"][15]), X0 + 1.5, yr + 11.0, 14.0)
 ax.text(X0 + 8.5, yr + 7.8, "image + label", ha="center", fontsize=5.4, color=INK2)
-box(ax, 30.0, yr, 31.0, 27.0, "knowledge", "Report authoring", ["OpenAI o3 (vision)", "fixed label, visual-only", "writing rules",
-    "2159 reports,", "151 to 296 words"], title_size=6.3, body_size=5.4)
+box(ax, 30.0, yr, 31.0, 27.0, "knowledge", "Report authoring", ["OpenAI o3 (vision)", "fixed label, visual-only", "2159 reports; 1364",
+    "train, 212 validation,", "test photos dropped"], title_size=6.3, body_size=5.4)
 arrow(ax, 26.5, yr + 13.5, 30.0, yr + 13.5, **A)
 box(ax, 65.0, yr, 30.0, 27.0, "language", "MiniGPT-v2", ["stage-2 checkpoint", "EVA ViT-g/14 (frozen)", "LLaMA-2-7B (8-bit,", "frozen) + LoRA r 64",
     "+ linear projection"], title_size=6.3, body_size=5.4)
 arrow(ax, 61.0, yr + 13.5, 65.0, yr + 13.5, **A)
-box(ax, 99.0, yr, 27.0, 27.0, "data", "Optimization", ["20 epochs x 2000 it.", "2 GPUs, batch 2,", "accumulation 8", "AdamW, cosine", "1e-5 to 5e-6"],
+box(ax, 99.0, yr, 27.0, 27.0, "data", "Optimization", ["10 epochs x 2000 it.", "1 GPU, batch 2,", "accumulation 16", "AdamW, cosine", "1e-5 to 5e-6"],
     title_size=6.3, body_size=5.4)
 arrow(ax, 95.0, yr + 13.5, 99.0, yr + 13.5, **A)
-box(ax, 130.0, yr, 27.0, 27.0, "gate", "Checkpoint", ["final epoch", "loss on report", "tokens only"],
+box(ax, 130.0, yr, 27.0, 27.0, "gate", "Select checkpoint", ["lowest loss on the", "212 validation", "reports; prompt =", "inference system", "prompt"],
     title_size=6.1, body_size=5.4)
 arrow(ax, 126.0, yr + 13.5, 130.0, yr + 13.5, **A)
 box(ax, 161.0, yr, 27.0, 27.0, "output", "Deployed", ["LoRA adapters", "projection layer", "system prompt with", "d and V (Methods)"],

@@ -110,9 +110,13 @@ ax.plot([0, 1], [0, 1], color=AXIS, lw=0.8)
 for b in range(10):
     if not cnts[b]:
         continue
-    ax.bar(centers[b], accs[b], width=0.085, color="#2a78d6", lw=0)
-    lo, hi = sorted([accs[b], confs[b]])
-    ax.bar(centers[b], hi - lo, bottom=lo, width=0.085, color="#e34948", alpha=0.25, lw=0)
+    few = cnts[b] < 10  # bins with fewer than 10 images are drawn faint: their accuracy is too noisy to read
+    ax.bar(centers[b], accs[b], width=0.085, color="#2a78d6", lw=0, alpha=0.30 if few else 1.0)
+    if not few:
+        lo, hi = sorted([accs[b], confs[b]])
+        ax.bar(centers[b], hi - lo, bottom=lo, width=0.085, color="#e34948", alpha=0.25, lw=0)
+    ax.text(centers[b], min(accs[b], 0.97) + 0.015, f"{cnts[b]}", ha="center", va="bottom", fontsize=5.0,
+            color=MUTED)
 ax.set_xlim(0, 1)
 ax.set_ylim(0, 1.02)
 ax.set_xlabel("Confidence (top-1 probability)")
@@ -136,12 +140,16 @@ risk = 1 - np.cumsum(correct[order]) / np.arange(1, len(conf) + 1)
 aurc = float(np.sum((risk[1:] + risk[:-1]) / 2 * np.diff(cov)))
 ax.plot(cov, risk, color="#2a78d6", lw=1.6)
 ax.fill_between(cov, risk, color="#2a78d6", alpha=0.10, lw=0)
-for thr in (0.5,):
-    m = conf >= thr
+if all("gate_v1" in p for p in preds):
+    # operating point of the thresholds shipped in the v1 application (per-class tau_c, at least 0.5)
+    gates = [(np.array([bool(p["gate_v1"]) for p in preds]), "v1 gate")]
+else:
+    gates = [(conf >= 0.5, "p1 >= 0.50")]
+for m, lab in gates:
     if m.any():
         c0, r0 = m.mean(), 1 - correct[m].mean()
         ax.plot(c0, r0, marker="o", ms=5, mfc="#e34948", mec="white", mew=1.0, ls="none", zorder=5)
-        ax.annotate(f"p1 >= {thr:.2f}: coverage {c0 * 100:.0f}%, risk {r0 * 100:.1f}%", (c0, r0),
+        ax.annotate(f"{lab}: coverage {c0 * 100:.0f}%, risk {r0 * 100:.1f}%", (c0, r0),
                     xytext=(-6, 14), textcoords="offset points", ha="right", fontsize=6.2, color=INK2,
                     arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.6))
 ax.set_xlim(0, 1)

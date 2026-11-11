@@ -58,12 +58,14 @@ CODE = {
                    "V0": "WHITE", "V1": "STEM", "V2": "SCLER", "V3": "CROWN", "V4": "ROT", "V5": "WHITE",
                    "V6": "STEM"},
 }
-# The 18 hallmark phrases of the consistency check (rag_retriever.py, unique_indicators).
+# The 16 hallmark phrases of the corrected consistency check (rag_retriever.py, DEFINITE_INDICATORS, 2026-10-30);
+# the April 2026 list also held "brown roots" (root rot) and "botrytis" (gray mold), removed because they flagged
+# correct reports.
 HALLMARKS = {"drought": ["cracked soil", "limp petioles"],
              "overwatered": ["mushy crown", "algae growth", "waterlogged"],
-             "root_rot": ["foul odor", "red stele", "brown roots"],
+             "root_rot": ["foul odor", "red stele"],
              "frost": ["black eye", "translucent leaves", "glassy tissue"],
-             "gray_mold": ["gray fuzz", "dusty spores", "tan mummies", "botrytis"],
+             "gray_mold": ["gray fuzz", "dusty spores", "tan mummies"],
              "white_mold": ["white cotton", "black sclerotia", "cottony mycelium"]}
 
 # ------------------------------------------------------------------ counts
@@ -233,7 +235,7 @@ for k, n in enumerate([1, 2, 4, 6]):
 ky -= 5.0
 ax.add_patch(Circle((XB + 1.6, ky), 0.95, fc=MUTED, ec="none"))
 ax.add_patch(Circle((XB + 1.6, ky), 1.4, fc="none", ec=INK, lw=0.55))
-ax.text(XB + 4.6, ky, "Holds a hallmark phrase of the report\nconsistency check (18 phrases)", fontsize=5.8, color=INK2,
+ax.text(XB + 4.6, ky, "Holds a hallmark phrase of the report\nconsistency check (16 phrases)", fontsize=5.8, color=INK2,
         ha="left", va="center", linespacing=1.15)
 ky -= 6.2
 ax.add_patch(Circle((XB + 1.6, ky), 0.95, fc="white", ec=MUTED, lw=0.9))

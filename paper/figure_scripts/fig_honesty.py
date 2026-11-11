@@ -37,7 +37,7 @@ HALO = [pe.withStroke(linewidth=2.2, foreground="white")]
 
 # label, accepts true, rejects wrong, balanced, differential, student?
 MODELS = [
-    ("8B student, from the\nclassification-tuned 8B", 79.9, 85.2, 82.5, 97.7, True),
+    ("8B student, from the\nclassification-tuned 8B", 80.9, 85.4, 83.2, 97.7, True),  # verified node (job 72215)
     ("Qwen3-VL-235B", 85.9, 75.5, 80.7, 88.1, False),
     ("8B student, from\nthe base 8B", 79.3, 81.9, 80.6, 93.7, True),
     ("Qwen3.8-27B", 90.5, 67.8, 79.1, 75.1, False),
