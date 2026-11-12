@@ -1378,3 +1378,34 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   rot 3 of 7, overwatering 1 of 7), and what each system wrote about them is examined afterwards as exploratory.
   `cluster/vlm/score_faithfulness.py` gains `--complete-only` and a coverage printout for this (tested on synthetic
   ratings with two photographs removed and one left partial). Committed before scoring.
+- **2026-11-12, 16:25 CST. (w) Result: claim-level faithfulness of v1 against v2 reports (pre-registered in (q) and its
+  addendum; rule for the unrated photographs in (v), whose time stamp should read 16:10 CST, the time of commit
+  b831eb9, one minute before the first scoring run; `cluster/vlm/score_faithfulness.py --complete-only`; files
+  `evaluation/paper_data/faithfulness_v1v2_{claims,key,ratings}.json`, `faithfulness_v1v2_scores.txt` and
+  `faithfulness_v1v2_scores_all_ratings.txt`).** One rater (W.S.), blind to the system; 41 photographs with every
+  claim rated (572 ratings: v1 362, v2 210). **Unsupported-claim rate (M1): v1 27.9 % (46 of 165 visual claims;
+  bootstrap 95 % interval 19.6-36.8), v2 14.4 % (21 of 146; 8.3-21.5).** Paired over photographs: Wilcoxon signed-rank
+  on the per-photograph rates P = 0.086 (40 photographs with visual claims from both systems, 30 nonzero differences,
+  median difference 0). M2, reports with at least one unsupported claim: v1 25 of 41 (61.0 %), v2 16 of 41 (39.0 %),
+  discordant 16 / 7, exact McNemar P = 0.093. M3: visual claims per report (supported + not supported + unsure) 5.2
+  vs 3.9, non-visual sentences 3.7 vs 1.2; rated unsure 47 vs 15. M5: advice assuming something not visible, 3 vs 4
+  sentences (the verdict was used 7 times in all). Sensitivity on all 573 ratings (42 photographs): the same rates
+  (27.9 / 14.4 %), M2 25 / 16 of 42. Predictions: (P1) v2 at most half of v1: **narrowly not supported** (ratio 0.52);
+  (P2) v1 makes more visual and more non-visual claims: supported; (P3) v1's unsupported claims concentrate on soil,
+  roots and flowers: **not supported** (parts named in its 46 unsupported claims: leaf 18, fruit 13, stem 9, root 7,
+  soil 6, flower 5); (P4) v2's "does not support" reports have no more unsupported claims than its others: **not
+  supported** (13 of 39 visual claims, 33.3 %, against 7 of 97, 7.2 %, for "partially supports" and 1 of 10 for
+  "clearly supports"); (P5) v1 has more advice assuming something not visible: not supported (3 vs 4). Reading: the
+  direction and size favour v2 (about half the rate), but the pre-registered paired tests do not reach P < 0.05 on 41
+  photographs with one rater, so the manuscript states the rates with their intervals and the tests as they are.
+  Post hoc, descriptive (added to the script after the primary results had been seen): (a) pooled difference 13.5
+  points, paired bootstrap 95 % interval 2.6-25.0, ratio 0.52 (0.27-0.88); (b) counting unsure as unsupported, 43.9 %
+  (93 of 212) vs 22.4 % (36 of 161); (c) v2's unsupported claims sit in its rejections of correct labels: 9 such
+  reports, 10 of 36 visual claims unsupported (27.8 %), against 7 of 94 (7.4 %) in the 27 reports that partially
+  supported a correct label, so the student's faithfulness errors and its false rejections coincide (it denies
+  symptoms that the rater sees); v1's label equalled the dataset label on all 41 photographs; (d) the 8 photographs
+  W.S. judged uninterpretable (gray mold 4, root rot 3, overwatering 1) were all diagnosed by v1 with the dataset
+  label at p1 0.94-1.00, and the student partially supported the label on 7 and rejected it on 1: both systems answer
+  confidently where the rater could not judge, which fits the source shortcut described for the gray mold batch
+  (n = 8, not tested). Limitations: one rater, who is an author; writing style can reveal the system; 41 photographs.
+  G.M.'s second rating has not been done. Entries (v) and (w) are local until the ssh master is back.

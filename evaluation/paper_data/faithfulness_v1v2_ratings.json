@@ -1,0 +1,4013 @@
+[
+{
+"name": "WAS",
+"claim": "p00c00",
+"photo": "p00",
+"v": "supported",
+"t": "2026-11-04T22:23:52.735Z"
+},
+{
+"name": "WAS",
+"claim": "p00c01",
+"photo": "p00",
+"v": "not_visual",
+"t": "2026-11-04T22:33:06.896Z"
+},
+{
+"name": "WAS",
+"claim": "p00c02",
+"photo": "p00",
+"v": "not_supported",
+"t": "2026-11-04T22:23:32.012Z"
+},
+{
+"name": "WAS",
+"claim": "p00c03",
+"photo": "p00",
+"v": "not_visual",
+"t": "2026-11-04T22:33:05.984Z"
+},
+{
+"name": "WAS",
+"claim": "p00c04",
+"photo": "p00",
+"v": "supported",
+"t": "2026-11-04T22:23:15.221Z"
+},
+{
+"name": "WAS",
+"claim": "p00c05",
+"photo": "p00",
+"v": "not_supported",
+"t": "2026-11-04T22:33:10.518Z"
+},
+{
+"name": "WAS",
+"claim": "p00c06",
+"photo": "p00",
+"v": "not_visual",
+"t": "2026-11-04T22:33:16.509Z"
+},
+{
+"name": "WAS",
+"claim": "p00c07",
+"photo": "p00",
+"v": "supported",
+"t": "2026-11-04T22:22:57.487Z"
+},
+{
+"name": "WAS",
+"claim": "p00c08",
+"photo": "p00",
+"v": "supported",
+"t": "2026-11-04T22:22:39.971Z"
+},
+{
+"name": "WAS",
+"claim": "p00c09",
+"photo": "p00",
+"v": "not_visual",
+"t": "2026-11-04T22:33:21.108Z"
+},
+{
+"name": "WAS",
+"claim": "p00c10",
+"photo": "p00",
+"v": "supported",
+"t": "2026-11-04T22:22:29.432Z"
+},
+{
+"name": "WAS",
+"claim": "p00c11",
+"photo": "p00",
+"v": "supported",
+"t": "2026-11-04T22:21:53.813Z"
+},
+{
+"name": "WAS",
+"claim": "p00c12",
+"photo": "p00",
+"v": "supported",
+"t": "2026-11-04T22:21:49.923Z"
+},
+{
+"name": "WAS",
+"claim": "p01c00",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:05.125Z"
+},
+{
+"name": "WAS",
+"claim": "p01c01",
+"photo": "p01",
+"v": "not_visual",
+"t": "2026-11-04T22:33:54.031Z"
+},
+{
+"name": "WAS",
+"claim": "p01c02",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:11.565Z"
+},
+{
+"name": "WAS",
+"claim": "p01c03",
+"photo": "p01",
+"v": "not_visual",
+"t": "2026-11-04T22:33:56.040Z"
+},
+{
+"name": "WAS",
+"claim": "p01c04",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:19.124Z"
+},
+{
+"name": "WAS",
+"claim": "p01c05",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:21.754Z"
+},
+{
+"name": "WAS",
+"claim": "p01c06",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:27.971Z"
+},
+{
+"name": "WAS",
+"claim": "p01c07",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:36.570Z"
+},
+{
+"name": "WAS",
+"claim": "p01c08",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:39.937Z"
+},
+{
+"name": "WAS",
+"claim": "p01c09",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:45.440Z"
+},
+{
+"name": "WAS",
+"claim": "p01c10",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:48.040Z"
+},
+{
+"name": "WAS",
+"claim": "p01c11",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:50.776Z"
+},
+{
+"name": "WAS",
+"claim": "p01c12",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:53.555Z"
+},
+{
+"name": "WAS",
+"claim": "p01c13",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:24:58.680Z"
+},
+{
+"name": "WAS",
+"claim": "p01c14",
+"photo": "p01",
+"v": "supported",
+"t": "2026-11-04T22:25:02.212Z"
+},
+{
+"name": "WAS",
+"claim": "p02c00",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:25:27.728Z"
+},
+{
+"name": "WAS",
+"claim": "p02c01",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:25:29.958Z"
+},
+{
+"name": "WAS",
+"claim": "p02c02",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:25:31.650Z"
+},
+{
+"name": "WAS",
+"claim": "p02c03",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:25:33.471Z"
+},
+{
+"name": "WAS",
+"claim": "p02c04",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:25:36.379Z"
+},
+{
+"name": "WAS",
+"claim": "p02c05",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:25:47.425Z"
+},
+{
+"name": "WAS",
+"claim": "p02c06",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:25:51.039Z"
+},
+{
+"name": "WAS",
+"claim": "p02c07",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:25:57.828Z"
+},
+{
+"name": "WAS",
+"claim": "p02c08",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:26:13.327Z"
+},
+{
+"name": "WAS",
+"claim": "p02c09",
+"photo": "p02",
+"v": "unsure",
+"t": "2026-11-04T22:26:39.737Z"
+},
+{
+"name": "WAS",
+"claim": "p02c10",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:26:41.545Z"
+},
+{
+"name": "WAS",
+"claim": "p02c11",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:26:44.912Z"
+},
+{
+"name": "WAS",
+"claim": "p02c12",
+"photo": "p02",
+"v": "supported",
+"t": "2026-11-04T22:27:09.388Z"
+},
+{
+"name": "WAS",
+"claim": "p03c00",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:29:54.226Z"
+},
+{
+"name": "WAS",
+"claim": "p03c01",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:29:52.935Z"
+},
+{
+"name": "WAS",
+"claim": "p03c02",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:27:23.263Z"
+},
+{
+"name": "WAS",
+"claim": "p03c03",
+"photo": "p03",
+"v": "unsure",
+"t": "2026-11-04T22:29:49.546Z"
+},
+{
+"name": "WAS",
+"claim": "p03c04",
+"photo": "p03",
+"v": "not_supported",
+"t": "2026-11-04T22:29:41.882Z"
+},
+{
+"name": "WAS",
+"claim": "p03c05",
+"photo": "p03",
+"v": "unsure",
+"t": "2026-11-04T22:29:24.044Z"
+},
+{
+"name": "WAS",
+"claim": "p03c06",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:29:09.849Z"
+},
+{
+"name": "WAS",
+"claim": "p03c07",
+"photo": "p03",
+"v": "not_supported",
+"t": "2026-11-04T22:28:37.908Z"
+},
+{
+"name": "WAS",
+"claim": "p03c08",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:27:30.055Z"
+},
+{
+"name": "WAS",
+"claim": "p03c09",
+"photo": "p03",
+"v": "not_supported",
+"t": "2026-11-04T22:28:23.497Z"
+},
+{
+"name": "WAS",
+"claim": "p03c10",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:28:30.138Z"
+},
+{
+"name": "WAS",
+"claim": "p03c11",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:27:37.570Z"
+},
+{
+"name": "WAS",
+"claim": "p03c12",
+"photo": "p03",
+"v": "unsure",
+"t": "2026-11-04T22:29:34.951Z"
+},
+{
+"name": "WAS",
+"claim": "p03c13",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:27:56.461Z"
+},
+{
+"name": "WAS",
+"claim": "p03c14",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:27:58.310Z"
+},
+{
+"name": "WAS",
+"claim": "p03c15",
+"photo": "p03",
+"v": "not_supported",
+"t": "2026-11-04T22:28:05.896Z"
+},
+{
+"name": "WAS",
+"claim": "p03c16",
+"photo": "p03",
+"v": "supported",
+"t": "2026-11-04T22:28:13.170Z"
+},
+{
+"name": "WAS",
+"claim": "p04c00",
+"photo": "p04",
+"v": "not_visual",
+"t": "2026-11-04T22:30:05.970Z"
+},
+{
+"name": "WAS",
+"claim": "p04c01",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:30:17.616Z"
+},
+{
+"name": "WAS",
+"claim": "p04c02",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:30:18.918Z"
+},
+{
+"name": "WAS",
+"claim": "p04c03",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:30:23.398Z"
+},
+{
+"name": "WAS",
+"claim": "p04c04",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:30:32.280Z"
+},
+{
+"name": "WAS",
+"claim": "p04c05",
+"photo": "p04",
+"v": "not_supported",
+"t": "2026-11-04T22:30:38.671Z"
+},
+{
+"name": "WAS",
+"claim": "p04c06",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:30:46.600Z"
+},
+{
+"name": "WAS",
+"claim": "p04c07",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:30:54.051Z"
+},
+{
+"name": "WAS",
+"claim": "p04c08",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:31:00.602Z"
+},
+{
+"name": "WAS",
+"claim": "p04c09",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:31:04.699Z"
+},
+{
+"name": "WAS",
+"claim": "p04c10",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:31:49.435Z"
+},
+{
+"name": "WAS",
+"claim": "p04c11",
+"photo": "p04",
+"v": "not_visual",
+"t": "2026-11-04T22:31:46.772Z"
+},
+{
+"name": "WAS",
+"claim": "p04c12",
+"photo": "p04",
+"v": "supported",
+"t": "2026-11-04T22:31:15.743Z"
+},
+{
+"name": "WAS",
+"claim": "p05c00",
+"photo": "p05",
+"v": "unsure",
+"t": "2026-11-12T21:06:45.387Z"
+},
+{
+"name": "WAS",
+"claim": "p05c01",
+"photo": "p05",
+"v": "unsure",
+"t": "2026-11-12T21:09:13.346Z"
+},
+{
+"name": "WAS",
+"claim": "p05c02",
+"photo": "p05",
+"v": "supported",
+"t": "2026-11-12T21:07:27.083Z"
+},
+{
+"name": "WAS",
+"claim": "p05c03",
+"photo": "p05",
+"v": "not_supported",
+"t": "2026-11-12T21:07:36.859Z"
+},
+{
+"name": "WAS",
+"claim": "p05c04",
+"photo": "p05",
+"v": "not_visual",
+"t": "2026-11-12T21:07:41.940Z"
+},
+{
+"name": "WAS",
+"claim": "p05c05",
+"photo": "p05",
+"v": "supported",
+"t": "2026-11-12T21:07:46.877Z"
+},
+{
+"name": "WAS",
+"claim": "p05c06",
+"photo": "p05",
+"v": "not_supported",
+"t": "2026-11-12T21:08:02.788Z"
+},
+{
+"name": "WAS",
+"claim": "p05c07",
+"photo": "p05",
+"v": "unsure",
+"t": "2026-11-12T21:08:14.716Z"
+},
+{
+"name": "WAS",
+"claim": "p05c08",
+"photo": "p05",
+"v": "not_visual",
+"t": "2026-11-12T21:08:22.212Z"
+},
+{
+"name": "WAS",
+"claim": "p05c09",
+"photo": "p05",
+"v": "not_supported",
+"t": "2026-11-12T21:08:27.624Z"
+},
+{
+"name": "WAS",
+"claim": "p05c10",
+"photo": "p05",
+"v": "not_visual",
+"t": "2026-11-12T21:08:34.104Z"
+},
+{
+"name": "WAS",
+"claim": "p05c11",
+"photo": "p05",
+"v": "unsure",
+"t": "2026-11-12T21:09:20.554Z"
+},
+{
+"name": "WAS",
+"claim": "p05c12",
+"photo": "p05",
+"v": "supported",
+"t": "2026-11-12T21:09:24.239Z"
+},
+{
+"name": "WAS",
+"claim": "p05c13",
+"photo": "p05",
+"v": "supported",
+"t": "2026-11-12T21:09:32.302Z"
+},
+{
+"name": "WAS",
+"claim": "p05c14",
+"photo": "p05",
+"v": "not_visual",
+"t": "2026-11-12T21:09:41.429Z"
+},
+{
+"name": "WAS",
+"claim": "p05c15",
+"photo": "p05",
+"v": "not_visual",
+"t": "2026-11-12T21:09:39.617Z"
+},
+{
+"name": "WAS",
+"claim": "p06c00",
+"photo": "p06",
+"v": "supported",
+"t": "2026-11-12T21:10:11.628Z"
+},
+{
+"name": "WAS",
+"claim": "p06c01",
+"photo": "p06",
+"v": "not_visual",
+"t": "2026-11-12T21:10:16.091Z"
+},
+{
+"name": "WAS",
+"claim": "p06c02",
+"photo": "p06",
+"v": "not_visual",
+"t": "2026-11-12T21:10:44.823Z"
+},
+{
+"name": "WAS",
+"claim": "p06c03",
+"photo": "p06",
+"v": "supported",
+"t": "2026-11-12T21:10:48.892Z"
+},
+{
+"name": "WAS",
+"claim": "p06c04",
+"photo": "p06",
+"v": "supported",
+"t": "2026-11-12T21:10:54.323Z"
+},
+{
+"name": "WAS",
+"claim": "p06c05",
+"photo": "p06",
+"v": "not_visual",
+"t": "2026-11-12T21:11:01.187Z"
+},
+{
+"name": "WAS",
+"claim": "p06c06",
+"photo": "p06",
+"v": "supported",
+"t": "2026-11-12T21:11:34.642Z"
+},
+{
+"name": "WAS",
+"claim": "p06c07",
+"photo": "p06",
+"v": "not_visual",
+"t": "2026-11-12T21:11:39.302Z"
+},
+{
+"name": "WAS",
+"claim": "p06c08",
+"photo": "p06",
+"v": "not_visual",
+"t": "2026-11-12T21:11:41.934Z"
+},
+{
+"name": "WAS",
+"claim": "p06c09",
+"photo": "p06",
+"v": "not_visual",
+"t": "2026-11-12T21:11:49.187Z"
+},
+{
+"name": "WAS",
+"claim": "p06c10",
+"photo": "p06",
+"v": "supported",
+"t": "2026-11-12T21:11:51.486Z"
+},
+{
+"name": "WAS",
+"claim": "p06c11",
+"photo": "p06",
+"v": "not_supported",
+"t": "2026-11-12T21:12:03.479Z"
+},
+{
+"name": "WAS",
+"claim": "p06c12",
+"photo": "p06",
+"v": "not_visual",
+"t": "2026-11-12T21:12:06.137Z"
+},
+{
+"name": "WAS",
+"claim": "p07c00",
+"photo": "p07",
+"v": "unsure",
+"t": "2026-11-12T21:12:37.301Z"
+},
+{
+"name": "WAS",
+"claim": "p07c01",
+"photo": "p07",
+"v": "supported",
+"t": "2026-11-12T21:12:46.356Z"
+},
+{
+"name": "WAS",
+"claim": "p07c02",
+"photo": "p07",
+"v": "advice_not_visible",
+"t": "2026-11-12T21:13:17.849Z"
+},
+{
+"name": "WAS",
+"claim": "p07c03",
+"photo": "p07",
+"v": "advice_not_visible",
+"t": "2026-11-12T21:13:15.592Z"
+},
+{
+"name": "WAS",
+"claim": "p07c04",
+"photo": "p07",
+"v": "advice_not_visible",
+"t": "2026-11-12T21:13:27.566Z"
+},
+{
+"name": "WAS",
+"claim": "p07c05",
+"photo": "p07",
+"v": "not_supported",
+"t": "2026-11-12T21:13:44.012Z"
+},
+{
+"name": "WAS",
+"claim": "p07c06",
+"photo": "p07",
+"v": "unsure",
+"t": "2026-11-12T21:13:57.588Z"
+},
+{
+"name": "WAS",
+"claim": "p07c07",
+"photo": "p07",
+"v": "unsure",
+"t": "2026-11-12T21:13:59.758Z"
+},
+{
+"name": "WAS",
+"claim": "p07c08",
+"photo": "p07",
+"v": "supported",
+"t": "2026-11-12T21:14:05.794Z"
+},
+{
+"name": "WAS",
+"claim": "p07c09",
+"photo": "p07",
+"v": "not_visual",
+"t": "2026-11-12T21:14:12.481Z"
+},
+{
+"name": "WAS",
+"claim": "p08c00",
+"photo": "p08",
+"v": "not_visual",
+"t": "2026-11-12T21:14:30.736Z"
+},
+{
+"name": "WAS",
+"claim": "p08c01",
+"photo": "p08",
+"v": "supported",
+"t": "2026-11-12T21:14:37.439Z"
+},
+{
+"name": "WAS",
+"claim": "p08c02",
+"photo": "p08",
+"v": "supported",
+"t": "2026-11-12T21:14:40.624Z"
+},
+{
+"name": "WAS",
+"claim": "p08c03",
+"photo": "p08",
+"v": "not_supported",
+"t": "2026-11-12T21:14:45.781Z"
+},
+{
+"name": "WAS",
+"claim": "p08c04",
+"photo": "p08",
+"v": "not_visual",
+"t": "2026-11-12T21:15:25.412Z"
+},
+{
+"name": "WAS",
+"claim": "p08c05",
+"photo": "p08",
+"v": "not_visual",
+"t": "2026-11-12T21:15:24.909Z"
+},
+{
+"name": "WAS",
+"claim": "p08c06",
+"photo": "p08",
+"v": "not_visual",
+"t": "2026-11-12T21:15:23.491Z"
+},
+{
+"name": "WAS",
+"claim": "p08c07",
+"photo": "p08",
+"v": "not_supported",
+"t": "2026-11-12T21:15:32.217Z"
+},
+{
+"name": "WAS",
+"claim": "p08c08",
+"photo": "p08",
+"v": "supported",
+"t": "2026-11-12T21:15:37.892Z"
+},
+{
+"name": "WAS",
+"claim": "p08c09",
+"photo": "p08",
+"v": "unsure",
+"t": "2026-11-12T21:15:40.151Z"
+},
+{
+"name": "WAS",
+"claim": "p08c10",
+"photo": "p08",
+"v": "not_visual",
+"t": "2026-11-12T21:15:43.114Z"
+},
+{
+"name": "WAS",
+"claim": "p08c11",
+"photo": "p08",
+"v": "unsure",
+"t": "2026-11-12T21:15:45.191Z"
+},
+{
+"name": "WAS",
+"claim": "p08c12",
+"photo": "p08",
+"v": "not_supported",
+"t": "2026-11-12T21:15:50.182Z"
+},
+{
+"name": "WAS",
+"claim": "p08c13",
+"photo": "p08",
+"v": "not_visual",
+"t": "2026-11-12T21:15:55.993Z"
+},
+{
+"name": "WAS",
+"claim": "p09c00",
+"photo": "p09",
+"v": "supported",
+"t": "2026-11-12T21:16:08.378Z"
+},
+{
+"name": "WAS",
+"claim": "p09c01",
+"photo": "p09",
+"v": "not_visual",
+"t": "2026-11-12T21:16:14.351Z"
+},
+{
+"name": "WAS",
+"claim": "p09c02",
+"photo": "p09",
+"v": "supported",
+"t": "2026-11-12T21:16:25.156Z"
+},
+{
+"name": "WAS",
+"claim": "p09c03",
+"photo": "p09",
+"v": "not_visual",
+"t": "2026-11-12T21:16:36.957Z"
+},
+{
+"name": "WAS",
+"claim": "p09c04",
+"photo": "p09",
+"v": "supported",
+"t": "2026-11-12T21:16:39.789Z"
+},
+{
+"name": "WAS",
+"claim": "p09c05",
+"photo": "p09",
+"v": "supported",
+"t": "2026-11-12T21:16:43.304Z"
+},
+{
+"name": "WAS",
+"claim": "p09c06",
+"photo": "p09",
+"v": "supported",
+"t": "2026-11-12T21:16:48.306Z"
+},
+{
+"name": "WAS",
+"claim": "p09c07",
+"photo": "p09",
+"v": "not_visual",
+"t": "2026-11-12T21:16:50.324Z"
+},
+{
+"name": "WAS",
+"claim": "p09c08",
+"photo": "p09",
+"v": "supported",
+"t": "2026-11-12T21:16:57.084Z"
+},
+{
+"name": "WAS",
+"claim": "p09c09",
+"photo": "p09",
+"v": "not_visual",
+"t": "2026-11-12T21:17:22.954Z"
+},
+{
+"name": "WAS",
+"claim": "p09c10",
+"photo": "p09",
+"v": "not_visual",
+"t": "2026-11-12T21:17:30.845Z"
+},
+{
+"name": "WAS",
+"claim": "p09c11",
+"photo": "p09",
+"v": "supported",
+"t": "2026-11-12T21:17:33.599Z"
+},
+{
+"name": "WAS",
+"claim": "p09c12",
+"photo": "p09",
+"v": "supported",
+"t": "2026-11-12T21:17:43.837Z"
+},
+{
+"name": "WAS",
+"claim": "p10c00",
+"photo": "p10",
+"v": "not_visual",
+"t": "2026-11-12T21:18:05.910Z"
+},
+{
+"name": "WAS",
+"claim": "p10c01",
+"photo": "p10",
+"v": "supported",
+"t": "2026-11-12T21:18:00.714Z"
+},
+{
+"name": "WAS",
+"claim": "p10c02",
+"photo": "p10",
+"v": "not_supported",
+"t": "2026-11-12T21:18:21.830Z"
+},
+{
+"name": "WAS",
+"claim": "p10c03",
+"photo": "p10",
+"v": "not_visual",
+"t": "2026-11-12T21:18:28.600Z"
+},
+{
+"name": "WAS",
+"claim": "p10c04",
+"photo": "p10",
+"v": "not_visual",
+"t": "2026-11-12T21:18:29.923Z"
+},
+{
+"name": "WAS",
+"claim": "p10c05",
+"photo": "p10",
+"v": "not_visual",
+"t": "2026-11-12T21:18:30.986Z"
+},
+{
+"name": "WAS",
+"claim": "p10c06",
+"photo": "p10",
+"v": "unsure",
+"t": "2026-11-12T21:18:37.298Z"
+},
+{
+"name": "WAS",
+"claim": "p10c07",
+"photo": "p10",
+"v": "not_supported",
+"t": "2026-11-12T21:18:56.381Z"
+},
+{
+"name": "WAS",
+"claim": "p10c08",
+"photo": "p10",
+"v": "not_visual",
+"t": "2026-11-12T21:19:03.078Z"
+},
+{
+"name": "WAS",
+"claim": "p10c09",
+"photo": "p10",
+"v": "supported",
+"t": "2026-11-12T21:19:32.035Z"
+},
+{
+"name": "WAS",
+"claim": "p10c10",
+"photo": "p10",
+"v": "supported",
+"t": "2026-11-12T21:19:14.387Z"
+},
+{
+"name": "WAS",
+"claim": "p10c11",
+"photo": "p10",
+"v": "supported",
+"t": "2026-11-12T21:19:25.617Z"
+},
+{
+"name": "WAS",
+"claim": "p11c00",
+"photo": "p11",
+"v": "not_supported",
+"t": "2026-11-12T21:19:44.697Z"
+},
+{
+"name": "WAS",
+"claim": "p11c01",
+"photo": "p11",
+"v": "supported",
+"t": "2026-11-12T21:19:46.252Z"
+},
+{
+"name": "WAS",
+"claim": "p11c02",
+"photo": "p11",
+"v": "not_visual",
+"t": "2026-11-12T21:19:48.943Z"
+},
+{
+"name": "WAS",
+"claim": "p11c03",
+"photo": "p11",
+"v": "not_visual",
+"t": "2026-11-12T21:19:49.741Z"
+},
+{
+"name": "WAS",
+"claim": "p11c04",
+"photo": "p11",
+"v": "not_supported",
+"t": "2026-11-12T21:19:52.383Z"
+},
+{
+"name": "WAS",
+"claim": "p11c05",
+"photo": "p11",
+"v": "not_visual",
+"t": "2026-11-12T21:19:55.589Z"
+},
+{
+"name": "WAS",
+"claim": "p11c06",
+"photo": "p11",
+"v": "supported",
+"t": "2026-11-12T21:20:01.113Z"
+},
+{
+"name": "WAS",
+"claim": "p11c07",
+"photo": "p11",
+"v": "not_visual",
+"t": "2026-11-12T21:20:10.828Z"
+},
+{
+"name": "WAS",
+"claim": "p11c08",
+"photo": "p11",
+"v": "supported",
+"t": "2026-11-12T21:20:12.312Z"
+},
+{
+"name": "WAS",
+"claim": "p11c09",
+"photo": "p11",
+"v": "not_supported",
+"t": "2026-11-12T21:20:28.111Z"
+},
+{
+"name": "WAS",
+"claim": "p11c10",
+"photo": "p11",
+"v": "not_visual",
+"t": "2026-11-12T21:20:33.613Z"
+},
+{
+"name": "WAS",
+"claim": "p12c00",
+"photo": "p12",
+"v": "not_visual",
+"t": "2026-11-12T21:20:39.019Z"
+},
+{
+"name": "WAS",
+"claim": "p12c01",
+"photo": "p12",
+"v": "not_visual",
+"t": "2026-11-12T21:20:39.638Z"
+},
+{
+"name": "WAS",
+"claim": "p12c02",
+"photo": "p12",
+"v": "not_visual",
+"t": "2026-11-12T21:20:40.511Z"
+},
+{
+"name": "WAS",
+"claim": "p12c03",
+"photo": "p12",
+"v": "supported",
+"t": "2026-11-12T21:20:58.249Z"
+},
+{
+"name": "WAS",
+"claim": "p12c04",
+"photo": "p12",
+"v": "supported",
+"t": "2026-11-12T21:20:55.118Z"
+},
+{
+"name": "WAS",
+"claim": "p12c05",
+"photo": "p12",
+"v": "not_visual",
+"t": "2026-11-12T21:21:00.709Z"
+},
+{
+"name": "WAS",
+"claim": "p12c06",
+"photo": "p12",
+"v": "not_visual",
+"t": "2026-11-12T21:21:02.571Z"
+},
+{
+"name": "WAS",
+"claim": "p12c07",
+"photo": "p12",
+"v": "unsure",
+"t": "2026-11-12T21:21:09.545Z"
+},
+{
+"name": "WAS",
+"claim": "p12c08",
+"photo": "p12",
+"v": "not_supported",
+"t": "2026-11-12T21:21:24.812Z"
+},
+{
+"name": "WAS",
+"claim": "p12c09",
+"photo": "p12",
+"v": "unsure",
+"t": "2026-11-12T21:21:45.543Z"
+},
+{
+"name": "WAS",
+"claim": "p12c10",
+"photo": "p12",
+"v": "not_visual",
+"t": "2026-11-12T21:21:49.115Z"
+},
+{
+"name": "WAS",
+"claim": "p12c11",
+"photo": "p12",
+"v": "not_visual",
+"t": "2026-11-12T21:21:49.911Z"
+},
+{
+"name": "WAS",
+"claim": "p12c12",
+"photo": "p12",
+"v": "not_supported",
+"t": "2026-11-12T21:21:52.109Z"
+},
+{
+"name": "WAS",
+"claim": "p13c00",
+"photo": "p13",
+"v": "not_visual",
+"t": "2026-11-12T21:22:27.535Z"
+},
+{
+"name": "WAS",
+"claim": "p13c01",
+"photo": "p13",
+"v": "not_supported",
+"t": "2026-11-12T21:22:38.361Z"
+},
+{
+"name": "WAS",
+"claim": "p13c02",
+"photo": "p13",
+"v": "supported",
+"t": "2026-11-12T21:22:40.471Z"
+},
+{
+"name": "WAS",
+"claim": "p13c03",
+"photo": "p13",
+"v": "supported",
+"t": "2026-11-12T21:22:45.902Z"
+},
+{
+"name": "WAS",
+"claim": "p13c04",
+"photo": "p13",
+"v": "not_visual",
+"t": "2026-11-12T21:22:50.098Z"
+},
+{
+"name": "WAS",
+"claim": "p13c05",
+"photo": "p13",
+"v": "supported",
+"t": "2026-11-12T21:22:54.645Z"
+},
+{
+"name": "WAS",
+"claim": "p13c06",
+"photo": "p13",
+"v": "not_visual",
+"t": "2026-11-12T21:22:58.455Z"
+},
+{
+"name": "WAS",
+"claim": "p13c07",
+"photo": "p13",
+"v": "supported",
+"t": "2026-11-12T21:23:15.501Z"
+},
+{
+"name": "WAS",
+"claim": "p13c08",
+"photo": "p13",
+"v": "not_visual",
+"t": "2026-11-12T21:23:18.590Z"
+},
+{
+"name": "WAS",
+"claim": "p13c09",
+"photo": "p13",
+"v": "unsure",
+"t": "2026-11-12T21:23:32.982Z"
+},
+{
+"name": "WAS",
+"claim": "p13c10",
+"photo": "p13",
+"v": "not_visual",
+"t": "2026-11-12T21:23:43.332Z"
+},
+{
+"name": "WAS",
+"claim": "p13c11",
+"photo": "p13",
+"v": "supported",
+"t": "2026-11-12T21:23:49.682Z"
+},
+{
+"name": "WAS",
+"claim": "p15c00",
+"photo": "p15",
+"v": "supported",
+"t": "2026-11-12T21:24:40.193Z"
+},
+{
+"name": "WAS",
+"claim": "p15c01",
+"photo": "p15",
+"v": "not_visual",
+"t": "2026-11-12T21:24:43.351Z"
+},
+{
+"name": "WAS",
+"claim": "p15c02",
+"photo": "p15",
+"v": "not_supported",
+"t": "2026-11-12T21:24:46.859Z"
+},
+{
+"name": "WAS",
+"claim": "p15c03",
+"photo": "p15",
+"v": "advice_not_visible",
+"t": "2026-11-12T21:24:50.240Z"
+},
+{
+"name": "WAS",
+"claim": "p15c04",
+"photo": "p15",
+"v": "not_visual",
+"t": "2026-11-12T21:24:52.412Z"
+},
+{
+"name": "WAS",
+"claim": "p15c05",
+"photo": "p15",
+"v": "not_visual",
+"t": "2026-11-12T21:24:53.597Z"
+},
+{
+"name": "WAS",
+"claim": "p15c06",
+"photo": "p15",
+"v": "unsure",
+"t": "2026-11-12T21:25:04.550Z"
+},
+{
+"name": "WAS",
+"claim": "p15c07",
+"photo": "p15",
+"v": "not_visual",
+"t": "2026-11-12T21:25:06.762Z"
+},
+{
+"name": "WAS",
+"claim": "p15c08",
+"photo": "p15",
+"v": "supported",
+"t": "2026-11-12T21:25:11.980Z"
+},
+{
+"name": "WAS",
+"claim": "p15c09",
+"photo": "p15",
+"v": "not_visual",
+"t": "2026-11-12T21:25:15.080Z"
+},
+{
+"name": "WAS",
+"claim": "p15c10",
+"photo": "p15",
+"v": "not_visual",
+"t": "2026-11-12T21:25:15.919Z"
+},
+{
+"name": "WAS",
+"claim": "p15c11",
+"photo": "p15",
+"v": "supported",
+"t": "2026-11-12T21:25:17.777Z"
+},
+{
+"name": "WAS",
+"claim": "p15c12",
+"photo": "p15",
+"v": "unsure",
+"t": "2026-11-12T21:25:28.354Z"
+},
+{
+"name": "WAS",
+"claim": "p15c13",
+"photo": "p15",
+"v": "not_supported",
+"t": "2026-11-12T21:25:39.915Z"
+},
+{
+"name": "WAS",
+"claim": "p18c00",
+"photo": "p18",
+"v": "not_visual",
+"t": "2026-11-12T21:26:09.739Z"
+},
+{
+"name": "WAS",
+"claim": "p18c01",
+"photo": "p18",
+"v": "supported",
+"t": "2026-11-12T21:26:08.743Z"
+},
+{
+"name": "WAS",
+"claim": "p18c02",
+"photo": "p18",
+"v": "not_visual",
+"t": "2026-11-12T21:26:11.799Z"
+},
+{
+"name": "WAS",
+"claim": "p18c03",
+"photo": "p18",
+"v": "not_visual",
+"t": "2026-11-12T21:26:13.089Z"
+},
+{
+"name": "WAS",
+"claim": "p18c04",
+"photo": "p18",
+"v": "not_supported",
+"t": "2026-11-12T21:26:20.467Z"
+},
+{
+"name": "WAS",
+"claim": "p18c05",
+"photo": "p18",
+"v": "not_visual",
+"t": "2026-11-12T21:26:22.453Z"
+},
+{
+"name": "WAS",
+"claim": "p18c06",
+"photo": "p18",
+"v": "supported",
+"t": "2026-11-12T21:26:23.806Z"
+},
+{
+"name": "WAS",
+"claim": "p18c07",
+"photo": "p18",
+"v": "not_supported",
+"t": "2026-11-12T21:26:26.555Z"
+},
+{
+"name": "WAS",
+"claim": "p18c08",
+"photo": "p18",
+"v": "not_visual",
+"t": "2026-11-12T21:26:30.003Z"
+},
+{
+"name": "WAS",
+"claim": "p18c09",
+"photo": "p18",
+"v": "supported",
+"t": "2026-11-12T21:26:35.752Z"
+},
+{
+"name": "WAS",
+"claim": "p18c10",
+"photo": "p18",
+"v": "unsure",
+"t": "2026-11-12T21:26:44.912Z"
+},
+{
+"name": "WAS",
+"claim": "p18c11",
+"photo": "p18",
+"v": "not_supported",
+"t": "2026-11-12T21:26:50.515Z"
+},
+{
+"name": "WAS",
+"claim": "p18c12",
+"photo": "p18",
+"v": "unsure",
+"t": "2026-11-12T21:27:02.682Z"
+},
+{
+"name": "WAS",
+"claim": "p18c13",
+"photo": "p18",
+"v": "unsure",
+"t": "2026-11-12T21:27:08.607Z"
+},
+{
+"name": "WAS",
+"claim": "p18c14",
+"photo": "p18",
+"v": "not_supported",
+"t": "2026-11-12T21:27:13.044Z"
+},
+{
+"name": "WAS",
+"claim": "p18c15",
+"photo": "p18",
+"v": "not_visual",
+"t": "2026-11-12T21:27:17.396Z"
+},
+{
+"name": "WAS",
+"claim": "p18c16",
+"photo": "p18",
+"v": "not_visual",
+"t": "2026-11-12T21:27:19.460Z"
+},
+{
+"name": "WAS",
+"claim": "p19c00",
+"photo": "p19",
+"v": "supported",
+"t": "2026-11-12T21:27:25.792Z"
+},
+{
+"name": "WAS",
+"claim": "p19c01",
+"photo": "p19",
+"v": "not_visual",
+"t": "2026-11-12T21:27:28.139Z"
+},
+{
+"name": "WAS",
+"claim": "p19c02",
+"photo": "p19",
+"v": "supported",
+"t": "2026-11-12T21:27:34.547Z"
+},
+{
+"name": "WAS",
+"claim": "p19c03",
+"photo": "p19",
+"v": "not_supported",
+"t": "2026-11-12T21:27:44.290Z"
+},
+{
+"name": "WAS",
+"claim": "p19c04",
+"photo": "p19",
+"v": "not_supported",
+"t": "2026-11-12T21:27:52.246Z"
+},
+{
+"name": "WAS",
+"claim": "p19c05",
+"photo": "p19",
+"v": "supported",
+"t": "2026-11-12T21:27:57.309Z"
+},
+{
+"name": "WAS",
+"claim": "p19c06",
+"photo": "p19",
+"v": "not_visual",
+"t": "2026-11-12T21:28:00.520Z"
+},
+{
+"name": "WAS",
+"claim": "p19c07",
+"photo": "p19",
+"v": "not_visual",
+"t": "2026-11-12T21:28:01.281Z"
+},
+{
+"name": "WAS",
+"claim": "p19c08",
+"photo": "p19",
+"v": "not_supported",
+"t": "2026-11-12T21:28:13.397Z"
+},
+{
+"name": "WAS",
+"claim": "p19c09",
+"photo": "p19",
+"v": "not_visual",
+"t": "2026-11-12T21:28:18.539Z"
+},
+{
+"name": "WAS",
+"claim": "p19c10",
+"photo": "p19",
+"v": "not_supported",
+"t": "2026-11-12T21:28:23.537Z"
+},
+{
+"name": "WAS",
+"claim": "p19c11",
+"photo": "p19",
+"v": "supported",
+"t": "2026-11-12T21:28:25.795Z"
+},
+{
+"name": "WAS",
+"claim": "p19c12",
+"photo": "p19",
+"v": "not_visual",
+"t": "2026-11-12T21:28:28.543Z"
+},
+{
+"name": "WAS",
+"claim": "p19c13",
+"photo": "p19",
+"v": "not_visual",
+"t": "2026-11-12T21:28:30.522Z"
+},
+{
+"name": "WAS",
+"claim": "p19c14",
+"photo": "p19",
+"v": "not_visual",
+"t": "2026-11-12T21:28:31.669Z"
+},
+{
+"name": "WAS",
+"claim": "p19c15",
+"photo": "p19",
+"v": "supported",
+"t": "2026-11-12T21:28:34.697Z"
+},
+{
+"name": "WAS",
+"claim": "p21c00",
+"photo": "p21",
+"v": "not_visual",
+"t": "2026-11-12T21:28:53.270Z"
+},
+{
+"name": "WAS",
+"claim": "p21c01",
+"photo": "p21",
+"v": "supported",
+"t": "2026-11-12T21:28:54.819Z"
+},
+{
+"name": "WAS",
+"claim": "p21c02",
+"photo": "p21",
+"v": "supported",
+"t": "2026-11-12T21:28:57.076Z"
+},
+{
+"name": "WAS",
+"claim": "p21c03",
+"photo": "p21",
+"v": "supported",
+"t": "2026-11-12T21:28:58.852Z"
+},
+{
+"name": "WAS",
+"claim": "p21c04",
+"photo": "p21",
+"v": "not_visual",
+"t": "2026-11-12T21:29:00.799Z"
+},
+{
+"name": "WAS",
+"claim": "p21c05",
+"photo": "p21",
+"v": "supported",
+"t": "2026-11-12T21:29:06.950Z"
+},
+{
+"name": "WAS",
+"claim": "p21c06",
+"photo": "p21",
+"v": "not_visual",
+"t": "2026-11-12T21:29:14.559Z"
+},
+{
+"name": "WAS",
+"claim": "p21c07",
+"photo": "p21",
+"v": "supported",
+"t": "2026-11-12T21:29:16.085Z"
+},
+{
+"name": "WAS",
+"claim": "p21c08",
+"photo": "p21",
+"v": "supported",
+"t": "2026-11-12T21:29:18.226Z"
+},
+{
+"name": "WAS",
+"claim": "p21c09",
+"photo": "p21",
+"v": "not_visual",
+"t": "2026-11-12T21:29:19.059Z"
+},
+{
+"name": "WAS",
+"claim": "p21c10",
+"photo": "p21",
+"v": "not_visual",
+"t": "2026-11-12T21:29:19.875Z"
+},
+{
+"name": "WAS",
+"claim": "p22c00",
+"photo": "p22",
+"v": "supported",
+"t": "2026-11-12T21:29:25.470Z"
+},
+{
+"name": "WAS",
+"claim": "p22c01",
+"photo": "p22",
+"v": "supported",
+"t": "2026-11-12T21:29:29.986Z"
+},
+{
+"name": "WAS",
+"claim": "p22c02",
+"photo": "p22",
+"v": "not_visual",
+"t": "2026-11-12T21:29:31.277Z"
+},
+{
+"name": "WAS",
+"claim": "p22c03",
+"photo": "p22",
+"v": "supported",
+"t": "2026-11-12T21:29:32.925Z"
+},
+{
+"name": "WAS",
+"claim": "p22c04",
+"photo": "p22",
+"v": "supported",
+"t": "2026-11-12T21:29:36.215Z"
+},
+{
+"name": "WAS",
+"claim": "p22c05",
+"photo": "p22",
+"v": "not_visual",
+"t": "2026-11-12T21:29:38.981Z"
+},
+{
+"name": "WAS",
+"claim": "p22c06",
+"photo": "p22",
+"v": "supported",
+"t": "2026-11-12T21:29:41.795Z"
+},
+{
+"name": "WAS",
+"claim": "p22c07",
+"photo": "p22",
+"v": "supported",
+"t": "2026-11-12T21:29:45.912Z"
+},
+{
+"name": "WAS",
+"claim": "p22c08",
+"photo": "p22",
+"v": "supported",
+"t": "2026-11-12T21:29:48.774Z"
+},
+{
+"name": "WAS",
+"claim": "p22c09",
+"photo": "p22",
+"v": "not_visual",
+"t": "2026-11-12T21:29:52.037Z"
+},
+{
+"name": "WAS",
+"claim": "p22c10",
+"photo": "p22",
+"v": "not_supported",
+"t": "2026-11-12T21:30:19.751Z"
+},
+{
+"name": "WAS",
+"claim": "p22c11",
+"photo": "p22",
+"v": "not_supported",
+"t": "2026-11-12T21:30:31.540Z"
+},
+{
+"name": "WAS",
+"claim": "p22c12",
+"photo": "p22",
+"v": "not_visual",
+"t": "2026-11-12T21:30:47.997Z"
+},
+{
+"name": "WAS",
+"claim": "p23c00",
+"photo": "p23",
+"v": "unsure",
+"t": "2026-11-12T21:30:55.113Z"
+},
+{
+"name": "WAS",
+"claim": "p23c01",
+"photo": "p23",
+"v": "supported",
+"t": "2026-11-12T21:31:03.862Z"
+},
+{
+"name": "WAS",
+"claim": "p23c02",
+"photo": "p23",
+"v": "supported",
+"t": "2026-11-12T21:31:06.434Z"
+},
+{
+"name": "WAS",
+"claim": "p23c03",
+"photo": "p23",
+"v": "not_visual",
+"t": "2026-11-12T21:31:08.619Z"
+},
+{
+"name": "WAS",
+"claim": "p23c04",
+"photo": "p23",
+"v": "supported",
+"t": "2026-11-12T21:31:10.159Z"
+},
+{
+"name": "WAS",
+"claim": "p23c05",
+"photo": "p23",
+"v": "not_visual",
+"t": "2026-11-12T21:31:11.293Z"
+},
+{
+"name": "WAS",
+"claim": "p23c06",
+"photo": "p23",
+"v": "unsure",
+"t": "2026-11-12T21:31:23.411Z"
+},
+{
+"name": "WAS",
+"claim": "p23c07",
+"photo": "p23",
+"v": "unsure",
+"t": "2026-11-12T21:31:36.761Z"
+},
+{
+"name": "WAS",
+"claim": "p23c08",
+"photo": "p23",
+"v": "supported",
+"t": "2026-11-12T21:31:39.760Z"
+},
+{
+"name": "WAS",
+"claim": "p24c00",
+"photo": "p24",
+"v": "not_supported",
+"t": "2026-11-12T21:31:48.690Z"
+},
+{
+"name": "WAS",
+"claim": "p24c01",
+"photo": "p24",
+"v": "supported",
+"t": "2026-11-12T21:31:57.322Z"
+},
+{
+"name": "WAS",
+"claim": "p24c02",
+"photo": "p24",
+"v": "supported",
+"t": "2026-11-12T21:32:00.067Z"
+},
+{
+"name": "WAS",
+"claim": "p24c03",
+"photo": "p24",
+"v": "not_visual",
+"t": "2026-11-12T21:32:02.132Z"
+},
+{
+"name": "WAS",
+"claim": "p24c04",
+"photo": "p24",
+"v": "not_visual",
+"t": "2026-11-12T21:32:02.824Z"
+},
+{
+"name": "WAS",
+"claim": "p24c05",
+"photo": "p24",
+"v": "supported",
+"t": "2026-11-12T21:32:04.723Z"
+},
+{
+"name": "WAS",
+"claim": "p24c06",
+"photo": "p24",
+"v": "not_visual",
+"t": "2026-11-12T21:32:07.359Z"
+},
+{
+"name": "WAS",
+"claim": "p24c07",
+"photo": "p24",
+"v": "supported",
+"t": "2026-11-12T21:32:14.418Z"
+},
+{
+"name": "WAS",
+"claim": "p24c08",
+"photo": "p24",
+"v": "not_visual",
+"t": "2026-11-12T21:32:22.684Z"
+},
+{
+"name": "WAS",
+"claim": "p24c09",
+"photo": "p24",
+"v": "not_visual",
+"t": "2026-11-12T21:32:24.744Z"
+},
+{
+"name": "WAS",
+"claim": "p24c10",
+"photo": "p24",
+"v": "not_visual",
+"t": "2026-11-12T21:32:26.070Z"
+},
+{
+"name": "WAS",
+"claim": "p24c11",
+"photo": "p24",
+"v": "supported",
+"t": "2026-11-12T21:32:30.660Z"
+},
+{
+"name": "WAS",
+"claim": "p24c12",
+"photo": "p24",
+"v": "supported",
+"t": "2026-11-12T21:32:37.719Z"
+},
+{
+"name": "WAS",
+"claim": "p24c13",
+"photo": "p24",
+"v": "not_supported",
+"t": "2026-11-12T21:32:46.777Z"
+},
+{
+"name": "WAS",
+"claim": "p24c14",
+"photo": "p24",
+"v": "supported",
+"t": "2026-11-12T21:32:53.617Z"
+},
+{
+"name": "WAS",
+"claim": "p25c00",
+"photo": "p25",
+"v": "not_visual",
+"t": "2026-11-12T21:33:02.024Z"
+},
+{
+"name": "WAS",
+"claim": "p25c01",
+"photo": "p25",
+"v": "not_visual",
+"t": "2026-11-12T21:33:02.910Z"
+},
+{
+"name": "WAS",
+"claim": "p25c02",
+"photo": "p25",
+"v": "supported",
+"t": "2026-11-12T21:33:03.969Z"
+},
+{
+"name": "WAS",
+"claim": "p25c03",
+"photo": "p25",
+"v": "supported",
+"t": "2026-11-12T21:33:06.392Z"
+},
+{
+"name": "WAS",
+"claim": "p25c04",
+"photo": "p25",
+"v": "supported",
+"t": "2026-11-12T21:33:08.156Z"
+},
+{
+"name": "WAS",
+"claim": "p25c05",
+"photo": "p25",
+"v": "supported",
+"t": "2026-11-12T21:33:10.644Z"
+},
+{
+"name": "WAS",
+"claim": "p25c06",
+"photo": "p25",
+"v": "not_visual",
+"t": "2026-11-12T21:33:12.103Z"
+},
+{
+"name": "WAS",
+"claim": "p25c07",
+"photo": "p25",
+"v": "not_visual",
+"t": "2026-11-12T21:33:12.997Z"
+},
+{
+"name": "WAS",
+"claim": "p25c08",
+"photo": "p25",
+"v": "supported",
+"t": "2026-11-12T21:33:15.351Z"
+},
+{
+"name": "WAS",
+"claim": "p25c09",
+"photo": "p25",
+"v": "supported",
+"t": "2026-11-12T21:33:18.351Z"
+},
+{
+"name": "WAS",
+"claim": "p25c10",
+"photo": "p25",
+"v": "not_visual",
+"t": "2026-11-12T21:33:20.294Z"
+},
+{
+"name": "WAS",
+"claim": "p25c11",
+"photo": "p25",
+"v": "unsure",
+"t": "2026-11-12T21:33:22.610Z"
+},
+{
+"name": "WAS",
+"claim": "p26c00",
+"photo": "p26",
+"v": "supported",
+"t": "2026-11-12T21:33:25.478Z"
+},
+{
+"name": "WAS",
+"claim": "p26c01",
+"photo": "p26",
+"v": "not_visual",
+"t": "2026-11-12T21:33:26.383Z"
+},
+{
+"name": "WAS",
+"claim": "p26c02",
+"photo": "p26",
+"v": "supported",
+"t": "2026-11-12T21:33:30.258Z"
+},
+{
+"name": "WAS",
+"claim": "p26c03",
+"photo": "p26",
+"v": "supported",
+"t": "2026-11-12T21:33:43.150Z"
+},
+{
+"name": "WAS",
+"claim": "p26c04",
+"photo": "p26",
+"v": "not_supported",
+"t": "2026-11-12T21:33:56.479Z"
+},
+{
+"name": "WAS",
+"claim": "p26c05",
+"photo": "p26",
+"v": "not_visual",
+"t": "2026-11-12T21:34:03.197Z"
+},
+{
+"name": "WAS",
+"claim": "p26c06",
+"photo": "p26",
+"v": "supported",
+"t": "2026-11-12T21:34:06.068Z"
+},
+{
+"name": "WAS",
+"claim": "p26c07",
+"photo": "p26",
+"v": "supported",
+"t": "2026-11-12T21:34:11.174Z"
+},
+{
+"name": "WAS",
+"claim": "p26c08",
+"photo": "p26",
+"v": "supported",
+"t": "2026-11-12T21:34:13.914Z"
+},
+{
+"name": "WAS",
+"claim": "p26c09",
+"photo": "p26",
+"v": "supported",
+"t": "2026-11-12T21:34:15.208Z"
+},
+{
+"name": "WAS",
+"claim": "p26c10",
+"photo": "p26",
+"v": "not_visual",
+"t": "2026-11-12T21:34:18.954Z"
+},
+{
+"name": "WAS",
+"claim": "p26c11",
+"photo": "p26",
+"v": "unsure",
+"t": "2026-11-12T21:34:29.600Z"
+},
+{
+"name": "WAS",
+"claim": "p27c00",
+"photo": "p27",
+"v": "not_visual",
+"t": "2026-11-12T21:34:32.700Z"
+},
+{
+"name": "WAS",
+"claim": "p27c01",
+"photo": "p27",
+"v": "not_supported",
+"t": "2026-11-12T21:34:34.336Z"
+},
+{
+"name": "WAS",
+"claim": "p27c02",
+"photo": "p27",
+"v": "advice_not_visible",
+"t": "2026-11-12T21:34:40.103Z"
+},
+{
+"name": "WAS",
+"claim": "p27c03",
+"photo": "p27",
+"v": "supported",
+"t": "2026-11-12T21:34:44.390Z"
+},
+{
+"name": "WAS",
+"claim": "p27c04",
+"photo": "p27",
+"v": "unsure",
+"t": "2026-11-12T21:34:59.594Z"
+},
+{
+"name": "WAS",
+"claim": "p27c05",
+"photo": "p27",
+"v": "not_visual",
+"t": "2026-11-12T21:35:05.694Z"
+},
+{
+"name": "WAS",
+"claim": "p27c06",
+"photo": "p27",
+"v": "not_visual",
+"t": "2026-11-12T21:35:06.497Z"
+},
+{
+"name": "WAS",
+"claim": "p27c07",
+"photo": "p27",
+"v": "supported",
+"t": "2026-11-12T21:35:08.765Z"
+},
+{
+"name": "WAS",
+"claim": "p27c08",
+"photo": "p27",
+"v": "supported",
+"t": "2026-11-12T21:35:10.635Z"
+},
+{
+"name": "WAS",
+"claim": "p27c09",
+"photo": "p27",
+"v": "unsure",
+"t": "2026-11-12T21:35:13.245Z"
+},
+{
+"name": "WAS",
+"claim": "p27c10",
+"photo": "p27",
+"v": "supported",
+"t": "2026-11-12T21:35:14.765Z"
+},
+{
+"name": "WAS",
+"claim": "p27c11",
+"photo": "p27",
+"v": "supported",
+"t": "2026-11-12T21:35:16.920Z"
+},
+{
+"name": "WAS",
+"claim": "p27c12",
+"photo": "p27",
+"v": "not_visual",
+"t": "2026-11-12T21:35:22.745Z"
+},
+{
+"name": "WAS",
+"claim": "p27c13",
+"photo": "p27",
+"v": "supported",
+"t": "2026-11-12T21:35:29.193Z"
+},
+{
+"name": "WAS",
+"claim": "p27c14",
+"photo": "p27",
+"v": "unsure",
+"t": "2026-11-12T21:35:36.062Z"
+},
+{
+"name": "WAS",
+"claim": "p27c15",
+"photo": "p27",
+"v": "supported",
+"t": "2026-11-12T21:35:38.541Z"
+},
+{
+"name": "WAS",
+"claim": "p28c00",
+"photo": "p28",
+"v": "not_visual",
+"t": "2026-11-12T21:35:46.578Z"
+},
+{
+"name": "WAS",
+"claim": "p28c01",
+"photo": "p28",
+"v": "not_visual",
+"t": "2026-11-12T21:35:48.611Z"
+},
+{
+"name": "WAS",
+"claim": "p28c02",
+"photo": "p28",
+"v": "supported",
+"t": "2026-11-12T21:35:55.472Z"
+},
+{
+"name": "WAS",
+"claim": "p28c03",
+"photo": "p28",
+"v": "not_visual",
+"t": "2026-11-12T21:35:57.170Z"
+},
+{
+"name": "WAS",
+"claim": "p28c04",
+"photo": "p28",
+"v": "not_visual",
+"t": "2026-11-12T21:35:58.563Z"
+},
+{
+"name": "WAS",
+"claim": "p28c05",
+"photo": "p28",
+"v": "unsure",
+"t": "2026-11-12T21:36:40.257Z"
+},
+{
+"name": "WAS",
+"claim": "p28c06",
+"photo": "p28",
+"v": "not_visual",
+"t": "2026-11-12T21:36:02.038Z"
+},
+{
+"name": "WAS",
+"claim": "p28c07",
+"photo": "p28",
+"v": "supported",
+"t": "2026-11-12T21:36:06.107Z"
+},
+{
+"name": "WAS",
+"claim": "p28c08",
+"photo": "p28",
+"v": "not_visual",
+"t": "2026-11-12T21:36:09.296Z"
+},
+{
+"name": "WAS",
+"claim": "p28c09",
+"photo": "p28",
+"v": "supported",
+"t": "2026-11-12T21:36:11.983Z"
+},
+{
+"name": "WAS",
+"claim": "p28c10",
+"photo": "p28",
+"v": "not_visual",
+"t": "2026-11-12T21:36:14.060Z"
+},
+{
+"name": "WAS",
+"claim": "p28c11",
+"photo": "p28",
+"v": "unsure",
+"t": "2026-11-12T21:36:36.065Z"
+},
+{
+"name": "WAS",
+"claim": "p28c12",
+"photo": "p28",
+"v": "not_supported",
+"t": "2026-11-12T21:36:48.568Z"
+},
+{
+"name": "WAS",
+"claim": "p29c00",
+"photo": "p29",
+"v": "supported",
+"t": "2026-11-12T21:37:20.529Z"
+},
+{
+"name": "WAS",
+"claim": "p29c01",
+"photo": "p29",
+"v": "not_visual",
+"t": "2026-11-12T21:37:21.754Z"
+},
+{
+"name": "WAS",
+"claim": "p29c02",
+"photo": "p29",
+"v": "supported",
+"t": "2026-11-12T21:37:24.452Z"
+},
+{
+"name": "WAS",
+"claim": "p29c03",
+"photo": "p29",
+"v": "unsure",
+"t": "2026-11-12T21:37:30.165Z"
+},
+{
+"name": "WAS",
+"claim": "p29c04",
+"photo": "p29",
+"v": "not_visual",
+"t": "2026-11-12T21:37:35.895Z"
+},
+{
+"name": "WAS",
+"claim": "p29c05",
+"photo": "p29",
+"v": "not_supported",
+"t": "2026-11-12T21:37:45.760Z"
+},
+{
+"name": "WAS",
+"claim": "p29c06",
+"photo": "p29",
+"v": "not_visual",
+"t": "2026-11-12T21:37:50.955Z"
+},
+{
+"name": "WAS",
+"claim": "p29c07",
+"photo": "p29",
+"v": "supported",
+"t": "2026-11-12T21:37:54.157Z"
+},
+{
+"name": "WAS",
+"claim": "p29c08",
+"photo": "p29",
+"v": "not_visual",
+"t": "2026-11-12T21:37:58.338Z"
+},
+{
+"name": "WAS",
+"claim": "p29c09",
+"photo": "p29",
+"v": "supported",
+"t": "2026-11-12T21:38:03.900Z"
+},
+{
+"name": "WAS",
+"claim": "p29c10",
+"photo": "p29",
+"v": "not_supported",
+"t": "2026-11-12T21:38:11.693Z"
+},
+{
+"name": "WAS",
+"claim": "p29c11",
+"photo": "p29",
+"v": "unsure",
+"t": "2026-11-12T21:38:13.989Z"
+},
+{
+"name": "WAS",
+"claim": "p29c12",
+"photo": "p29",
+"v": "unsure",
+"t": "2026-11-12T21:38:15.248Z"
+},
+{
+"name": "WAS",
+"claim": "p29c13",
+"photo": "p29",
+"v": "unsure",
+"t": "2026-11-12T21:38:20.671Z"
+},
+{
+"name": "WAS",
+"claim": "p29c14",
+"photo": "p29",
+"v": "supported",
+"t": "2026-11-12T21:38:28.098Z"
+},
+{
+"name": "WAS",
+"claim": "p30c00",
+"photo": "p30",
+"v": "not_visual",
+"t": "2026-11-12T21:38:33.797Z"
+},
+{
+"name": "WAS",
+"claim": "p30c01",
+"photo": "p30",
+"v": "supported",
+"t": "2026-11-12T21:38:36.417Z"
+},
+{
+"name": "WAS",
+"claim": "p30c02",
+"photo": "p30",
+"v": "not_supported",
+"t": "2026-11-12T21:38:41.999Z"
+},
+{
+"name": "WAS",
+"claim": "p30c03",
+"photo": "p30",
+"v": "unsure",
+"t": "2026-11-12T21:38:51.772Z"
+},
+{
+"name": "WAS",
+"claim": "p30c04",
+"photo": "p30",
+"v": "supported",
+"t": "2026-11-12T21:39:02.434Z"
+},
+{
+"name": "WAS",
+"claim": "p30c05",
+"photo": "p30",
+"v": "not_visual",
+"t": "2026-11-12T21:39:05.510Z"
+},
+{
+"name": "WAS",
+"claim": "p30c06",
+"photo": "p30",
+"v": "not_supported",
+"t": "2026-11-12T21:39:08.622Z"
+},
+{
+"name": "WAS",
+"claim": "p30c07",
+"photo": "p30",
+"v": "not_visual",
+"t": "2026-11-12T21:39:10.828Z"
+},
+{
+"name": "WAS",
+"claim": "p30c08",
+"photo": "p30",
+"v": "not_visual",
+"t": "2026-11-12T21:39:11.570Z"
+},
+{
+"name": "WAS",
+"claim": "p30c09",
+"photo": "p30",
+"v": "supported",
+"t": "2026-11-12T21:39:12.980Z"
+},
+{
+"name": "WAS",
+"claim": "p30c10",
+"photo": "p30",
+"v": "supported",
+"t": "2026-11-12T21:39:17.326Z"
+},
+{
+"name": "WAS",
+"claim": "p30c11",
+"photo": "p30",
+"v": "not_visual",
+"t": "2026-11-12T21:39:20.726Z"
+},
+{
+"name": "WAS",
+"claim": "p30c12",
+"photo": "p30",
+"v": "unsure",
+"t": "2026-11-12T21:39:24.018Z"
+},
+{
+"name": "WAS",
+"claim": "p30c13",
+"photo": "p30",
+"v": "supported",
+"t": "2026-11-12T21:39:30.695Z"
+},
+{
+"name": "WAS",
+"claim": "p31c00",
+"photo": "p31",
+"v": "supported",
+"t": "2026-11-12T21:39:38.683Z"
+},
+{
+"name": "WAS",
+"claim": "p31c01",
+"photo": "p31",
+"v": "not_visual",
+"t": "2026-11-12T21:39:40.543Z"
+},
+{
+"name": "WAS",
+"claim": "p31c02",
+"photo": "p31",
+"v": "supported",
+"t": "2026-11-12T21:40:28.556Z"
+},
+{
+"name": "WAS",
+"claim": "p31c03",
+"photo": "p31",
+"v": "unsure",
+"t": "2026-11-12T21:40:40.822Z"
+},
+{
+"name": "WAS",
+"claim": "p31c04",
+"photo": "p31",
+"v": "not_visual",
+"t": "2026-11-12T21:40:45.232Z"
+},
+{
+"name": "WAS",
+"claim": "p31c05",
+"photo": "p31",
+"v": "unsure",
+"t": "2026-11-12T21:40:51.910Z"
+},
+{
+"name": "WAS",
+"claim": "p31c06",
+"photo": "p31",
+"v": "supported",
+"t": "2026-11-12T21:40:54.555Z"
+},
+{
+"name": "WAS",
+"claim": "p31c07",
+"photo": "p31",
+"v": "unsure",
+"t": "2026-11-12T21:41:00.397Z"
+},
+{
+"name": "WAS",
+"claim": "p31c08",
+"photo": "p31",
+"v": "not_visual",
+"t": "2026-11-12T21:41:01.327Z"
+},
+{
+"name": "WAS",
+"claim": "p31c09",
+"photo": "p31",
+"v": "supported",
+"t": "2026-11-12T21:41:03.486Z"
+},
+{
+"name": "WAS",
+"claim": "p31c10",
+"photo": "p31",
+"v": "not_visual",
+"t": "2026-11-12T21:41:12.038Z"
+},
+{
+"name": "WAS",
+"claim": "p31c11",
+"photo": "p31",
+"v": "not_visual",
+"t": "2026-11-12T21:41:25.852Z"
+},
+{
+"name": "WAS",
+"claim": "p31c12",
+"photo": "p31",
+"v": "supported",
+"t": "2026-11-12T21:41:30.230Z"
+},
+{
+"name": "WAS",
+"claim": "p31c13",
+"photo": "p31",
+"v": "not_visual",
+"t": "2026-11-12T21:41:38.121Z"
+},
+{
+"name": "WAS",
+"claim": "p31c14",
+"photo": "p31",
+"v": "supported",
+"t": "2026-11-12T21:41:42.259Z"
+},
+{
+"name": "WAS",
+"claim": "p31c15",
+"photo": "p31",
+"v": "unsure",
+"t": "2026-11-12T21:41:44.278Z"
+},
+{
+"name": "WAS",
+"claim": "p31c16",
+"photo": "p31",
+"v": "not_supported",
+"t": "2026-11-12T21:41:50.718Z"
+},
+{
+"name": "WAS",
+"claim": "p31c17",
+"photo": "p31",
+"v": "not_visual",
+"t": "2026-11-12T21:41:53.391Z"
+},
+{
+"name": "WAS",
+"claim": "p33c00",
+"photo": "p33",
+"v": "supported",
+"t": "2026-11-12T21:42:36.312Z"
+},
+{
+"name": "WAS",
+"claim": "p33c01",
+"photo": "p33",
+"v": "not_visual",
+"t": "2026-11-12T21:42:41.184Z"
+},
+{
+"name": "WAS",
+"claim": "p33c02",
+"photo": "p33",
+"v": "supported",
+"t": "2026-11-12T21:42:44.558Z"
+},
+{
+"name": "WAS",
+"claim": "p33c03",
+"photo": "p33",
+"v": "not_visual",
+"t": "2026-11-12T21:42:52.254Z"
+},
+{
+"name": "WAS",
+"claim": "p33c04",
+"photo": "p33",
+"v": "not_visual",
+"t": "2026-11-12T21:42:52.977Z"
+},
+{
+"name": "WAS",
+"claim": "p33c05",
+"photo": "p33",
+"v": "supported",
+"t": "2026-11-12T21:42:58.756Z"
+},
+{
+"name": "WAS",
+"claim": "p33c06",
+"photo": "p33",
+"v": "not_visual",
+"t": "2026-11-12T21:43:03.562Z"
+},
+{
+"name": "WAS",
+"claim": "p33c07",
+"photo": "p33",
+"v": "supported",
+"t": "2026-11-12T21:43:09.861Z"
+},
+{
+"name": "WAS",
+"claim": "p33c08",
+"photo": "p33",
+"v": "supported",
+"t": "2026-11-12T21:43:13.093Z"
+},
+{
+"name": "WAS",
+"claim": "p33c09",
+"photo": "p33",
+"v": "not_supported",
+"t": "2026-11-12T21:43:17.765Z"
+},
+{
+"name": "WAS",
+"claim": "p33c10",
+"photo": "p33",
+"v": "not_visual",
+"t": "2026-11-12T21:43:25.921Z"
+},
+{
+"name": "WAS",
+"claim": "p33c11",
+"photo": "p33",
+"v": "not_supported",
+"t": "2026-11-12T21:43:30.153Z"
+},
+{
+"name": "WAS",
+"claim": "p33c12",
+"photo": "p33",
+"v": "supported",
+"t": "2026-11-12T21:43:39.298Z"
+},
+{
+"name": "WAS",
+"claim": "p34c00",
+"photo": "p34",
+"v": "not_visual",
+"t": "2026-11-12T21:43:46.550Z"
+},
+{
+"name": "WAS",
+"claim": "p34c01",
+"photo": "p34",
+"v": "supported",
+"t": "2026-11-12T21:43:48.841Z"
+},
+{
+"name": "WAS",
+"claim": "p34c02",
+"photo": "p34",
+"v": "not_supported",
+"t": "2026-11-12T21:43:51.774Z"
+},
+{
+"name": "WAS",
+"claim": "p34c03",
+"photo": "p34",
+"v": "not_supported",
+"t": "2026-11-12T21:44:06.436Z"
+},
+{
+"name": "WAS",
+"claim": "p34c04",
+"photo": "p34",
+"v": "not_supported",
+"t": "2026-11-12T21:44:12.288Z"
+},
+{
+"name": "WAS",
+"claim": "p34c05",
+"photo": "p34",
+"v": "unsure",
+"t": "2026-11-12T21:44:38.130Z"
+},
+{
+"name": "WAS",
+"claim": "p34c06",
+"photo": "p34",
+"v": "not_visual",
+"t": "2026-11-12T21:44:30.659Z"
+},
+{
+"name": "WAS",
+"claim": "p34c07",
+"photo": "p34",
+"v": "unsure",
+"t": "2026-11-12T21:44:37.441Z"
+},
+{
+"name": "WAS",
+"claim": "p34c08",
+"photo": "p34",
+"v": "supported",
+"t": "2026-11-12T21:44:42.587Z"
+},
+{
+"name": "WAS",
+"claim": "p34c09",
+"photo": "p34",
+"v": "supported",
+"t": "2026-11-12T21:44:49.606Z"
+},
+{
+"name": "WAS",
+"claim": "p34c10",
+"photo": "p34",
+"v": "supported",
+"t": "2026-11-12T21:44:55.004Z"
+},
+{
+"name": "WAS",
+"claim": "p34c11",
+"photo": "p34",
+"v": "not_supported",
+"t": "2026-11-12T21:45:00.818Z"
+},
+{
+"name": "WAS",
+"claim": "p34c12",
+"photo": "p34",
+"v": "not_supported",
+"t": "2026-11-12T21:45:06.351Z"
+},
+{
+"name": "WAS",
+"claim": "p34c13",
+"photo": "p34",
+"v": "unsure",
+"t": "2026-11-12T21:45:09.424Z"
+},
+{
+"name": "WAS",
+"claim": "p34c14",
+"photo": "p34",
+"v": "not_supported",
+"t": "2026-11-12T21:45:11.874Z"
+},
+{
+"name": "WAS",
+"claim": "p36c00",
+"photo": "p36",
+"v": "not_visual",
+"t": "2026-11-12T21:46:23.079Z"
+},
+{
+"name": "WAS",
+"claim": "p36c01",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:46:25.994Z"
+},
+{
+"name": "WAS",
+"claim": "p36c02",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:46:28.440Z"
+},
+{
+"name": "WAS",
+"claim": "p36c03",
+"photo": "p36",
+"v": "not_supported",
+"t": "2026-11-12T21:46:43.342Z"
+},
+{
+"name": "WAS",
+"claim": "p36c04",
+"photo": "p36",
+"v": "not_visual",
+"t": "2026-11-12T21:47:31.959Z"
+},
+{
+"name": "WAS",
+"claim": "p36c05",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:47:30.592Z"
+},
+{
+"name": "WAS",
+"claim": "p36c06",
+"photo": "p36",
+"v": "not_visual",
+"t": "2026-11-12T21:47:29.037Z"
+},
+{
+"name": "WAS",
+"claim": "p36c07",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:46:54.584Z"
+},
+{
+"name": "WAS",
+"claim": "p36c08",
+"photo": "p36",
+"v": "not_visual",
+"t": "2026-11-12T21:47:27.509Z"
+},
+{
+"name": "WAS",
+"claim": "p36c09",
+"photo": "p36",
+"v": "not_visual",
+"t": "2026-11-12T21:47:26.998Z"
+},
+{
+"name": "WAS",
+"claim": "p36c10",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:46:59.904Z"
+},
+{
+"name": "WAS",
+"claim": "p36c11",
+"photo": "p36",
+"v": "not_visual",
+"t": "2026-11-12T21:47:25.656Z"
+},
+{
+"name": "WAS",
+"claim": "p36c12",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:47:03.196Z"
+},
+{
+"name": "WAS",
+"claim": "p36c13",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:47:22.321Z"
+},
+{
+"name": "WAS",
+"claim": "p36c14",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:47:18.585Z"
+},
+{
+"name": "WAS",
+"claim": "p36c15",
+"photo": "p36",
+"v": "supported",
+"t": "2026-11-12T21:47:13.375Z"
+},
+{
+"name": "WAS",
+"claim": "p36c16",
+"photo": "p36",
+"v": "not_visual",
+"t": "2026-11-12T21:47:24.177Z"
+},
+{
+"name": "WAS",
+"claim": "p37c00",
+"photo": "p37",
+"v": "supported",
+"t": "2026-11-12T21:47:46.461Z"
+},
+{
+"name": "WAS",
+"claim": "p37c01",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:48:01.185Z"
+},
+{
+"name": "WAS",
+"claim": "p37c02",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:48:03.819Z"
+},
+{
+"name": "WAS",
+"claim": "p37c03",
+"photo": "p37",
+"v": "supported",
+"t": "2026-11-12T21:48:07.465Z"
+},
+{
+"name": "WAS",
+"claim": "p37c04",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:48:12.740Z"
+},
+{
+"name": "WAS",
+"claim": "p37c05",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:48:14.612Z"
+},
+{
+"name": "WAS",
+"claim": "p37c06",
+"photo": "p37",
+"v": "supported",
+"t": "2026-11-12T21:48:19.151Z"
+},
+{
+"name": "WAS",
+"claim": "p37c07",
+"photo": "p37",
+"v": "supported",
+"t": "2026-11-12T21:48:23.823Z"
+},
+{
+"name": "WAS",
+"claim": "p37c08",
+"photo": "p37",
+"v": "unsure",
+"t": "2026-11-12T21:48:27.807Z"
+},
+{
+"name": "WAS",
+"claim": "p37c09",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:48:30.885Z"
+},
+{
+"name": "WAS",
+"claim": "p37c10",
+"photo": "p37",
+"v": "supported",
+"t": "2026-11-12T21:48:32.866Z"
+},
+{
+"name": "WAS",
+"claim": "p37c11",
+"photo": "p37",
+"v": "not_supported",
+"t": "2026-11-12T21:48:46.945Z"
+},
+{
+"name": "WAS",
+"claim": "p37c12",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:48:56.223Z"
+},
+{
+"name": "WAS",
+"claim": "p37c13",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:48:57.458Z"
+},
+{
+"name": "WAS",
+"claim": "p37c14",
+"photo": "p37",
+"v": "not_supported",
+"t": "2026-11-12T21:49:16.952Z"
+},
+{
+"name": "WAS",
+"claim": "p37c15",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:49:19.078Z"
+},
+{
+"name": "WAS",
+"claim": "p37c16",
+"photo": "p37",
+"v": "not_visual",
+"t": "2026-11-12T21:49:20.223Z"
+},
+{
+"name": "WAS",
+"claim": "p37c17",
+"photo": "p37",
+"v": "supported",
+"t": "2026-11-12T21:49:31.381Z"
+},
+{
+"name": "WAS",
+"claim": "p37c18",
+"photo": "p37",
+"v": "supported",
+"t": "2026-11-12T21:49:43.424Z"
+},
+{
+"name": "WAS",
+"claim": "p38c00",
+"photo": "p38",
+"v": "not_visual",
+"t": "2026-11-12T21:50:01.323Z"
+},
+{
+"name": "WAS",
+"claim": "p39c00",
+"photo": "p39",
+"v": "supported",
+"t": "2026-11-12T21:50:18.223Z"
+},
+{
+"name": "WAS",
+"claim": "p39c01",
+"photo": "p39",
+"v": "supported",
+"t": "2026-11-12T21:50:21.185Z"
+},
+{
+"name": "WAS",
+"claim": "p39c02",
+"photo": "p39",
+"v": "advice_not_visible",
+"t": "2026-11-12T21:50:28.942Z"
+},
+{
+"name": "WAS",
+"claim": "p39c03",
+"photo": "p39",
+"v": "not_visual",
+"t": "2026-11-12T21:50:24.222Z"
+},
+{
+"name": "WAS",
+"claim": "p39c04",
+"photo": "p39",
+"v": "supported",
+"t": "2026-11-12T21:50:45.144Z"
+},
+{
+"name": "WAS",
+"claim": "p39c05",
+"photo": "p39",
+"v": "unsure",
+"t": "2026-11-12T21:50:57.358Z"
+},
+{
+"name": "WAS",
+"claim": "p39c06",
+"photo": "p39",
+"v": "supported",
+"t": "2026-11-12T21:51:01.996Z"
+},
+{
+"name": "WAS",
+"claim": "p39c07",
+"photo": "p39",
+"v": "supported",
+"t": "2026-11-12T21:51:09.274Z"
+},
+{
+"name": "WAS",
+"claim": "p39c08",
+"photo": "p39",
+"v": "not_visual",
+"t": "2026-11-12T21:51:19.512Z"
+},
+{
+"name": "WAS",
+"claim": "p39c09",
+"photo": "p39",
+"v": "unsure",
+"t": "2026-11-12T21:51:32.144Z"
+},
+{
+"name": "WAS",
+"claim": "p39c10",
+"photo": "p39",
+"v": "supported",
+"t": "2026-11-12T21:51:38.175Z"
+},
+{
+"name": "WAS",
+"claim": "p39c11",
+"photo": "p39",
+"v": "not_visual",
+"t": "2026-11-12T21:51:43.620Z"
+},
+{
+"name": "WAS",
+"claim": "p39c12",
+"photo": "p39",
+"v": "not_visual",
+"t": "2026-11-12T21:51:44.301Z"
+},
+{
+"name": "WAS",
+"claim": "p39c13",
+"photo": "p39",
+"v": "supported",
+"t": "2026-11-12T21:51:49.585Z"
+},
+{
+"name": "WAS",
+"claim": "p39c14",
+"photo": "p39",
+"v": "not_visual",
+"t": "2026-11-12T21:51:52.774Z"
+},
+{
+"name": "WAS",
+"claim": "p41c00",
+"photo": "p41",
+"v": "not_visual",
+"t": "2026-11-12T21:53:29.530Z"
+},
+{
+"name": "WAS",
+"claim": "p41c01",
+"photo": "p41",
+"v": "not_visual",
+"t": "2026-11-12T21:53:30.255Z"
+},
+{
+"name": "WAS",
+"claim": "p41c02",
+"photo": "p41",
+"v": "not_visual",
+"t": "2026-11-12T21:53:30.814Z"
+},
+{
+"name": "WAS",
+"claim": "p41c03",
+"photo": "p41",
+"v": "supported",
+"t": "2026-11-12T21:53:35.923Z"
+},
+{
+"name": "WAS",
+"claim": "p41c04",
+"photo": "p41",
+"v": "unsure",
+"t": "2026-11-12T21:53:38.185Z"
+},
+{
+"name": "WAS",
+"claim": "p41c05",
+"photo": "p41",
+"v": "supported",
+"t": "2026-11-12T21:53:21.253Z"
+},
+{
+"name": "WAS",
+"claim": "p41c06",
+"photo": "p41",
+"v": "supported",
+"t": "2026-11-12T21:53:42.560Z"
+},
+{
+"name": "WAS",
+"claim": "p41c07",
+"photo": "p41",
+"v": "supported",
+"t": "2026-11-12T21:52:34.834Z"
+},
+{
+"name": "WAS",
+"claim": "p41c08",
+"photo": "p41",
+"v": "not_visual",
+"t": "2026-11-12T21:52:37.360Z"
+},
+{
+"name": "WAS",
+"claim": "p41c09",
+"photo": "p41",
+"v": "unsure",
+"t": "2026-11-12T21:53:45.090Z"
+},
+{
+"name": "WAS",
+"claim": "p41c10",
+"photo": "p41",
+"v": "unsure",
+"t": "2026-11-12T21:53:47.354Z"
+},
+{
+"name": "WAS",
+"claim": "p41c11",
+"photo": "p41",
+"v": "not_visual",
+"t": "2026-11-12T21:53:50.833Z"
+},
+{
+"name": "WAS",
+"claim": "p41c12",
+"photo": "p41",
+"v": "unsure",
+"t": "2026-11-12T21:53:52.836Z"
+},
+{
+"name": "WAS",
+"claim": "p41c13",
+"photo": "p41",
+"v": "supported",
+"t": "2026-11-12T21:53:55.960Z"
+},
+{
+"name": "WAS",
+"claim": "p42c00",
+"photo": "p42",
+"v": "supported",
+"t": "2026-11-12T21:54:12.420Z"
+},
+{
+"name": "WAS",
+"claim": "p42c01",
+"photo": "p42",
+"v": "not_visual",
+"t": "2026-11-12T21:54:13.788Z"
+},
+{
+"name": "WAS",
+"claim": "p42c02",
+"photo": "p42",
+"v": "unsure",
+"t": "2026-11-12T21:54:17.519Z"
+},
+{
+"name": "WAS",
+"claim": "p42c03",
+"photo": "p42",
+"v": "supported",
+"t": "2026-11-12T21:54:18.984Z"
+},
+{
+"name": "WAS",
+"claim": "p42c04",
+"photo": "p42",
+"v": "not_visual",
+"t": "2026-11-12T21:54:21.080Z"
+},
+{
+"name": "WAS",
+"claim": "p42c05",
+"photo": "p42",
+"v": "supported",
+"t": "2026-11-12T21:54:23.090Z"
+},
+{
+"name": "WAS",
+"claim": "p42c06",
+"photo": "p42",
+"v": "not_visual",
+"t": "2026-11-12T21:54:24.520Z"
+},
+{
+"name": "WAS",
+"claim": "p42c07",
+"photo": "p42",
+"v": "not_visual",
+"t": "2026-11-12T21:54:25.624Z"
+},
+{
+"name": "WAS",
+"claim": "p42c08",
+"photo": "p42",
+"v": "supported",
+"t": "2026-11-12T21:54:28.273Z"
+},
+{
+"name": "WAS",
+"claim": "p42c09",
+"photo": "p42",
+"v": "not_visual",
+"t": "2026-11-12T21:54:30.001Z"
+},
+{
+"name": "WAS",
+"claim": "p42c10",
+"photo": "p42",
+"v": "supported",
+"t": "2026-11-12T21:57:04.613Z"
+},
+{
+"name": "WAS",
+"claim": "p42c11",
+"photo": "p42",
+"v": "not_supported",
+"t": "2026-11-12T21:57:11.062Z"
+},
+{
+"name": "WAS",
+"claim": "p42c12",
+"photo": "p42",
+"v": "supported",
+"t": "2026-11-12T21:57:14.425Z"
+},
+{
+"name": "WAS",
+"claim": "p42c13",
+"photo": "p42",
+"v": "not_visual",
+"t": "2026-11-12T21:57:16.967Z"
+},
+{
+"name": "WAS",
+"claim": "p42c14",
+"photo": "p42",
+"v": "supported",
+"t": "2026-11-12T21:57:19.367Z"
+},
+{
+"name": "WAS",
+"claim": "p42c15",
+"photo": "p42",
+"v": "not_supported",
+"t": "2026-11-12T21:57:24.523Z"
+},
+{
+"name": "WAS",
+"claim": "p43c00",
+"photo": "p43",
+"v": "supported",
+"t": "2026-11-12T21:57:29.216Z"
+},
+{
+"name": "WAS",
+"claim": "p43c01",
+"photo": "p43",
+"v": "supported",
+"t": "2026-11-12T21:57:36.698Z"
+},
+{
+"name": "WAS",
+"claim": "p43c02",
+"photo": "p43",
+"v": "not_supported",
+"t": "2026-11-12T21:57:41.396Z"
+},
+{
+"name": "WAS",
+"claim": "p43c03",
+"photo": "p43",
+"v": "not_visual",
+"t": "2026-11-12T21:57:50.738Z"
+},
+{
+"name": "WAS",
+"claim": "p43c04",
+"photo": "p43",
+"v": "not_supported",
+"t": "2026-11-12T21:57:59.689Z"
+},
+{
+"name": "WAS",
+"claim": "p43c05",
+"photo": "p43",
+"v": "supported",
+"t": "2026-11-12T21:58:05.163Z"
+},
+{
+"name": "WAS",
+"claim": "p43c06",
+"photo": "p43",
+"v": "not_visual",
+"t": "2026-11-12T21:58:09.477Z"
+},
+{
+"name": "WAS",
+"claim": "p43c07",
+"photo": "p43",
+"v": "supported",
+"t": "2026-11-12T21:58:11.502Z"
+},
+{
+"name": "WAS",
+"claim": "p43c08",
+"photo": "p43",
+"v": "supported",
+"t": "2026-11-12T21:58:19.012Z"
+},
+{
+"name": "WAS",
+"claim": "p43c09",
+"photo": "p43",
+"v": "not_visual",
+"t": "2026-11-12T21:58:26.061Z"
+},
+{
+"name": "WAS",
+"claim": "p43c10",
+"photo": "p43",
+"v": "not_visual",
+"t": "2026-11-12T21:58:26.526Z"
+},
+{
+"name": "WAS",
+"claim": "p43c11",
+"photo": "p43",
+"v": "unsure",
+"t": "2026-11-12T21:58:34.698Z"
+},
+{
+"name": "WAS",
+"claim": "p43c12",
+"photo": "p43",
+"v": "not_visual",
+"t": "2026-11-12T21:58:36.561Z"
+},
+{
+"name": "WAS",
+"claim": "p44c00",
+"photo": "p44",
+"v": "not_supported",
+"t": "2026-11-12T21:59:18.685Z"
+},
+{
+"name": "WAS",
+"claim": "p44c01",
+"photo": "p44",
+"v": "supported",
+"t": "2026-11-12T21:59:23.849Z"
+},
+{
+"name": "WAS",
+"claim": "p44c02",
+"photo": "p44",
+"v": "not_visual",
+"t": "2026-11-12T21:59:30.041Z"
+},
+{
+"name": "WAS",
+"claim": "p44c03",
+"photo": "p44",
+"v": "supported",
+"t": "2026-11-12T21:59:32.751Z"
+},
+{
+"name": "WAS",
+"claim": "p44c04",
+"photo": "p44",
+"v": "not_visual",
+"t": "2026-11-12T21:59:34.431Z"
+},
+{
+"name": "WAS",
+"claim": "p44c05",
+"photo": "p44",
+"v": "not_visual",
+"t": "2026-11-12T21:59:35.445Z"
+},
+{
+"name": "WAS",
+"claim": "p44c06",
+"photo": "p44",
+"v": "supported",
+"t": "2026-11-12T21:59:37.088Z"
+},
+{
+"name": "WAS",
+"claim": "p44c07",
+"photo": "p44",
+"v": "not_supported",
+"t": "2026-11-12T21:59:48.213Z"
+},
+{
+"name": "WAS",
+"claim": "p44c08",
+"photo": "p44",
+"v": "not_visual",
+"t": "2026-11-12T21:59:45.933Z"
+},
+{
+"name": "WAS",
+"claim": "p44c09",
+"photo": "p44",
+"v": "not_visual",
+"t": "2026-11-12T21:59:54.207Z"
+},
+{
+"name": "WAS",
+"claim": "p44c10",
+"photo": "p44",
+"v": "not_visual",
+"t": "2026-11-12T21:59:56.310Z"
+},
+{
+"name": "WAS",
+"claim": "p44c11",
+"photo": "p44",
+"v": "not_supported",
+"t": "2026-11-12T22:00:07.049Z"
+},
+{
+"name": "WAS",
+"claim": "p44c12",
+"photo": "p44",
+"v": "supported",
+"t": "2026-11-12T22:00:11.202Z"
+},
+{
+"name": "WAS",
+"claim": "p44c13",
+"photo": "p44",
+"v": "supported",
+"t": "2026-11-12T22:00:16.536Z"
+},
+{
+"name": "WAS",
+"claim": "p45c00",
+"photo": "p45",
+"v": "supported",
+"t": "2026-11-12T22:00:29.888Z"
+},
+{
+"name": "WAS",
+"claim": "p45c01",
+"photo": "p45",
+"v": "not_supported",
+"t": "2026-11-12T22:00:45.320Z"
+},
+{
+"name": "WAS",
+"claim": "p45c02",
+"photo": "p45",
+"v": "not_visual",
+"t": "2026-11-12T22:00:49.845Z"
+},
+{
+"name": "WAS",
+"claim": "p45c03",
+"photo": "p45",
+"v": "supported",
+"t": "2026-11-12T22:00:53.995Z"
+},
+{
+"name": "WAS",
+"claim": "p45c04",
+"photo": "p45",
+"v": "supported",
+"t": "2026-11-12T22:00:59.142Z"
+},
+{
+"name": "WAS",
+"claim": "p45c05",
+"photo": "p45",
+"v": "supported",
+"t": "2026-11-12T22:01:03.232Z"
+},
+{
+"name": "WAS",
+"claim": "p45c06",
+"photo": "p45",
+"v": "supported",
+"t": "2026-11-12T22:01:07.855Z"
+},
+{
+"name": "WAS",
+"claim": "p45c07",
+"photo": "p45",
+"v": "not_supported",
+"t": "2026-11-12T22:01:15.866Z"
+},
+{
+"name": "WAS",
+"claim": "p45c08",
+"photo": "p45",
+"v": "unsure",
+"t": "2026-11-12T22:01:34.318Z"
+},
+{
+"name": "WAS",
+"claim": "p45c09",
+"photo": "p45",
+"v": "supported",
+"t": "2026-11-12T22:01:39.660Z"
+},
+{
+"name": "WAS",
+"claim": "p46c00",
+"photo": "p46",
+"v": "not_visual",
+"t": "2026-11-12T22:01:44.440Z"
+},
+{
+"name": "WAS",
+"claim": "p46c01",
+"photo": "p46",
+"v": "supported",
+"t": "2026-11-12T22:01:46.427Z"
+},
+{
+"name": "WAS",
+"claim": "p46c02",
+"photo": "p46",
+"v": "unsure",
+"t": "2026-11-12T22:02:03.035Z"
+},
+{
+"name": "WAS",
+"claim": "p46c03",
+"photo": "p46",
+"v": "supported",
+"t": "2026-11-12T22:02:06.378Z"
+},
+{
+"name": "WAS",
+"claim": "p46c04",
+"photo": "p46",
+"v": "not_visual",
+"t": "2026-11-12T22:02:09.555Z"
+},
+{
+"name": "WAS",
+"claim": "p46c05",
+"photo": "p46",
+"v": "supported",
+"t": "2026-11-12T22:02:10.945Z"
+},
+{
+"name": "WAS",
+"claim": "p46c06",
+"photo": "p46",
+"v": "not_visual",
+"t": "2026-11-12T22:02:17.662Z"
+},
+{
+"name": "WAS",
+"claim": "p46c07",
+"photo": "p46",
+"v": "supported",
+"t": "2026-11-12T22:02:24.923Z"
+},
+{
+"name": "WAS",
+"claim": "p46c08",
+"photo": "p46",
+"v": "supported",
+"t": "2026-11-12T22:02:35.104Z"
+},
+{
+"name": "WAS",
+"claim": "p46c09",
+"photo": "p46",
+"v": "unsure",
+"t": "2026-11-12T22:02:54.783Z"
+},
+{
+"name": "WAS",
+"claim": "p46c10",
+"photo": "p46",
+"v": "not_visual",
+"t": "2026-11-12T22:02:56.108Z"
+},
+{
+"name": "WAS",
+"claim": "p46c11",
+"photo": "p46",
+"v": "not_visual",
+"t": "2026-11-12T22:02:58.113Z"
+},
+{
+"name": "WAS",
+"claim": "p46c12",
+"photo": "p46",
+"v": "supported",
+"t": "2026-11-12T22:03:00.243Z"
+},
+{
+"name": "WAS",
+"claim": "p46c13",
+"photo": "p46",
+"v": "not_supported",
+"t": "2026-11-12T22:03:06.521Z"
+},
+{
+"name": "WAS",
+"claim": "p47c00",
+"photo": "p47",
+"v": "supported",
+"t": "2026-11-12T22:03:13.034Z"
+},
+{
+"name": "WAS",
+"claim": "p47c01",
+"photo": "p47",
+"v": "unsure",
+"t": "2026-11-12T22:03:24.784Z"
+},
+{
+"name": "WAS",
+"claim": "p47c02",
+"photo": "p47",
+"v": "supported",
+"t": "2026-11-12T22:03:28.469Z"
+},
+{
+"name": "WAS",
+"claim": "p47c03",
+"photo": "p47",
+"v": "not_visual",
+"t": "2026-11-12T22:03:34.926Z"
+},
+{
+"name": "WAS",
+"claim": "p47c04",
+"photo": "p47",
+"v": "advice_not_visible",
+"t": "2026-11-12T22:03:38.232Z"
+},
+{
+"name": "WAS",
+"claim": "p47c05",
+"photo": "p47",
+"v": "supported",
+"t": "2026-11-12T22:03:45.218Z"
+},
+{
+"name": "WAS",
+"claim": "p47c06",
+"photo": "p47",
+"v": "not_visual",
+"t": "2026-11-12T22:03:48.383Z"
+},
+{
+"name": "WAS",
+"claim": "p47c07",
+"photo": "p47",
+"v": "not_visual",
+"t": "2026-11-12T22:03:54.522Z"
+},
+{
+"name": "WAS",
+"claim": "p47c08",
+"photo": "p47",
+"v": "supported",
+"t": "2026-11-12T22:04:00.306Z"
+},
+{
+"name": "WAS",
+"claim": "p47c09",
+"photo": "p47",
+"v": "supported",
+"t": "2026-11-12T22:04:19.747Z"
+},
+{
+"name": "WAS",
+"claim": "p47c10",
+"photo": "p47",
+"v": "supported",
+"t": "2026-11-12T22:04:23.047Z"
+},
+{
+"name": "WAS",
+"claim": "p47c11",
+"photo": "p47",
+"v": "supported",
+"t": "2026-11-12T22:04:28.398Z"
+},
+{
+"name": "WAS",
+"claim": "p47c12",
+"photo": "p47",
+"v": "supported",
+"t": "2026-11-12T22:04:33.786Z"
+},
+{
+"name": "WAS",
+"claim": "p47c13",
+"photo": "p47",
+"v": "unsure",
+"t": "2026-11-12T22:05:04.227Z"
+},
+{
+"name": "WAS",
+"claim": "p47c14",
+"photo": "p47",
+"v": "not_visual",
+"t": "2026-11-12T22:05:09.952Z"
+},
+{
+"name": "WAS",
+"claim": "p48c00",
+"photo": "p48",
+"v": "not_supported",
+"t": "2026-11-12T22:05:16.615Z"
+},
+{
+"name": "WAS",
+"claim": "p48c01",
+"photo": "p48",
+"v": "unsure",
+"t": "2026-11-12T22:05:21.347Z"
+},
+{
+"name": "WAS",
+"claim": "p48c02",
+"photo": "p48",
+"v": "not_visual",
+"t": "2026-11-12T22:05:27.402Z"
+},
+{
+"name": "WAS",
+"claim": "p48c03",
+"photo": "p48",
+"v": "supported",
+"t": "2026-11-12T22:05:38.256Z"
+},
+{
+"name": "WAS",
+"claim": "p48c04",
+"photo": "p48",
+"v": "supported",
+"t": "2026-11-12T22:05:41.450Z"
+},
+{
+"name": "WAS",
+"claim": "p48c05",
+"photo": "p48",
+"v": "supported",
+"t": "2026-11-12T22:05:43.412Z"
+},
+{
+"name": "WAS",
+"claim": "p48c06",
+"photo": "p48",
+"v": "unsure",
+"t": "2026-11-12T22:05:54.030Z"
+},
+{
+"name": "WAS",
+"claim": "p48c07",
+"photo": "p48",
+"v": "not_visual",
+"t": "2026-11-12T22:05:55.774Z"
+},
+{
+"name": "WAS",
+"claim": "p48c08",
+"photo": "p48",
+"v": "unsure",
+"t": "2026-11-12T22:05:58.843Z"
+},
+{
+"name": "WAS",
+"claim": "p48c09",
+"photo": "p48",
+"v": "not_visual",
+"t": "2026-11-12T22:06:00.779Z"
+},
+{
+"name": "WAS",
+"claim": "p48c10",
+"photo": "p48",
+"v": "supported",
+"t": "2026-11-12T22:06:03.769Z"
+},
+{
+"name": "WAS",
+"claim": "p48c11",
+"photo": "p48",
+"v": "not_visual",
+"t": "2026-11-12T22:06:05.220Z"
+},
+{
+"name": "WAS",
+"claim": "p48c12",
+"photo": "p48",
+"v": "supported",
+"t": "2026-11-12T22:06:08.771Z"
+},
+{
+"name": "WAS",
+"claim": "p48c13",
+"photo": "p48",
+"v": "supported",
+"t": "2026-11-12T22:06:48.851Z"
+},
+{
+"name": "WAS",
+"claim": "p48c14",
+"photo": "p48",
+"v": "supported",
+"t": "2026-11-12T22:06:50.740Z"
+},
+{
+"name": "WAS",
+"claim": "p48c15",
+"photo": "p48",
+"v": "not_visual",
+"t": "2026-11-12T22:06:52.252Z"
+},
+{
+"name": "WAS",
+"claim": "p48c16",
+"photo": "p48",
+"v": "not_visual",
+"t": "2026-11-12T22:06:54.033Z"
+}
+]

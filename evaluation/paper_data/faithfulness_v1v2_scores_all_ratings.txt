@@ -1,0 +1,53 @@
+raters: {'WAS': 573} of 696 claims
+primary rater: WAS (573 ratings)
+coverage: 41 photographs complete, 1 partial ['p38'], 7 unrated ['p14', 'p16', 'p17', 'p20', 'p32', 'p35', 'p40']
+photographs with ratings: 42 of 49
+
+== M1 unsupported-claim rate (not supported / visual claims) ==
+v1: 27.9 % (19.7 to 36.8); claims rated 363: supported 119, not supported 46, unsure 47, not visual 148
+v2: 14.4 % (8.3 to 21.6); claims rated 210: supported 125, not supported 21, unsure 15, not visual 45
+paired difference v1 - v2 over 40 photographs: median 0.0 points, Wilcoxon signed-rank P = 0.0856 (n nonzero = 30)
+P1 (v2 at most half of v1): v2 / v1 = 0.52 -> not supported
+
+== M2 reports with at least one unsupported claim ==
+v1: 25 of 42 (59.5 %)
+v2: 16 of 42 (38.1 %)
+discordant: v1 only 16, v2 only 7; exact McNemar P = 0.0931
+
+== M3 claims per report (rated claims) ==
+v1: visual (incl. unsure) 5.0 per report, non-visual 3.6 per report
+v2: visual (incl. unsure) 3.8 per report, non-visual 1.2 per report
+
+== M5 (secondary, added 2026-11-04 before the first photograph was complete): advice assuming something not visible ==
+v1: 3 sentences (0.07 per report; 2.0 % of non-visual sentences); reports with at least one: 2 of 42
+v2: 4 sentences (0.10 per report; 8.2 % of non-visual sentences); reports with at least one: 4 of 42
+P5 (v1 has more such sentences per report than v2): v1 3 vs v2 4 -> not supported
+
+== M4 (exploratory) unsupported claims by plant part named in the claim ==
+v1: {'leaf': 18, 'fruit': 13, 'stem': 9, 'root': 7, 'soil': 6, 'flower': 5, '(no part named)': 1}
+v2: {'fruit': 8, '(no part named)': 6, 'leaf': 5, 'flower': 3, 'soil': 1, 'root': 1}
+
+== P4 (exploratory): v2 unsupported rate by the student's verdict ==
+does_not_support: 13 of 39 visual claims unsupported (33.3 %)
+partially_supports: 7 of 97 visual claims unsupported (7.2 %)
+clearly_supports: 1 of 10 visual claims unsupported (10.0 %)
+
+== post hoc (added 2026-11-12 after the primary results were seen; descriptive) ==
+(a) pooled difference v1 - v2: 13.5 points (95 % paired bootstrap over photographs 2.7 to 24.8); ratio v2 / v1 0.52 (0.27 to 0.88)
+(b) strict, unsure counted as unsupported, v1: 93 of 212 = 43.9 %
+(b) strict, unsure counted as unsupported, v2: 36 of 161 = 22.4 %
+(c) v2 verdict clearly_supports, proposed label = dataset label: 3 reports, 1 of 10 visual claims unsupported (10.0 %)
+(c) v2 verdict does_not_support, proposed label = dataset label: 9 reports, 10 of 36 visual claims unsupported (27.8 %)
+(c) v2 verdict does_not_support, proposed label wrong: 1 reports, 3 of 3 visual claims unsupported (100.0 %)
+(c) v2 verdict partially_supports, proposed label = dataset label: 27 reports, 7 of 94 visual claims unsupported (7.4 %)
+(c) v2 verdict partially_supports, proposed label wrong: 1 reports, 0 of 3 visual claims unsupported (0.0 %)
+(c) v1, v1 label = dataset label: 46 of 165 visual claims unsupported (27.9 %)
+(d) not rated p14 (gray_mold): v1 diagnosed gray mold (p1 0.99); v2 was given gray_mold and answered partially_supports
+(d) not rated p16 (gray_mold): v1 diagnosed gray mold (p1 0.99); v2 was given gray_mold and answered does_not_support
+(d) not rated p17 (gray_mold): v1 diagnosed gray mold (p1 0.99); v2 was given gray_mold and answered partially_supports
+(d) not rated p20 (gray_mold): v1 diagnosed gray mold (p1 0.99); v2 was given gray_mold and answered partially_supports
+(d) not rated p32 (overwatered): v1 diagnosed overwatering (p1 1.00); v2 was given overwatered and answered partially_supports
+(d) not rated p35 (root_rot): v1 diagnosed root rot (p1 0.94); v2 was given root_rot and answered partially_supports
+(d) not rated p40 (root_rot): v1 diagnosed root rot (p1 1.00); v2 was given root_rot and answered partially_supports
+(d) not rated p38 (root_rot): v1 diagnosed root rot (p1 1.00); v2 was given root_rot and answered partially_supports
+(d) student verdicts on the rated photographs {'does_not_support': 10, 'partially_supports': 29, 'clearly_supports': 3}; on the photographs not rated {'partially_supports': 7, 'does_not_support': 1}

@@ -218,3 +218,65 @@ if args.second_rater and args.second_rater in by_rater:
         kappa = (po - pe) / (1 - pe) if pe < 1 else float("nan")
         print(f"\n== agreement with {args.second_rater} on {len(both)} claims rated supported / not supported by both: "
               f"observed {100 * po:.1f} %, Cohen's kappa {kappa:.2f} ==")
+
+# ---- post hoc, descriptive: added 2026-11-12 after the primary results had been seen -----------------------------------
+print("\n== post hoc (added 2026-11-12 after the primary results were seen; descriptive) ==")
+_rng = random.Random(args.seed + 1)
+_m = len(photos)
+_vals = {s: [(pp[p][s]["not_supported"], pp[p][s]["supported"] + pp[p][s]["not_supported"]) for p in photos] for s in SYS}
+_diffs, _ratios = [], []
+for _ in range(10000):
+    idx = [_rng.randrange(_m) for _ in range(_m)]
+    r_ = {}
+    for s in SYS:
+        ns = sum(_vals[s][i][0] for i in idx)
+        vis = sum(_vals[s][i][1] for i in idx)
+        r_[s] = ns / vis if vis else float("nan")
+    if not (math.isnan(r_["v1"]) or math.isnan(r_["v2"])):
+        _diffs.append(r_["v1"] - r_["v2"])
+        if r_["v1"] > 0:
+            _ratios.append(r_["v2"] / r_["v1"])
+_diffs.sort()
+_ratios.sort()
+_q = lambda v, q: v[min(len(v) - 1, int(q * len(v)))]
+print(f"(a) pooled difference v1 - v2: {100 * (pairs['v1'] - pairs['v2']):.1f} points (95 % paired bootstrap over photographs "
+      f"{100 * _q(_diffs, 0.025):.1f} to {100 * _q(_diffs, 0.975):.1f}); ratio v2 / v1 {pairs['v2'] / pairs['v1']:.2f} "
+      f"({_q(_ratios, 0.025):.2f} to {_q(_ratios, 0.975):.2f})")
+for s in SYS:
+    ns = sum(pp[p][s]["not_supported"] + pp[p][s]["unsure"] for p in photos)
+    vis = sum(pp[p][s]["supported"] + pp[p][s]["not_supported"] + pp[p][s]["unsure"] for p in photos)
+    print(f"(b) strict, unsure counted as unsupported, {s}: {ns} of {vis} = {100 * ns / vis:.1f} %")
+
+
+def _norm(label):
+    x = str(label).strip().lower().replace(" ", "_")
+    return {"frost_injury": "frost", "overwatering": "overwatered"}.get(x, x)
+
+
+_byc = defaultdict(Counter)
+_reports = defaultdict(set)
+for cid, r in R.items():
+    if key[cid]["system"] == "v2":
+        k = key[photo_of[cid]]
+        cell = (k["v2_verdict"], "proposed label = dataset label" if _norm(k["v2_given_label"]) == _norm(k["dataset_label"]) else "proposed label wrong")
+        _byc[cell][r["v"]] += 1
+        _reports[cell].add(photo_of[cid])
+for cell, cnt in sorted(_byc.items()):
+    vis = cnt["supported"] + cnt["not_supported"]
+    print(f"(c) v2 verdict {cell[0]}, {cell[1]}: {len(_reports[cell])} reports, {cnt['not_supported']} of {vis} visual claims unsupported"
+          + (f" ({100 * cnt['not_supported'] / vis:.1f} %)" if vis else ""))
+_v1ok = Counter()
+for cid, r in R.items():
+    if key[cid]["system"] == "v1":
+        k = key[photo_of[cid]]
+        _v1ok[("v1 label = dataset label" if _norm(k["v1_label"]) == _norm(k["dataset_label"]) else "v1 label wrong", r["v"])] += 1
+for lab in ("v1 label = dataset label", "v1 label wrong"):
+    vis = _v1ok[(lab, "supported")] + _v1ok[(lab, "not_supported")]
+    if vis:
+        print(f"(c) v1, {lab}: {_v1ok[(lab, 'not_supported')]} of {vis} visual claims unsupported ({100 * _v1ok[(lab, 'not_supported')] / vis:.1f} %)")
+for p in unrated + partial:
+    k = key[p]
+    print(f"(d) not rated {p} ({k['dataset_label']}): v1 diagnosed {k['v1_label']} (p1 {k['v1_p1']:.2f}); v2 was given {k['v2_given_label']} and answered {k['v2_verdict']}")
+_acc = Counter(key[p]["v2_verdict"] for p in photos)
+_skip = Counter(key[p]["v2_verdict"] for p in unrated + partial)
+print(f"(d) student verdicts on the rated photographs {dict(_acc)}; on the photographs not rated {dict(_skip)}")
