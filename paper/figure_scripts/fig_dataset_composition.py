@@ -100,9 +100,8 @@ ax.set_xticks([0.01, 0.1, 1, 10, 100], ["0.01", "0.1", "1", "10", "100"])
 med_w, med_h = np.median([v[0] for v in imsz.values()]), np.median([v[1] for v in imsz.values()])
 thr = 32 * 32 / (med_w * med_h) * 100
 ax.axvline(thr, color="#e34948", lw=0.7)
-ax.text(thr * 1.15, len(PARTS) - 0.45, "32 x 32 px", fontsize=6.0, color=INK2, va="bottom")
 ax.set_yticks(yp, [p.capitalize() for p in PARTS])
-ax.set_xlabel("Box area (% of image, log scale)")
+ax.set_xlabel("Box area (% of image, log scale);\nred line: 32 x 32 px at the median image size")
 ax.xaxis.grid(True, which="major")
 ax.set_axisbelow(True)
 for s in ("top", "right", "left"):

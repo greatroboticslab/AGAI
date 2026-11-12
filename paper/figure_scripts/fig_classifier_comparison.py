@@ -58,8 +58,9 @@ GROUPS = [
         ("Qwen3.8-27B (4-bit, thinking off)", 65.6, None, None, None, "zs", ZS)]),
 ]
 
-AX0, AY0, AW, AH = 50.0, 12.0, 70.0, 65.4   # plot box in mm
-XMIN, XMAX = 60.0, 100.0
+AX0, AY0, AW, AH = 76.0, 12.0, 46.0, 65.4   # plot box in mm
+XMIN, XMAX = 83.0, 100.0
+ACC_X, RUN_X = 59.5, 61.5                    # value columns (mm): accuracy right-aligned, runs left-aligned
 pa = axmm(AX0, AY0, AW, AH)
 pa.set_xlim(XMIN, XMAX)
 pa.set_ylim(0, AH)
@@ -96,8 +97,8 @@ for gi, (gname, items) in enumerate(GROUPS):
 assert y > 0.3, y
 
 pa.axvspan(97.0, 98.0, color=BAND, lw=0, zorder=0)
-pa.set_xticks([60, 70, 80, 90, 100])
-pa.set_xticks([65, 75, 85, 95], minor=True)
+pa.set_xticks([85, 90, 95, 100])
+pa.set_xticks([87.5, 92.5, 97.5], minor=True)
 pa.grid(axis="x", which="major", color=GRID, lw=0.5)
 pa.grid(axis="x", which="minor", color=GRID, lw=0.35)
 pa.set_axisbelow(True)
@@ -118,31 +119,31 @@ for yr, (label, m, sd, mac, tag, kind, col) in rows:
     if sd:
         pa.plot([m - sd, m + sd], [yr, yr], color=col, lw=1.0, solid_capstyle="butt", zorder=3)
     hollow = kind in ("single", "expl")
+    if kind == "zs":
+        pa.plot(XMIN + 0.35, yr, marker="<", ms=3.6, mfc=col, mec="none", ls="none", zorder=4, clip_on=False)
+        ax.text(ACC_X, AY0 + yr, f"{m:.1f}", fontsize=S_VAL, color=INK2, va="center", ha="right")
+        continue
     pa.plot(m, yr, marker="o", ms=4.2 if kind != "zs" else 3.8, ls="none", zorder=4,
             mfc="white" if hollow else col, mec=col if hollow else "white", mew=0.9 if hollow else 0.5)
     if mac is not None:
         pa.plot(mac, yr, marker="D", ms=3.0, mfc="white", mec=col, mew=0.7, ls="none", zorder=5)
-    # value text
-    if kind == "zs":
-        pa.text(m + 0.55 + 1.0 / MMPT, yr, f"{m:.1f}", fontsize=S_VAL, color=INK2, va="center", ha="left")
-        continue
-    if kind == "multi":
-        txt = f"{m:.1f} \u00b1 {sd:.1f} ({tag})"
-    elif kind == "single":
-        txt = f"{m:.1f} ({tag})"
-    elif kind == "ens":
-        txt = f"{m:.1f}, {tag}"
-    else:
-        txt = f"{m:.1f} (macro {mac:.1f}), {tag}"
-    left = min(m - (sd or 0.0), mac if mac is not None else m) - 0.75 / MMPT
-    pa.text(left - 1.0 / MMPT, yr, txt, fontsize=S_VAL, color=INK2, va="center", ha="right")
+    # value columns
+    ax.text(ACC_X, AY0 + yr, f"{m:.1f} \u00b1 {sd:.1f}" if sd else f"{m:.1f}", fontsize=S_VAL, color=INK2,
+            va="center", ha="right")
+    if tag:
+        ax.text(RUN_X, AY0 + yr, tag, fontsize=S_VAL, color=MUTED, va="center", ha="left")
 
 # ceiling annotations: band label in the first (empty) header row, explanation in the zero-shot rows
-pa.text(96.6, heads[0][0], "label-noise ceiling, about 97 to 98%", fontsize=S_VAL, color=INK2, va="center",
+pa.text(96.7, heads[0][0], "label-noise ceiling, 97 to 98%", fontsize=S_VAL, color=INK2, va="center",
         ha="right", fontweight="bold")
 yz = [r[0] for r in rows[-2:]]
-pa.text(96.6, yz[0], "Of E2's 11 test errors, 4 look like", fontsize=S_VAL, color=INK2, va="center", ha="right")
-pa.text(96.6, yz[1], "label errors and 4 are ambiguous photos", fontsize=S_VAL, color=INK2, va="center", ha="right")
+pa.text(XMIN + 1.0, rows[-3][0], "below the axis range", fontsize=S_VAL, color=MUTED, va="center", ha="left")
+pa.text(99.6, yz[0], "of E2's 11 test errors, 4 look like", fontsize=S_VAL, color=INK2, va="center", ha="right")
+pa.text(99.6, yz[1], "label errors and 4 are ambiguous", fontsize=S_VAL, color=INK2, va="center", ha="right")
+# column headers in the first group-header row
+ax.text(ACC_X, AY0 + heads[0][0], "accuracy (%)", fontsize=S_VAL, color=INK2, va="center", ha="right",
+        fontweight="bold")
+
 
 # ------------------------------------------------------------------ (b) 5-fold grouped CV
 CV = [  # label, accuracy, CI low, CI high, kind

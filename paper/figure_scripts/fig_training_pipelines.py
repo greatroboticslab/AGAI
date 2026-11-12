@@ -42,23 +42,19 @@ ax.text(X0 + 8.0, yc + 2.8, "(1017 photographs)", ha="center", fontsize=5.0, col
 box(ax, 30.0, yc, 31.0, 27.0, "data", "Online augmentation", ["90-100% crop to 256 px", "rotate +/-3 deg, flip",
     "perspective, color jitter", "blur, autocontrast", "random erasing (p 0.15)"], title_size=6.3, body_size=5.4)
 arrow(ax, 26.5, yc + 13.5, 30.0, yc + 13.5, **A)
-box(ax, 65.0, yc + 14.0, 30.0, 13.0, "classify", "Phase 1: head", ["5 epochs, lr 1e-3", "backbone frozen"], title_size=6.3,
-    body_size=5.4)
-box(ax, 65.0, yc, 30.0, 12.5, "classify", "Phase 2: stages 1-4", ["15 epochs, lr 1e-4 x", "0.25 / 0.5 / 0.75 / 1.0"],
+box(ax, 65.0, yc, 30.0, 27.0, "classify", "Two-phase fine-tuning", ["head only: 5 epochs, lr 1e-3",
+    "all stages: 15 epochs,", "lr 1e-4 x 0.25 / 0.5 / 0.75 / 1", "weighted CE, smoothing 0.05",
+    "AdamW, AMP, clip 1.0"], title_size=6.3, body_size=5.4)
+arrow(ax, 61.0, yc + 13.5, 65.0, yc + 13.5, **A)
+box(ax, 99.0, yc, 27.0, 27.0, "gate", "Select epoch", ["best accuracy on", "the 161 validation", "photographs"],
     title_size=6.3, body_size=5.4)
-arrow(ax, 61.0, yc + 13.5, 65.0, yc + 20.5, **A)
-arrow(ax, 80.0, yc + 14.0, 80.0, yc + 12.5, **A)
-ax.text(96.5, yc + 23.5, r"$\mathcal{L}=$ weighted CE", fontsize=5.6, color=INK2)
-ax.text(96.5, yc + 20.5, "+ label smoothing 0.05", fontsize=5.4, color=INK2)
-ax.text(96.5, yc + 17.5, "AdamW, AMP, clip 1.0", fontsize=5.4, color=INK2)
-box(ax, 99.0, yc, 27.0, 12.5, "gate", "Select epoch", ["best accuracy on", "validation images"], title_size=6.3, body_size=5.4)
-arrow(ax, 95.0, yc + 6.2, 99.0, yc + 6.2, **A)
-box(ax, 130.0, yc, 27.0, 12.5, "gate", "Fit temperature T", ["L-BFGS on validation", "negative log-likelihood"],
+arrow(ax, 95.0, yc + 13.5, 99.0, yc + 13.5, **A)
+box(ax, 130.0, yc, 27.0, 27.0, "gate", "Fit temperature T", ["L-BFGS on the", "validation negative", "log-likelihood"],
     title_size=6.1, body_size=5.4)
-arrow(ax, 126.0, yc + 6.2, 130.0, yc + 6.2, **A)
+arrow(ax, 126.0, yc + 13.5, 130.0, yc + 13.5, **A)
 box(ax, 161.0, yc, 27.0, 27.0, "output", "Deployed", ["ResNet-50 weights", "temperature T", r"gate thresholds $\tau_c$",
     "(set by hand, 2025)"], title_size=6.3, body_size=5.4)
-arrow(ax, 157.0, yc + 6.2, 161.0, yc + 6.2, **A)
+arrow(ax, 157.0, yc + 13.5, 161.0, yc + 13.5, **A)
 tag(80.0, yc + 29.6, "ImageNet init.", "#2a78d6")
 
 # ---------------- detector lane (y 38 to 73)

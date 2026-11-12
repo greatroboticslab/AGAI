@@ -150,10 +150,14 @@ pc.set_yticks([])
 for s_ in ("top", "right", "left"):
     pc.spines[s_].set_visible(False)
 pc.tick_params(axis="x", labelsize=S_LAB)
-heights = [4.6 if "\n" in m[0] else 3.4 for m in MODELS]
+CNAME = {"8B student, from the\nclassification-tuned 8B": "8B student (from tuned 8B)",
+         "8B student, from\nthe base 8B": "8B student (from base 8B)"}
+ORDERED = sorted(MODELS, key=lambda m: -m[4])
+heights = [3.6] * len(ORDERED)
 scale = CH / sum(heights)
 y = CH
-for (name, _, _, _, diff, st), h in zip(MODELS, heights):
+for (name, _, _, _, diff, st), h in zip(ORDERED, heights):
+    name = CNAME.get(name, name)
     h *= scale
     yc = y - h / 2
     y -= h

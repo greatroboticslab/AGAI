@@ -1,184 +1,157 @@
-"""Fig. AGAI system architecture as layered lanes (input, perception, decision and grounding,
-report generation and knowledge, output)."""
-import io
+"""Fig. 1, AGAI system architecture.
+
+One left-to-right row for the image path (classifier, acceptance gate, part detector, report writer,
+hallmark check, report), the abstain branch under the gate, and one row for follow-up questions answered
+from the knowledge base. All arrows are straight and none cross. The three models replaced in version 2 carry
+a 'v2' line. The only photograph is a real test photograph of the dataset (the input thumbnail).
+"""
 import json
 import sys
-import zipfile
-import numpy as np
 from PIL import Image, ImageOps
-from matplotlib.patches import FancyBboxPatch, Polygon, Rectangle, Circle
 
 sys.path.insert(0, "D:/agai-paper/draft/figsrc")
 from agstyle import *  # noqa
 
 setup(7.0)
-P = json.load(open("D:/agai-paper/draft/figsrc/arch_params.json", encoding="utf-8"))
 
-W, H = 190.0, 128.0
+W, H = 190.0, 99.0
 fig, ax = canvas(W * MM, H * MM)
-LX, LW = 1.0, 188.0
-lanes = [("Input", 107.5, 19.5), ("Perception", 83.5, 22.0), ("Decision and\ngrounding", 59.5, 22.0),
-         ("Generation and\nknowledge", 31.5, 26.0), ("Output", 1.0, 28.5)]
-for name, y, h in lanes:
-    lane(ax, LX, y, LW, h, name, label_w=6.5, size=6.3)
-X0 = 9.5  # content start
+
+T_SIZE, B_SIZE, V_SIZE = 6.5, 5.7, 5.5
+LINE = B_SIZE * 0.43          # mm per body line
+V2_COLOR = "#6250d6"
 
 
-def thumb(path_or_img, x, y, s, crop=(0.5, 0.5, 1.0)):
-    img = path_or_img if isinstance(path_or_img, Image.Image) else Image.open(path_or_img)
-    img = ImageOps.exif_transpose(img).convert("RGB")
-    img = square_crop(img, *crop).resize((260, 260), Image.LANCZOS)
-    image_tile(ax, img, x, y, s, s, radius=0.8, border=AXIS, lw=0.4, zorder=3)
+def stage(x, y, w, h, role, title, lines, v2=None, num=None):
+    """A box with a bold title, body lines and an optional bottom strip naming the v2 replacement."""
+    f, e = ROLE[role]
+    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=1.2", fc=f, ec=e, lw=0.75,
+                                zorder=2))
+    strip = 5.0 if v2 else 0.0
+    if v2:
+        ax.plot([x + 1.2, x + w - 1.2], [y + strip, y + strip], color=e, lw=0.45, zorder=3)
+        ax.text(x + w / 2, y + strip / 2, v2, ha="center", va="center", fontsize=V_SIZE, color=V2_COLOR,
+                fontweight="bold", zorder=3)
+    block = T_SIZE * 0.42 + len(lines) * LINE
+    top = y + strip + (h - strip) / 2 + block / 2
+    label = f"{num}  {title}" if num else title
+    ax.text(x + w / 2, top - T_SIZE * 0.21, label, ha="center", va="center", fontsize=T_SIZE,
+            fontweight="bold", color=INK, zorder=3)
+    for i, ln in enumerate(lines):
+        ax.text(x + w / 2, top - T_SIZE * 0.42 - LINE * (i + 0.5), ln, ha="center", va="center",
+                fontsize=B_SIZE, color=INK2, zorder=3)
 
 
-# ---------------- Input lane
-cand = json.load(open("D:/agai-paper/draft/notes/example_candidates.json"))
-thumb(cand["gray_mold"][6], X0 + 0.5, 109.3, 16.0)
-box(ax, X0 + 18.5, 110.0, 52, 14.5, "data", "Plant photograph x",
-    ["uploaded or captured in the web interface", "any framing: whole plant or single organ"], align="left")
-box(ax, 139.5, 110.0, 48.5, 14.5, "data", "Web interface",
-    ["upload or camera capture,", "box overlay and chat panel"], align="left")
+def tag(x, y, text, ha="center", color=INK2, italic=False):
+    ax.text(x, y, text, ha=ha, va="center", fontsize=5.6, color=color, style="italic" if italic else "normal",
+            zorder=4, bbox=dict(boxstyle="square,pad=0.12", fc="white", ec="none"))
 
-# ---------------- Perception lane
-bx, by, bw, bh = X0, 85.5, 86, 18.0
-box(ax, bx, by, bw, bh, "classify", "Condition classifier: ResNet-50", [
-    P["cls_line1"], P["cls_line2"], "output: calibrated probabilities p(c | x)"], align="left")
-# tiny probability glyph
-gx, gy = bx + bw - 17.5, by + 3.0
-vals = [0.03, 0.02, 0.01, 0.02, 0.04, 0.83, 0.05]
-for i, (c, v) in enumerate(zip(CLASS_ORDER, vals)):
-    ax.add_patch(Rectangle((gx + i * 2.3, gy), 1.7, 0.4 + v * 11.0, fc=CLASS_COLOR[c], lw=0, zorder=4))
-ax.plot([gx - 0.6, gx + 7 * 2.3], [gy, gy], color=INK2, lw=0.5, zorder=4)
-ax.text(gx + 8.0, gy + 12.6, "p(c | x)", ha="center", va="center", fontsize=5.6, color=INK2, zorder=4)
 
-dx, dy, dw, dh = 100.5, 85.5, 87.5, 18.0
-box(ax, dx, dy, dw, dh, "detect", "Plant-part detector: RF-DETR Small", [
-    "six parts: leaf, fruit, stem, flower, soil, root", P["det_line2"], "output: visible parts V with boxes"],
-    align="left")
-# detection thumbnail with boxes from the annotation set
-z = zipfile.ZipFile("D:/agai-paper/labdata/LatestStrawberry archive.coco-segmentation.zip")
-coco = json.loads(z.read("train/_annotations.coco.json"))
-ann_c = json.load(open("D:/agai-paper/draft/notes/ann_cands.json"))
-iid = ann_c[4]["iid"]
-meta = [i for i in coco["images"] if i["id"] == iid][0]
-im = Image.open(io.BytesIO(z.read("train/" + meta["file_name"]))).convert("RGB")
-w0, h0 = im.size
-side = min(w0, h0)
-ox, oy = (w0 - side) / 2, (h0 - side) / 2
-tsz, tx, ty = 15.0, dx + dw - 16.5, dy + 1.5
-thumb(im, tx, ty, tsz)
-PART_COLOR = {"leaf": "#2a78d6", "fruit": "#eda100", "stem": "#e87ba4", "flower": "#6250d6",
-              "soil": "#eb6834", "root": "#1baf7a"}
-cats = {c["id"]: c["name"] for c in coco["categories"]}
-for a in coco["annotations"]:
-    if a["image_id"] != iid:
-        continue
-    p = cats[a["category_id"]]
-    if p not in ("fruit", "flower") and not (p == "leaf" and float(a["area"]) > 0.04 * side * side):
-        continue
-    x, y, bw_, bh_ = [float(v) for v in a["bbox"]]
-    x0 = (x - ox) / side
-    y0 = (y - oy) / side
-    if x0 < 0 or y0 < 0 or x0 + bw_ / side > 1 or y0 + bh_ / side > 1:
-        continue
-    ax.add_patch(Rectangle((tx + x0 * tsz, ty + (1 - y0 - bh_ / side) * tsz), bw_ / side * tsz, bh_ / side * tsz,
-                           fc="none", ec=PART_COLOR[p], lw=0.7, zorder=5))
-
-# ---------------- Decision and grounding lane
-gcx, gcy = X0 + 12.0, 70.5
-dia = Polygon([[gcx - 12.0, gcy], [gcx, gcy + 8.6], [gcx + 12.0, gcy], [gcx, gcy - 8.6]], closed=True,
-              fc=ROLE["gate"][0], ec=ROLE["gate"][1], lw=0.7, zorder=2)
-ax.add_patch(dia)
-ax.text(gcx, gcy + 1.7, "Acceptance", ha="center", va="center", fontsize=6.2, fontweight="bold", zorder=3)
-ax.text(gcx, gcy - 1.6, r"$p_1 \geq \max(\tau_{c}, 0.5)$ ?", ha="center", va="center", fontsize=5.9, zorder=3)
-box(ax, X0 + 28.0, 72.0, 34.5, 7.8, "output", "Diagnosis d accepted", ["label and calibrated confidence"],
-    align="left", title_size=6.6, body_size=5.9)
-box(ax, X0 + 28.0, 61.5, 34.5, 8.4, "gate", "Abstain", ["fixed reply asking for close-ups", "of leaves, stems, roots and soil"],
-    align="left", title_size=6.6, body_size=5.9)
-box(ax, 100.5, 61.5, 87.5, 18.3, "neutral", "Prompt builder", [
-    "system prompt fixes the diagnosis d (never re-predicted),",
-    "lists VISIBLE parts V and NOT VISIBLE parts (all others),",
-    "and sets the format: diagnosis, visible cues, recommendations"], align="left", fill="#ffffff")
-
-# ---------------- Generation and knowledge lane
-kx, ky, kw, kh = X0, 33.5, 44.0, 22.0
-box(ax, kx, ky, kw, kh, "knowledge", None, [])
-ax.text(kx + 1.6, ky + kh - 2.6, "Disease knowledge base", fontsize=6.8, fontweight="bold", va="center")
-ax.text(kx + 1.6, ky + kh - 5.6, P["kg_line"], fontsize=5.5, color=INK2, va="center")
-nodes = {"gray mold": (kx + 7.0, ky + 8.6), "fruit": (kx + 19.5, ky + 12.2), "sporulation": (kx + 19.5, ky + 4.6),
-         "remove fruit": (kx + 34.0, ky + 12.2), "source": (kx + 34.0, ky + 4.6)}
-edges = [("gray mold", "fruit"), ("gray mold", "sporulation"), ("fruit", "remove fruit"),
-         ("gray mold", "remove fruit"), ("remove fruit", "source"), ("sporulation", "fruit")]
-for a_, b_ in edges:
-    ax.plot([nodes[a_][0], nodes[b_][0]], [nodes[a_][1], nodes[b_][1]], color="#c98500", lw=0.6, zorder=3)
-kinds = {"gray mold": "#6250d6", "fruit": "#eda100", "sporulation": "#52514e", "remove fruit": "#008300",
-         "source": "#898781"}
-lab_off = {"gray mold": (0.0, -2.6, "center"), "fruit": (0.0, 2.4, "center"), "sporulation": (0.0, -2.5, "center"),
-           "remove fruit": (0.0, 2.4, "center"), "source": (0.0, -2.5, "center")}
-for n_, (x_, y_) in nodes.items():
-    ax.add_patch(Circle((x_, y_), 1.25, fc=kinds[n_], ec="white", lw=0.6, zorder=4))
-    dx_, dy_, ha_ = lab_off[n_]
-    ax.text(x_ + dx_, y_ + dy_, n_, ha=ha_, va="center", fontsize=5.0, color=INK2, zorder=4)
-
-box(ax, kx + kw + 3.5, 33.5, 32.0, 22.0, "knowledge", "Question router", [P["ret_line1"], P["ret_line2"],
-    "and returns the matching", "knowledge-base section"], align="left", title_size=6.8, body_size=5.8)
-
-mx, my, mw, mh = 100.5, 33.5, 53.0, 22.0
-box(ax, mx, my, mw, mh, "language", "Report writer: MiniGPT-v2", [
-    P["vlm_line1"], P["vlm_line2"], P["vlm_line3"], "writes the report from the prompt"], align="left",
-    title_size=6.8, body_size=5.8)
-cx_, cy_, cw_, ch_ = 156.5, 33.5, 31.5, 22.0
-box(ax, cx_, cy_, cw_, ch_, "gate", "Consistency check", ["mentions a hallmark of", "another condition?",
-    "if so: regenerate", P["regen_line"]], align="left", title_size=6.8, body_size=5.8)
-
-# ---------------- Output lane
-fx, fw = X0, 42.0
-box(ax, fx, 3.0, fw, 24.5, "output", "Follow-up Q&A", ["the user asks a question q;", "it is answered from the", "knowledge base with sources,", "without rerunning the models"],
-    align="left", title_size=6.8, body_size=5.8)
-rx, ry, rw, rh = 54.5, 3.0, 108.0, 24.5
-box(ax, rx, ry, rw, rh, "output", None, [], fill="#ffffff", edge="#008300")
-ax.text(rx + 2.0, ry + rh - 2.6, "Diagnostic report (illustrative layout)", fontsize=6.8, fontweight="bold",
-        va="center", color=INK)
-rows = [("Diagnosis", "Gray mold (confidence badge: green >= 0.90, yellow >= 0.70)"),
-        ("Visible cues", "symptoms described only on the detected parts"),
-        ("Recommendation", "management steps written by the fine-tuned report writer"),
-        ("Follow-ups", "suggested questions; optional web resources")]
-for i, (k_, v_) in enumerate(rows):
-    yy = ry + rh - 7.6 - i * 4.6
-    ax.text(rx + 2.0, yy, k_, fontsize=5.9, fontweight="bold", color=INK, va="center")
-    ax.text(rx + 23.0, yy, v_, fontsize=5.9, color=INK2, va="center")
-thumb(cand["gray_mold"][6], 167.5, 7.2, 18.0)
-ax.add_patch(Rectangle((167.5 + 0.10 * 18, 7.2 + 0.06 * 18), 0.80 * 18, 0.66 * 18, fc="none", ec="#eda100", lw=0.9, zorder=5))
-ax.text(167.5 + 0.12 * 18, 7.2 + 0.73 * 18, "fruit", fontsize=5.0, color="white", zorder=6, va="bottom",
-        bbox=dict(boxstyle="square,pad=0.15", fc="#eda100", ec="none"))
-ax.text(176.5, 4.6, "annotated image", ha="center", fontsize=5.6, color=INK2)
-
-# ---------------- arrows
 A = dict(color=INK2, lw=0.8, ms=6)
-arrow(ax, X0 + 44, 110.0, X0 + 44, 103.6, **A)                         # image -> classifier
-arrow(ax, X0 + 60, 110.0, 128, 103.6, conn="arc3,rad=-0.12", **A)       # image -> detector
-arrow(ax, gcx, 85.5, gcx, gcy + 8.2, **A)                              # classifier -> gate
-arrow(ax, gcx + 10.5, gcy + 0.6, X0 + 28.0, 75.9, **A)                 # gate -> accept
-ax.text(gcx + 11.5, gcy + 3.6, "yes", fontsize=5.6, color=INK2)
-arrow(ax, gcx + 5.0, gcy - 4.2, X0 + 28.0, 65.6, **A)                  # gate -> abstain
-ax.text(gcx + 6.8, gcy - 6.5, "no", fontsize=5.6, color=INK2)
-arrow(ax, X0 + 62.5, 75.9, 100.5, 75.9, **A)                           # diagnosis -> prompt
-ax.text(X0 + 64.0, 77.2, "d", fontsize=6.0, color=INK2, style="italic")
-arrow(ax, 144.0, 85.5, 144.0, 79.8, **A)                               # detector -> prompt
-ax.text(145.3, 82.6, "V", fontsize=6.0, color=INK2, style="italic")
-arrow(ax, kx + kw, 44.5, kx + kw + 3.5, 44.5, **A)                     # KG -> retriever
-arrow(ax, kx + kw + 35.5, 50.0, 100.5, 66.0, conn="arc3,rad=0.15", dashed=True, color=MUTED, lw=0.7, ms=5)  # router -> prompt (typed questions)
-ax.text(78.5, 59.6, "typed question only", fontsize=5.3, color=MUTED, ha="left")
-ax.plot([kx + 30.0, kx + 30.0, 171.0, 171.0], [ky, 30.6, 30.6, 33.5], color="#c98500", lw=0.6, ls=(0, (2.0, 1.4)), zorder=1)
-ax.text(120.0, 31.4, "hallmark phrases of each condition", fontsize=5.2, color="#9a6b00", ha="center")
-arrow(ax, 127.0, 61.5, 127.0, 55.5, **A)                               # prompt -> MiniGPT
-arrow(ax, mx + mw, 44.5, cx_, 44.5, **A)                               # MiniGPT -> check
-arrow(ax, cx_ + 6.0, 55.5, mx + mw - 6.0, 55.5, conn="arc3,rad=0.9", color="#e34948", lw=0.8, ms=6)
-ax.text(cx_ + 9.0, 58.2, "regenerate", fontsize=5.4, color="#b23a3a", ha="left", va="center")
-arrow(ax, cx_ + 6.0, 33.5, rx + rw - 6.0, 27.5, **A)                   # check -> report
-ax.text(cx_ + 7.2, 29.6, "pass", fontsize=5.6, color=INK2)
-arrow(ax, X0 + 45.0, 61.5, rx + 1.5, 27.5, dashed=True, color=MUTED, lw=0.7, ms=5)  # abstain -> report
-arrow(ax, kx + kw + 8.0, 33.5, fx + fw - 8.0, 27.5, dashed=True, color=MUTED, lw=0.7, ms=5)  # retriever -> Q&A
+D = dict(color=MUTED, lw=0.7, ms=5, dashed=True)
+
+# ---------------------------------------------------------------- main row: the image path
+Y0, BH = 52.0, 27.0
+YC = Y0 + BH / 2 + 2.5           # arrows run through the text part, above the v2 strips
+cols = {"photo": (2.0, 14.0), "cls": (21.0, 25.5), "gate": (52.0, 17.5), "det": (75.0, 25.0),
+        "wri": (105.5, 28.5), "chk": (139.5, 22.5), "rep": (167.5, 21.0)}
+
+# input photograph (real gray-mold test photograph)
+cand = json.load(open("D:/agai-paper/draft/notes/example_candidates.json"))
+img = ImageOps.exif_transpose(Image.open(cand["gray_mold"][6])).convert("RGB")
+img = square_crop(img).resize((300, 300), Image.LANCZOS)
+px, pw = cols["photo"]
+image_tile(ax, img, px, YC - pw / 2, pw, pw, radius=1.0, border=AXIS, lw=0.5, zorder=3)
+ax.text(px + pw / 2, YC - pw / 2 - 2.6, "photograph x", ha="center", va="center", fontsize=5.7, color=INK2)
+
+x, w = cols["cls"]
+stage(x, Y0, w, BH, "classify", "Classifier", ["ResNet-50, 256 px", "image + mirror view,", "temperature-scaled",
+      "p(c | x), 7 conditions"], v2="v2: SigLIP 2 so400m", num="1")
+x, w = cols["gate"]
+stage(x, Y0, w, BH, "gate", "Gate", ["accept the top", "condition if", r"$p_1 \geq \max(\tau_c,\,0.5)$"], num="2")
+x, w = cols["det"]
+stage(x, Y0, w, BH, "detect", "Part detector", ["RF-DETR Small, 512 px", "leaf, fruit, stem,", "flower, soil, root",
+      "visible parts V"], v2="v2: RF-DETR Large", num="3")
+x, w = cols["wri"]
+stage(x, Y0, w, BH, "language", "Report writer", ["MiniGPT-v2: EVA ViT-g", "+ LLaMA-2-7B, 8-bit, LoRA",
+      "prompt fixes d, lists", "the parts it may name"], v2="v2: Qwen3-VL-8B explainer", num="4")
+x, w = cols["chk"]
+stage(x, Y0, w, BH, "gate", "Hallmark check", ["names a sign of", "another condition?", "regenerate once,",
+      "then warn"])
+x, w = cols["rep"]
+stage(x, Y0, w, BH, "output", "Report", ["diagnosis with a", "confidence badge,", "visible signs,", "management,", "next questions"])
+
+# arrows along the row
+def right(a, b):
+    return cols[a][0] + cols[a][1], cols[b][0]
+
+for (a, b, lab) in [("photo", "cls", None), ("cls", "gate", None), ("gate", "det", "yes"),
+                    ("det", "wri", None), ("wri", "chk", None), ("chk", "rep", "pass")]:
+    x0, x1 = right(a, b)
+    arrow(ax, x0 + 0.4, YC, x1 - 0.2, YC, **A)
+    if lab:
+        ax.text((x0 + x1) / 2, YC + 1.9, lab, ha="center", va="center", fontsize=5.6, color=INK2)
+# what each arrow carries, under the arrow
+for (a, b, lab) in [("cls", "gate", "p"), ("gate", "det", "d"), ("det", "wri", "d, V")]:
+    x0, x1 = right(a, b)
+    ax.text((x0 + x1) / 2, YC - 2.0, lab, ha="center", va="center", fontsize=5.9, color=INK2, style="italic")
+
+# regenerate loop above writer and check
+xw = cols["wri"][0] + cols["wri"][1] * 0.72
+xc = cols["chk"][0] + cols["chk"][1] * 0.5
+arrow(ax, xc, Y0 + BH, xw, Y0 + BH, conn="arc3,rad=0.42", color="#c43c3b", lw=0.8, ms=6)
+ax.text((xw + xc) / 2, Y0 + BH + 7.4, "hallmark found: regenerate", ha="center", va="center", fontsize=5.6,
+        color="#b23a3a")
+
+# group headers
+def header(x0, x1, text):
+    y = 94.0
+    ax.plot([x0, x0, x1, x1], [y - 2.0, y - 1.0, y - 1.0, y - 2.0], color=AXIS, lw=0.6)
+    ax.text((x0 + x1) / 2, y + 1.3, text, ha="center", va="center", fontsize=6.3, fontweight="bold", color=INK2)
+
+header(cols["cls"][0], cols["gate"][0] + cols["gate"][1], "Decide the diagnosis d")
+header(cols["det"][0], cols["chk"][0] + cols["chk"][1], "Explain d on the visible parts V")
+header(cols["rep"][0], cols["rep"][0] + cols["rep"][1], "Output")
+
+# ---------------------------------------------------------------- abstain branch
+gx, gw = cols["gate"]
+ab_w, ab_h, ab_y = 30.0, 13.5, 30.0
+stage(gx + gw / 2 - ab_w / 2, ab_y, ab_w, ab_h, "gate", "Abstain", ["reply asks for close-ups of", "leaves, stems, roots, soil"])
+arrow(ax, gx + gw / 2, Y0, gx + gw / 2, ab_y + ab_h + 0.2, **A)
+ax.text(gx + gw / 2 + 1.4, (Y0 + ab_y + ab_h) / 2, "no", ha="left", va="center", fontsize=5.6, color=INK2)
+
+# ---------------------------------------------------------------- knowledge row
+KY, KH = 4.0, 19.0
+x, w = cols["det"]
+stage(x, KY, w, KH, "data", "Follow-up", ["question q, typed", "in the chat panel"])
+x, w = cols["wri"]
+stage(x, KY, w, KH, "knowledge", "Question router", ["keywords pick one of", "seven answer types"])
+x, w = cols["chk"]
+stage(x, KY, w, KH, "knowledge", "Knowledge base", ["symptoms, causes,", "treatments and", "extension sources", "for 7 conditions"])
+x, w = cols["rep"]
+stage(x, KY, w, KH, "output", "Answer", ["the matching text", "and its sources;", "no model is rerun"])
+KC = KY + KH / 2
+for (a, b) in [("det", "wri"), ("wri", "chk"), ("chk", "rep")]:
+    x0, x1 = right(a, b)
+    arrow(ax, x0 + 0.4, KC, x1 - 0.2, KC, **A)
+
+# knowledge base supplies the hallmark phrases to the check
+xk = cols["chk"][0] + cols["chk"][1] / 2
+arrow(ax, xk, KY + KH, xk, Y0 - 0.2, color="#c98500", lw=0.8, ms=6)
+tag(xk, (KY + KH + Y0) / 2, "hallmark\nphrases", color="#9a6b00")
+# a question sent with a photograph goes into the writer's prompt
+xr = cols["wri"][0] + cols["wri"][1] / 2
+arrow(ax, xr, KY + KH, xr, Y0 - 0.2, **D)
+tag(xr, (KY + KH + Y0) / 2, "question sent\nwith a photo", color=MUTED)
+
+# ---------------------------------------------------------------- legend
+lx, ly = 3.0, 18.0
+ax.plot([lx, lx + 7], [ly, ly], color=INK2, lw=0.8)
+ax.text(lx + 9, ly, "every request", va="center", fontsize=5.6, color=INK2)
+ax.plot([lx, lx + 7], [ly - 4.2, ly - 4.2], color=MUTED, lw=0.7, ls=(0, (2.5, 1.5)))
+ax.text(lx + 9, ly - 4.2, "only some requests", va="center", fontsize=5.6, color=INK2)
+ax.text(lx, ly - 8.6, "v2:", va="center", fontsize=V_SIZE, color=V2_COLOR, fontweight="bold")
+ax.text(lx + 9, ly - 8.6, "model replaced in version 2", va="center", fontsize=5.6, color=INK2)
 
 save(fig, "fig_system_architecture")
 print("ok")

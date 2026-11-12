@@ -57,13 +57,13 @@ ax.text(35.2, (y1 - 8.0 + yr + 6.5) / 2, "claims", fontsize=BS, color=INK2, va="
 # ------------------------------------------------------------------ (b) "not there" rates
 EX = [  # captioner, rate %, CI low, CI high, claims, photos rated, mold seen (of 13)
     ("Qwen3-VL-32B", 4.0, 2.0, 8.1, 174, 34, "9 of 13"),
-    ("GLM-4.6V", 5.0, 1.4, 16.5, 40, 9, "not yet rated"),
+    ("GLM-4.6V", 5.0, 1.4, 16.5, 40, 9, "not rated"),
     ("Qwen3.8-27B", 10.2, 6.7, 15.2, 197, 34, "11 of 13"),
     ("Qwen3-VL-235B", 10.3, 6.8, 15.2, 204, 34, "11 of 13"),
 ]
 panel_label(ax, 1.0, 50.5, "(b) Claims rated \"not there\" (95% Wilson CI)")
-ax.text(1.0, 46.3, "Interim: one blind rater, 615 of 845 claims rated", fontsize=S_VAL, color="#b23a3a",
-        va="center", fontweight="bold")
+ax.text(1.0, 46.3, "one blind rater; 615 of 845 claims rated so far", fontsize=S_VAL, color=INK2,
+        va="center")
 PX0, PY0, PW, PH = 21.0, 11.0, 37.0, 26.0
 pp = axmm(PX0, PY0, PW, PH)
 pp.set_xlim(0, 20)
