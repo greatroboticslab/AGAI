@@ -1365,3 +1365,16 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   "not a visual claim" only when nothing in the sentence can be checked. The rater will revisit the 8 sentences rated
   "not a visual claim" on p00-p04 under the new rule. `cluster/vlm/score_faithfulness.py` updated accordingly before
   any further rating was read.
+- **2026-11-12, 16:20 CST. (v) Faithfulness ratings complete; coverage and the analysis rule, fixed before the key is
+  applied.** W.S. finished rating at 16:07 CST: 573 of 696 claims (pooled over both systems, blind: supported 244, not
+  supported 67, unsure 62, not a visual claim 193, advice assuming something not visible 7). 41 of the 49 photographs
+  have every claim rated; 7 have none (p14, p16, p17 and p20, gray mold; p32, overwatering; p35 and p40, root rot) and
+  one has 1 of 11 (p38, root rot). W.S.: those photographs cannot be judged ("nothing or nobody could infer anything
+  from some of those"). This deviates from (q), which planned all 49. Rule, decided from the coverage table alone (the
+  key has not been joined to any real rating; the scoring script has run on synthetic ratings only): the primary
+  analysis uses the 41 complete photographs, with both systems' claims on a photograph kept or dropped together, so
+  the comparison stays paired; the single rating on p38 is excluded from it; a sensitivity analysis uses all 573
+  ratings; the 8 photographs are reported as judged uninterpretable by the rater, by condition (gray mold 4 of 7, root
+  rot 3 of 7, overwatering 1 of 7), and what each system wrote about them is examined afterwards as exploratory.
+  `cluster/vlm/score_faithfulness.py` gains `--complete-only` and a coverage printout for this (tested on synthetic
+  ratings with two photographs removed and one left partial). Committed before scoring.

@@ -19,6 +19,8 @@ ap = argparse.ArgumentParser()
 ap.add_argument("claims"); ap.add_argument("key"); ap.add_argument("ratings")
 ap.add_argument("--rater", default=None, help="rater name (or uid) whose ratings are primary; default: the most complete")
 ap.add_argument("--second-rater", default=None)
+ap.add_argument("--complete-only", action="store_true",
+                help="score only the photographs whose every claim the primary rater rated (both systems kept or dropped together)")
 ap.add_argument("--seed", type=int, default=0)
 args = ap.parse_args()
 
@@ -52,6 +54,16 @@ print("raters:", {k: len(v) for k, v in by_rater.items()}, "of", len(text_of), "
 primary = args.rater or max(by_rater, key=lambda k: len(by_rater[k]))
 R = by_rater[primary]
 print(f"primary rater: {primary} ({len(R)} ratings)")
+n_claims = Counter(photo_of.values())
+n_rated = Counter(photo_of[c] for c in R)
+complete = sorted(p for p in n_claims if n_rated.get(p, 0) == n_claims[p])
+partial = sorted(p for p in n_claims if 0 < n_rated.get(p, 0) < n_claims[p])
+unrated = sorted(p for p in n_claims if n_rated.get(p, 0) == 0)
+print(f"coverage: {len(complete)} photographs complete, {len(partial)} partial {partial}, {len(unrated)} unrated {unrated}")
+if args.complete_only:
+    keep = set(complete)
+    R = {c: r for c, r in R.items() if photo_of[c] in keep}
+    print(f"--complete-only: {len(R)} ratings on {len(keep)} photographs kept")
 
 SYS = ("v1", "v2")
 PART_RE = {"leaf": r"\bleaf|leaves|foliage\b", "fruit": r"\bfruit|berr(y|ies)\b", "stem": r"\bstem|petiole|runner", "flower": r"\bflower|blossom|bloom",
