@@ -106,10 +106,10 @@ All numbers on the leak-free split v1 test set (398 photos) unless noted; ± is 
 |---|---|---|
 | v1 reproduced (ResNet v4 predictions 68/68 identical; end-to-end pipeline) | blind ratings (615 / 845 claims) | choose teacher + verifier (gate 1) |
 | leak-free benchmark and data audit | cross-family claim judge (GLM-4.6V inconclusive on vLLM) | regenerate training annotations, retrain the student |
-| classifier, synthetic-data and detector studies | | v2 demo; v1 vs v2 claim faithfulness (blind ratings of v1 against v2 reports) |
+| classifier, synthetic-data and detector studies | | v2 demo; second rater on both claim-rating sets |
 | label-swap test, honest 8B student, teacher comparison (5 models) | | expert relabeling; new real photos of weak classes; paper |
 | captioner bake-off; consistency filters; 8B / 27B / 32B claim judges; test-time compute study | | |
-| for the manuscript (30 to 31 Oct): calibration and gate metrics, TTA ablation, detector test split + RF-DETR retrains, report writer retrained on split v1 + grounding ablation (Table S16), v1 vs v2 latency and memory ([Manuscript Q&A](docs/MANUSCRIPT_QA.md)) | | |
+| for the manuscript (30 Oct to 12 Nov): calibration and gate metrics, TTA ablation, detector test split + RF-DETR retrains, report writer retrained on split v1 + grounding ablation (Table S16), v1 vs v2 latency, memory and claim faithfulness (unsupported visual claims 27.9 % vs 14.4 %, one blind rater) ([Manuscript Q&A](docs/MANUSCRIPT_QA.md)) | | |
 
 Full plan with acceptance criteria: [Roadmap](docs/ROADMAP.md).
 

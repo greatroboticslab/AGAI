@@ -5,7 +5,7 @@ plant health AI system* (24 October 2026 build, 31 pages), with paste-ready text
 the notes that remain for Dr. Zhang and Gus. Compiled by W.S. on 30 and 31 October 2026 from the repository, the
 cluster runs recorded in the lab notebook ([`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG.md), entries dated
 30 and 31 October) and the result files in [`evaluation/paper_data/`](../evaluation/paper_data/). Status as of the
-evening of 31 October 2026.
+evening of 31 October 2026; the end-to-end faithfulness item was completed on 12 November 2026.
 
 ## How to use this file
 
@@ -33,7 +33,7 @@ For Claude or another assistant applying the answers to the LaTeX source:
 |---|---|---|---|---|
 | 1 | 1 Introduction | Gus needs to fill in the 2024 world production from FAOSTAT, with the access date | Open: Gus | Not a William item; Gus fills in the FAOSTAT figure |
 | 2 | 2.1 System overview | William needs to answer this: will the report writer be retrained without the split v1 test images? The April report writer saw reports for 228 of the 231 April holdout images. | Done | 2.1 Will the report writer be retrained without the split v1 test images? |
-| 3 | 2.1 System overview | William needs to supply the v1 versus v2 end-to-end results (accuracy, honesty, claim faithfulness, latency and memory) when roadmap item B2 is done | Numbers in; claim faithfulness next week | 3.9, 2.1, abstract and conclusion: v1 versus v2 end to end |
+| 3 | 2.1 System overview | William needs to supply the v1 versus v2 end-to-end results (accuracy, honesty, claim faithfulness, latency and memory) when roadmap item B2 is done | Done: accuracy, honesty, latency, memory and claim faithfulness (12 November) | 3.9, 2.1, abstract and conclusion: v1 versus v2 end to end |
 | 4 | 2.2 Data collection | Dr. Zhang needs to decide: most white mold images show harvested fruit with white mycelium, which may be Rhizopus or Mucor rot rather than Sclerotinia. Keep this definition or rename the class? | Open: Dr. Zhang | Decision on the white mold class definition |
 | 5 | 2.2 Data collection | Dr. Zhang needs to answer this: was any sample of labels checked by an extension specialist or plant pathologist? If not, it goes in the limitations. | Open: Dr. Zhang | Whether a specialist checked a sample of labels; otherwise a limitation |
 | 6 | 2.2 Data collection | William needs to answer this: what prompt was used for the April synthetic images? The prompts are not stored in the repository. | Answered: the prompts were not kept | 2.2 Prompts of the April synthetic images |
@@ -57,7 +57,7 @@ For Claude or another assistant applying the answers to the LaTeX source:
 | 24 | 2.14 Plant material | Dr. Zhang needs to confirm this wording; Scientific Reports asks every study on plants to state that it complies with institutional, national and international guidelines. | Open: Dr. Zhang | Plant-material wording |
 | 25 | 3.3 Condition classification | William needs to supply the per-image probabilities of the chosen classifier on the split v1 validation and test images. ECE before and after temperature scaling, AURC, the coverage and accuracy of the acceptance gate, per-class precision, recall and F1, and the confusion matrix follow from them (Supplementary Table S7 and Supplementary Fig. S9). | Done | 3.3 Per-image probabilities, ECE, AURC and the gate (Table S7, Fig. S9) |
 | 26 | 3.5 Plant-part detection | William needs to supply per-part AP and results on a detector test split that agrees with split v1. | Done | 2.6 / 3.5 A detector test split that agrees with split v1 |
-| 27 | 3.9 End-to-end evaluation | William needs to supply the end-to-end comparison of v1 and v2 on the split v1 test images once v2 is assembled (roadmap B1 and B2): accuracy and macro accuracy, label-swap honesty, claim-level faithfulness, latency and GPU memory. The planned detector on/off ablation (roadmap B3) gives the part-hallucination rate of equation (11) with and without the part lists (Supplementary Table S16). | Numbers in (accuracy, honesty, latency, memory, Table S16); claim faithfulness next week | 3.9, 2.1, abstract and conclusion: v1 versus v2 end to end; 2.7 Report-writer training (Table S16) |
+| 27 | 3.9 End-to-end evaluation | William needs to supply the end-to-end comparison of v1 and v2 on the split v1 test images once v2 is assembled (roadmap B1 and B2): accuracy and macro accuracy, label-swap honesty, claim-level faithfulness, latency and GPU memory. The planned detector on/off ablation (roadmap B3) gives the part-hallucination rate of equation (11) with and without the part lists (Supplementary Table S16). | Done: accuracy, honesty, latency, memory, Table S16 and claim faithfulness (12 November) | 3.9, 2.1, abstract and conclusion: v1 versus v2 end to end; 2.7 Report-writer training (Table S16) |
 | 28 | 4 Discussion | William needs to say whether the mirrored view was ablated on split v1 | Done | 4 Was the mirrored view ablated on split v1? |
 | 29 | 4 Discussion | Gus and William need to check every row of Supplementary Table S17 against the papers themselves before submission. | Checked; Gus to confirm the Zhang and Wu author list on the MDPI page | 4 Supplementary Table S17 |
 | 30 | 4 Discussion | Dr. Zhang needs to confirm the rover plan. | Open: Dr. Zhang | Rover plan |
@@ -91,7 +91,7 @@ Status chips are given in square brackets. Every item is answered below in manus
 | 2.13 Lab server GPU | [Two RTX 3090] | below |
 | 2.13 Software versions of the re-evaluation | [Done] | below |
 | 2.2 / 2.5 April synthetic prompts; the 93 extra generated files | [93 files explained] [Prompts not kept] [Origin of the 93 recalled] | below |
-| 2.1 / 3.9 / abstract / conclusion: v1 versus v2 end to end | [Numbers in] [Faithfulness next week] | accuracy, honesty, latency and memory below; claim faithfulness needs the blind ratings |
+| 2.1 / 3.9 / abstract / conclusion: v1 versus v2 end to end | [Done] | accuracy, honesty, latency, memory and claim faithfulness below |
 | 4 Supplementary Table S17 checked against the papers | [Done] | below |
 | Author contributions, W.S. line | [Checked against the commits] | below |
 
@@ -358,7 +358,7 @@ On split v1 the mirrored view changed one to four percent of the ResNet-50's pre
 
 ### 3.9, 2.1, abstract and conclusion: v1 versus v2 end to end
 
-Status: Table S16 done; Latency and memory done; Faithfulness next week.
+Status: Table S16 done; Latency and memory done; Faithfulness done (12 November).
 
 What exists: diagnosis accuracy (v1 ResNet-50 90.2 ± 1.5 percent over five seeds; v2 recipe 96.3 ± 0.8 over three) and honesty (v1 cannot reject a label by design, since the writer is told the diagnosis is correct; the v2 student rejects 85.2 percent of wrong labels, 82.5 percent balanced). What the weekend adds: the assembled v2 pipeline (SigLIP 2 recipe, RF-DETR Large from the new detector split, the 8B student served with vLLM) and v1 as deployed (the application's own path and settings, its detector subprocess included) timed on one RTX 5000 Ada over a seeded sample of 49 test photographs (7 per condition), with latency per stage and per photograph and GPU memory per process. The sample is small because latency is a property of the system; accuracy and honesty come from all 398 test photographs. The measurement was pre-registered in the notebook (predictions included) and ran on the cluster on 31 October (job 72394, 1 h 30 min); the numbers are below. The detector on/off ablation for Table S16 is done (item 2.7). What needs people: claim-level faithfulness of v1 against v2 reports requires blind ratings; I propose the 38 bake-off photographs rated by G.M. and W.S. next week.
 
@@ -393,7 +393,54 @@ Latency and GPU memory were measured on one NVIDIA RTX 5000 Ada (32 GB) over a s
 End to end on the same test photographs, v2 raised diagnosis accuracy from 90.2 to 96.3 percent, rejected 85.2 percent of wrong labels where v1 could reject none, and answered in 22 seconds per photograph against 62 for v1 on the same GPU.
 ```
 
-Note: 22 and 62 are the medians above (21.7 and 62.2 s); with its detector kept in memory v1 would be 46 s. 85.2 percent is the student's label-swap rejection rate from the manuscript's honesty table. A claim-faithfulness clause waits for the blind ratings.
+Note: 22 and 62 are the medians above (21.7 and 62.2 s); with its detector kept in memory v1 would be 46 s. 85.2 percent is the student's label-swap rejection rate from the manuscript's honesty table. The faithfulness clause for the conclusion is in the faithfulness block below.
+
+**Claim-level faithfulness result (12 November).** W.S. rated the sentences of the v1 and v2 reports for the 49 photographs of the latency sample on a blind page (the claims of both reports pooled and shuffled per photograph; verdicts supported, not supported, unsure, not a visual claim, advice assuming something not visible): 573 of 696 claims. Eight photographs were left unrated because the rater could not judge them (4 gray mold, 3 root rot, 1 overwatering; one of the eight has a single rating), so the primary analysis uses the 41 photographs with every claim rated, a rule fixed and committed before the key was applied (lab notebook, entry (v)). The protocol, metrics and predictions were pre-registered (entry (q)); results against the predictions are in entry (w). v2's reports contain about half as many unsupported visual claims as v1's, but the pre-registered paired tests do not reach significance with one rater and 41 photographs, and the text says so.
+
+| Measure (41 photographs, one blind rater) | v1 | v2 | Paired comparison |
+|---|---|---|---|
+| Unsupported visual claims (%) | 27.9 (19.6 to 36.8) | 14.4 (8.3 to 21.5) | Wilcoxon signed-rank P = 0.086 |
+| Unsupported / checkable visual claims | 46 / 165 | 21 / 146 | pooled difference 13.5 points (2.6 to 25.0), post hoc |
+| Reports with at least one unsupported claim | 25 of 41 | 16 of 41 | 16 / 7 discordant, McNemar P = 0.093 |
+| Visual claims per report (unsure included) | 5.2 | 3.9 |   |
+| Non-visual sentences per report | 3.7 | 1.2 |   |
+| Visual claims rated unsure | 47 | 15 |   |
+| Unsure counted as unsupported (%), post hoc | 43.9 | 22.4 |   |
+| Advice assuming something not visible (sentences) | 3 | 4 |   |
+
+Note: Intervals are bootstrap 95 percent intervals over photographs. Predictions: v2 at most half of v1, narrowly not supported (ratio 0.52); v1 writes more visual and non-visual sentences, supported; v1's unsupported claims concentrate on soil, roots and flowers, not supported (they name leaves and fruit most); v2's rejections are as faithful as its other reports, not supported (13 of 39 visual claims unsupported against 7 of 97 and 1 of 10). Exploratory: v2's unsupported claims sit in its rejections of correct labels (10 of 36 in 9 reports against 7 of 94 in 27 reports that partially supported a correct label). On the 8 photographs the rater could not judge, v1 gave the dataset label at a probability of 0.94 to 1.00 and the student partially supported the label on 7. Limits: one rater, who is an author; style can reveal the system; a second rater (G.M.) has not rated yet. Files: `evaluation/paper_data/faithfulness_v1v2_claims.json`, `faithfulness_v1v2_ratings.json`, `faithfulness_v1v2_key.json`, `faithfulness_v1v2_scores.txt`; scripts `cluster/vlm/make_faithfulness_claims.py` and `cluster/vlm/score_faithfulness.py`.
+
+The five blocks below are LaTeX, ready for the Overleaf source (they were not yet applied on 12 November, because the Overleaf session had expired).
+
+**LaTeX for 3.9 (sections/3_results.tex): replaces the sentence "The claim-level faithfulness of the two systems' reports is being rated blind on the same photographs" and its marker**
+
+```latex
+Claim-level faithfulness was rated on the reports that both systems wrote for the 49 photographs of the latency sample (see Evaluation protocol). The rater left 8 photographs unrated because they could not be judged (4 of the 7 gray mold photographs, 3 root rot and 1 overwatering), which leaves 41 photographs and 572 rated sentences. Of the sentences that make a checkable visual claim, 27.9\% of v1's were not supported by the photograph (46 of 165; bootstrap 95\% interval 19.6 to 36.8\%) against 14.4\% of v2's (21 of 146; 8.3 to 21.5\%), and 25 of the 41 v1 reports contained at least one unsupported claim against 16 of the v2 reports. With one rater and 41 photographs, the pre-registered paired tests did not reach significance (Wilcoxon signed-rank test on the per-photograph rates, $P=0.086$; exact McNemar test on reports with an unsupported claim, 16 against 7 discordant photographs, $P=0.093$). The v1 reports were also longer, with 5.2 visual and 3.7 non-visual sentences per report, the latter mostly care advice, against 3.9 and 1.2 for v2, and the rater could not decide 47 of v1's visual claims against 15 of v2's. In an exploratory breakdown, v2's unsupported claims were concentrated in the reports that rejected a correct diagnosis (10 of 36 visual claims in 9 such reports, against 7 of 94 in the 27 reports that partially supported a correct diagnosis), so the student's false rejections and its unfaithful descriptions largely coincide. Both systems answered confidently on the 8 photographs that the rater could not judge: v1 diagnosed each with the dataset label at a probability of at least 0.94, and the v2 explainer partially supported the label on 7 of them.
+```
+
+**LaTeX for 2.1 (sections/2_1_overview.tex): replaces "; the claim-level faithfulness of the two systems' reports is being rated" and its marker, up to the full stop**
+
+```latex
+; in blind ratings by one author, 14\% of the checkable visual claims in v2's reports were not supported by the photograph against 28\% in v1's, a difference that did not reach significance on 41 photographs.
+```
+
+**LaTeX for the evaluation protocol (sections/2_8_evaluation.tex, paragraph "Report generation"): insert before "Growers and extension specialists will rate full reports in follow-up work."**
+
+```latex
+For the end-to-end comparison, the reports that v1 and v2 wrote for the 49 photographs of the latency sample were cut into sentences, each sentence was treated as one claim, and the claims of the two reports of a photograph were pooled and shuffled with a seeded generator. One author (W.S.), who saw the photograph and the claims without their system, rated each claim as supported by the photograph, not supported, unsure, not a visual claim (advice, general statements or a judgment about the diagnosis), or advice that assumes something not in the photograph. The unsupported-claim rate of a system is the share of its claims rated not supported among those rated supported or not supported. The sample, the claim rule, the metrics, the paired tests and the predictions were written into the lab notebook before the ratings; the fifth category was added after the first five photographs had been rated, and the rule for photographs that the rater could not judge (they are left out for both systems) was fixed before the ratings were scored. Writing style can reveal the system, so the blinding is imperfect.
+```
+
+**LaTeX for the limitations (sections/4_discussion.tex): replaces "The end-to-end comparison rests on 49 photographs for latency and memory, and its claim-level faithfulness ratings are still being completed."**
+
+```latex
+The end-to-end comparison rests on 49 photographs for latency and memory and, for faithfulness, on one author's blind ratings of the reports for 41 of them; a second rater and more photographs are needed before the lower rate of unsupported claims in v2 can be called established.
+```
+
+**LaTeX for the conclusion (sections/5_conclusion.tex): replaces ", and answered in 22~s per photograph against 62~s for v1 on the same GPU."**
+
+```latex
+, answered in 22~s per photograph against 62~s for v1 on the same GPU, and wrote reports in which 14\% of the checkable visual claims were not supported by the photograph against 28\% for v1, a difference that the ratings of one rater on 41 photographs could not confirm statistically.
+```
 
 ### 4 Supplementary Table S17
 
@@ -428,7 +475,7 @@ W.S. designed and ran the re-evaluation: the leak-free benchmark, the backbone, 
 | Friday night, 30 October | Probability files with and without temperature scaling; ECE, AURC, gate coverage and accuracy; thresholds chosen on validation; per-class precision, recall, F1; confusion matrices; bootstrap intervals; mirrored-view ablation; checkpoint resolution read; environment freeze; listing of the 93 files | Table S7, Fig. S9, 2.4, 2.6, 2.13, 4 |
 | Saturday, 31 October | Detector split agreeing with split v1; RF-DETR Small and Large retrained; per-part AP and presence precision and recall; threshold sweep on validation. Report-writer data filtered, prompts matched, training started | 3.5, Table S9 (new rows), 2.6 |
 | Saturday night, 31 October | Report writer scored with and without part lists (done); v1 and v2 end to end: latency and memory (done), accuracy and honesty (in hand); consistency-check fixes committed | Table S16, 3.9, abstract, conclusion, 2.7 |
-| Week of 3 November | Blind ratings of v1 against v2 reports (G.M. and W.S.); second rater on the claim set | 3.9 faithfulness, 2.9 agreement |
+| 12 November | Blind ratings of v1 against v2 reports by W.S. (done, 41 of 49 photographs); the second rater (G.M.) is still open for both rating sets | 3.9 faithfulness, 2.9 agreement |
 
 Note: Every run is recorded in the lab notebook (cluster/EXPERIMENT_LOG.md) with its job ID and result file, and the result files are added to the repository so the tables can be recomputed.
 
