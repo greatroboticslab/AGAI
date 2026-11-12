@@ -1409,3 +1409,23 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   confidently where the rater could not judge, which fits the source shortcut described for the gray mold batch
   (n = 8, not tested). Limitations: one rater, who is an author; writing style can reveal the system; 41 photographs.
   G.M.'s second rating has not been done. Entries (v) and (w) are local until the ssh master is back.
+- **2026-11-12, 16:27 CST. (x) The 8 unrated photographs inspected at W.S.'s request; corrections to (v) and (w).**
+  W.S. considers the 8 photographs unusable. Inspection of the image files: p14 (GrayMold2221), p16 (GrayMold1782) and
+  p17 (GrayMold1918) are sharp 512-pixel greenhouse photographs whose subject is a dead, brown blossom or young fruit;
+  no gray sporulation is visible (the 32B teacher's label-audit captions say the same for three of the four gray mold
+  photographs). p20 (GrayMold0398) is an upscaled, smeared low-resolution copy of a shriveled flower. p32
+  (overwatered_7) is a clear phone photograph of a collapsed seedling in a grow bag; it is bake-off photo 22, the
+  stem-hair photograph, on which W.S. rated 12 captioner claims on 2026-10-20 (8 real, 4 not there; note: "no white
+  cottony growth that is normal pubescent fuzz"). p35 (rootrot_41) is a composite of two photographs, a cut crown with
+  brown internal tissue above a whole wilted plant (bake-off photo 32, not rated in October). p38 (rootrot_147) is a
+  blurred video frame of roots and soil (bake-off photo 30; 14 captioner claims rated on 2026-10-22, 13 real, 1
+  unsure). p40 (rootrot_26) is a 300 x 205 thumbnail of a single root split lengthwise with a reddish core. The
+  October claims were short pass-1 observations, the report sentences are broader, so the October ratings show the
+  photographs could be rated, not that every report sentence can. Data defects under the collection's own screening
+  criteria: p35 (composite of two photographs), p38 (video frame), p20 (upscaled copy); candidates for the
+  known-defects list. Correction to (w), item (d): for p35 and p40 the visible signs (internal crown discoloration, a
+  reddish root core) can justify a confident root rot answer, so the remark that the confident answers "fit the
+  source shortcut" applies at most to the four gray mold photographs; the corresponding sentence is removed from the
+  3.9 text proposed in `docs/MANUSCRIPT_QA.md`. Correction of time stamps: (v) was committed at 16:10 CST (b831eb9)
+  and (w) written at 16:13 CST, not 16:20 and 16:25. The primary analysis of (v) and (w) is unchanged; whether the
+  skipped photographs are rated is open.
