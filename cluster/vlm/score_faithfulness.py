@@ -101,20 +101,7 @@ def wilcoxon(diffs):
     n = len(d)
     if n < 6:
         return n, float("nan")
-    ranks = {}
-    srt = sorted(d, key=abs)
-    i = 0
-    while i < n:
-        j = i
-        while j + 1 < n and abs(srt[j + 1]) == abs(srt[i]):
-            j += 1
-        r = (i + j) / 2 + 1
-        for k in range(i, j + 1):
-            ranks[id(srt[k])] = r
-        i = j + 1
-    w_plus = sum(((i_ + j_) / 2 + 1) for i_, j_ in [(0, 0)] if False)  # placeholder, replaced below
-    # recompute ranks positionally
-    order = sorted(range(n), key=lambda k: abs(d[k]))
+    order = sorted(range(n), key=lambda k: abs(d[k]))      # average ranks of |d|, ties share a rank
     rk = [0.0] * n
     i = 0
     while i < n:
