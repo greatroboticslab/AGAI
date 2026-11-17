@@ -1486,3 +1486,9 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   evaluation-protocol and limitations text in `docs/MANUSCRIPT_QA.md` now says so (not yet on Overleaf). A leak-free
   comparison needs v1 reports from the split v1 ResNet-50 and the retrained writer on the same 49 photographs, rated
   blind; not run, for W.S. to decide.
+- **2026-11-17, 14:16 CST. (ab) The 8 unrated faithfulness photographs stay unrated; the question left open in (x) is
+  closed.** W.S., the rater: he rated every claim he could judge; the photographs he left unrated or rated only in part
+  show no visible classic indicators of their condition, so their claims cannot be judged, and they will not be rated.
+  The 41-photograph analysis of (v) and (w) is therefore final for these reports. Entry (x) describes the image files
+  and is not a rating; its remark on p35 and p40 bears only on the exploratory item (d) of (w). The reason concerns the
+  photographs, not the reports, so it applies equally to v1 reports from a leak-free comparison ((aa)), if one is run.
