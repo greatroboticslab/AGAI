@@ -408,7 +408,7 @@ Note: 22 and 62 are the medians above (21.7 and 62.2 s); with its detector kept 
 | Unsure counted as unsupported (%), post hoc | 43.9 | 22.4 |   |
 | Advice assuming something not visible (sentences) | 3 | 4 |   |
 
-Note: Intervals are bootstrap 95 percent intervals over photographs. Predictions: v2 at most half of v1, narrowly not supported (ratio 0.52); v1 writes more visual and non-visual sentences, supported; v1's unsupported claims concentrate on soil, roots and flowers, not supported (they name leaves and fruit most); v2's rejections are as faithful as its other reports, not supported (13 of 39 visual claims unsupported against 7 of 97 and 1 of 10). Exploratory: v2's unsupported claims sit in its rejections of correct labels (10 of 36 in 9 reports against 7 of 94 in 27 reports that partially supported a correct label). The 8 unrated photographs are three sharp gray mold close-ups of a dead blossom or young fruit, one upscaled gray mold copy, a clear photograph of a collapsed seedling, a composite of two photographs (a cut crown with brown internal tissue and a wilted plant), a blurred video frame of roots, and a thumbnail of a split root with a reddish core; the composite, the video frame and the upscaled copy are data defects (lab notebook, entry (x)). Limits: one rater, who is an author; style can reveal the system; a second rater (G.M.) has not rated yet. Files: `evaluation/paper_data/faithfulness_v1v2_claims.json`, `faithfulness_v1v2_ratings.json`, `faithfulness_v1v2_key.json`, `faithfulness_v1v2_scores.txt`; scripts `cluster/vlm/make_faithfulness_claims.py` and `cluster/vlm/score_faithfulness.py`.
+Note: Intervals are bootstrap 95 percent intervals over photographs. Predictions: v2 at most half of v1, narrowly not supported (ratio 0.52); v1 writes more visual and non-visual sentences, supported; v1's unsupported claims concentrate on soil, roots and flowers, not supported (they name leaves and fruit most); v2's rejections are as faithful as its other reports, not supported (13 of 39 visual claims unsupported against 7 of 97 and 1 of 10). Exploratory: v2's unsupported claims sit in its rejections of correct labels (10 of 36 in 9 reports against 7 of 94 in 27 reports that partially supported a correct label). The 8 unrated photographs are three sharp gray mold close-ups of a dead blossom or young fruit, one upscaled gray mold copy, a clear photograph of a collapsed seedling, a composite of two photographs (a cut crown with brown internal tissue and a wilted plant), a blurred video frame of roots, and a thumbnail of a split root with a reddish core; the composite, the video frame and the upscaled copy are data defects (lab notebook, entry (x)) and are on the known-defects list in `docs/BENCHMARK.md` since 17 November. Limits: one rater, who is an author; style can reveal the system; a second rater (G.M.) has not rated yet. Files: `evaluation/paper_data/faithfulness_v1v2_claims.json`, `faithfulness_v1v2_ratings.json`, `faithfulness_v1v2_key.json`, `faithfulness_v1v2_scores.txt`; scripts `cluster/vlm/make_faithfulness_claims.py` and `cluster/vlm/score_faithfulness.py`.
 
 The five blocks below are LaTeX, ready for the Overleaf source (they were not yet applied on 12 November, because the Overleaf session had expired).
 
@@ -440,6 +440,12 @@ The end-to-end comparison rests on 49 photographs for latency and memory and, fo
 
 ```latex
 , answered in 22~s per photograph against 62~s for v1 on the same GPU, and wrote reports in which 14\% of the checkable visual claims were not supported by the photograph against 28\% for v1, a difference that the ratings of one rater on 41 photographs could not confirm statistically.
+```
+
+**LaTeX for the data processing pipeline (sections/2_3_data_processing_pipeline.tex): replaces "and so were photographs that could show either gray mold or white mold and photographs with watermarks or text overlays." in the sentence on known defects (added 17 November)**
+
+```latex
+and so were photographs that could show either gray mold or white mold, photographs with watermarks or text overlays, and three test images found while the end-to-end reports were rated: a composite of two photographs, a frame taken from a video and an upscaled low-resolution copy.
 ```
 
 ### 4 Supplementary Table S17

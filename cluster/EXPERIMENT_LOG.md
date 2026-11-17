@@ -1429,3 +1429,13 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   3.9 text proposed in `docs/MANUSCRIPT_QA.md`. Correction of time stamps: (v) was committed at 16:10 CST (b831eb9)
   and (w) written at 16:13 CST, not 16:20 and 16:25. The primary analysis of (v) and (w) is unchanged; whether the
   skipped photographs are rated is open.
+- **2026-11-17, 10:57 CST. (y) Known-defects list updated.** The three defective split v1 test images found in (x) are now
+  a row of the known-defects table in `docs/BENCHMARK.md`: the composite of two photographs
+  (`plant_diagnostic/data/holdout/root_rot/rootrot_41.jpg`), the video frame
+  (`plant_diagnostic/data/train/root_rot/rootrot_147.jpg`) and the upscaled copy
+  (`plant_diagnostic/data/holdout/gray_mold/GrayMold0398.jpg`). Listed, not removed: split v1 and every result on it
+  are unchanged. The matching clause for the paper's sentence on known defects (section 2.3) is queued in
+  `docs/MANUSCRIPT_QA.md` with the faithfulness edits, for when the Overleaf draft is next edited. Check made while
+  writing this: two of the three, and p14, are `holdout/` paths in the split, while the photographs inspected in (x)
+  were the same-named `train/` copies in the local clone; the rating page's copies of those photographs (uploaded from
+  the split paths on Hamilton) show the same pictures, so (x) stands.
