@@ -1453,3 +1453,36 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   recovered `train_resnet_straw5.py`, not the main-line copy (entry (aa)). The caption-pair generator behind the 2159 reports, `generate_json_openai.py`, was
   already on lab/main and is identical to the lab server's copy; `README.md` gains a section on generating the
   instruction data and training the three v1 models, and links the recovered folder. No file of the export was run.
+- **2026-11-17, 11:25 CST. (aa) Two corrections, found while checking the README for (z) against Hamilton: the paper's
+  ResNet-50 runs used the lab server's training script, and v1's end-to-end reports came from the lab's deployed
+  checkpoints.** (1) Training recipe. The cluster's code directory (`/projects/was4g/agai/MiniGPT-4`) was extracted
+  from the lab server's working copy on 2026-10-19 at 23:06; its `train_resnet_straw5.py` is the lab server's version
+  of 26 April 2026 (SHA-256 21cae2c7..., identical to the copy in `recovered/labbox_2026-10-19/`), not the 2025 version
+  at the repository's main path. Every ResNet-50 training log on the cluster, from the first split v1 run (job 71993,
+  2026-10-20 01:28) through the ablations (72006-72019) and the 512-pixel control (80917-80926), shows that version's
+  progress bars. So the split v1 ResNet-50 models were trained and validated on images resized to 256 x 256 without
+  cropping, with no random erasing; the other settings (frozen stem and batch normalisation, optimiser and schedule,
+  loss, temperature, ImageNet start) are the same in both versions. The 2.4 answer in `docs/MANUSCRIPT_QA.md` (points
+  1 and 2, the replacement paragraph, and the input-size and augmentation cells of Table S2) was read from the
+  main-path script and is wrong in these points, and that text went into the Overleaf draft on 4 November
+  (`sections/2_4_classifier.tex`, `sections/8_supplementary.tex`); the draft's original sentence ("resized to
+  256 x 256 pixels without cropping") and its note on the application's centre crop were right. The mismatch between
+  training (resize without cropping) and the application (short side 294, centre crop 256) is real and costs nothing
+  measurable (90.2 against 89.8 %, five seeds, `cluster/resnet_scores.py`, recorded above). In (t), the 512-pixel runs'
+  training and validation input should read "resized to 512 x 512 without cropping"; their scoring and the results in
+  (u) stand. `cluster/classifier/train_backbone.py` copies the version that ran, so the SigLIP 2 fine-tune differs
+  from the ResNet-50 runs only in the backbone, as stated. No number changes. Corrected LaTeX for 2.4 and Table S2 is
+  in `docs/MANUSCRIPT_QA.md` for the next Overleaf session. (2) v1 in the end-to-end comparison.
+  `cluster/vlm/latency_v1.py` ran v1 as deployed (job 72394, 2026-10-31) with the application's checkpoints: ResNet-50
+  `plant_diagnostic/models/resnet_strawberry.pth` (byte-identical to the lab's v12, `synthOODmixed_exclusive`) and the
+  writer named in `eval_configs/minigptv2_eval.yaml`, `output/minigpt_strawberry/checkpoint_best.pth` (the April
+  writer of (j)), not the split v1 retrain. Entry (q) and the docstring of `cluster/vlm/make_faithfulness_claims.py`
+  call it the retrained writer; that is wrong (docstring corrected). 40 of the 49 photographs are in the classifier's
+  training folder (`train_aug_exclusive_synth15_20260427T141500Z`; the other 9 in its holdout) and all 49 have a
+  report among the April writer's 2159 instruction records; v1 gave the dataset label on all 49. Latency and memory do
+  not depend on this. For faithfulness, v1's reports were written by models that had seen these photographs and their
+  reports, which should make them look more faithful, not less, so the comparison favours v1 and the gap in (w) is
+  more likely understated than overstated; it is a comparison with v1 as deployed, and the proposed 3.9,
+  evaluation-protocol and limitations text in `docs/MANUSCRIPT_QA.md` now says so (not yet on Overleaf). A leak-free
+  comparison needs v1 reports from the split v1 ResNet-50 and the retrained writer on the same 49 photographs, rated
+  blind; not run, for W.S. to decide.

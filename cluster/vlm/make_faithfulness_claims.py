@@ -1,8 +1,9 @@
 """Blind claim set for the v1 vs v2 report-faithfulness ratings (lab notebook entry (q), 2026-11-04).
 
 One claim = one sentence of a report. The v1 reports are the `report` fields of evaluation/paper_data/latency_v1.json
-(retrained MiniGPT-v2 writer, as deployed), the v2 reports those of latency_student.json (distilled 8B student), for
-the same 49 seeded split v1 test photographs. Per photograph the claims of both reports are pooled and shuffled with
+(v1 as deployed: the application's ResNet-50 v12 and the lab's April MiniGPT-v2 writer, not the split v1 retrains;
+lab notebook entry (aa)), the v2 reports those of latency_student.json (distilled 8B student), for the same 49 seeded
+split v1 test photographs. Per photograph the claims of both reports are pooled and shuffled with
 a seeded generator (`faith-v1v2:<photo index>`), so the rating page shows them without their system.
 
   python cluster/vlm/make_faithfulness_claims.py --check
