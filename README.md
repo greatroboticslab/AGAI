@@ -121,6 +121,45 @@ Full plan with acceptance criteria: [Roadmap](docs/ROADMAP.md).
   gives each script's folder).
 - **Regenerate the figures:** `python docs/figures/make_figures.py`.
 
+## Training code and instruction data
+
+**Instruction data (image-report pairs).** The 2159 reports that trained the v1 report writer were written by OpenAI's
+o3 through [`generate_json_openai.py`](plant_diagnostic/scripts/gptscripts/json_generation/generate_json_openai.py).
+For each image it sends the photograph and its label, which is the name of the class folder, with a prompt that fixes
+the label and limits the report to what is visible, and it writes one image-report pair per line. An interrupted run
+resumes where it stopped. When a call fails it writes a templated fallback report; none of the 2159 is a fallback.
+The empty `generate_stage2_jsonl.py` beside it is a placeholder from 2025.
+
+```bash
+export OPENAI_API_KEY=...   # in the environment only, never in a file of this repository
+python plant_diagnostic/scripts/gptscripts/json_generation/generate_json_openai.py \
+    --img-root plant_diagnostic/data/train_aug \
+    --out plant_diagnostic/datasets/stage2_train_7class.jsonl --model o3 --sleep 0.6
+python plant_diagnostic/scripts/convert_jsonl_to_json.py \
+    plant_diagnostic/datasets/stage2_train_7class.jsonl plant_diagnostic/datasets/stage2_train_7class_fixed.json
+```
+
+A later generator from the lab server, `generate_multicaption_jsonl.py`, writes several conversation styles per image
+(clinical, quick triage, treatment, differential, severity, layperson). It is in `recovered/`, below, and no reported
+result uses it.
+
+**Training the v1 models.**
+
+| Model | Command | Notes |
+|---|---|---|
+| Report writer (MiniGPT-v2 with LoRA) | `python -m torch.distributed.run --nproc_per_node=2 train.py --cfg-path train_configs/minigptv2_strawberry_v2.yaml` | the lab's April 2026 run; the config's paths are the lab server's. The split v1 retrain uses `train_configs/minigptv2_strawberry_splitv1.yaml` ([`cluster/slurm/train_minigpt_splitv1.sbatch`](cluster/slurm/train_minigpt_splitv1.sbatch)) |
+| Condition classifier (ResNet-50) | `python recovered/labbox_2026-10-19/plant_diagnostic/scripts/resnetscripts/train_resnet_straw5.py --train_root <train> --val_root <val> --out <checkpoint.pth> --seed 42` | the version that trained every ResNet-50 of the paper (split v1 runs, ablations, 512-pixel control): images resized to 256 × 256 without cropping, no random erasing. The script of the same name at the main path is the older 2025 version (random crop, random erasing, centre-crop validation) |
+| Part detector (RF-DETR Small) | `python rfdetr_parts/prepare_dataset.py --zip <Roboflow export> --out rfdetr_parts/dataset`, then `python rfdetr_parts/train_rfdetr.py` | settings in `rfdetr_parts/rfdetr_config.yaml`; see [docs/V1_SYSTEM.md](docs/V1_SYSTEM.md#training) |
+
+**Code recovered from the lab server.** [`recovered/labbox_2026-10-19/`](recovered/labbox_2026-10-19/) holds, byte for
+byte, the 16 code files that existed only in the lab server's working copy when it was exported on 19 October 2026:
+the April 2026 versions of the ResNet-50 training, evaluation and inference scripts, the scripts that rebuilt the
+training and holdout sets with synthetic and external images for the lab's late-April checkpoints, two evaluation
+scripts for those checkpoints, the April technical report's MiniGPT holdout scripts and the multi-caption generator.
+The cluster runs for the paper used a copy of that working copy, so the recovered `train_resnet_straw5.py` is the
+script behind the paper's ResNet-50 results; the older same-named scripts at the main paths are left as they are.
+That folder's README gives the provenance, checksums and how to run each file.
+
 ## Repository layout
 
 ```
@@ -146,6 +185,7 @@ AGAI/
 ├── plant_diagnostic/          # classifier data, models and training scripts
 ├── hallucination_evaluation/  # v1 response quality evaluation
 ├── paper/                     # paper sources
+├── recovered/                 # code recovered from the lab server (19 Oct 2026), byte for byte
 ├── configs/, eval_configs/, train_configs/   # MiniGPT model, inference and training configs
 ├── figs/, documentation/, annotationjsons/, tests/
 └── RESEARCH_PAPER.pdf

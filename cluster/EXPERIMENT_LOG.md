@@ -1439,3 +1439,17 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   writing this: two of the three, and p14, are `holdout/` paths in the split, while the photographs inspected in (x)
   were the same-named `train/` copies in the local clone; the rating page's copies of those photographs (uploaded from
   the split paths on Hamilton) show the same pictures, so (x) stands.
+- **2026-11-17, 11:01 CST. (z) Code recovered from the lab server, prepared for the repository (committed locally;
+  pushed once W.S. has reviewed the diff).** H.Z. asked (11, 14 and 16 November, relayed by W.S.) for the recovered
+  training code and the OpenAI caption-pair generation code to be in greatroboticslab/AGAI, with the README covering
+  them. All 152 code and configuration files of the lab server's working-copy export (`agai_worktree.tgz`,
+  2026-10-19, SHA-256 061952891fe2cb5d...) were compared with lab/main: 109 identical; the JSON files that seemed
+  to differ are stored in LFS on lab/main and have identical contents; genuine changes on the lab server are five
+  ResNet-50 scripts (late April 2026: square resize instead of crops, no random erasing, default checkpoint
+  `resnet_strawberry.pth`) and a Gradio compatibility fix in `demo_v5.py`; 11 code files exist only on the lab
+  server. Those 16 code files are copied byte for byte into `recovered/labbox_2026-10-19/` with a README (dates, what
+  each does, what it was used for, how to run, SHA-256 checksums); the main-line copies (the 2025 versions) stay
+  unchanged. The cluster's code directory is a copy of the same export, so the paper's ResNet-50 runs used the
+  recovered `train_resnet_straw5.py`, not the main-line copy (entry (aa)). The caption-pair generator behind the 2159 reports, `generate_json_openai.py`, was
+  already on lab/main and is identical to the lab server's copy; `README.md` gains a section on generating the
+  instruction data and training the three v1 models, and links the recovered folder. No file of the export was run.
