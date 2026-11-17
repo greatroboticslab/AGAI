@@ -39,8 +39,10 @@ thumb(Image.open(cand["frost"][8]), X0, yc + 13.0, 13.0)
 thumb(Image.open(cand["gray_mold"][6]), X0 + 3.0, yc + 9.0, 13.0)
 ax.text(X0 + 8.0, yc + 5.5, "split v1 training", ha="center", fontsize=5.4, color=INK2)
 ax.text(X0 + 8.0, yc + 2.8, "(1017 photographs)", ha="center", fontsize=5.0, color=MUTED)
-box(ax, 30.0, yc, 31.0, 27.0, "data", "Online augmentation", ["90-100% crop to 256 px", "rotate +/-3 deg, flip",
-    "perspective, color jitter", "blur, autocontrast", "random erasing (p 0.15)"], title_size=6.3, body_size=5.4)
+# resize without cropping and no random erasing: the version of train_resnet_straw5.py that trained every split v1
+# ResNet-50 (recovered/labbox_2026-10-19/, lab notebook entry (aa), 2026-11-17)
+box(ax, 30.0, yc, 31.0, 27.0, "data", "Online augmentation", ["resize to 256 px, no crop", "rotate +/-3 deg, flip",
+    "perspective, color jitter", "blur, autocontrast"], title_size=6.3, body_size=5.4)
 arrow(ax, 26.5, yc + 13.5, 30.0, yc + 13.5, **A)
 box(ax, 65.0, yc, 30.0, 27.0, "classify", "Two-phase fine-tuning", ["head only: 5 epochs, lr 1e-3",
     "all stages: 15 epochs,", "lr 1e-4 x 0.25 / 0.5 / 0.75 / 1", "weighted CE, smoothing 0.05",
