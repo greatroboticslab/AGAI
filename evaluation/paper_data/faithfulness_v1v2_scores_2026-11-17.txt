@@ -1,0 +1,49 @@
+raters: {'WAS': 651} of 696 claims
+primary rater: WAS (651 ratings)
+coverage: 46 photographs complete, 1 partial ['p16'], 2 unrated ['p17', 'p20']
+--complete-only: 649 ratings on 46 photographs kept
+photographs with ratings: 46 of 49
+
+== M1 unsupported-claim rate (not supported / visual claims) ==
+v1: 26.7 % (18.7 to 35.5); claims rated 415: supported 132, not supported 48, unsure 55, not visual 175
+v2: 15.7 % (9.4 to 22.8); claims rated 234: supported 134, not supported 25, unsure 17, not visual 53
+paired difference v1 - v2 over 45 photographs: median 0.0 points, Wilcoxon signed-rank P = 0.1377 (n nonzero = 33)
+P1 (v2 at most half of v1): v2 / v1 = 0.59 -> not supported
+
+== M2 reports with at least one unsupported claim ==
+v1: 26 of 46 (56.5 %)
+v2: 18 of 46 (39.1 %)
+discordant: v1 only 17, v2 only 9; exact McNemar P = 0.1686
+
+== M3 claims per report (rated claims) ==
+v1: visual (incl. unsure) 5.1 per report, non-visual 3.9 per report
+v2: visual (incl. unsure) 3.8 per report, non-visual 1.3 per report
+
+== M5 (secondary, added 2026-11-04 before the first photograph was complete): advice assuming something not visible ==
+v1: 5 sentences (0.11 per report; 2.8 % of non-visual sentences); reports with at least one: 3 of 46
+v2: 5 sentences (0.11 per report; 8.6 % of non-visual sentences); reports with at least one: 5 of 46
+P5 (v1 has more such sentences per report than v2): v1 5 vs v2 5 -> not supported
+
+== M4 (exploratory) unsupported claims by plant part named in the claim ==
+v1: {'leaf': 19, 'fruit': 14, 'stem': 9, 'root': 8, 'soil': 6, 'flower': 5, '(no part named)': 1}
+v2: {'fruit': 8, '(no part named)': 8, 'leaf': 6, 'flower': 3, 'soil': 2, 'root': 2}
+
+== P4 (exploratory): v2 unsupported rate by the student's verdict ==
+does_not_support: 13 of 39 visual claims unsupported (33.3 %)
+partially_supports: 11 of 110 visual claims unsupported (10.0 %)
+clearly_supports: 1 of 10 visual claims unsupported (10.0 %)
+
+== post hoc (added 2026-11-12 after the primary results were seen; descriptive) ==
+(a) pooled difference v1 - v2: 10.9 points (95 % paired bootstrap over photographs -0.3 to 22.3); ratio v2 / v1 0.59 (0.32 to 1.01)
+(b) strict, unsure counted as unsupported, v1: 103 of 235 = 43.8 %
+(b) strict, unsure counted as unsupported, v2: 42 of 176 = 23.9 %
+(c) v2 verdict clearly_supports, proposed label = dataset label: 3 reports, 1 of 10 visual claims unsupported (10.0 %)
+(c) v2 verdict does_not_support, proposed label = dataset label: 9 reports, 10 of 36 visual claims unsupported (27.8 %)
+(c) v2 verdict does_not_support, proposed label wrong: 1 reports, 3 of 3 visual claims unsupported (100.0 %)
+(c) v2 verdict partially_supports, proposed label = dataset label: 32 reports, 11 of 107 visual claims unsupported (10.3 %)
+(c) v2 verdict partially_supports, proposed label wrong: 1 reports, 0 of 3 visual claims unsupported (0.0 %)
+(c) v1, v1 label = dataset label: 48 of 180 visual claims unsupported (26.7 %)
+(d) not rated p17 (gray_mold): v1 diagnosed gray mold (p1 0.99); v2 was given gray_mold and answered partially_supports
+(d) not rated p20 (gray_mold): v1 diagnosed gray mold (p1 0.99); v2 was given gray_mold and answered partially_supports
+(d) not rated p16 (gray_mold): v1 diagnosed gray mold (p1 0.99); v2 was given gray_mold and answered does_not_support
+(d) student verdicts on the rated photographs {'does_not_support': 10, 'partially_supports': 33, 'clearly_supports': 3}; on the photographs not rated {'partially_supports': 2, 'does_not_support': 1}

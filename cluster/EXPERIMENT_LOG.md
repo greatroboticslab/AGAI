@@ -1492,3 +1492,22 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   The 41-photograph analysis of (v) and (w) is therefore final for these reports. Entry (x) describes the image files
   and is not a rating; its remark on p35 and p40 bears only on the exploratory item (d) of (w). The reason concerns the
   photographs, not the reports, so it applies equally to v1 reports from a leak-free comparison ((aa)), if one is run.
+- **2026-11-17, 14:55 CST. (ac) Correction to (ab): the rater had already rated 5 of the 8 photographs; sensitivity
+  analysis on 46 photographs.** (ab) was written without reading the rating page and is wrong. Between 14:03 and 14:11
+  CST, before (ab), W.S. rated every claim on p14, p32, p35, p38 and p40 and 2 of the 13 claims on p16 (78 new ratings);
+  p17 and p20 have none; the 573 ratings of 12 November are unchanged. The photographs left out are p16, p17 and p20,
+  all gray mold, for the reason recorded in (ab): no visible classic indicators, so their claims cannot be judged.
+  Withdrawn from (ab): that the 8 photographs stay unrated, that the 41-photograph analysis is final, and the remark on
+  p35 and p40. The primary analysis stays as fixed in (v) and reported in (w), on the 41 photographs complete when the
+  key was applied; the new ratings were made after those results were known (still without seeing which system wrote a
+  sentence), so they count only as a sensitivity analysis. On the 46 complete photographs (649 ratings,
+  `score_faithfulness.py --complete-only`): M1 v1 26.7 % (48 of 180 visual claims; 18.7-35.5), v2 15.7 % (25 of 159;
+  9.4-22.8), Wilcoxon P = 0.138 (45 photographs, 33 nonzero differences); M2 26 vs 18 of 46 reports, discordant 17 / 9,
+  exact McNemar P = 0.169; ratio 0.59 (P1 not supported); post hoc (a) pooled difference 10.9 points (paired bootstrap
+  -0.3 to 22.3). With all 651 ratings (47 photographs): 26.7 and 16.1 %. On the five photographs rated today, 2 of v1's
+  15 visual claims and 4 of v2's 13 were unsupported. Reading: same direction as (w), a smaller gap, and the post hoc
+  interval for the difference now reaches zero. Files:
+  `evaluation/paper_data/faithfulness_v1v2_ratings_2026-11-17.json`, `faithfulness_v1v2_scores_2026-11-17.txt` and
+  `faithfulness_v1v2_scores_2026-11-17_all_ratings.txt`; the 12 November files are unchanged, and the primary analysis
+  reproduces from them byte for byte. The 3.9 text in `docs/MANUSCRIPT_QA.md` now reports this; not yet on Overleaf,
+  where the paragraph still says 8 photographs (the browser extension was not connected).
