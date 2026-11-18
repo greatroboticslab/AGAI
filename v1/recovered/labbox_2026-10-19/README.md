@@ -1,13 +1,13 @@
-# Code recovered from the lab server, 19 October 2026
+# `v1/recovered/labbox_2026-10-19/`: code recovered from the lab server, 19 October 2026
 
 These 16 files existed only in the working copy of the lab's GPU server (`/data/AGAI/MiniGPT-4`, at commit `468951f`)
 when Dr. Zhang exported it on 19 October 2026 (archive `agai_worktree.tgz`, SHA-256 `061952891fe2cb5d3ad8066d2cf4fc0c300dbf87194c812a0371f034f9948c97`). None of them
-was in this repository. Each is copied byte for byte, at its original path relative to the repository root, and the
-checksums at the end of this page match the files in the archive.
+was in this repository. Each is copied byte for byte, at its original path relative to the root of that working copy
+(the layout of `v1/` in this repository), and the checksums at the end of this page match the files in the archive.
 
-Five of them are later versions of scripts that also exist at the main paths, where the versions committed in 2025
-stay unchanged; this folder keeps the lab server's set complete and byte for byte. The code directory that the 2026
-paper's runs used on the MTSU cluster (`/projects/<user>/agai/MiniGPT-4` on Hamilton) was extracted from the same
+Five of them are later versions of scripts that also exist at the main paths under `v1/`, where the versions committed
+in 2025 stay unchanged; this folder keeps the lab server's set complete and byte for byte. The code directory that the
+2026 paper's runs used on the MTSU cluster (`/projects/<user>/agai/MiniGPT-4` on Hamilton) was extracted from the same
 archive on 19 October 2026, so those runs used the versions in this folder: every ResNet-50 trained for the paper
 (the split v1 runs, the synthetic-data ablations and the 512-pixel control, from 20 October on) was trained with this
 folder's `train_resnet_straw5.py`, whose checksum the cluster's copy matches, and the training logs show its progress
@@ -44,23 +44,24 @@ No output of `generate_multicaption_jsonl.py` is in the export, so it was probab
 
 In the 2026 paper: `train_resnet_straw5.py` trained every ResNet-50 (see above). `resnet_classifier.py` differs from the
 main copy only in its default checkpoint, and the cluster scripts pass the checkpoint explicitly; the end-to-end run of
-v1 as deployed (`cluster/vlm/latency_v1.py`) loads the application's checkpoint, `resnet_strawberry.pth`, that is v12.
+v1 as deployed (`v2/vlm/latency_v1.py`) loads the application's checkpoint, `resnet_strawberry.pth`, that is v12.
 No other file in this folder is behind a result in the paper.
 
 ## Running them
 
 The scripts are written for the lab server's layout, and several default to `/data/AGAI/MiniGPT-4`, so pass the paths
 explicitly (`python <script> --help` lists the options). The data scripts move and copy image files: run them on a
-copy of `plant_diagnostic/data`. `run_minigpt_on_holdout.py` finds the repository from its own location, so it only
-works from its original path. To recreate the lab server's code as a whole, restore this folder over a checkout of
-`468951f`, which is in this repository's history:
+copy of `v1/plant_diagnostic/data`. `run_minigpt_on_holdout.py` finds the repository from its own location, so it only
+works from its original path (`paper/scripts/` of the lab server's layout, which is `v1/paper/scripts/` here). To
+recreate the lab server's code as a whole, restore this folder over a checkout of `468951f`, which is in this
+repository's history (from the repository root):
 
 ```bash
 git worktree add ../agai-labserver 468951f
-cp -r recovered/labbox_2026-10-19/. ../agai-labserver/
+cp -r v1/recovered/labbox_2026-10-19/. ../agai-labserver/
 ```
 
-Examples, from the repository root:
+Examples, from `v1/`:
 
 ```bash
 # the ResNet-50 recipe of the 2026 paper's runs (square resize, no random erasing)

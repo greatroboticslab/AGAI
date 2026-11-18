@@ -51,9 +51,11 @@ Each folder has its own README.
 > **Revival note.** A few files here were changed during the 2026 revival, and the v2 results depend on those
 > versions: `demo_v5.py` and `knowledge_graph/rag_retriever.py` (31 October 2026, a negation-aware consistency check
 > with 16 hallmark phrases), `grounding/detector.py` (the `RFDETR_PYTHON` interpreter override),
-> `minigpt4/models/minigpt_base.py`, `minigpt4/processors/blip_processors.py` and
-> `minigpt4/tasks/image_text_pretrain.py` (validation loss and an `identity_text` processor for the split v1 retrain),
-> and the new `train_configs/minigptv2_strawberry_splitv1.yaml`. The application as deployed on the lab server in
+> `minigpt4/models/minigpt_base.py` (passes `reduction` to the LLaMA forward only when it is not `"mean"`),
+> `minigpt4/processors/blip_processors.py` (an `identity_text` processor, which the split v1 retrain uses) and
+> `minigpt4/tasks/image_text_pretrain.py` (a validation-loss step, which the runner never calls while training; the
+> retrain's checkpoint was chosen afterwards with `v2/vlm/minigpt_val_loss.py`), and the new
+> `train_configs/minigptv2_strawberry_splitv1.yaml`. The application as deployed on the lab server in
 > April 2026 is therefore not exactly the code here. That server's working copy also had changes that were never
 > committed: 16 files, recovered byte for byte into [`recovered/`](recovered/), and a Gradio 4 fix to `demo_v5.py`
 > ([`recovered/labbox_2026-10-19/README.md`](recovered/labbox_2026-10-19/README.md)).
