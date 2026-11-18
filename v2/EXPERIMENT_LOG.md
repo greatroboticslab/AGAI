@@ -1526,3 +1526,20 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   old root; the April report's three table scripts, run from `v1/`, reproduce `v1/paper/generated/` exactly; and the
   v1 unit tests give the same result in both layouts (13 tests, 6 skipped, 1 error, unchanged). The layout before the
   move is the tag `flat-layout-2026-11-17` (commit 37c80ae). The cluster's working copy is unchanged.
+- **2026-11-18, 15:50 CST. (ae) Pre-registered: does the v1 report writer's prompt format matter? (A train / inference mismatch
+  found today.)** The writer was trained with the `prompt_template` of `configs/models/minigpt_v2.yaml`,
+  `Human: {} Assistant: ` (so recorded in the split v1 training log,
+  `evaluation/paper_data/minigpt_splitv1_train_log.txt`), but the application and the runs behind Table S16 and the
+  v1-v2 faithfulness comparison prompt it in MiniGPT-v2's chat format, `[INST] ... [/INST]` (`grounding/inference.py`,
+  `demo_v5.py`, `cluster/minigpt_reports.py`, whose comment wrongly called that the training format). Run: the split v1
+  retrained writer (`checkpoint_best.pth`, epoch 9, as in (j)) writes the 302 Table S16 reports again (151 test
+  photographs with and without the detector's part lists; same parts file, decoding, 8-bit loading, seed 0, consistency
+  check and retry) with only the template changed: `cluster/minigpt_reports.py --template human` (option added today;
+  the default reproduces Table S16), one job per condition, merged into `evaluation/reports_splitv1_humantpl.json` and
+  scored with `cluster/score_reports.py`. Primary: H_part per condition, training format against the published run,
+  paired exact McNemar per photograph. Secondary: the with-minus-without difference, reports naming a part declared not
+  visible, H_part without soil, consistency, regeneration rate, length. No directional prediction. Reading rule, fixed
+  now: if H_part with part lists moves by less than 5 points and the with / without comparison keeps its sign, Table
+  S16's conclusion stands under the training format; otherwise the manuscript needs a sentence that S16 measured the
+  deployed prompt format and that the writer behaves differently under the format it was trained with. The v1-v2
+  faithfulness comparison is not rerun: it measures v1 as deployed, prompt format included.

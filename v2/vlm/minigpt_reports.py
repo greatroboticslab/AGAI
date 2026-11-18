@@ -34,9 +34,18 @@ ap.add_argument("--lora-alpha", type=float, default=128)
 ap.add_argument("--max-new-tokens", type=int, default=600)
 ap.add_argument("--conditions", default="parts,noparts")
 ap.add_argument("--seed", type=int, default=0)
+ap.add_argument("--template", default="inst", choices=["inst", "human"],
+                help="inst (default, as in Table S16): '[INST] ... [/INST]', the chat format the application prompts "
+                     "the writer with (grounding/inference.py, demo_v5.py); human: 'Human: ... Assistant: ', the "
+                     "prompt_template the writer was trained with (configs/models/minigpt_v2.yaml)")
 args = ap.parse_args()
 
-TEMPLATE = "[INST] <Img><ImageHere></Img> {} [/INST]"  # the training format of minigpt_v2 (prompt_template)
+# Added 18 November 2026: the application prompts the writer in MiniGPT-v2's chat format, but training wrapped every
+# instruction in configs/models/minigpt_v2.yaml's prompt_template, 'Human: {} Assistant: ' (also in the split v1
+# training log). The default reproduces the Table S16 runs; --template human uses the training format.
+TEMPLATES = {"inst": "[INST] <Img><ImageHere></Img> {} [/INST]",
+             "human": "Human: <Img><ImageHere></Img> {} Assistant: "}
+TEMPLATE = TEMPLATES[args.template]
 
 
 def retry_prompt(label, visible):
