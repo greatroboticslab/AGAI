@@ -3,9 +3,9 @@
 # Compute and reproducibility
 
 All revival experiments ran on the university's Slurm cluster. Every experiment is a script in
-[`cluster/`](../cluster/README.md) (grouped by study), every result file stores per-image outputs in `evaluation/`, and
-every run is recorded in [`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG.md) with its job ID. Script index:
-[`cluster/README.md`](../cluster/README.md); multi-node launchers: [`cluster/slurm/`](../cluster/slurm/).
+[`cluster/`](../v2/README.md) (grouped by study), every result file stores per-image outputs in `evaluation/`, and
+every run is recorded in [`cluster/EXPERIMENT_LOG.md`](../v2/EXPERIMENT_LOG.md) with its job ID. Script index:
+[`cluster/README.md`](../v2/README.md); multi-node launchers: [`cluster/slurm/`](../v2/slurm/).
 
 ## Hardware
 
@@ -20,14 +20,14 @@ every run is recorded in [`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG
 - **Interconnect: 1 Gb Ethernet.** The nodes have ConnectX-4 Lx 10 GbE ports linked but not configured, and no
   InfiniBand. A request to configure them (IPs on the storage network, jumbo frames, RoCE v2) is pending with IT.
 - **Shared storage is slow** (~65 MB/s per stream over NFS); node-local NVMe is fast. Models are staged to local NVMe
-  before loading ([`cluster/infra/stage_model.sh`](../cluster/infra/stage_model.sh)): load time 296 → 5 s for an 8B, 928 → 69 s
+  before loading ([`cluster/infra/stage_model.sh`](../v2/infra/stage_model.sh)): load time 296 → 5 s for an 8B, 928 → 69 s
   for a 32B.
 
 ## Software environments
 
 Plain venvs on shared storage (conda hung on the shared filesystem), built by
-[`cluster/infra/hamilton_setup_envs.sh`](../cluster/infra/hamilton_setup_envs.sh) and
-[`cluster/infra/setup_vision_env.sh`](../cluster/infra/setup_vision_env.sh):
+[`cluster/infra/hamilton_setup_envs.sh`](../v2/infra/hamilton_setup_envs.sh) and
+[`cluster/infra/setup_vision_env.sh`](../v2/infra/setup_vision_env.sh):
 
 | Environment | Key versions | Used for |
 |---|---|---|
@@ -36,7 +36,7 @@ Plain venvs on shared storage (conda hung on the shared filesystem), built by
 | `vision` | timm, open_clip, diffusers | backbone probes and fine-tunes, synthetic images, scoring |
 | `vllm` | vLLM 0.32 | all VLM inference: zero-shot, annotation, captioning, judging |
 
-Exact package lists (`pip freeze`, 2026-10-30) are in [`cluster/infra/requirements/`](../cluster/infra/requirements/),
+Exact package lists (`pip freeze`, 2026-10-30) are in [`cluster/infra/requirements/`](../v2/infra/requirements/),
 one `<env>.freeze.2026-10-30.txt` per environment.
 
 **v1 pipeline note.** MiniGPT-v2 needs transformers **4.45.2**, not the 4.41.1 in the original instructions. Under
@@ -47,7 +47,7 @@ every generated token, so the KV cache grows quadratically (OOM on 32 GB, repeti
 
 Qwen3-VL-235B-A22B (AWQ, ~125 GB) and GLM-4.6V (FP8, ~110 GB) do not fit on one node. They run with vLLM pipeline
 parallelism across five RTX nodes on a Ray cluster started inside one Slurm job
-([`cluster/slurm/vllm_ray.sbatch`](../cluster/slurm/vllm_ray.sbatch)). Only activations cross the network between
+([`cluster/slurm/vllm_ray.sbatch`](../v2/slurm/vllm_ray.sbatch)). Only activations cross the network between
 stages, so 1 GbE is sufficient for batch inference.
 
 ```mermaid
@@ -63,7 +63,7 @@ flowchart TB
 ```
 
 Each node stages only the weight files of its own layer range plus the small non-layer files
-([`cluster/infra/stage_pp_shard.py`](../cluster/infra/stage_pp_shard.py)): ~25-29 GB per node instead of the full 110-125 GB.
+([`cluster/infra/stage_pp_shard.py`](../v2/infra/stage_pp_shard.py)): ~25-29 GB per node instead of the full 110-125 GB.
 The layer split is set with `VLLM_PP_LAYER_PARTITION` (235B: 16, 20, 20, 19, 19; GLM-4.6V: 7, 10, 10, 10, 9).
 
 Lessons that cost a failed run each:
@@ -71,12 +71,12 @@ Lessons that cost a failed run each:
 | Problem | Cause | Fix |
 |---|---|---|
 | "weight files referenced in index but missing" | vLLM rejects an index that names files absent on that node | write a per-node index listing only staged files |
-| wrong layers on a node | vLLM 0.32 orders pipeline ranks by driver first, then by the random Ray node ID | start Ray first, query the order ([`cluster/infra/ray_pp_order.py`](../cluster/infra/ray_pp_order.py)), then stage |
+| wrong layers on a node | vLLM 0.32 orders pipeline ranks by driver first, then by the random Ray node ID | start Ray first, query the order ([`cluster/infra/ray_pp_order.py`](../v2/infra/ray_pp_order.py)), then stage |
 | silent garbage risk | quantized checkpoints skip vLLM's missing-weights check | the rank mapping above must be right; verify outputs |
 | "Stale file handle" at start-up | five nodes compiling the same Triton kernels into one NFS cache | Triton / vLLM / Inductor caches on node-local disk |
 | KV cache too small on one stage | uneven memory per stage | re-balance the layer split; `--max-model-len 8192`, `--enforce-eager`, `--gpu-mem 0.95` |
 | anyone on the network could submit work to the Ray cluster | Ray's default has no authentication | Ray token authentication enabled |
-| a model emits degenerate text ("…lock…lock…") or grammar errors on some runs only | node c5's local disk returned corrupted data for weight files that had been copied correctly (same size, different bytes; right after a copy the page cache hides it), and vLLM does not verify quantized weights | c5 excluded and reported; every staged file is now checked against a per-model `SHA256SUMS` manifest, read from disk with the page cache evicted ([`cluster/infra/verify_staged.py`](../cluster/infra/verify_staged.py), [`cluster/infra/make_manifest.py`](../cluster/infra/make_manifest.py)) |
+| a model emits degenerate text ("…lock…lock…") or grammar errors on some runs only | node c5's local disk returned corrupted data for weight files that had been copied correctly (same size, different bytes; right after a copy the page cache hides it), and vLLM does not verify quantized weights | c5 excluded and reported; every staged file is now checked against a per-model `SHA256SUMS` manifest, read from disk with the page cache evicted ([`cluster/infra/verify_staged.py`](../v2/infra/verify_staged.py), [`cluster/infra/make_manifest.py`](../v2/infra/make_manifest.py)) |
 
 ## Other throughput notes
 
@@ -92,13 +92,13 @@ Lessons that cost a failed run each:
 
 ## Reproducing a result
 
-1. Find the entry in [`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG.md); it names the job ID, the script
+1. Find the entry in [`cluster/EXPERIMENT_LOG.md`](../v2/EXPERIMENT_LOG.md); it names the job ID, the script
    and the result file.
 2. Run the same script with the logged arguments, from the repository root on the cluster, after
-   `source agai_env.sh` ([`cluster/infra/agai_env.sh`](../cluster/infra/agai_env.sh)). The notebook names scripts by
-   their flat cluster path (`cluster/<script>`); [`cluster/README.md`](../cluster/README.md) gives each one's folder.
+   `source agai_env.sh` ([`cluster/infra/agai_env.sh`](../v2/infra/agai_env.sh)). The notebook names scripts by
+   their flat cluster path (`cluster/<script>`); [`cluster/README.md`](../v2/README.md) gives each one's folder.
    A single-GPU job stages the model (`cluster/infra/stage_model.sh`) and runs the script; multi-node jobs use the
-   launchers in [`cluster/slurm/`](../cluster/slurm/).
-3. Rebuild tables from the per-image result files ([`cluster/benchmark/leaderboard.py`](../cluster/benchmark/leaderboard.py),
-   [`cluster/benchmark/compare_results.py`](../cluster/benchmark/compare_results.py), [`cluster/vlm/score_honesty.py`](../cluster/vlm/score_honesty.py)).
+   launchers in [`cluster/slurm/`](../v2/slurm/).
+3. Rebuild tables from the per-image result files ([`cluster/benchmark/leaderboard.py`](../v2/benchmark/leaderboard.py),
+   [`cluster/benchmark/compare_results.py`](../v2/benchmark/compare_results.py), [`cluster/vlm/score_honesty.py`](../v2/vlm/score_honesty.py)).
 4. Figures in these pages: `python docs/figures/make_figures.py`.

@@ -3,7 +3,7 @@
 This directory holds the COCO-format dataset used to fine-tune the
 RF-DETR Small plant-part detector. The image files and their COCO
 annotations are **excluded from version control** (see
-[`.gitignore`](../../.gitignore)) because of size. This README and the
+[`.gitignore`](../../../.gitignore)) because of size. This README and the
 placeholder directory layout are tracked.
 
 ## Expected layout

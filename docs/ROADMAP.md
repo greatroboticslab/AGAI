@@ -3,7 +3,7 @@
 # Roadmap: what is done, what is running, what is next
 
 Last updated 2026-10-22. Each task lists what "done" means. Status of every experiment is tracked in
-[`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG.md).
+[`cluster/EXPERIMENT_LOG.md`](../v2/EXPERIMENT_LOG.md).
 
 ## Overview
 

@@ -4,7 +4,7 @@
 
 **Role in the pipeline.** RF-DETR detects which plant parts are visible (flower, fruit, leaf, root, soil, stem). The
 detections constrain the explainer so it only describes parts that are in the photo, and drive part-specific
-treatment advice from the knowledge graph ([v1 system](V1_SYSTEM.md)).
+treatment advice from the knowledge graph ([v1 system](../v1/README.md)).
 
 **Result.** Moving from RF-DETR Small to Large is a cheap, like-for-like upgrade: **+3.8 points mAP@50:95** (0.593 →
 0.631) on the lab's validation split and **+2.9 points** (0.564 → 0.593) on the clean test split, with the same code,
@@ -16,7 +16,7 @@ with its training data.
 
 Evaluation with RF-DETR 1.11.2 on the lab's own 322-image validation split; every model trained with the lab's
 configuration (`rfdetr_parts/rfdetr_config.yaml`) for 100 epochs on one RTX 5000 Ada
-([`cluster/detector/rfdetr_size.py`](../cluster/detector/rfdetr_size.py)), with two changes forced by the newer RF-DETR: the yaml's
+([`cluster/detector/rfdetr_size.py`](../v2/detector/rfdetr_size.py)), with two changes forced by the newer RF-DETR: the yaml's
 resolution of 560 px is rejected (patch 16 × 2 windows), so each size trains at its default resolution, and
 `lr_min_factor` is not accepted and was dropped. The lab's own checkpoint was trained at 512 px as well, not at the
 yaml's 560: its position embeddings hold 32 × 32 patches of 16 px, and the lab's `train_rfdetr.py` builds
@@ -37,7 +37,7 @@ gradient accumulation 4 to fit 32 GB.
 
 The lab's validation split is also the split the best checkpoint is selected on, and it shares near-copies with the
 lab's training data, so a detector split that agrees with the benchmark's [split v1](BENCHMARK.md) was carved
-([`cluster/detector/make_detector_split.py`](../cluster/detector/make_detector_split.py); report
+([`cluster/detector/make_detector_split.py`](../v2/detector/make_detector_split.py); report
 [`evaluation/paper_data/detector_split_v1.json`](../evaluation/paper_data/detector_split_v1.json)). The 1075 annotated
 images were matched to the 1576 condition photographs by perceptual hash (64-bit DCT pHash, Hamming distance ≤ 6; 646
 matched, near-copies kept together); every annotated copy of a split v1 test photograph goes to the detector test set, the
@@ -45,7 +45,7 @@ others follow their photograph, and the 429 annotation-only images go to trainin
 The test images are copies of 151 split v1 test photographs (healthy 74, root rot 30, frost 24, gray mold 12, white mold
 7, drought 2, overwatered 2), so the split is light on the molds and the water stresses. Small and Large were retrained
 with the lab configuration (100 epochs, checkpoint chosen on the 67-image validation split) and scored with pycocotools
-([`cluster/detector/eval_parts.py`](../cluster/detector/eval_parts.py); files `evaluation/paper_data/parts_*_splitv1_{valid,test}.json`).
+([`cluster/detector/eval_parts.py`](../v2/detector/eval_parts.py); files `evaluation/paper_data/parts_*_splitv1_{valid,test}.json`).
 
 | Model (163 test images) | mAP@50:95 | mAP@50 | mAP@75 | AP flower | fruit | leaf | root | soil | stem |
 |---|---|---|---|---|---|---|---|---|---|

@@ -4,11 +4,11 @@ This directory is the active paper source for AGAI.
 
 - Root editable entry point: [../RESEARCH_PAPER.tex](../RESEARCH_PAPER.tex)
 - Root compiled PDF target: [../RESEARCH_PAPER.pdf](../RESEARCH_PAPER.pdf)
-- Main manuscript: [main.tex](./main.tex)
-- Sections: [sections/](./sections)
-- Generated figures: [figures/generated](./figures/generated)
-- Generated LaTeX tables: [generated](./generated)
-- Bibliography: [references.bib](./references.bib)
+- Main manuscript: [main.tex](main.tex)
+- Sections: [sections/](sections)
+- Generated figures: [figures/generated](figures/generated)
+- Generated LaTeX tables: [generated](generated)
+- Bibliography: [references.bib](references.bib)
 
 ## Build order
 
@@ -63,6 +63,6 @@ report), not to a model count.
 
 ## Reproducibility manifest
 
-See the appendix of [main.tex](./main.tex) for the pinned commit hash,
+See the appendix of [main.tex](main.tex) for the pinned commit hash,
 SHA-256 hashes of the deployed ResNet-50 and RF-DETR checkpoints, and
 the JSON evaluation artifact paths used by all asset scripts above.

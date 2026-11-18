@@ -34,7 +34,7 @@ sequenceDiagram
 
 Pass 1 is forbidden to name a disease, so the label cannot steer perception; pass 2 never sees the image, so it cannot
 add visual claims. Pass 1 is what humans rate. Implementation:
-[`cluster/vlm/caption_bakeoff.py`](../cluster/vlm/caption_bakeoff.py) (vLLM, JSON schema enforced during decoding).
+[`cluster/vlm/caption_bakeoff.py`](../v2/vlm/caption_bakeoff.py) (vLLM, JSON schema enforced during decoding).
 The 38 photos (`evaluation/bakeoff_set_v1.json`) are real split v1 test photos chosen to be hard: faint mold
 patches, black frost centres, wilting stems, look-alikes, rotted crowns.
 
@@ -89,7 +89,7 @@ Four families of automatic filters were pre-registered in the lab notebook befor
 | (a) cross-model agreement | keep a claim if another captioner made a matching claim (same polarity, shared condition keyword, points within 150 of 1000) | none |
 | (b) self-consistency | re-run the same captioner 3× with sampling (T = 0.7); keep claims that recur in ≥ 2 of 3 | 3 × pass 1 |
 | (c) agreement, else self-consistency | lab proposal: keep agreed claims; a disputed claim survives only if its own model repeats it | 3 × pass 1 |
-| (d) zoom-in judge | a VLM sees the whole photo with a red box around the claimed point (plus, in zoom mode, an enlarged crop of the box), without the label, and answers correct / incorrect / cannot tell ([`cluster/vlm/judge_claims.py`](../cluster/vlm/judge_claims.py)) | 1 call per claim |
+| (d) zoom-in judge | a VLM sees the whole photo with a red box around the claimed point (plus, in zoom mode, an enlarged crop of the box), without the label, and answers correct / incorrect / cannot tell ([`cluster/vlm/judge_claims.py`](../v2/vlm/judge_claims.py)) | 1 call per claim |
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/hallucination_filters_dark.png">
@@ -159,7 +159,7 @@ the decoy results and is reported as such.
 
 Diagnosis-level consensus (voting over samples, two-answer captions, debate, reference images) and the answer-format
 ablation are reported in [Test-time compute](TEST_TIME_COMPUTE.md). Pre-registrations, predictions and results are
-appended to [`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG.md).
+appended to [`cluster/EXPERIMENT_LOG.md`](../v2/EXPERIMENT_LOG.md).
 
 ## Proposed annotation pipeline (pending the results above)
 

@@ -15,12 +15,12 @@ gets wrong.
 
 All experiments: split v1 test (398 photos, dataset labels as ground truth), Qwen3-VL-8B, Qwen3-VL-32B and
 Qwen3.8-27B in bf16 with vLLM (voting also with Qwen3-VL-235B AWQ and GLM-4.6V FP8), the 7-class zero-shot prompt
-with class definitions, pre-registered in [`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG.md).
+with class definitions, pre-registered in [`cluster/EXPERIMENT_LOG.md`](../v2/EXPERIMENT_LOG.md).
 
 ## 1. Voting over sampled diagnoses
 
 Each model diagnosed every photo once greedily and 20 more times with sampling (T = 0.7)
-([`cluster/vlm/consensus_dx.py`](../cluster/vlm/consensus_dx.py)); majority votes over N samples are averaged over random
+([`cluster/vlm/consensus_dx.py`](../v2/vlm/consensus_dx.py)); majority votes over N samples are averaged over random
 subsets of the 20.
 
 <picture>
@@ -57,7 +57,7 @@ is 68-74 %, against 30-40 % for either model alone, so a caption that names both
 apart is correct about twice as often as either single answer. But 11-15 % of all photos are agreed-but-wrong, which
 no consensus can flag.
 
-Methods to resolve the 140 disagreements ([`cluster/vlm/resolve_dx.py`](../cluster/vlm/resolve_dx.py)); "pair system" =
+Methods to resolve the 140 disagreements ([`cluster/vlm/resolve_dx.py`](../v2/vlm/resolve_dx.py)); "pair system" =
 the 32B's resolved answer on disagreements, the common answer elsewhere (32B greedy alone: 67.6 %):
 
 | Method | 32B / 27B accuracy on the 140 | Both agree afterwards (right / wrong) | Pair system on all 398 | vs 32B greedy |

@@ -2,7 +2,7 @@
 
 This directory contains the strawberry-disease image dataset used to train
 and evaluate the deployed ResNet-50 classifier. The image files are
-**deliberately excluded from version control** (see [`.gitignore`](../../.gitignore))
+**deliberately excluded from version control** (see [`.gitignore`](../../../.gitignore))
 because of their size; this README and the placeholder class
 subdirectories are tracked so the expected on-disk layout is reproducible.
 

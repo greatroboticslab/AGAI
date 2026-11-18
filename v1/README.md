@@ -1,8 +1,8 @@
-[← README](../README.md) · [Benchmark](BENCHMARK.md) · [Classifier](CLASSIFIER.md) · [Synthetic data](SYNTHETIC_DATA.md) · [VLM honesty](VLM_HONESTY.md) · [Captioning](CAPTIONING.md) · [Test-time compute](TEST_TIME_COMPUTE.md) · [Detector](DETECTOR.md) · [Compute](COMPUTE.md) · [Roadmap](ROADMAP.md)
+[← README](../README.md) · [Benchmark](../docs/BENCHMARK.md) · [Classifier](../docs/CLASSIFIER.md) · [Synthetic data](../docs/SYNTHETIC_DATA.md) · [VLM honesty](../docs/VLM_HONESTY.md) · [Captioning](../docs/CAPTIONING.md) · [Test-time compute](../docs/TEST_TIME_COMPUTE.md) · [Detector](../docs/DETECTOR.md) · [Compute](../docs/COMPUTE.md) · [Roadmap](../docs/ROADMAP.md)
 
 # The v1 system (paper version)
 
-This page preserves the documentation of the system described in [RESEARCH_PAPER.pdf](../RESEARCH_PAPER.pdf): a
+This page preserves the documentation of the system described in [RESEARCH_PAPER.pdf](RESEARCH_PAPER.pdf): a
 ResNet-50 classifier, an RF-DETR Small plant-part detector and a LoRA-adapted MiniGPT-v2 explainer behind a Gradio
 interface. The revival's measurements of each component are on the other pages; corrections found during the
 revival are marked **Revival note**.
@@ -26,7 +26,7 @@ flowchart TB
    fruit, leaf, root, soil, stem). Per-class confidence thresholds are tuned to each part's detection
    characteristics. The detected parts are meant to constrain MiniGPT's output to what is visible; the detector
    on/off ablation of 2026-10-31 found that the writer does not follow the constraint (see
-   [DETECTOR.md](DETECTOR.md), Caveats). The application runs the detector in a separate interpreter per
+   [DETECTOR.md](../docs/DETECTOR.md), Caveats). The application runs the detector in a separate interpreter per
    photograph (`grounding/detector.py`), which cost 15.9 s of v1's 62 s median per photograph on an RTX 5000 Ada
    (lab notebook, 2026-10-31); the forward pass itself takes 0.016 s.
 3. **MiniGPT-v2 grounded explanation.** A LoRA-adapted MiniGPT-v2 (LLaMA-2-7B backbone) receives the ResNet diagnosis
@@ -42,7 +42,7 @@ particular plant structures.
 
 > **Revival note.** Because the explainer treats the classifier's label as ground truth, a wrong label produces a
 > fluent explanation of the wrong disease. The revival measures this directly with a label-swap test and trains an
-> explainer that can disagree with its input label ([VLM honesty](VLM_HONESTY.md)).
+> explainer that can disagree with its input label ([VLM honesty](../docs/VLM_HONESTY.md)).
 
 ## Features
 
@@ -73,7 +73,7 @@ particular plant structures.
 
 > **Revival note.** On the lab machine the runtime default `resnet_strawberry.pth` is a post-paper checkpoint
 > (v12, trained with synthetic images), not the paper's v4. The paper's v4 weights match the SHA-256 in the paper's
-> appendix and were used for the reproduction ([Classifier](CLASSIFIER.md)).
+> appendix and were used for the reproduction ([Classifier](../docs/CLASSIFIER.md)).
 
 ## Setup
 
@@ -96,7 +96,7 @@ pip install transformers==4.45.2 bitsandbytes gradio pillow numpy pandas plotly 
 > **Revival note.** The original instructions pinned `transformers==4.41.1`. With 4.41 the `cache_position` shim in
 > `grounding/inference.py` hides the model's forward signature, so `generate()` builds no attention mask and re-feeds
 > every generated token: the KV cache grows quadratically, generation runs out of memory on a 32 GB GPU and the text
-> becomes repetitive. 4.45.2 works ([Compute](COMPUTE.md#software-environments)).
+> becomes repetitive. 4.45.2 works ([Compute](../docs/COMPUTE.md#software-environments)).
 
 For RF-DETR training, a separate environment is needed:
 

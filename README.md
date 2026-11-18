@@ -10,8 +10,8 @@ publications.
 > Research prototype developed at Middle Tennessee State University. Not a substitute for professional agronomic
 > advice.
 
-**[Research paper (v1)](RESEARCH_PAPER.pdf)** · **[Lab notebook](cluster/EXPERIMENT_LOG.md)** ·
-**[Roadmap](docs/ROADMAP.md)** · **[v1 setup and demo](docs/V1_SYSTEM.md)**
+**[Research paper (v1)](v1/RESEARCH_PAPER.pdf)** · **[Lab notebook](v2/EXPERIMENT_LOG.md)** ·
+**[Roadmap](docs/ROADMAP.md)** · **[v1 setup and demo](v1/README.md)**
 
 ## Overview
 
@@ -95,10 +95,10 @@ All numbers on the leak-free split v1 test set (398 photos) unless noted; ± is 
 | [Detector](docs/DETECTOR.md) | RF-DETR Small / Medium / Large |
 | [Compute](docs/COMPUTE.md) | cluster, environments, multi-node serving of 100B+ models, reproducing a result |
 | [Roadmap](docs/ROADMAP.md) | what is done, running and next; decisions; paper outline |
-| [v1 system](docs/V1_SYSTEM.md) | the paper's system: setup, demo, training, knowledge graph |
+| [v1 system](v1/README.md) | the paper's system: setup, demo, training, knowledge graph |
 | [Manuscript Q&A](docs/MANUSCRIPT_QA.md) | answers to the bracketed notes of the journal manuscript (24 October build): paste-ready text, evidence, open items |
-| [`cluster/README.md`](cluster/README.md) | index of the experiment code, grouped by study, and the Slurm launchers |
-| [`cluster/EXPERIMENT_LOG.md`](cluster/EXPERIMENT_LOG.md) | the lab notebook: every run, pre-registration and correction |
+| [`cluster/README.md`](v2/README.md) | index of the experiment code, grouped by study, and the Slurm launchers |
+| [`cluster/EXPERIMENT_LOG.md`](v2/EXPERIMENT_LOG.md) | the lab notebook: every run, pre-registration and correction |
 
 ## Status
 
@@ -115,16 +115,16 @@ Full plan with acceptance criteria: [Roadmap](docs/ROADMAP.md).
 
 ## Quick start
 
-- **Run the v1 demo:** environment setup, weights and `python demo_v5.py` in [docs/V1_SYSTEM.md](docs/V1_SYSTEM.md).
-- **Reproduce a revival result:** find its entry in the [lab notebook](cluster/EXPERIMENT_LOG.md), then run the named
-  script with the logged arguments ([docs/COMPUTE.md](docs/COMPUTE.md#reproducing-a-result); [`cluster/README.md`](cluster/README.md)
+- **Run the v1 demo:** environment setup, weights and `python demo_v5.py` in [docs/V1_SYSTEM.md](v1/README.md).
+- **Reproduce a revival result:** find its entry in the [lab notebook](v2/EXPERIMENT_LOG.md), then run the named
+  script with the logged arguments ([docs/COMPUTE.md](docs/COMPUTE.md#reproducing-a-result); [`cluster/README.md`](v2/README.md)
   gives each script's folder).
 - **Regenerate the figures:** `python docs/figures/make_figures.py`.
 
 ## Training code and instruction data
 
 **Instruction data (image-report pairs).** The 2159 reports that trained the v1 report writer were written by OpenAI's
-o3 through [`generate_json_openai.py`](plant_diagnostic/scripts/gptscripts/json_generation/generate_json_openai.py).
+o3 through [`generate_json_openai.py`](v1/plant_diagnostic/scripts/gptscripts/json_generation/generate_json_openai.py).
 For each image it sends the photograph and its label, which is the name of the class folder, with a prompt that fixes
 the label and limits the report to what is visible, and it writes one image-report pair per line. An interrupted run
 resumes where it stopped. When a call fails it writes a templated fallback report; none of the 2159 is a fallback.
@@ -147,11 +147,11 @@ result uses it.
 
 | Model | Command | Notes |
 |---|---|---|
-| Report writer (MiniGPT-v2 with LoRA) | `python -m torch.distributed.run --nproc_per_node=2 train.py --cfg-path train_configs/minigptv2_strawberry_v2.yaml` | the lab's April 2026 run; the config's paths are the lab server's. The split v1 retrain uses `train_configs/minigptv2_strawberry_splitv1.yaml` ([`cluster/slurm/train_minigpt_splitv1.sbatch`](cluster/slurm/train_minigpt_splitv1.sbatch)) |
+| Report writer (MiniGPT-v2 with LoRA) | `python -m torch.distributed.run --nproc_per_node=2 train.py --cfg-path train_configs/minigptv2_strawberry_v2.yaml` | the lab's April 2026 run; the config's paths are the lab server's. The split v1 retrain uses `train_configs/minigptv2_strawberry_splitv1.yaml` ([`cluster/slurm/train_minigpt_splitv1.sbatch`](v2/slurm/train_minigpt_splitv1.sbatch)) |
 | Condition classifier (ResNet-50) | `python recovered/labbox_2026-10-19/plant_diagnostic/scripts/resnetscripts/train_resnet_straw5.py --train_root <train> --val_root <val> --out <checkpoint.pth> --seed 42` | the version that trained every ResNet-50 of the paper (split v1 runs, ablations, 512-pixel control): images resized to 256 × 256 without cropping, no random erasing. The script of the same name at the main path is the older 2025 version (random crop, random erasing, centre-crop validation) |
-| Part detector (RF-DETR Small) | `python rfdetr_parts/prepare_dataset.py --zip <Roboflow export> --out rfdetr_parts/dataset`, then `python rfdetr_parts/train_rfdetr.py` | settings in `rfdetr_parts/rfdetr_config.yaml`; see [docs/V1_SYSTEM.md](docs/V1_SYSTEM.md#training) |
+| Part detector (RF-DETR Small) | `python rfdetr_parts/prepare_dataset.py --zip <Roboflow export> --out rfdetr_parts/dataset`, then `python rfdetr_parts/train_rfdetr.py` | settings in `rfdetr_parts/rfdetr_config.yaml`; see [docs/V1_SYSTEM.md](v1/README.md#training) |
 
-**Code recovered from the lab server.** [`recovered/labbox_2026-10-19/`](recovered/labbox_2026-10-19/) holds, byte for
+**Code recovered from the lab server.** [`recovered/labbox_2026-10-19/`](v1/recovered/labbox_2026-10-19/) holds, byte for
 byte, the 16 code files that existed only in the lab server's working copy when it was exported on 19 October 2026:
 the April 2026 versions of the ResNet-50 training, evaluation and inference scripts, the scripts that rebuilt the
 training and holdout sets with synthetic and external images for the lab's late-April checkpoints, two evaluation

@@ -3,7 +3,7 @@
 Answers to every bracketed note addressed to William in the journal manuscript *Leak-free re-evaluation of a strawberry
 plant health AI system* (24 October 2026 build, 31 pages), with paste-ready text, the evidence behind each answer, and
 the notes that remain for Dr. Zhang and Gus. Compiled by W.S. on 30 and 31 October 2026 from the repository, the
-cluster runs recorded in the lab notebook ([`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG.md), entries dated
+cluster runs recorded in the lab notebook ([`cluster/EXPERIMENT_LOG.md`](../v2/EXPERIMENT_LOG.md), entries dated
 30 and 31 October) and the result files in [`evaluation/paper_data/`](../evaluation/paper_data/). Status as of the
 evening of 31 October 2026; the end-to-end faithfulness item was completed on 12 November 2026.
 
@@ -533,5 +533,5 @@ Every number above can be recomputed from these files (per-image records where t
 - `evaluation/paper_data/reports_splitv1_scores.json`
 
 The lab notebook entries behind the answers are dated 30 and 31 October 2026 in
-[`cluster/EXPERIMENT_LOG.md`](../cluster/EXPERIMENT_LOG.md): pre-registrations, results against predictions, and the
+[`cluster/EXPERIMENT_LOG.md`](../v2/EXPERIMENT_LOG.md): pre-registrations, results against predictions, and the
 provenance answers of 31 October (entries (m) to (o)).
