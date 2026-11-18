@@ -1,6 +1,6 @@
 [← AGAI](../README.md) · [v2](../v2/README.md) · [Documentation](../docs/README.md) · [Lab notebook](../v2/EXPERIMENT_LOG.md)
 
-# `v1/`: the original AGAI system (paper version)
+# `v1/`: the original AGAI system (April 2026 technical report)
 
 The system described in the April 2026 technical report ([RESEARCH_PAPER.pdf](RESEARCH_PAPER.pdf), sources in
 [`paper/`](paper/)): a ResNet-50 classifier, an RF-DETR Small plant-part detector and a LoRA-adapted MiniGPT-v2
@@ -8,6 +8,69 @@ report writer behind a Gradio interface. This folder is the repository root as i
 here unchanged, so the relative paths in the code and configs still work when `v1/` is the working directory. The
 2026 revival's measurements of each component are in [`../docs/`](../docs/README.md); corrections found during the
 revival are marked **Revival note**.
+
+**v1 in the journal manuscript.** The 2026 journal manuscript is a different paper from the April report: it compares
+this system with v2. Its v1 numbers are not taken from the April report; the revival re-measured v1 on the leak-free
+split v1 with the code in [`../v2/`](../v2/README.md), as the baseline that v2 is compared against.
+
+## How it works
+
+The application chains three models and the knowledge base, all called from `demo_v5.py`:
+
+```mermaid
+flowchart TB
+    P["Photo<br/>upload or webcam"]
+    subgraph APP["demo_v5.py, the Gradio application"]
+        C["1. ResNet-50 classifier<br/>resnet_classifier.py<br/>7 conditions, flip TTA, temperature scaling,<br/>per-condition confidence gate"]
+        D["2. RF-DETR Small part detector<br/>grounding/detector.py runs rfdetr_parts/detect_images.py<br/>in a separate Python process for each photo"]
+        B["3. Prompt<br/>demo_v5.py and grounding/inference.py<br/>the diagnosis, stated as fact,<br/>and which parts are and are not visible"]
+        M["4. MiniGPT-v2 report writer<br/>minigpt4/ with LoRA on LLaMA-2-7B-chat, 8-bit<br/>eval_configs/minigptv2_eval.yaml"]
+        K["5. Consistency check<br/>knowledge_graph/rag_retriever.py<br/>signs of another condition in the report:<br/>regenerate once with a stricter prompt"]
+    end
+    P --> C
+    P --> D
+    C -->|"diagnosis"| B
+    D -->|"visible parts"| B
+    B --> M --> K
+    K --> R["Report in the chat<br/>diagnosis, visible symptoms, care advice"]
+    Q["Follow-up questions<br/>knowledge_graph/qa_retriever.py"] --> R
+```
+
+Below the confidence gate's threshold the label becomes "unknown". How each model was trained:
+
+```mermaid
+flowchart LR
+    T["plant_diagnostic/data/<br/>labeled photos, 7 conditions"] --> RT["ResNet-50 training<br/>train_resnet_straw5.py"] --> RW["plant_diagnostic/models/<br/>resnet_strawberry.pth"]
+    T --> O["OpenAI o3 writes one report per photo<br/>generate_json_openai.py"] --> J["plant_diagnostic/datasets/<br/>2,159 image-report pairs"] --> MT["LoRA fine-tune of MiniGPT-v2<br/>train.py with train_configs/"] --> MW["output/minigpt_strawberry/<br/>checkpoint_best.pth"]
+    RB["Roboflow export<br/>part boxes on 1,075 photos"] --> RFT["RF-DETR Small training<br/>rfdetr_parts/train_rfdetr.py"] --> RFW["rfdetr_parts/output/<br/>checkpoint_best_total.pth"]
+```
+
+1. **ResNet-50 classification.** A fine-tuned ResNet-50 classifies the image into one of seven conditions: healthy,
+   drought, overwatering, root rot, frost injury, gray mold, or white mold. Test-time augmentation and temperature
+   scaling produce calibrated confidence scores.
+2. **RF-DETR part detection.** An RF-DETR Small object detector identifies which plant parts are visible (flower,
+   fruit, leaf, root, soil, stem). Per-class confidence thresholds are tuned to each part's detection
+   characteristics. The detected parts are meant to constrain MiniGPT's output to what is visible; the detector
+   on/off ablation of 2026-10-31 found that the writer does not follow the constraint (see
+   [DETECTOR.md](../docs/DETECTOR.md), Caveats). The application runs the detector in a separate interpreter per
+   photograph (`grounding/detector.py`), which cost 15.9 s of v1's 62 s median per photograph on an RTX 5000 Ada
+   (lab notebook, 2026-10-31); the forward pass itself takes 0.016 s.
+3. **MiniGPT-v2 grounded explanation.** A LoRA-adapted MiniGPT-v2 (LLaMA-2-7B backbone) receives the ResNet diagnosis
+   as ground truth and the RF-DETR part detections as visibility constraints. It generates a structured diagnostic
+   report covering the diagnosis, visible symptoms on detected parts, and treatment recommendations. Parts that are
+   not detected are listed in the prompt as not visible; in the ablation this did not reduce part hallucination
+   (86.1 % of reports without the lists, 92.1 % with them, on 151 split v1 test photographs). Loaded in 8-bit as
+   the application does, the writer produced a report in 46 s median on an RTX 5000 Ada (337 tokens at 7.3 tokens
+   per second; lab notebook, 2026-10-31).
+
+The knowledge base answers follow-up questions, draws the knowledge-graph tab and checks each report for symptoms of
+other conditions. It also holds part-specific treatments keyed to RF-DETR's parts, but the application never adds them,
+or any other knowledge-base text, to a report: nothing calls `DiseaseRAG.get_part_specific_treatments()` or
+`get_context()` (checked on 18 November 2026).
+
+> **Revival note.** Because the explainer treats the classifier's label as ground truth, a wrong label produces a
+> fluent explanation of the wrong disease. The revival measures this directly with a label-swap test and trains an
+> explainer that can disagree with its input label ([VLM honesty](../docs/VLM_HONESTY.md)).
 
 ## What is in this folder
 
@@ -59,45 +122,6 @@ Each folder has its own README.
 > April 2026 is therefore not exactly the code here. That server's working copy also had changes that were never
 > committed: 16 files, recovered byte for byte into [`recovered/`](recovered/), and a Gradio 4 fix to `demo_v5.py`
 > ([`recovered/labbox_2026-10-19/README.md`](recovered/labbox_2026-10-19/README.md)).
-
-## How it works
-
-```mermaid
-flowchart TB
-    U["Image upload<br/>or webcam"] --> C["ResNet-50<br/>7-class diagnosis<br/>TTA + temperature scaling"]
-    U --> D["RF-DETR Small<br/>visible plant parts<br/>per-class thresholds"]
-    C -->|"diagnosis, treated as ground truth"| M["MiniGPT-v2 (LLaMA-2-7B, LoRA)<br/>grounded diagnostic report"]
-    D -->|"visible parts only"| M
-    M --> K["Knowledge-graph RAG<br/>treatments, follow-up Q&A,<br/>hallucination checks"]
-    K --> G["Gradio interface"]
-```
-
-1. **ResNet-50 classification.** A fine-tuned ResNet-50 classifies the image into one of seven conditions: healthy,
-   drought, overwatering, root rot, frost injury, gray mold, or white mold. Test-time augmentation and temperature
-   scaling produce calibrated confidence scores.
-2. **RF-DETR part detection.** An RF-DETR Small object detector identifies which plant parts are visible (flower,
-   fruit, leaf, root, soil, stem). Per-class confidence thresholds are tuned to each part's detection
-   characteristics. The detected parts are meant to constrain MiniGPT's output to what is visible; the detector
-   on/off ablation of 2026-10-31 found that the writer does not follow the constraint (see
-   [DETECTOR.md](../docs/DETECTOR.md), Caveats). The application runs the detector in a separate interpreter per
-   photograph (`grounding/detector.py`), which cost 15.9 s of v1's 62 s median per photograph on an RTX 5000 Ada
-   (lab notebook, 2026-10-31); the forward pass itself takes 0.016 s.
-3. **MiniGPT-v2 grounded explanation.** A LoRA-adapted MiniGPT-v2 (LLaMA-2-7B backbone) receives the ResNet diagnosis
-   as ground truth and the RF-DETR part detections as visibility constraints. It generates a structured diagnostic
-   report covering the diagnosis, visible symptoms on detected parts, and treatment recommendations. Parts that are
-   not detected are listed in the prompt as not visible; in the ablation this did not reduce part hallucination
-   (86.1 % of reports without the lists, 92.1 % with them, on 151 split v1 test photographs). Loaded in 8-bit as
-   the application does, the writer produced a report in 46 s median on an RTX 5000 Ada (337 tokens at 7.3 tokens
-   per second; lab notebook, 2026-10-31).
-
-The knowledge base answers follow-up questions, draws the knowledge-graph tab and checks each report for symptoms of
-other conditions. It also holds part-specific treatments keyed to RF-DETR's parts, but the application never adds them,
-or any other knowledge-base text, to a report: nothing calls `DiseaseRAG.get_part_specific_treatments()` or
-`get_context()` (checked on 18 November 2026).
-
-> **Revival note.** Because the explainer treats the classifier's label as ground truth, a wrong label produces a
-> fluent explanation of the wrong disease. The revival measures this directly with a label-swap test and trains an
-> explainer that can disagree with its input label ([VLM honesty](../docs/VLM_HONESTY.md)).
 
 ## Features
 

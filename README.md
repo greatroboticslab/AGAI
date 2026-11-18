@@ -31,7 +31,7 @@ v2 code in `cluster/`; that layout is kept at the tag
 
 ## Overview
 
-**v1** (the paper) chains a ResNet-50 classifier, an RF-DETR Small plant-part detector and a LoRA-adapted
+**v1** (the April 2026 technical report) chains a ResNet-50 classifier, an RF-DETR Small plant-part detector and a LoRA-adapted
 MiniGPT-v2 explainer behind a Gradio demo.
 
 **The 2026 revival** re-establishes the system on the university's Slurm cluster and re-examines every component
@@ -50,17 +50,20 @@ leak-free, seed-replicated, paired comparison shows a gain. All annotation and c
 
 ```mermaid
 flowchart TB
-    subgraph V1["v1 (paper)"]
+    subgraph V1["v1 (April 2026 report)"]
         a1["ResNet-50<br/>7-class diagnosis"] --> a3["MiniGPT-v2 (LLaMA-2-7B)<br/>treats the diagnosis as ground truth"]
         a2["RF-DETR Small<br/>visible plant parts"] --> a3
     end
     subgraph V2["v2 (revival, in progress)"]
         b1["SigLIP 2 classifier<br/>designed synthetic data +<br/>low-quality augmentation"] --> b3["Qwen3-VL-8B honest student<br/>can reject the diagnosis,<br/>names the alternative"]
-        b2["RF-DETR Large<br/>visible plant parts"] --> b3
+        b2["RF-DETR Large<br/>visible plant parts"] -.->|"planned"| b3
         b4["Training annotations:<br/>label-blind open captioners,<br/>claims verified by a zoom-in judge"] -.->|distillation| b3
     end
     V1 ==>|"replace a component only when a<br/>paired, seed-replicated test shows a gain"| V2
 ```
+
+Step-by-step diagrams of each pipeline, with the file behind every step: [v1](v1/README.md#how-it-works) and
+[v2](v2/README.md#how-v2-works). The dashed arrows are planned, not yet built.
 
 ## Results so far
 

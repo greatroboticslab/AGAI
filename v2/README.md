@@ -8,10 +8,52 @@ seed-replicated, paired comparison showed a gain. This folder holds the code beh
 [documentation](../docs/README.md) and the lab notebook [`EXPERIMENT_LOG.md`](EXPERIMENT_LOG.md), which records each
 run (job ID, arguments, result file, conclusion), every pre-registration and every correction.
 
+**The journal manuscript is built on this folder.** Every number in the 2026 journal manuscript (its LaTeX is on
+Overleaf) was produced by the code here, on the leak-free split v1, and its result files are in
+[`../evaluation/paper_data/`](../evaluation/paper_data/README.md). The manuscript compares the v2 system with v1, which
+the same code re-measured on the same split as the baseline; none of its numbers come from the April 2026 report.
+The answers to its open notes, with the evidence, are in [`../docs/MANUSCRIPT_QA.md`](../docs/MANUSCRIPT_QA.md).
+
 The v2 components chosen so far are a SigLIP 2 classifier, an RF-DETR Large part detector and a Qwen3-VL-8B report
 writer (the "honest student") that can reject the classifier's diagnosis and name an alternative. There is no single v2
 application yet (item B1 of the [roadmap](../docs/ROADMAP.md)); the end-to-end v2 runs so far are the latency and
 claim-faithfulness comparison with v1 (`vlm/latency_*.py`, `vlm/score_faithfulness.py`).
+
+## How v2 works
+
+The v2 system as it was measured end to end (latency and claim faithfulness, 49 split v1 test photographs):
+
+```mermaid
+flowchart TB
+    P["Photo"]
+    C["1. SigLIP 2 classifier, So400m at 512 px<br/>fine-tuned on split v1 training photos plus designed<br/>synthetic photos, with phone-quality augmentation<br/>classifier/train_backbone.py"]
+    S["2. Qwen3-VL-8B honest student, served with vLLM<br/>prompt: the photo and 'Dataset label: X',<br/>X being the classifier's diagnosis<br/>vlm/latency_student.py, schema in vlm/annotation_spec.py"]
+    O["Structured report<br/>image quality, visible parts, observations,<br/>verdict on the label: supports it, or rejects it and names the alternative,<br/>differential, caption, report text, follow-up Q&A"]
+    D["RF-DETR Large part detector<br/>retrained on the detector split<br/>detector/rfdetr_size.py"]
+    P --> C
+    C -->|"diagnosis"| S
+    P --> S
+    S --> O
+    P --> D
+    D -.->|"planned: part list in the prompt<br/>(roadmap B1, one v2 application)"| S
+```
+
+Unlike v1's writer, the student is not told that the diagnosis is right: it judges the proposed label against the
+photo, and it lists the visible parts itself. RF-DETR Large was retrained and measured (accuracy and speed), but its
+detections are not yet passed to the student.
+
+How the student was made, and how every model, v1 and v2, was scored:
+
+```mermaid
+flowchart LR
+    SP["evaluation/split_v1.json<br/>leak-free split: near-duplicates grouped,<br/>train 1,017 / val 161 / test 398<br/>benchmark/make_split.py"]
+    SP -->|"training photos"| T["Teacher: Qwen3-VL-32B<br/>annotates each photo twice, with its true<br/>label and with a wrong one<br/>vlm/annotate_vllm.py"]
+    T --> F["keep only the teacher's<br/>correct verdicts"]
+    F --> L["LoRA distillation into Qwen3-VL-8B<br/>vlm/train_vlm_reports.py, merge_lora.py"]
+    SP -->|"398 test photos"| E["every model scored on the same test photos<br/>label-swap honesty test vlm/score_honesty.py,<br/>paired McNemar tests"]
+    L --> E
+    E --> R["evaluation/paper_data/<br/>tables of the journal manuscript"]
+```
 
 ## Folders
 
