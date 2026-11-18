@@ -137,7 +137,7 @@ HON = [  # label, accepts true, rejects wrong, is_student (235B job 72137, GLM-4
     ("Qwen3-VL-235B", 85.9, 75.5, False),
     ("GLM-4.6V", 50.0, 78.1, False),
     ("student from base 8B", 79.3, 81.9, True),
-    ("student from classification-tuned 8B", 79.9, 85.2, True),
+    ("student from classification-tuned 8B", 80.9, 85.4, True),  # verified run (first run 79.9 / 85.2)
 ]
 
 

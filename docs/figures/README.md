@@ -1,7 +1,8 @@
 # `docs/figures/`: figures of the documentation pages
 
 The figures of the [documentation pages](../README.md) of v2, the 2026 revival, the script that draws them, and the
-project logo. The figures were committed on 22 October 2026 and have not changed since. v1 (the original system)
+project logo. The figures were committed on 22 October 2026; the honesty figure was redrawn on 18 November 2026 with the
+verified run of the student. v1 (the original system)
 appears in them only as a baseline, for example the lab's ResNet-50 in the classifier figure.
 
 | Figure (light and dark PNG) | What it shows | Shown in |
@@ -34,9 +35,5 @@ machine to machine. The PNGs are stored in Git LFS (the `*.png` rule in `.gitatt
 
 ## Known problems
 
-- The honesty figure is out of date. For the student from the classification-tuned 8B it plots the first run (accepts
-  79.9 % of true labels, rejects 85.2 % of wrong ones). Since 4 November 2026, [VLM honesty](../VLM_HONESTY.md) reports
-  the verified run (80.9 % and 85.4 %, balanced 83.2 %) in its table and in the figure's alt text. The fix is to set
-  that row of `HON` in `make_figures.py` to 80.9 and 85.4 and rerun the script.
 - Comments in `make_figures.py` name files by their paths before 18 November 2026: `cluster/EXPERIMENT_LOG.md` is now
   `v2/EXPERIMENT_LOG.md`, and `cluster/<study>/<script>` is now `v2/<study>/<script>`.

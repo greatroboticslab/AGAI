@@ -405,10 +405,10 @@ Latency and GPU memory were measured on one NVIDIA RTX 5000 Ada (32 GB) over a s
 **Sentence for the abstract and conclusion**
 
 ```text
-End to end on the same test photographs, v2 raised diagnosis accuracy from 90.2 to 96.3 percent, rejected 85.2 percent of wrong labels where v1 could reject none, and answered in 22 seconds per photograph against 62 for v1 on the same GPU.
+End to end on the same test photographs, v2 raised diagnosis accuracy from 90.2 to 96.3 percent, rejected 85.4 percent of wrong labels where v1 could reject none, and answered in 22 seconds per photograph against 62 for v1 on the same GPU.
 ```
 
-Note: 22 and 62 are the medians above (21.7 and 62.2 s); with its detector kept in memory v1 would be 46 s. 85.2 percent is the student's label-swap rejection rate from the manuscript's honesty table. The faithfulness clause for the conclusion is in the faithfulness block below.
+Note: 22 and 62 are the medians above (21.7 and 62.2 s); with its detector kept in memory v1 would be 46 s. 85.4 percent is the student's label-swap rejection rate in its verified run, from the manuscript's honesty table (85.2 in the first run). The faithfulness clause for the conclusion is in the faithfulness block below.
 
 **Claim-level faithfulness result (12 November).** W.S. rated the sentences of the v1 and v2 reports for the 49 photographs of the latency sample on a blind page (the claims of both reports pooled and shuffled per photograph; verdicts supported, not supported, unsure, not a visual claim, advice assuming something not visible): 573 of 696 claims. Eight photographs were left unrated because the rater could not judge them (4 gray mold, 3 root rot, 1 overwatering; one of the eight has a single rating), so the primary analysis uses the 41 photographs with every claim rated, a rule fixed and committed before the key was applied (lab notebook, entry (v)). On 17 November the rater rated five of the eight, after the results were known; on the 46 complete photographs the gap is smaller (unsupported visual claims 26.7 against 15.7 percent, Wilcoxon P = 0.138, McNemar P = 0.169; entry (ac)). The protocol, metrics and predictions were pre-registered (entry (q)); results against the predictions are in entry (w). v2's reports contain about half as many unsupported visual claims as v1's, but the pre-registered paired tests do not reach significance with one rater and 41 photographs, and the text says so.
 

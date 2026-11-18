@@ -65,18 +65,19 @@ Scoring: [`v2/vlm/score_honesty.py`](../v2/vlm/score_honesty.py).
 | Qwen3-VL-8B, zero-shot | 288/398 = 72.4 % | 295/398 = 74.1 % | 73.2 % | 355/398 = 89.2 % |
 | GLM-4.6V (FP8), zero-shot | 199/398 = 50.0 % | 311/398 = 78.1 % | 64.1 % | 312/398 = 78.4 % |
 
-Paired McNemar on the 796 verdicts (only A right / only B right):
+Paired McNemar on the 796 verdicts (only A right / only B right). Rows with the classification-tuned student use its
+verified run, with the first run in parentheses:
 
 | Comparison | Discordant | p |
 |---|---|---|
-| student (cls-tuned) vs 32B teacher | 70 / 31 | **0.00013** |
+| student (cls-tuned) vs 32B teacher | 72 / 28 (70 / 31) | **1.3 × 10⁻⁵** (0.00013) |
 | student (base) vs 32B teacher | 65 / 41 | 0.025 |
-| student (cls-tuned) vs student (base) | 42 / 27 | 0.091 |
+| student (cls-tuned) vs student (base) | 43 / 23 (42 / 27) | **0.019** (0.091) |
 | 32B vs 8B, zero-shot | 88 / 53 | 0.004 |
 | 27B vs 32B, zero-shot | 74 / 62 | 0.35 |
-| student (cls-tuned) vs 27B | 92 / 65 | 0.038 |
+| student (cls-tuned) vs 27B | 91 / 59 (92 / 65) | **0.011** (0.038) |
 | 235B vs 32B, zero-shot | 68 / 44 | **0.029** |
-| student (cls-tuned) vs 235B | 62 / 47 | 0.18 |
+| student (cls-tuned) vs 235B | 63 / 43 (62 / 47) | 0.064 (0.18) |
 | 32B vs GLM-4.6V, zero-shot | 182 / 74 | 1.1 × 10⁻¹¹ |
 
 **Observations.**
