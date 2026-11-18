@@ -3,8 +3,8 @@
 This directory holds the COCO-format dataset used to fine-tune the
 RF-DETR Small plant-part detector. The image files and their COCO
 annotations are **excluded from version control** (see
-[`.gitignore`](../../../.gitignore)) because of size. This README and the
-placeholder directory layout are tracked.
+[`.gitignore`](../../../.gitignore)) because of size. Only this README
+is tracked.
 
 ## Expected layout
 
@@ -34,6 +34,8 @@ rfdetr_parts/dataset/
 See [`../prepare_dataset.py`](../prepare_dataset.py) for the dataset
 preparation script and [`../train_rfdetr.py`](../train_rfdetr.py) for
 training. Hyperparameters are pinned in
-[`../rfdetr_config.yaml`](../rfdetr_config.yaml). The deployed
+[`../rfdetr_config.yaml`](../rfdetr_config.yaml), except the
+resolution: its 560 was not applied, and the checkpoint takes
+512-pixel input (see [`../README.md`](../README.md)). The deployed
 checkpoint hash is listed in the reproducibility manifest of
 [`../../paper/main.tex`](../../paper/main.tex).

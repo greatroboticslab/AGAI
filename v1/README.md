@@ -88,8 +88,10 @@ flowchart TB
    the application does, the writer produced a report in 46 s median on an RTX 5000 Ada (337 tokens at 7.3 tokens
    per second; lab notebook, 2026-10-31).
 
-A knowledge-graph RAG system supports follow-up Q&A and provides part-specific treatment advice when RF-DETR detects
-particular plant structures.
+The knowledge base answers follow-up questions, draws the knowledge-graph tab and checks each report for symptoms of
+other conditions. It also holds part-specific treatments keyed to RF-DETR's parts, but the application never adds them,
+or any other knowledge-base text, to a report: nothing calls `DiseaseRAG.get_part_specific_treatments()` or
+`get_context()` (checked on 18 November 2026).
 
 > **Revival note.** Because the explainer treats the classifier's label as ground truth, a wrong label produces a
 > fluent explanation of the wrong disease. The revival measures this directly with a label-swap test and trains an
@@ -101,8 +103,8 @@ particular plant structures.
 - **Seven disease classes**: healthy, drought, overwatering, root rot, frost injury, gray mold, white mold
 - **Plant-part grounding**: RF-DETR constrains MiniGPT to only describe visible parts, with optional bounding box
   overlay on the uploaded image
-- **Knowledge graph RAG**: disease-specific follow-up Q&A with part-specific treatment recommendations grounded in
-  university extension publications
+- **Knowledge graph**: disease-specific follow-up Q&A grounded in university extension publications (the
+  part-specific treatments it holds are not used by the application)
 - **Hallucination detection**: cross-checks model output against known disease indicators to flag and regenerate
   confused responses
 - **Web search integration**: optional SERP API enrichment for supplementary context
@@ -248,7 +250,8 @@ disease classes, including:
   detected in the image)
 - Recovery timelines and prevention strategies
 
-The `DiseaseRAG` retriever provides context injection and hallucination checking, while `DiseaseQA` handles follow-up
+In the application, `DiseaseRAG` supplies the knowledge-graph view and the hallucination check (its context and
+part-specific treatment methods are not called), while `DiseaseQA` handles follow-up
 questions with pattern-matched routing to the appropriate knowledge section.
 
 ## Architecture diagrams (outdated)

@@ -3,8 +3,9 @@
 # Plant-part detector
 
 **Role in the pipeline.** RF-DETR detects which plant parts are visible (flower, fruit, leaf, root, soil, stem). The
-detections constrain the explainer so it only describes parts that are in the photo, and drive part-specific
-treatment advice from the knowledge graph ([v1 system](../v1/README.md)).
+detections constrain the explainer so it only describes parts that are in the photo, and were meant to drive
+part-specific treatment advice from the knowledge graph, which the application never looks up
+([v1 system](../v1/README.md#how-it-works)).
 
 **Result.** Moving from RF-DETR Small to Large is a cheap, like-for-like upgrade: **+3.8 points mAP@50:95** (0.593 →
 0.631) on the lab's validation split and **+2.9 points** (0.564 → 0.593) on the clean test split, with the same code,
