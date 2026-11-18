@@ -115,6 +115,7 @@ All numbers on the leak-free split v1 test set (398 photos) unless noted; ± is 
 | [Compute](docs/COMPUTE.md) | cluster, environments, multi-node serving of 100B+ models, reproducing a result |
 | [Roadmap](docs/ROADMAP.md) | what is done, running and next; decisions; paper outline |
 | [v1 system](v1/README.md) | the paper's system: folder map, setup, demo, training, instruction data, knowledge graph |
+| [Paper map](docs/PAPER_MAP.md) | which figures and tables of the journal manuscript report v1 and which report v2, with the code and result files behind each |
 | [Manuscript Q&A](docs/MANUSCRIPT_QA.md) | answers to the bracketed notes of the journal manuscript (24 October build): paste-ready text, evidence, open items |
 | [`v2/README.md`](v2/README.md) | the revival's code, grouped by study, and how to run it |
 | [`v2/EXPERIMENT_LOG.md`](v2/EXPERIMENT_LOG.md) | the lab notebook: every run, pre-registration and correction |

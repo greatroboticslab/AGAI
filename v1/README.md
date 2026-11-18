@@ -13,6 +13,14 @@ revival are marked **Revival note**.
 this system with v2. Its v1 numbers are not taken from the April report; the revival re-measured v1 on the leak-free
 split v1 with the code in [`../v2/`](../v2/README.md), as the baseline that v2 is compared against.
 
+Where v1 appears in the journal manuscript (numbering of the 17 November 2026 build; full map with the code and
+result files of every item: [`docs/PAPER_MAP.md`](../docs/PAPER_MAP.md)):
+
+| v1 in the manuscript | Figures and tables |
+|---|---|
+| v1 results (the baseline) | Fig. 3 (leakage in v1's April 2026 evaluation); the v1 ResNet-50 rows of Fig. 4, Fig. 5b and Tables S4 and S5; Table S7 (v1 ResNet-50 calibration and gate); Table S9 (v1 RF-DETR Small); Table S16 (v1 report writer, detector on/off); Table S17 and Section 3.9 (v1 end to end) |
+| how v1 works (no results) | Fig. 1, Figs. S1, S5, S6, S7 and S8; Tables S2 and S3 |
+
 ## How it works
 
 The application chains three models and the knowledge base, all called from `demo_v5.py`:

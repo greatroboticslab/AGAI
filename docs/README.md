@@ -18,9 +18,10 @@ benchmark and result files are in [`evaluation/`](../evaluation/README.md).
 | [Detector](DETECTOR.md) | RF-DETR Small (v1) against Medium and Large, on the lab's validation split and on a test split that agrees with split v1 |
 | [Compute](COMPUTE.md) | cluster hardware, Python environments, serving models larger than one GPU, reproducing a result |
 | [Roadmap](ROADMAP.md) | what is done, running and next, with acceptance criteria and decisions (last updated 22 October 2026) |
+| [Paper map](PAPER_MAP.md) | which figures and tables of the journal manuscript report v1 and which report v2, with the code and result files behind each |
 | [Manuscript Q&A](MANUSCRIPT_QA.md) | the 34 bracketed notes of the journal manuscript's 24 October 2026 build: answers with text to paste and evidence, the notes still open, the result files |
 | [`figures/`](figures/README.md) | the figures of these pages, each as a light and a dark PNG, and the script that draws them |
 
 The first nine pages share a navigation bar on their first line: a link back to the repository's
-[README](../README.md), then the nine pages in the order of this table, the current page in bold. Manuscript Q&A has
-no navigation bar.
+[README](../README.md), then the nine pages in the order of this table, the current page in bold. Paper map and Manuscript
+Q&A have their own first lines.

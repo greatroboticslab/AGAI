@@ -14,6 +14,22 @@ Overleaf) was produced by the code here, on the leak-free split v1, and its resu
 the same code re-measured on the same split as the baseline; none of its numbers come from the April 2026 report.
 The answers to its open notes, with the evidence, are in [`../docs/MANUSCRIPT_QA.md`](../docs/MANUSCRIPT_QA.md).
 
+Where v2 appears in the manuscript (numbering of the 17 November 2026 build; full map with the code and result files
+of every item: [`docs/PAPER_MAP.md`](../docs/PAPER_MAP.md)):
+
+| v2 in the manuscript | Figures and tables | Code |
+|---|---|---|
+| the leak-free benchmark | Fig. 3d | [`benchmark/`](benchmark/) |
+| the classifier (SigLIP 2 chosen) | Fig. 4, Fig. S9; Tables S4, S5, S6, S7 | [`classifier/`](classifier/) |
+| synthetic data and robustness | Fig. 5; Table S8 | [`synthetic/`](synthetic/), [`classifier/`](classifier/) |
+| the part detector (RF-DETR Large) | Table S9 | [`detector/`](detector/) |
+| explanations that can reject a wrong diagnosis (the student) | Fig. 6; Table S10 | [`vlm/`](vlm/) |
+| captioning and hallucination filters | Fig. 7; Tables S11, S12 | [`vlm/`](vlm/) |
+| test-time compute | Tables S13, S14, S15 | [`vlm/`](vlm/) |
+| v2 against v1, end to end | Table S17 and Section 3.9 (accuracy, honesty, latency, memory, claim faithfulness), abstract, conclusion | [`vlm/`](vlm/), [`classifier/`](classifier/), [`detector/`](detector/), [`slurm/`](slurm/) |
+
+The v1 numbers beside them (the baseline) were measured with the same code; see the v1 rows of the map.
+
 The v2 components chosen so far are a SigLIP 2 classifier, an RF-DETR Large part detector and a Qwen3-VL-8B report
 writer (the "honest student") that can reject the classifier's diagnosis and name an alternative. There is no single v2
 application yet (item B1 of the [roadmap](../docs/ROADMAP.md)); the end-to-end v2 runs so far are the latency and
