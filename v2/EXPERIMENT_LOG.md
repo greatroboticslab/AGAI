@@ -1511,3 +1511,18 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   `faithfulness_v1v2_scores_2026-11-17_all_ratings.txt`; the 12 November files are unchanged, and the primary analysis
   reproduces from them byte for byte. The 3.9 text in `docs/MANUSCRIPT_QA.md` now reports this; not yet on Overleaf,
   where the paragraph still says 8 photographs (the browser extension was not connected).
+- **2026-11-18, 13:09 CST. (ad) Repository reorganised into `v1/` and `v2/`; how to read paths in earlier entries.** At Dr.
+  Zhang's request of 18 November (07:57) the repository is organised by version. `v1/` holds the v1 system as it was
+  at the repository root (application, models' code, configs, photographs, tests, recovered lab-server code), with
+  its April 2026 technical report (`v1/paper/`) and its holdout evaluations (`v1/evaluation/`); relative paths
+  inside it are unchanged, so v1 runs from `v1/`. `v2/` holds the revival's code (formerly `cluster/`) and this
+  notebook (`v2/EXPERIMENT_LOG.md`). `evaluation/` (split v1, bake-off set, label audit, `paper_data/`), `docs/`
+  and `paper/figure_scripts/` stay where they were. The move changed no file content (renames only, commit 2462251);
+  every folder has a README. Commands and paths in entries (a) to (ac) refer to the cluster's working copy
+  (`cluster/<script>`, `evaluation/...`, `plant_diagnostic/...`); `v2/infra/make_workdir.sh` builds that layout
+  from the repository with symbolic links, so they work as written. Checked on Hamilton today, in a folder built that
+  way from the new layout: `make_faithfulness_claims.py --check`, `score_faithfulness.py` (primary and all-ratings)
+  and `score_reports.py` (Table S16) reproduce the committed files byte for byte; the v1 modules import as from the
+  old root; the April report's three table scripts, run from `v1/`, reproduce `v1/paper/generated/` exactly; and the
+  v1 unit tests give the same result in both layouts (13 tests, 6 skipped, 1 error, unchanged). The layout before the
+  move is the tag `flat-layout-2026-11-17` (commit 37c80ae). The cluster's working copy is unchanged.
