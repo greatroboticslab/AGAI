@@ -7,8 +7,8 @@
 *.json filter=lfs diff=lfs merge=lfs -text
 # Small text-y JSONs used as paper-evidence artifacts are stored as regular
 # git blobs (not LFS) so they can be committed without an LFS-budget call.
-evaluation/holdout/*.json !filter !diff !merge text
-paper/generated/*.json !filter !diff !merge text
+v1/evaluation/holdout/*.json !filter !diff !merge text
+v1/paper/generated/*.json !filter !diff !merge text
 evaluation/paper_data/*.json !filter !diff !merge text
 evaluation/split_v1.json !filter !diff !merge text
 evaluation/bakeoff_set_v1.json !filter !diff !merge text
