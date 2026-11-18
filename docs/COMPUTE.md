@@ -101,7 +101,8 @@ Lessons that cost a failed run each:
    arguments. The notebook names scripts by their flat cluster path (`cluster/<script>`), which exists in that folder
    next to `cluster/<study>/<script>`; each study folder's README in [`v2/`](../v2/README.md) lists its scripts. A
    single-GPU job stages the model (`cluster/infra/stage_model.sh`) and runs the script; multi-node jobs use the
-   launchers in [`v2/slurm/`](../v2/slurm/).
+   launchers in [`v2/slurm/`](../v2/slurm/). Slurm jobs `cd` into `/projects/$USER/agai/MiniGPT-4` (the last line of
+   `agai_env.sh`, and six job files), so for jobs build the working folder at that path or change those lines.
 3. Rebuild tables from the per-image result files ([`v2/benchmark/leaderboard.py`](../v2/benchmark/leaderboard.py),
    [`v2/benchmark/compare_results.py`](../v2/benchmark/compare_results.py), [`v2/vlm/score_honesty.py`](../v2/vlm/score_honesty.py)).
 4. Figures in these pages: `python docs/figures/make_figures.py`.

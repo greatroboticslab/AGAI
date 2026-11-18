@@ -44,7 +44,12 @@ python cluster/score_faithfulness.py --help        # the flat paths used in the 
 ```
 
 In that folder `v2/` appears as `cluster/`, both by study (`cluster/vlm/...`) and flat (`cluster/<script>`), so the
-commands in the notebook, in [`../docs/`](../docs/README.md) and in the Slurm files work as written. Checked on
+commands in the notebook, in [`../docs/`](../docs/README.md) and in the Slurm files work as written there.
+
+Slurm jobs need one more step. Every job sources the copy of `agai_env.sh`, which ends with
+`cd /projects/$USER/agai/MiniGPT-4`, and six job files `cd` there again, so a job runs in that folder whatever folder it
+was submitted from. To run jobs against a folder built by `make_workdir.sh`, build it at that path or change those `cd`
+lines; [`slurm/README.md`](slurm/README.md) lists the files. Checked on
 Hamilton on 18 November 2026: from the committed files, `vlm/make_faithfulness_claims.py --check`,
 `vlm/score_faithfulness.py` (primary and all-ratings analyses) and `vlm/score_reports.py` (Table S16) reproduce the
 committed results byte for byte, and the v1 modules import as they did from the old repository root.
@@ -57,7 +62,7 @@ working folder, and the copies the manuscript needs were moved by hand into
 [`../evaluation/paper_data/`](../evaluation/paper_data/). Starting from the committed files therefore sometimes needs
 a `paper_data/` path in place of a default; the study READMEs say where.
 
-Example, the 235B claim judge across five nodes (in the working folder):
+Example, the 235B claim judge across five nodes (submitted from, and run in, `/projects/$USER/agai/MiniGPT-4`):
 
 ```bash
 sbatch -N 5 --export=ALL,VLLM_SCRIPT=cluster/vlm/judge_claims.py cluster/slurm/vllm_ray.sbatch \
