@@ -15,8 +15,8 @@ with its training data.
 ## Results on the lab's validation split
 
 Evaluation with RF-DETR 1.11.2 on the lab's own 322-image validation split; every model trained with the lab's
-configuration (`rfdetr_parts/rfdetr_config.yaml`) for 100 epochs on one RTX 5000 Ada
-([`cluster/detector/rfdetr_size.py`](../v2/detector/rfdetr_size.py)), with two changes forced by the newer RF-DETR: the yaml's
+configuration (`v1/rfdetr_parts/rfdetr_config.yaml`) for 100 epochs on one RTX 5000 Ada
+([`v2/detector/rfdetr_size.py`](../v2/detector/rfdetr_size.py)), with two changes forced by the newer RF-DETR: the yaml's
 resolution of 560 px is rejected (patch 16 × 2 windows), so each size trains at its default resolution, and
 `lr_min_factor` is not accepted and was dropped. The lab's own checkpoint was trained at 512 px as well, not at the
 yaml's 560: its position embeddings hold 32 × 32 patches of 16 px, and the lab's `train_rfdetr.py` builds
@@ -37,7 +37,7 @@ gradient accumulation 4 to fit 32 GB.
 
 The lab's validation split is also the split the best checkpoint is selected on, and it shares near-copies with the
 lab's training data, so a detector split that agrees with the benchmark's [split v1](BENCHMARK.md) was carved
-([`cluster/detector/make_detector_split.py`](../v2/detector/make_detector_split.py); report
+([`v2/detector/make_detector_split.py`](../v2/detector/make_detector_split.py); report
 [`evaluation/paper_data/detector_split_v1.json`](../evaluation/paper_data/detector_split_v1.json)). The 1075 annotated
 images were matched to the 1576 condition photographs by perceptual hash (64-bit DCT pHash, Hamming distance ≤ 6; 646
 matched, near-copies kept together); every annotated copy of a split v1 test photograph goes to the detector test set, the
@@ -45,7 +45,7 @@ others follow their photograph, and the 429 annotation-only images go to trainin
 The test images are copies of 151 split v1 test photographs (healthy 74, root rot 30, frost 24, gray mold 12, white mold
 7, drought 2, overwatered 2), so the split is light on the molds and the water stresses. Small and Large were retrained
 with the lab configuration (100 epochs, checkpoint chosen on the 67-image validation split) and scored with pycocotools
-([`cluster/detector/eval_parts.py`](../v2/detector/eval_parts.py); files `evaluation/paper_data/parts_*_splitv1_{valid,test}.json`).
+([`v2/detector/eval_parts.py`](../v2/detector/eval_parts.py); files `evaluation/paper_data/parts_*_splitv1_{valid,test}.json`).
 
 | Model (163 test images) | mAP@50:95 | mAP@50 | mAP@75 | AP flower | fruit | leaf | root | soil | stem |
 |---|---|---|---|---|---|---|---|---|---|
@@ -71,16 +71,16 @@ the test split, so the hand-set thresholds stay; the sweeps are in the `*_valid.
 - **The clean test split is small for several conditions** (2 to 12 images of the molds and water stresses), because
   the annotated images overlap the condition photographs mostly through healthy, frost and root-rot photos.
 - Detection quality matters to the extent that it changes what the explainer says, and for the v1 writer it changes
-  little. The "RF-DETR on/off" ablation (lab notebook, 2026-10-31; `cluster/vlm/score_reports.py`) scored the report
+  little. The "RF-DETR on/off" ablation (lab notebook, 2026-10-31; `v2/vlm/score_reports.py`) scored the report
   writer retrained without split v1 test images on 151 test photographs with part masks, with and without the detector's
   part lists in the prompt: the part-hallucination rate was 86.1 % without the lists and 92.1 % with them (paired exact
   McNemar P = 0.064), and the writer named a part the prompt declared not visible in 91.4 % of reports. Most false
   mentions are of soil in care advice; without soil the rates are 33.8 % vs 39.1 % (P = 0.28). The v1 writer does not
   follow the prompt's part constraints, so the detector's lists carry no measurable grounding benefit for it.
-- **The application's detector call is slow for a reason unrelated to the model.** `grounding/detector.py` runs
+- **The application's detector call is slow for a reason unrelated to the model.** `v1/grounding/detector.py` runs
   RF-DETR in a fresh interpreter for every photograph, so each call pays the interpreter start and the model load:
   15.9 s median per photograph on an RTX 5000 Ada against 0.016 s for the forward pass in-process (lab notebook,
-  2026-10-31, job 72394; `cluster/detector/latency_rfdetr.py`, `cluster/vlm/latency_v1.py`). That is a quarter of
+  2026-10-31, job 72394; `v2/detector/latency_rfdetr.py`, `v2/vlm/latency_v1.py`). That is a quarter of
   v1's 62 s per photograph.
 
 ## Next

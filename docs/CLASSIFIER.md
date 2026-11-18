@@ -26,7 +26,7 @@ split v1 train, ResNet-50 scores **90.2 ± 1.5 %** (5 seeds, macro 85.5 ± 2.0 %
 ## 2. Zero-shot VLMs are not competitive diagnosers
 
 Same 7-class prompt with class definitions for every VLM, greedy decoding
-([`cluster/vlm/zeroshot_qwen3vl.py`](../v2/vlm/zeroshot_qwen3vl.py)):
+([`v2/vlm/zeroshot_qwen3vl.py`](../v2/vlm/zeroshot_qwen3vl.py)):
 
 | Model | paper68 | leak-free 147 | all1,580 acc / macro | split v1 test |
 |---|---|---|---|---|
@@ -45,7 +45,7 @@ Same 7-class prompt with class definitions for every VLM, greedy decoding
 ## 3. Frozen backbones with a linear head
 
 Frozen features + logistic regression, C chosen on val, test scored once
-([`cluster/classifier/probe_backbones.py`](../v2/classifier/probe_backbones.py)):
+([`v2/classifier/probe_backbones.py`](../v2/classifier/probe_backbones.py)):
 
 | Backbone | Test acc | Macro | vs ResNet-50 seed 42 (only this / only ResNet, p) |
 |---|---|---|---|
@@ -58,7 +58,7 @@ Frozen features + logistic regression, C chosen on val, test scored once
 | ConvNeXt V2-L 384 (IN-22k) | 92.5 % | 89.2 % | 16 / 13, p = 0.71 |
 | BioCLIP 2 (ViT-L/14) | 90.7 % | 84.8 % | 18 / 22, p = 0.64 |
 
-**5-fold grouped cross-validation over all 1,576 images** ([`cluster/classifier/cv_probes.py`](../v2/classifier/cv_probes.py);
+**5-fold grouped cross-validation over all 1,576 images** ([`v2/classifier/cv_probes.py`](../v2/classifier/cv_probes.py);
 every image predicted once out-of-fold; Wilson 95 % CI) gives a more stable ranking:
 
 | Model | CV accuracy (95 % CI) | Macro |
@@ -84,7 +84,7 @@ every image predicted once out-of-fold; Wilson 95 % CI) gives a more stable rank
 
 ## 4. Fine-tuned backbones with the lab's recipe
 
-[`cluster/classifier/train_backbone.py`](../v2/classifier/train_backbone.py) reuses the lab's ResNet recipe (same augmentations,
+[`v2/classifier/train_backbone.py`](../v2/classifier/train_backbone.py) reuses the lab's ResNet recipe (same augmentations,
 loss, head-then-full schedule, temperature scaling), so the backbone is the only change.
 
 | Method | Seeds | Test accuracy | Macro |
@@ -102,7 +102,7 @@ loss, head-then-full schedule, temperature scaling), so the backbone is the only
 - **SigLIP 2 is the efficient pick**: 0.4B parameters, ~33 s per epoch on one A100, ~10 minutes per fine-tune. Its
   best seed vs ResNet-50 seed 42: 26 / 6, p = 0.00054. PE-Core-G matches it at 4.7× the parameters.
 - **VLM fine-tunes** (LoRA r = 16 on all linear layers incl. the vision tower, answer-only loss,
-  [`cluster/vlm/train_vlm_lora.py`](../v2/vlm/train_vlm_lora.py)): the 32B buys nothing over the 8B (10 vs 9 discordant,
+  [`v2/vlm/train_vlm_lora.py`](../v2/vlm/train_vlm_lora.py)): the 32B buys nothing over the 8B (10 vs 9 discordant,
   p = 1) at ~4× the training compute. A VLM is worth having for *explanations*, not for the label
   ([VLM honesty](VLM_HONESTY.md)).
 - The synthetic-data recipe in row 3 is explained in [Synthetic data](SYNTHETIC_DATA.md); its gain on clean photos is
@@ -111,7 +111,7 @@ loss, head-then-full schedule, temperature scaling), so the backbone is the only
 ## 5. Ensembles
 
 Probabilities: VLM first-token softmax over the 7 class names, probe/backbone softmax, ResNet with TTA + temperature
-([`cluster/classifier/ensemble.py`](../v2/classifier/ensemble.py)). Four ensembles were declared before any ensemble result was seen
+([`v2/classifier/ensemble.py`](../v2/classifier/ensemble.py)). Four ensembles were declared before any ensemble result was seen
 (equal weights primary); later combinations are marked exploratory.
 
 | Ensemble | Status | Test acc | Macro | vs best member (p) |
@@ -131,7 +131,7 @@ averaging removes the seed lottery (single seeds range 94.2-96.7 %).
 Photo size is confounded with the label ([Benchmark](BENCHMARK.md#known-defects-of-the-data)): healthy photos are
 mostly small web thumbnails, the mold classes are 512 × 512, the water-stress and frost classes are large phone photos.
 A test proposed in the lab discussion: removing detail from a photo must not make the model *more* confident; if it
-does, the model reads the degradation itself as evidence ([`cluster/classifier/eval_shortcut.py`](../v2/classifier/eval_shortcut.py),
+does, the model reads the degradation itself as evidence ([`v2/classifier/eval_shortcut.py`](../v2/classifier/eval_shortcut.py),
 SigLIP 2, 3 seeds per training recipe, split v1 test).
 
 | Training recipe (SigLIP 2, 3 seeds each) | Clean test | Healthy accuracy, thumbnails ≤ 300 px (n = 58) | Healthy accuracy, large ≥ 500 px (n = 14) | P(healthy) change when large healthy photos are shrunk to 275 px | Disease photos called healthy after shrinking to 275 px |
@@ -161,7 +161,7 @@ SigLIP 2, 3 seeds per training recipe, split v1 test).
 ## Error analysis and the label-noise ceiling
 
 E2's 11 test errors, reviewed by eye (not by a pathologist) on a contact sheet
-([`cluster/benchmark/error_sheet.py`](../v2/benchmark/error_sheet.py)):
+([`v2/benchmark/error_sheet.py`](../v2/benchmark/error_sheet.py)):
 
 | Category | Count | Example |
 |---|---|---|

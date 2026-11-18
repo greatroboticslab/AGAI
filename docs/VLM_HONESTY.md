@@ -14,9 +14,9 @@ is significantly more honest than its teacher (balanced 83.2 % vs 77.6 % in the 
 
 ## The annotation schema
 
-[`cluster/vlm/annotation_spec.py`](../v2/vlm/annotation_spec.py) defines one structured, label-conditioned annotation
+[`v2/vlm/annotation_spec.py`](../v2/vlm/annotation_spec.py) defines one structured, label-conditioned annotation
 per photo, enforced during decoding with vLLM structured outputs
-([`cluster/vlm/annotate_vllm.py`](../v2/vlm/annotate_vllm.py)):
+([`v2/vlm/annotate_vllm.py`](../v2/vlm/annotate_vllm.py)):
 
 | Field | Content |
 |---|---|
@@ -46,7 +46,7 @@ flowchart LR
 
 Every val and test photo is annotated twice: once told its true label, once told a seeded wrong label. An honest
 annotator accepts the first and rejects the second; a sycophantic one accepts both. Chance is 50 %.
-Scoring: [`cluster/vlm/score_honesty.py`](../v2/vlm/score_honesty.py).
+Scoring: [`v2/vlm/score_honesty.py`](../v2/vlm/score_honesty.py).
 
 ## Results (split v1 test, 398 photos × 2 labels = 796 verdicts)
 
@@ -98,7 +98,7 @@ Paired McNemar on the 796 verdicts (only A right / only B right):
   label are different skills.
 - **No zero-shot model is more honest than the filtered 8B student** (83.2 % in the verified run).
 - **Filtered distillation.** In the training data we know which given labels are wrong, so
-  [`cluster/vlm/train_vlm_reports.py`](../v2/vlm/train_vlm_reports.py) keeps only teacher annotations whose verdict is
+  [`v2/vlm/train_vlm_reports.py`](../v2/vlm/train_vlm_reports.py) keeps only teacher annotations whose verdict is
   correct (accepts a true label / rejects a swapped one): 795 true-label + 302 wrong-label examples, LoRA r = 16,
   2 epochs. The student therefore never learns the teacher's ~23 % sycophantic verdicts. Starting from the
   classification-tuned 8B helps (43 / 23 discordant verdicts, p = 0.019 with the verified verdicts; 42 / 27, p = 0.091 in the first run). The validation split gives the same ordering

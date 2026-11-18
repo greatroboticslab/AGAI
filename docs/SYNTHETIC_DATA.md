@@ -67,9 +67,9 @@ flowchart TB
     M --> T["Training tree<br/>hand cap 0.33 per class,<br/>held-out batches for probes"]
 ```
 
-The importer ([`cluster/synthetic/import_synth.py`](../v2/synthetic/import_synth.py)) random-crops to random aspect ratios,
+The importer ([`v2/synthetic/import_synth.py`](../v2/synthetic/import_synth.py)) random-crops to random aspect ratios,
 downscales and JPEG-compresses every image, because raw generator outputs are pristine PNGs in a few fixed sizes (an
-easy shortcut). Training trees are built by [`cluster/synthetic/build_train_tree.py`](../v2/synthetic/build_train_tree.py), which
+easy shortcut). Training trees are built by [`v2/synthetic/build_train_tree.py`](../v2/synthetic/build_train_tree.py), which
 enforces the hand cap and can hold out whole batches as a shortcut probe. Added to training: drought +50, frost +46,
 healthy +50, overwatered +46, root rot +43 (235 synthetic vs 1,017 real).
 
@@ -103,12 +103,12 @@ augmentation made this worse (128 px 77.9 % for the first arm): the look-alikes 
 visible roots alone are not disease, so when a thumbnail destroys the plant-level symptoms the model falls back to
 "healthy". Train-time phone degradation, applied to every class with probability 0.3 (long side 96-320 px, JPEG
 quality 25-70, sometimes blur or darkening + noise; `--lowq-aug` in
-[`cluster/classifier/train_backbone.py`](../v2/classifier/train_backbone.py)), fixes it: 128 px drought 59 → 78 %, frost 62 → 80 %,
+[`v2/classifier/train_backbone.py`](../v2/classifier/train_backbone.py)), fixes it: 128 px drought 59 → 78 %, frost 62 → 80 %,
 overwatered 68 → 95 %, and thumbnails wrongly called healthy 108 → 8 (3 seeds), with clean accuracy unchanged.
 
 ### The roots shortcut
 
-A held-out synthetic probe ([`cluster/classifier/eval_probe.py`](../v2/classifier/eval_probe.py); batches generated after the first
+A held-out synthetic probe ([`v2/classifier/eval_probe.py`](../v2/classifier/eval_probe.py); batches generated after the first
 arm was trained; a diagnostic, not a benchmark) contains six photos of **healthy dug-up roots**. Models trained on
 real data only, or with the lab's set, call 0-1 of 6 healthy (the rest "root rot"); models trained with the designed
 set call 5-6 of 6 healthy, while rotted roots stay 8/8. Over the whole 70-image probe: real only 57-66 %, lab set

@@ -10,8 +10,24 @@ publications.
 > Research prototype developed at Middle Tennessee State University. Not a substitute for professional agronomic
 > advice.
 
-**[Research paper (v1)](v1/RESEARCH_PAPER.pdf)** · **[Lab notebook](v2/EXPERIMENT_LOG.md)** ·
-**[Roadmap](docs/ROADMAP.md)** · **[v1 setup and demo](v1/README.md)**
+**[v1: the original system](v1/README.md)** · **[v2: the 2026 revival](v2/README.md)** ·
+**[Research paper (v1)](v1/RESEARCH_PAPER.pdf)** · **[Lab notebook](v2/EXPERIMENT_LOG.md)** · **[Roadmap](docs/ROADMAP.md)**
+
+## Where things are
+
+| Folder | Contents |
+|---|---|
+| [`v1/`](v1/README.md) | the original system as published in April 2026: Gradio application, ResNet-50 classifier, RF-DETR Small part detector, MiniGPT-v2 report writer, knowledge base, the labeled photographs, configs, tests and the technical report |
+| [`v2/`](v2/README.md) | the 2026 revival: the code of every study, grouped by part (benchmark, classifier, detector, vlm, synthetic, infra, slurm), and the lab notebook |
+| [`evaluation/`](evaluation/README.md) | shared benchmark and result files: the leak-free split v1, the captioning bake-off set, the label audit, and the result files behind the journal manuscript |
+| [`docs/`](docs/README.md) | write-ups of the studies, figures, and the manuscript Q&A |
+| [`paper/`](paper/README.md) | figure scripts of the 2026 journal manuscript comparing v1 and v2 (the manuscript itself is on Overleaf) |
+
+Every folder and main subfolder has a README. v1 runs from inside `v1/`; the v2 scripts run in a working folder that
+[`v2/infra/make_workdir.sh`](v2/infra/make_workdir.sh) builds out of both
+([details](v2/README.md#running-the-scripts)). Until 18 November 2026 the v1 files sat at the repository root and the
+v2 code in `cluster/`; that layout is kept at the tag
+[`flat-layout-2026-11-17`](https://github.com/greatroboticslab/AGAI/tree/flat-layout-2026-11-17).
 
 ## Overview
 
@@ -95,10 +111,11 @@ All numbers on the leak-free split v1 test set (398 photos) unless noted; ± is 
 | [Detector](docs/DETECTOR.md) | RF-DETR Small / Medium / Large |
 | [Compute](docs/COMPUTE.md) | cluster, environments, multi-node serving of 100B+ models, reproducing a result |
 | [Roadmap](docs/ROADMAP.md) | what is done, running and next; decisions; paper outline |
-| [v1 system](v1/README.md) | the paper's system: setup, demo, training, knowledge graph |
+| [v1 system](v1/README.md) | the paper's system: folder map, setup, demo, training, instruction data, knowledge graph |
 | [Manuscript Q&A](docs/MANUSCRIPT_QA.md) | answers to the bracketed notes of the journal manuscript (24 October build): paste-ready text, evidence, open items |
-| [`cluster/README.md`](v2/README.md) | index of the experiment code, grouped by study, and the Slurm launchers |
-| [`cluster/EXPERIMENT_LOG.md`](v2/EXPERIMENT_LOG.md) | the lab notebook: every run, pre-registration and correction |
+| [`v2/README.md`](v2/README.md) | the revival's code, grouped by study, and how to run it |
+| [`v2/EXPERIMENT_LOG.md`](v2/EXPERIMENT_LOG.md) | the lab notebook: every run, pre-registration and correction |
+| [`evaluation/README.md`](evaluation/README.md) | the benchmark split, bake-off set, label audit and result files |
 
 ## Status
 
@@ -115,84 +132,49 @@ Full plan with acceptance criteria: [Roadmap](docs/ROADMAP.md).
 
 ## Quick start
 
-- **Run the v1 demo:** environment setup, weights and `python demo_v5.py` in [docs/V1_SYSTEM.md](v1/README.md).
-- **Reproduce a revival result:** find its entry in the [lab notebook](v2/EXPERIMENT_LOG.md), then run the named
-  script with the logged arguments ([docs/COMPUTE.md](docs/COMPUTE.md#reproducing-a-result); [`cluster/README.md`](v2/README.md)
-  gives each script's folder).
+- **Run the v1 demo:** `cd v1 && python demo_v5.py`, after the environment setup and weights described in
+  [`v1/README.md`](v1/README.md).
+- **Reproduce a revival result:** build the working folder with `bash v2/infra/make_workdir.sh <folder>`, find the
+  run's entry in the [lab notebook](v2/EXPERIMENT_LOG.md), and run the named script there with the logged arguments
+  ([`v2/README.md`](v2/README.md#running-the-scripts); [docs/COMPUTE.md](docs/COMPUTE.md#reproducing-a-result)).
+- **Train the v1 models or regenerate the instruction data:** [`v1/README.md`](v1/README.md#training).
 - **Regenerate the figures:** `python docs/figures/make_figures.py`.
-
-## Training code and instruction data
-
-**Instruction data (image-report pairs).** The 2159 reports that trained the v1 report writer were written by OpenAI's
-o3 through [`generate_json_openai.py`](v1/plant_diagnostic/scripts/gptscripts/json_generation/generate_json_openai.py).
-For each image it sends the photograph and its label, which is the name of the class folder, with a prompt that fixes
-the label and limits the report to what is visible, and it writes one image-report pair per line. An interrupted run
-resumes where it stopped. When a call fails it writes a templated fallback report; none of the 2159 is a fallback.
-The empty `generate_stage2_jsonl.py` beside it is a placeholder from 2025.
-
-```bash
-export OPENAI_API_KEY=...   # in the environment only, never in a file of this repository
-python plant_diagnostic/scripts/gptscripts/json_generation/generate_json_openai.py \
-    --img-root plant_diagnostic/data/train_aug \
-    --out plant_diagnostic/datasets/stage2_train_7class.jsonl --model o3 --sleep 0.6
-python plant_diagnostic/scripts/convert_jsonl_to_json.py \
-    plant_diagnostic/datasets/stage2_train_7class.jsonl plant_diagnostic/datasets/stage2_train_7class_fixed.json
-```
-
-A later generator from the lab server, `generate_multicaption_jsonl.py`, writes several conversation styles per image
-(clinical, quick triage, treatment, differential, severity, layperson). It is in `recovered/`, below, and no reported
-result uses it.
-
-**Training the v1 models.**
-
-| Model | Command | Notes |
-|---|---|---|
-| Report writer (MiniGPT-v2 with LoRA) | `python -m torch.distributed.run --nproc_per_node=2 train.py --cfg-path train_configs/minigptv2_strawberry_v2.yaml` | the lab's April 2026 run; the config's paths are the lab server's. The split v1 retrain uses `train_configs/minigptv2_strawberry_splitv1.yaml` ([`cluster/slurm/train_minigpt_splitv1.sbatch`](v2/slurm/train_minigpt_splitv1.sbatch)) |
-| Condition classifier (ResNet-50) | `python recovered/labbox_2026-10-19/plant_diagnostic/scripts/resnetscripts/train_resnet_straw5.py --train_root <train> --val_root <val> --out <checkpoint.pth> --seed 42` | the version that trained every ResNet-50 of the paper (split v1 runs, ablations, 512-pixel control): images resized to 256 × 256 without cropping, no random erasing. The script of the same name at the main path is the older 2025 version (random crop, random erasing, centre-crop validation) |
-| Part detector (RF-DETR Small) | `python rfdetr_parts/prepare_dataset.py --zip <Roboflow export> --out rfdetr_parts/dataset`, then `python rfdetr_parts/train_rfdetr.py` | settings in `rfdetr_parts/rfdetr_config.yaml`; see [docs/V1_SYSTEM.md](v1/README.md#training) |
-
-**Code recovered from the lab server.** [`recovered/labbox_2026-10-19/`](v1/recovered/labbox_2026-10-19/) holds, byte for
-byte, the 16 code files that existed only in the lab server's working copy when it was exported on 19 October 2026:
-the April 2026 versions of the ResNet-50 training, evaluation and inference scripts, the scripts that rebuilt the
-training and holdout sets with synthetic and external images for the lab's late-April checkpoints, two evaluation
-scripts for those checkpoints, the April technical report's MiniGPT holdout scripts and the multi-caption generator.
-The cluster runs for the paper used a copy of that working copy, so the recovered `train_resnet_straw5.py` is the
-script behind the paper's ResNet-50 results; the older same-named scripts at the main paths are left as they are.
-That folder's README gives the provenance, checksums and how to run each file.
 
 ## Repository layout
 
 ```
 AGAI/
 ├── README.md                  # this page
-├── docs/                      # revival documentation and figures (start here)
-├── cluster/                   # revival code, grouped by study, and the lab notebook
+├── v1/                        # the original system (runs from inside v1/)
+│   ├── demo_v5.py             # Gradio application (entry point), with ui_components.py and dark_theme.css
+│   ├── resnet_classifier.py   # ResNet-50 inference and TTA
+│   ├── train.py               # MiniGPT-v2 training; configs/, eval_configs/, train_configs/
+│   ├── minigpt4/              # MiniGPT-v2 framework with the lab's changes
+│   ├── grounding/             # RF-DETR grounding and MiniGPT prompting
+│   ├── rfdetr_parts/          # RF-DETR Small training and inference
+│   ├── knowledge_graph/       # disease knowledge base and retrievers
+│   ├── plant_diagnostic/      # labeled photographs (Git LFS), classifier code, instruction data
+│   ├── hallucination_evaluation/, tests/
+│   ├── evaluation/            # April 2026 holdout evaluations
+│   ├── paper/                 # April 2026 technical report (RESEARCH_PAPER.pdf is its build)
+│   ├── recovered/             # code recovered from the lab server (19 Oct 2026), byte for byte
+│   └── llama_weights/, figs/, documentation/, annotationjsons/
+├── v2/                        # the 2026 revival
 │   ├── benchmark/             # leak-free split, data audits, v1 baselines, leaderboards
-│   ├── classifier/            # backbones, fine-tunes, ensembles, robustness, shortcut test
-│   ├── synthetic/             # synthetic-image import and training trees
-│   ├── vlm/                   # annotation, honesty test, student, captioning, judges, voting
+│   ├── classifier/            # backbones, fine-tunes, ensembles, robustness, calibration
 │   ├── detector/              # RF-DETR evaluation and training
-│   ├── infra/                 # cluster setup, model staging and verification
-│   ├── slurm/                 # launchers: multi-node vLLM and LoRA, honest student, synthetic arms
-│   └── EXPERIMENT_LOG.md      # every run, pre-registration and correction
-├── evaluation/                # v1 holdout evaluation, label audit
-├── demo_v5.py                 # v1 Gradio interface (entry point)
-├── resnet_classifier.py       # v1 ResNet-50 inference and TTA
-├── grounding/                 # v1 RF-DETR grounding + MiniGPT prompting
-├── rfdetr_parts/              # RF-DETR training and inference
-├── knowledge_graph/           # disease knowledge base and RAG
-├── minigpt4/                  # MiniGPT-v2 framework
-├── plant_diagnostic/          # classifier data, models and training scripts
-├── hallucination_evaluation/  # v1 response quality evaluation
-├── paper/                     # paper sources
-├── recovered/                 # code recovered from the lab server (19 Oct 2026), byte for byte
-├── configs/, eval_configs/, train_configs/   # MiniGPT model, inference and training configs
-├── figs/, documentation/, annotationjsons/, tests/
-└── RESEARCH_PAPER.pdf
+│   ├── vlm/                   # annotation, honesty test, student, captioning, judges, voting, v1 vs v2
+│   ├── synthetic/             # synthetic-image import and training trees
+│   ├── infra/                 # cluster setup, model staging, make_workdir.sh
+│   ├── slurm/                 # Slurm launchers
+│   └── EXPERIMENT_LOG.md      # the lab notebook
+├── evaluation/                # split v1, bake-off set, label audit, paper_data/ (shared)
+├── docs/                      # documentation of the studies, figures, manuscript Q&A (shared)
+└── paper/figure_scripts/      # figures of the 2026 journal manuscript (shared)
 ```
 
-Model weights and training outputs are not stored in the repository (`.gitignore`); the labeled photos are, with Git
-LFS.
+Model weights and training outputs are not stored in the repository (`.gitignore`); the labeled photographs are, in
+`v1/plant_diagnostic/data/` (JPEG and PNG through Git LFS).
 
 ## Citation
 
@@ -214,7 +196,7 @@ BioCLIP and [vLLM](https://github.com/vllm-project/vllm); each is subject to its
 
 Treatment recommendations in the knowledge base were compiled from university cooperative extension
 publications (UC IPM, Cornell, Penn State, NC State, UMN, Virginia Tech, Utah State, UGA). See individual disease
-entries in `knowledge_graph/disease_knowledge_base.json` for full citations.
+entries in `v1/knowledge_graph/disease_knowledge_base.json` for full citations.
 
 The models were trained on a curated corpus of publicly available web-scale data and indexed digital repositories.
 Please respect upstream licenses and dataset terms of use.
