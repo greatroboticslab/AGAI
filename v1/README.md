@@ -21,11 +21,11 @@ The application chains three models and the knowledge base, all called from `dem
 flowchart TB
     P["Photo<br/>upload or webcam"]
     subgraph APP["demo_v5.py, the Gradio application"]
-        C["1. ResNet-50 classifier<br/>resnet_classifier.py<br/>7 conditions, flip TTA, temperature scaling,<br/>per-condition confidence gate"]
-        D["2. RF-DETR Small part detector<br/>grounding/detector.py runs rfdetr_parts/detect_images.py<br/>in a separate Python process for each photo"]
-        B["3. Prompt<br/>demo_v5.py and grounding/inference.py<br/>the diagnosis, stated as fact,<br/>and which parts are and are not visible"]
-        M["4. MiniGPT-v2 report writer<br/>minigpt4/ with LoRA on LLaMA-2-7B-chat, 8-bit<br/>eval_configs/minigptv2_eval.yaml"]
-        K["5. Consistency check<br/>knowledge_graph/rag_retriever.py<br/>signs of another condition in the report:<br/>regenerate once with a stricter prompt"]
+        C["(1) ResNet-50 classifier<br/>resnet_classifier.py<br/>7 conditions, flip TTA, temperature scaling,<br/>per-condition confidence gate"]
+        D["(2) RF-DETR Small part detector<br/>grounding/detector.py runs rfdetr_parts/detect_images.py<br/>in a separate Python process for each photo"]
+        B["(3) Prompt<br/>demo_v5.py and grounding/inference.py<br/>the diagnosis, stated as fact,<br/>and which parts are and are not visible"]
+        M["(4) MiniGPT-v2 report writer<br/>minigpt4/ with LoRA on LLaMA-2-7B-chat, 8-bit<br/>eval_configs/minigptv2_eval.yaml"]
+        K["(5) Consistency check<br/>knowledge_graph/rag_retriever.py<br/>signs of another condition in the report:<br/>regenerate once with a stricter prompt"]
     end
     P --> C
     P --> D

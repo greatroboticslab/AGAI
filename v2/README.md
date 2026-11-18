@@ -26,8 +26,8 @@ The v2 system as it was measured end to end (latency and claim faithfulness, 49 
 ```mermaid
 flowchart TB
     P["Photo"]
-    C["1. SigLIP 2 classifier, So400m at 512 px<br/>fine-tuned on split v1 training photos plus designed<br/>synthetic photos, with phone-quality augmentation<br/>classifier/train_backbone.py"]
-    S["2. Qwen3-VL-8B honest student, served with vLLM<br/>prompt: the photo and 'Dataset label: X',<br/>X being the classifier's diagnosis<br/>vlm/latency_student.py, schema in vlm/annotation_spec.py"]
+    C["(1) SigLIP 2 classifier, So400m at 512 px<br/>fine-tuned on split v1 training photos plus designed<br/>synthetic photos, with phone-quality augmentation<br/>classifier/train_backbone.py"]
+    S["(2) Qwen3-VL-8B honest student, served with vLLM<br/>prompt: the photo and 'Dataset label: X',<br/>X being the classifier's diagnosis<br/>vlm/latency_student.py, schema in vlm/annotation_spec.py"]
     O["Structured report<br/>image quality, visible parts, observations,<br/>verdict on the label: supports it, or rejects it and names the alternative,<br/>differential, caption, report text, follow-up Q&A"]
     D["RF-DETR Large part detector<br/>retrained on the detector split<br/>detector/rfdetr_size.py"]
     P --> C
