@@ -246,7 +246,9 @@ The 2159 reports that trained the v1 report writer were written by OpenAI's o3 t
 image it sends the photograph and its label, which is the name of the class folder, with a prompt that fixes the label
 and limits the report to what is visible, and it writes one image-report pair per line. An interrupted run resumes
 where it stopped. When a call fails it writes a templated fallback report; none of the 2159 is a fallback. The empty
-`generate_stage2_jsonl.py` beside it is a placeholder from 2025.
+`generate_stage2_jsonl.py` beside it is a placeholder from 2025. The committed records begin with a display name
+(`Diagnosis: Gray mold.`, 607 times) where the generator writes the folder name (`Diagnosis: gray_mold.`); the step
+that renamed the labels (the `fixed` in the file names) is not in the repository.
 
 ```bash
 export OPENAI_API_KEY=...   # in the environment only, never in a file of this repository

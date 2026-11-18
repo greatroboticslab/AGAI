@@ -1543,3 +1543,11 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   S16's conclusion stands under the training format; otherwise the manuscript needs a sentence that S16 measured the
   deployed prompt format and that the writer behaves differently under the format it was trained with. The v1-v2
   faithfulness comparison is not rerun: it measures v1 as deployed, prompt format included.
+- **2026-11-18, 15:53 CST. (af) Correction to the note on the stage-2 generator (31 October, under (m)-(p)): the label text
+  differs.** That note calls the generator's output "the dataset's exact format". The record structure matches
+  (`{image, conversations}`), but the label text does not: `generate_json_openai.py` writes the folder name
+  ("Diagnosis: gray_mold."), while every one of the 2159 committed records begins with a display name ("Diagnosis: Gray
+  mold." 607 times, "Root rot." 293, "Overwatered." 298, and so on; none with an underscore). A later step renamed the
+  labels; it is not in the repository (the `fixed` in `stage2_train_7class_fixed.json` and `.fixed.jsonl` points to
+  it). Found by the README audit of 18 November; recorded in `v1/plant_diagnostic/datasets/README.md` and
+  `v1/README.md`. Nothing reported depends on it.
