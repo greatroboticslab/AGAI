@@ -278,6 +278,14 @@ With the detector's part lists in the prompt, the retrained writer's part-halluc
 The ablation of detector grounding found no reduction in part hallucination: the v1 writer does not follow the prompt's part constraints, and the v2 explainer is not instructed through part lists at all.
 ```
 
+**Update, 18 November: prompt format.** The writer was trained with the prompt template `Human: {} Assistant: `
+(configs/models/minigpt_v2.yaml) but the application, and the Table S16 runs, prompt it in MiniGPT-v2's chat format
+`[INST] ... [/INST]`. Rerun in the training format (lab notebook (ae), pre-registered, and (ag)), Table S16 does not
+change: part-hallucination rate 91.4 % with the part lists against 82.1 % without (P = 0.0001), against 92.1 and
+86.1 % in the published run; reports naming a part declared not visible 91.4 % in both. Optional sentence for 3.9 or
+Table S16's note: "The result did not depend on the prompt format: prompted in the format it was trained with, the
+writer hallucinated parts in 91.4% of reports with the part lists and 82.1% without."
+
 ### 2.7 Consistency check: negation, retry path, hallmark list
 
 Status: Done.

@@ -77,7 +77,10 @@ the test split, so the hand-set thresholds stay; the sweeps are in the `*_valid.
   part lists in the prompt: the part-hallucination rate was 86.1 % without the lists and 92.1 % with them (paired exact
   McNemar P = 0.064), and the writer named a part the prompt declared not visible in 91.4 % of reports. Most false
   mentions are of soil in care advice; without soil the rates are 33.8 % vs 39.1 % (P = 0.28). The v1 writer does not
-  follow the prompt's part constraints, so the detector's lists carry no measurable grounding benefit for it.
+  follow the prompt's part constraints, so the detector's lists carry no measurable grounding benefit for it. The result
+  holds when the writer is prompted in the format it was trained with (`Human: ... Assistant:`) instead of the
+  application's chat format: 91.4 % with the lists against 82.1 % without (exact McNemar P = 0.0001; lab notebook,
+  entries (ae) and (ag)).
 - **The application's detector call is slow for a reason unrelated to the model.** `v1/grounding/detector.py` runs
   RF-DETR in a fresh interpreter for every photograph, so each call pays the interpreter start and the model load:
   15.9 s median per photograph on an RTX 5000 Ada against 0.016 s for the forward pass in-process (lab notebook,
