@@ -1,0 +1,22 @@
+Test images: 398; seeds: ResNet-50 (v1 recipe) 5, SigLIP 2 (recipe) 3
+
+all test images: n = 398 (dropped 0)
+    ResNet-50 (v1 recipe)     90.2 +- 1.5 %
+    SigLIP 2 (recipe)         96.3 +- 0.8 %
+    gap SigLIP 2 (recipe) - ResNet-50 (v1 recipe): +6.2 points; seed-matched pairs (first 3 seeds) 80 vs 18, exact McNemar P = 1.7e-10
+(a) without label-audit flags: n = 396 (dropped 2)
+    ResNet-50 (v1 recipe)     90.6 +- 1.5 %
+    SigLIP 2 (recipe)         96.7 +- 0.7 %
+    gap SigLIP 2 (recipe) - ResNet-50 (v1 recipe): +6.1 points; seed-matched pairs (first 3 seeds) 79 vs 18, exact McNemar P = 2.7e-10
+(b) without web-sourced names: n = 384 (dropped 14)
+    ResNet-50 (v1 recipe)     91.1 +- 1.3 %
+    SigLIP 2 (recipe)         97.0 +- 0.8 %
+    gap SigLIP 2 (recipe) - ResNet-50 (v1 recipe): +5.8 points; seed-matched pairs (first 3 seeds) 71 vs 14, exact McNemar P = 2.4e-10
+(c) without the 3 defective images: n = 395 (dropped 3)
+    ResNet-50 (v1 recipe)     90.1 +- 1.5 %
+    SigLIP 2 (recipe)         96.3 +- 0.8 %
+    gap SigLIP 2 (recipe) - ResNet-50 (v1 recipe): +6.2 points; seed-matched pairs (first 3 seeds) 80 vs 18, exact McNemar P = 1.7e-10
+(d) without (a), (b) and (c): n = 379 (dropped 19)
+    ResNet-50 (v1 recipe)     91.6 +- 1.3 %
+    SigLIP 2 (recipe)         97.4 +- 0.7 %
+    gap SigLIP 2 (recipe) - ResNet-50 (v1 recipe): +5.8 points; seed-matched pairs (first 3 seeds) 70 vs 14, exact McNemar P = 4.1e-10

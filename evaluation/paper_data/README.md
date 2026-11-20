@@ -1,7 +1,7 @@
 # `evaluation/paper_data/`: result files behind the journal manuscript
 
 The result files that the journal manuscript comparing v1 (the original system, 2025 to April 2026) with v2 (the 2026
-revival) relies on, added from 31 October to 17 November 2026. All were produced during the revival: some measure v1
+revival) relies on, added from 31 October to 20 November 2026. All were produced during the revival: some measure v1
 components on split v1 (the lab's ResNet-50 recipe, its RF-DETR Small checkpoint and April 2026 report writer, and v1
 as deployed), the others measure v2 or compare the two. [`docs/MANUSCRIPT_QA.md`](../../docs/MANUSCRIPT_QA.md) gives
 the numbers taken from them item by item, and the lab notebook [`v2/EXPERIMENT_LOG.md`](../../v2/EXPERIMENT_LOG.md)
@@ -44,6 +44,7 @@ photographs (7 per condition, seed 0); the report sample is the 151 split v1 tes
 | `reports_splitv1_scores.json` | their Table S16 measures | `v2/vlm/score_reports.py` | Table S16 |
 | `scores_resnet50_512_s<seed>_<runtime or squash>_split_v1_test.json` for seeds 1, 2, 3, 4 and 42 (10 files) | per-image class probabilities of ResNet-50 trained with the lab's recipe at 512 pixels, on the split v1 test photographs, under the deployed preprocessing (`runtime`: resize and centre crop) and the training one (`squash`); the resolution control | [`v2/classifier/resnet_scores.py`](../../v2/classifier/resnet_scores.py) `--img-size 512` (the validation files stayed on the cluster) | [Classifier](../../docs/CLASSIFIER.md), fine-tuned backbones table; 3.3 (notebook (t)) |
 | `sensitivity_mirror_v1.txt` | accuracy and macro accuracy of 22 split v1 result files with and without the 10 test photographs that the mirror audit flags (post hoc) | printed by [`v2/benchmark/sensitivity_mirror.py`](../../v2/benchmark/sensitivity_mirror.py) | notebook (s) |
+| `sensitivity_subsets_v1.txt` | ResNet-50 (v1 recipe, 5 seeds) against SigLIP 2 (recipe, 3 seeds) on the split v1 test set with and without the label-audit flags, the web-sourced file names and the 3 defective photographs, with seed-matched McNemar tests (post hoc) | printed by [`v2/benchmark/sensitivity_subsets.py`](../../v2/benchmark/sensitivity_subsets.py) from the `calib_*_test_seed*.json` records here | notebook (ah) |
 
 ## Where the files come from
 
@@ -89,6 +90,6 @@ From the committed files these reproduce exactly (checked on 18 November 2026): 
   rescored.
 - The per-image files list photographs as `plant_diagnostic/data/...`, relative to `v1/`; 74 of the 398 split v1 test
   photographs are not in this repository's copy ([why](../README.md#photographs-not-in-this-repository)).
-- The list of result files at the end of docs/MANUSCRIPT_QA.md names the 20 files of 31 October 2026. Of the 29 added
-  from 4 November on, its items name the 8 calibration record files and 6 of the faithfulness files; the other 15 are
-  named only in the lab notebook.
+- The list of result files at the end of docs/MANUSCRIPT_QA.md names the 20 files of 31 October 2026. The 32 added
+  from 4 November to 20 November are all named in the lab notebook; the Q&A's items also name the 8 calibration record
+  files and some of the faithfulness and report files.
