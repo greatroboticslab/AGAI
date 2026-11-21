@@ -1662,3 +1662,30 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   to the new Supplementary Table S19 (`v2/benchmark/holm_table_tex.py` writes its LaTeX from the JSON); 3.4 now gives
   the designed set's P both ways; Table S5's 512-pixel row adds the permutation P. Table S19 is placed last, so no
   other table number changes.
+- **2026-11-20, 21:22 CST. (al) Pre-registered: an external test of the two classifiers and their acceptance gates.** Written
+  before any prediction on these photographs; only their annotation file was read (categories and counts).
+  - *Question.* Do v1's and v2's classifiers recognise gray mold and healthy plants in a public strawberry set they
+    never saw, and do their gates refuse diseases outside the seven conditions?
+  - *Data.* Mendeley Data `k2ptxmfjhj`, version 2 (CC BY-NC 4.0; built on Afzaal et al. 2021, Sensors 21:6565, and
+    Perez-Borrero et al. 2020), folder `Strawberry-segmentation-traditional-augmentation/test`: 463 photographs, all
+    640 x 640 (a Roboflow export), each checked against its published SHA-256 (cluster:
+    `/projects/was4g/agai/external/mendeley_k2ptxmfjhj_v2/traditional_test`). One category per photograph: Gray Mold
+    58 and Asymptomatic Strawberry 58 (in scope: our gray_mold and healthy); out of scope, six diseases the models
+    have no class for: Angular Leafspot 58, Anthracnose Fruit Rot 57, Blossom Blight 58, Leaf Spot 58, Powdery Mildew
+    Fruit 58, Powdery Mildew Leaf 58 (347).
+  - *Classifiers* (`cluster/external_test.py`, `cluster/slurm/external_test.sbatch`): v1's ResNet-50 retrained on split
+    v1 (`models/resnet50_split_v1.pth`, the application's preprocessing, two views, checkpoint temperature) and v2's
+    SigLIP 2 recipe (`models/ft_siglip2-so400m-512_chatgpt_nof3_lq_s0.pt`, as `latency_siglip.py`). Gates, as in
+    `calibration_metrics.py` and Table S7: v1's hand-set class thresholds (accept when p1 >= max(threshold, 0.5)) and
+    each classifier's validation-chosen thresholds (seed-0 calibration, with temperature), applied to both.
+  - *Measures.* In scope: recall without a gate, share accepted, and accuracy among accepted, per gate. Out of scope:
+    share accepted per gate (a wrong label given with confidence) and the labels given.
+  - *Predictions.* **P1:** both classifiers recall gray mold less often here than on the split v1 test set (ResNet-50
+    98.8 %, SigLIP 2 96.3 %), and likewise healthy (86.4 %, 95.1 %): a domain shift. **P2:** v2's classifier recalls gray
+    mold and healthy at least as often as v1's. **P3:** each gate accepts more than half of the out-of-scope
+    photographs: a closed-set classifier's confidence does not flag unknown diseases. **P4** (descriptive): the
+    out-of-scope fruit diseases (anthracnose fruit rot, blossom blight, powdery mildew on fruit) are mostly called gray
+    or white mold.
+  - *Limits.* One public set with one label per photograph, resized to 640 x 640 without keeping the aspect ratio;
+    "Asymptomatic Strawberry" taken as our healthy; mostly close views of leaves and fruit, unlike many of our photos;
+    the explainer's own rejection of wrong labels (v2's main safeguard) is not part of this test.
