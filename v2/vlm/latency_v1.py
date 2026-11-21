@@ -41,6 +41,8 @@ ap.add_argument("--per-class", type=int, default=7)
 ap.add_argument("--split-json", default="evaluation/split_v1.json")
 ap.add_argument("--seed", type=int, default=0)
 ap.add_argument("--resnet", default="plant_diagnostic/models/resnet_strawberry.pth")
+ap.add_argument("--writer-ckpt", default=None,
+                help="report writer checkpoint instead of the eval config's (model.ckpt); the detector checkpoint is set with RFDETR_CHECKPOINT")
 ap.add_argument("--out", default="evaluation/latency_v1.json")
 args = ap.parse_args()
 
@@ -252,7 +254,7 @@ def run_one(path, truth):
 items = sample_items()
 torch.cuda.reset_peak_memory_stats()
 t0 = time.time()
-chat, CONV = load_minigpt(0)        # the deployed writer (eval_configs/minigptv2_eval.yaml) and the demo's conversation
+chat, CONV = load_minigpt(0, options=[f"model.ckpt={args.writer_ckpt}"] if args.writer_ckpt else None)        # the deployed writer (eval_configs/minigptv2_eval.yaml) and the demo's conversation
 chat.model.eval()
 resnet = load_resnet(args.resnet)
 rag = DiseaseRAG()
@@ -283,7 +285,9 @@ out = {"pipeline": "v1 as deployed (demo_v5.py)", "gpu": torch.cuda.get_device_n
        "tokens": stats([r["tokens"] for r in records]), "n_unknown": len(records) - len(accepted),
        "n_flagged": sum(r["flagged"] for r in records), "n_still_flagged": sum(r["still_flagged"] for r in records),
        "settings": {"temperature": 0.2, "top_p": 0.9, "repetition_penalty": 1.01, "max_new_tokens": 2000,
-                    "resnet": args.resnet, "per_class": args.per_class, "seed": args.seed},
+                    "resnet": args.resnet, "per_class": args.per_class, "seed": args.seed,
+                    "writer_ckpt": args.writer_ckpt or "eval config (eval_configs/minigptv2_eval.yaml)",
+                    "detector_ckpt": os.environ.get("RFDETR_CHECKPOINT") or "detect_images.py default"},
        "records": records}
 json.dump(out, open(args.out, "w"), indent=1)
 print(f"v1 total per photograph: median {out['t_total']['median_s']:.1f} s, p90 {out['t_total']['p90_s']:.1f} s; "

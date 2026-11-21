@@ -1610,3 +1610,33 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   and 3.8 that leave out later models; and the numbers written from the authors' own records (April holdout audit,
   provenance, annotation statistics, lab-server timings). Details: `docs/MANUSCRIPT_QA.md`, "Number audit, 20 November
   2026".
+- **2026-11-20, 21:04 CST. (aj) Pre-registered: the faithfulness comparison with a leak-free v1.** Entry (aa) found that v1's reports
+  in the v1-versus-v2 comparison (q), (w) came from the lab's deployed checkpoints, whose classifier had trained on 40
+  of the 49 photographs and whose report writer on reports of all 49, so the comparison favoured v1. Here v1 is run
+  again with the models retrained on split v1, none of which saw these photographs; written before any of its reports
+  exists.
+  - *Run* (`cluster/slurm/v1_splitv1_reports.sbatch`): v1's pipeline as deployed, `cluster/latency_v1.py` (two-view
+    ResNet-50, the acceptance gate with its class thresholds, the RF-DETR subprocess, the MiniGPT-v2 report with the
+    application's `[INST]` prompt, decoding and consistency check), on the same 49 photographs (7 per condition, seed
+    0), with three checkpoints swapped: ResNet-50 `models/resnet50_split_v1.pth` (the first split v1 run, validation
+    92.5 %, temperature 0.748; sha256 3c110a80...), RF-DETR Small `rfdetr_runs/small_splitv1` (sha256 dc23a8d2...)
+    and the report writer `minigpt_runs/minigpt_strawberry_splitv1/checkpoint_best.pth` (Table S16's writer; sha256
+    fa92caab...). Code changes, opt-in with unchanged defaults: `load_minigpt(gpu_id, options=None)` in
+    `grounding/inference.py` (config overrides such as `model.ckpt=...`), `RFDETR_CHECKPOINT` in
+    `grounding/detector.py`, `--writer-ckpt` in `latency_v1.py` (which records the checkpoints in its output). Output:
+    `evaluation/latency_v1_splitv1.json`. The prompt stays the application's (entry (ag): the training format does
+    not change Table S16).
+  - *Rating.* The new v1 reports split into claims with the rule of (q) (one claim per sentence), pooled per
+    photograph with v2's claims (`latency_student.json`, as in (q)) and shuffled, rated blind by W.S. on a new page with
+    the five verdicts of (q): supported, not supported, unsure, not a visual claim, advice assuming something not
+    visible. v2's claims are rated again, so the rater cannot tell the systems apart and the two rounds of v2 ratings
+    give the rater's consistency.
+  - *Analysis* (as (q), (w)): primary, the share of checkable visual claims not supported, v1 retrained against v2,
+    on the photographs with every claim rated; Wilcoxon signed-rank test on the per-photograph rates; exact McNemar
+    test on reports with at least one unsupported claim; bootstrap 95 % intervals over photographs.
+  - *Predictions.* **P1:** v1 retrained has at least as high a share of unsupported visual claims as the deployed v1
+    had in (w) (27.9 %, 41 photographs), since its models have not seen the photographs. **P2:** v2's share is lower
+    than v1 retrained's; the two paired tests are reported as they come (one rater, under 49 photographs).
+    **P3** (descriptive): agreement between the two rounds of ratings of v2's claims (Cohen's kappa over the five
+    verdicts, and over supported / not supported). Also reported: v1 retrained's labels on the 49 (with the gate) and
+    its latency.

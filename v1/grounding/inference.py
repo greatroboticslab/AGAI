@@ -37,7 +37,7 @@ def _ensure_registered():
 
 # ── Model loading ────────────────────────────────────────────────────────────
 
-def load_minigpt(gpu_id=0):
+def load_minigpt(gpu_id=0, options=None):
     """Load MiniGPT-v2 and return (chat, conv_template).
 
     The chat object wraps image upload, encoding, prompt injection, and
@@ -58,6 +58,7 @@ def load_minigpt(gpu_id=0):
         options = None
 
     _Args.gpu_id = gpu_id
+    _Args.options = options  # e.g. ["model.ckpt=/path/checkpoint_best.pth"] overrides the eval config; None keeps it
     cfg = Config(_Args())
 
     device = torch.device(f"cuda:{gpu_id}" if torch.cuda.is_available() else "cpu")

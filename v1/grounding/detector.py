@@ -33,6 +33,12 @@ def run_rfdetr(image_paths):
             f'python "{RFDETR_DETECT_SCRIPT}" --images ' +
             " ".join(f'"{p}"' for p in image_paths)
         ]
+    ckpt = os.environ.get("RFDETR_CHECKPOINT")  # optional: another detector checkpoint; default: detect_images.py's
+    if ckpt:
+        if rfdetr_python:
+            cmd += ["--checkpoint", ckpt]
+        else:
+            cmd[-1] += f' --checkpoint "{ckpt}"'
     result = subprocess.run(
         cmd, capture_output=True, text=True, cwd=str(PROJECT_ROOT),
     )
