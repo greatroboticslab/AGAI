@@ -499,6 +499,54 @@ William (31 October): the manuscript's line covers it for the most part, and the
 W.S. designed and ran the re-evaluation: the leak-free benchmark, the backbone, synthetic-data and detector studies, the label-swap test and the student distillation, the captioner bake-off and its blind ratings, and the test-time-compute study; wrote the training and evaluation code; and kept the lab notebook.
 ```
 
+## Number audit, 20 November 2026
+
+Every number in the Overleaf draft (export of 20 November, 34 pages) was checked against the repository: the lab notebook through entry (ah), `docs/`, `evaluation/paper_data/` (recomputed from the per-image files where they exist), the split, detector-split and bake-off files, the 2159 instruction records and the knowledge base; all 48 exact McNemar P values and the Wilson intervals were recomputed. About 400 numbers in the text and captions and about 150 table rows matched. Each discrepancy below was rechecked against its source before anything was changed (lab notebook, entry (ai)).
+
+**Changed in the Overleaf draft on 20 November** (recompiled: 34 pages, 0 errors, the 6 earlier warnings):
+
+- **3.x, grounded reports:** "the lists were wrong for only 27 photographs" became 24: 9 photographs miss a part and 18
+  add one, 3 of them both (`evaluation/paper_data/reports_splitv1.json`; notebook (j) gives 9 and 18).
+- **3.9, end to end:** v2's memory "about 22 GB, mostly the explainer's 17.5 GB of weights" became "30.4 GB as
+  configured, 17.5 GB of it the explainer's weights", as Table S17 and `latency_v1_v2.json` give it.
+- **3.9, faithfulness:** "8 photographs had been left unrated" gained "(one of them with a single rating)", and "the
+  other 3, all gray mold, stayed unrated" gained "(one with 2 of its 13 claims rated)", as the score files record.
+- **2.7, knowledge graph:** "The 24 citations come from 17 extension programs" became 16 extension and pest-management
+  programs (24 citations under 18 source names, 16 once the two spellings each of NC State and UC ANR are merged).
+- **2.6, report generation:** "the published MiniGPT-v2 instruction-tuned checkpoint" became "stage-2 checkpoint (after
+  its multi-task training stage)", as the training configuration (`checkpoint_stage2.pth`) and Table S2 say.
+- **2.1, overview:** the end-to-end sentence now adds that v1 ran as deployed, with the lab's own classifier and the
+  April report writer rather than the retrained models, as 3.9 says.
+- **Conclusion:** the faithfulness clause adds that the comparison favoured v1, whose deployed models had been trained
+  on most of the photographs (disclosed in 2.8, 3.9 and the discussion already).
+- **Data availability:** now says that 291 of the 1576 images (74 of the 398 test images, listed in
+  `evaluation/split_v1_coverage.json`) and the per-image results of some analyses are not in the repository and are
+  available from the authors.
+- **Code availability (2.10):** the commit reference moved from 7517203 (4 November) to the commit that records this
+  audit, and "the per-image result files behind the tables" became "behind most tables".
+
+**For the co-authors, not changed:**
+
+- **Fig. 6b (honesty)** prints the first run's McNemar P (0.00013); the verified run's is 1.3 × 10⁻⁵ (the text and
+  Table S10 are right). `paper/figure_scripts/fig_honesty.py` is corrected; the figure has to be regenerated where its
+  inputs are (G.M.).
+- **Supplementary Fig. S1 (training pipelines)** still shows the classifier recipe withdrawn on 17 November; the script
+  was corrected then and the figure still has to be regenerated (G.M.).
+- **2.2 against 2.5:** 2.2 says 740 of the 1075 annotated images also belong to the condition collection and 334 were
+  gathered for annotation only; 2.5 says 646 matched a split v1 photograph and 429 are annotation-only
+  (`evaluation/detector_split_v1.json`). If 740 counts matches against the whole collection rather than split v1, the
+  text should say so; otherwise 646 and 429.
+- **Inspected pairs:** 2.8 says every flagged pair was inspected by eye, 3.1 that each of the 8 pairs was; the April
+  audit flagged 21 images (no audit file in the repository).
+- **Ranges:** the zero-shot range "65.6 to 77.1%" (3.3, Fig. 4 caption) covers the three models of the 20 October run,
+  while 3.8 and Table S15 give Qwen3-VL-235B 77.4% and Table S13 GLM-4.6V 75.6%; "68 to 74%" (3.8) covers the 8B,
+  32B and 27B pairs, and with the 235B pairs it is 66 to 77%.
+- **Numbers without a source in the repository** (written from the authors' own records): the April holdout audit
+  (21 of 231, 14 of 91, 8 pairs); the provenance counts of 2.2 and Table S1; the annotation statistics of 2.2 and
+  Fig. S3; the lab-server timings of 2.9; "228 of the 231 April holdout images" (226 by file name, but names changed);
+  the RF-DETR library defaults of Table S2. If the data statement is to cover them, their files belong in the
+  repository.
+
 ## Plan for the pending numbers
 
 | When | Work | Feeds |

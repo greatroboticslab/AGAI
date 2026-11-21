@@ -1592,3 +1592,21 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
      both models gain about one point without them.
   Not done yet (needs the cluster): the same check for the other classifiers and the vision-language models, and the
   multiple-comparison correction (permutation tests with Holm) a co-author asked for.
+- **2026-11-20, 20:59 CST. (ai) Number audit of the manuscript (Overleaf draft of 20 November) against the repository.**
+  Every number in the abstract, text, captions and tables was checked against the notebook through (ah), `docs/`,
+  `evaluation/paper_data/` (recomputed from per-image files where they exist), the split, detector-split and bake-off
+  files, the instruction records and the knowledge base; the 48 exact McNemar P values and the Wilson intervals were
+  recomputed. About 400 numbers and 150 table rows matched. Each discrepancy was rechecked against its source; nine
+  were fixed in the draft (recompiled, 34 pages, 0 errors): the wrong part lists in Table S16's sample are 24
+  photographs, not 27 (9 miss a part, 18 add one, 3 both); v2's memory is 30.4 GB as configured, not "about 22 GB"
+  (Table S17); the 8 and 3 unrated faithfulness photographs include one with a single rating and one with 2 of 13
+  claims rated; the knowledge base's 24 citations come from 16 programs, not 17; the writer started from MiniGPT-v2's
+  stage-2 checkpoint, not "the instruction-tuned" one; the overview and the conclusion now say that v1's end-to-end
+  run used its deployed models, which had seen most of the photographs; the data statement names the 291 images and
+  the per-image files that are not in the repository; the code statement cites the commit of this audit. For the
+  co-authors (not changed): Fig. 6b prints the first run's P = 0.00013 (verified 1.3e-5; `fig_honesty.py` corrected,
+  figure to regenerate) and Fig. S1 still shows the withdrawn classifier recipe; 2.2's 740 / 334 against 2.5's
+  646 / 429 annotated images matched to the collection; the inspected-pairs wording of 2.8 and 3.1; two ranges of 3.3
+  and 3.8 that leave out later models; and the numbers written from the authors' own records (April holdout audit,
+  provenance, annotation statistics, lab-server timings). Details: `docs/MANUSCRIPT_QA.md`, "Number audit, 20 November
+  2026".

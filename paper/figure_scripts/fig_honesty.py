@@ -122,7 +122,7 @@ t, s = MODELS[4], MODELS[0]
 pb.add_patch(FancyArrowPatch((t[1], t[2]), (s[1], s[2]), arrowstyle="-|>", mutation_scale=6, color=BLUE, lw=0.8,
                              connectionstyle="arc3,rad=-0.45", shrinkA=4, shrinkB=4, zorder=4))
 pb.text(74.4, 82.6, "student vs teacher:", fontsize=S_VAL, color=INK2, ha="right", va="center", path_effects=HALO)
-pb.text(74.4, 81.1, "McNemar p = 0.00013", fontsize=S_VAL, color=INK2, ha="right", va="center", path_effects=HALO)
+pb.text(74.4, 81.1, r"McNemar p = 1.3$\times10^{-5}$", fontsize=S_VAL, color=INK2, ha="right", va="center", path_effects=HALO)
 # key (lower left of the plot, left of the 70% line), drawn in the plot with a halo so the grid stays behind it
 kx, ky = 47.6, 63.2
 pb.plot(kx, ky + 2.7, marker="s", ms=4.6, mfc=BLUE, mec="white", mew=0.5, ls="none", zorder=5)
