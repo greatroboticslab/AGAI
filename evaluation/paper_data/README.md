@@ -44,6 +44,7 @@ photographs (7 per condition, seed 0); the report sample is the 151 split v1 tes
 | `reports_splitv1_scores.json` | their Table S16 measures | `v2/vlm/score_reports.py` | Table S16 |
 | `scores_resnet50_512_s<seed>_<runtime or squash>_split_v1_test.json` for seeds 1, 2, 3, 4 and 42 (10 files) | per-image class probabilities of ResNet-50 trained with the lab's recipe at 512 pixels, on the split v1 test photographs, under the deployed preprocessing (`runtime`: resize and centre crop) and the training one (`squash`); the resolution control | [`v2/classifier/resnet_scores.py`](../../v2/classifier/resnet_scores.py) `--img-size 512` (the validation files stayed on the cluster) | [Classifier](../../docs/CLASSIFIER.md), fine-tuned backbones table; 3.3 (notebook (t)) |
 | `sensitivity_mirror_v1.txt` | accuracy and macro accuracy of 22 split v1 result files with and without the 10 test photographs that the mirror audit flags (post hoc) | printed by [`v2/benchmark/sensitivity_mirror.py`](../../v2/benchmark/sensitivity_mirror.py) | notebook (s) |
+| `permutation_holm_v1.txt`, `permutation_holm_v1.json` | seed-averaged paired permutation tests of the classifier comparisons and synthetic-data arms, and Holm-adjusted P values within each family of the manuscript's comparisons (post hoc) | [`v2/benchmark/permutation_holm.py`](../../v2/benchmark/permutation_holm.py), run on the cluster | Supplementary Table S19, 2.8, 3.4, Table S5; notebook (ak) |
 | `sensitivity_subsets_v1.txt` | ResNet-50 (v1 recipe, 5 seeds) against SigLIP 2 (recipe, 3 seeds) on the split v1 test set with and without the label-audit flags, the web-sourced file names and the 3 defective photographs, with seed-matched McNemar tests (post hoc) | printed by [`v2/benchmark/sensitivity_subsets.py`](../../v2/benchmark/sensitivity_subsets.py) from the `calib_*_test_seed*.json` records here | notebook (ah) |
 
 ## Where the files come from
@@ -90,6 +91,6 @@ From the committed files these reproduce exactly (checked on 18 November 2026): 
   rescored.
 - The per-image files list photographs as `plant_diagnostic/data/...`, relative to `v1/`; 74 of the 398 split v1 test
   photographs are not in this repository's copy ([why](../README.md#photographs-not-in-this-repository)).
-- The list of result files at the end of docs/MANUSCRIPT_QA.md names the 20 files of 31 October 2026. The 32 added
+- The list of result files at the end of docs/MANUSCRIPT_QA.md names the 20 files of 31 October 2026. The 34 added
   from 4 November to 20 November are all named in the lab notebook; the Q&A's items also name the 8 calibration record
   files and some of the faithfulness and report files.

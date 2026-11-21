@@ -1,0 +1,740 @@
+{
+ "models": {
+  "ResNet-50 (lab recipe)": {
+   "files": [
+    "resnet_resnet50_split_v1_split_v1_test.json",
+    "resnet_resnet50_v1_s1_split_v1_test.json",
+    "resnet_resnet50_v1_s2_split_v1_test.json",
+    "resnet_resnet50_v1_s3_split_v1_test.json",
+    "resnet_resnet50_v1_s4_split_v1_test.json"
+   ],
+   "seeds": 5,
+   "accuracy_mean": 90.15075376884423,
+   "accuracy_sd": 1.4585854546432124
+  },
+  "SigLIP 2 fine-tuned": {
+   "files": [
+    "ft_siglip2-so400m-512_s0_split_v1_test.json",
+    "ft_siglip2-so400m-512_s1_split_v1_test.json",
+    "ft_siglip2-so400m-512_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 95.56113902847572,
+   "accuracy_sd": 1.264628883629947
+  },
+  "EVA-02-L fine-tuned": {
+   "files": [
+    "ft_eva02-large-448_s0_split_v1_test.json",
+    "ft_eva02-large-448_s1_split_v1_test.json",
+    "ft_eva02-large-448_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 95.7286432160804,
+   "accuracy_sd": 1.0952007395830823
+  },
+  "EVA-02-L probe": {
+   "files": [
+    "probe_eva02-large-448_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 94.9748743718593,
+   "accuracy_sd": null
+  },
+  "PE-Core-G probe": {
+   "files": [
+    "probe_pe-core-g14-448_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 94.22110552763819,
+   "accuracy_sd": null
+  },
+  "SigLIP 2 probe": {
+   "files": [
+    "probe_siglip2-so400m-512_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 93.71859296482413,
+   "accuracy_sd": null
+  },
+  "DINOv2-g probe": {
+   "files": [
+    "probe_dinov2-giant_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 92.71356783919597,
+   "accuracy_sd": null
+  },
+  "ConvNeXt V2-L probe": {
+   "files": [
+    "probe_convnextv2-large-384_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 92.46231155778895,
+   "accuracy_sd": null
+  },
+  "BioCLIP 2 probe": {
+   "files": [
+    "probe_bioclip-2_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 90.7035175879397,
+   "accuracy_sd": null
+  },
+  "Qwen3-VL-8B LoRA": {
+   "files": [
+    "finetuned_Qwen3-VL-8B-Instruct_lora_s1_test.json",
+    "finetuned_Qwen3-VL-8B-Instruct_lora_s2_test.json",
+    "finetuned_Qwen3-VL-8B-Instruct_lora_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 94.22110552763819,
+   "accuracy_sd": 0.2512562814070378
+  },
+  "Qwen3-VL-32B QLoRA": {
+   "files": [
+    "finetuned_Qwen3-VL-32B-Instruct-bnb4_lora_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 93.71859296482413,
+   "accuracy_sd": null
+  },
+  "E1 ensemble": {
+   "files": [
+    "ensemble_E1_eva_siglip_equal_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 95.97989949748744,
+   "accuracy_sd": null
+  },
+  "E2 ensemble": {
+   "files": [
+    "ensemble_E2_8b_eva_siglip_equal_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 97.23618090452261,
+   "accuracy_sd": null
+  },
+  "E3 ensemble": {
+   "files": [
+    "ensemble_E3_resnet_8b_equal_split_v1_test.json"
+   ],
+   "seeds": 1,
+   "accuracy_mean": 93.46733668341709,
+   "accuracy_sd": null
+  },
+  "ResNet-50 at 512 px": {
+   "files": [
+    "scores_resnet50_512_s1_runtime_split_v1_test.json",
+    "scores_resnet50_512_s2_runtime_split_v1_test.json",
+    "scores_resnet50_512_s3_runtime_split_v1_test.json",
+    "scores_resnet50_512_s42_runtime_split_v1_test.json",
+    "scores_resnet50_512_s4_runtime_split_v1_test.json"
+   ],
+   "seeds": 5,
+   "accuracy_mean": 88.49246231155777,
+   "accuracy_sd": 1.042032228810442
+  },
+  "ResNet-50 at 256 px (scores)": {
+   "files": [
+    "scores_resnet50_split_v1_runtime_split_v1_test.json",
+    "scores_resnet50_v1_s1_runtime_split_v1_test.json",
+    "scores_resnet50_v1_s2_runtime_split_v1_test.json",
+    "scores_resnet50_v1_s3_runtime_split_v1_test.json",
+    "scores_resnet50_v1_s4_runtime_split_v1_test.json"
+   ],
+   "seeds": 5,
+   "accuracy_mean": 90.15075376884423,
+   "accuracy_sd": 1.4585854546432124
+  },
+  "SigLIP 2 lab GPT synthetic (601)": {
+   "files": [
+    "ft_siglip2-so400m-512_labsynth_s0_split_v1_test.json",
+    "ft_siglip2-so400m-512_labsynth_s1_split_v1_test.json",
+    "ft_siglip2-so400m-512_labsynth_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 95.7286432160804,
+   "accuracy_sd": 1.0050251256281442
+  },
+  "SigLIP 2 ChatGPT set, first 165": {
+   "files": [
+    "ft_siglip2-so400m-512_chatgpt_a_s0_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_a_s1_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_a_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 95.97989949748744,
+   "accuracy_sd": 0.43518864511780475
+  },
+  "SigLIP 2 ChatGPT set, all 235": {
+   "files": [
+    "ft_siglip2-so400m-512_chatgpt_s0_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_s1_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 94.2211055276382,
+   "accuracy_sd": 1.5283322940447785
+  },
+  "SigLIP 2 ChatGPT set without frost 3-5": {
+   "files": [
+    "ft_siglip2-so400m-512_chatgpt_nof3_s0_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_nof3_s1_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_nof3_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 96.14740368509213,
+   "accuracy_sd": 1.0460633163146347
+  },
+  "SigLIP 2 real + low-quality augmentation": {
+   "files": [
+    "ft_siglip2-so400m-512_lq_s0_split_v1_test.json",
+    "ft_siglip2-so400m-512_lq_s1_split_v1_test.json",
+    "ft_siglip2-so400m-512_lq_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 95.05862646566163,
+   "accuracy_sd": 0.9512409289447744
+  },
+  "SigLIP 2 ChatGPT set + augmentation": {
+   "files": [
+    "ft_siglip2-so400m-512_chatgpt_lq_s0_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_lq_s1_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_lq_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 95.7286432160804,
+   "accuracy_sd": 0.7537688442210992
+  },
+  "SigLIP 2 ChatGPT set without frost 3-5 + augmentation": {
+   "files": [
+    "ft_siglip2-so400m-512_chatgpt_nof3_lq_s0_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_nof3_lq_s1_split_v1_test.json",
+    "ft_siglip2-so400m-512_chatgpt_nof3_lq_s2_split_v1_test.json"
+   ],
+   "seeds": 3,
+   "accuracy_mean": 96.31490787269682,
+   "accuracy_sd": 0.7676006189205687
+  }
+ },
+ "families": {
+  "classifier comparisons (3.3, Tables S4, S5)": [
+   {
+    "diff_points": 5.41038525963149,
+    "ci95": [
+     3.082077051926298,
+     7.772194304857622
+    ],
+    "p_perm": 9.99990000099999e-06,
+    "photos_a_better": 51,
+    "photos_b_better": 15,
+    "a": "SigLIP 2 fine-tuned",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     3,
+     5
+    ],
+    "p_holm": 0.00015999840001599985
+   },
+   {
+    "diff_points": 5.57788944723618,
+    "ci95": [
+     3.567839195979899,
+     7.654941373534338
+    ],
+    "p_perm": 9.99990000099999e-06,
+    "photos_a_better": 49,
+    "photos_b_better": 7,
+    "a": "EVA-02-L fine-tuned",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     3,
+     5
+    ],
+    "p_holm": 0.00015999840001599985
+   },
+   {
+    "diff_points": 4.824120603015076,
+    "ci95": [
+     2.71356783919598,
+     7.08542713567839
+    ],
+    "p_perm": 9.99990000099999e-06,
+    "photos_a_better": 43,
+    "photos_b_better": 7,
+    "a": "EVA-02-L probe",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     1,
+     5
+    ],
+    "p_holm": 0.00015999840001599985
+   },
+   {
+    "diff_points": 4.0703517587939695,
+    "ci95": [
+     1.9597989949748744,
+     6.231155778894473
+    ],
+    "p_perm": 0.00011999880001199988,
+    "photos_a_better": 40,
+    "photos_b_better": 8,
+    "a": "PE-Core-G probe",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     1,
+     5
+    ],
+    "p_holm": 0.0015599844001559986
+   },
+   {
+    "diff_points": 3.567839195979899,
+    "ci95": [
+     0.9547738693467336,
+     6.231155778894473
+    ],
+    "p_perm": 0.00980990190098099,
+    "photos_a_better": 43,
+    "photos_b_better": 15,
+    "a": "SigLIP 2 probe",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     1,
+     5
+    ],
+    "p_holm": 0.09809901900980991
+   },
+   {
+    "diff_points": 2.562814070351759,
+    "ci95": [
+     0.20100502512562776,
+     4.92462311557789
+    ],
+    "p_perm": 0.036639633603663964,
+    "photos_a_better": 38,
+    "photos_b_better": 14,
+    "a": "DINOv2-g probe",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     1,
+     5
+    ],
+    "p_holm": 0.2931170688293117
+   },
+   {
+    "diff_points": 2.3115577889447234,
+    "ci95": [
+     -0.10050251256281417,
+     4.723618090452261
+    ],
+    "p_perm": 0.06798932010679894,
+    "photos_a_better": 40,
+    "photos_b_better": 14,
+    "a": "ConvNeXt V2-L probe",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     1,
+     5
+    ],
+    "p_holm": 0.47592524074759257
+   },
+   {
+    "diff_points": 0.5527638190954774,
+    "ci95": [
+     -2.311557788944724,
+     3.4170854271356785
+    ],
+    "p_perm": 0.7312326876731232,
+    "photos_a_better": 38,
+    "photos_b_better": 24,
+    "a": "BioCLIP 2 probe",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     1,
+     5
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": 4.070351758793969,
+    "ci95": [
+     1.7252931323283076,
+     6.515912897822444
+    ],
+    "p_perm": 0.0008799912000879991,
+    "photos_a_better": 45,
+    "photos_b_better": 19,
+    "a": "Qwen3-VL-8B LoRA",
+    "b": "ResNet-50 (lab recipe)",
+    "seeds": [
+     3,
+     5
+    ],
+    "p_holm": 0.00967990320096799
+   },
+   {
+    "diff_points": -0.50251256281407,
+    "ci95": [
+     -2.1775544388609713,
+     1.172529313232831
+    ],
+    "p_perm": 0.6235637643623564,
+    "photos_a_better": 14,
+    "photos_b_better": 15,
+    "a": "Qwen3-VL-32B QLoRA",
+    "b": "Qwen3-VL-8B LoRA",
+    "seeds": [
+     1,
+     3
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": -0.16750418760469019,
+    "ci95": [
+     -1.5912897822445562,
+     1.256281407035176
+    ],
+    "p_perm": 0.9118508814911851,
+    "photos_a_better": 15,
+    "photos_b_better": 16,
+    "a": "SigLIP 2 fine-tuned",
+    "b": "EVA-02-L fine-tuned",
+    "seeds": [
+     3,
+     3
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": 3.0150753768844227,
+    "ci95": [
+     1.340033500837521,
+     4.857621440536014
+    ],
+    "p_perm": 0.0005599944000559995,
+    "photos_a_better": 26,
+    "photos_b_better": 4,
+    "a": "E2 ensemble",
+    "b": "Qwen3-VL-8B LoRA",
+    "seeds": [
+     1,
+     3
+    ],
+    "p_holm": 0.006719932800671994
+   },
+   {
+    "diff_points": 2.261306532663317,
+    "ci95": [
+     0.7537688442211055,
+     4.0201005025125625
+    ],
+    "p_perm": 0.011909880901190988,
+    "photos_a_better": 10,
+    "photos_b_better": 1,
+    "a": "E2 ensemble",
+    "b": "EVA-02-L probe",
+    "seeds": [
+     1,
+     1
+    ],
+    "p_holm": 0.1071889281107189
+   },
+   {
+    "diff_points": 1.0050251256281406,
+    "ci95": [
+     0.25125628140703515,
+     2.0100502512562812
+    ],
+    "p_perm": 0.1253487465125349,
+    "photos_a_better": 4,
+    "photos_b_better": 0,
+    "a": "E1 ensemble",
+    "b": "EVA-02-L probe",
+    "seeds": [
+     1,
+     1
+    ],
+    "p_holm": 0.6267437325626745
+   },
+   {
+    "diff_points": -0.7537688442211052,
+    "ci95": [
+     -2.5963149078726966,
+     1.0887772194304859
+    ],
+    "p_perm": 0.4878851211487885,
+    "photos_a_better": 16,
+    "photos_b_better": 16,
+    "a": "E3 ensemble",
+    "b": "Qwen3-VL-8B LoRA",
+    "seeds": [
+     1,
+     3
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": -1.658291457286432,
+    "ci95": [
+     -3.5175879396984917,
+     0.10050251256281426
+    ],
+    "p_perm": 0.07810921890781092,
+    "photos_a_better": 25,
+    "photos_b_better": 35,
+    "a": "ResNet-50 at 512 px",
+    "b": "ResNet-50 at 256 px (scores)",
+    "seeds": [
+     5,
+     5
+    ],
+    "p_holm": 0.47592524074759257
+   }
+  ],
+  "synthetic-data arms against real photographs only (3.4, Table S8)": [
+   {
+    "diff_points": 0.16750418760469019,
+    "ci95": [
+     -1.256281407035176,
+     1.5912897822445562
+    ],
+    "p_perm": 0.9069209307906921,
+    "photos_a_better": 17,
+    "photos_b_better": 12,
+    "a": "SigLIP 2 lab GPT synthetic (601)",
+    "b": "SigLIP 2 fine-tuned",
+    "seeds": [
+     3,
+     3
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": 0.41876046901172537,
+    "ci95": [
+     -0.5862646566164154,
+     1.507537688442211
+    ],
+    "p_perm": 0.5207747922520775,
+    "photos_a_better": 11,
+    "photos_b_better": 9,
+    "a": "SigLIP 2 ChatGPT set, first 165",
+    "b": "SigLIP 2 fine-tuned",
+    "seeds": [
+     3,
+     3
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": -1.340033500837521,
+    "ci95": [
+     -2.680067001675042,
+     -5.579010173995761e-17
+    ],
+    "p_perm": 0.06310936890631094,
+    "photos_a_better": 10,
+    "photos_b_better": 22,
+    "a": "SigLIP 2 ChatGPT set, all 235",
+    "b": "SigLIP 2 fine-tuned",
+    "seeds": [
+     3,
+     3
+    ],
+    "p_holm": 0.4417655823441766
+   },
+   {
+    "diff_points": 0.5862646566164155,
+    "ci95": [
+     -0.41876046901172514,
+     1.5912897822445562
+    ],
+    "p_perm": 0.33497665023349765,
+    "photos_a_better": 14,
+    "photos_b_better": 9,
+    "a": "SigLIP 2 ChatGPT set without frost 3-5",
+    "b": "SigLIP 2 fine-tuned",
+    "seeds": [
+     3,
+     3
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": -0.5025125628140703,
+    "ci95": [
+     -1.256281407035176,
+     0.16750418760469019
+    ],
+    "p_perm": 0.26837731622683775,
+    "photos_a_better": 6,
+    "photos_b_better": 11,
+    "a": "SigLIP 2 real + low-quality augmentation",
+    "b": "SigLIP 2 fine-tuned",
+    "seeds": [
+     3,
+     3
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": 0.16750418760469019,
+    "ci95": [
+     -0.9212730318257957,
+     1.340033500837521
+    ],
+    "p_perm": 0.8864811351886481,
+    "photos_a_better": 14,
+    "photos_b_better": 11,
+    "a": "SigLIP 2 ChatGPT set + augmentation",
+    "b": "SigLIP 2 fine-tuned",
+    "seeds": [
+     3,
+     3
+    ],
+    "p_holm": 1.0
+   },
+   {
+    "diff_points": 0.7537688442211057,
+    "ci95": [
+     -0.16750418760469013,
+     1.7587939698492465
+    ],
+    "p_perm": 0.1917780822191778,
+    "photos_a_better": 14,
+    "photos_b_better": 9,
+    "a": "SigLIP 2 ChatGPT set without frost 3-5 + augmentation",
+    "b": "SigLIP 2 fine-tuned",
+    "seeds": [
+     3,
+     3
+    ],
+    "p_holm": 1.0
+   }
+  ],
+  "honesty (3.6)": [
+   {
+    "test": "student vs 32B teacher",
+    "p_reported": 1.3e-05,
+    "p_holm": 5.2e-05
+   },
+   {
+    "test": "student vs Qwen3.8-27B",
+    "p_reported": 0.011,
+    "p_holm": 0.033
+   },
+   {
+    "test": "student vs Qwen3-VL-235B",
+    "p_reported": 0.064,
+    "p_holm": 0.064
+   },
+   {
+    "test": "student vs base-8B student",
+    "p_reported": 0.019,
+    "p_holm": 0.038
+   }
+  ],
+  "test-time compute (Tables S13-S15)": [
+   {
+    "test": "vote vs greedy, 8B",
+    "p_reported": 0.08,
+    "p_holm": 0.8
+   },
+   {
+    "test": "vote vs greedy, 32B",
+    "p_reported": 0.46,
+    "p_holm": 1.0
+   },
+   {
+    "test": "vote vs greedy, 27B",
+    "p_reported": 0.23,
+    "p_holm": 1.0
+   },
+   {
+    "test": "vote vs greedy, 235B",
+    "p_reported": 0.5,
+    "p_holm": 1.0
+   },
+   {
+    "test": "vote vs greedy, GLM-4.6V",
+    "p_reported": 0.86,
+    "p_holm": 1.0
+   },
+   {
+    "test": "choose between two",
+    "p_reported": 0.03,
+    "p_holm": 0.32999999999999996
+   },
+   {
+    "test": "choose + real references",
+    "p_reported": 0.69,
+    "p_holm": 1.0
+   },
+   {
+    "test": "choose + synthetic references",
+    "p_reported": 1.0,
+    "p_holm": 1.0
+   },
+   {
+    "test": "debate, round 1",
+    "p_reported": 0.8,
+    "p_holm": 1.0
+   },
+   {
+    "test": "debate, round 3",
+    "p_reported": 1.0,
+    "p_holm": 1.0
+   },
+   {
+    "test": "evidence first, 8B",
+    "p_reported": 1.4e-05,
+    "p_holm": 0.000196
+   },
+   {
+    "test": "evidence first, 32B",
+    "p_reported": 0.0003,
+    "p_holm": 0.0036
+   },
+   {
+    "test": "evidence first, 27B",
+    "p_reported": 0.32,
+    "p_holm": 1.0
+   },
+   {
+    "test": "evidence first, 235B",
+    "p_reported": 2.7e-05,
+    "p_holm": 0.00035099999999999997
+   }
+  ],
+  "report writer (Table S16)": [
+   {
+    "test": "H_part, with vs without part lists",
+    "p_reported": 0.064,
+    "p_holm": 0.128
+   },
+   {
+    "test": "condition consistency",
+    "p_reported": 0.031,
+    "p_holm": 0.093
+   },
+   {
+    "test": "April writer H_part",
+    "p_reported": 0.45,
+    "p_holm": 0.45
+   }
+  ],
+  "faithfulness, pre-registered (3.9)": [
+   {
+    "test": "Wilcoxon on per-photograph rates",
+    "p_reported": 0.086,
+    "p_holm": 0.172
+   },
+   {
+    "test": "McNemar on reports with an unsupported claim",
+    "p_reported": 0.093,
+    "p_holm": 0.172
+   }
+  ]
+ }
+}

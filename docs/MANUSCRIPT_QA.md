@@ -547,6 +547,16 @@ Every number in the Overleaf draft (export of 20 November, 34 pages) was checked
   the RF-DETR library defaults of Table S2. If the data statement is to cover them, their files belong in the
   repository.
 
+## Permutation tests and Holm's correction, 20 November 2026
+
+Asked for by G.M. (permutation and Holm statistics for the classifier comparisons; lab notebook, entry (ak)). Several classifier comparisons pit the best seed of one model against the best seed of another, and the matched-seed McNemar tests sum image-seed pairs as if independent (2.8 says so). `v2/benchmark/permutation_holm.py` averages each photograph's correctness over all seeds of a model, tests the difference with 100,000 random sign flips and a bootstrap interval, and applies Holm's correction within each family; results in `evaluation/paper_data/permutation_holm_v1.txt` and `.json`.
+
+- **Classifiers:** every main claim stands, most more strongly than in the text (the comparisons against the best ResNet-50 seed were conservative): fine-tuned SigLIP 2 +5.4 and EVA-02-L +5.6 points, EVA-02-L probe +4.8, PE-Core-G probe +4.1, fine-tuned 8B +4.1, E2 over the 8B +3.0 (Holm P <= 0.01). Not significant after Holm: E2 over the EVA-02-L probe (0.11) and the SigLIP 2 probe (0.098).
+- **Two claims on the matched-seed simplification:** the 512-pixel control is P = 0.078, not 0.0064, and the complete designed synthetic set P = 0.063 (Holm 0.44), not 0.02. The conclusions stand; "significantly worse" does not.
+- **Other families (reported P values):** honesty keeps three of four comparisons, test-time compute keeps the three evidence-first effects and loses "choose between two", the report writer's consistency difference becomes 0.093, the faithfulness tests 0.17.
+
+**Applied to the Overleaf draft on 20 November:** in 2.8 the matched-seed sentence now continues "; Supplementary Table~\ref{stab:holm} repeats these comparisons with a paired permutation test on each photograph's correctness averaged over seeds and gives Holm-adjusted $P$ values within each family of comparisons."; in 3.4 "The complete designed set was worse than real photographs alone (94.2 $\pm$ 1.5\%, $P=0.02$)" became "... scored lower than real photographs alone (94.2 $\pm$ 1.5\%; $P=0.02$ over matched seed pairs, $P=0.063$ with each photograph's accuracy averaged over seeds, Supplementary Table~\ref{stab:holm})"; Table S5's 512-pixel row adds "(seed-averaged permutation test: $P=0.078$, Supplementary Table~\ref{stab:holm})"; and Supplementary Table S19 (written by `v2/benchmark/holm_table_tex.py` from the JSON) was added after the last table, so no other number changes. Recompiled: 36 pages, 0 errors, the 6 earlier warnings.
+
 ## Plan for the pending numbers
 
 | When | Work | Feeds |

@@ -1,0 +1,82 @@
+ResNet-50 (lab recipe)                           5 run(s)  90.2 +- 1.5 %
+SigLIP 2 fine-tuned                              3 run(s)  95.6 +- 1.3 %
+EVA-02-L fine-tuned                              3 run(s)  95.7 +- 1.1 %
+EVA-02-L probe                                   1 run(s)  95.0 +- 0.0 %
+PE-Core-G probe                                  1 run(s)  94.2 +- 0.0 %
+SigLIP 2 probe                                   1 run(s)  93.7 +- 0.0 %
+DINOv2-g probe                                   1 run(s)  92.7 +- 0.0 %
+ConvNeXt V2-L probe                              1 run(s)  92.5 +- 0.0 %
+BioCLIP 2 probe                                  1 run(s)  90.7 +- 0.0 %
+Qwen3-VL-8B LoRA                                 3 run(s)  94.2 +- 0.3 %
+Qwen3-VL-32B QLoRA                               1 run(s)  93.7 +- 0.0 %
+E1 ensemble                                      1 run(s)  96.0 +- 0.0 %
+E2 ensemble                                      1 run(s)  97.2 +- 0.0 %
+E3 ensemble                                      1 run(s)  93.5 +- 0.0 %
+ResNet-50 at 512 px                              5 run(s)  88.5 +- 1.0 %
+ResNet-50 at 256 px (scores)                     5 run(s)  90.2 +- 1.5 %
+SigLIP 2 lab GPT synthetic (601)                 3 run(s)  95.7 +- 1.0 %
+SigLIP 2 ChatGPT set, first 165                  3 run(s)  96.0 +- 0.4 %
+SigLIP 2 ChatGPT set, all 235                    3 run(s)  94.2 +- 1.5 %
+SigLIP 2 ChatGPT set without frost 3-5           3 run(s)  96.1 +- 1.0 %
+SigLIP 2 real + low-quality augmentation         3 run(s)  95.1 +- 1.0 %
+SigLIP 2 ChatGPT set + augmentation              3 run(s)  95.7 +- 0.8 %
+SigLIP 2 ChatGPT set without frost 3-5 + augmentation 3 run(s)  96.3 +- 0.8 %
+
+== classifier comparisons (3.3, Tables S4, S5): seed-averaged paired permutation test, Holm within the family (16 tests)
+  SigLIP 2 fine-tuned (3) vs ResNet-50 (lab recipe) (5): +5.4 points [+3.1, +7.8], photos 51/15, P = 1e-05, Holm P = 0.00016
+  EVA-02-L fine-tuned (3) vs ResNet-50 (lab recipe) (5): +5.6 points [+3.6, +7.7], photos 49/7, P = 1e-05, Holm P = 0.00016
+  EVA-02-L probe (1) vs ResNet-50 (lab recipe) (5): +4.8 points [+2.7, +7.1], photos 43/7, P = 1e-05, Holm P = 0.00016
+  PE-Core-G probe (1) vs ResNet-50 (lab recipe) (5): +4.1 points [+2.0, +6.2], photos 40/8, P = 0.00012, Holm P = 0.0016
+  SigLIP 2 probe (1) vs ResNet-50 (lab recipe) (5): +3.6 points [+1.0, +6.2], photos 43/15, P = 0.0098, Holm P = 0.098
+  DINOv2-g probe (1) vs ResNet-50 (lab recipe) (5): +2.6 points [+0.2, +4.9], photos 38/14, P = 0.037, Holm P = 0.29
+  ConvNeXt V2-L probe (1) vs ResNet-50 (lab recipe) (5): +2.3 points [-0.1, +4.7], photos 40/14, P = 0.068, Holm P = 0.48
+  BioCLIP 2 probe (1) vs ResNet-50 (lab recipe) (5): +0.6 points [-2.3, +3.4], photos 38/24, P = 0.73, Holm P = 1
+  Qwen3-VL-8B LoRA (3) vs ResNet-50 (lab recipe) (5): +4.1 points [+1.7, +6.5], photos 45/19, P = 0.00088, Holm P = 0.0097
+  Qwen3-VL-32B QLoRA (1) vs Qwen3-VL-8B LoRA (3): -0.5 points [-2.2, +1.2], photos 14/15, P = 0.62, Holm P = 1
+  SigLIP 2 fine-tuned (3) vs EVA-02-L fine-tuned (3): -0.2 points [-1.6, +1.3], photos 15/16, P = 0.91, Holm P = 1
+  E2 ensemble (1) vs Qwen3-VL-8B LoRA (3): +3.0 points [+1.3, +4.9], photos 26/4, P = 0.00056, Holm P = 0.0067
+  E2 ensemble (1) vs EVA-02-L probe (1): +2.3 points [+0.8, +4.0], photos 10/1, P = 0.012, Holm P = 0.11
+  E1 ensemble (1) vs EVA-02-L probe (1): +1.0 points [+0.3, +2.0], photos 4/0, P = 0.13, Holm P = 0.63
+  E3 ensemble (1) vs Qwen3-VL-8B LoRA (3): -0.8 points [-2.6, +1.1], photos 16/16, P = 0.49, Holm P = 1
+  ResNet-50 at 512 px (5) vs ResNet-50 at 256 px (scores) (5): -1.7 points [-3.5, +0.1], photos 25/35, P = 0.078, Holm P = 0.48
+
+== synthetic-data arms against real photographs only (3.4, Table S8): seed-averaged paired permutation test, Holm within the family (7 tests)
+  SigLIP 2 lab GPT synthetic (601) (3) vs SigLIP 2 fine-tuned (3): +0.2 points [-1.3, +1.6], photos 17/12, P = 0.91, Holm P = 1
+  SigLIP 2 ChatGPT set, first 165 (3) vs SigLIP 2 fine-tuned (3): +0.4 points [-0.6, +1.5], photos 11/9, P = 0.52, Holm P = 1
+  SigLIP 2 ChatGPT set, all 235 (3) vs SigLIP 2 fine-tuned (3): -1.3 points [-2.7, -0.0], photos 10/22, P = 0.063, Holm P = 0.44
+  SigLIP 2 ChatGPT set without frost 3-5 (3) vs SigLIP 2 fine-tuned (3): +0.6 points [-0.4, +1.6], photos 14/9, P = 0.33, Holm P = 1
+  SigLIP 2 real + low-quality augmentation (3) vs SigLIP 2 fine-tuned (3): -0.5 points [-1.3, +0.2], photos 6/11, P = 0.27, Holm P = 1
+  SigLIP 2 ChatGPT set + augmentation (3) vs SigLIP 2 fine-tuned (3): +0.2 points [-0.9, +1.3], photos 14/11, P = 0.89, Holm P = 1
+  SigLIP 2 ChatGPT set without frost 3-5 + augmentation (3) vs SigLIP 2 fine-tuned (3): +0.8 points [-0.2, +1.8], photos 14/9, P = 0.19, Holm P = 1
+
+== honesty (3.6): P values as reported, Holm within the family (4 tests)
+  student vs 32B teacher: P = 1.3e-05, Holm P = 5.2e-05
+  student vs Qwen3.8-27B: P = 0.011, Holm P = 0.033
+  student vs Qwen3-VL-235B: P = 0.064, Holm P = 0.064
+  student vs base-8B student: P = 0.019, Holm P = 0.038
+
+== test-time compute (Tables S13-S15): P values as reported, Holm within the family (14 tests)
+  vote vs greedy, 8B: P = 0.08, Holm P = 0.8
+  vote vs greedy, 32B: P = 0.46, Holm P = 1
+  vote vs greedy, 27B: P = 0.23, Holm P = 1
+  vote vs greedy, 235B: P = 0.5, Holm P = 1
+  vote vs greedy, GLM-4.6V: P = 0.86, Holm P = 1
+  choose between two: P = 0.03, Holm P = 0.33
+  choose + real references: P = 0.69, Holm P = 1
+  choose + synthetic references: P = 1, Holm P = 1
+  debate, round 1: P = 0.8, Holm P = 1
+  debate, round 3: P = 1, Holm P = 1
+  evidence first, 8B: P = 1.4e-05, Holm P = 0.0002
+  evidence first, 32B: P = 0.0003, Holm P = 0.0036
+  evidence first, 27B: P = 0.32, Holm P = 1
+  evidence first, 235B: P = 2.7e-05, Holm P = 0.00035
+
+== report writer (Table S16): P values as reported, Holm within the family (3 tests)
+  H_part, with vs without part lists: P = 0.064, Holm P = 0.13
+  condition consistency: P = 0.031, Holm P = 0.093
+  April writer H_part: P = 0.45, Holm P = 0.45
+
+== faithfulness, pre-registered (3.9): P values as reported, Holm within the family (2 tests)
+  Wilcoxon on per-photograph rates: P = 0.086, Holm P = 0.17
+  McNemar on reports with an unsupported claim: P = 0.093, Holm P = 0.17
+

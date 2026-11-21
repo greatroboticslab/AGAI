@@ -16,7 +16,7 @@ system.
 | [`ensemble_errors.jpg`](ensemble_errors.jpg) | contact sheet of the 11 split v1 test photographs that ensemble E2 gets wrong, with the predictions of single models; reviewed in [Classifier, error analysis](../docs/CLASSIFIER.md#error-analysis-and-the-label-noise-ceiling) | [`v2/benchmark/error_sheet.py`](../v2/benchmark/error_sheet.py); the lab notebook calls the sheet `logs/e2_errors.jpg` |
 | [`split_v1_coverage.json`](split_v1_coverage.json) | for each set and condition of split v1, how many of its photographs are in this repository, and the 291 paths that are not | [`v2/benchmark/split_coverage.py`](../v2/benchmark/split_coverage.py) |
 | [`MANIFEST.sha256`](MANIFEST.sha256) | SHA-256 of the evaluation files and of the 1,285 split v1 photographs in this repository; check with `git lfs pull` then `sha256sum -c evaluation/MANIFEST.sha256` from the repository root | [`v2/benchmark/make_manifest.py`](../v2/benchmark/make_manifest.py) |
-| [`paper_data/`](paper_data/README.md) | 52 result files behind the journal manuscript, 31 October to 20 November 2026 | see its README |
+| [`paper_data/`](paper_data/README.md) | 54 result files behind the journal manuscript, 31 October to 20 November 2026 | see its README |
 
 ## Using the files
 

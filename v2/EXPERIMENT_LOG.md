@@ -1640,3 +1640,25 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
     **P3** (descriptive): agreement between the two rounds of ratings of v2's claims (Cohen's kappa over the five
     verdicts, and over supported / not supported). Also reported: v1 retrained's labels on the 49 (with the gate) and
     its latency.
+- **2026-11-20, 21:14 CST. (ak) Seed-averaged paired permutation tests and Holm's correction (post hoc, asked for by a
+  co-author).** `cluster/permutation_holm.py` (repository `v2/benchmark/permutation_holm.py`), run on the cluster's
+  per-image result files; `evaluation/paper_data/permutation_holm_v1.txt` and `.json`. Each photograph's correctness
+  is averaged over all seeds of a model, the difference between two models over the 398 test photographs is tested
+  with 100,000 random sign flips (two-sided), with a bootstrap interval; Holm's step-down correction within each
+  family. Every model's accuracy reproduces the manuscript's tables (the file-to-row mapping checked this way first).
+  Classifiers (16 comparisons): the fine-tuned SigLIP 2 (+5.4 points, 3.1 to 7.8) and EVA-02-L (+5.6), the EVA-02-L
+  probe (+4.8), the PE-Core-G probe (+4.1), the fine-tuned 8B (+4.1) and ensemble E2 over the 8B (+3.0) beat their
+  comparators with Holm P <= 0.01; the manuscript's comparisons against the best ResNet-50 seed were conservative
+  (PE-Core-G probe there 18/8, P = 0.076). Not significant after Holm: E2 over the EVA-02-L probe (P = 0.012, Holm
+  0.11), the SigLIP 2 probe (0.0098, Holm 0.098). Two claims rested on the matched-seed simplification of 2.8 (repeated
+  outcomes of a photograph treated as independent): the 512-pixel ResNet-50 control, 53/86 image-seed pairs, P =
+  0.0064, is -1.7 points (-3.5 to +0.1), P = 0.078 here; the complete designed synthetic set, 14/30, P = 0.02, is -1.3
+  points (-2.7 to 0.0), P = 0.063 (Holm 0.44). Neither conclusion changes (no gain from resolution; no gain from the
+  synthetic sets), but "significantly worse" is not supported. No synthetic arm is significant after Holm. From the
+  reported P values: honesty keeps the teacher, 27B and base-8B comparisons (Holm 5.2e-5, 0.033, 0.038); test-time
+  compute keeps the three evidence-first effects (Holm <= 0.0036) and loses "choose between two" (0.03 to 0.33); the
+  report writer's condition-consistency difference becomes 0.093; the two pre-registered faithfulness tests 0.17.
+  Changed in the Overleaf draft (recompiled, 36 pages, 0 errors, the 6 earlier warnings): a sentence in 2.8 pointing
+  to the new Supplementary Table S19 (`v2/benchmark/holm_table_tex.py` writes its LaTeX from the JSON); 3.4 now gives
+  the designed set's P both ways; Table S5's 512-pixel row adds the permutation P. Table S19 is placed last, so no
+  other table number changes.
