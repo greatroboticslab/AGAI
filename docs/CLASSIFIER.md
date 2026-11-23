@@ -158,6 +158,42 @@ SigLIP 2, 3 seeds per training recipe, split v1 test).
   (one photo = 7 points), so these accuracies are rough; the P(healthy) shift ranks the recipes the same way.
   **Full-resolution healthy photos from the field are the fix and the proper test** ([Roadmap](ROADMAP.md) C6).
 
+## External test on a public set
+
+Post hoc for the journal manuscript (lab notebook, entries (al) to (an), 22 November 2026). v1's ResNet-50 retrained on
+split v1 and v2's SigLIP 2 recipe classified the 463 test photographs of a public strawberry disease set
+([Mendeley Data `k2ptxmfjhj`, version 2](https://doi.org/10.17632/k2ptxmfjhj.2), CC BY-NC 4.0, built on Afzaal et al.
+2021 and Pérez-Borrero et al. 2020; one category per photograph, all 640 × 640), each with v1's hand-set gate and with
+its own validation-chosen gate ([`v2/classifier/external_test.py`](../v2/classifier/external_test.py)).
+
+| Photographs | v1 ResNet-50 | v2 SigLIP 2 |
+|---|---|---|
+| Gray mold, 58. **Not an external test:** 42 are near-copies of split v1 photographs, 26 of them with a copy in training | 58 right | 58 right |
+| Asymptomatic fruit, 58 (our "healthy") | 20 right (34.5 %); the gates accept 14 and 15, of which 7 and 5 are right | 47 right (81.0 %); the gates accept 45 and 34, of which 44 and 32 are right |
+| Six diseases outside the seven conditions, 347 | the gates accept 195 (56.2 %) and 200 (57.6 %), all with a wrong label; 14 called healthy | the gates accept 216 (62.3 %) and 219 (63.1 %), all with a wrong label; 48 called healthy |
+
+In each cell the first number is for v1's hand-set thresholds, the second for the validation-chosen thresholds.
+
+- **The gray mold photographs are not new.** The benchmark's near-duplicate rule (pHash within 8 bits, dHash within 10,
+  mirror-aware; [`v2/benchmark/external_overlap.py`](../v2/benchmark/external_overlap.py)) finds a copy in split v1 for
+  42 of the 58, and 38 of the 45 pairs have identical pHashes; the other seven categories have none. Our gray mold
+  photographs and this set share a source (Afzaal et al. 2021), so 58 of 58 says nothing about new photographs.
+- **Healthy fruit from another source.** v1's classifier recognises 20 of the 58 and calls 23 gray mold; v2's recognises
+  47.
+- **Diseases the models have no class for.** Both classifiers give most of them one of the seven labels, frost injury
+  (181 and 136) or gray mold (101 and 104), with a median top probability of 0.70 and 0.72, and the gates accept 56
+  to 63 %. A gate on the top probability does not flag a disease outside the label set. v2's classifier calls 48 of
+  these diseased photographs healthy; v1's hand-set gate passes 45 of them, the validation-chosen gate 13. v2's
+  explainer, which can reject a label the photograph does not support, was not part of this test.
+- **Predictions of entry (al).** Recall below split v1's: supported for healthy (34.5 against 86.4 %, 81.0 against
+  95.1 %), not testable for gray mold. v2 at least as good as v1: supported. Each gate accepts more than half of the
+  out-of-scope photographs: supported. Out-of-scope fruit diseases mostly called gray or white mold: 58 % in total,
+  carried by anthracnose fruit rot and powdery mildew on fruit; blossom blight is called frost injury or healthy.
+
+Files: `evaluation/paper_data/external_mendeley_test.json` (per photograph: both classifiers' labels, probabilities and
+gate decisions) and `external_mendeley_overlap.json` (the near-copy pairs); tables printed by
+[`v2/classifier/external_test_summary.py`](../v2/classifier/external_test_summary.py).
+
 ## Error analysis and the label-noise ceiling
 
 E2's 11 test errors, reviewed by eye (not by a pathologist) on a contact sheet

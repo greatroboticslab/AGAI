@@ -1711,3 +1711,38 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
     running after its connection dropped. Today the script was uploaded again and run: 464 of 464 files match their
     published SHA-256. Job 82958 (`cluster/slurm/external_test.sbatch`) is submitted; no prediction on these
     photographs existed before this entry.
+- **2026-11-22, 19:50 CST. (an) Results of the external test (al): its gray mold photographs are not external; the healthy
+  fruit and the unknown diseases are, and there the gates do not protect.** Job 82958 (node c8, 3 min 52 s),
+  `evaluation/external_mendeley_test.json` (sha256 af40a57da0388e09...; repository `evaluation/paper_data/`), tables by
+  `v2/classifier/external_test_summary.py`. Gates in each pair: v1's hand-set thresholds, then the classifier's
+  validation-chosen thresholds.
+  1. **Gray mold (58).** Both classifiers 58 of 58; the gates accept 57 and 58 (ResNet-50) and 58 and 58 (SigLIP 2).
+  2. **Asymptomatic fruit (58), our healthy.** ResNet-50 20 right (34.5 %; it calls 23 gray mold, 10 frost injury, 5
+     overwatering); its gates accept 14 and 15, of which 7 and 5 are right. SigLIP 2 47 right (81.0 %); its gates accept
+     45 and 34, of which 44 and 32 are right.
+  3. **Six diseases outside the seven conditions (347).** Labels given: ResNet-50 frost injury 181, gray mold 101,
+     drought 28, healthy 14, root rot 13, overwatering 7, white mold 3; SigLIP 2 frost injury 136, gray mold 104,
+     drought 55, healthy 48, white mold 3, overwatering 1. Median top probability 0.70 and 0.72. The gates accept 195
+     (56.2 %) and 200 (57.6 %) for the ResNet-50, 216 (62.3 %) and 219 (63.1 %) for SigLIP 2. Of the diseased
+     photographs SigLIP 2 calls healthy, 45 pass v1's gate and 13 the validation-chosen gate (ResNet-50: 7 and 4).
+  - *Post hoc, not in (al): are the photographs new?* `cluster/external_overlap.py` (repository
+    `v2/benchmark/external_overlap.py`), the benchmark's near-duplicate rule (pHash within 8 bits, dHash within 10,
+    mirror-aware) between the 463 photographs and the 1,576 of split v1: 42 of the 58 gray mold photographs have a
+    near-copy in split v1 (26 with a copy in training, 5 only in validation, 11 only in test; 38 of the 45 pairs with a
+    pHash distance of 0), and none of the 405 photographs of the other seven categories has one (median smallest pHash
+    distance 18). Our gray mold photographs and this set share a source (Afzaal et al. 2021). The 16 gray mold
+    photographs without a near-copy are also all right, but they come from that same source. So result 1 is no test
+    on new photographs, and it would have been reported as one without this check.
+  - *Predictions.* P1 (lower recall than on split v1): supported for healthy (34.5 against 86.4 %, 81.0 against 95.1 %);
+    for gray mold the 100 % cannot count. P2 (v2 at least v1): supported (healthy 81.0 against 34.5 %). P3 (each gate
+    accepts more than half of the out-of-scope photographs): supported, 56 to 63 %. P4 (out-of-scope fruit diseases
+    mostly called gray or white mold): 100 and 101 of 173 (58 %), carried by anthracnose fruit rot (45 and 52 of 57)
+    and powdery mildew on fruit (53 and 49 of 58); blossom blight is called frost injury (56 of 58) by the ResNet-50
+    and frost injury or healthy (30 and 28) by SigLIP 2.
+  - *Reading.* A gate on the top probability does not flag a disease outside the label set: most such photographs get
+    one of the seven labels with confidence, and v2's classifier calls one in seven of them healthy. v2's explainer,
+    which can reject a label the photograph does not support, was not part of this test, and is the place to test
+    next. v2's classifier holds up far better than v1's on healthy fruit from another source. For the manuscript this
+    is a limitation to state (closed label set), with text proposed in `docs/MANUSCRIPT_QA.md`; whether it goes in is the
+    authors' decision. Files: `evaluation/paper_data/external_mendeley_test.json`, `external_mendeley_overlap.json`;
+    `docs/CLASSIFIER.md`, "External test on a public set".

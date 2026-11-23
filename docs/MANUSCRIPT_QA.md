@@ -557,6 +557,39 @@ Asked for by G.M. (permutation and Holm statistics for the classifier comparison
 
 **Applied to the Overleaf draft on 20 November:** in 2.8 the matched-seed sentence now continues "; Supplementary Table~\ref{stab:holm} repeats these comparisons with a paired permutation test on each photograph's correctness averaged over seeds and gives Holm-adjusted $P$ values within each family of comparisons."; in 3.4 "The complete designed set was worse than real photographs alone (94.2 $\pm$ 1.5\%, $P=0.02$)" became "... scored lower than real photographs alone (94.2 $\pm$ 1.5\%; $P=0.02$ over matched seed pairs, $P=0.063$ with each photograph's accuracy averaged over seeds, Supplementary Table~\ref{stab:holm})"; Table S5's 512-pixel row adds "(seed-averaged permutation test: $P=0.078$, Supplementary Table~\ref{stab:holm})"; and Supplementary Table S19 (written by `v2/benchmark/holm_table_tex.py` from the JSON) was added after the last table, so no other number changes. Recompiled: 36 pages, 0 errors, the 6 earlier warnings.
 
+## External test on a public set, 22 November 2026 (not in the draft)
+
+A reviewer is likely to ask for a test on photographs from another source. Lab notebook, entries (al) to (an);
+`docs/CLASSIFIER.md`, "External test on a public set". v1's and v2's classifiers, with both gates, on the 463 test
+photographs of a public strawberry disease set (Mendeley Data `k2ptxmfjhj`, version 2):
+
+- of 347 photographs of six diseases outside the seven conditions, the gates accept 56 to 63 % with a wrong label
+  (mostly frost injury or gray mold), and v2's classifier calls 48 of them healthy;
+- healthy fruit: v2's classifier 47 of 58 (81 %), v1's 20 of 58 (34 %);
+- the set's 58 gray mold photographs cannot be used: 42 are near-copies of photographs in our collection.
+
+Whether this goes into the manuscript is the authors' decision. If it does, a paragraph for the limitations
+(sections/4_discussion.tex) and a reference:
+
+```latex
+The label set is closed. On the test photographs of a public strawberry disease set \citep{galarza2026strawberry},
+both classifiers gave one of the seven labels to diseases they have no class for: of 347 photographs of six such
+diseases, the acceptance gates passed 56 to 63\%, mostly as frost injury or gray mold, and v2's classifier called 48
+of them healthy. Healthy fruit from the same set was recognised in 81\% of 58 photographs by v2's classifier and in
+34\% by v1's. The set's gray mold photographs could not serve as a test, because 42 of the 58 are near-copies of
+photographs in our collection. The explainer's rejection of unsupported labels was not part of this test.
+```
+
+```bibtex
+@misc{galarza2026strawberry,
+  author = {Galarza-Falfan, Jorge and Aguirre-Castro, Oscar Adrian and Inzunza-Gonzalez, Everardo and Garc{\'i}a-Guerrero, Enrique Efr{\'e}n},
+  title = {Strawberry Disease Detection Dataset with Hybrid Data Augmentation},
+  howpublished = {Mendeley Data, V2},
+  year = {2026},
+  doi = {10.17632/k2ptxmfjhj.2}
+}
+```
+
 ## Plan for the pending numbers
 
 | When | Work | Feeds |

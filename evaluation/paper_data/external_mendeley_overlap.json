@@ -1,0 +1,479 @@
+{
+ "rule": {
+  "phash_max": 8,
+  "dhash_max": 10,
+  "mirror": true
+ },
+ "n_external": 463,
+ "n_split_v1": 1576,
+ "by_category": {
+  "Angular Leafspot": {
+   "n": 58,
+   "with_near_copy": 0,
+   "first_match_in": {},
+   "with_near_copy_loose_phash12": 3,
+   "median_min_phash": 18.0
+  },
+  "Anthracnose Fruit Rot": {
+   "n": 57,
+   "with_near_copy": 0,
+   "first_match_in": {},
+   "with_near_copy_loose_phash12": 0,
+   "median_min_phash": 18.0
+  },
+  "Asymptomatic Strawberry": {
+   "n": 58,
+   "with_near_copy": 0,
+   "first_match_in": {},
+   "with_near_copy_loose_phash12": 1,
+   "median_min_phash": 18.0
+  },
+  "Blossom Blight": {
+   "n": 58,
+   "with_near_copy": 0,
+   "first_match_in": {},
+   "with_near_copy_loose_phash12": 0,
+   "median_min_phash": 18.0
+  },
+  "Gray Mold": {
+   "n": 58,
+   "with_near_copy": 42,
+   "first_match_in": {
+    "val/gray_mold": 5,
+    "train/gray_mold": 26,
+    "test/gray_mold": 11
+   },
+   "with_near_copy_loose_phash12": 43,
+   "median_min_phash": 0.0
+  },
+  "Leaf Spot": {
+   "n": 58,
+   "with_near_copy": 0,
+   "first_match_in": {},
+   "with_near_copy_loose_phash12": 1,
+   "median_min_phash": 18.0
+  },
+  "Powderly Mildew Fruit": {
+   "n": 58,
+   "with_near_copy": 0,
+   "first_match_in": {},
+   "with_near_copy_loose_phash12": 0,
+   "median_min_phash": 18.0
+  },
+  "Powderly Mildew Leaf": {
+   "n": 58,
+   "with_near_copy": 0,
+   "first_match_in": {},
+   "with_near_copy_loose_phash12": 0,
+   "median_min_phash": 18.0
+  }
+ },
+ "pairs": [
+  {
+   "external": "gray_mold406_jpg.rf.2eb72f9019cb313dad9faf217ffd8fa8.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1424.jpg",
+   "set": "val",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold410_jpg.rf.1304d59785c1f26da665ba4b2c23df1f.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1450.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold414_jpg.rf.0c077d49b03b60e6cd57ffacb3b084f5.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1472.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold431_jpg.rf.35b92443f13d9b09a11a053fcc01dd3a.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/holdout/gray_mold/GrayMold1524.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 1
+  },
+  {
+   "external": "gray_mold381_jpg.rf.599d93e2e2c9991bf151ec2ab8b18e30.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/holdout/gray_mold/GrayMold1318.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 2,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold42_jpg.rf.d2512ba0f6b123d4bc9973de877359c8.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold2348.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 4,
+   "dhash": 5
+  },
+  {
+   "external": "gray_mold485_jpg.rf.6b8aca960b259bcd285534e2e0ab551b.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1660.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold517_jpg.rf.c32383063431725ec7433dfc77004021.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1830.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 1
+  },
+  {
+   "external": "gray_mold518_jpg.rf.324d8c4ab80736824705814fd7d5a003.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1834.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold518_jpg.rf.324d8c4ab80736824705814fd7d5a003.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1837.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 3
+  },
+  {
+   "external": "gray_mold394_jpg.rf.8af7d4aa40956ecaa56c254355d8ecc7.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1361.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold520_jpg.rf.b7de6f658d1fedeecdb96678a5272e5e.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1846.jpg",
+   "set": "val",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 1
+  },
+  {
+   "external": "gray_mold432_jpg.rf.686af1bf64858711cbb81a1c1d7c891c.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1531.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold519_jpg.rf.a4107a60541e611252a653c2a5813f19.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1841.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold528_jpg.rf.655d944bf034f61026fe5f69f1c23fca.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/holdout/gray_mold/GrayMold1881.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "aug_44_gray_mold367_jpg.rf.d1e85780eaf2233b34912d465c2c15da.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1245.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 2,
+   "dhash": 3
+  },
+  {
+   "external": "gray_mold311_jpg.rf.ee83e54fdcd0ec0ee3526e36b62c4254.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold0957.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold366_jpg.rf.a4dcda355e6793cfde485dee18d33231.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1239.jpg",
+   "set": "val",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold370_jpg.rf.65a39701e987eead382f7bd79b8d83ce.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1268.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 3
+  },
+  {
+   "external": "gray_mold160_jpg.rf.186ba8b944de2366976660a3343c2ad4.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/holdout/gray_mold/GrayMold1395.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold348_jpg.rf.ea920584c5aee06397fc365039be9cc9.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1142.jpg",
+   "set": "val",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold194_jpg.rf.0228d0390d74800034c1ed469c8b8cb6.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold0416.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 1
+  },
+  {
+   "external": "gray_mold288_jpg.rf.12882e96e1e79faa9b31bbffe1555537.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold0830.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold359_jpg.rf.0fd24312f40a0235f0a8bb524dc85660.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1205.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 1
+  },
+  {
+   "external": "gray_mold31_jpg.rf.240720369352e31ca06ec079f76c0a98.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold0949.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold540_jpg.rf.4e67dc2fd6fcd04a3c2b6b9317421e78.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1945.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 2,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold212_jpg.rf.c15aad5adaa9954ea93b87181bd2402a.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold0495.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold353_jpg.rf.7375fa8b1e94120af5f3c76a91a35200.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1173.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 1
+  },
+  {
+   "external": "gray_mold53_jpg.rf.6fb5045b6dfb5eef2a778ec087ddd2d0.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1895.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold53_jpg.rf.6fb5045b6dfb5eef2a778ec087ddd2d0.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold2374.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 6,
+   "dhash": 2
+  },
+  {
+   "external": "gray_mold90_jpg.rf.355a642408eeb896e80fff5e1b3f00a5.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold2305.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 8,
+   "dhash": 6
+  },
+  {
+   "external": "gray_mold90_jpg.rf.355a642408eeb896e80fff5e1b3f00a5.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/images (1).jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 6,
+   "dhash": 4
+  },
+  {
+   "external": "gray_mold320_jpg.rf.d3f606accaa9f9f5d662b2ad0ac54188.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1004.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold52_jpg.rf.06d728d713344078b7164d4c89c285f2.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1845.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold547_jpg.rf.af6b74297e731f580b2c5be713545100.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1978.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold10_jpg.rf.0bdd86d0beeedf29fc0395ec02ff1e93.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold0005.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold553_jpg.rf.4f527d245d82c00fe8a1cbccfae33ae7.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold2018.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold341_jpg.rf.a6ccc624ac9c52c990709cbb961ae292.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1116.jpg",
+   "set": "val",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold323_jpg.rf.c9a314ebb032112e6496cc41675b50cb.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1026.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 1
+  },
+  {
+   "external": "gray_mold584_jpg.rf.b684d8c45f2fa72753f4c2e94e1db461.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold2185.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 1
+  },
+  {
+   "external": "gray_mold99_jpg.rf.766b1d23fac53fa29a2e6c9b5d8362de.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/holdout/gray_mold/GrayMold2002.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold579_jpg.rf.a288ee6879030a0d51eef7e81f402500.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold2146.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold529_jpg.rf.e13c37180fd908675999b48480fee488.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold1888.jpg",
+   "set": "test",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold282_jpg.rf.3b19b6564a4d6543d723575bd45436c5.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold0798.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  },
+  {
+   "external": "gray_mold581_jpg.rf.252ee99b9832f122973e5eb3adc69f85.jpg",
+   "category": "Gray Mold",
+   "split_v1": "plant_diagnostic/data/train/gray_mold/GrayMold2164.jpg",
+   "set": "train",
+   "label": "gray_mold",
+   "phash": 0,
+   "dhash": 0
+  }
+ ],
+ "external_with_near_copy": 42
+}
