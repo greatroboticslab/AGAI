@@ -1689,3 +1689,25 @@ SigLIP 2 so400m fine-tunes, lab recipe, 3 seeds each, real split v1 test (398) a
   - *Limits.* One public set with one label per photograph, resized to 640 x 640 without keeping the aspect ratio;
     "Asymptomatic Strawberry" taken as our healthy; mostly close views of leaves and fruit, unlike many of our photos;
     the explainer's own rejection of wrong labels (v2's main safeguard) is not part of this test.
+- **2026-11-22, 19:41 CST. (am) Round 2 of the claim ratings is set up (plan (aj)); the external test of (al) is submitted.**
+  - *v1 retrained, reports.* Job 82899 (node c3, 57 min 52 s) wrote `evaluation/latency_v1_splitv1.json` (repository:
+    `evaluation/paper_data/latency_v1_splitv1.json`, sha256 62f881d958b64b21...): 49 reports for the same 49
+    photographs in the same order as the deployed run, with the three split v1 checkpoints recorded in its `settings`.
+    Its labels, gate decisions and timings are reported with the ratings, not before, so that the rater does not know
+    them while rating.
+  - *Claims.* `make_faithfulness_claims.py --v1 evaluation/paper_data/latency_v1_splitv1.json --seed-prefix
+    faith-v1splitv1-v2` (new option; the default still rebuilds round 1's set byte for byte, checked with `--check`):
+    731 claims, v1 retrained 480 and v2 251, the same 251 v2 sentences as round 1 in a new order. Blind set:
+    `evaluation/paper_data/faithfulness_v1splitv1_v2_claims.json`; the key stays out of the repository until the
+    ratings are scored.
+  - *Rating page.* Round 1's page with its data block replaced (same instructions, verdicts, keys and storage layout,
+    so both rounds use one instrument), the 49 photographs copied from round 1's page, a new title and browser-storage
+    key. One fix: the "Download JSON" button, which the viewer never let work in round 1, now saves through the
+    viewer's download prompt and is hidden where that is unavailable. Storage checked with one probe row (written,
+    read back, deleted).
+  - *External test, correction to how the files arrived.* The verified download reported in my working notes of 20
+    November did not run as written: the verification script reached the cluster empty (a shell precedence mistake in
+    the upload command), and the 463 photographs and the annotation file were fetched by an earlier loop that kept
+    running after its connection dropped. Today the script was uploaded again and run: 464 of 464 files match their
+    published SHA-256. Job 82958 (`cluster/slurm/external_test.sbatch`) is submitted; no prediction on these
+    photographs existed before this entry.

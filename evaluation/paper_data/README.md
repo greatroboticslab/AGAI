@@ -1,7 +1,7 @@
 # `evaluation/paper_data/`: result files behind the journal manuscript
 
 The result files that the journal manuscript comparing v1 (the original system, 2025 to April 2026) with v2 (the 2026
-revival) relies on, added from 31 October to 20 November 2026. All were produced during the revival: some measure v1
+revival) relies on, added from 31 October to 22 November 2026. All were produced during the revival: some measure v1
 components on split v1 (the lab's ResNet-50 recipe, its RF-DETR Small checkpoint and April 2026 report writer, and v1
 as deployed), the others measure v2 or compare the two. [`docs/MANUSCRIPT_QA.md`](../../docs/MANUSCRIPT_QA.md) gives
 the numbers taken from them item by item, and the lab notebook [`v2/EXPERIMENT_LOG.md`](../../v2/EXPERIMENT_LOG.md)
@@ -18,6 +18,7 @@ photographs (7 per condition, seed 0); the report sample is the 151 split v1 tes
 | `calib_siglip2_recipe_summary.json` | the same metrics for the SigLIP 2 recipe (the v2 classifier), 3 seeds | same | 3.3; Table S7 (the chosen classifier) |
 | `calib_siglip2_recipe_test_seed0.json` to `calib_siglip2_recipe_test_seed2.json` (3 files) | per-photograph records, one file per seed; [`paper/figure_scripts/calib_to_eval.py`](../../paper/figure_scripts/calib_to_eval.py) pools them for Fig. S9 | same | 3.3; Fig. S9 |
 | `detector_split_v1.json` | the detector split that agrees with split v1: each of the 1,075 annotated images assigned to train (845), validation (67) or test (163) by perceptual-hash match to the split v1 photographs, with match distances and counts per part and condition | [`v2/detector/make_detector_split.py`](../../v2/detector/make_detector_split.py) | 2.6, 3.5; [Detector](../../docs/DETECTOR.md) |
+| `faithfulness_v1splitv1_v2_claims.json` | round 2's blind claim set (lab notebook (aj), (am)): the 731 sentences of the retrained v1's reports (480) and of v2's reports (251, the same sentences as round 1), pooled and shuffled per photograph with the seed prefix `faith-v1splitv1-v2` | [`v2/vlm/make_faithfulness_claims.py`](../../v2/vlm/make_faithfulness_claims.py) `--v1 evaluation/paper_data/latency_v1_splitv1.json --seed-prefix faith-v1splitv1-v2` | the leak-free v1 comparison; ratings pending |
 | `faithfulness_v1v2_claims.json` | the blind claim set: the 696 sentences of the v1 and v2 reports on the latency sample (v1 445, v2 251), pooled and shuffled per photograph | [`v2/vlm/make_faithfulness_claims.py`](../../v2/vlm/make_faithfulness_claims.py) `--claims-out` | 3.9, claim-level faithfulness |
 | `faithfulness_v1v2_key.json` | the key that un-blinds the claims: claim to system and sentence, photograph to labels and the v2 student's verdict | same, `--key-out` | 3.9 |
 | `faithfulness_v1v2_ratings.json` | 573 blind ratings of the claims by one rater, 4 to 12 November 2026 | export of the blind rating page's database; no script in the repository | 3.9, primary analysis |
@@ -30,6 +31,7 @@ photographs (7 per condition, seed 0); the report sample is the 151 split v1 tes
 | `latency_rfdetr.json` | detector latency and GPU memory, in-process, on the latency sample: the lab's RF-DETR Small (v1) and RF-DETR Large retrained on the detector split (v2) | [`v2/detector/latency_rfdetr.py`](../../v2/detector/latency_rfdetr.py) | 3.9, latency table |
 | `latency_siglip2.json` | latency, GPU memory and per-photograph predictions of the SigLIP 2 classifier (v2); the predictions are the labels handed to the student | [`v2/classifier/latency_siglip.py`](../../v2/classifier/latency_siglip.py) | 3.9, latency table |
 | `latency_student.json` | latency, GPU memory and batched throughput of the distilled Qwen3-VL-8B student under vLLM (v2), with its 49 reports | [`v2/vlm/latency_student.py`](../../v2/vlm/latency_student.py) | 3.9, latency table; v2's reports for the faithfulness ratings |
+| `latency_v1_splitv1.json` | v1's pipeline as deployed run with the models retrained on split v1 (ResNet-50, RF-DETR Small and report writer named in its `settings`): time per stage and the 49 reports of round 2 | [`v2/vlm/latency_v1.py`](../../v2/vlm/latency_v1.py) `--resnet ... --writer-ckpt ...` with `RFDETR_CHECKPOINT` (job 82899, `v2/slurm/v1_splitv1_reports.sbatch`) | the leak-free v1 comparison, notebook (aj), (am) |
 | `latency_v1.json` | v1 as deployed (the path of `v1/demo_v5.py`): time per stage and GPU memory, with v1's 49 reports | [`v2/vlm/latency_v1.py`](../../v2/vlm/latency_v1.py) | 3.9, latency table; v1's reports for the faithfulness ratings |
 | `latency_v1_v2.json` | the assembled table: median, 90th percentile and mean seconds per stage and pipeline, GPU memory per process, load times | [`v2/vlm/latency_summary.py`](../../v2/vlm/latency_summary.py) | 3.9, latency table; abstract and conclusion (22 s against 62 s per photograph) |
 | `minigpt_splitv1_train_log.txt` | configuration and per-epoch training loss of the v1 report writer (MiniGPT-v2 with LoRA) retrained on the split v1 training photographs, 10 epochs | the run's `log.txt`, written by [`v1/train.py`](../../v1/train.py) with `v1/train_configs/minigptv2_strawberry_splitv1.yaml` ([`v2/slurm/train_minigpt_splitv1.sbatch`](../../v2/slurm/train_minigpt_splitv1.sbatch)) | 2.1, 2.7 |
@@ -91,6 +93,6 @@ From the committed files these reproduce exactly (checked on 18 November 2026): 
   rescored.
 - The per-image files list photographs as `plant_diagnostic/data/...`, relative to `v1/`; 74 of the 398 split v1 test
   photographs are not in this repository's copy ([why](../README.md#photographs-not-in-this-repository)).
-- The list of result files at the end of docs/MANUSCRIPT_QA.md names the 20 files of 31 October 2026. The 34 added
-  from 4 November to 20 November are all named in the lab notebook; the Q&A's items also name the 8 calibration record
+- The list of result files at the end of docs/MANUSCRIPT_QA.md names the 20 files of 31 October 2026. The 36 added
+  from 4 November to 22 November are all named in the lab notebook; the Q&A's items also name the 8 calibration record
   files and some of the faithfulness and report files.

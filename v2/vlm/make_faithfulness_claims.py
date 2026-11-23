@@ -33,6 +33,8 @@ ap.add_argument("--claims", default="evaluation/paper_data/faithfulness_v1v2_cla
 ap.add_argument("--check", action="store_true")
 ap.add_argument("--claims-out", default="")
 ap.add_argument("--key-out", default="")
+ap.add_argument("--seed-prefix", default="faith-v1v2",
+                help="shuffle seed prefix and claim-set name; a new rating round uses its own (entry (aj): faith-v1splitv1-v2)")
 args = ap.parse_args()
 
 v1 = json.load(open(args.v1, encoding="utf-8"))["records"]
@@ -58,7 +60,7 @@ def sentences(text, system):
 
 photos, key, stats = [], {}, Counter()
 for i, (a, b) in enumerate(zip(v1, v2)):
-    rng = random.Random(f"faith-v1v2:{i}")
+    rng = random.Random(f"{args.seed_prefix}:{i}")
     pool = [("v1", k, s) for k, s in enumerate(sentences(a["report"], "v1"))] + \
            [("v2", k, s) for k, s in enumerate(sentences(b["report"], "v2"))]
     rng.shuffle(pool)
@@ -73,7 +75,8 @@ for i, (a, b) in enumerate(zip(v1, v2)):
     key[pid] = {"v1_label": a["final_label"], "v1_p1": a["p1"], "v2_given_label": b["given_label"],
                 "v2_verdict": b["verdict"], "dataset_label": a["label"]}
 
-blind = {"name": "faithfulness_v1v2", "seed": "faith-v1v2:<photo index>", "photos": photos}
+blind = {"name": "faithfulness_v1v2" if args.seed_prefix == "faith-v1v2" else args.seed_prefix,
+         "seed": f"{args.seed_prefix}:<photo index>", "photos": photos}
 print(f"{len(photos)} photographs, {sum(stats.values())} claims: v1 {stats['v1']}, v2 {stats['v2']}")
 
 if args.check:
